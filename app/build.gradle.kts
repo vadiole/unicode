@@ -11,10 +11,10 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 26
         targetSdk = 31
-        versionCode = 1
+        versionCode = 10
         versionName = "1.0"
         resourceConfigurations.addAll(listOf("en"))
-        setProperty("archivesBaseName", "Unicode v$versionName ($versionCode)")
+        setProperty("archivesBaseName", "Unicode-v$versionName")
     }
 
     buildTypes {
@@ -56,11 +56,18 @@ android {
             "SetTextI18n",
             "RtlHardcoded", "RtlCompat", "RtlEnabled",
             "ViewConstructor",
-            "UnusedAttribute"
+            "UnusedAttribute",
+            "NotifyDataSetChanged",
+            "ktNoinlineFunc",
         )
     }
 }
 
 dependencies {
     implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+    // kotlin coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 }
