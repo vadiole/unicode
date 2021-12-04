@@ -3,6 +3,7 @@
     package="vadiole.unicode">
 
     <application
+        android:name=".UnicodeApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +13,7 @@
         android:theme="@style/Theme.Unicode">
 
         <activity
-            android:name="vadiole.unicode.MainActivity"
+            android:name="vadiole.unicode.ui.UnicodeActivity"
             android:configChanges="uiMode|orientation"
             android:exported="true"
             android:launchMode="singleTask">
