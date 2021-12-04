@@ -16,7 +16,7 @@
         android:gravity="center">
         <shape android:shape="oval">
             <stroke
-                android:width="72dp"
+                android:width="74dp"
                 android:color="@color/windowBackground" />
         </shape>
     </item>
