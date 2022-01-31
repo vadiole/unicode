@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.screen.table
+package vadiole.unicode.ui.table
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,8 +6,8 @@ import android.graphics.Paint
 import android.view.View
 import vadiole.unicode.ui.theme.*
 import vadiole.unicode.utils.dp
-import vadiole.unicode.utils.onClick
-import vadiole.unicode.utils.onLongClick
+import vadiole.unicode.utils.ktx.onClick
+import vadiole.unicode.utils.ktx.onLongClick
 
 class CharCell(
     context: Context,
@@ -21,13 +21,11 @@ class CharCell(
     }
     private var charY: Float = 0f
     private var charX: Float = 0f
-
     private var position: Int = -1
     private var char: String? = null
 
     init {
         appTheme.observe(this)
-
         isClickable = true
         isFocusable = true
         onClick = {

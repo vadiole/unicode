@@ -185,11 +185,11 @@ class AlertDialog constructor(
                 val marginTop = 19.dp(context)
                 val marginBottom = if (items != null) 14.dp(context) else 10.dp(context)
                 val margins = Rect(0, marginTop, 0, marginBottom)
-                addView(titleView, frame(fill, wrap, LEFT, margins))
+                addView(titleView, frameParams(matchParent, wrapContent, LEFT, margins))
             }
 
             val margins = Rect(24.dp(context), 0, 24.dp(context), 0)
-            root.addView(titleLayout, linear(wrap, wrap, margins = margins))
+            root.addView(titleLayout, linearParams(wrapContent, wrapContent, margins = margins))
         }
 
         contentScroll = ScrollView(context).apply {
@@ -216,7 +216,7 @@ class AlertDialog constructor(
                         24.dp(context),
                         if (customView != null || items != null) customViewOffset else 0
                     )
-                    addView(messageView, linear(fill, wrap, margins = margins))
+                    addView(messageView, linearParams(matchParent, wrapContent, margins = margins))
                 }
 
                 if (items != null) {
@@ -229,15 +229,15 @@ class AlertDialog constructor(
                                 dismiss()
                             }
                         }
-                        addView(cell, linear(fill, 50.dp(context)))
+                        addView(cell, linearParams(matchParent, 50.dp(context)))
                         itemViews.add(cell)
                     }
                 }
             }
 
-            addView(contentLayout, frame(fill, wrap))
+            addView(contentLayout, frameParams(matchParent, wrapContent))
         }
-        root.addView(contentScroll, frame(fill, wrap))
+        root.addView(contentScroll, frameParams(matchParent, wrapContent))
 
         if (buttonPositiveText != null || buttonNegativeText != null || buttonNeutralText != null) {
 
@@ -368,9 +368,9 @@ class AlertDialog constructor(
                     }
 
                     if (verticalButtons) {
-                        addView(button, linear(wrap, 36.dp(context), RIGHT))
+                        addView(button, linearParams(wrapContent, 36.dp(context), RIGHT))
                     } else {
-                        addView(button, frame(wrap, 36.dp(context), TOP or RIGHT))
+                        addView(button, frameParams(wrapContent, 36.dp(context), TOP or RIGHT))
                     }
                 }
                 if (buttonNegativeText != null) {
@@ -386,9 +386,9 @@ class AlertDialog constructor(
                         }
                     }
                     if (verticalButtons) {
-                        addView(button, 0, linear(wrap, 36.dp(context), RIGHT))
+                        addView(button, 0, linearParams(wrapContent, 36.dp(context), RIGHT))
                     } else {
-                        addView(button, frame(wrap, 36.dp(context), TOP or RIGHT))
+                        addView(button, frameParams(wrapContent, 36.dp(context), TOP or RIGHT))
                     }
                 }
                 if (buttonNeutralText != null) {
@@ -404,9 +404,9 @@ class AlertDialog constructor(
                         }
                     }
                     if (verticalButtons) {
-                        addView(button, 1, linear(wrap, 36.dp(context), RIGHT))
+                        addView(button, 1, linearParams(wrapContent, 36.dp(context), RIGHT))
                     } else {
-                        addView(button, frame(wrap, 36.dp(context), TOP or LEFT))
+                        addView(button, frameParams(wrapContent, 36.dp(context), TOP or LEFT))
                     }
                 }
                 if (verticalButtons) {
@@ -416,7 +416,7 @@ class AlertDialog constructor(
                 }
             }
 
-            root.addView(buttonsLayout, linear(fill, 52.dp(context)))
+            root.addView(buttonsLayout, linearParams(matchParent, 52.dp(context)))
         }
 
     }
@@ -498,12 +498,12 @@ class AlertDialog constructor(
 
             addView(
                 imageView,
-                frame(wrap, 48.dp(context), CENTER_VERTICAL or RIGHT)
+                frameParams(wrapContent, 48.dp(context), CENTER_VERTICAL or RIGHT)
             )
 
             addView(
                 textView,
-                frame(fill, 48.dp(context), LEFT or CENTER_VERTICAL)
+                frameParams(matchParent, 48.dp(context), LEFT or CENTER_VERTICAL)
             )
         }
 

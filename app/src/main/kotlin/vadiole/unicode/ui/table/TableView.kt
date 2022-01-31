@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.screen.table
+package vadiole.unicode.ui.table
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager

@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.screen.table
+package vadiole.unicode.ui.table
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

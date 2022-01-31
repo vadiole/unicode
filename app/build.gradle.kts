@@ -52,22 +52,26 @@ android {
     }
 
     lint {
-        disable(
-            "SetTextI18n",
-            "RtlHardcoded", "RtlCompat", "RtlEnabled",
-            "ViewConstructor",
-            "UnusedAttribute",
-            "NotifyDataSetChanged",
-            "ktNoinlineFunc",
+        disable.addAll(
+            listOf(
+                "SetTextI18n",
+                "RtlHardcoded", "RtlCompat", "RtlEnabled",
+                "ViewConstructor",
+                "UnusedAttribute",
+                "NotifyDataSetChanged",
+                "ktNoinlineFunc",
+            )
         )
     }
 }
 
 dependencies {
     implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
 
-    // kotlin coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.dynamicanimation:dynamicanimation:1.1.0-alpha03")
+    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt")
 }

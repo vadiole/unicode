@@ -14,7 +14,7 @@ fun Context.toClipboard(label: String, text: String) {
     systemService.setPrimaryClip(myClip)
 }
 
-fun View.toast(message: String, debug: Boolean = false, long: Boolean = false) {
+fun View.toast(message: String, long: Boolean = false, debug: Boolean = false) {
     if (debug && !BuildConfig.DEBUG) return
     Toast.makeText(context, message, if (long) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).show()
 }

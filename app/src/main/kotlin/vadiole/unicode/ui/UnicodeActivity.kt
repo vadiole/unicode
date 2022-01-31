@@ -6,24 +6,30 @@ import android.os.Bundle
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp
-import vadiole.unicode.ui.screen.table.TableController
-import vadiole.unicode.ui.screen.table.TableScreen
+import vadiole.unicode.ui.components.NavigationView
 import vadiole.unicode.ui.theme.AppTheme
 import vadiole.unicode.utils.insetsController
 import vadiole.unicode.utils.isDarkMode
 
 class UnicodeActivity : Activity() {
+    private var backHandler: () -> Boolean = { false }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setDecorFitsSystemWindows(window, false)
         val appComponent = (applicationContext as UnicodeApp).appComponent
+        val navigationView = NavigationView(this, appComponent)
+        setContentView(navigationView)
+        backHandler = {
+            navigationView.hideDetailsBottomSheet()
+        }
+    }
 
-        val charStorage = appComponent.charsStorage
-        val theme = appComponent.theme
-        val tableViewModel = TableController(charStorage)
-        val table = TableScreen(this, theme, tableViewModel)
-
-        setContentView(table)
+    override fun onBackPressed() {
+        val handled = backHandler.invoke()
+        if (!handled) {
+            super.onBackPressed()
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
