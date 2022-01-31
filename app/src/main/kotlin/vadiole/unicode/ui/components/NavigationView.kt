@@ -25,6 +25,7 @@ import vadiole.unicode.utils.ktx.isVisible
 import vadiole.unicode.utils.ktx.with
 import vadiole.unicode.utils.matchParent
 import kotlin.math.abs
+import kotlin.math.exp
 import kotlin.math.hypot
 
 class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout(context), ThemeDelegate {
@@ -39,7 +40,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     private var touchDownY = -1f
     private var touchDownTranslationY = -1f
     private var velocityTracker: VelocityTracker = VelocityTracker.obtain()
-    private val maxOverdragY = 50f.dp(context)
+    private val maxOverdragY = 80f.dp(context)
     private val canDismissWithTouchOutside = true
 
     private val tableController = TableController(charStorage)
@@ -155,7 +156,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     }
 
 
-    // TODO: add perform click 
+    // TODO: add perform click
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val content = detailsSheet ?: return false
         val deltaY = event.rawY - touchDownY
@@ -226,10 +227,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
 
     private fun normalize(dy: Float, max: Float): Float {
         Log.d("OVERDRAG", "dy = $dy, max = $max")
-        if (dy > max) {
-            return max
-        }
-        return dy
+        return 2 * max / (1 + exp(-2 * dy / max)) - max
     }
 
     override fun applyTheme(theme: Theme) {

@@ -22,7 +22,7 @@ class DetailsSheet(
     private val cornerRadius = 33.dp(context)
     private val viewBounds = RectF()
     private val recticlePath = Path()
-    private val backgroundPaint = Paint()
+    private val backgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val title = Text {
         layoutParams = frameParams(matchParent, wrapContent, gravity = Gravity.TOP, marginTop = 20.dp(context))
         text = "Char details"

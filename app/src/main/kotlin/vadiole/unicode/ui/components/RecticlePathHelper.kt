@@ -14,7 +14,7 @@ object RecticlePathHelper {
         val bottom = viewBounds.bottom
 
         val r = cornerRadius   //  corners radius in px
-        val smooth = 0.6f           //  from 0 to 1, ios = 0.6
+        val smooth = 0.4f           //  from 0 to 1, ios = 0.6
 
         //  a, b, c -> https://telegra.ph/file/a65d7a87521e9c75e7579.png
         val c = 0.2929f * r
