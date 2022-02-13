@@ -1,4 +1,4 @@
-# Unicode App Not Found
+# Inapp Unicode Link
 
 ### You are seing this page because the Unicode app wasn't found on the your device to open link.
 
