@@ -1,12 +1,11 @@
 package vadiole.unicode
 
-import kotlinx.coroutines.Dispatchers
 import vadiole.unicode.data.CharStorage
 import vadiole.unicode.ui.theme.AppTheme
-import vadiole.unicode.utils.isDarkMode
+import vadiole.unicode.utils.extension.isDarkMode
 
 class AppComponent(app: UnicodeApp) {
-    val charsStorage = CharStorage(app, Dispatchers.IO)
+    val charsStorage = CharStorage(app)
     val theme = AppTheme(
         if (app.applicationContext.resources.configuration.isDarkMode) {
             AppTheme.Scheme.BLUE_DARK

@@ -1,4 +1,4 @@
-package vadiole.unicode.utils
+package vadiole.unicode.utils.extension
 
 import android.app.Activity
 import android.content.res.Configuration
