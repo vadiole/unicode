@@ -1,10 +1,7 @@
 package vadiole.unicode.ui.theme
 
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
-import android.graphics.Typeface
+import android.graphics.*
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.RippleDrawable
@@ -25,6 +22,13 @@ abstract class Theme {
     fun getColors(key: String): ColorStateList {
         val color = getColor(key)
         return ColorStateList.valueOf(color)
+    }
+
+    fun getColors(states: Array<IntArray>, keys: Array<String>): ColorStateList {
+        val colors = IntArray(keys.size) {
+            getColor(keys[it])
+        }
+        return ColorStateList(states, colors)
     }
 
     fun getColorDrawable(key: String): ColorDrawable {
@@ -55,7 +59,6 @@ abstract class Theme {
             arrayOf(StateSet.WILD_CARD),
             intArrayOf(rippleColor)
         )
-
         val mask = if (diameter >= 0) {
             ShapeDrawable(OvalShape().also {
                 it.resize(diameter, diameter)
@@ -67,6 +70,10 @@ abstract class Theme {
     }
 }
 
+val sharedDividerPaint = Paint().apply {
+    flags = flags and Paint.ANTI_ALIAS_FLAG.inv()
+    strokeWidth = 1f
+}
 private val typefaceCache = hashMapOf<String, Typeface>()
 
 private const val semiboldPath = "font/roboto_semibold.otf"
@@ -91,20 +98,20 @@ val View.roboto_regular: Typeface
 
 
 const val key_dialogBackground = "dialogBackground"
-const val key_dialogTextPrimary = "dialogTextPrimary"
+const val key_dialogSurface = "dialogSurface"
+const val key_dialogSurfacePressed = "dialogSurfacePressed"
 const val key_dialogIcon = "dialogIcon"
 const val key_dialogButton = "dialogButton"
 const val key_dialogButtonDanger = "dialogButtonDanger"
 const val key_dialogListRipple = "dialogListRipple"
-
+const val key_dialogDim = "dialogDim"
 const val key_windowBackground = "windowBackground"
 const val key_windowTextPrimary = "windowTextPrimary"
+const val key_windowTextSecondary = "windowTextSecondary"
+const val key_windowTextAccent = "windowTextAccent"
 const val key_windowDivider = "windowDivider"
 const val key_windowRipple = "windowRipple"
-
-
 const val key_tabBarBackground = "key_tabBarBackground"
 const val key_tabBarItem = "key_tabBarItem"
 const val key_tabBarItemSelected = "key_tabBarItemSelected"
-
-const val key_toolBarBackground = "key_toolBarBackground"
+const val key_topBarBackground = "key_toolBarBackground"

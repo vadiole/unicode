@@ -1,54 +1,46 @@
-package vadiole.unicode.ui.components
+package vadiole.unicode.ui.common
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.widget.TextViewCompat.setLineHeight
 import vadiole.unicode.ui.theme.*
-import vadiole.unicode.utils.dp
-import vadiole.unicode.utils.fill
-import vadiole.unicode.utils.frame
-import vadiole.unicode.utils.onClick
+import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.utils.extension.frameParams
+import vadiole.unicode.utils.extension.matchParent
+import vadiole.unicode.utils.extension.onClick
 
-class Toolbar(
+class TopBar(
     context: Context,
     appTheme: AppTheme,
     title: String,
     onTitleClick: TextView.() -> Unit = {}
 ) : FrameLayout(context), ThemeDelegate {
-
-    private val dividerPaint = Paint().apply {
-        strokeWidth = 1f
-    }
-
     private val titleView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
+        setLineHeight(this, 22.dp(context))
         typeface = roboto_semibold
         gravity = Gravity.CENTER
-        setLineHeight(this, 22.dp(context))
-        text = title
         onClick = onTitleClick
+        letterSpacing = 0.03f
+        text = title
     }
 
     init {
         appTheme.observe(this)
-        addView(titleView, frame(fill, 50.dp(context), gravity = Gravity.BOTTOM))
+        addView(titleView, frameParams(matchParent, 50.dp(context), gravity = Gravity.BOTTOM))
     }
 
     override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        val y = height - 1f
-        canvas.drawLine(0f, y, width.toFloat(), y, dividerPaint)
+        val dividerY = height - 1f
+        canvas.drawLine(0f, dividerY, width.toFloat(), dividerY, sharedDividerPaint)
     }
 
     override fun applyTheme(theme: Theme) {
-        setBackgroundColor(theme.getColor(key_toolBarBackground))
+        setBackgroundColor(theme.getColor(key_topBarBackground))
         titleView.setTextColor(theme.getColor(key_windowTextPrimary))
-        dividerPaint.color = theme.getColor(key_windowDivider)
-        invalidate()
     }
 }

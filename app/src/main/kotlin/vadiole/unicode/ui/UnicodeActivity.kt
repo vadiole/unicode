@@ -1,29 +1,48 @@
 package vadiole.unicode.ui
 
 import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp
-import vadiole.unicode.ui.screen.table.TableController
-import vadiole.unicode.ui.screen.table.TableScreen
+import vadiole.unicode.data.CharStorage
 import vadiole.unicode.ui.theme.AppTheme
-import vadiole.unicode.utils.insetsController
-import vadiole.unicode.utils.isDarkMode
+import vadiole.unicode.utils.extension.insetsController
+import vadiole.unicode.utils.extension.isDarkMode
 
 class UnicodeActivity : Activity() {
+    private var backHandler: () -> Boolean = { false }
+    private var deepLinkHandler: (id: Int) -> Unit = { _ -> }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setDecorFitsSystemWindows(window, false)
         val appComponent = (applicationContext as UnicodeApp).appComponent
+        val navigationView = NavigationView(this, appComponent)
+        setContentView(navigationView)
+        backHandler = {
+            navigationView.hideDetailsBottomSheet()
+        }
+        deepLinkHandler = { id ->
+            navigationView.showDetailsBottomSheet(id, skipAnimation = true)
+        }
+        onNewIntent(intent)
+    }
 
-        val charStorage = appComponent.charsStorage
-        val theme = appComponent.theme
-        val tableViewModel = TableController(charStorage)
-        val table = TableScreen(this, theme, tableViewModel)
+    override fun onNewIntent(intent: Intent) {
+        val charId = intent.data?.getQueryParameter("c")?.toIntOrNull() ?: return
+        if (charId >= 1 && charId < CharStorage.totalCharacters) {
+            deepLinkHandler.invoke(charId)
+        }
+    }
 
-        setContentView(table)
+    override fun onBackPressed() {
+        val handled = backHandler.invoke()
+        if (!handled) {
+            super.onBackPressed()
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
