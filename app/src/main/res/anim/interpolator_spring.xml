@@ -1,0 +1,5 @@
+<pathInterpolator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:controlX1="0.15"
+    android:controlY1="0.99"
+    android:controlX2="0.02"
+    android:controlY2="0.99" />

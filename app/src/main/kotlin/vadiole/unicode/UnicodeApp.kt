@@ -1,7 +1,6 @@
 package vadiole.unicode
 
 import android.app.Application
-import android.content.Context
 
 class UnicodeApp : Application() {
     private var _appComponent: AppComponent? = null

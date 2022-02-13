@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.components
+package vadiole.unicode.ui.common
 
 import android.content.Context
 import android.widget.FrameLayout
@@ -10,6 +10,12 @@ import kotlin.coroutines.CoroutineContext
 
 abstract class Screen(context: Context) : FrameLayout(context), CoroutineScope {
     override val coroutineContext: CoroutineContext = SupervisorJob() + Dispatchers.Main.immediate
+
+    init {
+        isMotionEventSplittingEnabled = false
+        isClickable = true
+        isFocusable = true
+    }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
