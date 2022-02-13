@@ -1,8 +1,7 @@
-package vadiole.unicode.utils.ktx
+package vadiole.unicode.utils.extension
 
-import android.graphics.Rect
 import android.view.View
-import android.widget.TextView
+import androidx.annotation.Px
 
 private var enabled: Boolean = true
 private val ENABLE_AGAIN = object : Runnable {
@@ -38,17 +37,12 @@ inline var View.isVisible: Boolean
         visibility = if (value) View.VISIBLE else View.GONE
     }
 
-inline fun <T : View> T?.onSizeChange(crossinline runnable: T.() -> Unit) = this?.apply {
-    addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-        val rect = Rect(left, top, right, bottom)
-        val oldRect = Rect(oldLeft, oldTop, oldRight, oldBottom)
-        if (rect.width() != oldRect.width() || rect.height() != oldRect.height()) {
-            runnable(this)
-        }
-    }
+@Suppress("NOTHING_TO_INLINE")
+inline fun View.setPadding(@Px size: Int) {
+    setPadding(size, size, size, size)
 }
 
-fun View.Text(init: TextView.() -> Unit): TextView {
-    return TextView(context).apply(init)
+@Suppress("NOTHING_TO_INLINE")
+inline fun View.setPaddingHorizontal(@Px size: Int) {
+    setPadding(size, paddingTop, size, paddingTop)
 }
-

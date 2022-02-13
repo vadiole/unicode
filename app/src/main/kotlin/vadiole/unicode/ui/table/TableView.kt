@@ -2,7 +2,7 @@ package vadiole.unicode.ui.table
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager
-import vadiole.unicode.ui.components.CollectionView
+import vadiole.unicode.ui.common.CollectionView
 
 class TableView(
     context: Context,

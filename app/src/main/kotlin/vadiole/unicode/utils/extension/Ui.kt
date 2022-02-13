@@ -1,4 +1,4 @@
-package vadiole.unicode.utils
+package vadiole.unicode.utils.extension
 
 import android.animation.ObjectAnimator
 import android.content.Context

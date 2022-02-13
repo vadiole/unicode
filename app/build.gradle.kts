@@ -11,8 +11,8 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 26
         targetSdk = 31
-        versionCode = 10
-        versionName = "1.0"
+        versionCode = 11
+        versionName = "1.1"
         resourceConfigurations.addAll(listOf("en"))
         setProperty("archivesBaseName", "Unicode-v$versionName")
     }
@@ -49,6 +49,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        languageVersion = "1.6"
     }
 
     lint {

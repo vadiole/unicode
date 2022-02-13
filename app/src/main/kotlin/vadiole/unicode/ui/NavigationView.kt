@@ -1,12 +1,9 @@
-package vadiole.unicode.ui.components
+package vadiole.unicode.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Looper
-import android.util.Log
-import android.view.MotionEvent
-import android.view.VelocityTracker
-import android.view.View
-import android.view.ViewConfiguration
+import android.view.*
 import android.widget.FrameLayout
 import androidx.core.view.doOnPreDraw
 import androidx.dynamicanimation.animation.DynamicAnimation
@@ -19,13 +16,10 @@ import vadiole.unicode.ui.table.TableScreen
 import vadiole.unicode.ui.theme.Theme
 import vadiole.unicode.ui.theme.ThemeDelegate
 import vadiole.unicode.ui.theme.key_dialogDim
-import vadiole.unicode.utils.dp
-import vadiole.unicode.utils.frameParams
-import vadiole.unicode.utils.ktx.isVisible
-import vadiole.unicode.utils.ktx.with
-import vadiole.unicode.utils.matchParent
+import vadiole.unicode.utils.extension.*
+import kotlin.math.PI
 import kotlin.math.abs
-import kotlin.math.exp
+import kotlin.math.atan
 import kotlin.math.hypot
 
 class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout(context), ThemeDelegate {
@@ -42,6 +36,8 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     private var velocityTracker: VelocityTracker = VelocityTracker.obtain()
     private val maxOverdragY = 80f.dp(context)
     private val canDismissWithTouchOutside = true
+    private var pendingCharId = -1
+    private var pendingCharSkipAnimation = false
 
     private val tableController = TableController(charStorage)
     private val tableDelegate = object : TableScreen.Delegate {
@@ -63,9 +59,15 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
             detailsSheet = DetailsSheet(context, theme, charStorage).also { detailsSheet ->
                 addView(dimView)
                 addView(detailsSheet)
-                detailsSheet.doOnPreDraw {
-                    it.translationY = it.measuredHeight.toFloat()
+                if (!pendingCharSkipAnimation) {
+                    detailsSheet.doOnPreDraw {
+                        it.translationY = it.measuredHeight.toFloat()
+                    }
                 }
+            }
+            requestApplyInsets()
+            if (pendingCharId != -1) {
+                showDetailsBottomSheet(pendingCharId, skipAnimation = pendingCharSkipAnimation)
             }
             false
         }
@@ -73,19 +75,30 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         theme.observe(this)
     }
 
-
-    fun showDetailsBottomSheet(id: Int = -1, withVelocity: Float = 0f) = with(detailsSheet) {
-        if (id != -1) {
-            bind(id = id)
+    fun showDetailsBottomSheet(id: Int = -1, withVelocity: Float = 0f, skipAnimation: Boolean = false) {
+        val detailsSheet = detailsSheet
+        if (detailsSheet != null) {
+            if (id != -1) {
+                detailsSheet.bind(id = id)
+            }
+            visibility = VISIBLE
+            isOpenOrOpening = true
+            if (skipAnimation) {
+                detailsSheet.translationY = 0f
+                doOnPreDraw {
+                    updateDimBackground(0f, detailsSheet.measuredHeight)
+                }
+            } else {
+                startSpringAnimation(
+                    view = detailsSheet,
+                    toPosition = 0,
+                    startVelocity = withVelocity
+                )
+            }
+        } else {
+            pendingCharId = id
+            pendingCharSkipAnimation = skipAnimation
         }
-        visibility = VISIBLE
-        isOpenOrOpening = true
-        startSpringAnimation(
-            view = this,
-            toPosition = 0,
-            startVelocity = withVelocity
-        )
-
     }
 
     fun hideDetailsBottomSheet(withVelocity: Float = 0f): Boolean {
@@ -99,13 +112,11 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         return false
     }
 
-    private fun startSpringAnimation(
-        view: View, toPosition: Int, startVelocity: Float
-    ) {
+    private fun startSpringAnimation(view: View, toPosition: Int, startVelocity: Float) {
         openAnimation?.cancel()
         openAnimation = SpringAnimation(view, DynamicAnimation.TRANSLATION_Y).apply {
             spring = SpringForce(toPosition.toFloat()).apply {
-                stiffness = 400f
+                stiffness = 600f
                 dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
             }
             setStartVelocity(startVelocity)
@@ -123,7 +134,6 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                 touchDownX = event.rawX
                 touchDownY = event.rawY
                 touchDownTranslationY = content.translationY
-
                 val isTouchOutside = event.rawY < content.top + content.translationY
                 if (isTouchOutside) {
                     return isOpenOrOpening
@@ -155,8 +165,8 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         return false
     }
 
-
     // TODO: add perform click
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val content = detailsSheet ?: return false
         val deltaY = event.rawY - touchDownY
@@ -174,7 +184,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
             }
             MotionEvent.ACTION_MOVE -> {
                 if (isOpenOrOpening) {
-                    val needOverdrag = content.translationY < 0
+                    val needOverdrag = content.translationY + deltaY < 0
                     content.translationY = if (needOverdrag) {
                         val realOverdrag = touchDownTranslationY + deltaY
                         -normalize(-realOverdrag, maxOverdragY)
@@ -191,7 +201,6 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                     val pointerId: Int = event.getPointerId(event.actionIndex)
                     velocityTracker.computeCurrentVelocity(1000)
                     val velocity = velocityTracker.getYVelocity(pointerId)
-                    Log.d("VELOCITY", velocity.toString())
                     if (abs(velocity) > scaledMinimumFlingVelocity) {
                         if (velocity > 0) {
                             hideDetailsBottomSheet(withVelocity = velocity)
@@ -214,7 +223,6 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                 velocityTracker.clear()
             }
         }
-
         return true
     }
 
@@ -224,10 +232,13 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         dimView.isVisible = percentDone > 0
     }
 
-
     private fun normalize(dy: Float, max: Float): Float {
-        Log.d("OVERDRAG", "dy = $dy, max = $max")
-        return 2 * max / (1 + exp(-2 * dy / max)) - max
+        return (2 * max * atan(0.5 * PI * dy / max) / PI).toFloat()
+    }
+
+    override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
+        detailsSheet?.onApplyWindowInsets(insets)
+        return super.onApplyWindowInsets(insets)
     }
 
     override fun applyTheme(theme: Theme) {

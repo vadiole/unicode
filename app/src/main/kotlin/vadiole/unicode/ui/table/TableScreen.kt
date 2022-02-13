@@ -3,16 +3,17 @@ package vadiole.unicode.ui.table
 import android.content.Context
 import android.view.Gravity.TOP
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.launch
-import vadiole.unicode.ui.components.CollectionView
-import vadiole.unicode.ui.components.Screen
-import vadiole.unicode.ui.components.TopBar
+import vadiole.unicode.ui.common.CollectionView
+import vadiole.unicode.ui.common.Screen
+import vadiole.unicode.ui.common.TopBar
 import vadiole.unicode.ui.theme.AppTheme
 import vadiole.unicode.ui.theme.Theme
 import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.utils.*
+import vadiole.unicode.utils.extension.*
 
 class TableScreen(
     context: Context,
@@ -25,7 +26,7 @@ class TableScreen(
         override fun onLongClick(position: Int) {
             val char = controller.tableChars[position]
             context.toClipboard("Unicode", char)
-            toast("$char copied to clipboard")
+            Toast.makeText(context, "$char copied to clipboard", Toast.LENGTH_SHORT).show()
         }
     }
     private val tableAdapter = object : CollectionView.Adapter() {
@@ -34,13 +35,14 @@ class TableScreen(
             val charCell = CharCell(context, appTheme, charCellDelegate)
             return CollectionView.Cell(charCell)
         }
+
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             val cell = holder.itemView as CharCell
             val char = controller.tableChars.getOrNull(position) ?: ""
             cell.bind(position, char)
         }
     }
-    private val toolbar = TopBar(context, appTheme, "Unicode") {
+    private val topBar = TopBar(context, appTheme, "Unicode") {
         tableView.smoothScrollToPosition(0)
     }
     private val tableView = TableView(context, tableAdapter, spanCount = 8)
@@ -48,7 +50,7 @@ class TableScreen(
     init {
         appTheme.observe(this)
         setOnApplyWindowInsetsListener(this) { _, insets ->
-            toolbar.setPadding(0, insets.statusBars.top, 0, 0)
+            topBar.setPadding(0, insets.statusBars.top, 0, 0)
             tableView.setPadding(8.dp(context), 0, 8.dp(context), insets.navigationBars.bottom)
             tableView.updateLayoutParams<MarginLayoutParams> {
                 setMargins(0, insets.statusBars.top + 50.dp(context), 0, 0)
@@ -56,7 +58,7 @@ class TableScreen(
             insets
         }
         addView(tableView, frameParams(matchParent, matchParent, marginTop = 50.dp(context)))
-        addView(toolbar, frameParams(matchParent, wrapContent, gravity = TOP))
+        addView(topBar, frameParams(matchParent, wrapContent, gravity = TOP))
         launch {
             controller.loadChars()
             tableAdapter.notifyDataSetChanged()
