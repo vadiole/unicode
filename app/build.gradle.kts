@@ -10,11 +10,11 @@ android {
     defaultConfig {
         applicationId = "vadiole.unicode"
         minSdk = 26
-        targetSdk = 31
-        versionCode = 11
-        versionName = "1.1"
+          targetSdk = 31
+        versionCode = 111
+        versionName = "1.1.1"
         resourceConfigurations.addAll(listOf("en"))
-        setProperty("archivesBaseName", "Unicode-v$versionName")
+        setProperty("archivesBaseName", "unicode-v$versionName")
     }
 
     buildTypes {
@@ -22,13 +22,13 @@ android {
             applicationIdSuffix = ".debug"
             isMinifyEnabled = false
             isShrinkResources = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles("proguard-rules.pro")
         }
 
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles("proguard-rules.pro")
         }
     }
 
