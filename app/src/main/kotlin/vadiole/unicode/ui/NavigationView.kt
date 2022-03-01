@@ -2,10 +2,10 @@ package vadiole.unicode.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Looper
+import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
-import androidx.core.view.doOnPreDraw
+import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -41,8 +41,8 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
 
     private val tableController = TableController(charStorage)
     private val tableDelegate = object : TableScreen.Delegate {
-        override fun onItemClick(id: Int) {
-            showDetailsBottomSheet(id)
+        override fun onItemClick(codePoint: Int) {
+            showDetailsBottomSheet(codePoint)
         }
     }
     private val tableScreen = TableScreen(context, theme, tableController, tableDelegate)
@@ -55,12 +55,15 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     init {
         clipChildren = false
         isMotionEventSplittingEnabled = false
-        Looper.getMainLooper().queue.addIdleHandler {
+        addView(tableScreen)
+
+//        Looper.getMainLooper().queue.addIdleHandler {
+        post {
             detailsSheet = DetailsSheet(context, theme, charStorage).also { detailsSheet ->
                 addView(dimView)
                 addView(detailsSheet)
                 if (!pendingCharSkipAnimation) {
-                    detailsSheet.doOnPreDraw {
+                    detailsSheet.doOnLayout {
                         it.translationY = it.measuredHeight.toFloat()
                     }
                 }
@@ -69,23 +72,26 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
             if (pendingCharId != -1) {
                 showDetailsBottomSheet(pendingCharId, skipAnimation = pendingCharSkipAnimation)
             }
-            false
+            theme.observe(this)
         }
-        addView(tableScreen)
+//
+//            false
+//        }
+//
         theme.observe(this)
     }
 
-    fun showDetailsBottomSheet(id: Int = -1, withVelocity: Float = 0f, skipAnimation: Boolean = false) {
+    fun showDetailsBottomSheet(codePoint: Int = -1, withVelocity: Float = 0f, skipAnimation: Boolean = false) {
         val detailsSheet = detailsSheet
         if (detailsSheet != null) {
-            if (id != -1) {
-                detailsSheet.bind(id = id)
+            if (codePoint != -1) {
+                detailsSheet.bind(codePoint = codePoint)
             }
             visibility = VISIBLE
             isOpenOrOpening = true
             if (skipAnimation) {
                 detailsSheet.translationY = 0f
-                doOnPreDraw {
+                doOnLayout {
                     updateDimBackground(0f, detailsSheet.measuredHeight)
                 }
             } else {
@@ -96,7 +102,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                 )
             }
         } else {
-            pendingCharId = id
+            pendingCharId = codePoint
             pendingCharSkipAnimation = skipAnimation
         }
     }
@@ -129,6 +135,8 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         val content = detailsSheet ?: return false
+
+        Log.d("TOUCH", "transY = ${content.translationY}, height = ${content.measuredHeight}")
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 touchDownX = event.rawX

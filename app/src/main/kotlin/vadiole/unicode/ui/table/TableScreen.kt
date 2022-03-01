@@ -22,9 +22,9 @@ class TableScreen(
     private val delegate: Delegate
 ) : Screen(context), ThemeDelegate {
     private val charCellDelegate = object : CharCell.Delegate {
-        override fun onClick(position: Int) = delegate.onItemClick(position)
-        override fun onLongClick(position: Int) {
-            val char = controller.tableChars[position]
+        override fun onClick(codePoint: Int) = delegate.onItemClick(codePoint)
+        override fun onLongClick(codePoint: Int) {
+            val char = String(Character.toChars(codePoint))
             context.toClipboard("Unicode", char)
             Toast.makeText(context, "$char copied to clipboard", Toast.LENGTH_SHORT).show()
         }
@@ -38,8 +38,9 @@ class TableScreen(
 
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             val cell = holder.itemView as CharCell
-            val char = controller.tableChars.getOrNull(position) ?: ""
-            cell.bind(position, char)
+            val codePoint = controller.tableCodePoints.getOrNull(position) ?: 0
+            val char = String(Character.toChars(codePoint))
+            cell.bind(codePoint, char)
         }
     }
     private val topBar = TopBar(context, appTheme, "Unicode") {
@@ -68,6 +69,6 @@ class TableScreen(
     override fun applyTheme(theme: Theme) = Unit
 
     interface Delegate {
-        fun onItemClick(id: Int)
+        fun onItemClick(codePoint: Int)
     }
 }

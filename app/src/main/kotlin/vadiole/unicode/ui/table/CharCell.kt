@@ -12,7 +12,7 @@ class CharCell(
     appTheme: AppTheme,
     private val delegate: Delegate
 ) : SimpleTextView(context), ThemeDelegate {
-    private var position: Int = -1
+    private var codePoint: Int = -1
 
     init {
         appTheme.observe(this)
@@ -20,17 +20,16 @@ class CharCell(
         isClickable = true
         isFocusable = true
         onClick = {
-            delegate.onClick(position)
+            delegate.onClick(codePoint)
         }
         onLongClick = {
-            delegate.onLongClick(position)
+            delegate.onLongClick(codePoint)
         }
     }
 
-    fun bind(listPosition: Int, char: String) {
-        position = listPosition
+    fun bind(codePoint: Int, char: String) {
+        this.codePoint = codePoint
         text = char
-        invalidate()
     }
 
     override fun onMeasure(width: Int, height: Int) = super.onMeasure(width, width)
@@ -42,7 +41,7 @@ class CharCell(
     }
 
     interface Delegate {
-        fun onClick(position: Int)
-        fun onLongClick(position: Int)
+        fun onClick(codePoint: Int)
+        fun onLongClick(codePoint: Int)
     }
 }

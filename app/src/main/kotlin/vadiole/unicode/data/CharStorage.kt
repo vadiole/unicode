@@ -49,40 +49,17 @@ class CharStorage(private val context: Context) {
         return@io result
     }
 
-    suspend fun getCodePoint(id: Int): Int = io {
-        val query = "SELECT code_point FROM chars WHERE id = ? LIMIT 1"
-        val args = arrayOf(id.toString())
-        val result: Int
-        openDatabase().rawQuery(query, args).use { cursor ->
-            val index = cursor.getColumnIndex("code_point")
-            cursor.moveToNext()
-            result = cursor.getInt(index)
-        }
-        return@io result
-    }
-
-    suspend fun getDescription(id: Int): String = io {
-        val query = "SELECT description FROM chars WHERE id = ? LIMIT 1"
-        val args = arrayOf(id.toString())
-        var result: String
-        openDatabase().rawQuery(query, args).use { cursor ->
-            val index = cursor.getColumnIndex("description")
-            cursor.moveToNext()
-            result = cursor.getString(index)
-        }
-        return@io result
-    }
-
-    suspend fun getCharObj(id: Int): CharObj = io {
-        val query = "SELECT id, code_point, description FROM chars WHERE id = ? LIMIT 1"
-        val args = arrayOf(id.toString())
+    suspend fun getCharObj(codePoint: Int): CharObj = io {
+        val query = "SELECT id, code_point, description FROM chars WHERE code_point = ? LIMIT 1"
+        val args = arrayOf(codePoint.toString())
         val result: CharObj
         openDatabase().rawQuery(query, args).use { cursor ->
+            val idIndex = cursor.getColumnIndex("id")
             val codePointIndex = cursor.getColumnIndex("code_point")
             val descriptionIndex = cursor.getColumnIndex("description")
             cursor.moveToNext()
             result = CharObj(
-                id = id,
+                id = cursor.getInt(idIndex),
                 codePoint = cursor.getInt(codePointIndex),
                 description = cursor.getString(descriptionIndex)
             )

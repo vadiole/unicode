@@ -9,19 +9,19 @@ open class SimpleTextView(context: Context) : View(context) {
     var text: String = ""
         set(value) {
             field = value
-            invalidate()
+            postInvalidate()
         }
     var textSize: Float
         get() = textPaint.textSize
         set(value) {
             textPaint.textSize = value
-            invalidate()
+            postInvalidate()
         }
     var textColor: Int
         get() = textPaint.color
         set(value) {
             textPaint.color = value
-            invalidate()
+            postInvalidate()
         }
 
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
