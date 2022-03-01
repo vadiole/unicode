@@ -153,8 +153,8 @@ class DetailsSheet(
 
     // TODO: add strings to localeManager
     private val infoNames: Array<String> = arrayOf("Code", "HTML", "CSS", "Version")
-    fun bind(id: Int) = launch {
-        val obj: CharObj = charStorage.getCharObj(id) //fix clipping char id=21687
+    fun bind(codePoint: Int) = launch {
+        val obj: CharObj = charStorage.getCharObj(codePoint) //fix clipping char id=21687
         title.text = obj.description
         subtitle.text = "Here will be placed a description of the block"
         charView.text = obj.char
