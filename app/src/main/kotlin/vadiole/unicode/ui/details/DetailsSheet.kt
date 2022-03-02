@@ -122,8 +122,8 @@ class DetailsSheet(
         }
         onLongClick = {
             charObj?.let { value ->
-                val codePoint = value.codePoint
-                val link = "vadiole.github.io/unicode?c=$codePoint"
+                val charId = value.id
+                val link = "vadiole.github.io/unicode?c=$charId"
                 context.toClipboard("Unicode", link)
                 Toast.makeText(context, "Link copied to clipboard", LENGTH_SHORT).show()
             }
