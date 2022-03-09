@@ -7,14 +7,15 @@ import android.os.Bundle
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp
-import vadiole.unicode.data.CharStorage
+import vadiole.unicode.data.CodePoint
+import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.ui.theme.AppTheme
 import vadiole.unicode.utils.extension.insetsController
 import vadiole.unicode.utils.extension.isDarkMode
 
 class UnicodeActivity : Activity() {
     private var backHandler: () -> Boolean = { false }
-    private var deepLinkHandler: (id: Int) -> Unit = { _ -> }
+    private var deepLinkHandler: (codePoint: CodePoint) -> Unit = { _ -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +26,17 @@ class UnicodeActivity : Activity() {
         backHandler = {
             navigationView.hideDetailsBottomSheet()
         }
-        deepLinkHandler = { id ->
-            navigationView.showDetailsBottomSheet(id, skipAnimation = true)
+        deepLinkHandler = { codePoint ->
+            navigationView.showDetailsBottomSheet(codePoint, skipAnimation = true)
         }
         onNewIntent(intent)
     }
 
     override fun onNewIntent(intent: Intent) {
-        val charId = intent.data?.getQueryParameter("c")?.toIntOrNull() ?: return
-        if (charId >= 1 && charId < CharStorage.totalCharacters) {
-            deepLinkHandler.invoke(charId)
+        val codePointValue = intent.data?.getQueryParameter("c")?.toIntOrNull() ?: return
+        if (codePointValue >= 1 && codePointValue < UnicodeStorage.totalCharacters) {
+            val codePoint = CodePoint(codePointValue)
+            deepLinkHandler.invoke(codePoint)
         }
     }
 

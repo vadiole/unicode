@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="vadiole.unicode">
 
-    <queries>
-        <intent>
-            <action android:name="android.support.customtabs.action.CustomTabsService" />
-        </intent>
-    </queries>
     <application
         android:name=".UnicodeApp"
         android:allowBackup="false"

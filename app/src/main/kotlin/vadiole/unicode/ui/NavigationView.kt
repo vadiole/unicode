@@ -2,7 +2,6 @@ package vadiole.unicode.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
 import androidx.core.view.doOnLayout
@@ -10,8 +9,9 @@ import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.AppComponent
+import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.details.DetailsSheet
-import vadiole.unicode.ui.table.TableController
+import vadiole.unicode.ui.table.TableHelper
 import vadiole.unicode.ui.table.TableScreen
 import vadiole.unicode.ui.theme.Theme
 import vadiole.unicode.ui.theme.ThemeDelegate
@@ -24,6 +24,7 @@ import kotlin.math.hypot
 
 class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout(context), ThemeDelegate {
     private val charStorage = appComponent.charsStorage
+    private val userConfig = appComponent.userConfig
     private val theme = appComponent.theme
 
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -36,12 +37,12 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     private var velocityTracker: VelocityTracker = VelocityTracker.obtain()
     private val maxOverdragY = 80f.dp(context)
     private val canDismissWithTouchOutside = true
-    private var pendingCharId = -1
+    private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
 
-    private val tableController = TableController(charStorage)
+    private val tableController = TableHelper(charStorage, userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
-        override fun onItemClick(codePoint: Int) {
+        override fun onItemClick(codePoint: CodePoint) {
             showDetailsBottomSheet(codePoint)
         }
     }
@@ -57,7 +58,6 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         isMotionEventSplittingEnabled = false
         addView(tableScreen)
 
-//        Looper.getMainLooper().queue.addIdleHandler {
         post {
             detailsSheet = DetailsSheet(context, theme, charStorage).also { detailsSheet ->
                 addView(dimView)
@@ -69,22 +69,18 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                 }
             }
             requestApplyInsets()
-            if (pendingCharId != -1) {
-                showDetailsBottomSheet(pendingCharId, skipAnimation = pendingCharSkipAnimation)
+            if (pendingCodePoint.value >= 0) {
+                showDetailsBottomSheet(pendingCodePoint, skipAnimation = pendingCharSkipAnimation)
             }
             theme.observe(this)
         }
-//
-//            false
-//        }
-//
         theme.observe(this)
     }
 
-    fun showDetailsBottomSheet(codePoint: Int = -1, withVelocity: Float = 0f, skipAnimation: Boolean = false) {
+    fun showDetailsBottomSheet(codePoint: CodePoint = CodePoint(-1), withVelocity: Float = 0f, skipAnimation: Boolean = false) {
         val detailsSheet = detailsSheet
         if (detailsSheet != null) {
-            if (codePoint != -1) {
+            if (codePoint.value >= 0) {
                 detailsSheet.bind(codePoint = codePoint)
             }
             visibility = VISIBLE
@@ -102,7 +98,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                 )
             }
         } else {
-            pendingCharId = codePoint
+            pendingCodePoint = codePoint
             pendingCharSkipAnimation = skipAnimation
         }
     }
@@ -135,8 +131,6 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         val content = detailsSheet ?: return false
-
-        Log.d("TOUCH", "transY = ${content.translationY}, height = ${content.measuredHeight}")
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 touchDownX = event.rawX

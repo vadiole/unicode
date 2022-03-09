@@ -33,7 +33,7 @@ open class SimpleTextView(context: Context) : View(context) {
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         textPositionX = w / 2f
-        textPositionY = 0.5f * h - 0.5f * (textPaint.descent() + textPaint.ascent())
+        textPositionY = 0.5f * (h - textPaint.descent() - textPaint.ascent())
     }
 
     override fun onDraw(canvas: Canvas) {
