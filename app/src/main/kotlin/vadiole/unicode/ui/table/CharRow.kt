@@ -5,12 +5,15 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.theme.*
 import vadiole.unicode.utils.extension.dp
 import kotlin.math.floor
+
 
 class CharRow(
     context: Context,
@@ -23,6 +26,18 @@ class CharRow(
         textAlign = Paint.Align.CENTER
         isSubpixelText = true
     }
+    private val longClickRunnable = object : Runnable {
+        override fun run() {
+            val index = actionDownIndex
+            if (index > 0) {
+                performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                val codePoint = codePoints[index]
+                delegate.onLongClick(codePoint)
+                cancelClick(index)
+            }
+        }
+    }
+    private val longClickDuration: Long = ViewConfiguration.getLongPressTimeout().toLong()
     private val ripplePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val charSize = 144f.dp(context) / count
     private val charRipples: BooleanArray = BooleanArray(count)
@@ -53,6 +68,7 @@ class CharRow(
             MotionEvent.ACTION_DOWN -> {
                 actionDownIndex = index
                 charRipples[index] = true
+                postDelayed(longClickRunnable, longClickDuration)
                 invalidate()
             }
             MotionEvent.ACTION_UP -> {
@@ -61,27 +77,30 @@ class CharRow(
                         val codePoint = codePoints[index]
                         delegate.onClick(codePoint)
                     }
-                    charRipples[actionDownIndex] = false
-                    invalidate()
+                    cancelClick(actionDownIndex)
                 }
             }
             MotionEvent.ACTION_CANCEL -> {
                 if (actionDownIndex >= 0) {
-                    charRipples[actionDownIndex] = false
-                    invalidate()
+                    cancelClick(actionDownIndex)
                 }
             }
             MotionEvent.ACTION_MOVE -> {
                 if (actionDownIndex >= 0 && actionDownIndex != index) {
-                    charRipples[actionDownIndex] = false
-                    actionDownIndex = -1
-                    invalidate()
+                    cancelClick(actionDownIndex)
+                    return false
                 }
             }
         }
         return true
     }
 
+    private fun cancelClick(index: Int) {
+        charRipples[index] = false
+        actionDownIndex = -1
+        removeCallbacks(longClickRunnable)
+        invalidate()
+    }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         val singleCharWidth = w / count
