@@ -10,7 +10,6 @@ inline fun <T> with(receiver: T?, block: T.() -> Unit) {
     }
 }
 
-
 suspend inline fun <T> io(noinline block: suspend CoroutineScope.() -> T): T {
     return withContext(Dispatchers.IO, block)
 }

@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-//    kotlin("kapt")
 }
 
 android {
@@ -10,9 +9,9 @@ android {
     defaultConfig {
         applicationId = "vadiole.unicode"
         minSdk = 26
-          targetSdk = 31
-        versionCode = 112
-        versionName = "1.1.2"
+        targetSdk = 31
+        versionCode = 121
+        versionName = "1.2.1"
         resourceConfigurations.addAll(listOf("en"))
         setProperty("archivesBaseName", "unicode-v$versionName")
     }
