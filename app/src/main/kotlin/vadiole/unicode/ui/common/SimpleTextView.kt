@@ -9,19 +9,19 @@ open class SimpleTextView(context: Context) : View(context) {
     var text: String = ""
         set(value) {
             field = value
-            invalidate()
+            postInvalidate()
         }
     var textSize: Float
         get() = textPaint.textSize
         set(value) {
             textPaint.textSize = value
-            invalidate()
+            postInvalidate()
         }
     var textColor: Int
         get() = textPaint.color
         set(value) {
             textPaint.color = value
-            invalidate()
+            postInvalidate()
         }
 
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -33,7 +33,7 @@ open class SimpleTextView(context: Context) : View(context) {
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         textPositionX = w / 2f
-        textPositionY = 0.5f * h - 0.5f * (textPaint.descent() + textPaint.ascent())
+        textPositionY = 0.5f * (h - textPaint.descent() - textPaint.ascent())
     }
 
     override fun onDraw(canvas: Canvas) {

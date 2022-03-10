@@ -6,12 +6,8 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.core.widget.TextViewCompat.setLineHeight
 import vadiole.unicode.ui.theme.*
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.frameParams
-import vadiole.unicode.utils.extension.matchParent
-import vadiole.unicode.utils.extension.onClick
+import vadiole.unicode.utils.extension.*
 
 class TopBar(
     context: Context,
@@ -21,8 +17,9 @@ class TopBar(
 ) : FrameLayout(context), ThemeDelegate {
     private val titleView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
-        setLineHeight(this, 22.dp(context))
+        setLineHeightX(22.dp(context))
         typeface = roboto_semibold
+        includeFontPadding = false
         gravity = Gravity.CENTER
         onClick = onTitleClick
         letterSpacing = 0.03f
@@ -42,5 +39,9 @@ class TopBar(
     override fun applyTheme(theme: Theme) {
         setBackgroundColor(theme.getColor(key_topBarBackground))
         titleView.setTextColor(theme.getColor(key_windowTextPrimary))
+    }
+
+    fun setTitle(text: String) {
+        titleView.text = text
     }
 }

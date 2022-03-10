@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.launch
+import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.TopBar
@@ -18,34 +19,40 @@ import vadiole.unicode.utils.extension.*
 class TableScreen(
     context: Context,
     private val appTheme: AppTheme,
-    private val controller: TableController,
+    private val helper: TableHelper,
     private val delegate: Delegate
 ) : Screen(context), ThemeDelegate {
-    private val charCellDelegate = object : CharCell.Delegate {
-        override fun onClick(position: Int) = delegate.onItemClick(position)
-        override fun onLongClick(position: Int) {
-            val char = controller.tableChars[position]
-            context.toClipboard("Unicode", char)
-            Toast.makeText(context, "$char copied to clipboard", Toast.LENGTH_SHORT).show()
+    private var spanCount = 8
+    private val charCellDelegate = object : CharRow.Delegate {
+        override fun onClick(codePoint: CodePoint) = delegate.onItemClick(codePoint)
+        override fun onLongClick(codePoint: CodePoint) {
+            context.toClipboard("Unicode", codePoint.char)
+            Toast.makeText(context, "${codePoint.char} copied to clipboard", Toast.LENGTH_SHORT).show()
         }
     }
-    private val tableAdapter = object : CollectionView.Adapter() {
-        override fun getItemCount(): Int = controller.totalChars
+    private val tableAdapter = object : TableAdapter() {
+        override fun getItemCount(): Int = helper.totalChars / spanCount
+        override fun getBlock(position: Int) = helper.getBlock(position)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
-            val charCell = CharCell(context, appTheme, charCellDelegate)
+            val charCell = CharRow(context, appTheme, spanCount, charCellDelegate)
             return CollectionView.Cell(charCell)
         }
 
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
-            val cell = holder.itemView as CharCell
-            val char = controller.tableChars.getOrNull(position) ?: ""
-            cell.bind(position, char)
+            val cell = holder.itemView as CharRow
+            val codePoints = helper.getChars(position, spanCount)
+            cell.bind(codePoints)
         }
     }
-    private val topBar = TopBar(context, appTheme, "Unicode") {
+    private val topBar: TopBar = TopBar(context, appTheme, "Unicode") {
         tableView.smoothScrollToPosition(0)
     }
-    private val tableView = TableView(context, tableAdapter, spanCount = 8)
+    private val tableViewDelegate = object : TableView.Delegate {
+        override fun onBlockChanged(name: String?) {
+            topBar.setTitle(name ?: "Unicode")
+        }
+    }
+    private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate)
 
     init {
         appTheme.observe(this)
@@ -60,7 +67,11 @@ class TableScreen(
         addView(tableView, frameParams(matchParent, matchParent, marginTop = 50.dp(context)))
         addView(topBar, frameParams(matchParent, wrapContent, gravity = TOP))
         launch {
-            controller.loadChars()
+            helper.loadChars(fast = true)
+            tableAdapter.notifyDataSetChanged()
+            helper.loadChars(fast = false)
+            tableAdapter.notifyDataSetChanged()
+            helper.loadBlocks()
             tableAdapter.notifyDataSetChanged()
         }
     }
@@ -68,6 +79,6 @@ class TableScreen(
     override fun applyTheme(theme: Theme) = Unit
 
     interface Delegate {
-        fun onItemClick(id: Int)
+        fun onItemClick(codePoint: CodePoint)
     }
 }

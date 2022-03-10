@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.text.TextUtils
+import android.util.TypedValue
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -14,7 +15,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
 import vadiole.unicode.data.CharObj
-import vadiole.unicode.data.CharStorage
+import vadiole.unicode.data.CodePoint
+import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.ui.common.*
 import vadiole.unicode.ui.theme.*
 import vadiole.unicode.utils.extension.*
@@ -22,7 +24,7 @@ import vadiole.unicode.utils.extension.*
 class DetailsSheet(
     context: Context,
     theme: AppTheme,
-    private val charStorage: CharStorage,
+    private val unicodeStorage: UnicodeStorage,
 ) : Screen(context), ThemeDelegate {
     private var charObj: CharObj? = null
     private val screenPadding = 20.dp(context)
@@ -36,24 +38,29 @@ class DetailsSheet(
     private val titleHeight = 21.dp(context)
     private val title = TextView(context).apply(fun TextView.() {
         layoutParams = frameParams(matchParent, titleHeight, gravity = Gravity.TOP)
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16f)
+        setLineHeightX(21.dp(context))
+        gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
+        includeFontPadding = false
         vertical += titleHeight
         ellipsize = TextUtils.TruncateAt.END
         typeface = roboto_semibold
-        gravity = Gravity.LEFT
         letterSpacing = 0.03f
         isSingleLine = true
-        textSize = 16f
     })
     private val subtitleHeight = 18.dp(context)
     private val subtitle = TextView(context).apply(fun TextView.() {
         layoutParams = frameParams(matchParent, subtitleHeight, gravity = Gravity.TOP, marginTop = vertical)
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13f)
+        setLineHeightX(18.dp(context))
+        gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
+        textAlignment = TEXT_ALIGNMENT_CENTER
         vertical += subtitleHeight + verticalPadding
         ellipsize = TextUtils.TruncateAt.END
+        includeFontPadding = false
         typeface = roboto_regular
         letterSpacing = 0.02f
-        gravity = Gravity.LEFT
         isSingleLine = true
-        textSize = 13f
     })
     private var divider1PositionY = 2f * screenPadding + titleHeight + subtitleHeight
     private val charViewHeight = 200.dp(context)
@@ -111,9 +118,7 @@ class DetailsSheet(
                 launch {
                     canClick = false
                     charObj?.let { value ->
-                        val charId = value.id
-                        val link = "vadiole.github.io/unicode?c=$charId"
-                        context.share(link)
+                        context.share(value.link)
                     }
                     delay(500)
                     canClick = true
@@ -122,9 +127,7 @@ class DetailsSheet(
         }
         onLongClick = {
             charObj?.let { value ->
-                val charId = value.id
-                val link = "vadiole.github.io/unicode?c=$charId"
-                context.toClipboard("Unicode", link)
+                context.toClipboard("Unicode", value.link)
                 Toast.makeText(context, "Link copied to clipboard", LENGTH_SHORT).show()
             }
         }
@@ -153,10 +156,10 @@ class DetailsSheet(
 
     // TODO: add strings to localeManager
     private val infoNames: Array<String> = arrayOf("Code", "HTML", "CSS", "Version")
-    fun bind(id: Int) = launch {
-        val obj: CharObj = charStorage.getCharObj(id) //fix clipping char id=21687
-        title.text = obj.description
-        subtitle.text = "Here will be placed a description of the block"
+    fun bind(codePoint: CodePoint) = launch {
+        val obj: CharObj = unicodeStorage.getCharObj(codePoint) //fix clipping char id=21687
+        title.text = obj.name
+        subtitle.text = obj.blockName
         charView.text = obj.char
         infoViews.forEachIndexed { index, infoView ->
             val name = infoNames[index]

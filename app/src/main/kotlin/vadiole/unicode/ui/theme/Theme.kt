@@ -74,27 +74,14 @@ val sharedDividerPaint = Paint().apply {
     flags = flags and Paint.ANTI_ALIAS_FLAG.inv()
     strokeWidth = 1f
 }
-private val typefaceCache = hashMapOf<String, Typeface>()
 
 private const val semiboldPath = "font/roboto_semibold.otf"
 val View.roboto_semibold: Typeface
-    get() {
-        if (!typefaceCache.containsKey(semiboldPath)) {
-            val font = Typeface.createFromAsset(resources.assets, semiboldPath)
-            typefaceCache[semiboldPath] = font
-        }
-        return typefaceCache[semiboldPath]!!
-    }
+    get() = Typeface.createFromAsset(resources.assets, semiboldPath)
 
 private const val regularPath = "font/roboto_regular.otf"
 val View.roboto_regular: Typeface
-    get() {
-        if (!typefaceCache.containsKey(regularPath)) {
-            val font = Typeface.createFromAsset(resources.assets, regularPath)
-            typefaceCache[regularPath] = font
-        }
-        return typefaceCache[regularPath]!!
-    }
+    get() = Typeface.createFromAsset(resources.assets, regularPath)
 
 
 const val key_dialogBackground = "dialogBackground"

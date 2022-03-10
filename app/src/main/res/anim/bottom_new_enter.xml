@@ -1,6 +1,0 @@
-<translate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="650"
-    android:fromYDelta="100%p"
-    android:interpolator="@anim/interpolator_spring"
-    android:startOffset="40"
-    android:toYDelta="0%p" />

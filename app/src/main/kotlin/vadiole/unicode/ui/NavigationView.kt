@@ -2,16 +2,16 @@ package vadiole.unicode.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Looper
 import android.view.*
 import android.widget.FrameLayout
-import androidx.core.view.doOnPreDraw
+import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.AppComponent
+import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.details.DetailsSheet
-import vadiole.unicode.ui.table.TableController
+import vadiole.unicode.ui.table.TableHelper
 import vadiole.unicode.ui.table.TableScreen
 import vadiole.unicode.ui.theme.Theme
 import vadiole.unicode.ui.theme.ThemeDelegate
@@ -24,6 +24,7 @@ import kotlin.math.hypot
 
 class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout(context), ThemeDelegate {
     private val charStorage = appComponent.charsStorage
+    private val userConfig = appComponent.userConfig
     private val theme = appComponent.theme
 
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -36,13 +37,13 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     private var velocityTracker: VelocityTracker = VelocityTracker.obtain()
     private val maxOverdragY = 80f.dp(context)
     private val canDismissWithTouchOutside = true
-    private var pendingCharId = -1
+    private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
 
-    private val tableController = TableController(charStorage)
+    private val tableController = TableHelper(charStorage, userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
-        override fun onItemClick(id: Int) {
-            showDetailsBottomSheet(id)
+        override fun onItemClick(codePoint: CodePoint) {
+            showDetailsBottomSheet(codePoint)
         }
     }
     private val tableScreen = TableScreen(context, theme, tableController, tableDelegate)
@@ -55,37 +56,38 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     init {
         clipChildren = false
         isMotionEventSplittingEnabled = false
-        Looper.getMainLooper().queue.addIdleHandler {
+        addView(tableScreen)
+
+        post {
             detailsSheet = DetailsSheet(context, theme, charStorage).also { detailsSheet ->
                 addView(dimView)
                 addView(detailsSheet)
                 if (!pendingCharSkipAnimation) {
-                    detailsSheet.doOnPreDraw {
+                    detailsSheet.doOnLayout {
                         it.translationY = it.measuredHeight.toFloat()
                     }
                 }
             }
             requestApplyInsets()
-            if (pendingCharId != -1) {
-                showDetailsBottomSheet(pendingCharId, skipAnimation = pendingCharSkipAnimation)
+            if (pendingCodePoint.value >= 0) {
+                showDetailsBottomSheet(pendingCodePoint, skipAnimation = pendingCharSkipAnimation)
             }
-            false
+            theme.observe(this)
         }
-        addView(tableScreen)
         theme.observe(this)
     }
 
-    fun showDetailsBottomSheet(id: Int = -1, withVelocity: Float = 0f, skipAnimation: Boolean = false) {
+    fun showDetailsBottomSheet(codePoint: CodePoint = CodePoint(-1), withVelocity: Float = 0f, skipAnimation: Boolean = false) {
         val detailsSheet = detailsSheet
         if (detailsSheet != null) {
-            if (id != -1) {
-                detailsSheet.bind(id = id)
+            if (codePoint.value >= 0) {
+                detailsSheet.bind(codePoint = codePoint)
             }
             visibility = VISIBLE
             isOpenOrOpening = true
             if (skipAnimation) {
                 detailsSheet.translationY = 0f
-                doOnPreDraw {
+                doOnLayout {
                     updateDimBackground(0f, detailsSheet.measuredHeight)
                 }
             } else {
@@ -96,7 +98,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                 )
             }
         } else {
-            pendingCharId = id
+            pendingCodePoint = codePoint
             pendingCharSkipAnimation = skipAnimation
         }
     }
