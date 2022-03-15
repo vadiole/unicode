@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches: [ dev, master ]
+  pull_request:
+    branches: [ dev, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: mac-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Build the App
+        run: ./gradlew build
