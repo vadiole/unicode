@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
@@ -13,7 +12,6 @@ import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.theme.*
 import vadiole.unicode.utils.extension.dp
 import kotlin.math.floor
-
 
 class CharRow(
     context: Context,
@@ -60,10 +58,8 @@ class CharRow(
         invalidate()
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val index = floor(event.x / width * count).toInt()
-        Log.d("TOUCH", "onTouchEvent: ${event.actionMasked}")
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 actionDownIndex = index

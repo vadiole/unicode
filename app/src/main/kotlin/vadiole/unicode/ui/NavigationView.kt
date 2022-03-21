@@ -1,6 +1,5 @@
 package vadiole.unicode.ui
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.*
 import android.widget.FrameLayout
@@ -167,8 +166,6 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         return false
     }
 
-    // TODO: add perform click
-    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val content = detailsSheet ?: return false
         val deltaY = event.rawY - touchDownY
@@ -189,7 +186,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
                     val needOverdrag = content.translationY + deltaY < 0
                     content.translationY = if (needOverdrag) {
                         val realOverdrag = touchDownTranslationY + deltaY
-                        -normalize(-realOverdrag, maxOverdragY)
+                        -normalizeOverdrag(-realOverdrag, maxOverdragY)
                     } else {
                         touchDownTranslationY + deltaY
                     }
@@ -234,7 +231,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         dimView.isVisible = percentDone > 0
     }
 
-    private fun normalize(dy: Float, max: Float): Float {
+    private fun normalizeOverdrag(dy: Float, max: Float): Float {
         return (2 * max * atan(0.5 * PI * dy / max) / PI).toFloat()
     }
 

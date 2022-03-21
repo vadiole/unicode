@@ -14,7 +14,7 @@ import vadiole.unicode.utils.extension.insetsController
 import vadiole.unicode.utils.extension.isDarkMode
 
 class UnicodeActivity : Activity() {
-    private var backHandler: () -> Boolean = { false }
+    private var backButtonHandler: () -> Boolean = { false }
     private var deepLinkHandler: (codePoint: CodePoint) -> Unit = { _ -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class UnicodeActivity : Activity() {
         val appComponent = (applicationContext as UnicodeApp).appComponent
         val navigationView = NavigationView(this, appComponent)
         setContentView(navigationView)
-        backHandler = {
+        backButtonHandler = {
             navigationView.hideDetailsBottomSheet()
         }
         deepLinkHandler = { codePoint ->
@@ -41,7 +41,7 @@ class UnicodeActivity : Activity() {
     }
 
     override fun onBackPressed() {
-        val handled = backHandler.invoke()
+        val handled = backButtonHandler.invoke()
         if (!handled) {
             super.onBackPressed()
         }
@@ -64,8 +64,15 @@ class UnicodeActivity : Activity() {
         }
     }
 
+
     private fun updateSystemBars(isDarkMode: Boolean) {
         insetsController.isAppearanceLightStatusBars = !isDarkMode
         insetsController.isAppearanceLightNavigationBars = !isDarkMode
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        backButtonHandler = { false }
+        deepLinkHandler = { _ -> }
     }
 }
