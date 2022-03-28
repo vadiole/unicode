@@ -2,7 +2,6 @@ package vadiole.unicode.utils.extension
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Paint
 import android.graphics.Rect
 import android.util.Property
 import android.view.Gravity
@@ -26,8 +25,6 @@ val WindowInsetsCompat.navigationBars: Insets
 
 val WindowInsetsCompat.statusBars: Insets
     get() = getInsets(WindowInsetsCompat.Type.statusBars())
-
-
 
 fun frameParams(
     width: Int,
@@ -79,10 +76,6 @@ fun linearParams(
     layoutParams.setMargins(margins.left, margins.top, margins.right, margins.bottom)
     layoutParams.gravity = gravity
     return layoutParams
-}
-
-fun Paint.measureText(text: CharSequence): Float {
-    return measureText(text, 0, text.length)
 }
 
 fun <T : View> T.animate(

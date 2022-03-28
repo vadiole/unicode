@@ -15,5 +15,4 @@ class UserConfig(context: Context) {
         set(value) {
             editor.putBoolean(key_showUnsupportedChars, value).apply()
         }
-
 }

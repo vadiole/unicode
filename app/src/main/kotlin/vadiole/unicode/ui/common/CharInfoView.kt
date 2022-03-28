@@ -7,7 +7,7 @@ import android.view.View
 import vadiole.unicode.ui.theme.*
 import vadiole.unicode.utils.extension.dp
 
-class InfoView(context: Context, theme: AppTheme) : View(context), ThemeDelegate {
+class CharInfoView(context: Context, theme: AppTheme) : View(context), ThemeDelegate {
     private val backgroundDrawable = SquircleDrawable(12.dp(context))
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER

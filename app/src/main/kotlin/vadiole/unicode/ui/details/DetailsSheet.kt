@@ -72,7 +72,7 @@ class DetailsSheet(
     }
     private val infoViewHeight = 56.dp(context)
     private val infoViews = List(4) {
-        InfoView(context, theme).apply {
+        CharInfoView(context, theme).apply {
             layoutParams = linearParams(matchParent, infoViewHeight, weight = 1f)
             onLongClick = {
                 charObj?.let { value ->
@@ -106,12 +106,10 @@ class DetailsSheet(
         }
     }
     private var divider2PositionY = vertical.toFloat() + screenPadding
-
     private val actionShare = ActionCell(context, theme, "Share Link", bottomItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_link)
         vertical += actionCellHeight
-
         var canClick = true
         onClick = {
             if (canClick) {

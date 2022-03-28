@@ -44,5 +44,5 @@ inline fun View.setPadding(@Px size: Int) {
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun View.setPaddingHorizontal(@Px size: Int) {
-    setPadding(size, paddingTop, size, paddingTop)
+    setPadding(size, paddingTop, size, paddingBottom)
 }
