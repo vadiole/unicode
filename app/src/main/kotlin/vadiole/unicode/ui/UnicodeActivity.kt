@@ -10,7 +10,7 @@ import vadiole.unicode.AppScope
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.UnicodeStorage
-import vadiole.unicode.ui.theme.AppTheme
+import vadiole.unicode.ui.theme.Theme
 import vadiole.unicode.ui.theme.ThemeOwner
 import vadiole.unicode.util.extension.insetsController
 import vadiole.unicode.util.extension.isDarkMode
@@ -51,7 +51,7 @@ class UnicodeActivity : Activity(), AppScope {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val isDarkMode = newConfig.isDarkMode
-        val colors = if (isDarkMode) AppTheme.blueDark else AppTheme.blueLight
+        val colors = if (isDarkMode) Theme.blueDark else Theme.blueLight
         theme.applyColors(colors)
         window.decorView.setBackgroundColor(getColor(R.color.windowBackground))
         updateSystemBars(isDarkMode)

@@ -12,7 +12,7 @@ import android.graphics.drawable.shapes.RoundRectShape
 import android.util.StateSet
 import android.view.View
 
-class AppTheme(private var colors: HashMap<String, Int>) {
+class Theme(private var colors: HashMap<String, Int>) {
     init {
         sharedDividerPaint.color = getColor(key_windowDivider)
     }
