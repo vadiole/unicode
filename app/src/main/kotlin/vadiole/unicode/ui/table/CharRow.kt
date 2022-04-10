@@ -9,10 +9,10 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import vadiole.unicode.data.CodePoint
-import vadiole.unicode.ui.common.ThemeOwner
+import vadiole.unicode.ui.theme.ThemeOwner
 import vadiole.unicode.ui.theme.key_windowRipple
 import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.util.extension.dp
 import kotlin.math.floor
 
 class CharRow(

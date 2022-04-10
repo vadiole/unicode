@@ -9,12 +9,12 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.AppComponent
 import vadiole.unicode.data.CodePoint
-import vadiole.unicode.ui.common.ThemeOwner
 import vadiole.unicode.ui.details.DetailsSheet
 import vadiole.unicode.ui.table.TableHelper
 import vadiole.unicode.ui.table.TableScreen
+import vadiole.unicode.ui.theme.ThemeOwner
 import vadiole.unicode.ui.theme.key_dialogDim
-import vadiole.unicode.utils.extension.*
+import vadiole.unicode.util.extension.*
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.atan

@@ -6,11 +6,8 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
-import vadiole.unicode.ui.theme.key_topBarBackground
-import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.ui.theme.roboto_semibold
-import vadiole.unicode.ui.theme.sharedDividerPaint
-import vadiole.unicode.utils.extension.*
+import vadiole.unicode.ui.theme.*
+import vadiole.unicode.util.extension.*
 
 class TopBar(
     context: Context,

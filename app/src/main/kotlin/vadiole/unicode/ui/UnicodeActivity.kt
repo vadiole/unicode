@@ -6,24 +6,22 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
+import vadiole.unicode.AppScope
 import vadiole.unicode.R
-import vadiole.unicode.UnicodeApp
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.UnicodeStorage
-import vadiole.unicode.ui.common.ThemeOwner
 import vadiole.unicode.ui.theme.AppTheme
-import vadiole.unicode.utils.extension.forEach
-import vadiole.unicode.utils.extension.insetsController
-import vadiole.unicode.utils.extension.isDarkMode
+import vadiole.unicode.ui.theme.ThemeOwner
+import vadiole.unicode.util.extension.insetsController
+import vadiole.unicode.util.extension.isDarkMode
 
-class UnicodeActivity : Activity() {
+class UnicodeActivity : Activity(), AppScope {
     private var backButtonHandler: () -> Boolean = { false }
     private var deepLinkHandler: (codePoint: CodePoint) -> Unit = { _ -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setDecorFitsSystemWindows(window, false)
-        val appComponent = (applicationContext as UnicodeApp).appComponent
         val navigationView = NavigationView(this, appComponent)
         setContentView(navigationView)
         backButtonHandler = {
@@ -53,12 +51,11 @@ class UnicodeActivity : Activity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val isDarkMode = newConfig.isDarkMode
-        val appComponent = (applicationContext as UnicodeApp).appComponent
         val colors = if (isDarkMode) AppTheme.blueDark else AppTheme.blueLight
-        appComponent.theme.applyColors(colors)
-        updateSystemBars(isDarkMode)
-        applyTheme(window.decorView as ViewGroup)
+        theme.applyColors(colors)
         window.decorView.setBackgroundColor(getColor(R.color.windowBackground))
+        updateSystemBars(isDarkMode)
+        requestThemeInvalidate(window.decorView as ViewGroup)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -67,13 +64,14 @@ class UnicodeActivity : Activity() {
         }
     }
 
-    fun applyTheme(group: ViewGroup) {
-        group.forEach { child ->
-            if (child is ThemeOwner) {
-                child.invalidateTheme()
+    private fun requestThemeInvalidate(group: ViewGroup) {
+        for (index in 0 until group.childCount) {
+            val view = group.getChildAt(index)
+            if (view is ThemeOwner) {
+                view.invalidateTheme()
             }
-            if (child is ViewGroup) {
-                applyTheme(child)
+            if (view is ViewGroup) {
+                requestThemeInvalidate(view)
             }
         }
     }

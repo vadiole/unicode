@@ -3,7 +3,7 @@ package vadiole.unicode
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.theme.AppTheme
-import vadiole.unicode.utils.extension.isDarkMode
+import vadiole.unicode.util.extension.isDarkMode
 
 class AppComponent(app: UnicodeApp) {
     val charsStorage = UnicodeStorage(app)

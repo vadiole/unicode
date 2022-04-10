@@ -19,7 +19,7 @@ import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.ui.common.*
 import vadiole.unicode.ui.theme.*
-import vadiole.unicode.utils.extension.*
+import vadiole.unicode.util.extension.*
 
 class DetailsSheet(
     context: Context,
@@ -92,7 +92,7 @@ class DetailsSheet(
         }
     }
     private val actionCellHeight = 48.dp(context)
-    private val actionCopy = ActionCell(context, theme, "Copy to Clipboard", topItem = true).apply {
+    private val actionCopy = ActionCell(context, "Copy to Clipboard", topItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_copy)
         vertical += actionCellHeight
@@ -105,7 +105,7 @@ class DetailsSheet(
         }
     }
     private var divider2PositionY = vertical.toFloat() + screenPadding
-    private val actionShare = ActionCell(context, theme, "Share Link", bottomItem = true).apply {
+    private val actionShare = ActionCell(context, "Share Link", bottomItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_link)
         vertical += actionCellHeight

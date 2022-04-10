@@ -1,6 +1,6 @@
 package vadiole.unicode.data
 
-import vadiole.unicode.utils.extension.leftPad
+import vadiole.unicode.util.extension.leftPad
 import java.util.*
 
 class CharObj(val id: Int, val codePoint: Int, val name: String, val version: String, val blockName: String) {

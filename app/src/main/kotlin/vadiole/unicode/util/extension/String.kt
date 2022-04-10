@@ -1,4 +1,4 @@
-package vadiole.unicode.utils.extension
+package vadiole.unicode.util.extension
 
 fun String.leftPad(size: Int, padChar: Char): String {
     val pads = size - length

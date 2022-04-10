@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.openDatabase
 import android.util.Log
-import vadiole.unicode.utils.extension.io
+import vadiole.unicode.util.extension.io
 import java.io.File
 
 class UnicodeStorage(private val context: Context) {

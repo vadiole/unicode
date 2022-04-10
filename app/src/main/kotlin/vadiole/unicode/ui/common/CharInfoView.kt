@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.View
 import vadiole.unicode.ui.theme.*
-import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.util.extension.dp
 
 class CharInfoView(context: Context) : View(context), ThemeOwner {
     private val backgroundDrawable = SquircleDrawable(12.dp(context))

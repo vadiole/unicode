@@ -5,7 +5,7 @@ import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
-import vadiole.unicode.utils.extension.worker
+import vadiole.unicode.util.extension.worker
 
 class TableHelper(private val unicodeStorage: UnicodeStorage, private val userConfig: UserConfig) {
     var totalChars = UnicodeStorage.totalCharacters

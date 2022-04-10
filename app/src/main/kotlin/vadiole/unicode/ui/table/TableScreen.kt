@@ -11,7 +11,7 @@ import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.TopBar
-import vadiole.unicode.utils.extension.*
+import vadiole.unicode.util.extension.*
 
 class TableScreen(
     context: Context,

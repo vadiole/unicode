@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.common
+package vadiole.unicode.ui.theme
 
 interface OnAttachCallback {
     fun onAttachedToWindow()

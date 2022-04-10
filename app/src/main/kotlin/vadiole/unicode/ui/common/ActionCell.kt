@@ -5,12 +5,11 @@ import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import vadiole.unicode.ui.theme.*
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.setPaddingHorizontal
+import vadiole.unicode.util.extension.dp
+import vadiole.unicode.util.extension.setPaddingHorizontal
 
 class ActionCell(
     context: Context,
-    theme: AppTheme,
     name: String,
     private val topItem: Boolean = false,
     private val bottomItem: Boolean = false,
