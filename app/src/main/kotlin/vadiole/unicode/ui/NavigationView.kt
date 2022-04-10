@@ -9,11 +9,10 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.AppComponent
 import vadiole.unicode.data.CodePoint
+import vadiole.unicode.ui.common.ThemeOwner
 import vadiole.unicode.ui.details.DetailsSheet
 import vadiole.unicode.ui.table.TableHelper
 import vadiole.unicode.ui.table.TableScreen
-import vadiole.unicode.ui.theme.Theme
-import vadiole.unicode.ui.theme.ThemeDelegate
 import vadiole.unicode.ui.theme.key_dialogDim
 import vadiole.unicode.utils.extension.*
 import kotlin.math.PI
@@ -21,11 +20,9 @@ import kotlin.math.abs
 import kotlin.math.atan
 import kotlin.math.hypot
 
-class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout(context), ThemeDelegate {
+class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout(context), ThemeOwner {
     private val charStorage = appComponent.charsStorage
     private val userConfig = appComponent.userConfig
-    private val theme = appComponent.theme
-
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val scaledMinimumFlingVelocity = ViewConfiguration.get(context).scaledMinimumFlingVelocity
     private var openAnimation: SpringAnimation? = null
@@ -45,7 +42,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
             showDetailsBottomSheet(codePoint)
         }
     }
-    private val tableScreen = TableScreen(context, theme, tableController, tableDelegate)
+    private val tableScreen = TableScreen(context, tableController, tableDelegate)
     private val dimView = View(context).apply {
         layoutParams = frameParams(matchParent, matchParent)
         visibility = View.GONE
@@ -58,7 +55,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         addView(tableScreen)
 
         post {
-            detailsSheet = DetailsSheet(context, theme, charStorage).also { detailsSheet ->
+            detailsSheet = DetailsSheet(context, charStorage).also { detailsSheet ->
                 addView(dimView)
                 addView(detailsSheet)
                 if (!pendingCharSkipAnimation) {
@@ -71,9 +68,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
             if (pendingCodePoint.value >= 0) {
                 showDetailsBottomSheet(pendingCodePoint, skipAnimation = pendingCharSkipAnimation)
             }
-            theme.observe(this)
         }
-        theme.observe(this)
     }
 
     fun showDetailsBottomSheet(codePoint: CodePoint = CodePoint(-1), withVelocity: Float = 0f, skipAnimation: Boolean = false) {
@@ -240,7 +235,12 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         return super.onApplyWindowInsets(insets)
     }
 
-    override fun applyTheme(theme: Theme) {
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        invalidateTheme()
+    }
+
+    override fun invalidateTheme() {
         dimView.setBackgroundColor(theme.getColor(key_dialogDim))
     }
 }

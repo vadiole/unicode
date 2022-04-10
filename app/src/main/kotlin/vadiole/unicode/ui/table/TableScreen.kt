@@ -11,17 +11,13 @@ import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.TopBar
-import vadiole.unicode.ui.theme.AppTheme
-import vadiole.unicode.ui.theme.Theme
-import vadiole.unicode.ui.theme.ThemeDelegate
 import vadiole.unicode.utils.extension.*
 
 class TableScreen(
     context: Context,
-    private val appTheme: AppTheme,
     private val helper: TableHelper,
     private val delegate: Delegate
-) : Screen(context), ThemeDelegate {
+) : Screen(context) {
     private var spanCount = 8
     private val charCellDelegate = object : CharRow.Delegate {
         override fun onClick(codePoint: CodePoint) = delegate.onItemClick(codePoint)
@@ -34,7 +30,7 @@ class TableScreen(
         override fun getItemCount(): Int = helper.totalChars / spanCount
         override fun getBlock(position: Int) = helper.getBlock(position)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
-            val charCell = CharRow(context, appTheme, spanCount, charCellDelegate)
+            val charCell = CharRow(context, spanCount, charCellDelegate)
             return CollectionView.Cell(charCell)
         }
 
@@ -44,7 +40,7 @@ class TableScreen(
             cell.bind(codePoints)
         }
     }
-    private val topBar: TopBar = TopBar(context, appTheme, "Unicode") {
+    private val topBar: TopBar = TopBar(context, "Unicode") {
         tableView.smoothScrollToPosition(0)
     }
     private val tableViewDelegate = object : TableView.Delegate {
@@ -55,7 +51,6 @@ class TableScreen(
     private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate)
 
     init {
-        appTheme.observe(this)
         setOnApplyWindowInsetsListener(this) { _, insets ->
             topBar.setPadding(0, insets.statusBars.top, 0, 0)
             tableView.setPadding(8.dp(context), 0, 8.dp(context), insets.navigationBars.bottom)
@@ -75,8 +70,6 @@ class TableScreen(
             tableAdapter.notifyDataSetChanged()
         }
     }
-
-    override fun applyTheme(theme: Theme) = Unit
 
     interface Delegate {
         fun onItemClick(codePoint: CodePoint)

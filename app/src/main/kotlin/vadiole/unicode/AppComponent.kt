@@ -10,9 +10,9 @@ class AppComponent(app: UnicodeApp) {
     val userConfig = UserConfig(app)
     val theme = AppTheme(
         if (app.applicationContext.resources.configuration.isDarkMode) {
-            AppTheme.Scheme.BLUE_DARK
+            AppTheme.blueDark
         } else {
-            AppTheme.Scheme.BLUE_LIGHT
+            AppTheme.blueLight
         }
     )
 }

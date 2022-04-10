@@ -23,9 +23,8 @@ import vadiole.unicode.utils.extension.*
 
 class DetailsSheet(
     context: Context,
-    theme: AppTheme,
     private val unicodeStorage: UnicodeStorage,
-) : Screen(context), ThemeDelegate {
+) : Screen(context), ThemeOwner {
     private var charObj: CharObj? = null
     private val screenPadding = 20.dp(context)
     private val verticalPadding = 10.dp(context)
@@ -72,7 +71,7 @@ class DetailsSheet(
     }
     private val infoViewHeight = 56.dp(context)
     private val infoViews = List(4) {
-        CharInfoView(context, theme).apply {
+        CharInfoView(context).apply {
             layoutParams = linearParams(matchParent, infoViewHeight, weight = 1f)
             onLongClick = {
                 charObj?.let { value ->
@@ -132,7 +131,6 @@ class DetailsSheet(
     }
 
     init {
-        theme.observe(this)
         background = backgroundDrawable
         val height = vertical + screenPadding * 2 + 40.dp(context)
         layoutParams = frameParams(matchParent, height, gravity = Gravity.BOTTOM)
@@ -167,14 +165,6 @@ class DetailsSheet(
         charObj = obj
     }
 
-    override fun applyTheme(theme: Theme) {
-        backgroundDrawable.colors = theme.getColors(key_dialogBackground)
-        backgroundPaint.color = theme.getColor(key_dialogBackground)
-        charView.textColor = theme.getColor(key_windowTextPrimary)
-        title.setTextColor(theme.getColor(key_windowTextPrimary))
-        subtitle.setTextColor(theme.getColor(key_windowTextSecondary))
-    }
-
     override fun draw(canvas: Canvas) {
         canvas.drawRect(
             0f, measuredHeight - 20f.dp(context), measuredWidth.toFloat(), measuredHeight * 200f,
@@ -188,5 +178,18 @@ class DetailsSheet(
             measuredWidth.toFloat() - screenPadding, divider2PositionY,
             sharedDividerPaint
         )
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        invalidateTheme()
+    }
+
+    override fun invalidateTheme() {
+        backgroundDrawable.colors = theme.getColors(key_dialogBackground)
+        backgroundPaint.color = theme.getColor(key_dialogBackground)
+        charView.textColor = theme.getColor(key_windowTextPrimary)
+        title.setTextColor(theme.getColor(key_windowTextPrimary))
+        subtitle.setTextColor(theme.getColor(key_windowTextSecondary))
     }
 }

@@ -7,7 +7,7 @@ import android.view.View
 import vadiole.unicode.ui.theme.*
 import vadiole.unicode.utils.extension.dp
 
-class CharInfoView(context: Context, theme: AppTheme) : View(context), ThemeDelegate {
+class CharInfoView(context: Context) : View(context), ThemeOwner {
     private val backgroundDrawable = SquircleDrawable(12.dp(context))
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
@@ -32,7 +32,6 @@ class CharInfoView(context: Context, theme: AppTheme) : View(context), ThemeDele
     private var value: String = "U+0041"
 
     init {
-        theme.observe(this)
         isClickable = true
         isFocusable = true
         background = backgroundDrawable
@@ -57,7 +56,12 @@ class CharInfoView(context: Context, theme: AppTheme) : View(context), ThemeDele
         canvas.drawText(name, viewCenterX, nameCoordinateY, namePaint)
     }
 
-    override fun applyTheme(theme: Theme) {
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        invalidateTheme()
+    }
+
+    override fun invalidateTheme() {
         backgroundDrawable.colors = theme.getColors(
             arrayOf(intArrayOf(android.R.attr.state_pressed), intArrayOf(-android.R.attr.state_pressed)),
             arrayOf(key_dialogSurfacePressed, key_dialogSurface)

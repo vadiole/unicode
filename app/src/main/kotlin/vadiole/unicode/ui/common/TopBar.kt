@@ -6,15 +6,17 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
-import vadiole.unicode.ui.theme.*
+import vadiole.unicode.ui.theme.key_topBarBackground
+import vadiole.unicode.ui.theme.key_windowTextPrimary
+import vadiole.unicode.ui.theme.roboto_semibold
+import vadiole.unicode.ui.theme.sharedDividerPaint
 import vadiole.unicode.utils.extension.*
 
 class TopBar(
     context: Context,
-    appTheme: AppTheme,
     title: String,
     onTitleClick: TextView.() -> Unit = {}
-) : FrameLayout(context), ThemeDelegate {
+) : FrameLayout(context), ThemeOwner {
     private val titleView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
         setLineHeightX(22.dp(context))
@@ -27,7 +29,6 @@ class TopBar(
     }
 
     init {
-        appTheme.observe(this)
         addView(titleView, frameParams(matchParent, 50.dp(context), gravity = Gravity.BOTTOM))
     }
 
@@ -36,12 +37,17 @@ class TopBar(
         canvas.drawLine(0f, dividerY, width.toFloat(), dividerY, sharedDividerPaint)
     }
 
-    override fun applyTheme(theme: Theme) {
-        setBackgroundColor(theme.getColor(key_topBarBackground))
-        titleView.setTextColor(theme.getColor(key_windowTextPrimary))
-    }
-
     fun setTitle(text: String) {
         titleView.text = text
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        invalidateTheme()
+    }
+
+    override fun invalidateTheme() {
+        setBackgroundColor(theme.getColor(key_topBarBackground))
+        titleView.setTextColor(theme.getColor(key_windowTextPrimary))
     }
 }

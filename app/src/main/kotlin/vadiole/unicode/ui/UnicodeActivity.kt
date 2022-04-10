@@ -4,12 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.UnicodeStorage
+import vadiole.unicode.ui.common.ThemeOwner
 import vadiole.unicode.ui.theme.AppTheme
+import vadiole.unicode.utils.extension.forEach
 import vadiole.unicode.utils.extension.insetsController
 import vadiole.unicode.utils.extension.isDarkMode
 
@@ -51,10 +54,10 @@ class UnicodeActivity : Activity() {
         super.onConfigurationChanged(newConfig)
         val isDarkMode = newConfig.isDarkMode
         val appComponent = (applicationContext as UnicodeApp).appComponent
-        val themeManager = appComponent.theme
-        val scheme = if (isDarkMode) AppTheme.Scheme.BLUE_DARK else AppTheme.Scheme.BLUE_LIGHT
-        themeManager.applyScheme(scheme)
+        val colors = if (isDarkMode) AppTheme.blueDark else AppTheme.blueLight
+        appComponent.theme.applyColors(colors)
         updateSystemBars(isDarkMode)
+        applyTheme(window.decorView as ViewGroup)
         window.decorView.setBackgroundColor(getColor(R.color.windowBackground))
     }
 
@@ -64,6 +67,16 @@ class UnicodeActivity : Activity() {
         }
     }
 
+    fun applyTheme(group: ViewGroup) {
+        group.forEach { child ->
+            if (child is ThemeOwner) {
+                child.invalidateTheme()
+            }
+            if (child is ViewGroup) {
+                applyTheme(child)
+            }
+        }
+    }
 
     private fun updateSystemBars(isDarkMode: Boolean) {
         insetsController.isAppearanceLightStatusBars = !isDarkMode

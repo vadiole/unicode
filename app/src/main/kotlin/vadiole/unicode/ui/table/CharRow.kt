@@ -9,16 +9,17 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import vadiole.unicode.data.CodePoint
-import vadiole.unicode.ui.theme.*
+import vadiole.unicode.ui.common.ThemeOwner
+import vadiole.unicode.ui.theme.key_windowRipple
+import vadiole.unicode.ui.theme.key_windowTextPrimary
 import vadiole.unicode.utils.extension.dp
 import kotlin.math.floor
 
 class CharRow(
     context: Context,
-    appTheme: AppTheme,
     private val count: Int,
     private val delegate: Delegate
-) : View(context), ThemeDelegate {
+) : View(context), ThemeOwner {
     private var codePoints: Array<CodePoint> = emptyArray()
     private val charPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
@@ -46,11 +47,9 @@ class CharRow(
     private var actionDownIndex = -1
 
     init {
-        appTheme.observe(this)
         charPaint.textSize = charSize
         isClickable = true
         isFocusable = true
-
     }
 
     fun bind(codePoints: Array<CodePoint>) {
@@ -129,7 +128,12 @@ class CharRow(
 
     override fun hasOverlappingRendering() = false
 
-    override fun applyTheme(theme: Theme) {
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        invalidateTheme()
+    }
+
+    override fun invalidateTheme() {
         charPaint.color = theme.getColor(key_windowTextPrimary)
         ripplePaint.color = theme.getColor(key_windowRipple)
         invalidate()

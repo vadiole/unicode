@@ -14,7 +14,7 @@ class ActionCell(
     name: String,
     private val topItem: Boolean = false,
     private val bottomItem: Boolean = false,
-) : TextView(context), ThemeDelegate {
+) : TextView(context), ThemeOwner {
     private val backgroundDrawable = SquircleDrawable(13.dp(context)).apply {
         when {
             topItem -> {
@@ -29,7 +29,6 @@ class ActionCell(
     }
 
     init {
-        theme.observe(this)
         background = backgroundDrawable
         text = name
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
@@ -47,7 +46,12 @@ class ActionCell(
         setCompoundDrawablesWithIntrinsicBounds(0, 0, iconId, 0)
     }
 
-    override fun applyTheme(theme: Theme) {
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        invalidateTheme()
+    }
+
+    override fun invalidateTheme() {
         backgroundDrawable.colors = theme.getColors(
             arrayOf(intArrayOf(-android.R.attr.state_pressed), intArrayOf(android.R.attr.state_pressed)),
             arrayOf(key_dialogSurface, key_dialogSurfacePressed)
