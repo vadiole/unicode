@@ -1,31 +1,36 @@
 package vadiole.unicode.ui
 
 import android.content.Context
-import android.view.*
+import android.view.MotionEvent
+import android.view.VelocityTracker
+import android.view.View
+import android.view.ViewConfiguration
+import android.view.WindowInsets
 import android.widget.FrameLayout
 import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
-import vadiole.unicode.AppComponent
+import vadiole.unicode.UnicodeApp
+import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.details.DetailsSheet
 import vadiole.unicode.ui.table.TableHelper
 import vadiole.unicode.ui.table.TableScreen
-import vadiole.unicode.ui.theme.Theme
 import vadiole.unicode.ui.theme.ThemeDelegate
 import vadiole.unicode.ui.theme.key_dialogDim
-import vadiole.unicode.utils.extension.*
+import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.utils.extension.frameParams
+import vadiole.unicode.utils.extension.isVisible
+import vadiole.unicode.utils.extension.matchParent
+import vadiole.unicode.utils.extension.with
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.atan
 import kotlin.math.hypot
 
-class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout(context), ThemeDelegate {
-    private val charStorage = appComponent.charsStorage
-    private val userConfig = appComponent.userConfig
-    private val theme = appComponent.theme
-
+class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val scaledMinimumFlingVelocity = ViewConfiguration.get(context).scaledMinimumFlingVelocity
     private var openAnimation: SpringAnimation? = null
@@ -38,14 +43,13 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
     private val canDismissWithTouchOutside = true
     private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
-
-    private val tableController = TableHelper(charStorage, userConfig)
+    private val tableController = TableHelper(UnicodeApp.unicodeStorage, userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onItemClick(codePoint: CodePoint) {
             showDetailsBottomSheet(codePoint)
         }
     }
-    private val tableScreen = TableScreen(context, theme, tableController, tableDelegate)
+    private val tableScreen = TableScreen(context, tableController, tableDelegate)
     private val dimView = View(context).apply {
         layoutParams = frameParams(matchParent, matchParent)
         visibility = View.GONE
@@ -58,7 +62,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         addView(tableScreen)
 
         post {
-            detailsSheet = DetailsSheet(context, theme, charStorage).also { detailsSheet ->
+            detailsSheet = DetailsSheet(context).also { detailsSheet ->
                 addView(dimView)
                 addView(detailsSheet)
                 if (!pendingCharSkipAnimation) {
@@ -71,9 +75,9 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
             if (pendingCodePoint.value >= 0) {
                 showDetailsBottomSheet(pendingCodePoint, skipAnimation = pendingCharSkipAnimation)
             }
-            theme.observe(this)
+            themeManager.observe(this)
         }
-        theme.observe(this)
+        themeManager.observe(this)
     }
 
     fun showDetailsBottomSheet(codePoint: CodePoint = CodePoint(-1), withVelocity: Float = 0f, skipAnimation: Boolean = false) {
@@ -240,7 +244,7 @@ class NavigationView(context: Context, appComponent: AppComponent) : FrameLayout
         return super.onApplyWindowInsets(insets)
     }
 
-    override fun applyTheme(theme: Theme) {
-        dimView.setBackgroundColor(theme.getColor(key_dialogDim))
+    override fun applyTheme() {
+        dimView.setBackgroundColor(themeManager.getColor(key_dialogDim))
     }
 }

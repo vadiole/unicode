@@ -4,10 +4,16 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.View
-import vadiole.unicode.ui.theme.*
+import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.ui.theme.ThemeDelegate
+import vadiole.unicode.ui.theme.key_dialogSurface
+import vadiole.unicode.ui.theme.key_dialogSurfacePressed
+import vadiole.unicode.ui.theme.key_windowTextPrimary
+import vadiole.unicode.ui.theme.key_windowTextSecondary
+import vadiole.unicode.ui.theme.roboto_regular
 import vadiole.unicode.utils.extension.dp
 
-class CharInfoView(context: Context, theme: AppTheme) : View(context), ThemeDelegate {
+class CharInfoView(context: Context) : View(context), ThemeDelegate {
     private val backgroundDrawable = SquircleDrawable(12.dp(context))
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
@@ -28,20 +34,22 @@ class CharInfoView(context: Context, theme: AppTheme) : View(context), ThemeDele
     private var viewCenterX: Float = 0f
     private val valueCoordinateY = 25f.dp(context)
     private val nameCoordinateY = 44f.dp(context)
-    private var name: String = "Code"
-    private var value: String = "U+0041"
+    var name: String = "Code"
+        set(value) {
+            field = value
+            invalidate()
+        }
+    var value: String = "U+0041"
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     init {
-        theme.observe(this)
+        themeManager.observe(this)
         isClickable = true
         isFocusable = true
         background = backgroundDrawable
-    }
-
-    fun bind(infoName: String, infoValue: String) {
-        name = infoName
-        value = infoValue
-        invalidate()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -57,12 +65,12 @@ class CharInfoView(context: Context, theme: AppTheme) : View(context), ThemeDele
         canvas.drawText(name, viewCenterX, nameCoordinateY, namePaint)
     }
 
-    override fun applyTheme(theme: Theme) {
-        backgroundDrawable.colors = theme.getColors(
+    override fun applyTheme() {
+        backgroundDrawable.colors = themeManager.getColors(
             arrayOf(intArrayOf(android.R.attr.state_pressed), intArrayOf(-android.R.attr.state_pressed)),
             arrayOf(key_dialogSurfacePressed, key_dialogSurface)
         )
-        valuePaint.color = theme.getColor(key_windowTextPrimary)
-        namePaint.color = theme.getColor(key_windowTextSecondary)
+        valuePaint.color = themeManager.getColor(key_windowTextPrimary)
+        namePaint.color = themeManager.getColor(key_windowTextSecondary)
     }
 }
