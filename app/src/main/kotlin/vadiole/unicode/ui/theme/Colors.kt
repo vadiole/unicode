@@ -19,6 +19,7 @@ val blue_dark = hashMapOf(
     key_tabBarBackground to 0xFF_1E1E1F.toInt(),
     key_tabBarItem to 0xFF_B5C2D3.toInt(),
     key_tabBarItemSelected to 0xFF_55A4F8.toInt(),
+    key_searchFieldBackground to 0x3D747480,
 )
 
 val blue_light = hashMapOf(
@@ -40,4 +41,5 @@ val blue_light = hashMapOf(
     key_tabBarBackground to 0xFF_FFFFFF.toInt(),
     key_tabBarItem to 0xFF_9F9E9E.toInt(),
     key_tabBarItemSelected to 0xFF_417FC6.toInt(),
+    key_searchFieldBackground to 0x1F757580,
 )
