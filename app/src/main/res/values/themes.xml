@@ -2,6 +2,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.Unicode" parent="android:Theme.NoTitleBar">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:windowSplashscreenContent">@drawable/splash_screen</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -11,6 +14,9 @@
     </style>
 
     <style name="Theme.Dialog.Transparent" parent="@android:style/Theme.Dialog">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:background">@null</item>
         <item name="android:windowContentOverlay">@null</item>
