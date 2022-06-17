@@ -10,6 +10,7 @@ open class CollectionView(context: Context) : RecyclerView(context) {
         clipToPadding = false
         clipChildren = false
         itemAnimator = null
+        super.setHasFixedSize(true)
     }
 
     abstract class Adapter : RecyclerView.Adapter<Cell>()

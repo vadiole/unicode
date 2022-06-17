@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
@@ -44,7 +45,12 @@ import vadiole.unicode.utils.extension.toClipboard
 
 class DetailsSheet(
     context: Context,
+    private val delegate: Delegate,
 ) : Screen(context), ThemeDelegate {
+    interface Delegate {
+        fun findInTable(codePoint: Int)
+    }
+
     private var charObj: CharObj? = null
     private val screenPadding = 20.dp(context)
     private val verticalPadding = 10.dp(context)
@@ -111,7 +117,19 @@ class DetailsSheet(
             addView(infoView)
         }
     }
+
     private val actionCellHeight = 48.dp(context)
+    private val actionViewInTable = ActionCell(context, "Find in Table").apply {
+        layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
+        setIcon(R.drawable.ic_find_in_table)
+        vertical += actionCellHeight + 16.dp(context)
+        onClick = {
+            charObj?.let { value ->
+                delegate.findInTable(value.codePoint)
+            }
+        }
+    }
+
     private val actionCopy = ActionCell(context, "Copy to Clipboard", topItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_copy)
@@ -153,7 +171,7 @@ class DetailsSheet(
     init {
         themeManager.observe(this)
         background = backgroundDrawable
-        val height = vertical + screenPadding * 2 + 40.dp(context)
+        val height = vertical + screenPadding * 2 + 36.dp(context)
         layoutParams = frameParams(matchParent, height, gravity = Gravity.BOTTOM)
         clipChildren = false
         setPadding(screenPadding)
@@ -162,11 +180,14 @@ class DetailsSheet(
         addView(subtitle)
         addView(charView)
         addView(infoViewsContainer)
+        addView(actionViewInTable)
         addView(actionCopy)
         addView(actionShare)
         ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
             val bottomInset = insets.navigationBars.bottom
-            layoutParams = frameParams(matchParent, bottomInset + height, gravity = Gravity.BOTTOM)
+            updateLayoutParams<LayoutParams> {
+                this.height = height + bottomInset
+            }
             insets
         }
     }
