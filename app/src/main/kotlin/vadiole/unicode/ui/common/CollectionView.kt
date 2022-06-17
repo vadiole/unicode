@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 open class CollectionView(context: Context) : RecyclerView(context) {
     init {
-        overScrollMode = View.OVER_SCROLL_NEVER
+        overScrollMode = View.OVER_SCROLL_ALWAYS
         clipToPadding = false
+        clipChildren = false
         itemAnimator = null
     }
 
