@@ -4,13 +4,17 @@ import android.content.Context
 import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import vadiole.unicode.ui.theme.*
+import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.ui.theme.ThemeDelegate
+import vadiole.unicode.ui.theme.key_dialogSurface
+import vadiole.unicode.ui.theme.key_dialogSurfacePressed
+import vadiole.unicode.ui.theme.key_windowTextPrimary
+import vadiole.unicode.ui.theme.roboto_regular
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.setPaddingHorizontal
 
 class ActionCell(
     context: Context,
-    theme: AppTheme,
     name: String,
     private val topItem: Boolean = false,
     private val bottomItem: Boolean = false,
@@ -29,7 +33,7 @@ class ActionCell(
     }
 
     init {
-        theme.observe(this)
+        themeManager.observe(this)
         background = backgroundDrawable
         text = name
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
@@ -47,12 +51,12 @@ class ActionCell(
         setCompoundDrawablesWithIntrinsicBounds(0, 0, iconId, 0)
     }
 
-    override fun applyTheme(theme: Theme) {
-        backgroundDrawable.colors = theme.getColors(
+    override fun applyTheme() {
+        backgroundDrawable.colors = themeManager.getColors(
             arrayOf(intArrayOf(-android.R.attr.state_pressed), intArrayOf(android.R.attr.state_pressed)),
             arrayOf(key_dialogSurface, key_dialogSurfacePressed)
         )
-        compoundDrawableTintList = theme.getColors(key_windowTextPrimary)
-        setTextColor(theme.getColor(key_windowTextPrimary))
+        compoundDrawableTintList = themeManager.getColors(key_windowTextPrimary)
+        setTextColor(themeManager.getColor(key_windowTextPrimary))
     }
 }
