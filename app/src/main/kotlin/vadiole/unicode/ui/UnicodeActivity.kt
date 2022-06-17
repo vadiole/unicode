@@ -23,9 +23,8 @@ class UnicodeActivity : Activity() {
         setDecorFitsSystemWindows(window, false)
         val navigationView = NavigationView(this)
         setContentView(navigationView)
-        backButtonHandler = {
-            navigationView.hideDetailsBottomSheet()
-        }
+        backButtonHandler = navigationView::onBackPressed
+
         deepLinkHandler = { codePoint ->
             navigationView.showDetailsBottomSheet(codePoint, skipAnimation = true)
         }
@@ -50,8 +49,8 @@ class UnicodeActivity : Activity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val isDarkMode = newConfig.isDarkMode
-        val scheme = if (isDarkMode) blue_dark else blue_light
-        themeManager.setThemeColors(scheme)
+        val colors = if (isDarkMode) blue_dark else blue_light
+        themeManager.setThemeColors(colors)
         updateSystemBars(isDarkMode)
         window.decorView.setBackgroundColor(getColor(R.color.windowBackground))
     }

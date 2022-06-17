@@ -9,17 +9,17 @@ import vadiole.unicode.ui.theme.blue_dark
 import vadiole.unicode.ui.theme.blue_light
 import vadiole.unicode.utils.extension.isDarkMode
 
-@SuppressLint("StaticFieldLeak")
 class UnicodeApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        _unicodeStorage = UnicodeStorage(this)
-        _userConfig = UserConfig(this)
+        _unicodeStorage = UnicodeStorage(applicationContext)
+        _userConfig = UserConfig(applicationContext)
         _themeManager = ThemeManager(if (resources.configuration.isDarkMode) blue_dark else blue_light)
     }
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         private var _unicodeStorage: UnicodeStorage? = null
         val unicodeStorage: UnicodeStorage
             get() = requireNotNull(_unicodeStorage)
