@@ -14,5 +14,6 @@ class AppComponent(app: UnicodeApp) {
         } else {
             AppTheme.Scheme.BLUE_LIGHT
         }
+    // minor changes 2
     )
 }
