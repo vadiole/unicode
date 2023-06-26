@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="vadiole.unicode">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:name=".UnicodeApp"
@@ -20,7 +19,8 @@
             android:configChanges="uiMode|orientation"
             android:exported="true"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,9 +35,8 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data
-                    android:host="vadiole.github.io"
-                    android:path="/unicode" />
+                <data android:host="vadiole.github.io" />
+                <data android:path="/unicode" />
             </intent-filter>
 
         </activity>
