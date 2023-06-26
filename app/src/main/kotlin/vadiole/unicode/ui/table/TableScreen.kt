@@ -7,18 +7,22 @@ import android.widget.Toast
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.launch
+import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.TopBar
-import vadiole.unicode.ui.theme.AppTheme
-import vadiole.unicode.ui.theme.Theme
 import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.utils.extension.*
+import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.utils.extension.frameParams
+import vadiole.unicode.utils.extension.matchParent
+import vadiole.unicode.utils.extension.navigationBars
+import vadiole.unicode.utils.extension.statusBars
+import vadiole.unicode.utils.extension.toClipboard
+import vadiole.unicode.utils.extension.wrapContent
 
 class TableScreen(
     context: Context,
-    private val appTheme: AppTheme,
     private val helper: TableHelper,
     private val delegate: Delegate
 ) : Screen(context), ThemeDelegate {
@@ -34,7 +38,7 @@ class TableScreen(
         override fun getItemCount(): Int = helper.totalChars / spanCount
         override fun getBlock(position: Int) = helper.getBlock(position)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
-            val charCell = CharRow(context, appTheme, spanCount, charCellDelegate)
+            val charCell = CharRow(context, spanCount, charCellDelegate)
             return CollectionView.Cell(charCell)
         }
 
@@ -44,7 +48,7 @@ class TableScreen(
             cell.bind(codePoints)
         }
     }
-    private val topBar: TopBar = TopBar(context, appTheme, "Unicode") {
+    private val topBar: TopBar = TopBar(context, "Unicode") {
         tableView.smoothScrollToPosition(0)
     }
     private val tableViewDelegate = object : TableView.Delegate {
@@ -55,7 +59,7 @@ class TableScreen(
     private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate)
 
     init {
-        appTheme.observe(this)
+        themeManager.observe(this)
         setOnApplyWindowInsetsListener(this) { _, insets ->
             topBar.setPadding(0, insets.statusBars.top, 0, 0)
             tableView.setPadding(8.dp(context), 0, 8.dp(context), insets.navigationBars.bottom)
@@ -76,7 +80,7 @@ class TableScreen(
         }
     }
 
-    override fun applyTheme(theme: Theme) = Unit
+    override fun applyTheme() = Unit
 
     interface Delegate {
         fun onItemClick(codePoint: CodePoint)

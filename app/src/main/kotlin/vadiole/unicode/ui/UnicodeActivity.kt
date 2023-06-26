@@ -6,10 +6,11 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.R
-import vadiole.unicode.UnicodeApp
+import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.UnicodeStorage
-import vadiole.unicode.ui.theme.AppTheme
+import vadiole.unicode.ui.theme.blue_dark
+import vadiole.unicode.ui.theme.blue_light
 import vadiole.unicode.utils.extension.insetsController
 import vadiole.unicode.utils.extension.isDarkMode
 
@@ -20,8 +21,7 @@ class UnicodeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setDecorFitsSystemWindows(window, false)
-        val appComponent = (applicationContext as UnicodeApp).appComponent
-        val navigationView = NavigationView(this, appComponent)
+        val navigationView = NavigationView(this)
         setContentView(navigationView)
         backButtonHandler = {
             navigationView.hideDetailsBottomSheet()
@@ -50,10 +50,8 @@ class UnicodeActivity : Activity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val isDarkMode = newConfig.isDarkMode
-        val appComponent = (applicationContext as UnicodeApp).appComponent
-        val themeManager = appComponent.theme
-        val scheme = if (isDarkMode) AppTheme.Scheme.BLUE_DARK else AppTheme.Scheme.BLUE_LIGHT
-        themeManager.applyScheme(scheme)
+        val scheme = if (isDarkMode) blue_dark else blue_light
+        themeManager.setThemeColors(scheme)
         updateSystemBars(isDarkMode)
         window.decorView.setBackgroundColor(getColor(R.color.windowBackground))
     }
