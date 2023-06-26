@@ -1,6 +1,9 @@
 package vadiole.unicode.utils.extension
 
+import android.content.Context
+import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.Px
 
 private var enabled: Boolean = true
@@ -45,4 +48,17 @@ inline fun View.setPadding(@Px size: Int) {
 @Suppress("NOTHING_TO_INLINE")
 inline fun View.setPaddingHorizontal(@Px size: Int) {
     setPadding(size, paddingTop, size, paddingBottom)
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun View.hideKeyboard() {
+    try {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (!imm.isActive) {
+            return
+        }
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    } catch (e: Exception) {
+        Log.e("KEYBOARD", "hideKeyboard failed:", e)
+    }
 }

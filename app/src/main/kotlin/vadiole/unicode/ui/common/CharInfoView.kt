@@ -6,11 +6,11 @@ import android.graphics.Paint
 import android.view.View
 import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_dialogSurface
-import vadiole.unicode.ui.theme.key_dialogSurfacePressed
 import vadiole.unicode.ui.theme.key_windowTextPrimary
 import vadiole.unicode.ui.theme.key_windowTextSecondary
+import vadiole.unicode.ui.theme.keysDialogPressable
 import vadiole.unicode.ui.theme.roboto_regular
+import vadiole.unicode.ui.theme.statesPressable
 import vadiole.unicode.utils.extension.dp
 
 class CharInfoView(context: Context) : View(context), ThemeDelegate {
@@ -67,8 +67,8 @@ class CharInfoView(context: Context) : View(context), ThemeDelegate {
 
     override fun applyTheme() {
         backgroundDrawable.colors = themeManager.getColors(
-            arrayOf(intArrayOf(android.R.attr.state_pressed), intArrayOf(-android.R.attr.state_pressed)),
-            arrayOf(key_dialogSurfacePressed, key_dialogSurface)
+            statesPressable,
+            keysDialogPressable,
         )
         valuePaint.color = themeManager.getColor(key_windowTextPrimary)
         namePaint.color = themeManager.getColor(key_windowTextSecondary)

@@ -1,7 +1,6 @@
 package vadiole.unicode.ui.common
 
 import android.content.Context
-import android.graphics.Canvas
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
@@ -22,7 +21,7 @@ class TopBar(
     title: String,
     onTitleClick: TextView.() -> Unit = {},
 ) : FrameLayout(context), ThemeDelegate {
-    private val titleView = TextView(context).apply {
+    val titleView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
         setLineHeightX(22.dp(context))
         typeface = roboto_semibold
@@ -35,12 +34,7 @@ class TopBar(
 
     init {
         themeManager.observe(this)
-        addView(titleView, frameParams(matchParent, 50.dp(context), gravity = Gravity.BOTTOM))
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        val dividerY = height - 1f
-        canvas.drawLine(0f, dividerY, width.toFloat(), dividerY, themeManager.dividerPaint)
+        addView(titleView, frameParams(matchParent, 42.dp(context), gravity = Gravity.BOTTOM))
     }
 
     override fun applyTheme() {

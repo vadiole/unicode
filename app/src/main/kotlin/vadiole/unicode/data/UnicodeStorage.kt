@@ -4,7 +4,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.openDatabase
-import android.util.Log
 import vadiole.unicode.utils.extension.io
 import java.io.File
 
@@ -63,10 +62,8 @@ class UnicodeStorage(private val context: Context) {
     }
 
     suspend fun getBlocks(): List<Block> = io {
-        Log.d("THREAD", Thread.currentThread().toString())
-        val query = "SELECT id, `end`, name FROM block"
         val result = mutableListOf<Block>()
-        openDatabase().rawQuery(query, null).use { cursor ->
+        openDatabase().rawQuery(queryGetBlocks, null).use { cursor ->
             val idIndex = cursor.getColumnIndex("id")
             val endIndex = cursor.getColumnIndex("end")
             val nameIndex = cursor.getColumnIndex("name")
@@ -84,20 +81,17 @@ class UnicodeStorage(private val context: Context) {
     }
 
     suspend fun getCharObj(codePoint: CodePoint): CharObj = io {
-        val query = "SELECT c.id as char_id, code_point, c.name AS char_name, version, b.name AS block_name " +
-                "FROM char c INNER JOIN block b ON c.block_id = b.id " +
-                "WHERE code_point = ? LIMIT 1"
         val args = arrayOf(codePoint.value.toString())
         val result: CharObj
-        openDatabase().rawQuery(query, args).use { cursor ->
-            val chadIdIndex = cursor.getColumnIndex("char_id")
+        openDatabase().rawQuery(queryGetChar, args).use { cursor ->
+            val charIdIndex = cursor.getColumnIndex("char_id")
             val codePointIndex = cursor.getColumnIndex("code_point")
             val charNameIndex = cursor.getColumnIndex("char_name")
             val versionIndex = cursor.getColumnIndex("version")
             val blockNameIndex = cursor.getColumnIndex("block_name")
             cursor.moveToNext()
             result = CharObj(
-                id = cursor.getInt(chadIdIndex),
+                id = cursor.getInt(charIdIndex),
                 codePoint = cursor.getInt(codePointIndex),
                 name = cursor.getString(charNameIndex),
                 version = cursor.getString(versionIndex),
@@ -107,8 +101,33 @@ class UnicodeStorage(private val context: Context) {
         return@io result
     }
 
+    suspend fun findCharsByName(input: String): Array<SearchResult> = io {
+        val args = arrayOf("%$input%", input, "$input%")
+        openDatabase().rawQuery(queryFindChars, args).use { cursor ->
+            val rowsCount = cursor.count
+            val codePointIndex = cursor.getColumnIndex("code_point")
+            val nameIndex = cursor.getColumnIndex("name")
+            val result = Array(rowsCount) {
+                cursor.moveToPosition(it)
+                val codePoint = cursor.getInt(codePointIndex)
+                val name = cursor.getString(nameIndex)
+                SearchResult(CodePoint(codePoint), name)
+            }
+            return@io result
+        }
+
+    }
+
     companion object {
         const val totalCharacters = 34920
         private const val databaseName = "u15.sqlite"
+        private const val queryGetChar = "SELECT c.id as char_id, code_point, c.name AS char_name, version, b.name AS block_name " +
+                "FROM char c INNER JOIN block b ON c.block_id = b.id " +
+                "WHERE code_point = ? LIMIT 1"
+        private const val queryGetBlocks = "SELECT id, `end`, name FROM block"
+        private const val queryFindChars = "SELECT id, code_point, name " +
+                "FROM char " +
+                "WHERE name LIKE ?" +
+                "ORDER BY (CASE WHEN name = ? THEN 1 WHEN name LIKE ? THEN 2 ELSE 3 END), name"
     }
 }

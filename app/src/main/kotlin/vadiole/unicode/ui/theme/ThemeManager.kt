@@ -15,7 +15,7 @@ import android.graphics.drawable.shapes.RoundRectShape
 import android.util.StateSet
 import android.view.View
 
-class ThemeManager(var colors: HashMap<String, Int>) {
+class ThemeManager(private var colors: HashMap<String, Int>) {
 
     private val observers = mutableSetOf<ThemeDelegate>()
     val dividerPaint = Paint().apply {
