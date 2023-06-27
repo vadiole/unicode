@@ -5,6 +5,10 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 open class CollectionView(context: Context) : RecyclerView(context) {
+
+    var isScrollEnabled = true
+    var fastScrollAnimationRunning = false
+
     init {
         overScrollMode = View.OVER_SCROLL_ALWAYS
         clipToPadding = false
@@ -16,4 +20,12 @@ open class CollectionView(context: Context) : RecyclerView(context) {
     abstract class Adapter : RecyclerView.Adapter<Cell>()
 
     class Cell(cell: View) : ViewHolder(cell)
+
+    override fun canScrollVertically(direction: Int): Boolean {
+        return isScrollEnabled && super.canScrollVertically(direction)
+    }
+
+    override fun canScrollHorizontally(direction: Int): Boolean {
+        return isScrollEnabled && super.canScrollHorizontally(direction)
+    }
 }

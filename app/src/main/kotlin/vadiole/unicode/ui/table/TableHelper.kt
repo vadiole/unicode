@@ -55,6 +55,7 @@ class TableHelper(private val unicodeStorage: UnicodeStorage, private val userCo
                 lastBlock = block
                 return block
             }
+
             codePoint.value > last.end -> {
                 val index = blocks.binarySearch(fromIndex = lastBlockIndex) { block ->
                     block.contains(codePoint)
@@ -64,10 +65,24 @@ class TableHelper(private val unicodeStorage: UnicodeStorage, private val userCo
                 lastBlock = block
                 return block
             }
+
             else -> {
                 return last
             }
         }
+    }
+
+    fun getPosition(block: Block): Int {
+        if (blocks.isEmpty()) return 0
+        val index = tableChars.binarySearch { codePoint ->
+            when {
+                codePoint.value < block.start -> -1
+                codePoint.value > block.start -> 1
+                else -> 0
+            }
+        }
+        if (index < 0) return 0
+        return index
     }
 
     fun getChars(position: Int, spanCount: Int): Array<CodePoint> {

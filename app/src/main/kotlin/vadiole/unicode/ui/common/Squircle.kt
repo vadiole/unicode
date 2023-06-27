@@ -66,6 +66,22 @@ class Squircle {
         view.addOnLayoutChangeListener(layoutChangeListener)
     }
 
+    fun attach(
+        view: View,
+        left: Float,
+        top: Float,
+        right: Float,
+        bottom: Float,
+    ) {
+        targetView = view
+        recalculatePath(left, top, right, bottom)
+    }
+
+    fun detach() {
+        targetView?.removeOnLayoutChangeListener(layoutChangeListener)
+        targetView = null
+    }
+
     fun clip(canvas: Canvas, block: Canvas.() -> Unit) {
         canvas.withClip(squirclePath, block)
     }

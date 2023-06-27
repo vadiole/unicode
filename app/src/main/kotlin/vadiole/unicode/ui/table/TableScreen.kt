@@ -3,6 +3,7 @@ package vadiole.unicode.ui.table
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.view.Gravity.LEFT
 import android.view.Gravity.TOP
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
@@ -20,6 +22,8 @@ import vadiole.unicode.ui.common.TopBar
 import vadiole.unicode.ui.table.search.SearchHelper
 import vadiole.unicode.ui.table.search.SearchResultCell
 import vadiole.unicode.ui.table.search.SearchResultView
+import vadiole.unicode.ui.table.selector.BlockSelectorPopup
+import vadiole.unicode.ui.table.selector.BlockSelectorView
 import vadiole.unicode.ui.theme.ThemeDelegate
 import vadiole.unicode.ui.theme.key_topBarBackground
 import vadiole.unicode.ui.theme.key_windowDivider
@@ -30,6 +34,7 @@ import vadiole.unicode.utils.extension.matchParent
 import vadiole.unicode.utils.extension.navigationBars
 import vadiole.unicode.utils.extension.statusBars
 import vadiole.unicode.utils.extension.toClipboard
+import vadiole.unicode.utils.extension.wrapContent
 
 class TableScreen(
     context: Context,
@@ -41,6 +46,12 @@ class TableScreen(
     private var topInset = 0
     private val statusBarPaint = Paint().apply {
         style = Paint.Style.FILL
+    }
+    private val blockSelectorDelegate = object : BlockSelectorView.Delegate {
+        override fun onBlockSelected(block: Block) {
+            popup?.dismiss()
+            tableView.scrollToPosition(tableHelper.getPosition(block) / spanCount)
+        }
     }
     private val charCellDelegate = object : CharRow.Delegate {
         override fun onClick(codePoint: CodePoint) = delegate.onItemClick(codePoint)
@@ -81,8 +92,22 @@ class TableScreen(
             view.bind(data)
         }
     }
+
+    private var popup: BlockSelectorPopup? = null
+
     private val topBar: TopBar = TopBar(context, "Unicode") {
-        tableView.smoothScrollToPosition(0)
+        if (tableHelper.blocks.isEmpty()) return@TopBar
+
+        val popup = popup ?: kotlin.run {
+            val blockSelectorView = BlockSelectorView(context, tableHelper.blocks, blockSelectorDelegate)
+            BlockSelectorPopup(blockSelectorView, wrapContent, wrapContent).also {
+                popup = it
+            }
+        }
+
+        val xOffset = (width - popup.view.calculateWidth()) / 2
+        val yOffset = (-8).dp(context)
+        popup.showAsDropDown(this, xOffset, yOffset, LEFT or TOP)
     }
     private val searchDelegate = object : SearchBar.Delegate {
         override fun onFocused(): Boolean {
@@ -178,7 +203,7 @@ class TableScreen(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.drawRect(0f, 0f,measuredWidth.toFloat(), topInset.toFloat(), statusBarPaint)
+        canvas.drawRect(0f, 0f, measuredWidth.toFloat(), topInset.toFloat(), statusBarPaint)
     }
 
     override fun applyTheme() {
