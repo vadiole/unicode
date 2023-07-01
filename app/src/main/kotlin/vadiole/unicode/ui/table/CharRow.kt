@@ -8,20 +8,21 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import kotlin.math.floor
 import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.data.CodePoint
+import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.ui.theme.ThemeDelegate
 import vadiole.unicode.ui.theme.key_windowSurfacePressed
 import vadiole.unicode.ui.theme.key_windowTextPrimary
 import vadiole.unicode.utils.extension.dp
-import kotlin.math.floor
 
 class CharRow(
     context: Context,
     private val count: Int,
     private val delegate: Delegate
 ) : View(context), ThemeDelegate {
-    private var codePoints: Array<CodePoint> = emptyArray()
+    private var codePoints: CodePointArray = CodePointArray(0)
     private val charPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         isSubpixelText = true
@@ -58,7 +59,7 @@ class CharRow(
         isFocusable = true
     }
 
-    fun bind(codePoints: Array<CodePoint>) {
+    fun bind(codePoints: CodePointArray) {
         this.codePoints = codePoints
         charRipples.fill(false)
         invalidate()

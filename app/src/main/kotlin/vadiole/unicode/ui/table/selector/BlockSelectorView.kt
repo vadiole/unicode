@@ -26,7 +26,7 @@ import vadiole.unicode.utils.extension.dp
 
 class BlockSelectorView(
     context: Context,
-    private val blocks: List<Block>,
+    private val blocks: Array<Block>,
     private val delegate: Delegate,
 ) : CollectionView(context), ThemeDelegate {
     interface Delegate {

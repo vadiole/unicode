@@ -4,8 +4,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.openDatabase
-import vadiole.unicode.utils.extension.io
 import java.io.File
+import vadiole.unicode.utils.extension.io
 
 class UnicodeStorage(private val context: Context) {
     var database: SQLiteDatabase? = null
@@ -27,7 +27,6 @@ class UnicodeStorage(private val context: Context) {
             context.filesDir.listFiles()!!.forEach { file ->
                 file.deleteOnExit()
             }
-            @Suppress("BlockingMethodInNonBlockingContext")
             context.assets.open(databaseName).use { input ->
                 database.outputStream().use { output ->
                     input.copyTo(output)
@@ -37,7 +36,7 @@ class UnicodeStorage(private val context: Context) {
         return@io database.absolutePath
     }
 
-    suspend fun getCodePoints(count: Int): List<CodePoint> = io {
+    suspend fun getCodePoints(count: Int): CodePointArray = io {
         val query = if (count > 0) {
             "SELECT code_point FROM char WHERE id < ? LIMIT ?"
         } else {
@@ -48,33 +47,33 @@ class UnicodeStorage(private val context: Context) {
         } else {
             null
         }
-        val result = mutableListOf<CodePoint>()
+        val result: CodePointArray
         openDatabase().rawQuery(query, args).use { cursor ->
             val codePointIndex = cursor.getColumnIndex("code_point")
-            while (cursor.moveToNext()) {
-                val codePoint = CodePoint(
-                    value = cursor.getInt(codePointIndex),
-                )
-                result.add(codePoint)
+            result = CodePointArray(cursor.count) {
+                cursor.moveToNext()
+                CodePoint(value = cursor.getInt(codePointIndex))
             }
         }
+
         return@io result
     }
 
-    suspend fun getBlocks(): List<Block> = io {
-        val result = mutableListOf<Block>()
+    suspend fun getBlocks(): Array<Block> = io {
+        val result: Array<Block>
         openDatabase().rawQuery(queryGetBlocks, null).use { cursor ->
             val idIndex = cursor.getColumnIndex("id")
             val endIndex = cursor.getColumnIndex("end")
             val nameIndex = cursor.getColumnIndex("name")
-            while (cursor.moveToNext()) {
-                val block = Block(
+            var lastEnd = 0
+            result = Array(cursor.count) {
+                cursor.moveToNext()
+                Block(
                     id = cursor.getInt(idIndex),
-                    start = (result.lastOrNull()?.end ?: -1) + 1,
-                    end = cursor.getInt(endIndex),
+                    start = lastEnd + 1,
+                    end = cursor.getInt(endIndex).also { lastEnd = it },
                     name = cursor.getString(nameIndex),
                 )
-                result.add(block)
             }
         }
         return@io result
@@ -92,7 +91,7 @@ class UnicodeStorage(private val context: Context) {
             cursor.moveToNext()
             result = CharObj(
                 id = cursor.getInt(charIdIndex),
-                codePoint = cursor.getInt(codePointIndex),
+                codePointRaw = cursor.getInt(codePointIndex),
                 name = cursor.getString(charNameIndex),
                 version = cursor.getString(versionIndex),
                 blockName = cursor.getString(blockNameIndex),

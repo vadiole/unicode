@@ -48,7 +48,7 @@ class DetailsSheet(
     private val delegate: Delegate,
 ) : Screen(context), ThemeDelegate {
     interface Delegate {
-        fun findInTable(codePoint: Int)
+        fun findInTable(codePoint: CodePoint)
     }
 
     private var charObj: CharObj? = null
@@ -125,7 +125,7 @@ class DetailsSheet(
         vertical += actionCellHeight + 16.dp(context)
         onClick = {
             charObj?.let { value ->
-                delegate.findInTable(value.codePoint)
+                delegate.findInTable(CodePoint(value.codePointRaw))
             }
         }
     }

@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
+import vadiole.unicode.data.binarySearch
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SearchBar
@@ -186,14 +187,8 @@ class TableScreen(
         return false
     }
 
-    fun scrollToChar(codePoint: Int) {
-        val position = tableHelper.tableChars.binarySearch { codePointToCompare ->
-            when {
-                codePointToCompare.value > codePoint -> 1
-                codePointToCompare.value < codePoint -> -1
-                else -> 0
-            }
-        }
+    fun scrollToChar(codePoint: CodePoint) {
+        val position = tableHelper.tableChars.binarySearch(codePoint)
         val row = position / spanCount
         val indexInRow = position % spanCount
         if (position >= 0) {
