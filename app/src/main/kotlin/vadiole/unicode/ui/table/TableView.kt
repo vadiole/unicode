@@ -59,5 +59,6 @@ class TableView(
 
     override fun applyTheme() {
         scrollbarDrawable.setColor(themeManager.getColor(key_dialogSurfacePressed))
+        invalidate()
     }
 }
