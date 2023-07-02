@@ -4,7 +4,7 @@ import androidx.dynamicanimation.animation.FloatValueHolder
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 
-class FloatAnimator(
+class SpringAnimator(
     initialValue: Float,
     private val stiffness: Float = SpringForce.STIFFNESS_LOW,
     private val dampingRatio: Float = SpringForce.DAMPING_RATIO_NO_BOUNCY,
@@ -12,7 +12,7 @@ class FloatAnimator(
     private val floatValueHolder = FloatValueHolder(initialValue)
     private val springAnimation = SpringAnimation(floatValueHolder)
 
-    fun onUpdate(callback: (value: Float) -> Unit): FloatAnimator {
+    fun onUpdate(callback: (value: Float) -> Unit): SpringAnimator {
         springAnimation.addUpdateListener { _, value, _ ->
             callback(value)
         }
@@ -23,8 +23,8 @@ class FloatAnimator(
         springAnimation.apply {
             cancel()
             spring = SpringForce(value).apply {
-                this.stiffness = this@FloatAnimator.stiffness
-                this.dampingRatio = this@FloatAnimator.dampingRatio
+                this.stiffness = this@SpringAnimator.stiffness
+                this.dampingRatio = this@SpringAnimator.dampingRatio
             }
             start()
         }
