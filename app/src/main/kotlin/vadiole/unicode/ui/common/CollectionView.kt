@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 open class CollectionView(context: Context) : RecyclerView(context) {
 
     var isScrollEnabled = true
-    var fastScrollAnimationRunning = false
 
     init {
         overScrollMode = View.OVER_SCROLL_ALWAYS
