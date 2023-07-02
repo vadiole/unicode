@@ -19,9 +19,12 @@ import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.data.Block
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
+import vadiole.unicode.ui.common.ScrollbarDrawable
 import vadiole.unicode.ui.common.Squircle
+import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 import vadiole.unicode.ui.theme.ThemeDelegate
 import vadiole.unicode.ui.theme.key_dialogSurface
+import vadiole.unicode.ui.theme.key_dialogSurfacePressed
 import vadiole.unicode.utils.extension.dp
 
 class BlockSelectorView(
@@ -34,7 +37,7 @@ class BlockSelectorView(
     }
 
     private val squircle = Squircle().apply {
-        cornerRadiusPx = 12.dp(context)
+        cornerRadiusPx = 8.dp(context)
     }
     private val backgroundDrawable = ColorDrawable()
 
@@ -61,7 +64,13 @@ class BlockSelectorView(
         }
     }
 
-    private val itemDecoration = CollectionItemDecoration(leftPadding = 14f.dp(context))
+    private val scrollbarDrawable = ScrollbarDrawable()
+    private val scrollBars = VerticalScrollBarItemDecoration(
+        recyclerView = this,
+        scrollbarDrawable = scrollbarDrawable,
+        scrollBarWidth = 4.dp(context),
+    )
+    private val divider = CollectionItemDecoration(leftPadding = 14f.dp(context))
     private var showAnimator: ValueAnimator? = null
     private val anchorDrawable = context.getDrawable(R.drawable.ic_anchor)!!.mutate()
     private val topMargin = anchorDrawable.intrinsicHeight - 4.dp(context)
@@ -73,7 +82,8 @@ class BlockSelectorView(
         layoutManager = blockSelectorLayoutManager
         setItemViewCacheSize(8)
         setAdapter(adapter)
-        addItemDecoration(itemDecoration)
+        addItemDecoration(divider)
+        addItemDecoration(scrollBars)
         squircle.attach(this)
         setPadding(0, 8.dp(context) + topMargin, 0, 8.dp(context))
         layoutAnimation = LayoutAnimationController(
@@ -141,6 +151,7 @@ class BlockSelectorView(
     override fun applyTheme() {
         backgroundDrawable.color = themeManager.getColor(key_dialogSurface)
         anchorDrawable.setTint(themeManager.getColor(key_dialogSurface))
+        scrollbarDrawable.setColor(themeManager.getColor(key_dialogSurfacePressed))
         invalidate()
     }
 
