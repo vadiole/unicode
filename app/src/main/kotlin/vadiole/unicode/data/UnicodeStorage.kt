@@ -100,21 +100,26 @@ class UnicodeStorage(private val context: Context) {
         return@io result
     }
 
-    suspend fun findCharsByName(input: String): Array<SearchResult> = io {
+    suspend fun findCharsByName(input: String, count: Int): Array<SearchResult> = io {
+        val query = if (count > 0) {
+            "$queryFindChars LIMIT $count"
+        } else {
+            queryFindChars
+        }
         val args = arrayOf("%$input%", input, "$input%")
-        openDatabase().rawQuery(queryFindChars, args).use { cursor ->
+        val result: Array<SearchResult>
+        openDatabase().rawQuery(query, args).use { cursor ->
             val rowsCount = cursor.count
             val codePointIndex = cursor.getColumnIndex("code_point")
             val nameIndex = cursor.getColumnIndex("name")
-            val result = Array(rowsCount) {
+            result = Array(rowsCount) {
                 cursor.moveToPosition(it)
                 val codePoint = cursor.getInt(codePointIndex)
                 val name = cursor.getString(nameIndex)
                 SearchResult(CodePoint(codePoint), name)
             }
-            return@io result
         }
-
+        return@io result
     }
 
     companion object {

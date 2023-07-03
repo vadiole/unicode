@@ -123,8 +123,10 @@ class TableScreen(
         override fun onTextChanged(string: String) {
             searchJob?.cancel()
             searchJob = launch {
-                searchHelper.search(string)
+                searchHelper.search(string, 64)
                 searchResultView.scrollToPosition(0)
+                searchAdapter.notifyDataSetChanged()
+                searchHelper.search(string)
                 searchAdapter.notifyDataSetChanged()
             }
         }
