@@ -28,3 +28,7 @@ private fun rangeCheck(size: Int, fromIndex: Int, toIndex: Int) {
         toIndex > size -> throw IndexOutOfBoundsException("toIndex ($toIndex) is greater than size ($size).")
     }
 }
+
+inline fun <T> Array<out T>.filterMaybe(predicate: (T) -> Boolean): List<T> {
+    return filterTo(ArrayList(size), predicate)
+}
