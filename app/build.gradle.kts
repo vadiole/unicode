@@ -10,8 +10,8 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 26
         targetSdk = 33
-        versionCode = 131
-        versionName = "1.3.1"
+        versionCode = 132
+        versionName = "1.3.2"
         resourceConfigurations.addAll(listOf("en"))
         setProperty("archivesBaseName", "unicode-v$versionName")
     }

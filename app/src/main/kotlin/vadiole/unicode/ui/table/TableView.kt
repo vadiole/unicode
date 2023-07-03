@@ -53,6 +53,10 @@ class TableView(
         }
     }
 
+    fun scrollToPositionTop(row: Int) {
+        tableLayoutManager.scrollToPositionWithOffset(row, 0)
+    }
+
     interface Delegate {
         fun onBlockChanged(name: String?)
     }

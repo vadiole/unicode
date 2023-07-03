@@ -51,7 +51,7 @@ class TableScreen(
     private val blockSelectorDelegate = object : BlockSelectorView.Delegate {
         override fun onBlockSelected(block: Block) {
             popup?.dismiss()
-            tableView.scrollToPosition(tableHelper.getPosition(block) / spanCount)
+            tableView.scrollToPositionTop((tableHelper.getPosition(block) / spanCount) + 1)
         }
     }
     private val charCellDelegate = object : CharRow.Delegate {

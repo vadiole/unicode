@@ -77,9 +77,36 @@ class TableHelper(private val unicodeStorage: UnicodeStorage, private val userCo
     }
 
     fun getPosition(block: Block): Int {
+        if (tableChars.isEmpty()) return 0
         if (blocks.isEmpty()) return 0
+        if (block.start == 0) return 0
 
-        return 0
+        var low = 0
+        var high = tableChars.size - 1
+        var position = 0
+
+        while (low <= high) {
+            val mid = (low + high).ushr(1) // safe from overflows
+            val midVal = tableChars[mid]
+
+            val cmp = block.contains(midVal)
+            when {
+                cmp > 0 -> {
+                    low = mid + 1
+                }
+
+                cmp < 0 -> {
+                    high = mid - 1
+                }
+
+                else -> {
+                    position = mid
+                    high = mid - 1
+                }
+            }
+        }
+
+        return position
     }
 
     fun getChars(position: Int, spanCount: Int): CodePointArray {
