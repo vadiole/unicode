@@ -8,6 +8,7 @@ import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.data.filterMaybe
 import vadiole.unicode.utils.extension.binarySearch
+import vadiole.unicode.utils.extension.filterMaybe
 import vadiole.unicode.utils.extension.worker
 
 class TableHelper(private val unicodeStorage: UnicodeStorage, private val userConfig: UserConfig) {
@@ -32,6 +33,9 @@ class TableHelper(private val unicodeStorage: UnicodeStorage, private val userCo
 
     suspend fun loadBlocks() = worker {
         blocks = unicodeStorage.getBlocks()
+        blocks = blocks.filterMaybe { block ->
+            getPosition(block) != 0 || block.start == 0
+        }.toTypedArray()
     }
 
     fun getBlock(position: Int): Block? {

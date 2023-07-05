@@ -175,7 +175,6 @@ class TableScreen(
             tableHelper.loadChars(fast = false)
             tableAdapter.notifyDataSetChanged()
             tableHelper.loadBlocks()
-            tableAdapter.notifyDataSetChanged()
         }
     }
 
