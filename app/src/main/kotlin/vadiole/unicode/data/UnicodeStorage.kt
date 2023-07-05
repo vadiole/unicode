@@ -106,7 +106,13 @@ class UnicodeStorage(private val context: Context) {
         } else {
             queryFindChars
         }
-        val args = arrayOf("%$input%", input, "$input%")
+        val args = arrayOf(
+            "% $input",
+            "$input %",
+            "% $input %",
+            "%$input%",
+            input, "% $input", "$input %", "% $input %",
+        )
         val result: Array<SearchResult>
         openDatabase().rawQuery(query, args).use { cursor ->
             val rowsCount = cursor.count
@@ -131,7 +137,10 @@ class UnicodeStorage(private val context: Context) {
         private const val queryGetBlocks = "SELECT id, `end`, name FROM block"
         private const val queryFindChars = "SELECT id, code_point, name " +
                 "FROM char " +
-                "WHERE name LIKE ?" +
-                "ORDER BY (CASE WHEN name = ? THEN 1 WHEN name LIKE ? THEN 2 ELSE 3 END), name"
+                "WHERE name LIKE ? " +
+                "OR name LIKE ? " +
+                "OR name Like ? " +
+                "OR name LIKE ? " +
+                "ORDER BY (CASE WHEN name = ? THEN 1 WHEN name LIKE ? THEN 2 WHEN name LIKE ? THEN 3 WHEN name = ? THEN 4 ELSE 5 END), id"
     }
 }
