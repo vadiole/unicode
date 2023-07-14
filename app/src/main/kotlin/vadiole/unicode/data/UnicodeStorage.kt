@@ -4,7 +4,9 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.openDatabase
+import android.util.Log
 import java.io.File
+import kotlin.system.measureTimeMillis
 import vadiole.unicode.utils.extension.io
 
 class UnicodeStorage(private val context: Context) {
@@ -107,23 +109,24 @@ class UnicodeStorage(private val context: Context) {
             queryFindChars
         }
         val args = arrayOf(
-            "% $input",
-            "$input %",
-            "% $input %",
             "%$input%",
-            input, "% $input", "$input %", "% $input %",
+            input, "% $input", "$input %", "$input%", "% $input %",
         )
         val result: Array<SearchResult>
-        openDatabase().rawQuery(query, args).use { cursor ->
-            val rowsCount = cursor.count
-            val codePointIndex = cursor.getColumnIndex("code_point")
-            val nameIndex = cursor.getColumnIndex("name")
-            result = Array(rowsCount) {
-                cursor.moveToPosition(it)
-                val codePoint = cursor.getInt(codePointIndex)
-                val name = cursor.getString(nameIndex)
-                SearchResult(CodePoint(codePoint), name)
+        measureTimeMillis {
+            openDatabase().rawQuery(query, args).use { cursor ->
+                val rowsCount = cursor.count
+                val codePointIndex = cursor.getColumnIndex("code_point")
+                val nameIndex = cursor.getColumnIndex("name")
+                result = Array(rowsCount) {
+                    cursor.moveToPosition(it)
+                    val codePoint = cursor.getInt(codePointIndex)
+                    val name = cursor.getString(nameIndex)
+                    SearchResult(CodePoint(codePoint), name)
+                }
             }
+        }.also {
+            Log.d("UnicodeStorage", "perf $it")
         }
         return@io result
     }
@@ -138,9 +141,14 @@ class UnicodeStorage(private val context: Context) {
         private const val queryFindChars = "SELECT id, code_point, name " +
                 "FROM char " +
                 "WHERE name LIKE ? " +
-                "OR name LIKE ? " +
-                "OR name Like ? " +
-                "OR name LIKE ? " +
-                "ORDER BY (CASE WHEN name = ? THEN 1 WHEN name LIKE ? THEN 2 WHEN name LIKE ? THEN 3 WHEN name = ? THEN 4 ELSE 5 END), id"
+                "ORDER BY (" +
+                "CASE " +
+                "WHEN name = ? THEN 1 " +
+                "WHEN name LIKE ? THEN 2 " +
+                "WHEN name LIKE ? THEN 4 " +
+                "WHEN name LIKE ? THEN 3 " +
+                "WHEN name LIKE ? THEN 5 " +
+                "ELSE 6 END), " +
+                "id"
     }
 }
