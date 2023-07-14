@@ -76,8 +76,9 @@ class ScrollbarDrawable : Drawable() {
             val trackHeight = drawableBounds.height()
             val thickness = drawableBounds.width()
 
-            val minThumbHeight = thickness * 10
-            val thumbHeight = (trackHeight.toFloat() * extent / range).roundToInt().coerceAtLeast(minThumbHeight)
+            val minThumbHeight = thickness * 8
+            val ratio = extent.toFloat() / range
+            val thumbHeight = ((trackHeight - minThumbHeight) * ratio + minThumbHeight).roundToInt()
             val thumbTop = ((trackHeight - thumbHeight).toFloat() * offset / (range - extent)).roundToInt()
 
             drawThumb(canvas, drawableBounds, thumbTop, thumbHeight)
