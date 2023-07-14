@@ -1,6 +1,7 @@
 package vadiole.unicode.ui.common
 
 import android.graphics.Canvas
+import androidx.core.view.doOnPreDraw
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.RecyclerView
 
@@ -34,14 +35,29 @@ class VerticalScrollBarItemDecoration(
                 recyclerView.postDelayed(hideRunnable, 1500)
             }
         }
-    private val mOnScrollListener: RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
+    private val onScrollListener: RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            if (dx == 0 && dy == 0) {
+                state = State.HIDDEN
+                return
+            }
             updateScrollPosition()
         }
     }
 
+    private val dataObserver = object : RecyclerView.AdapterDataObserver() {
+        override fun onChanged() {
+            if (recyclerView.scrollState == RecyclerView.SCROLL_STATE_IDLE) {
+                state = State.HIDDEN
+            }
+        }
+    }
+
     init {
-        recyclerView.addOnScrollListener(mOnScrollListener)
+        recyclerView.addOnScrollListener(onScrollListener)
+        recyclerView.doOnPreDraw {
+            recyclerView.adapter?.registerAdapterDataObserver(dataObserver)
+        }
     }
 
     private fun updateScrollPosition() {
