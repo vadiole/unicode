@@ -69,7 +69,7 @@ class CharRow(
         clearHighlight()
         charRipples[index] = true
         highlightIndex = index
-        handler.postDelayed(clearHighlightRunnable, 1000)
+        handler.postDelayed(clearHighlightRunnable, 2000)
     }
 
     private fun clearHighlight() {

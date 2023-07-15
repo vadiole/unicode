@@ -48,7 +48,7 @@ class TableView(
         val offset = measuredHeight / 2
         tableLayoutManager.scrollToPositionWithOffset(row, offset)
         doOnNextLayout {
-            val cell = tableLayoutManager.findViewByPosition(row) as CharRow
+            val cell = tableLayoutManager.findViewByPosition(row) as? CharRow ?: return@doOnNextLayout
             cell.highlightChar(indexInRow)
         }
     }
