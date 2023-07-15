@@ -155,11 +155,16 @@ class TableScreen(
     }
 
     init {
+        clipChildren = true
+        clipToPadding = false
         themeManager.observe(this)
         setWillNotDraw(false)
         setOnApplyWindowInsetsListener(this) { _, insets ->
             setPadding(0, insets.statusBars.top, 0, 0)
             tableView.updatePadding(
+                bottom = insets.navigationBars.bottom
+            )
+            searchResultView.updatePadding(
                 bottom = insets.navigationBars.bottom
             )
             topInset = insets.statusBars.top
@@ -169,7 +174,7 @@ class TableScreen(
         addView(searchBar, frameParams(matchParent, 50.dp(context), marginTop = 42.dp(context)))
         addView(divider, frameParams(matchParent, 1, marginTop = 92.dp(context)))
         addView(tableView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
-        addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
+        addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
         launch {
             tableHelper.loadChars(fast = true)
             tableAdapter.notifyDataSetChanged()
