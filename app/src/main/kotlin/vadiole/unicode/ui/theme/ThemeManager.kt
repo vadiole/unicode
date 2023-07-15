@@ -1,7 +1,10 @@
 package vadiole.unicode.ui.theme
 
 import android.content.res.ColorStateList
-import android.graphics.*
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.RippleDrawable
@@ -12,8 +15,41 @@ import android.graphics.drawable.shapes.RoundRectShape
 import android.util.StateSet
 import android.view.View
 
-abstract class Theme {
-    protected abstract var colors: HashMap<String, Int>
+class ThemeManager(private var colors: HashMap<String, Int>) {
+
+    private val observers = mutableSetOf<ThemeDelegate>()
+    val dividerPaint = Paint().apply {
+        isAntiAlias = false
+        strokeWidth = 1f
+    }
+
+    init {
+        dividerPaint.color = getColor(key_windowDivider)
+    }
+
+    fun observe(observer: ThemeDelegate) {
+        if (observer.isAttachedToWindow()) {
+            observer.applyTheme()
+        }
+        observer.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+            override fun onViewAttachedToWindow(v: View) {
+                observers.add(observer)
+                observer.applyTheme()
+            }
+
+            override fun onViewDetachedFromWindow(v: View) {
+                observers.remove(observer)
+            }
+        })
+    }
+
+    fun setThemeColors(value: HashMap<String, Int>) {
+        colors = value
+        dividerPaint.color = getColor(key_windowDivider)
+        observers.forEach { observer ->
+            observer.applyTheme()
+        }
+    }
 
     fun getColor(key: String): Int {
         return colors[key] ?: Color.RED
@@ -41,6 +77,7 @@ abstract class Theme {
         return PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY)
     }
 
+    // I'm thinking to refactor this part🤔
     fun getRippleRect(key: String, radius: Float = 0f, content: Drawable? = null): RippleDrawable {
         val colorStateList = ColorStateList.valueOf(getColor(key))
         val shape = if (radius == 0f) {
@@ -69,36 +106,3 @@ abstract class Theme {
         return RippleDrawable(colorStateList, content, mask)
     }
 }
-
-val sharedDividerPaint = Paint().apply {
-    flags = flags and Paint.ANTI_ALIAS_FLAG.inv()
-    strokeWidth = 1f
-}
-
-private const val semiboldPath = "font/roboto_semibold.otf"
-val View.roboto_semibold: Typeface
-    get() = Typeface.createFromAsset(resources.assets, semiboldPath)
-
-private const val regularPath = "font/roboto_regular.otf"
-val View.roboto_regular: Typeface
-    get() = Typeface.createFromAsset(resources.assets, regularPath)
-
-
-const val key_dialogBackground = "dialogBackground"
-const val key_dialogSurface = "dialogSurface"
-const val key_dialogSurfacePressed = "dialogSurfacePressed"
-const val key_dialogIcon = "dialogIcon"
-const val key_dialogButton = "dialogButton"
-const val key_dialogButtonDanger = "dialogButtonDanger"
-const val key_dialogListRipple = "dialogListRipple"
-const val key_dialogDim = "dialogDim"
-const val key_windowBackground = "windowBackground"
-const val key_windowTextPrimary = "windowTextPrimary"
-const val key_windowTextSecondary = "windowTextSecondary"
-const val key_windowTextAccent = "windowTextAccent"
-const val key_windowDivider = "windowDivider"
-const val key_windowRipple = "windowRipple"
-const val key_tabBarBackground = "key_tabBarBackground"
-const val key_tabBarItem = "key_tabBarItem"
-const val key_tabBarItemSelected = "key_tabBarItemSelected"
-const val key_topBarBackground = "key_toolBarBackground"

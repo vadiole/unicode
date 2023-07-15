@@ -1,10 +1,10 @@
 package vadiole.unicode.ui.common
 
-import android.animation.Animator
-import android.animation.ValueAnimator
-import android.content.res.ColorStateList
-import android.graphics.*
-import android.graphics.drawable.Drawable
+import android.graphics.Canvas
+import android.graphics.ColorFilter
+import android.graphics.Path
+import android.graphics.PixelFormat
+import android.graphics.Rect
 import kotlin.math.pow
 
 /**
@@ -12,20 +12,11 @@ import kotlin.math.pow
  *
  * [Read more about Squircle](https://www.figma.com/blog/desperately-seeking-squircles)
  */
-class SquircleDrawable(private val cornerRadius: Int) : Drawable() {
-    var colors: ColorStateList = ColorStateList.valueOf(Color.DKGRAY)
-        set(value) {
-            field = value
-            stateAnimator?.cancel()
-            paint.color = value.getColorForState(state, value.defaultColor)
-            invalidateSelf()
-        }
+class SquircleDrawable(private val cornerRadius: Int) : StateColorDrawable() {
     var skipTopLeft = false
     var skipTopRight = false
     var skipBottomLeft = false
     var skipBottomRight = false
-    private var stateAnimator: Animator? = null
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path = Path()
 
     override fun isStateful(): Boolean = true
@@ -34,27 +25,8 @@ class SquircleDrawable(private val cornerRadius: Int) : Drawable() {
 
     override fun setColorFilter(colorFilter: ColorFilter?) = Unit
 
+    @Deprecated("Deprecated in Java")
     override fun getOpacity(): Int = PixelFormat.OPAQUE
-
-    override fun onStateChange(state: IntArray): Boolean {
-        val newColor = colors.getColorForState(state, paint.color)
-        return if (stateAnimator?.isRunning == true || newColor != paint.color) {
-            stateAnimator?.cancel()
-            stateAnimator = ValueAnimator.ofArgb(paint.color, newColor).apply {
-                duration = 120L
-                addUpdateListener { animator ->
-                    val color = animator.animatedValue as Int
-                    paint.color = color
-                    invalidateSelf()
-                }
-                start()
-                invalidateSelf()
-            }
-            true
-        } else {
-            false
-        }
-    }
 
     //  initialize squircle path
     @Suppress("SpellCheckingInspection")

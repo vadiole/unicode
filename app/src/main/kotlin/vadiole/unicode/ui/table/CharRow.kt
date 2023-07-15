@@ -8,18 +8,21 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
-import vadiole.unicode.data.CodePoint
-import vadiole.unicode.ui.theme.*
-import vadiole.unicode.utils.extension.dp
 import kotlin.math.floor
+import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.data.CodePoint
+import vadiole.unicode.data.CodePointArray
+import vadiole.unicode.ui.theme.ThemeDelegate
+import vadiole.unicode.ui.theme.key_windowSurfacePressed
+import vadiole.unicode.ui.theme.key_windowTextPrimary
+import vadiole.unicode.utils.extension.dp
 
 class CharRow(
     context: Context,
-    appTheme: AppTheme,
     private val count: Int,
     private val delegate: Delegate
 ) : View(context), ThemeDelegate {
-    private var codePoints: Array<CodePoint> = emptyArray()
+    private var codePoints: CodePointArray = CodePointArray(0)
     private val charPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         isSubpixelText = true
@@ -35,6 +38,9 @@ class CharRow(
             }
         }
     }
+    private val clearHighlightRunnable = object : Runnable {
+        override fun run() = clearHighlight()
+    }
     private val longClickDuration: Long = ViewConfiguration.getLongPressTimeout().toLong()
     private val ripplePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val charSize = 144f.dp(context) / count
@@ -44,18 +50,34 @@ class CharRow(
     private var charPivotY: Float = 0f
     private var rippleRadius: Float = 200f.dp(context) / count
     private var actionDownIndex = -1
+    private var highlightIndex = -1
 
     init {
-        appTheme.observe(this)
+        themeManager.observe(this)
         charPaint.textSize = charSize
         isClickable = true
         isFocusable = true
-
     }
 
-    fun bind(codePoints: Array<CodePoint>) {
+    fun bind(codePoints: CodePointArray) {
         this.codePoints = codePoints
+        charRipples.fill(false)
         invalidate()
+    }
+
+    fun highlightChar(index: Int) {
+        clearHighlight()
+        charRipples[index] = true
+        highlightIndex = index
+        handler.postDelayed(clearHighlightRunnable, 2000)
+    }
+
+    private fun clearHighlight() {
+        if (highlightIndex != -1) {
+            charRipples[highlightIndex] = false
+            invalidate()
+            highlightIndex = -1
+        }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -129,9 +151,9 @@ class CharRow(
 
     override fun hasOverlappingRendering() = false
 
-    override fun applyTheme(theme: Theme) {
-        charPaint.color = theme.getColor(key_windowTextPrimary)
-        ripplePaint.color = theme.getColor(key_windowRipple)
+    override fun applyTheme() {
+        charPaint.color = themeManager.getColor(key_windowTextPrimary)
+        ripplePaint.color = themeManager.getColor(key_windowSurfacePressed)
         invalidate()
     }
 

@@ -11,21 +11,46 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
+import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.data.CharObj
 import vadiole.unicode.data.CodePoint
-import vadiole.unicode.data.UnicodeStorage
-import vadiole.unicode.ui.common.*
-import vadiole.unicode.ui.theme.*
-import vadiole.unicode.utils.extension.*
+import vadiole.unicode.ui.common.ActionCell
+import vadiole.unicode.ui.common.CharInfoView
+import vadiole.unicode.ui.common.Screen
+import vadiole.unicode.ui.common.SimpleTextView
+import vadiole.unicode.ui.common.SpacerDrawable
+import vadiole.unicode.ui.common.SquircleDrawable
+import vadiole.unicode.ui.theme.ThemeDelegate
+import vadiole.unicode.ui.theme.key_dialogBackground
+import vadiole.unicode.ui.theme.key_windowTextPrimary
+import vadiole.unicode.ui.theme.key_windowTextSecondary
+import vadiole.unicode.ui.theme.roboto_regular
+import vadiole.unicode.ui.theme.roboto_semibold
+import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.utils.extension.frameParams
+import vadiole.unicode.utils.extension.linearParams
+import vadiole.unicode.utils.extension.matchParent
+import vadiole.unicode.utils.extension.navigationBars
+import vadiole.unicode.utils.extension.onClick
+import vadiole.unicode.utils.extension.onLongClick
+import vadiole.unicode.utils.extension.setLineHeightX
+import vadiole.unicode.utils.extension.setPadding
+import vadiole.unicode.utils.extension.share
+import vadiole.unicode.utils.extension.toClipboard
 
 class DetailsSheet(
     context: Context,
-    theme: AppTheme,
-    private val unicodeStorage: UnicodeStorage,
+    private val delegate: Delegate,
 ) : Screen(context), ThemeDelegate {
+    interface Delegate {
+        fun findInTable(codePoint: CodePoint)
+    }
+
     private var charObj: CharObj? = null
     private val screenPadding = 20.dp(context)
     private val verticalPadding = 10.dp(context)
@@ -72,7 +97,7 @@ class DetailsSheet(
     }
     private val infoViewHeight = 56.dp(context)
     private val infoViews = List(4) {
-        CharInfoView(context, theme).apply {
+        CharInfoView(context).apply {
             layoutParams = linearParams(matchParent, infoViewHeight, weight = 1f)
             onLongClick = {
                 charObj?.let { value ->
@@ -92,8 +117,20 @@ class DetailsSheet(
             addView(infoView)
         }
     }
+
     private val actionCellHeight = 48.dp(context)
-    private val actionCopy = ActionCell(context, theme, "Copy to Clipboard", topItem = true).apply {
+    private val actionViewInTable = ActionCell(context, "Find in Table").apply {
+        layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
+        setIcon(R.drawable.ic_find_in_table)
+        vertical += actionCellHeight + 16.dp(context)
+        onClick = {
+            charObj?.let { value ->
+                delegate.findInTable(CodePoint(value.codePointRaw))
+            }
+        }
+    }
+
+    private val actionCopy = ActionCell(context, "Copy to Clipboard", topItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_copy)
         vertical += actionCellHeight
@@ -106,7 +143,7 @@ class DetailsSheet(
         }
     }
     private var divider2PositionY = vertical.toFloat() + screenPadding
-    private val actionShare = ActionCell(context, theme, "Share Link", bottomItem = true).apply {
+    private val actionShare = ActionCell(context, "Share Link", bottomItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_link)
         vertical += actionCellHeight
@@ -132,9 +169,9 @@ class DetailsSheet(
     }
 
     init {
-        theme.observe(this)
+        themeManager.observe(this)
         background = backgroundDrawable
-        val height = vertical + screenPadding * 2 + 40.dp(context)
+        val height = vertical + screenPadding * 2 + 36.dp(context)
         layoutParams = frameParams(matchParent, height, gravity = Gravity.BOTTOM)
         clipChildren = false
         setPadding(screenPadding)
@@ -143,11 +180,14 @@ class DetailsSheet(
         addView(subtitle)
         addView(charView)
         addView(infoViewsContainer)
+        addView(actionViewInTable)
         addView(actionCopy)
         addView(actionShare)
         ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
             val bottomInset = insets.navigationBars.bottom
-            layoutParams = frameParams(matchParent, bottomInset + height, gravity = Gravity.BOTTOM)
+            updateLayoutParams<LayoutParams> {
+                this.height = height + bottomInset
+            }
             insets
         }
     }
@@ -160,19 +200,18 @@ class DetailsSheet(
         subtitle.text = obj.blockName
         charView.text = obj.char
         infoViews.forEachIndexed { index, infoView ->
-            val name = infoNames[index]
-            val value = obj.infoValues[index]
-            infoView.bind(name, value)
+            infoView.name = infoNames[index]
+            infoView.value = obj.infoValues[index]
         }
         charObj = obj
     }
 
-    override fun applyTheme(theme: Theme) {
-        backgroundDrawable.colors = theme.getColors(key_dialogBackground)
-        backgroundPaint.color = theme.getColor(key_dialogBackground)
-        charView.textColor = theme.getColor(key_windowTextPrimary)
-        title.setTextColor(theme.getColor(key_windowTextPrimary))
-        subtitle.setTextColor(theme.getColor(key_windowTextSecondary))
+    override fun applyTheme() {
+        backgroundDrawable.colors = themeManager.getColors(key_dialogBackground)
+        backgroundPaint.color = themeManager.getColor(key_dialogBackground)
+        charView.textColor = themeManager.getColor(key_windowTextPrimary)
+        title.setTextColor(themeManager.getColor(key_windowTextPrimary))
+        subtitle.setTextColor(themeManager.getColor(key_windowTextSecondary))
     }
 
     override fun draw(canvas: Canvas) {
@@ -181,12 +220,12 @@ class DetailsSheet(
             backgroundPaint
         )
         super.draw(canvas)
-        canvas.drawLine(0f, divider1PositionY, measuredWidth.toFloat(), divider1PositionY, sharedDividerPaint)
+        canvas.drawLine(0f, divider1PositionY, measuredWidth.toFloat(), divider1PositionY, themeManager.dividerPaint)
         canvas.drawLine(
             screenPadding.toFloat(),
             divider2PositionY,
             measuredWidth.toFloat() - screenPadding, divider2PositionY,
-            sharedDividerPaint
+            themeManager.dividerPaint
         )
     }
 }
