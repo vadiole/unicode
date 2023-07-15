@@ -11,6 +11,10 @@ import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.atan
+import kotlin.math.hypot
 import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.UnicodeApp.Companion.userConfig
@@ -26,10 +30,6 @@ import vadiole.unicode.utils.extension.frameParams
 import vadiole.unicode.utils.extension.isVisible
 import vadiole.unicode.utils.extension.matchParent
 import vadiole.unicode.utils.extension.with
-import kotlin.math.PI
-import kotlin.math.abs
-import kotlin.math.atan
-import kotlin.math.hypot
 
 class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -57,7 +57,7 @@ class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
         visibility = View.GONE
     }
     private val detailsDelegate = object : DetailsSheet.Delegate {
-        override fun findInTable(codePoint: Int) {
+        override fun findInTable(codePoint: CodePoint) {
             hideDetailsBottomSheet()
             tableScreen.hideSearch()
             tableScreen.scrollToChar(codePoint)
