@@ -1,9 +1,11 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "app.android",
-    "package_name": "vadiole.unicode",
-    "sha256_cert_fingerprints":
-    ["sert"]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "vadiole.unicode",
+      "sha256_cert_fingerprints":
+        ["C5:10:84:EF:D3:B7:BF:47:31:27:4D:27:B9:E0:CE:B7:CB:BE:BC:89:4A:5E:37:32:8B:C1:22:C5:D4:EB:2A:A5"]
+    }
   }
-}]
+]
