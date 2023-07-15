@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "app.android",
+    "package_name": "vadiole.unicode",
+    "sha256_cert_fingerprints":
+    ["sert"]
+  }
+}]
