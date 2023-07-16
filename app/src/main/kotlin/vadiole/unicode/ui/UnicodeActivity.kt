@@ -8,7 +8,6 @@ import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.themeManager
 import vadiole.unicode.data.CodePoint
-import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.ui.theme.blue_dark
 import vadiole.unicode.ui.theme.blue_light
 import vadiole.unicode.utils.extension.insetsController
@@ -33,7 +32,7 @@ class UnicodeActivity : Activity() {
 
     override fun onNewIntent(intent: Intent) {
         val codePointValue = intent.data?.getQueryParameter("c")?.toIntOrNull() ?: return
-        if (codePointValue >= 1 && codePointValue < UnicodeStorage.totalCharacters) {
+        if (codePointValue in 1..917999) {
             val codePoint = CodePoint(codePointValue)
             deepLinkHandler.invoke(codePoint)
         }

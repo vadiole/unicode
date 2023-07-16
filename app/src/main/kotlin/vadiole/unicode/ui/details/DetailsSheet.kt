@@ -195,7 +195,7 @@ class DetailsSheet(
     // TODO: add strings to localeManager
     private val infoNames: Array<String> = arrayOf("Code", "HTML", "CSS", "Version")
     fun bind(codePoint: CodePoint) = launch {
-        val obj: CharObj = unicodeStorage.getCharObj(codePoint) //fix clipping char id=21687
+        val obj: CharObj = unicodeStorage.getCharObj(codePoint) ?: return@launch
         title.text = obj.name
         subtitle.text = obj.blockName
         charView.text = obj.char

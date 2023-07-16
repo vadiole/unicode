@@ -81,7 +81,7 @@ class UnicodeStorage(private val context: Context) {
         return@io result
     }
 
-    suspend fun getCharObj(codePoint: CodePoint): CharObj = io {
+    suspend fun getCharObj(codePoint: CodePoint): CharObj? = io {
         val args = arrayOf(codePoint.value.toString())
         val result: CharObj
         openDatabase().rawQuery(queryGetChar, args).use { cursor ->
@@ -90,6 +90,9 @@ class UnicodeStorage(private val context: Context) {
             val charNameIndex = cursor.getColumnIndex("char_name")
             val versionIndex = cursor.getColumnIndex("version")
             val blockNameIndex = cursor.getColumnIndex("block_name")
+            if (cursor.count == 0) {
+                return@io null
+            }
             cursor.moveToNext()
             result = CharObj(
                 id = cursor.getInt(charIdIndex),
