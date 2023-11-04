@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.Unicode" parent="android:Theme.NoTitleBar">
+    <style name="Theme.Unicode" parent="android:Theme.Material.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimary</item>
         <item name="android:colorControlActivated">@color/colorPrimary</item>

@@ -1,28 +1,27 @@
 package vadiole.unicode.ui.table.selector
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.R
+
 import vadiole.unicode.ui.common.StateColorDrawable
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.ui.theme.keysWindowPressable
-import vadiole.unicode.ui.theme.roboto_regular
-import vadiole.unicode.ui.theme.statesPressable
+
+import vadiole.unicode.ui.common.roboto_regular
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.matchParent
 
-class BlockSelectorCell(context: Context) : TextView(context), ThemeDelegate {
+class BlockSelectorCell(context: Context) : TextView(context) {
 
     private val backgroundDrawable = StateColorDrawable()
 
     init {
         layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
-        themeManager.observe(this)
+        applyTheme()
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
         typeface = roboto_regular
         gravity = Gravity.CENTER_VERTICAL
@@ -33,11 +32,17 @@ class BlockSelectorCell(context: Context) : TextView(context), ThemeDelegate {
         background = backgroundDrawable
     }
 
-    override fun applyTheme() {
-        setTextColor(themeManager.getColor(key_windowTextPrimary))
-        backgroundDrawable.colors = themeManager.getColors(
-            statesPressable,
-            keysWindowPressable
+    fun applyTheme() {
+        setTextColor(context.getColor(R.color.windowTextPrimary))
+        backgroundDrawable.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(-android.R.attr.state_pressed),
+            ),
+            intArrayOf(
+                context.getColor(R.color.windowSurfacePressed),
+                context.getColor(R.color.windowSurface),
+            )
         )
     }
 }

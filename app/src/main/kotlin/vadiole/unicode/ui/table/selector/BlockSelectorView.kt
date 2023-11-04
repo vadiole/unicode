@@ -15,23 +15,21 @@ import androidx.core.animation.addListener
 import androidx.core.graphics.drawable.updateBounds
 import androidx.recyclerview.widget.LinearLayoutManager
 import vadiole.unicode.R
-import vadiole.unicode.UnicodeApp.Companion.themeManager
+
 import vadiole.unicode.data.Block
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.ScrollbarDrawable
 import vadiole.unicode.ui.common.Squircle
 import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_dialogSurface
-import vadiole.unicode.ui.theme.key_dialogSurfacePressed
+
 import vadiole.unicode.utils.extension.dp
 
 class BlockSelectorView(
     context: Context,
     private val blocks: Array<Block>,
     private val delegate: Delegate,
-) : CollectionView(context), ThemeDelegate {
+) : CollectionView(context) {
     interface Delegate {
         fun onBlockSelected(block: Block)
     }
@@ -76,7 +74,7 @@ class BlockSelectorView(
     private val topMargin = anchorDrawable.intrinsicHeight - 4.dp(context)
 
     init {
-        themeManager.observe(this)
+        applyTheme()
         background = backgroundDrawable
         recycledViewPool.setMaxRecycledViews(0, 32)
         layoutManager = blockSelectorLayoutManager
@@ -148,10 +146,10 @@ class BlockSelectorView(
         anchorDrawable.draw(c)
     }
 
-    override fun applyTheme() {
-        backgroundDrawable.color = themeManager.getColor(key_dialogSurface)
-        anchorDrawable.setTint(themeManager.getColor(key_dialogSurface))
-        scrollbarDrawable.setColor(themeManager.getColor(key_dialogSurfacePressed))
+    fun applyTheme() {
+        backgroundDrawable.color = context.getColor(R.color.dialogSurface)
+        anchorDrawable.setTint(context.getColor(R.color.dialogSurface))
+        scrollbarDrawable.setColor(context.getColor(R.color.dialogSurfacePressed))
         invalidate()
     }
 

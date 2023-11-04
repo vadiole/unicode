@@ -15,7 +15,7 @@ import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
-import vadiole.unicode.UnicodeApp.Companion.themeManager
+
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.data.CharObj
 import vadiole.unicode.data.CodePoint
@@ -25,14 +25,12 @@ import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SimpleTextView
 import vadiole.unicode.ui.common.SpacerDrawable
 import vadiole.unicode.ui.common.SquircleDrawable
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_dialogBackground
-import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.ui.theme.key_windowTextSecondary
-import vadiole.unicode.ui.theme.roboto_regular
-import vadiole.unicode.ui.theme.roboto_semibold
+
+import vadiole.unicode.ui.common.roboto_regular
+import vadiole.unicode.ui.common.roboto_semibold
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.frameParams
+import vadiole.unicode.utils.extension.getDividerPaint
 import vadiole.unicode.utils.extension.linearParams
 import vadiole.unicode.utils.extension.matchParent
 import vadiole.unicode.utils.extension.navigationBars
@@ -46,7 +44,7 @@ import vadiole.unicode.utils.extension.toClipboard
 class DetailsSheet(
     context: Context,
     private val delegate: Delegate,
-) : Screen(context), ThemeDelegate {
+) : Screen(context) {
     interface Delegate {
         fun findInTable(codePoint: CodePoint)
     }
@@ -169,7 +167,7 @@ class DetailsSheet(
     }
 
     init {
-        themeManager.observe(this)
+        applyTheme()
         background = backgroundDrawable
         val height = vertical + screenPadding * 2 + 36.dp(context)
         layoutParams = frameParams(matchParent, height, gravity = Gravity.BOTTOM)
@@ -206,26 +204,27 @@ class DetailsSheet(
         charObj = obj
     }
 
-    override fun applyTheme() {
-        backgroundDrawable.colors = themeManager.getColors(key_dialogBackground)
-        backgroundPaint.color = themeManager.getColor(key_dialogBackground)
-        charView.textColor = themeManager.getColor(key_windowTextPrimary)
-        title.setTextColor(themeManager.getColor(key_windowTextPrimary))
-        subtitle.setTextColor(themeManager.getColor(key_windowTextSecondary))
+    fun applyTheme() {
+        backgroundDrawable.colors = context.getColorStateList(R.color.dialogBackground)
+        backgroundPaint.color = context.getColor(R.color.dialogBackground)
+        charView.textColor = context.getColor(R.color.windowTextPrimary)
+        title.setTextColor(context.getColor(R.color.windowTextPrimary))
+        subtitle.setTextColor(context.getColor(R.color.windowTextSecondary))
     }
 
+    private val dividerPaint = getDividerPaint()
     override fun draw(canvas: Canvas) {
         canvas.drawRect(
             0f, measuredHeight - 20f.dp(context), measuredWidth.toFloat(), measuredHeight * 200f,
             backgroundPaint
         )
         super.draw(canvas)
-        canvas.drawLine(0f, divider1PositionY, measuredWidth.toFloat(), divider1PositionY, themeManager.dividerPaint)
+        canvas.drawLine(0f, divider1PositionY, measuredWidth.toFloat(), divider1PositionY, dividerPaint)
         canvas.drawLine(
             screenPadding.toFloat(),
             divider2PositionY,
             measuredWidth.toFloat() - screenPadding, divider2PositionY,
-            themeManager.dividerPaint
+            dividerPaint,
         )
     }
 }

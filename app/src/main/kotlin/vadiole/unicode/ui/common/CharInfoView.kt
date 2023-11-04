@@ -1,19 +1,16 @@
 package vadiole.unicode.ui.common
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.View
-import vadiole.unicode.UnicodeApp.Companion.themeManager
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.ui.theme.key_windowTextSecondary
-import vadiole.unicode.ui.theme.keysDialogPressable
-import vadiole.unicode.ui.theme.roboto_regular
-import vadiole.unicode.ui.theme.statesPressable
+import vadiole.unicode.R
+
+
 import vadiole.unicode.utils.extension.dp
 
-class CharInfoView(context: Context) : View(context), ThemeDelegate {
+class CharInfoView(context: Context) : View(context) {
     private val backgroundDrawable = SquircleDrawable(12.dp(context))
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
@@ -46,7 +43,7 @@ class CharInfoView(context: Context) : View(context), ThemeDelegate {
         }
 
     init {
-        themeManager.observe(this)
+        applyTheme()
         isClickable = true
         isFocusable = true
         background = backgroundDrawable
@@ -65,12 +62,20 @@ class CharInfoView(context: Context) : View(context), ThemeDelegate {
         canvas.drawText(name, viewCenterX, nameCoordinateY, namePaint)
     }
 
-    override fun applyTheme() {
-        backgroundDrawable.colors = themeManager.getColors(
-            statesPressable,
-            keysDialogPressable,
-        )
-        valuePaint.color = themeManager.getColor(key_windowTextPrimary)
-        namePaint.color = themeManager.getColor(key_windowTextSecondary)
+    fun applyTheme() {
+        backgroundDrawable.colors = run {
+            ColorStateList(
+                arrayOf(
+                    intArrayOf(android.R.attr.state_pressed),
+                    intArrayOf(-android.R.attr.state_pressed),
+                ),
+                intArrayOf(
+                    context.getColor(R.color.dialogSurfacePressed),
+                    context.getColor(R.color.dialogSurface),
+                )
+            )
+        }
+        valuePaint.color = context.getColor(R.color.windowTextPrimary)
+        namePaint.color = context.getColor(R.color.windowTextSecondary)
     }
 }

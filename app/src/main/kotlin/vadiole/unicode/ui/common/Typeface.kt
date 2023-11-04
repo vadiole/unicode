@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.theme
+package vadiole.unicode.ui.common
 
 import android.content.Context
 import android.graphics.Typeface

@@ -1,10 +1,12 @@
 package vadiole.unicode.utils.extension
 
 import android.content.Context
+import android.graphics.Paint
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.Px
+import vadiole.unicode.R
 
 private var enabled: Boolean = true
 private val ENABLE_AGAIN = object : Runnable {
@@ -61,4 +63,10 @@ inline fun View.hideKeyboard() {
     } catch (e: Exception) {
         Log.e("KEYBOARD", "hideKeyboard failed:", e)
     }
+}
+
+fun View.getDividerPaint() = Paint().apply {
+    isAntiAlias = false
+    strokeWidth = 1f
+    color = context.getColor(R.color.windowDivider)
 }

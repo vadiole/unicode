@@ -12,7 +12,8 @@ import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.R
+
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.binarySearch
@@ -25,9 +26,7 @@ import vadiole.unicode.ui.table.search.SearchResultCell
 import vadiole.unicode.ui.table.search.SearchResultView
 import vadiole.unicode.ui.table.selector.BlockSelectorPopup
 import vadiole.unicode.ui.table.selector.BlockSelectorView
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_topBarBackground
-import vadiole.unicode.ui.theme.key_windowDivider
+
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.frameParams
 import vadiole.unicode.utils.extension.hideKeyboard
@@ -42,7 +41,7 @@ class TableScreen(
     private val tableHelper: TableHelper,
     private val searchHelper: SearchHelper,
     private val delegate: Delegate,
-) : Screen(context), ThemeDelegate {
+) : Screen(context) {
     private var spanCount = 8
     private var topInset = 0
     private val statusBarPaint = Paint().apply {
@@ -157,7 +156,7 @@ class TableScreen(
     init {
         clipChildren = true
         clipToPadding = false
-        themeManager.observe(this)
+        applyTheme()
         setWillNotDraw(false)
         setOnApplyWindowInsetsListener(this) { _, insets ->
             setPadding(0, insets.statusBars.top, 0, 0)
@@ -208,9 +207,9 @@ class TableScreen(
         canvas.drawRect(0f, 0f, measuredWidth.toFloat(), topInset.toFloat(), statusBarPaint)
     }
 
-    override fun applyTheme() {
-        divider.setBackgroundColor(themeManager.getColor(key_windowDivider))
-        statusBarPaint.color = themeManager.getColor(key_topBarBackground)
+    fun applyTheme() {
+        divider.setBackgroundColor(context.getColor(R.color.windowDivider))
+        statusBarPaint.color = context.getColor(R.color.topBarBackground)
     }
 
     interface Delegate {

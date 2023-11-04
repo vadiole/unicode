@@ -1,6 +1,7 @@
 package vadiole.unicode.ui.common
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.Gravity
@@ -10,18 +11,16 @@ import androidx.core.view.updateLayoutParams
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
-import vadiole.unicode.UnicodeApp.Companion.themeManager
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_topBarBackground
-import vadiole.unicode.ui.theme.keysWindowTextAccentPressable
-import vadiole.unicode.ui.theme.statesPressable
+import vadiole.unicode.R
+
+
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.frameParams
 import vadiole.unicode.utils.extension.matchParent
 import vadiole.unicode.utils.extension.onClick
 import vadiole.unicode.utils.extension.wrapContent
 
-class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context), ThemeDelegate {
+class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context) {
 
     interface Delegate {
         fun onFocused(): Boolean
@@ -78,7 +77,7 @@ class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context), Th
         addView(cancelButton, frameParams(wrapContent, matchParent, gravity = Gravity.CENTER_VERTICAL or Gravity.RIGHT))
         setPadding(16.dp(context), 0, 0, 0)
         clipToPadding = false
-        themeManager.observe(this)
+        applyTheme()
     }
 
     private fun toggleCancelButton(show: Boolean) {
@@ -91,11 +90,17 @@ class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context), Th
         animator.start()
     }
 
-    override fun applyTheme() {
-        cancelButton.colors = themeManager.getColors(
-            statesPressable,
-            keysWindowTextAccentPressable
+    fun applyTheme() {
+        cancelButton.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(-android.R.attr.state_pressed),
+            ),
+            intArrayOf(
+                context.getColor(R.color.windowTextAccentPressed),
+                context.getColor(R.color.windowTextAccent),
+            )
         )
-        background = ColorDrawable(themeManager.getColor(key_topBarBackground))
+        background = ColorDrawable(context.getColor(R.color.topBarBackground))
     }
 }

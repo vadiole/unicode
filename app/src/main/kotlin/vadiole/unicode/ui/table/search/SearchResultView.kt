@@ -2,20 +2,20 @@ package vadiole.unicode.ui.table.search
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
-import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.R
+
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.ScrollbarDrawable
 import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_dialogSurfacePressed
+
 import vadiole.unicode.utils.extension.dp
 
 class SearchResultView(
     context: Context,
     adapter: Adapter,
     private val delegate: Delegate,
-) : CollectionView(context), ThemeDelegate {
+) : CollectionView(context) {
 
     interface Delegate {
         fun onStartScrolling()
@@ -37,7 +37,7 @@ class SearchResultView(
         setAdapter(adapter)
         addItemDecoration(itemDecoration)
         addItemDecoration(scrollBars)
-        themeManager.observe(this)
+        applyTheme()
     }
 
     override fun onScrollStateChanged(state: Int) {
@@ -46,8 +46,8 @@ class SearchResultView(
         }
     }
 
-    override fun applyTheme() {
-        scrollbarDrawable.setColor(themeManager.getColor(key_dialogSurfacePressed))
+    fun applyTheme() {
+        scrollbarDrawable.setColor(context.getColor(R.color.dialogSurfacePressed))
         invalidate()
     }
 }

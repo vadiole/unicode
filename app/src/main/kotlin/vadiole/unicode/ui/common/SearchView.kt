@@ -1,6 +1,7 @@
 package vadiole.unicode.ui.common
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Rect
 import android.text.Editable
 import android.text.InputType
@@ -11,19 +12,12 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import setCursorDrawable
 import vadiole.unicode.R
-import vadiole.unicode.UnicodeApp.Companion.themeManager
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_searchFieldCursor
-import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.ui.theme.key_windowTextSecondary
-import vadiole.unicode.ui.theme.key_windowTextSelection
-import vadiole.unicode.ui.theme.keysSearchPressable
-import vadiole.unicode.ui.theme.roboto_regular
-import vadiole.unicode.ui.theme.statesPressable
+
+
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.hideKeyboard
 
-class SearchView(context: Context, private val delegate: Delegate) : EditText(context), ThemeDelegate {
+class SearchView(context: Context, private val delegate: Delegate) : EditText(context) {
     private val backgroundDrawable = SquircleDrawable(10.dp(context))
     private val cursorDrawable = context.getDrawable(R.drawable.cursor)!!
     private val magnifyingGlassDrawable = context.getDrawable(R.drawable.ic_magnifying_glass)!!
@@ -49,7 +43,7 @@ class SearchView(context: Context, private val delegate: Delegate) : EditText(co
     }
 
     init {
-        themeManager.observe(this)
+        applyTheme()
         setCursorDrawable(cursorDrawable)
         addTextChangedListener(textWatcher)
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
@@ -66,16 +60,22 @@ class SearchView(context: Context, private val delegate: Delegate) : EditText(co
         inputType = InputType.TYPE_CLASS_TEXT
     }
 
-    override fun applyTheme() {
-        backgroundDrawable.colors = themeManager.getColors(
-            statesPressable,
-            keysSearchPressable,
+    fun applyTheme() {
+        backgroundDrawable.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(-android.R.attr.state_pressed),
+                intArrayOf(android.R.attr.state_pressed)
+            ),
+            intArrayOf(
+                context.getColor(R.color.searchFieldSurface),
+                context.getColor(R.color.searchFieldSurfacePressed)
+            )
         )
-        cursorDrawable.setTint(themeManager.getColor(key_searchFieldCursor))
-        magnifyingGlassDrawable.setTint(themeManager.getColor(key_windowTextSecondary))
-        setTextColor(themeManager.getColor(key_windowTextPrimary))
-        setHintTextColor(themeManager.getColor(key_windowTextSecondary))
-        highlightColor = themeManager.getColor(key_windowTextSelection)
+        cursorDrawable.setTint(context.getColor(R.color.searchFieldCursor))
+        magnifyingGlassDrawable.setTint(context.getColor(R.color.windowTextSecondary))
+        setTextColor(context.getColor(R.color.windowTextPrimary))
+        setHintTextColor(context.getColor(R.color.windowTextSecondary))
+        highlightColor = context.getColor(R.color.windowTextSelection)
     }
 
     override fun onFocusChanged(focused: Boolean, direction: Int, previouslyFocusedRect: Rect?) {
