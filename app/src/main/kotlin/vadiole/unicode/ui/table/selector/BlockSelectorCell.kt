@@ -17,24 +17,8 @@ import vadiole.unicode.utils.extension.matchParent
 
 class BlockSelectorCell(context: Context) : TextView(context) {
 
-    private val backgroundDrawable = StateColorDrawable()
-
-    init {
-        layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
-        applyTheme()
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
-        typeface = roboto_regular
-        gravity = Gravity.CENTER_VERTICAL
-        includeFontPadding = false
-        setPadding(16.dp(context), 0, 16.dp(context), 0)
-        maxLines = 2
-        ellipsize = TextUtils.TruncateAt.END
-        background = backgroundDrawable
-    }
-
-    fun applyTheme() {
-        setTextColor(context.getColor(R.color.windowTextPrimary))
-        backgroundDrawable.colors = ColorStateList(
+    private val backgroundDrawable = StateColorDrawable().apply {
+        colors = ColorStateList(
             arrayOf(
                 intArrayOf(android.R.attr.state_pressed),
                 intArrayOf(-android.R.attr.state_pressed),
@@ -44,5 +28,18 @@ class BlockSelectorCell(context: Context) : TextView(context) {
                 context.getColor(R.color.windowSurface),
             )
         )
+    }
+
+    init {
+        layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
+        setTextColor(this.context.getColor(R.color.windowTextPrimary))
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
+        typeface = roboto_regular
+        gravity = Gravity.CENTER_VERTICAL
+        includeFontPadding = false
+        setPadding(16.dp(context), 0, 16.dp(context), 0)
+        maxLines = 2
+        ellipsize = TextUtils.TruncateAt.END
+        background = backgroundDrawable
     }
 }

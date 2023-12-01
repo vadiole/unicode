@@ -31,13 +31,9 @@ class TopBar(
     }
 
     init {
-        applyTheme()
+        setBackgroundColor(this.context.getColor(R.color.topBarBackground))
+        titleView.setTextColor(this.context.getColor(R.color.windowTextPrimary))
         addView(titleView, frameParams(matchParent, 42.dp(context), gravity = Gravity.BOTTOM))
-    }
-
-    fun applyTheme() {
-        setBackgroundColor(context.getColor(R.color.topBarBackground))
-        titleView.setTextColor(context.getColor(R.color.windowTextPrimary))
     }
 
     fun setTitle(text: String) {

@@ -43,7 +43,20 @@ class CharInfoView(context: Context) : View(context) {
         }
 
     init {
-        applyTheme()
+        backgroundDrawable.colors = run {
+            ColorStateList(
+                arrayOf(
+                    intArrayOf(android.R.attr.state_pressed),
+                    intArrayOf(-android.R.attr.state_pressed),
+                ),
+                intArrayOf(
+                    this.context.getColor(R.color.dialogSurfacePressed),
+                    this.context.getColor(R.color.dialogSurface),
+                )
+            )
+        }
+        valuePaint.color = this.context.getColor(R.color.windowTextPrimary)
+        namePaint.color = this.context.getColor(R.color.windowTextSecondary)
         isClickable = true
         isFocusable = true
         background = backgroundDrawable
@@ -60,22 +73,5 @@ class CharInfoView(context: Context) : View(context) {
     override fun onDraw(canvas: Canvas) {
         canvas.drawText(value, viewCenterX, valueCoordinateY, valuePaint)
         canvas.drawText(name, viewCenterX, nameCoordinateY, namePaint)
-    }
-
-    fun applyTheme() {
-        backgroundDrawable.colors = run {
-            ColorStateList(
-                arrayOf(
-                    intArrayOf(android.R.attr.state_pressed),
-                    intArrayOf(-android.R.attr.state_pressed),
-                ),
-                intArrayOf(
-                    context.getColor(R.color.dialogSurfacePressed),
-                    context.getColor(R.color.dialogSurface),
-                )
-            )
-        }
-        valuePaint.color = context.getColor(R.color.windowTextPrimary)
-        namePaint.color = context.getColor(R.color.windowTextSecondary)
     }
 }

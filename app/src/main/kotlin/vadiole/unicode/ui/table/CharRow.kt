@@ -50,7 +50,8 @@ class CharRow(
     private var highlightIndex = -1
 
     init {
-        applyTheme()
+        charPaint.color = context.getColor(R.color.windowTextPrimary)
+        ripplePaint.color = context.getColor(R.color.windowSurfacePressed)
         charPaint.textSize = charSize
         isClickable = true
         isFocusable = true
@@ -150,12 +151,6 @@ class CharRow(
     }
 
     override fun hasOverlappingRendering() = false
-
-    fun applyTheme() {
-        charPaint.color = context.getColor(R.color.windowTextPrimary)
-        ripplePaint.color = context.getColor(R.color.windowSurfacePressed)
-        invalidate()
-    }
 
     interface Delegate {
         fun onClick(codePoint: CodePoint)

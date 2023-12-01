@@ -30,7 +30,18 @@ class ActionCell(
     }
 
     init {
-        applyTheme()
+        backgroundDrawable.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(-android.R.attr.state_pressed),
+            ),
+            intArrayOf(
+                this.context.getColor(R.color.dialogSurfacePressed),
+                this.context.getColor(R.color.dialogSurface),
+            )
+        )
+        compoundDrawableTintList = this.context.getColorStateList(R.color.windowTextPrimary)
+        setTextColor(this.context.getColor(R.color.windowTextPrimary))
         background = backgroundDrawable
         text = name
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
@@ -48,18 +59,4 @@ class ActionCell(
         setCompoundDrawablesWithIntrinsicBounds(0, 0, iconId, 0)
     }
 
-    fun applyTheme() {
-        backgroundDrawable.colors = ColorStateList(
-            arrayOf(
-                intArrayOf(android.R.attr.state_pressed),
-                intArrayOf(-android.R.attr.state_pressed),
-            ),
-            intArrayOf(
-                context.getColor(R.color.dialogSurfacePressed),
-                context.getColor(R.color.dialogSurface),
-            )
-        )
-        compoundDrawableTintList = context.getColorStateList(R.color.windowTextPrimary)
-        setTextColor(context.getColor(R.color.windowTextPrimary))
-    }
 }

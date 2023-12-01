@@ -35,7 +35,7 @@ class TableView(
         addItemDecoration(itemDecoration)
         addItemDecoration(scrollBarItemDecoration)
         setPaddingHorizontal(8.dp(context))
-        applyTheme()
+        scrollbarDrawable.setColor(this.context.getColor(R.color.dialogSurfacePressed))
     }
 
     override fun onScrolled(dx: Int, dy: Int) {
@@ -61,8 +61,4 @@ class TableView(
         fun onBlockChanged(name: String?)
     }
 
-    fun applyTheme() {
-        scrollbarDrawable.setColor(context.getColor(R.color.dialogSurfacePressed))
-        invalidate()
-    }
 }

@@ -43,7 +43,21 @@ class SearchView(context: Context, private val delegate: Delegate) : EditText(co
     }
 
     init {
-        applyTheme()
+        backgroundDrawable.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(-android.R.attr.state_pressed),
+                intArrayOf(android.R.attr.state_pressed)
+            ),
+            intArrayOf(
+                this.context.getColor(R.color.searchFieldSurface),
+                this.context.getColor(R.color.searchFieldSurfacePressed)
+            )
+        )
+        cursorDrawable.setTint(this.context.getColor(R.color.searchFieldCursor))
+        magnifyingGlassDrawable.setTint(this.context.getColor(R.color.windowTextSecondary))
+        setTextColor(this.context.getColor(R.color.windowTextPrimary))
+        setHintTextColor(this.context.getColor(R.color.windowTextSecondary))
+        highlightColor = this.context.getColor(R.color.windowTextSelection)
         setCursorDrawable(cursorDrawable)
         addTextChangedListener(textWatcher)
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
@@ -58,24 +72,6 @@ class SearchView(context: Context, private val delegate: Delegate) : EditText(co
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         imeOptions = EditorInfo.IME_ACTION_SEARCH or EditorInfo.IME_FLAG_FORCE_ASCII
         inputType = InputType.TYPE_CLASS_TEXT
-    }
-
-    fun applyTheme() {
-        backgroundDrawable.colors = ColorStateList(
-            arrayOf(
-                intArrayOf(-android.R.attr.state_pressed),
-                intArrayOf(android.R.attr.state_pressed)
-            ),
-            intArrayOf(
-                context.getColor(R.color.searchFieldSurface),
-                context.getColor(R.color.searchFieldSurfacePressed)
-            )
-        )
-        cursorDrawable.setTint(context.getColor(R.color.searchFieldCursor))
-        magnifyingGlassDrawable.setTint(context.getColor(R.color.windowTextSecondary))
-        setTextColor(context.getColor(R.color.windowTextPrimary))
-        setHintTextColor(context.getColor(R.color.windowTextSecondary))
-        highlightColor = context.getColor(R.color.windowTextSelection)
     }
 
     override fun onFocusChanged(focused: Boolean, direction: Int, previouslyFocusedRect: Rect?) {

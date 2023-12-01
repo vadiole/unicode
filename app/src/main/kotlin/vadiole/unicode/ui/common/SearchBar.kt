@@ -77,7 +77,17 @@ class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context) {
         addView(cancelButton, frameParams(wrapContent, matchParent, gravity = Gravity.CENTER_VERTICAL or Gravity.RIGHT))
         setPadding(16.dp(context), 0, 0, 0)
         clipToPadding = false
-        applyTheme()
+        cancelButton.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(-android.R.attr.state_pressed),
+            ),
+            intArrayOf(
+                this.context.getColor(R.color.windowTextAccentPressed),
+                this.context.getColor(R.color.windowTextAccent),
+            )
+        )
+        background = ColorDrawable(this.context.getColor(R.color.topBarBackground))
     }
 
     private fun toggleCancelButton(show: Boolean) {
@@ -88,19 +98,5 @@ class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context) {
             stiffness = 600f
         }
         animator.start()
-    }
-
-    fun applyTheme() {
-        cancelButton.colors = ColorStateList(
-            arrayOf(
-                intArrayOf(android.R.attr.state_pressed),
-                intArrayOf(-android.R.attr.state_pressed),
-            ),
-            intArrayOf(
-                context.getColor(R.color.windowTextAccentPressed),
-                context.getColor(R.color.windowTextAccent),
-            )
-        )
-        background = ColorDrawable(context.getColor(R.color.topBarBackground))
     }
 }

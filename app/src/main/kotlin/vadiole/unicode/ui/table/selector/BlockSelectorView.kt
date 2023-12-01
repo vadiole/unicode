@@ -74,7 +74,9 @@ class BlockSelectorView(
     private val topMargin = anchorDrawable.intrinsicHeight - 4.dp(context)
 
     init {
-        applyTheme()
+        backgroundDrawable.color = this.context.getColor(R.color.dialogSurface)
+        anchorDrawable.setTint(this.context.getColor(R.color.dialogSurface))
+        scrollbarDrawable.setColor(this.context.getColor(R.color.dialogSurfacePressed))
         background = backgroundDrawable
         recycledViewPool.setMaxRecycledViews(0, 32)
         layoutManager = blockSelectorLayoutManager
@@ -144,13 +146,6 @@ class BlockSelectorView(
 
     private fun drawAnchor(c: Canvas) {
         anchorDrawable.draw(c)
-    }
-
-    fun applyTheme() {
-        backgroundDrawable.color = context.getColor(R.color.dialogSurface)
-        anchorDrawable.setTint(context.getColor(R.color.dialogSurface))
-        scrollbarDrawable.setColor(context.getColor(R.color.dialogSurfacePressed))
-        invalidate()
     }
 
     fun show() {

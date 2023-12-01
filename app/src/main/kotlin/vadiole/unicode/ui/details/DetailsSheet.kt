@@ -167,7 +167,11 @@ class DetailsSheet(
     }
 
     init {
-        applyTheme()
+        backgroundDrawable.colors = this.context.getColorStateList(R.color.dialogBackground)
+        backgroundPaint.color = this.context.getColor(R.color.dialogBackground)
+        charView.textColor = this.context.getColor(R.color.windowTextPrimary)
+        title.setTextColor(this.context.getColor(R.color.windowTextPrimary))
+        subtitle.setTextColor(this.context.getColor(R.color.windowTextSecondary))
         background = backgroundDrawable
         val height = vertical + screenPadding * 2 + 36.dp(context)
         layoutParams = frameParams(matchParent, height, gravity = Gravity.BOTTOM)
@@ -202,14 +206,6 @@ class DetailsSheet(
             infoView.value = obj.infoValues[index]
         }
         charObj = obj
-    }
-
-    fun applyTheme() {
-        backgroundDrawable.colors = context.getColorStateList(R.color.dialogBackground)
-        backgroundPaint.color = context.getColor(R.color.dialogBackground)
-        charView.textColor = context.getColor(R.color.windowTextPrimary)
-        title.setTextColor(context.getColor(R.color.windowTextPrimary))
-        subtitle.setTextColor(context.getColor(R.color.windowTextSecondary))
     }
 
     private val dividerPaint = getDividerPaint()

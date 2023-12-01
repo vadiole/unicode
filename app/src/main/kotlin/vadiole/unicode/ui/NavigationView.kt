@@ -82,10 +82,10 @@ class NavigationView(context: Context) : FrameLayout(context) {
             if (pendingCodePoint.value >= 0) {
                 showDetailsBottomSheet(pendingCodePoint, skipAnimation = pendingCharSkipAnimation)
             }
-            applyTheme()
+            dimView.setBackgroundColor(this.context.getColor(R.color.dialogDim))
         }
 
-        applyTheme()
+        dimView.setBackgroundColor(this.context.getColor(R.color.dialogDim))
     }
 
     fun onBackPressed(): Boolean {
@@ -260,9 +260,5 @@ class NavigationView(context: Context) : FrameLayout(context) {
     override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
         detailsSheet?.onApplyWindowInsets(insets)
         return super.onApplyWindowInsets(insets)
-    }
-
-    fun applyTheme() {
-        dimView.setBackgroundColor(context.getColor(R.color.dialogDim))
     }
 }

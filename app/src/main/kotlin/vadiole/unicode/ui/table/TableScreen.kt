@@ -156,7 +156,8 @@ class TableScreen(
     init {
         clipChildren = true
         clipToPadding = false
-        applyTheme()
+        divider.setBackgroundColor(context.getColor(R.color.windowDivider))
+        statusBarPaint.color = context.getColor(R.color.topBarBackground)
         setWillNotDraw(false)
         setOnApplyWindowInsetsListener(this) { _, insets ->
             setPadding(0, insets.statusBars.top, 0, 0)
@@ -205,11 +206,6 @@ class TableScreen(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawRect(0f, 0f, measuredWidth.toFloat(), topInset.toFloat(), statusBarPaint)
-    }
-
-    fun applyTheme() {
-        divider.setBackgroundColor(context.getColor(R.color.windowDivider))
-        statusBarPaint.color = context.getColor(R.color.topBarBackground)
     }
 
     interface Delegate {

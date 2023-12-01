@@ -40,7 +40,18 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
 
     init {
-        applyTheme()
+        charView.textColor = this.context.getColor(R.color.windowTextPrimary)
+        name.setTextColor(this.context.getColor(R.color.windowTextPrimary))
+        backgroundDrawable.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(-android.R.attr.state_pressed),
+                intArrayOf(android.R.attr.state_pressed)
+            ),
+            intArrayOf(
+                this.context.getColor(R.color.windowSurfacePressed),
+                this.context.getColor(R.color.windowSurface),
+            ),
+        )
         layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
         addView(name, frameParams(matchParent, 48.dp(context), marginLeft = 64.dp(context)))
         addView(charView, frameParams(64.dp(context), 48.dp(context), gravity = Gravity.LEFT))
@@ -60,20 +71,5 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         name.text = data.name
         charView.text = data.codePoint.char
         codePoint = data.codePoint
-    }
-
-    fun applyTheme() {
-        charView.textColor = context.getColor(R.color.windowTextPrimary)
-        name.setTextColor(context.getColor(R.color.windowTextPrimary))
-        backgroundDrawable.colors = ColorStateList(
-            arrayOf(
-                intArrayOf(-android.R.attr.state_pressed),
-                intArrayOf(android.R.attr.state_pressed)
-            ),
-            intArrayOf(
-                context.getColor(R.color.windowSurfacePressed),
-                context.getColor(R.color.windowSurface),
-            ),
-        )
     }
 }
