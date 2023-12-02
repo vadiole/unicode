@@ -4,7 +4,6 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
-import vadiole.unicode.ui.theme.roboto_regular
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.setPaddingHorizontal
 

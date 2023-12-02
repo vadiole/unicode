@@ -16,7 +16,6 @@
 
         <activity
             android:name="vadiole.unicode.ui.UnicodeActivity"
-            android:configChanges="uiMode|orientation"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="windowBackground">#FFFFFF</color>
-    <color name="colorPrimary">#4498F2</color>
+    <color name="windowBackground">#FFFFFFFF</color>
+    <color name="colorPrimary">#FF4498F2</color>
+
+    <color name="dialogBackground">#FFF8F8F9</color>
+    <color name="dialogSurface">#FFFFFFFF</color>
+    <color name="dialogSurfacePressed">#FFE5E5E7</color>
+    <color name="dialogIcon">#FF000000</color>
+    <color name="dialogButton">#FF3E76C6</color>
+    <color name="dialogButtonDanger">#FFEC5242</color>
+    <color name="dialogListRipple">#0F000000</color>
+    <color name="dialogDim">#FF000000</color>
+    <color name="windowSurface">#00000000</color>
+    <color name="windowSurfacePressed">#0F000000</color>
+    <color name="windowTextPrimary">#FF000000</color>
+    <color name="windowTextSecondary">#FF88888C</color>
+    <color name="windowTextAccent">#FF007AFF</color>
+    <color name="windowTextAccentPressed">#80007AFF</color>
+    <color name="windowTextSelection">#40007BFF</color>
+    <color name="windowDivider">#2E3C3C43</color>
+    <color name="topBarBackground">#FFFFFFFF</color>
+    <color name="tabBarBackground">#FFFFFFFF</color>
+    <color name="tabBarItem">#FF9F9E9E</color>
+    <color name="tabBarItemSelected">#FF417FC6</color>
+    <color name="searchFieldSurface">#1F737980</color>
+    <color name="searchFieldSurfacePressed">#1F2E3033</color>
+    <color name="searchFieldCursor">#FF4498F2</color>
 </resources>
