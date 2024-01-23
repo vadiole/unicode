@@ -8,7 +8,7 @@ module.exports = ({github, context}) => {
   const bot = new TelegramBot(token);
   const apkName = fs.readdirSync('./app/build/outputs/apk/debug/').filter(fn => fn.endsWith('.apk'))[0];
   const apk = fs.readFileSync('./app/build/outputs/apk/debug/' + apkName);
-  const startTimestamp = `${process.env.START_TIMESTAMP}`;
+  const startTimestamp = process.env.START_TIMESTAMP;
   console.log("Start timestamp: " + startTimestamp);
   const nowTimestamp = Date.now();
   console.log("Now timestamp: " + nowTimestamp);

@@ -15,7 +15,7 @@ jobs:
       - name: Set start timestamp
         id: start
         run: |
-          echo "{START_TIMESTAMP}={$(date +%s000)}" >> $GITHUB_ENV
+          echo "START_TIMESTAMP=$(date +%s000)" >> $GITHUB_ENV
       - name: Checkout the repo
         uses: actions/checkout@v3
       - name: Setup java
