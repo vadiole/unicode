@@ -15,7 +15,7 @@ jobs:
       - name: Set start timestamp
         id: start
         run: |
-          echo "{START_TIMESTAMP}={$(date +%s)}" >> $GITHUB_ENV
+          echo "{START_TIMESTAMP}={$(date +%s000)}" >> $GITHUB_ENV
       - name: Checkout the repo
         uses: actions/checkout@v3
       - name: Setup java
@@ -43,6 +43,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+          START_TIMESTAMP: ${{ env.START_TIMESTAMP }}
         with:
           script: |
             const script = require('./.github/workflows/publish-apk-to-telegram.js')
