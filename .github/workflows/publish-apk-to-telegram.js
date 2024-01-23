@@ -19,7 +19,7 @@ module.exports = ({github, context}) => {
   const fileOptions = {filename: apkName, contentType: 'application/vnd.android.package-archive'};
   bot.sendDocument(chatId, apk, messageOptions, fileOptions)
     .then(response => {
-      console.log("File " + apk + " successfully sent to Telegram.\nCaption: " + messageOptions.caption);
+      console.log("File " + apkName + " successfully sent to Telegram.\nCaption: " + messageOptions.caption);
     })
     .catch(err => {
       console.error("Failed to send file:", err);
