@@ -13,8 +13,10 @@ module.exports = ({github, context}) => {
   console.log("Now timestamp: " + nowTimestamp);
   const duration = nowTimestamp - startTimestamp;
   console.log("Duration: " + duration);
-  const caption = `${process.env.BRANCH_NAME}`
-  bot.sendDocument(chatId, apk, {caption: caption}, {filename: apkName, contentType: 'application/vnd.android.package-archive'})
+  console.log("Duration formatted: " + formatTimestampMMSS(duration));
+  const messageOptions = {caption: `Branch: ${process.env.BRANCH_NAME}\nBuild time: ${formatTimestampMMSS(duration)}`}
+  const fileOptions = {filename: apkName, contentType: 'application/vnd.android.package-archive'};
+  bot.sendDocument(chatId, apk, messageOptions, fileOptions)
     .then(response => {
       console.log("File " + apk + " successfully sent to Telegram");
     })
