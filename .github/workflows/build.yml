@@ -41,5 +41,5 @@ jobs:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         with:
           script: |
-            const script = require('./publish-apk-to-telegram.js')
+            const script = require('./app/.github/workflows/publish-apk-to-telegram.js')
             console.log(script({github, context}))
