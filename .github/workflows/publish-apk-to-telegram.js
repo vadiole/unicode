@@ -1,4 +1,5 @@
 module.exports = ({github, context}) => {
+  process.env["NTBA_FIX_350"] = 1;
   const fs = require('fs');
   const TelegramBot = require('node-telegram-bot-api');
   const token = process.env.TELEGRAM_BOT_TOKEN;
