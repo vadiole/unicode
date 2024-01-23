@@ -15,11 +15,11 @@ module.exports = ({github, context}) => {
   const duration = nowTimestamp - startTimestamp;
   console.log("Duration: " + duration);
   console.log("Duration formatted: " + formatter.timestampToMMSS(duration));
-  const messageOptions = {caption: `Branch: ${process.env.BRANCH_NAME}\nBuild time: ${formatter.timestampToMMSS(duration)}`}
+  const messageOptions = {caption: `${process.env.BRANCH_NAME}\nin ${formatter.timestampToMMSS(duration)}`}
   const fileOptions = {filename: apkName, contentType: 'application/vnd.android.package-archive'};
   bot.sendDocument(chatId, apk, messageOptions, fileOptions)
     .then(response => {
-      console.log("File " + apk + " successfully sent to Telegram");
+      console.log("File " + apk + " successfully sent to Telegram.\nCaption: " + messageOptions.caption);
     })
     .catch(err => {
       console.error("Failed to send file:", err);
