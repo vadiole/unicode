@@ -1,1 +1,1 @@
-const formatTime = ms => `${Math.floor(ms / 60000).toString().padStart(2, '0')}:${Math.floor((ms % 60000) / 1000).toString().padStart(2, '0')}`;
+const formatTime = ms => `${ms >= 60 * 1e3 ? Math.floor(ms / (60 * 1e3)) + 'm ' : ''}${Math.floor((ms % (60 * 1e3)) / 1e3)}s`;
