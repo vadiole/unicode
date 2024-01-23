@@ -1,6 +1,7 @@
 module.exports = ({github, context}) => {
   process.env["NTBA_FIX_350"] = 1;
   const fs = require('fs');
+  const formatter = require('./formatter.js');
   const TelegramBot = require('node-telegram-bot-api');
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
@@ -13,8 +14,8 @@ module.exports = ({github, context}) => {
   console.log("Now timestamp: " + nowTimestamp);
   const duration = nowTimestamp - startTimestamp;
   console.log("Duration: " + duration);
-  console.log("Duration formatted: " + formatTimestampMMSS(duration));
-  const messageOptions = {caption: `Branch: ${process.env.BRANCH_NAME}\nBuild time: ${formatTimestampMMSS(duration)}`}
+  console.log("Duration formatted: " + formatter.timestampToMMSS(duration));
+  const messageOptions = {caption: `Branch: ${process.env.BRANCH_NAME}\nBuild time: ${formatter.timestampToMMSS(duration)}`}
   const fileOptions = {filename: apkName, contentType: 'application/vnd.android.package-archive'};
   bot.sendDocument(chatId, apk, messageOptions, fileOptions)
     .then(response => {
