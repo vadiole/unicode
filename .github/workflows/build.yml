@@ -28,7 +28,7 @@ jobs:
         with:
           cache-read-only: false
       - name: Execute Gradle build
-        run: ./gradlew build
+        run: ./gradlew buildDebug
       - name: Assemble debug APK
         run: ./gradlew assembleDebug
       - uses: actions/setup-node@v4
