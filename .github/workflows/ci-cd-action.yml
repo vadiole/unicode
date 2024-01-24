@@ -46,7 +46,7 @@ jobs:
           DURATION=$(( $(date +%s) - $START_TIME ))
           CAPTION="${{ github.head_ref || github.ref_name }}"$'\n'"[$(formatDuration $DURATION)]"
 
-          curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument" \
+          curl --silent --show-error -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument" \
               -F chat_id="$TELEGRAM_CHAT_ID" \
               -F document=@"$FILE_PATH" \
               -F thumb=@"$THUMBNAIL_PATH" \
