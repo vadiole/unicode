@@ -31,20 +31,23 @@ jobs:
         run: ./gradlew buildDebug
       - name: Assemble debug APK
         run: ./gradlew assembleDebug
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-      - run: npm install node-telegram-bot-api
-      - name: Publish debug APK to telegram
-        uses: actions/github-script@v7
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-          START_TIMESTAMP: ${{ env.START_TIMESTAMP }}
-        with:
-          script: |
-            const script = require('./.github/workflows/publish-apk-to-telegram.js')
-            console.log(script({github, context}))
+      - name: Publish debug APK to Telegram
+        run: |
+          formatDuration() { # like 1m 1s
+              local ms=$1
+              m=$((ms / 60000))
+              s=$(((ms % 60000) / 1000));
+              echo $([ "$m" -gt 0 ] && echo "${m}m ")${s} s;
+          }
+          TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}
+          FILE_PATH=$(find ./app/build/outputs/apk/debug/ -name '*.apk' | head -n 1)
+          THUMBNAIL_PATH="./assets/logo-320.jpg"
+          DURATION=$(( $(date +%s000) - $START_TIMESTAMP ))
+          CAPTION="${{ github.head_ref || github.ref_name }}"$'\n'"[$(formatDuration $DURATION)]"
+
+          curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument" \
+              -F chat_id="$TELEGRAM_CHAT_ID" \
+              -F document=@"$FILE_PATH" \
+              -F thumb=@"$THUMBNAIL_PATH" \
+              -F caption="$CAPTION"
