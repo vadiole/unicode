@@ -12,10 +12,10 @@ jobs:
     name: Build and publish debug APK
     runs-on: ubuntu-latest
     steps:
-      - name: Set start timestamp
+      - name: Set start time
         id: start
         run: |
-          echo "START_TIMESTAMP=$(date +%s000)" >> $GITHUB_ENV
+          echo "START_TIME=$(date +%s)" >> $GITHUB_ENV
       - name: Checkout the repo
         uses: actions/checkout@v3
       - name: Setup java
@@ -35,15 +35,15 @@ jobs:
         run: |
           formatDuration() { # like 1m 1s
               local ms=$1
-              m=$((ms / 60000))
-              s=$(((ms % 60000) / 1000));
+              m=$((ms / 60))
+              s=$((ms % 60));
               echo $([ "$m" -gt 0 ] && echo "${m}m ")${s} s;
           }
           TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}
           FILE_PATH=$(find ./app/build/outputs/apk/debug/ -name '*.apk' | head -n 1)
           THUMBNAIL_PATH="./assets/logo-320.jpg"
-          DURATION=$(( $(date +%s000) - $START_TIMESTAMP ))
+          DURATION=$(( $(date +%s) - $START_TIME ))
           CAPTION="${{ github.head_ref || github.ref_name }}"$'\n'"[$(formatDuration $DURATION)]"
 
           curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument" \
