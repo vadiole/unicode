@@ -41,7 +41,9 @@ class TableView(
     override fun onScrolled(dx: Int, dy: Int) {
         val position = tableLayoutManager.findFirstVisibleItemPosition()
         val block = adapter.getBlock(position * spanCount)
-        delegate.onBlockChanged(block?.name)
+        if (block != null) {
+            delegate.onBlockChanged(block.name)
+        }
     }
 
     fun scrollToPositionInCenter(row: Int, indexInRow: Int) {
