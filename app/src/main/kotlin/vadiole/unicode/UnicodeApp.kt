@@ -5,11 +5,13 @@ import android.app.Application
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
 
+
 @SuppressLint("StaticFieldLeak")
 class UnicodeApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
         unicodeStorageInternal = UnicodeStorage(this)
         userConfigInternal = UserConfig(this)
     }
