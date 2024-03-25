@@ -1,312 +1,313 @@
-Marking color:dialogSurfacePressed:2130837516 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowSurfacePressed:2130837529 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowSurface:2130837528 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowTextPrimary:2130837532 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_accessibility_actions:2131034172 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:accessibility_action_clickable_span:2131034112 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_accessibility_clickable_spans:2131034173 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking drawable:ic_find_in_table:2130968586 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking drawable:ic_copy:2130968585 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking drawable:ic_link:2130968589 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:dialogBackground:2130837509 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowTextSecondary:2130837533 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_screen_reader_focusable:2131034179 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_accessibility_heading:2131034174 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_accessibility_pane_title:2131034175 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_state_description:2131034180 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:dialogSurface:2130837515 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:dialogDim:2130837512 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_window_insets_animation_callback:2131034184 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_on_apply_window_listener:2131034176 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:pooling_container_listener_holder_tag:2131034169 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowDivider:2130837527 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking drawable:cursor:2130968577 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking drawable:ic_magnifying_glass:2130968590 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:searchFieldSurface:2130837520 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:searchFieldSurfacePressed:2130837521 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:searchFieldCursor:2130837519 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowTextSelection:2130837534 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking attr:recyclerViewStyle:2130771989 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking dimen:fastscroll_default_thickness:2130903047 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking dimen:fastscroll_minimum_range:2130903049 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking dimen:fastscroll_margin:2130903048 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:is_pooling_container_tag:2131034160 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking drawable:ic_anchor:2130968578 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking id:tag_unhandled_key_listeners:2131034183 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:topBarBackground:2130837525 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowTextAccentPressed:2130837531 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-Marking color:windowTextAccent:2130837530 reachable: referenced from /Users/vadiole/AndroidStudioProjects/unicode/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-@attr/alpha : reachable=false
-@attr/fastScrollEnabled : reachable=false
-@attr/fastScrollHorizontalThumbDrawable : reachable=false
-@attr/fastScrollHorizontalTrackDrawable : reachable=false
-@attr/fastScrollVerticalThumbDrawable : reachable=false
-@attr/fastScrollVerticalTrackDrawable : reachable=false
-@attr/font : reachable=false
-@attr/fontProviderAuthority : reachable=false
-@attr/fontProviderCerts : reachable=false
-@attr/fontProviderFetchStrategy : reachable=false
-@attr/fontProviderFetchTimeout : reachable=false
-@attr/fontProviderPackage : reachable=false
-@attr/fontProviderQuery : reachable=false
-@attr/fontProviderSystemFontFamily : reachable=false
-@attr/fontStyle : reachable=false
-@attr/fontVariationSettings : reachable=false
-@attr/fontWeight : reachable=false
-@attr/lStar : reachable=false
-@attr/layoutManager : reachable=false
-@attr/nestedScrollViewStyle : reachable=false
-@attr/queryPatterns : reachable=false
-@attr/recyclerViewStyle : reachable=true
-@attr/reverseLayout : reachable=false
-@attr/shortcutMatchRequired : reachable=false
-@attr/spanCount : reachable=false
-@attr/stackFromEnd : reachable=false
-@attr/ttcIndex : reachable=false
-@color/androidx_core_ripple_material_light : reachable=false
-@color/androidx_core_secondary_text_default_material_light : reachable=false
-@color/call_notification_answer_color : reachable=false
-@color/call_notification_decline_color : reachable=false
-@color/colorPrimary : reachable=false
-@color/dialogBackground : reachable=true
-@color/dialogButton : reachable=false
-@color/dialogButtonDanger : reachable=false
-@color/dialogDim : reachable=true
-@color/dialogIcon : reachable=false
-@color/dialogListRipple : reachable=false
-@color/dialogSurface : reachable=true
-@color/dialogSurfacePressed : reachable=true
-@color/notification_action_color_filter : reachable=false
-    @color/androidx_core_secondary_text_default_material_light
-@color/notification_icon_bg_color : reachable=false
-@color/searchFieldCursor : reachable=true
-@color/searchFieldSurface : reachable=true
-@color/searchFieldSurfacePressed : reachable=true
-@color/tabBarBackground : reachable=false
-@color/tabBarItem : reachable=false
-@color/tabBarItemSelected : reachable=false
-@color/topBarBackground : reachable=true
-@color/windowBackground : reachable=false
-@color/windowDivider : reachable=true
-@color/windowSurface : reachable=true
-@color/windowSurfacePressed : reachable=true
-@color/windowTextAccent : reachable=true
-@color/windowTextAccentPressed : reachable=true
-@color/windowTextPrimary : reachable=true
-@color/windowTextSecondary : reachable=true
-@color/windowTextSelection : reachable=true
-@dimen/compat_button_inset_horizontal_material : reachable=false
-@dimen/compat_button_inset_vertical_material : reachable=false
-@dimen/compat_button_padding_horizontal_material : reachable=false
-@dimen/compat_button_padding_vertical_material : reachable=false
-@dimen/compat_control_corner_material : reachable=false
-@dimen/compat_notification_large_icon_max_height : reachable=false
-@dimen/compat_notification_large_icon_max_width : reachable=false
-@dimen/fastscroll_default_thickness : reachable=true
-@dimen/fastscroll_margin : reachable=true
-@dimen/fastscroll_minimum_range : reachable=true
-@dimen/item_touch_helper_max_drag_scroll_per_frame : reachable=false
-@dimen/item_touch_helper_swipe_escape_max_velocity : reachable=false
-@dimen/item_touch_helper_swipe_escape_velocity : reachable=false
-@dimen/notification_action_icon_size : reachable=false
-@dimen/notification_action_text_size : reachable=false
-@dimen/notification_big_circle_margin : reachable=false
-@dimen/notification_content_margin_start : reachable=false
-@dimen/notification_large_icon_height : reachable=false
-@dimen/notification_large_icon_width : reachable=false
-@dimen/notification_main_column_padding_top : reachable=false
-@dimen/notification_media_narrow_margin : reachable=false
-@dimen/notification_right_icon_size : reachable=false
-@dimen/notification_right_side_padding_top : reachable=false
-@dimen/notification_small_icon_background_padding : reachable=false
-@dimen/notification_small_icon_size_as_large : reachable=false
-@dimen/notification_subtext_size : reachable=false
-@dimen/notification_top_pad : reachable=false
-@dimen/notification_top_pad_large_text : reachable=false
-@drawable/$ic_launcher_background__0 : reachable=false
-@drawable/cursor : reachable=true
-@drawable/ic_anchor : reachable=true
-@drawable/ic_call_answer : reachable=false
-@drawable/ic_call_answer_low : reachable=false
-@drawable/ic_call_answer_video : reachable=false
-@drawable/ic_call_answer_video_low : reachable=false
-@drawable/ic_call_decline : reachable=false
-@drawable/ic_call_decline_low : reachable=false
-@drawable/ic_copy : reachable=true
-@drawable/ic_find_in_table : reachable=true
-@drawable/ic_launcher_background : reachable=false
-    @drawable/$ic_launcher_background__0
-@drawable/ic_launcher_foreground : reachable=false
-@drawable/ic_link : reachable=true
-@drawable/ic_magnifying_glass : reachable=true
-@drawable/notification_action_background : reachable=false
-    @color/androidx_core_ripple_material_light
-    @dimen/compat_button_inset_horizontal_material
-    @dimen/compat_button_inset_vertical_material
-    @dimen/compat_control_corner_material
-    @dimen/compat_button_padding_vertical_material
-    @dimen/compat_button_padding_horizontal_material
-@drawable/notification_bg : reachable=false
-    @drawable/notification_bg_normal_pressed
-    @drawable/notification_bg_normal
-@drawable/notification_bg_low : reachable=false
-    @drawable/notification_bg_low_pressed
-    @drawable/notification_bg_low_normal
-@drawable/notification_bg_low_normal : reachable=false
-@drawable/notification_bg_low_pressed : reachable=false
-@drawable/notification_bg_normal : reachable=false
-@drawable/notification_bg_normal_pressed : reachable=false
-@drawable/notification_icon_background : reachable=false
-    @color/notification_icon_bg_color
-@drawable/notification_oversize_large_icon_bg : reachable=false
-@drawable/notification_template_icon_bg : reachable=false
-@drawable/notification_template_icon_low_bg : reachable=false
-@drawable/notification_tile_bg : reachable=false
-    @drawable/notify_panel_notification_icon_bg
-@drawable/notify_panel_notification_icon_bg : reachable=false
-@drawable/splash_screen : reachable=false
-    @drawable/ic_launcher_background
-    @drawable/ic_launcher_foreground
-    @color/windowBackground
-@id/accessibility_action_clickable_span : reachable=true
-@id/accessibility_custom_action_0 : reachable=false
-@id/accessibility_custom_action_1 : reachable=false
-@id/accessibility_custom_action_10 : reachable=false
-@id/accessibility_custom_action_11 : reachable=false
-@id/accessibility_custom_action_12 : reachable=false
-@id/accessibility_custom_action_13 : reachable=false
-@id/accessibility_custom_action_14 : reachable=false
-@id/accessibility_custom_action_15 : reachable=false
-@id/accessibility_custom_action_16 : reachable=false
-@id/accessibility_custom_action_17 : reachable=false
-@id/accessibility_custom_action_18 : reachable=false
-@id/accessibility_custom_action_19 : reachable=false
-@id/accessibility_custom_action_2 : reachable=false
-@id/accessibility_custom_action_20 : reachable=false
-@id/accessibility_custom_action_21 : reachable=false
-@id/accessibility_custom_action_22 : reachable=false
-@id/accessibility_custom_action_23 : reachable=false
-@id/accessibility_custom_action_24 : reachable=false
-@id/accessibility_custom_action_25 : reachable=false
-@id/accessibility_custom_action_26 : reachable=false
-@id/accessibility_custom_action_27 : reachable=false
-@id/accessibility_custom_action_28 : reachable=false
-@id/accessibility_custom_action_29 : reachable=false
-@id/accessibility_custom_action_3 : reachable=false
-@id/accessibility_custom_action_30 : reachable=false
-@id/accessibility_custom_action_31 : reachable=false
-@id/accessibility_custom_action_4 : reachable=false
-@id/accessibility_custom_action_5 : reachable=false
-@id/accessibility_custom_action_6 : reachable=false
-@id/accessibility_custom_action_7 : reachable=false
-@id/accessibility_custom_action_8 : reachable=false
-@id/accessibility_custom_action_9 : reachable=false
-@id/action_container : reachable=false
-@id/action_divider : reachable=false
-@id/action_image : reachable=false
-@id/action_text : reachable=false
-@id/actions : reachable=false
-@id/async : reachable=false
-@id/blocking : reachable=false
-@id/chronometer : reachable=false
-@id/dialog_button : reachable=false
-@id/edit_text_id : reachable=false
-@id/forever : reachable=false
-@id/hide_ime_id : reachable=false
-@id/icon : reachable=false
-@id/icon_group : reachable=false
-@id/info : reachable=false
-@id/is_pooling_container_tag : reachable=true
-@id/italic : reachable=false
-@id/item_touch_helper_previous_elevation : reachable=false
-@id/line1 : reachable=false
-@id/line3 : reachable=false
-@id/normal : reachable=false
-@id/notification_background : reachable=false
-@id/notification_main_column : reachable=false
-@id/notification_main_column_container : reachable=false
-@id/pooling_container_listener_holder_tag : reachable=true
-@id/right_icon : reachable=false
-@id/right_side : reachable=false
-@id/tag_accessibility_actions : reachable=true
-@id/tag_accessibility_clickable_spans : reachable=true
-@id/tag_accessibility_heading : reachable=true
-@id/tag_accessibility_pane_title : reachable=true
-@id/tag_on_apply_window_listener : reachable=true
-@id/tag_on_receive_content_listener : reachable=false
-@id/tag_on_receive_content_mime_types : reachable=false
-@id/tag_screen_reader_focusable : reachable=true
-@id/tag_state_description : reachable=true
-@id/tag_transition_group : reachable=false
-@id/tag_unhandled_key_event_manager : reachable=false
-@id/tag_unhandled_key_listeners : reachable=true
-@id/tag_window_insets_animation_callback : reachable=true
-@id/text : reachable=false
-@id/text2 : reachable=false
-@id/time : reachable=false
-@id/title : reachable=false
-@id/view_tree_lifecycle_owner : reachable=false
-@integer/status_bar_notification_info_maxnum : reachable=false
-@layout/custom_dialog : reachable=false
-@layout/ime_base_split_test_activity : reachable=false
-@layout/ime_secondary_split_test_activity : reachable=false
-@layout/notification_action : reachable=false
-    @style/Widget_Compat_NotificationActionContainer
-    @dimen/notification_action_icon_size
-    @style/Widget_Compat_NotificationActionText
-@layout/notification_action_tombstone : reachable=false
-    @style/Widget_Compat_NotificationActionContainer
-    @dimen/notification_action_icon_size
-    @style/Widget_Compat_NotificationActionText
-@layout/notification_template_custom_big : reachable=false
-    @layout/notification_template_icon_group
-    @dimen/notification_large_icon_width
-    @dimen/notification_large_icon_height
-    @dimen/notification_right_side_padding_top
-    @layout/notification_template_part_time
-    @layout/notification_template_part_chronometer
-    @style/TextAppearance_Compat_Notification_Info
-@layout/notification_template_icon_group : reachable=false
-    @dimen/notification_large_icon_width
-    @dimen/notification_large_icon_height
-    @dimen/notification_big_circle_margin
-    @dimen/notification_right_icon_size
-@layout/notification_template_part_chronometer : reachable=false
-    @style/TextAppearance_Compat_Notification_Time
-@layout/notification_template_part_time : reachable=false
-    @style/TextAppearance_Compat_Notification_Time
-@mipmap/ic_launcher : reachable=true
-    @drawable/ic_launcher_background
-    @drawable/ic_launcher_foreground
-@mipmap/ic_launcher_round : reachable=true
-    @drawable/ic_launcher_background
-    @drawable/ic_launcher_foreground
-@string/app_name : reachable=true
-@string/call_notification_answer_action : reachable=false
-@string/call_notification_answer_video_action : reachable=false
-@string/call_notification_decline_action : reachable=false
-@string/call_notification_hang_up_action : reachable=false
-@string/call_notification_incoming_text : reachable=false
-@string/call_notification_ongoing_text : reachable=false
-@string/call_notification_screening_text : reachable=false
-@string/status_bar_notification_info_overflow : reachable=false
-@style/TextAppearance_Compat_Notification : reachable=false
-@style/TextAppearance_Compat_Notification_Info : reachable=false
-@style/TextAppearance_Compat_Notification_Line2 : reachable=false
-    @style/TextAppearance_Compat_Notification_Info
-@style/TextAppearance_Compat_Notification_Time : reachable=false
-@style/TextAppearance_Compat_Notification_Title : reachable=false
-@style/Theme_Dialog_Transparent : reachable=false
-    @color/colorPrimary
-@style/Theme_Unicode : reachable=true
-    @color/windowBackground
-    @color/colorPrimary
-    @drawable/splash_screen
-@style/Widget_Compat_NotificationActionContainer : reachable=false
-    @drawable/notification_action_background
-@style/Widget_Compat_NotificationActionText : reachable=false
-    @color/androidx_core_secondary_text_default_material_light
-    @dimen/notification_action_text_size
+Marking attr:recyclerViewStyle:2130771989 reachable: referenced from base/dex/classes.dex
+Marking dimen:fastscroll_default_thickness:2130903047 reachable: referenced from base/dex/classes.dex
+Marking dimen:fastscroll_minimum_range:2130903049 reachable: referenced from base/dex/classes.dex
+Marking dimen:fastscroll_margin:2130903048 reachable: referenced from base/dex/classes.dex
+Marking id:is_pooling_container_tag:2131034160 reachable: referenced from base/dex/classes.dex
+Marking id:pooling_container_listener_holder_tag:2131034169 reachable: referenced from base/dex/classes.dex
+Marking drawable:cursor:2130968577 reachable: referenced from base/dex/classes.dex
+Marking drawable:ic_magnifying_glass:2130968590 reachable: referenced from base/dex/classes.dex
+Marking color:searchFieldSurface:2130837520 reachable: referenced from base/dex/classes.dex
+Marking color:searchFieldSurfacePressed:2130837521 reachable: referenced from base/dex/classes.dex
+Marking color:searchFieldCursor:2130837519 reachable: referenced from base/dex/classes.dex
+Marking color:windowTextSecondary:2130837533 reachable: referenced from base/dex/classes.dex
+Marking color:windowTextPrimary:2130837532 reachable: referenced from base/dex/classes.dex
+Marking color:windowTextSelection:2130837534 reachable: referenced from base/dex/classes.dex
+Marking id:tag_screen_reader_focusable:2131034179 reachable: referenced from base/dex/classes.dex
+Marking id:tag_accessibility_heading:2131034174 reachable: referenced from base/dex/classes.dex
+Marking id:tag_accessibility_pane_title:2131034175 reachable: referenced from base/dex/classes.dex
+Marking id:tag_state_description:2131034180 reachable: referenced from base/dex/classes.dex
+Marking id:tag_accessibility_actions:2131034172 reachable: referenced from base/dex/classes.dex
+Marking color:dialogSurfacePressed:2130837516 reachable: referenced from base/dex/classes.dex
+Marking color:dialogSurface:2130837515 reachable: referenced from base/dex/classes.dex
+Marking color:dialogDim:2130837512 reachable: referenced from base/dex/classes.dex
+Marking color:windowSurfacePressed:2130837529 reachable: referenced from base/dex/classes.dex
+Marking color:windowSurface:2130837528 reachable: referenced from base/dex/classes.dex
+Marking color:windowTextAccentPressed:2130837531 reachable: referenced from base/dex/classes.dex
+Marking color:windowTextAccent:2130837530 reachable: referenced from base/dex/classes.dex
+Marking color:topBarBackground:2130837525 reachable: referenced from base/dex/classes.dex
+Marking id:tag_window_insets_animation_callback:2131034184 reachable: referenced from base/dex/classes.dex
+Marking id:tag_on_apply_window_listener:2131034176 reachable: referenced from base/dex/classes.dex
+Marking drawable:ic_find_in_table:2130968586 reachable: referenced from base/dex/classes.dex
+Marking drawable:ic_copy:2130968585 reachable: referenced from base/dex/classes.dex
+Marking drawable:ic_link:2130968589 reachable: referenced from base/dex/classes.dex
+Marking color:dialogBackground:2130837509 reachable: referenced from base/dex/classes.dex
+Marking color:windowDivider:2130837527 reachable: referenced from base/dex/classes.dex
+Marking id:tag_unhandled_key_listeners:2131034183 reachable: referenced from base/dex/classes.dex
+Marking drawable:ic_anchor:2130968578 reachable: referenced from base/dex/classes.dex
+Marking id:accessibility_action_clickable_span:2131034112 reachable: referenced from base/dex/classes.dex
+Marking id:tag_accessibility_clickable_spans:2131034173 reachable: referenced from base/dex/classes.dex
+@vadiole.unicode:attr/alpha : reachable=false
+@vadiole.unicode:attr/fastScrollEnabled : reachable=false
+@vadiole.unicode:attr/fastScrollHorizontalThumbDrawable : reachable=false
+@vadiole.unicode:attr/fastScrollHorizontalTrackDrawable : reachable=false
+@vadiole.unicode:attr/fastScrollVerticalThumbDrawable : reachable=false
+@vadiole.unicode:attr/fastScrollVerticalTrackDrawable : reachable=false
+@vadiole.unicode:attr/font : reachable=false
+@vadiole.unicode:attr/fontProviderAuthority : reachable=false
+@vadiole.unicode:attr/fontProviderCerts : reachable=false
+@vadiole.unicode:attr/fontProviderFetchStrategy : reachable=false
+@vadiole.unicode:attr/fontProviderFetchTimeout : reachable=false
+@vadiole.unicode:attr/fontProviderPackage : reachable=false
+@vadiole.unicode:attr/fontProviderQuery : reachable=false
+@vadiole.unicode:attr/fontProviderSystemFontFamily : reachable=false
+@vadiole.unicode:attr/fontStyle : reachable=false
+@vadiole.unicode:attr/fontVariationSettings : reachable=false
+@vadiole.unicode:attr/fontWeight : reachable=false
+@vadiole.unicode:attr/lStar : reachable=false
+@vadiole.unicode:attr/layoutManager : reachable=false
+@vadiole.unicode:attr/nestedScrollViewStyle : reachable=false
+@vadiole.unicode:attr/queryPatterns : reachable=false
+@vadiole.unicode:attr/recyclerViewStyle : reachable=true
+@vadiole.unicode:attr/reverseLayout : reachable=false
+@vadiole.unicode:attr/shortcutMatchRequired : reachable=false
+@vadiole.unicode:attr/spanCount : reachable=false
+@vadiole.unicode:attr/stackFromEnd : reachable=false
+@vadiole.unicode:attr/ttcIndex : reachable=false
+@vadiole.unicode:color/androidx_core_ripple_material_light : reachable=false
+@vadiole.unicode:color/androidx_core_secondary_text_default_material_light : reachable=false
+@vadiole.unicode:color/call_notification_answer_color : reachable=false
+@vadiole.unicode:color/call_notification_decline_color : reachable=false
+@vadiole.unicode:color/colorPrimary : reachable=false
+@vadiole.unicode:color/dialogBackground : reachable=true
+@vadiole.unicode:color/dialogButton : reachable=false
+@vadiole.unicode:color/dialogButtonDanger : reachable=false
+@vadiole.unicode:color/dialogDim : reachable=true
+@vadiole.unicode:color/dialogIcon : reachable=false
+@vadiole.unicode:color/dialogListRipple : reachable=false
+@vadiole.unicode:color/dialogSurface : reachable=true
+@vadiole.unicode:color/dialogSurfacePressed : reachable=true
+@vadiole.unicode:color/notification_action_color_filter : reachable=false
+    @vadiole.unicode:color/androidx_core_secondary_text_default_material_light
+@vadiole.unicode:color/notification_icon_bg_color : reachable=false
+@vadiole.unicode:color/searchFieldCursor : reachable=true
+@vadiole.unicode:color/searchFieldSurface : reachable=true
+@vadiole.unicode:color/searchFieldSurfacePressed : reachable=true
+@vadiole.unicode:color/tabBarBackground : reachable=false
+@vadiole.unicode:color/tabBarItem : reachable=false
+@vadiole.unicode:color/tabBarItemSelected : reachable=false
+@vadiole.unicode:color/topBarBackground : reachable=true
+@vadiole.unicode:color/windowBackground : reachable=false
+@vadiole.unicode:color/windowDivider : reachable=true
+@vadiole.unicode:color/windowSurface : reachable=true
+@vadiole.unicode:color/windowSurfacePressed : reachable=true
+@vadiole.unicode:color/windowTextAccent : reachable=true
+@vadiole.unicode:color/windowTextAccentPressed : reachable=true
+@vadiole.unicode:color/windowTextPrimary : reachable=true
+@vadiole.unicode:color/windowTextSecondary : reachable=true
+@vadiole.unicode:color/windowTextSelection : reachable=true
+@vadiole.unicode:dimen/compat_button_inset_horizontal_material : reachable=false
+@vadiole.unicode:dimen/compat_button_inset_vertical_material : reachable=false
+@vadiole.unicode:dimen/compat_button_padding_horizontal_material : reachable=false
+@vadiole.unicode:dimen/compat_button_padding_vertical_material : reachable=false
+@vadiole.unicode:dimen/compat_control_corner_material : reachable=false
+@vadiole.unicode:dimen/compat_notification_large_icon_max_height : reachable=false
+@vadiole.unicode:dimen/compat_notification_large_icon_max_width : reachable=false
+@vadiole.unicode:dimen/fastscroll_default_thickness : reachable=true
+@vadiole.unicode:dimen/fastscroll_margin : reachable=true
+@vadiole.unicode:dimen/fastscroll_minimum_range : reachable=true
+@vadiole.unicode:dimen/item_touch_helper_max_drag_scroll_per_frame : reachable=false
+@vadiole.unicode:dimen/item_touch_helper_swipe_escape_max_velocity : reachable=false
+@vadiole.unicode:dimen/item_touch_helper_swipe_escape_velocity : reachable=false
+@vadiole.unicode:dimen/notification_action_icon_size : reachable=false
+@vadiole.unicode:dimen/notification_action_text_size : reachable=false
+@vadiole.unicode:dimen/notification_big_circle_margin : reachable=false
+@vadiole.unicode:dimen/notification_content_margin_start : reachable=false
+@vadiole.unicode:dimen/notification_large_icon_height : reachable=false
+@vadiole.unicode:dimen/notification_large_icon_width : reachable=false
+@vadiole.unicode:dimen/notification_main_column_padding_top : reachable=false
+@vadiole.unicode:dimen/notification_media_narrow_margin : reachable=false
+@vadiole.unicode:dimen/notification_right_icon_size : reachable=false
+@vadiole.unicode:dimen/notification_right_side_padding_top : reachable=false
+@vadiole.unicode:dimen/notification_small_icon_background_padding : reachable=false
+@vadiole.unicode:dimen/notification_small_icon_size_as_large : reachable=false
+@vadiole.unicode:dimen/notification_subtext_size : reachable=false
+@vadiole.unicode:dimen/notification_top_pad : reachable=false
+@vadiole.unicode:dimen/notification_top_pad_large_text : reachable=false
+@vadiole.unicode:drawable/$ic_launcher_background__0 : reachable=false
+@vadiole.unicode:drawable/cursor : reachable=true
+@vadiole.unicode:drawable/ic_anchor : reachable=true
+@vadiole.unicode:drawable/ic_call_answer : reachable=false
+@vadiole.unicode:drawable/ic_call_answer_low : reachable=false
+@vadiole.unicode:drawable/ic_call_answer_video : reachable=false
+@vadiole.unicode:drawable/ic_call_answer_video_low : reachable=false
+@vadiole.unicode:drawable/ic_call_decline : reachable=false
+@vadiole.unicode:drawable/ic_call_decline_low : reachable=false
+@vadiole.unicode:drawable/ic_copy : reachable=true
+@vadiole.unicode:drawable/ic_find_in_table : reachable=true
+@vadiole.unicode:drawable/ic_launcher_background : reachable=false
+    @vadiole.unicode:drawable/$ic_launcher_background__0
+@vadiole.unicode:drawable/ic_launcher_foreground : reachable=false
+@vadiole.unicode:drawable/ic_link : reachable=true
+@vadiole.unicode:drawable/ic_magnifying_glass : reachable=true
+@vadiole.unicode:drawable/notification_action_background : reachable=false
+    @vadiole.unicode:color/androidx_core_ripple_material_light
+    @vadiole.unicode:dimen/compat_button_inset_horizontal_material
+    @vadiole.unicode:dimen/compat_button_inset_vertical_material
+    @vadiole.unicode:dimen/compat_control_corner_material
+    @vadiole.unicode:dimen/compat_button_padding_vertical_material
+    @vadiole.unicode:dimen/compat_button_padding_horizontal_material
+@vadiole.unicode:drawable/notification_bg : reachable=false
+    @vadiole.unicode:drawable/notification_bg_normal_pressed
+    @vadiole.unicode:drawable/notification_bg_normal
+@vadiole.unicode:drawable/notification_bg_low : reachable=false
+    @vadiole.unicode:drawable/notification_bg_low_pressed
+    @vadiole.unicode:drawable/notification_bg_low_normal
+@vadiole.unicode:drawable/notification_bg_low_normal : reachable=false
+@vadiole.unicode:drawable/notification_bg_low_pressed : reachable=false
+@vadiole.unicode:drawable/notification_bg_normal : reachable=false
+@vadiole.unicode:drawable/notification_bg_normal_pressed : reachable=false
+@vadiole.unicode:drawable/notification_icon_background : reachable=false
+    @vadiole.unicode:color/notification_icon_bg_color
+@vadiole.unicode:drawable/notification_oversize_large_icon_bg : reachable=false
+@vadiole.unicode:drawable/notification_template_icon_bg : reachable=false
+@vadiole.unicode:drawable/notification_template_icon_low_bg : reachable=false
+@vadiole.unicode:drawable/notification_tile_bg : reachable=false
+    @vadiole.unicode:drawable/notify_panel_notification_icon_bg
+@vadiole.unicode:drawable/notify_panel_notification_icon_bg : reachable=false
+@vadiole.unicode:drawable/splash_screen : reachable=false
+    @vadiole.unicode:drawable/ic_launcher_background
+    @vadiole.unicode:drawable/ic_launcher_foreground
+    @vadiole.unicode:color/windowBackground
+@vadiole.unicode:id/accessibility_action_clickable_span : reachable=true
+@vadiole.unicode:id/accessibility_custom_action_0 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_1 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_10 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_11 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_12 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_13 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_14 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_15 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_16 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_17 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_18 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_19 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_2 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_20 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_21 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_22 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_23 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_24 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_25 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_26 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_27 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_28 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_29 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_3 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_30 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_31 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_4 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_5 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_6 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_7 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_8 : reachable=false
+@vadiole.unicode:id/accessibility_custom_action_9 : reachable=false
+@vadiole.unicode:id/action_container : reachable=false
+@vadiole.unicode:id/action_divider : reachable=false
+@vadiole.unicode:id/action_image : reachable=false
+@vadiole.unicode:id/action_text : reachable=false
+@vadiole.unicode:id/actions : reachable=false
+@vadiole.unicode:id/async : reachable=false
+@vadiole.unicode:id/blocking : reachable=false
+@vadiole.unicode:id/chronometer : reachable=false
+@vadiole.unicode:id/dialog_button : reachable=false
+@vadiole.unicode:id/edit_text_id : reachable=false
+@vadiole.unicode:id/forever : reachable=false
+@vadiole.unicode:id/hide_ime_id : reachable=false
+@vadiole.unicode:id/icon : reachable=false
+@vadiole.unicode:id/icon_group : reachable=false
+@vadiole.unicode:id/info : reachable=false
+@vadiole.unicode:id/is_pooling_container_tag : reachable=true
+@vadiole.unicode:id/italic : reachable=false
+@vadiole.unicode:id/item_touch_helper_previous_elevation : reachable=false
+@vadiole.unicode:id/line1 : reachable=false
+@vadiole.unicode:id/line3 : reachable=false
+@vadiole.unicode:id/normal : reachable=false
+@vadiole.unicode:id/notification_background : reachable=false
+@vadiole.unicode:id/notification_main_column : reachable=false
+@vadiole.unicode:id/notification_main_column_container : reachable=false
+@vadiole.unicode:id/pooling_container_listener_holder_tag : reachable=true
+@vadiole.unicode:id/right_icon : reachable=false
+@vadiole.unicode:id/right_side : reachable=false
+@vadiole.unicode:id/tag_accessibility_actions : reachable=true
+@vadiole.unicode:id/tag_accessibility_clickable_spans : reachable=true
+@vadiole.unicode:id/tag_accessibility_heading : reachable=true
+@vadiole.unicode:id/tag_accessibility_pane_title : reachable=true
+@vadiole.unicode:id/tag_on_apply_window_listener : reachable=true
+@vadiole.unicode:id/tag_on_receive_content_listener : reachable=false
+@vadiole.unicode:id/tag_on_receive_content_mime_types : reachable=false
+@vadiole.unicode:id/tag_screen_reader_focusable : reachable=true
+@vadiole.unicode:id/tag_state_description : reachable=true
+@vadiole.unicode:id/tag_transition_group : reachable=false
+@vadiole.unicode:id/tag_unhandled_key_event_manager : reachable=false
+@vadiole.unicode:id/tag_unhandled_key_listeners : reachable=true
+@vadiole.unicode:id/tag_window_insets_animation_callback : reachable=true
+@vadiole.unicode:id/text : reachable=false
+@vadiole.unicode:id/text2 : reachable=false
+@vadiole.unicode:id/time : reachable=false
+@vadiole.unicode:id/title : reachable=false
+@vadiole.unicode:id/view_tree_lifecycle_owner : reachable=false
+@vadiole.unicode:integer/status_bar_notification_info_maxnum : reachable=false
+@vadiole.unicode:layout/custom_dialog : reachable=false
+@vadiole.unicode:layout/ime_base_split_test_activity : reachable=false
+@vadiole.unicode:layout/ime_secondary_split_test_activity : reachable=false
+@vadiole.unicode:layout/notification_action : reachable=false
+    @vadiole.unicode:style/Widget_Compat_NotificationActionContainer
+    @vadiole.unicode:dimen/notification_action_icon_size
+    @vadiole.unicode:style/Widget_Compat_NotificationActionText
+@vadiole.unicode:layout/notification_action_tombstone : reachable=false
+    @vadiole.unicode:style/Widget_Compat_NotificationActionContainer
+    @vadiole.unicode:dimen/notification_action_icon_size
+    @vadiole.unicode:style/Widget_Compat_NotificationActionText
+@vadiole.unicode:layout/notification_template_custom_big : reachable=false
+    @vadiole.unicode:layout/notification_template_icon_group
+    @vadiole.unicode:dimen/notification_large_icon_width
+    @vadiole.unicode:dimen/notification_large_icon_height
+    @vadiole.unicode:dimen/notification_right_side_padding_top
+    @vadiole.unicode:layout/notification_template_part_time
+    @vadiole.unicode:layout/notification_template_part_chronometer
+    @vadiole.unicode:style/TextAppearance_Compat_Notification_Info
+@vadiole.unicode:layout/notification_template_icon_group : reachable=false
+    @vadiole.unicode:dimen/notification_large_icon_width
+    @vadiole.unicode:dimen/notification_large_icon_height
+    @vadiole.unicode:dimen/notification_big_circle_margin
+    @vadiole.unicode:dimen/notification_right_icon_size
+@vadiole.unicode:layout/notification_template_part_chronometer : reachable=false
+    @vadiole.unicode:style/TextAppearance_Compat_Notification_Time
+@vadiole.unicode:layout/notification_template_part_time : reachable=false
+    @vadiole.unicode:style/TextAppearance_Compat_Notification_Time
+@vadiole.unicode:mipmap/ic_launcher : reachable=true
+    @vadiole.unicode:drawable/ic_launcher_background
+    @vadiole.unicode:drawable/ic_launcher_foreground
+@vadiole.unicode:mipmap/ic_launcher_round : reachable=true
+    @vadiole.unicode:drawable/ic_launcher_background
+    @vadiole.unicode:drawable/ic_launcher_foreground
+@vadiole.unicode:string/app_name : reachable=true
+@vadiole.unicode:string/call_notification_answer_action : reachable=false
+@vadiole.unicode:string/call_notification_answer_video_action : reachable=false
+@vadiole.unicode:string/call_notification_decline_action : reachable=false
+@vadiole.unicode:string/call_notification_hang_up_action : reachable=false
+@vadiole.unicode:string/call_notification_incoming_text : reachable=false
+@vadiole.unicode:string/call_notification_ongoing_text : reachable=false
+@vadiole.unicode:string/call_notification_screening_text : reachable=false
+@vadiole.unicode:string/status_bar_notification_info_overflow : reachable=false
+@vadiole.unicode:style/TextAppearance_Compat_Notification : reachable=false
+@vadiole.unicode:style/TextAppearance_Compat_Notification_Info : reachable=false
+@vadiole.unicode:style/TextAppearance_Compat_Notification_Line2 : reachable=false
+    @vadiole.unicode:style/TextAppearance_Compat_Notification_Info
+@vadiole.unicode:style/TextAppearance_Compat_Notification_Time : reachable=false
+@vadiole.unicode:style/TextAppearance_Compat_Notification_Title : reachable=false
+@vadiole.unicode:style/Theme_Dialog_Transparent : reachable=true
+    @vadiole.unicode:color/colorPrimary
+@vadiole.unicode:style/Theme_Unicode : reachable=true
+    @vadiole.unicode:color/windowBackground
+    @vadiole.unicode:color/colorPrimary
+    @vadiole.unicode:drawable/splash_screen
+@vadiole.unicode:style/Widget_Compat_NotificationActionContainer : reachable=false
+    @vadiole.unicode:drawable/notification_action_background
+@vadiole.unicode:style/Widget_Compat_NotificationActionText : reachable=false
+    @vadiole.unicode:color/androidx_core_secondary_text_default_material_light
+    @vadiole.unicode:dimen/notification_action_text_size
+@vadiole.unicode:xml/filepaths : reachable=true
 
 The root reachable resources are:
  attr:recyclerViewStyle:2130771989
@@ -350,7 +351,9 @@ The root reachable resources are:
  mipmap:ic_launcher:2131230720
  mipmap:ic_launcher_round:2131230721
  string:app_name:2131296256
+ style:Theme_Dialog_Transparent:2131361797
  style:Theme_Unicode:2131361798
+ xml:filepaths:2131492864
 Unused resources are: 
  color:androidx_core_ripple_material_light:2130837504
  color:androidx_core_secondary_text_default_material_light:2130837505
@@ -498,78 +501,5 @@ Unused resources are:
  style:TextAppearance_Compat_Notification_Line2:2131361794
  style:TextAppearance_Compat_Notification_Time:2131361795
  style:TextAppearance_Compat_Notification_Title:2131361796
- style:Theme_Dialog_Transparent:2131361797
  style:Widget_Compat_NotificationActionContainer:2131361799
  style:Widget_Compat_NotificationActionText:2131361800
-Skipped unused resource res/drawable-v21/notification_action_background.xml: 2250 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable/notification_bg.xml: 751 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable/notification_bg_low.xml: 753 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable/notification_icon_background.xml: 314 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable/notification_tile_bg.xml: 319 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable-ldpi-v4/ic_call_answer.png: 270 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-ldpi-v4/ic_call_answer_low.png: 270 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-ldpi-v4/ic_call_answer_video.png: 199 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-ldpi-v4/ic_call_answer_video_low.png: 199 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-ldpi-v4/ic_call_decline.png: 201 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-ldpi-v4/ic_call_decline_low.png: 201 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-mdpi-v4/ic_call_answer.png: 317 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-mdpi-v4/ic_call_answer_low.png: 317 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-mdpi-v4/ic_call_answer_video.png: 206 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-mdpi-v4/ic_call_answer_video_low.png: 206 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-mdpi-v4/ic_call_decline.png: 264 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-mdpi-v4/ic_call_decline_low.png: 264 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-mdpi-v4/notification_bg_low_normal.9.png: 215 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-mdpi-v4/notification_bg_low_pressed.9.png: 223 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-mdpi-v4/notification_bg_normal.9.png: 215 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png: 223 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png: 98 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/ic_call_answer.png: 472 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/ic_call_answer_low.png: 472 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/ic_call_answer_video.png: 254 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/ic_call_answer_video_low.png: 254 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/ic_call_decline.png: 375 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/ic_call_decline_low.png: 375 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/notification_bg_low_normal.9.png: 212 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-hdpi-v4/notification_bg_low_pressed.9.png: 225 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-hdpi-v4/notification_bg_normal.9.png: 212 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png: 225 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-hdpi-v4/notification_oversize_large_icon_bg.png: 909 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png: 107 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/ic_call_answer.png: 623 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/ic_call_answer_low.png: 623 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/ic_call_answer_video.png: 290 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/ic_call_answer_video_low.png: 290 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/ic_call_decline.png: 452 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/ic_call_decline_low.png: 452 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/notification_bg_low_normal.9.png: 221 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png: 252 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/notification_bg_normal.9.png: 221 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png: 247 bytes (replaced with small dummy file of size 77 bytes)
-Skipped unused resource res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png: 138 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxhdpi-v4/ic_call_answer.png: 884 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxhdpi-v4/ic_call_answer_low.png: 884 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxhdpi-v4/ic_call_answer_video.png: 384 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxhdpi-v4/ic_call_answer_video_low.png: 384 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxhdpi-v4/ic_call_decline.png: 628 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxhdpi-v4/ic_call_decline_low.png: 628 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxxhdpi-v4/ic_call_answer.png: 1171 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxxhdpi-v4/ic_call_answer_low.png: 1171 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxxhdpi-v4/ic_call_answer_video.png: 465 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxxhdpi-v4/ic_call_answer_video_low.png: 465 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxxhdpi-v4/ic_call_decline.png: 823 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-xxxhdpi-v4/ic_call_decline_low.png: 823 bytes (replaced with small dummy file of size 67 bytes)
-Skipped unused resource res/drawable-anydpi-v21/ic_call_answer.xml: 1515 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable-anydpi-v21/ic_call_answer_low.xml: 1373 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable-anydpi-v21/ic_call_answer_video.xml: 931 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable-anydpi-v21/ic_call_answer_video_low.xml: 789 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable-anydpi-v21/ic_call_decline.xml: 1689 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/drawable-anydpi-v21/ic_call_decline_low.xml: 1547 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout/custom_dialog.xml: 828 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout/ime_base_split_test_activity.xml: 365 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout/ime_secondary_split_test_activity.xml: 1465 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout-v21/notification_action.xml: 2216 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout-v21/notification_action_tombstone.xml: 2677 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout-v21/notification_template_custom_big.xml: 6318 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout-v21/notification_template_icon_group.xml: 2432 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout/notification_template_part_chronometer.xml: 643 bytes (replaced with small dummy file of size 9 bytes)
-Skipped unused resource res/layout/notification_template_part_time.xml: 630 bytes (replaced with small dummy file of size 9 bytes)
