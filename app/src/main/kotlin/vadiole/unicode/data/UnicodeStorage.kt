@@ -5,40 +5,48 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.openDatabase
 import android.util.Log
+import kotlinx.coroutines.asCoroutineDispatcher
+import kotlinx.coroutines.withContext
 import java.io.File
+import java.util.concurrent.Executors
+import java.util.zip.ZipInputStream
 import kotlin.system.measureTimeMillis
-import vadiole.unicode.utils.extension.io
 
 class UnicodeStorage(private val context: Context) {
-    var database: SQLiteDatabase? = null
+    private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
+    private var database: SQLiteDatabase? = null
 
-    //TODO: is it okay to use just io dispatcher?
-    private suspend fun openDatabase(): SQLiteDatabase = io {
+    private suspend fun openDatabase(): SQLiteDatabase = withContext(dispatcher) {
         var currentDatabase = database
         while (currentDatabase == null) {
             currentDatabase = openDatabase(getDatabasePath(), null, OPEN_READONLY)
             database = currentDatabase
         }
-        return@io currentDatabase
+        return@withContext currentDatabase
     }
 
-    private suspend fun getDatabasePath(): String = io {
-        context.filesDir.mkdirs()
-        val database = File(context.filesDir, databaseName)
-        if (!database.exists() || database.length() < 100) {
-            context.filesDir.listFiles()!!.forEach { file ->
+    private suspend fun getDatabasePath(): String = withContext(dispatcher) {
+        val databaseDir = File(context.filesDir, databaseDir).also { it.mkdirs() }
+        val databaseFile = File(databaseDir, databaseName)
+        if (!databaseFile.exists() || databaseFile.length() < 100) {
+            databaseDir.listFiles()?.forEach { file ->
                 file.deleteOnExit()
             }
-            context.assets.open(databaseName).use { input ->
-                database.outputStream().use { output ->
-                    input.copyTo(output)
+            context.assets.open("$databaseName.zip").use { input ->
+                ZipInputStream(input).use { zipInput ->
+                    val entry = zipInput.nextEntry
+                    if (entry != null && entry.name == databaseName) {
+                        databaseFile.outputStream().use { output ->
+                            zipInput.copyTo(output)
+                        }
+                    }
                 }
             }
         }
-        return@io database.absolutePath
+        return@withContext databaseFile.absolutePath
     }
 
-    suspend fun getCodePoints(count: Int): CodePointArray = io {
+    suspend fun getCodePoints(count: Int): CodePointArray = withContext(dispatcher) {
         val query = if (count > 0) {
             "SELECT code_point FROM char WHERE id < ? LIMIT ?"
         } else {
@@ -58,10 +66,10 @@ class UnicodeStorage(private val context: Context) {
             }
         }
 
-        return@io result
+        return@withContext result
     }
 
-    suspend fun getBlocks(): Array<Block> = io {
+    suspend fun getBlocks(): Array<Block> = withContext(dispatcher) {
         val result: Array<Block>
         openDatabase().rawQuery(queryGetBlocks, null).use { cursor ->
             val idIndex = cursor.getColumnIndex("id")
@@ -78,10 +86,10 @@ class UnicodeStorage(private val context: Context) {
                 )
             }
         }
-        return@io result
+        return@withContext result
     }
 
-    suspend fun getCharObj(codePoint: CodePoint): CharObj? = io {
+    suspend fun getCharObj(codePoint: CodePoint): CharObj? = withContext(dispatcher) {
         val args = arrayOf(codePoint.value.toString())
         val result: CharObj
         openDatabase().rawQuery(queryGetChar, args).use { cursor ->
@@ -91,7 +99,7 @@ class UnicodeStorage(private val context: Context) {
             val versionIndex = cursor.getColumnIndex("version")
             val blockNameIndex = cursor.getColumnIndex("block_name")
             if (cursor.count == 0) {
-                return@io null
+                return@withContext null
             }
             cursor.moveToNext()
             result = CharObj(
@@ -102,10 +110,10 @@ class UnicodeStorage(private val context: Context) {
                 blockName = cursor.getString(blockNameIndex),
             )
         }
-        return@io result
+        return@withContext result
     }
 
-    suspend fun findCharsByName(input: String, count: Int): Array<SearchResult> = io {
+    suspend fun findCharsByName(input: String, count: Int): Array<SearchResult> = withContext(dispatcher) {
         val query = if (count > 0) {
             "$queryFindChars LIMIT $count"
         } else {
@@ -131,11 +139,12 @@ class UnicodeStorage(private val context: Context) {
         }.also {
             Log.d("UnicodeStorage", "perf $it")
         }
-        return@io result
+        return@withContext result
     }
 
     companion object {
         const val totalCharacters = 34920
+        private const val databaseDir = "sql"
         private const val databaseName = "u15.sqlite"
         private const val queryGetChar = "SELECT c.id as char_id, code_point, c.name AS char_name, version, b.name AS block_name " +
                 "FROM char c INNER JOIN block b ON c.block_id = b.id " +
