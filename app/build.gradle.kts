@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "vadiole.unicode"
     compileSdk = 34
 
     defaultConfig {
@@ -62,7 +63,6 @@ android {
             )
         )
     }
-    namespace = "vadiole.unicode"
 }
 
 dependencies {
