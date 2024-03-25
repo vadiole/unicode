@@ -3,6 +3,9 @@ package vadiole.unicode.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.utils.extension.insetsController
@@ -23,6 +26,11 @@ class UnicodeActivity : Activity() {
             navigationView.showDetailsBottomSheet(codePoint, skipAnimation = true)
         }
         onNewIntent(intent)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            Toast.makeText(this, "Test crash", Toast.LENGTH_SHORT).show()
+            error("Test error")
+        }, 2000)
     }
 
     override fun onNewIntent(intent: Intent) {
