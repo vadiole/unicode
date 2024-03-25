@@ -10,8 +10,13 @@ class UnicodeApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
         unicodeStorageInternal = UnicodeStorage(this)
         userConfigInternal = UserConfig(this)
+        if (userConfig.crashReportDisabled) {
+            Thread.setDefaultUncaughtExceptionHandler(defaultHandler)
+        }
     }
 
     companion object {

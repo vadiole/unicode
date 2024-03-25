@@ -8,7 +8,6 @@
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:maxAspectRatio="2.5"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.Unicode"
@@ -19,7 +18,7 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            tools:ignore="DiscouragedApi,LockedOrientationActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,11 +33,46 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="vadiole.github.io" />
-                <data android:path="/unicode" />
+                <data android:host="unicode/vadiole.me" />
+                <data android:path="/share" />
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".ui.SendCrashActivity"
+            android:autoRemoveFromRecents="true"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:finishOnTaskLaunch="true"
+            android:label=""
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:process=":sendcrash"
+            android:screenOrientation="portrait"
+            android:taskAffinity=":sendcrash"
+            android:theme="@style/Theme.Dialog.Transparent"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity">
+
+            <intent-filter>
+                <action android:name="vadiole.unicode.SEND_CRASH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+
+        </provider>
 
         <meta-data
             android:name="android.max_aspect"

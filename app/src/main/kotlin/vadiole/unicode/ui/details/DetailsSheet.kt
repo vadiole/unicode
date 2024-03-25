@@ -151,7 +151,7 @@ class DetailsSheet(
                 launch {
                     canClick = false
                     charObj?.let { value ->
-                        context.share(value.link)
+                        context.share(value.getLink())
                     }
                     delay(500)
                     canClick = true
@@ -160,7 +160,7 @@ class DetailsSheet(
         }
         onLongClick = {
             charObj?.let { value ->
-                context.toClipboard("Unicode", value.link)
+                context.toClipboard("Unicode", value.getLink())
                 Toast.makeText(context, "Link copied to clipboard", LENGTH_SHORT).show()
             }
         }
