@@ -13,5 +13,5 @@ class CharObj(val id: Int, val codePointRaw: Int, val name: String, val version:
         version,
     )
 
-    fun getLink(): String = "unicode.vadiole.me/?c=$codePointRaw"
+    fun getLink(): String = "unicode.vadiole.me/share?c=$codePointRaw"
 }

@@ -34,7 +34,7 @@
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:host="unicode/vadiole.me" />
-                <data android:path="/" />
+                <data android:path="/share" />
             </intent-filter>
 
         </activity>
