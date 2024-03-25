@@ -1,4 +1,4 @@
 /build
 /release
 /debug
-!/build/outputs/mapping/release/*
+!/build/outputs/mapping/release/mapping.txt
