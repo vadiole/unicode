@@ -32,8 +32,8 @@ class UncaughtExceptionHandler(private val context: Context) : UncaughtException
         }
         val intent = Intent()
             .setAction("vadiole.unicode.SEND_CRASH")
-            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            .addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME)
+            .addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS or Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NO_ANIMATION)
             .putExtra(SendCrashActivity.STACKTRACE_FILE_PATH, stackTraceFile.canonicalPath)
             .putExtra(SendCrashActivity.MAIN_PROCESS_PID, android.os.Process.myPid())
         context.startActivity(intent)

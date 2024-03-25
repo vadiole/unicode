@@ -18,7 +18,6 @@ import vadiole.unicode.utils.extension.dp
 import java.io.File
 import kotlin.system.exitProcess
 
-
 class SendCrashActivity : Activity() {
 
     private var dialog: AlertDialog? = null
