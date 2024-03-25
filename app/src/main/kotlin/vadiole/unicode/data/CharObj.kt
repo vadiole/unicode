@@ -1,7 +1,7 @@
 package vadiole.unicode.data
 
-import java.util.Locale
 import vadiole.unicode.utils.extension.leftPad
+import java.util.Locale
 
 class CharObj(val id: Int, val codePointRaw: Int, val name: String, val version: String, val blockName: String) {
     val char: String = String(Character.toChars(codePointRaw))
@@ -12,5 +12,6 @@ class CharObj(val id: Int, val codePointRaw: Int, val name: String, val version:
         "\\$hex",
         version,
     )
-    val link = "vadiole.github.io/unicode?c=$codePointRaw"
+
+    fun getLink(): String = "unicode.vadiole.me/?c=$codePointRaw"
 }

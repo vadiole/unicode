@@ -33,8 +33,8 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="vadiole.github.io" />
-                <data android:path="/unicode" />
+                <data android:host="unicode/vadiole.me" />
+                <data android:path="/" />
             </intent-filter>
 
         </activity>
