@@ -4,14 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    namespace = "vadiole.unicode"
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "vadiole.unicode"
         minSdk = 26
-        targetSdk = 33
-        versionCode = 141
-        versionName = "1.4.1"
+        targetSdk = 34
+        versionCode = 142
+        versionName = "1.4.2"
         resourceConfigurations.addAll(listOf("en"))
         setProperty("archivesBaseName", "unicode-v$versionName")
     }
@@ -42,10 +43,10 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "17"
         }
     }
 
@@ -62,14 +63,13 @@ android {
             )
         )
     }
-    namespace = "vadiole.unicode"
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.dynamicanimation:dynamicanimation:1.1.0-alpha03")
     implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
 }

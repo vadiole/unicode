@@ -39,7 +39,7 @@ class TableHelper(private val unicodeStorage: UnicodeStorage, private val userCo
     }
 
     fun getBlock(position: Int): Block? {
-        if (position == 0) return null
+        if (position <= 0) return null
         if (blocks.isEmpty()) return null
         if (position >= tableChars.size) return null
         val codePoint = tableChars[position]

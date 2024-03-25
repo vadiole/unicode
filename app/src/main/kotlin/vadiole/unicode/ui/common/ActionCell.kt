@@ -1,15 +1,11 @@
 package vadiole.unicode.ui.common
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import vadiole.unicode.UnicodeApp.Companion.themeManager
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.ui.theme.keysDialogPressable
-import vadiole.unicode.ui.theme.roboto_regular
-import vadiole.unicode.ui.theme.statesPressable
+import vadiole.unicode.R
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.setPaddingHorizontal
 
@@ -18,13 +14,14 @@ class ActionCell(
     name: String,
     private val topItem: Boolean = false,
     private val bottomItem: Boolean = false,
-) : TextView(context), ThemeDelegate {
+) : TextView(context) {
     private val backgroundDrawable = SquircleDrawable(13.dp(context)).apply {
         when {
             topItem -> {
                 skipBottomRight = true
                 skipBottomLeft = true
             }
+
             bottomItem -> {
                 skipTopLeft = true
                 skipTopRight = true
@@ -33,7 +30,18 @@ class ActionCell(
     }
 
     init {
-        themeManager.observe(this)
+        backgroundDrawable.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(-android.R.attr.state_pressed),
+            ),
+            intArrayOf(
+                this.context.getColor(R.color.dialogSurfacePressed),
+                this.context.getColor(R.color.dialogSurface),
+            )
+        )
+        compoundDrawableTintList = this.context.getColorStateList(R.color.windowTextPrimary)
+        setTextColor(this.context.getColor(R.color.windowTextPrimary))
         background = backgroundDrawable
         text = name
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
@@ -51,12 +59,4 @@ class ActionCell(
         setCompoundDrawablesWithIntrinsicBounds(0, 0, iconId, 0)
     }
 
-    override fun applyTheme() {
-        backgroundDrawable.colors = themeManager.getColors(
-            statesPressable,
-            keysDialogPressable,
-        )
-        compoundDrawableTintList = themeManager.getColors(key_windowTextPrimary)
-        setTextColor(themeManager.getColor(key_windowTextPrimary))
-    }
 }

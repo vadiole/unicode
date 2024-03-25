@@ -1,27 +1,26 @@
 package vadiole.unicode.ui.table.search
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.R
+
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.ui.common.SimpleTextView
 import vadiole.unicode.ui.common.StateColorDrawable
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_windowTextPrimary
-import vadiole.unicode.ui.theme.keysWindowPressable
-import vadiole.unicode.ui.theme.roboto_regular
-import vadiole.unicode.ui.theme.statesPressable
+
+import vadiole.unicode.ui.common.roboto_regular
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.frameParams
 import vadiole.unicode.utils.extension.matchParent
 import vadiole.unicode.utils.extension.onClick
 
-class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context), ThemeDelegate {
+class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context) {
 
     interface Delegate {
         fun onClick(codePoint: CodePoint)
@@ -41,7 +40,18 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
 
     init {
-        themeManager.observe(this)
+        charView.textColor = this.context.getColor(R.color.windowTextPrimary)
+        name.setTextColor(this.context.getColor(R.color.windowTextPrimary))
+        backgroundDrawable.colors = ColorStateList(
+            arrayOf(
+                intArrayOf(-android.R.attr.state_pressed),
+                intArrayOf(android.R.attr.state_pressed)
+            ),
+            intArrayOf(
+                this.context.getColor(R.color.windowSurfacePressed),
+                this.context.getColor(R.color.windowSurface),
+            ),
+        )
         layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
         addView(name, frameParams(matchParent, 48.dp(context), marginLeft = 64.dp(context)))
         addView(charView, frameParams(64.dp(context), 48.dp(context), gravity = Gravity.LEFT))
@@ -61,14 +71,5 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         name.text = data.name
         charView.text = data.codePoint.char
         codePoint = data.codePoint
-    }
-
-    override fun applyTheme() {
-        charView.textColor = themeManager.getColor(key_windowTextPrimary)
-        name.setTextColor(themeManager.getColor(key_windowTextPrimary))
-        backgroundDrawable.colors = themeManager.getColors(
-            statesPressable,
-            keysWindowPressable
-        )
     }
 }

@@ -11,11 +11,7 @@ import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
-import kotlin.math.PI
-import kotlin.math.abs
-import kotlin.math.atan
-import kotlin.math.hypot
-import vadiole.unicode.UnicodeApp.Companion.themeManager
+import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.CodePoint
@@ -23,15 +19,17 @@ import vadiole.unicode.ui.details.DetailsSheet
 import vadiole.unicode.ui.table.TableHelper
 import vadiole.unicode.ui.table.TableScreen
 import vadiole.unicode.ui.table.search.SearchHelper
-import vadiole.unicode.ui.theme.ThemeDelegate
-import vadiole.unicode.ui.theme.key_dialogDim
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.frameParams
 import vadiole.unicode.utils.extension.isVisible
 import vadiole.unicode.utils.extension.matchParent
 import vadiole.unicode.utils.extension.with
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.atan
+import kotlin.math.hypot
 
-class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
+class NavigationView(context: Context) : FrameLayout(context) {
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val scaledMinimumFlingVelocity = ViewConfiguration.get(context).scaledMinimumFlingVelocity
     private var openAnimation: SpringAnimation? = null
@@ -84,10 +82,10 @@ class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
             if (pendingCodePoint.value >= 0) {
                 showDetailsBottomSheet(pendingCodePoint, skipAnimation = pendingCharSkipAnimation)
             }
-            themeManager.observe(this)
+            dimView.setBackgroundColor(this.context.getColor(R.color.dialogDim))
         }
 
-        themeManager.observe(this)
+        dimView.setBackgroundColor(this.context.getColor(R.color.dialogDim))
     }
 
     fun onBackPressed(): Boolean {
@@ -168,6 +166,7 @@ class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
                     }
                 }
             }
+
             MotionEvent.ACTION_MOVE -> {
                 val isTouchOutside = event.rawY < content.top + content.translationY
                 if (isTouchOutside) {
@@ -203,6 +202,7 @@ class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
                     velocityTracker.addMovement(event)
                 }
             }
+
             MotionEvent.ACTION_MOVE -> {
                 if (isDetailsOpenOrOpening) {
                     val needOverdrag = content.translationY + deltaY < 0
@@ -260,9 +260,5 @@ class NavigationView(context: Context) : FrameLayout(context), ThemeDelegate {
     override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
         detailsSheet?.onApplyWindowInsets(insets)
         return super.onApplyWindowInsets(insets)
-    }
-
-    override fun applyTheme() {
-        dimView.setBackgroundColor(themeManager.getColor(key_dialogDim))
     }
 }
