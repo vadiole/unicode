@@ -66,12 +66,13 @@ class SearchView(context: Context, private val delegate: Delegate) : EditText(co
         isSingleLine = true
         typeface = roboto_regular
         includeFontPadding = false
-        isLongClickable = false
+        isLongClickable = true
         background = backgroundDrawable
         compoundDrawablePadding = 6.dp(context)
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         imeOptions = EditorInfo.IME_ACTION_SEARCH or EditorInfo.IME_FLAG_FORCE_ASCII
         inputType = InputType.TYPE_CLASS_TEXT
+
     }
 
     override fun onFocusChanged(focused: Boolean, direction: Int, previouslyFocusedRect: Rect?) {
