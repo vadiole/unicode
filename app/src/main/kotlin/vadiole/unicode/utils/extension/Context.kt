@@ -7,11 +7,17 @@ import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
 import android.content.Intent.EXTRA_TEXT
+import android.util.Log
 
 fun Context.toClipboard(label: CharSequence, text: CharSequence) {
-    val systemService = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-    val myClip = ClipData.newPlainText(label, text)
-    systemService.setPrimaryClip(myClip)
+    try {
+        val systemService = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val myClip = ClipData.newPlainText(label, text)
+        systemService.setPrimaryClip(myClip)
+    } catch (e: Exception) {
+        // Sometimes doesn't work
+        Log.e("Clipboard", "Failed to copy to clipboard", e)
+    }
 }
 
 fun Context.share(text: CharSequence) {
