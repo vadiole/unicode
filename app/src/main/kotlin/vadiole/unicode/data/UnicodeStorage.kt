@@ -5,12 +5,12 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.openDatabase
 import android.util.Log
-import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.concurrent.Executors
 import java.util.zip.ZipInputStream
 import kotlin.system.measureTimeMillis
+import kotlinx.coroutines.asCoroutineDispatcher
+import kotlinx.coroutines.withContext
 
 class UnicodeStorage(private val context: Context) {
     private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
@@ -143,9 +143,9 @@ class UnicodeStorage(private val context: Context) {
     }
 
     companion object {
-        const val totalCharacters = 34920
+        const val totalCharacters = 40116
         private const val databaseDir = "sql"
-        private const val databaseName = "u15.sqlite"
+        private const val databaseName = "u16.sqlite"
         private const val queryGetChar = "SELECT c.id as char_id, code_point, c.name AS char_name, version, b.name AS block_name " +
                 "FROM char c INNER JOIN block b ON c.block_id = b.id " +
                 "WHERE code_point = ? LIMIT 1"
