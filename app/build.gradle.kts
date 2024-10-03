@@ -12,7 +12,7 @@ android {
         minSdk = 26
         targetSdk = 34
         versionCode = 150
-        versionName = "1.5.0"
+        versionName = "1.6.0"
         resourceConfigurations.addAll(listOf("en"))
         setProperty("archivesBaseName", "unicode-v$versionName")
     }
