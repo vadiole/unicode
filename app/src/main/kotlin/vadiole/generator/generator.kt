@@ -22,7 +22,7 @@ class Block(
     val name: String,
 ) {
     fun print(out: PrintWriter) {
-        out.println("$id,$name,$start,$end")
+        out.println("$id;$name;$start;$end")
     }
 }
 
@@ -31,11 +31,11 @@ class Char(
     val codePoint: Int,
     val name: String,
     val name2: String,
-    val blockId: Int,
     val version: String,
+    val blockId: Int,
 ) {
     fun print(out: PrintWriter) {
-        out.println("$id,$codePoint,$name,$name2,$blockId,$version")
+        out.println("$id;$codePoint;$name;$name2;$version;$blockId")
     }
 }
 
@@ -82,12 +82,15 @@ fun main() {
                     128 -> {
                         name = "PADDING CHARACTER"
                     }
+
                     129 -> {
                         name = "HIGH OCTET PRESET"
                     }
+
                     132 -> {
                         name = "INDEX"
                     }
+
                     153 -> {
                         name = "SINGLE GRAPHIC CHARACTER INTRODUCER"
                     }
@@ -105,7 +108,7 @@ fun main() {
                 .find { version ->
                     version.contains(codePoint)
                 }?.version ?: "1.0"
-            Char(id, codePoint, name, name2, blockId, version)
+            Char(id, codePoint, name, name2, version, blockId)
         }
 
     File("$root/output/char.csv").printWriter().use { out ->
