@@ -1,6 +1,7 @@
 package vadiole.unicode.ui.table
 
 import android.graphics.Paint
+import android.util.Log
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
@@ -47,6 +48,10 @@ class TableHelper(private val unicodeStorage: UnicodeStorage, private val userCo
         if (last == null) {
             val index = blocks.binarySearch { block ->
                 block.contains(codePoint)
+            }
+            if (index < 0 || index >= blocks.size) {
+                Log.e("TableHelper", "Code point $codePoint with index $index was not found in blocks (size: ${blocks.size})")
+                return null
             }
             val block = blocks[index]
             lastBlockIndex = index
