@@ -8,11 +8,11 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import kotlin.math.floor
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.utils.extension.dp
-import kotlin.math.floor
 
 class CharRow(
     context: Context,
@@ -27,7 +27,7 @@ class CharRow(
     private val longClickRunnable = object : Runnable {
         override fun run() {
             val index = actionDownIndex
-            if (index > 0) {
+            if (index >= 0) {
                 performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 val codePoint = codePoints[index]
                 delegate.onLongClick(codePoint)
