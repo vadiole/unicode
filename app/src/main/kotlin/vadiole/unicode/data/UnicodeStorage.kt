@@ -69,6 +69,27 @@ class UnicodeStorage(private val context: Context) {
         return@withContext result
     }
 
+    suspend fun getAbbreviations(): Map<CodePoint, String> = withContext(dispatcher) {
+        val result: Map<CodePoint, String>
+        openDatabase().rawQuery(queryGetAbbreviations, null).use { cursor ->
+            val codePointIndex = cursor.getColumnIndex("code_point")
+            val nameIndex = cursor.getColumnIndex("char_name")
+            result = HashMap<CodePoint, String>(cursor.count)
+            while (cursor.moveToNext()) {
+                val codePoint = CodePoint(cursor.getInt(codePointIndex))
+                val name = cursor.getString(nameIndex)
+                val abbreviation = name
+                    .substringBefore(" (")
+                    .split(" ")
+                    .joinToString("") { word ->
+                        word.first().toString()
+                    }
+                result[codePoint] = abbreviation
+            }
+        }
+        return@withContext result
+    }
+
     suspend fun getBlocks(): Array<Block> = withContext(dispatcher) {
         val result: Array<Block>
         openDatabase().rawQuery(queryGetBlocks, null).use { cursor ->
@@ -162,5 +183,8 @@ class UnicodeStorage(private val context: Context) {
                 "WHEN name LIKE ? THEN 5 " +
                 "ELSE 6 END), " +
                 "id"
+        private const val queryGetAbbreviations = "SELECT code_point, c.name AS char_name " +
+                "FROM char c " +
+                "WHERE code_point <= 159 AND (code_point >= 127 OR (code_point >> 5) = 0)"
     }
 }

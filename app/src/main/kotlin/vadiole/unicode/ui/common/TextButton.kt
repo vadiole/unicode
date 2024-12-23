@@ -7,7 +7,7 @@ import android.graphics.Color
 import vadiole.unicode.utils.extension.dp
 import vadiole.unicode.utils.extension.setPaddingHorizontal
 
-open class TextButton(context: Context) : SimpleTextView(context) {
+open class TextButton(context: Context) : CharTextView(context) {
     var colors: ColorStateList = ColorStateList.valueOf(Color.DKGRAY)
         set(value) {
             field = value

@@ -11,7 +11,7 @@ import vadiole.unicode.R
 
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.SearchResult
-import vadiole.unicode.ui.common.SimpleTextView
+import vadiole.unicode.ui.common.CharTextView
 import vadiole.unicode.ui.common.StateColorDrawable
 
 import vadiole.unicode.ui.common.roboto_regular
@@ -28,7 +28,7 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
 
     private val backgroundDrawable = StateColorDrawable()
     private var codePoint: CodePoint? = null
-    val charView = SimpleTextView(context).apply {
+    val charView = CharTextView(context).apply {
         textSize = 24f.dp(context)
     }
     val name = TextView(context).apply {

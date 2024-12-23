@@ -15,17 +15,15 @@ import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
-
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.data.CharObj
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.ActionCell
 import vadiole.unicode.ui.common.CharInfoView
+import vadiole.unicode.ui.common.CharTextView
 import vadiole.unicode.ui.common.Screen
-import vadiole.unicode.ui.common.SimpleTextView
 import vadiole.unicode.ui.common.SpacerDrawable
 import vadiole.unicode.ui.common.SquircleDrawable
-
 import vadiole.unicode.ui.common.roboto_regular
 import vadiole.unicode.ui.common.roboto_semibold
 import vadiole.unicode.utils.extension.dp
@@ -87,7 +85,7 @@ class DetailsSheet(
     })
     private var divider1PositionY = 2f * screenPadding + titleHeight + subtitleHeight
     private val charViewHeight = 200.dp(context)
-    private val charView = SimpleTextView(context).apply {
+    private val charView = CharTextView(context).apply {
         vertical += verticalPadding
         layoutParams = frameParams(matchParent, charViewHeight, gravity = Gravity.TOP, marginTop = vertical)
         vertical += charViewHeight
@@ -196,11 +194,12 @@ class DetailsSheet(
 
     // TODO: add strings to localeManager
     private val infoNames: Array<String> = arrayOf("Code", "HTML", "CSS", "Version")
-    fun bind(codePoint: CodePoint) = launch {
+    fun bind(codePoint: CodePoint, abbreviations: Map<CodePoint, String>) = launch {
         val obj: CharObj = unicodeStorage.getCharObj(codePoint) ?: return@launch
         title.text = obj.name
         subtitle.text = obj.blockName
         charView.text = obj.char
+        charView.abbreviation = abbreviations[codePoint]
         infoViews.forEachIndexed { index, infoView ->
             infoView.name = infoNames[index]
             infoView.value = obj.infoValues[index]
