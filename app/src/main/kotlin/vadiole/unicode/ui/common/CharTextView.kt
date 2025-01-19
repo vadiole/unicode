@@ -6,11 +6,17 @@ import android.graphics.Paint
 import android.graphics.Typeface
 import android.view.Gravity
 import android.view.View
-import vadiole.unicode.utils.extension.dp
+import androidx.core.graphics.ColorUtils
 import kotlin.math.min
+import vadiole.unicode.utils.extension.dp
 
-open class SimpleTextView(context: Context) : View(context) {
+open class CharTextView(context: Context) : View(context) {
     var text: String = ""
+        set(value) {
+            field = value
+            postInvalidate()
+        }
+    var abbreviation: String? = null
         set(value) {
             field = value
             postInvalidate()
@@ -18,12 +24,14 @@ open class SimpleTextView(context: Context) : View(context) {
     var textSize: Float
         get() = textPaint.textSize
         set(value) {
+            abbreviationPaint.textSize = value * 0.5f
             textPaint.textSize = value
             requestLayout()
         }
     var textColor: Int
         get() = textPaint.color
         set(value) {
+            abbreviationPaint.color = ColorUtils.setAlphaComponent(value, 128)
             textPaint.color = value
             postInvalidate()
         }
@@ -49,20 +57,30 @@ open class SimpleTextView(context: Context) : View(context) {
         letterSpacing = -0.02f
         isSubpixelText = true
     }
+    private val abbreviationPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textAlign = Paint.Align.CENTER
+        textSize = 7f.dp(context)
+        letterSpacing = -0.02f
+        isSubpixelText = true
+    }
     private var textPositionY: Float = 0f
     private var textPositionX: Float = 0f
+    private var abbreviationY: Float = 0f
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         textPositionY = 0.5f * (h - textPaint.descent() - textPaint.ascent())
+        abbreviationY = 0.5f * (h - abbreviationPaint.descent() - abbreviationPaint.ascent())
         when (gravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
             Gravity.CENTER_HORIZONTAL -> {
                 textPaint.textAlign = Paint.Align.CENTER
                 textPositionX = (w - paddingLeft - paddingRight) / 2f + paddingLeft
             }
+
             Gravity.LEFT -> {
                 textPaint.textAlign = Paint.Align.LEFT
                 textPositionX = paddingLeft.toFloat()
             }
+
             Gravity.RIGHT -> {
                 textPaint.textAlign = Paint.Align.RIGHT
                 textPositionX = w - paddingRight.toFloat()
@@ -76,7 +94,7 @@ open class SimpleTextView(context: Context) : View(context) {
 
         // wrap content
         if (widthMode == MeasureSpec.AT_MOST) {
-            val textWidth = textPaint.measureText(text).toInt()
+            val textWidth = measureWidth()
             val totalWidth = textWidth + paddingLeft + paddingRight
             val finalWidth = min(availableWidth, totalWidth)
             val newWidthMeasureSpec = MeasureSpec.makeMeasureSpec(finalWidth, MeasureSpec.EXACTLY)
@@ -87,7 +105,28 @@ open class SimpleTextView(context: Context) : View(context) {
     }
 
     override fun onDraw(canvas: Canvas) {
+        val abbreviation = abbreviation
+        if (abbreviation != null) {
+            drawAbbreviation(canvas, abbreviation)
+        } else {
+            drawText(canvas)
+        }
+    }
+
+    private fun drawText(canvas: Canvas) {
         canvas.drawText(text, textPositionX, textPositionY, textPaint)
+    }
+
+    private fun drawAbbreviation(canvas: Canvas, abbreviation: String) {
+        canvas.drawText(abbreviation, textPositionX, abbreviationY, abbreviationPaint)
+    }
+
+    private fun measureWidth(): Int {
+        return if (text.isNotEmpty()) {
+            textPaint.measureText(text).toInt()
+        } else {
+            abbreviationPaint.measureText(abbreviation).toInt()
+        }
     }
 
     override fun hasOverlappingRendering() = false

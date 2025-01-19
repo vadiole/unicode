@@ -8,6 +8,7 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import androidx.core.graphics.ColorUtils
 import kotlin.math.floor
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
@@ -17,10 +18,15 @@ import vadiole.unicode.utils.extension.dp
 class CharRow(
     context: Context,
     private val count: Int,
-    private val delegate: Delegate
+    private val delegate: Delegate,
 ) : View(context) {
     private var codePoints: CodePointArray = CodePointArray(0)
+    private var abbreviations: Map<CodePoint, String> = emptyMap()
     private val charPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textAlign = Paint.Align.CENTER
+        isSubpixelText = true
+    }
+    private val abbreviationPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         isSubpixelText = true
     }
@@ -41,9 +47,11 @@ class CharRow(
     private val longClickDuration: Long = ViewConfiguration.getLongPressTimeout().toLong()
     private val ripplePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val charSize = 144f.dp(context) / count
+    private val abbreviationSize = charSize * 0.5f
     private val charRipples: BooleanArray = BooleanArray(count)
     private val charCoordsX: FloatArray = FloatArray(count)
     private var charCoordY: Float = 0f
+    private var abbreviationCoordY: Float = 0f
     private var charPivotY: Float = 0f
     private var rippleRadius: Float = 200f.dp(context) / count
     private var actionDownIndex = -1
@@ -51,14 +59,17 @@ class CharRow(
 
     init {
         charPaint.color = context.getColor(R.color.windowTextPrimary)
+        abbreviationPaint.color = ColorUtils.setAlphaComponent(context.getColor(R.color.windowTextPrimary), 128)
         ripplePaint.color = context.getColor(R.color.windowSurfacePressed)
         charPaint.textSize = charSize
+        abbreviationPaint.textSize = abbreviationSize
         isClickable = true
         isFocusable = true
     }
 
-    fun bind(codePoints: CodePointArray) {
+    fun bind(codePoints: CodePointArray, abbreviations: Map<CodePoint, String>) {
         this.codePoints = codePoints
+        this.abbreviations = abbreviations
         charRipples.fill(false)
         invalidate()
     }
@@ -128,6 +139,7 @@ class CharRow(
             charCoordsX[index] = singleCharWidth * index + centerOffsetX
         }
         charCoordY = (h - charPaint.descent() - charPaint.ascent()) / 2
+        abbreviationCoordY = (h - abbreviationPaint.descent() - abbreviationPaint.ascent()) / 2
         charPivotY = h / 2f
     }
 
@@ -140,13 +152,22 @@ class CharRow(
     @SuppressLint("MissingSuperCall")
     override fun draw(canvas: Canvas) {
         codePoints.forEachIndexed { index, codePoint ->
-            val text = codePoint.char
             val charCoordX = charCoordsX[index]
             val charPivotX = charCoordsX[index]
             if (charRipples[index]) {
                 canvas.drawCircle(charPivotX, charPivotY, rippleRadius, ripplePaint)
             }
-            canvas.drawText(text, charCoordX, charCoordY, charPaint)
+            drawChar(canvas, codePoint, charCoordX, charCoordY)
+        }
+    }
+
+    private fun drawChar(canvas: Canvas, codePoint: CodePoint, charCoordX: Float, charCoordY: Float) {
+        val abbreviation = abbreviations[codePoint]
+        if (abbreviation != null) {
+            canvas.drawText(abbreviation, charCoordX, abbreviationCoordY, abbreviationPaint)
+        } else {
+            Character.UnicodeBlock.SPECIALS
+            canvas.drawText(codePoint.char, charCoordX, charCoordY, charPaint)
         }
     }
 

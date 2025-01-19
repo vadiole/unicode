@@ -11,6 +11,10 @@ import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.atan
+import kotlin.math.hypot
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.UnicodeApp.Companion.userConfig
@@ -24,10 +28,6 @@ import vadiole.unicode.utils.extension.frameParams
 import vadiole.unicode.utils.extension.isVisible
 import vadiole.unicode.utils.extension.matchParent
 import vadiole.unicode.utils.extension.with
-import kotlin.math.PI
-import kotlin.math.abs
-import kotlin.math.atan
-import kotlin.math.hypot
 
 class NavigationView(context: Context) : FrameLayout(context) {
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -100,7 +100,7 @@ class NavigationView(context: Context) : FrameLayout(context) {
         val detailsSheet = detailsSheet
         if (detailsSheet != null) {
             if (codePoint.value >= 0) {
-                detailsSheet.bind(codePoint = codePoint)
+                detailsSheet.bind(codePoint = codePoint, abbreviations = tableHelper.abbreviations)
             }
             visibility = VISIBLE
             isDetailsOpenOrOpening = true

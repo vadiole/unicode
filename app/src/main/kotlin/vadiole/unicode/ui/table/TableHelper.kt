@@ -15,10 +15,15 @@ import vadiole.unicode.utils.extension.worker
 class TableHelper(private val unicodeStorage: UnicodeStorage, private val userConfig: UserConfig) {
     var totalChars = UnicodeStorage.totalCharacters
     var tableChars: CodePointArray = CodePointArray(0)
+    var abbreviations: Map<CodePoint, String> = emptyMap()
     var blocks: Array<Block> = emptyArray()
     private val glyphPaint = Paint()
     private var lastBlock: Block? = null
     private var lastBlockIndex = -1
+
+    suspend fun loadAbbreviations() = worker {
+        abbreviations = unicodeStorage.getAbbreviations()
+    }
 
     suspend fun loadChars(fast: Boolean) = worker {
         val count = if (fast) 256 else -1

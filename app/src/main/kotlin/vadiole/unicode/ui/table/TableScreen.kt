@@ -71,7 +71,8 @@ class TableScreen(
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             val cell = holder.itemView as CharRow
             val codePoints = tableHelper.getChars(position, spanCount)
-            cell.bind(codePoints)
+            val abbreviations = tableHelper.abbreviations
+            cell.bind(codePoints, abbreviations)
         }
     }
     private val searchResultCellDelegate = object : SearchResultCell.Delegate {
@@ -89,7 +90,8 @@ class TableScreen(
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             val view = holder.itemView as SearchResultCell
             val data = searchHelper.searchResult[position]
-            view.bind(data)
+            val abbreviations = tableHelper.abbreviations
+            view.bind(data, abbreviations)
         }
     }
 
@@ -177,6 +179,7 @@ class TableScreen(
         addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
         launch {
             tableHelper.loadChars(fast = true)
+            tableHelper.loadAbbreviations()
             tableAdapter.notifyDataSetChanged()
             tableHelper.loadChars(fast = false)
             tableAdapter.notifyDataSetChanged()
