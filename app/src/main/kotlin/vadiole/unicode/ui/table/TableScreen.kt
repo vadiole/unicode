@@ -90,7 +90,8 @@ class TableScreen(
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             val view = holder.itemView as SearchResultCell
             val data = searchHelper.searchResult[position]
-            view.bind(data)
+            val abbreviations = tableHelper.abbreviations
+            view.bind(data, abbreviations)
         }
     }
 

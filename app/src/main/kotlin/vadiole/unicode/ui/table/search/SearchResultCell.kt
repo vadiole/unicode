@@ -67,9 +67,10 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         }
     }
 
-    fun bind(data: SearchResult) {
+    fun bind(data: SearchResult, abbreviations: Map<CodePoint, String>) {
         name.text = data.name
         charView.text = data.codePoint.char
+        charView.abbreviation = abbreviations[data.codePoint]
         codePoint = data.codePoint
     }
 }

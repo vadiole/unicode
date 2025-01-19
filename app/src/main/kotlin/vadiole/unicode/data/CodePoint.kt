@@ -4,26 +4,6 @@ package vadiole.unicode.data
 value class CodePoint(val value: Int) {
     val char: String
         get() = String(Character.toChars(value))
-    val abbreviation: String?
-        get() {
-            if (isPrintable()) return null
-            return runCatching {
-                Character
-                    .getName(value)
-                    ?.split(" ")
-                    ?.joinToString("") { word ->
-                        word.first().toString()
-                    }
-            }.getOrNull()
-        }
-
-    private fun isPrintable(): Boolean {
-        if (Character.isISOControl(value)) {
-            return false
-        }
-        val block: Character.UnicodeBlock? = Character.UnicodeBlock.of(value)
-        return block != null && block !== Character.UnicodeBlock.SPECIALS
-    }
 }
 
 @JvmInline
