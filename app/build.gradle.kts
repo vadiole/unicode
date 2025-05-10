@@ -5,27 +5,30 @@ plugins {
 
 android {
     namespace = "vadiole.unicode"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "vadiole.unicode"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 152
         versionName = "1.5.2"
-        resourceConfigurations.addAll(listOf("en"))
         setProperty("archivesBaseName", "unicode-v$versionName")
     }
 
+    androidResources {
+        localeFilters += listOf("en")
+    }
+
     buildTypes {
-        getByName("debug") {
+        debug {
             applicationIdSuffix = ".debug"
             isMinifyEnabled = false
             isShrinkResources = false
             proguardFiles("proguard-rules.pro")
         }
 
-        getByName("release") {
+        release {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles("proguard-rules.pro")
@@ -45,9 +48,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-        kotlinOptions {
-            jvmTarget = "17"
-        }
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 
     lint {
@@ -66,10 +70,10 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("androidx.dynamicanimation:dynamicanimation:1.1.0-alpha03")
-    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("androidx.core:core-ktx:1.16.0")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
+    implementation("androidx.dynamicanimation:dynamicanimation:1.1.0")
+    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
 }
