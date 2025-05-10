@@ -1,4 +1,4 @@
-package vadiole.unicode.utils.extension
+package vadiole.unicode.ui.common
 
 import android.widget.TextView
 import androidx.annotation.IntRange

@@ -7,12 +7,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import vadiole.unicode.R
 
-
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.frameParams
-import vadiole.unicode.utils.extension.matchParent
-import vadiole.unicode.utils.extension.onClick
-import vadiole.unicode.utils.extension.setLineHeightX
+import vadiole.unicode.ui.extension.onClick
 
 class TopBar(
     context: Context,

@@ -57,6 +57,7 @@ android {
     lint {
         disable.addAll(
             listOf(
+                "UseKtx",
                 "SetTextI18n",
                 "RtlHardcoded", "RtlCompat", "RtlEnabled",
                 "ViewConstructor",

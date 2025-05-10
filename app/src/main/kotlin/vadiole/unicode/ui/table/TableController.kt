@@ -8,11 +8,14 @@ import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.data.filterMaybe
-import vadiole.unicode.utils.extension.binarySearch
-import vadiole.unicode.utils.extension.filterMaybe
-import vadiole.unicode.utils.extension.worker
+import vadiole.unicode.ui.extension.binarySearch
+import vadiole.unicode.ui.extension.filterMaybe
+import vadiole.unicode.ui.extension.worker
 
-class TableHelper(private val unicodeStorage: UnicodeStorage, private val userConfig: UserConfig) {
+class TableController(
+    private val unicodeStorage: UnicodeStorage,
+    private val userConfig: UserConfig,
+) {
     var totalChars = UnicodeStorage.totalCharacters
     var tableChars: CodePointArray = CodePointArray(0)
     var abbreviations: Map<CodePoint, String> = emptyMap()
@@ -55,7 +58,7 @@ class TableHelper(private val unicodeStorage: UnicodeStorage, private val userCo
                 block.contains(codePoint)
             }
             if (index < 0 || index >= blocks.size) {
-                Log.e("TableHelper", "Code point $codePoint with index $index was not found in blocks (size: ${blocks.size})")
+                Log.e("TableController", "Code point $codePoint with index $index was not found in blocks (size: ${blocks.size})")
                 return null
             }
             val block = blocks[index]

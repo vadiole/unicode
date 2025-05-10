@@ -1,6 +1,5 @@
 package vadiole.unicode.data
 
-import vadiole.unicode.utils.extension.leftPad
 import java.util.Locale
 
 class CharObj(val id: Int, val codePointRaw: Int, val name: String, val version: String, val blockName: String) {
@@ -14,4 +13,14 @@ class CharObj(val id: Int, val codePointRaw: Int, val name: String, val version:
     )
 
     fun getLink(): String = "unicode.vadiole.me/share?c=$codePointRaw"
+}
+
+
+fun String.leftPad(size: Int, padChar: Char): String {
+    val pads = size - length
+    if (pads <= 0) {
+        return this
+    }
+    val buf = CharArray(pads) { padChar }
+    return String(buf) + this
 }

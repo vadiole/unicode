@@ -8,17 +8,15 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vadiole.unicode.R
-
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.ui.common.CharTextView
 import vadiole.unicode.ui.common.StateColorDrawable
-
+import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.frameParams
+import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.roboto_regular
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.frameParams
-import vadiole.unicode.utils.extension.matchParent
-import vadiole.unicode.utils.extension.onClick
+import vadiole.unicode.ui.extension.onClick
 
 class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context) {
 

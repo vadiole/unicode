@@ -6,8 +6,7 @@ import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import vadiole.unicode.R
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.setPaddingHorizontal
+import vadiole.unicode.ui.extension.setPaddingHorizontal
 
 class ActionCell(
     context: Context,

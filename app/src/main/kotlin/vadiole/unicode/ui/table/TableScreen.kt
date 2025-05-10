@@ -13,7 +13,6 @@ import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
-
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.binarySearch
@@ -21,25 +20,24 @@ import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SearchBar
 import vadiole.unicode.ui.common.TopBar
-import vadiole.unicode.ui.table.search.SearchHelper
+import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.frameParams
+import vadiole.unicode.ui.common.matchParent
+import vadiole.unicode.ui.common.navigationBars
+import vadiole.unicode.ui.common.statusBars
+import vadiole.unicode.ui.common.toClipboard
+import vadiole.unicode.ui.common.wrapContent
+import vadiole.unicode.ui.extension.hideKeyboard
+import vadiole.unicode.ui.table.search.SearchController
 import vadiole.unicode.ui.table.search.SearchResultCell
 import vadiole.unicode.ui.table.search.SearchResultView
 import vadiole.unicode.ui.table.selector.BlockSelectorPopup
 import vadiole.unicode.ui.table.selector.BlockSelectorView
 
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.frameParams
-import vadiole.unicode.utils.extension.hideKeyboard
-import vadiole.unicode.utils.extension.matchParent
-import vadiole.unicode.utils.extension.navigationBars
-import vadiole.unicode.utils.extension.statusBars
-import vadiole.unicode.utils.extension.toClipboard
-import vadiole.unicode.utils.extension.wrapContent
-
 class TableScreen(
     context: Context,
-    private val tableHelper: TableHelper,
-    private val searchHelper: SearchHelper,
+    private val tableController: TableController,
+    private val searchController: SearchController,
     private val delegate: Delegate,
 ) : Screen(context) {
     private var spanCount = 8
@@ -50,7 +48,7 @@ class TableScreen(
     private val blockSelectorDelegate = object : BlockSelectorView.Delegate {
         override fun onBlockSelected(block: Block) {
             popup?.dismiss()
-            tableView.scrollToPositionTop((tableHelper.getPosition(block) / spanCount) + 1)
+            tableView.scrollToPositionTop((tableController.getPosition(block) / spanCount) + 1)
         }
     }
     private val charCellDelegate = object : CharRow.Delegate {
@@ -61,8 +59,8 @@ class TableScreen(
         }
     }
     private val tableAdapter = object : TableAdapter() {
-        override fun getItemCount(): Int = tableHelper.totalChars / spanCount
-        override fun getBlock(position: Int) = tableHelper.getBlock(position)
+        override fun getItemCount(): Int = tableController.totalChars / spanCount
+        override fun getBlock(position: Int) = tableController.getBlock(position)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
             val charCell = CharRow(context, spanCount, charCellDelegate)
             return CollectionView.Cell(charCell)
@@ -70,8 +68,8 @@ class TableScreen(
 
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             val cell = holder.itemView as CharRow
-            val codePoints = tableHelper.getChars(position, spanCount)
-            val abbreviations = tableHelper.abbreviations
+            val codePoints = tableController.getChars(position, spanCount)
+            val abbreviations = tableController.abbreviations
             cell.bind(codePoints, abbreviations)
         }
     }
@@ -82,15 +80,15 @@ class TableScreen(
         }
     }
     private val searchAdapter = object : CollectionView.Adapter() {
-        override fun getItemCount(): Int = searchHelper.searchResult.size
+        override fun getItemCount(): Int = searchController.searchResult.size
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
             return CollectionView.Cell(SearchResultCell(context, searchResultCellDelegate))
         }
 
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             val view = holder.itemView as SearchResultCell
-            val data = searchHelper.searchResult[position]
-            val abbreviations = tableHelper.abbreviations
+            val data = searchController.searchResult[position]
+            val abbreviations = tableController.abbreviations
             view.bind(data, abbreviations)
         }
     }
@@ -98,10 +96,10 @@ class TableScreen(
     private var popup: BlockSelectorPopup? = null
 
     private val topBar: TopBar = TopBar(context, "Unicode") {
-        if (tableHelper.blocks.isEmpty()) return@TopBar
+        if (tableController.blocks.isEmpty()) return@TopBar
 
         val popup = popup ?: kotlin.run {
-            val blockSelectorView = BlockSelectorView(context, tableHelper.blocks, blockSelectorDelegate)
+            val blockSelectorView = BlockSelectorView(context, tableController.blocks, blockSelectorDelegate)
             BlockSelectorPopup(blockSelectorView, wrapContent, wrapContent).also {
                 popup = it
             }
@@ -125,10 +123,10 @@ class TableScreen(
             searchJob?.cancel()
             searchJob = launch {
                 searchResultView.stopScroll()
-                searchHelper.search(string, 64)
+                searchController.search(string, 64)
                 searchResultView.scrollToPosition(0)
                 searchAdapter.notifyDataSetChanged()
-                searchHelper.search(string)
+                searchController.search(string)
                 searchAdapter.notifyDataSetChanged()
             }
         }
@@ -178,12 +176,12 @@ class TableScreen(
         addView(tableView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
         addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
         launch {
-            tableHelper.loadChars(fast = true)
-            tableHelper.loadAbbreviations()
+            tableController.loadChars(fast = true)
+            tableController.loadAbbreviations()
             tableAdapter.notifyDataSetChanged()
-            tableHelper.loadChars(fast = false)
+            tableController.loadChars(fast = false)
             tableAdapter.notifyDataSetChanged()
-            tableHelper.loadBlocks()
+            tableController.loadBlocks()
         }
     }
 
@@ -198,7 +196,7 @@ class TableScreen(
     }
 
     fun scrollToChar(codePoint: CodePoint) {
-        val position = tableHelper.tableChars.binarySearch(codePoint)
+        val position = tableController.tableChars.binarySearch(codePoint)
         val row = position / spanCount
         val indexInRow = position % spanCount
         if (position >= 0) {

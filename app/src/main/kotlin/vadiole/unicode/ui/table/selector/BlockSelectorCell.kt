@@ -8,12 +8,10 @@ import android.view.Gravity
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vadiole.unicode.R
-
 import vadiole.unicode.ui.common.StateColorDrawable
-
+import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.roboto_regular
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.matchParent
 
 class BlockSelectorCell(context: Context) : TextView(context) {
 

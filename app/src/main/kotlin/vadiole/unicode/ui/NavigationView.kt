@@ -19,15 +19,14 @@ import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.CodePoint
+import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.frameParams
+import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.details.DetailsSheet
-import vadiole.unicode.ui.table.TableHelper
+import vadiole.unicode.ui.extension.isVisible
+import vadiole.unicode.ui.table.TableController
 import vadiole.unicode.ui.table.TableScreen
-import vadiole.unicode.ui.table.search.SearchHelper
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.frameParams
-import vadiole.unicode.utils.extension.isVisible
-import vadiole.unicode.utils.extension.matchParent
-import vadiole.unicode.utils.extension.with
+import vadiole.unicode.ui.table.search.SearchController
 
 class NavigationView(context: Context) : FrameLayout(context) {
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -42,17 +41,17 @@ class NavigationView(context: Context) : FrameLayout(context) {
     private val canDismissWithTouchOutside = true
     private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
-    private val tableHelper = TableHelper(unicodeStorage, userConfig)
-    private val searchHelper = SearchHelper(unicodeStorage)
+    private val tableController = TableController(unicodeStorage, userConfig)
+    private val searchController = SearchController(unicodeStorage)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onItemClick(codePoint: CodePoint) {
             showDetailsBottomSheet(codePoint)
         }
     }
-    private val tableScreen = TableScreen(context, tableHelper, searchHelper, tableDelegate)
+    private val tableScreen = TableScreen(context, tableController, searchController, tableDelegate)
     private val dimView = View(context).apply {
         layoutParams = frameParams(matchParent, matchParent)
-        visibility = View.GONE
+        visibility = GONE
     }
     private val detailsDelegate = object : DetailsSheet.Delegate {
         override fun findInTable(codePoint: CodePoint) {
@@ -100,7 +99,7 @@ class NavigationView(context: Context) : FrameLayout(context) {
         val detailsSheet = detailsSheet
         if (detailsSheet != null) {
             if (codePoint.value >= 0) {
-                detailsSheet.bind(codePoint = codePoint, abbreviations = tableHelper.abbreviations)
+                detailsSheet.bind(codePoint = codePoint, abbreviations = tableController.abbreviations)
             }
             visibility = VISIBLE
             isDetailsOpenOrOpening = true
@@ -124,10 +123,10 @@ class NavigationView(context: Context) : FrameLayout(context) {
 
     fun hideDetailsBottomSheet(withVelocity: Float = 0f): Boolean {
         if (isDetailsOpenOrOpening) {
-            with(detailsSheet) {
+            val detailsSheet = detailsSheet
+            if (detailsSheet != null) {
                 isDetailsOpenOrOpening = false
-                startSpringAnimation(this, measuredHeight, withVelocity)
-                return true
+                startSpringAnimation(detailsSheet, detailsSheet.measuredHeight, withVelocity)
             }
         }
         return false

@@ -10,8 +10,7 @@ import android.graphics.Typeface
 import android.view.Gravity
 import android.view.View
 import kotlin.math.min
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.setPaddingHorizontal
+import vadiole.unicode.ui.extension.setPaddingHorizontal
 
 open class TextButton(context: Context) : View(context) {
     var colors: ColorStateList = ColorStateList.valueOf(Color.DKGRAY)

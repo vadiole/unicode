@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import vadiole.unicode.data.CodePoint
-import vadiole.unicode.utils.extension.insetsController
-import vadiole.unicode.utils.extension.isDarkMode
+import vadiole.unicode.ui.common.insetsController
+import vadiole.unicode.ui.common.isDarkMode
 
 class UnicodeActivity : Activity() {
     private var backButtonHandler: () -> Boolean = { false }

@@ -7,9 +7,6 @@ import android.graphics.Paint
 import android.view.View
 import vadiole.unicode.R
 
-
-import vadiole.unicode.utils.extension.dp
-
 class CharInfoView(context: Context) : View(context) {
     private val backgroundDrawable = SquircleDrawable(12.dp(context))
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {

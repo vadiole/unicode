@@ -13,9 +13,7 @@ import android.widget.EditText
 import setCursorDrawable
 import vadiole.unicode.R
 
-
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.hideKeyboard
+import vadiole.unicode.ui.extension.hideKeyboard
 
 class SearchView(context: Context, private val delegate: Delegate) : EditText(context) {
     private val backgroundDrawable = SquircleDrawable(10.dp(context))

@@ -1,4 +1,4 @@
-package vadiole.unicode.utils.extension
+package vadiole.unicode.ui.extension
 
 import android.content.Context
 import android.graphics.Paint

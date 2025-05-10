@@ -3,7 +3,7 @@ package vadiole.unicode.ui.common
 import android.graphics.Canvas
 import android.graphics.Rect
 import androidx.recyclerview.widget.RecyclerView
-import vadiole.unicode.utils.extension.getDividerPaint
+import vadiole.unicode.ui.extension.getDividerPaint
 
 class CollectionItemDecoration(private val leftPadding: Float = 0f) : RecyclerView.ItemDecoration() {
     private val bounds = Rect()

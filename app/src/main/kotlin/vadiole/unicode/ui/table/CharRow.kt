@@ -13,7 +13,7 @@ import kotlin.math.floor
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
-import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.ui.common.dp
 
 class CharRow(
     context: Context,

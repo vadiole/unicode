@@ -1,30 +1,13 @@
-package vadiole.unicode.utils.extension
+package vadiole.unicode.ui.common
 
-import android.animation.ObjectAnimator
-import android.content.Context
 import android.graphics.Rect
-import android.util.Property
 import android.view.Gravity
-import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import androidx.core.graphics.Insets
-import androidx.core.view.WindowInsetsCompat
-import kotlin.math.ceil
 
 const val matchParent = ViewGroup.LayoutParams.MATCH_PARENT
 const val wrapContent = ViewGroup.LayoutParams.WRAP_CONTENT
-
-fun Float.dp(context: Context) = this * context.resources.displayMetrics.density
-
-fun Int.dp(context: Context): Int = ceil(this * context.resources.displayMetrics.density).toInt()
-
-val WindowInsetsCompat.navigationBars: Insets
-    get() = getInsets(WindowInsetsCompat.Type.navigationBars())
-
-val WindowInsetsCompat.statusBars: Insets
-    get() = getInsets(WindowInsetsCompat.Type.statusBars())
 
 fun frameParams(
     width: Int,
@@ -77,8 +60,3 @@ fun linearParams(
     layoutParams.gravity = gravity
     return layoutParams
 }
-
-fun <T : View> T.animate(
-    property: Property<T, Float>,
-    vararg values: Float, apply: ObjectAnimator.() -> Unit = {}
-): ObjectAnimator = ObjectAnimator.ofFloat(this, property, *values).apply(apply)

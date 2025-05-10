@@ -12,11 +12,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
-import vadiole.unicode.BuildConfig
-import vadiole.unicode.data.config.UserConfig
-import vadiole.unicode.utils.extension.dp
 import java.io.File
 import kotlin.system.exitProcess
+import vadiole.unicode.BuildConfig
+import vadiole.unicode.data.config.UserConfig
+import vadiole.unicode.ui.common.dp
 
 class SendCrashActivity : Activity() {
 

@@ -13,12 +13,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.R
 
-
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.frameParams
-import vadiole.unicode.utils.extension.matchParent
-import vadiole.unicode.utils.extension.onClick
-import vadiole.unicode.utils.extension.wrapContent
+import vadiole.unicode.ui.extension.onClick
 
 class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context) {
 

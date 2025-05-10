@@ -23,7 +23,7 @@ import vadiole.unicode.ui.common.ScrollbarDrawable
 import vadiole.unicode.ui.common.Squircle
 import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 
-import vadiole.unicode.utils.extension.dp
+import vadiole.unicode.ui.common.dp
 
 class BlockSelectorView(
     context: Context,

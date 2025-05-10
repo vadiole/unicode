@@ -9,8 +9,8 @@ import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.ScrollbarDrawable
 import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 
-import vadiole.unicode.utils.extension.dp
-import vadiole.unicode.utils.extension.setPaddingHorizontal
+import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.extension.setPaddingHorizontal
 
 class TableView(
     context: Context,

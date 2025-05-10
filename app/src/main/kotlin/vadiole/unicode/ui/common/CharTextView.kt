@@ -8,7 +8,6 @@ import android.view.Gravity
 import android.view.View
 import androidx.core.graphics.ColorUtils
 import kotlin.math.min
-import vadiole.unicode.utils.extension.dp
 
 open class CharTextView(context: Context) : View(context) {
     var text: String = ""
