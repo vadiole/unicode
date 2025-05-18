@@ -113,10 +113,14 @@ class TableScreen(
         override fun onFocused(): Boolean {
             tableView.visibility = GONE
             searchResultView.visibility = VISIBLE
+            delegate.onSearchFocused()
             return true
         }
 
-        override fun onUnfocused() = hideSearch()
+        override fun onUnfocused(): Boolean {
+            delegate.onSearchUnfocused()
+            return hideSearch()
+        }
 
         private var searchJob: Job? = null
         override fun onTextChanged(string: String) {
@@ -185,6 +189,10 @@ class TableScreen(
         }
     }
 
+    fun isSearchVisible(): Boolean {
+        return searchResultView.visibility == VISIBLE
+    }
+
     fun hideSearch(): Boolean {
         if (searchResultView.visibility != GONE) {
             searchBar.searchView.clearFocus()
@@ -211,5 +219,9 @@ class TableScreen(
 
     interface Delegate {
         fun onItemClick(codePoint: CodePoint)
+
+        fun onSearchFocused()
+
+        fun onSearchUnfocused()
     }
 }

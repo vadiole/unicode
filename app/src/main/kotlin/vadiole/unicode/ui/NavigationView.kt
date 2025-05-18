@@ -15,6 +15,7 @@ import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.atan
 import kotlin.math.hypot
+import kotlinx.coroutines.flow.MutableStateFlow
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.UnicodeApp.Companion.userConfig
@@ -28,7 +29,7 @@ import vadiole.unicode.ui.table.TableController
 import vadiole.unicode.ui.table.TableScreen
 import vadiole.unicode.ui.table.search.SearchController
 
-class NavigationView(context: Context) : FrameLayout(context) {
+class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val scaledMinimumFlingVelocity = ViewConfiguration.get(context).scaledMinimumFlingVelocity
     private var openAnimation: SpringAnimation? = null
@@ -46,6 +47,14 @@ class NavigationView(context: Context) : FrameLayout(context) {
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onItemClick(codePoint: CodePoint) {
             showDetailsBottomSheet(codePoint)
+        }
+
+        override fun onSearchFocused() {
+            updateBackEnabled()
+        }
+
+        override fun onSearchUnfocused() {
+            updateBackEnabled()
         }
     }
     private val tableScreen = TableScreen(context, tableController, searchController, tableDelegate)
@@ -87,14 +96,6 @@ class NavigationView(context: Context) : FrameLayout(context) {
         dimView.setBackgroundColor(this.context.getColor(R.color.dialogDim))
     }
 
-    fun onBackPressed(): Boolean {
-        var consumed = hideDetailsBottomSheet()
-        if (!consumed) {
-            consumed = tableScreen.hideSearch()
-        }
-        return consumed
-    }
-
     fun showDetailsBottomSheet(codePoint: CodePoint = CodePoint(-1), withVelocity: Float = 0f, skipAnimation: Boolean = false) {
         val detailsSheet = detailsSheet
         if (detailsSheet != null) {
@@ -112,13 +113,14 @@ class NavigationView(context: Context) : FrameLayout(context) {
                 startSpringAnimation(
                     view = detailsSheet,
                     toPosition = 0,
-                    startVelocity = withVelocity
+                    startVelocity = withVelocity,
                 )
             }
         } else {
             pendingCodePoint = codePoint
             pendingCharSkipAnimation = skipAnimation
         }
+        updateBackEnabled()
     }
 
     fun hideDetailsBottomSheet(withVelocity: Float = 0f): Boolean {
@@ -129,6 +131,7 @@ class NavigationView(context: Context) : FrameLayout(context) {
                 startSpringAnimation(detailsSheet, detailsSheet.measuredHeight, withVelocity)
             }
         }
+        updateBackEnabled()
         return false
     }
 
@@ -259,5 +262,24 @@ class NavigationView(context: Context) : FrameLayout(context) {
     override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
         detailsSheet?.onApplyWindowInsets(insets)
         return super.onApplyWindowInsets(insets)
+    }
+
+    override val isBackEnabled = MutableStateFlow(false)
+
+    override fun onBackInvoked() {
+        when {
+            isDetailsOpenOrOpening -> {
+                hideDetailsBottomSheet()
+            }
+
+            tableScreen.isSearchVisible() -> {
+                tableScreen.hideSearch()
+            }
+        }
+        updateBackEnabled()
+    }
+
+    private fun updateBackEnabled() {
+        isBackEnabled.value = isDetailsOpenOrOpening || tableScreen.isSearchVisible()
     }
 }
