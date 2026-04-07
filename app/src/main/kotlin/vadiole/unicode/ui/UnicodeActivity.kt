@@ -27,6 +27,7 @@ class UnicodeActivity : Activity() {
         super.onCreate(savedInstanceState)
         setDecorFitsSystemWindows(window, false)
         val navigationView = NavigationView(this)
+        navigationViewNullable = navigationView
         setContentView(navigationView)
         onNewIntent(intent)
 
