@@ -32,7 +32,7 @@ class UnicodeStorage(private val context: Context) {
         val databaseFile = File(databaseDir, databaseName)
         if (!databaseFile.exists() || databaseFile.length() < 100) {
             databaseDir.listFiles()?.forEach { file ->
-                file.deleteOnExit()
+                file.delete()
             }
             context.assets.open("$databaseName.zip").use { input ->
                 ZipInputStream(input).use { zipInput ->
@@ -239,9 +239,9 @@ class UnicodeStorage(private val context: Context) {
     }
 
     companion object {
-        const val totalCharacters = 40116
+        const val totalCharacters = 40575
         private const val databaseDir = "sql"
-        private const val databaseName = "u16.sqlite"
+        private const val databaseName = "u17.sqlite"
         private const val queryGetChar = "SELECT c.id as char_id, code_point, c.name AS char_name, version, b.name AS block_name " +
                 "FROM char c INNER JOIN block b ON c.block_id = b.id " +
                 "WHERE code_point = ? LIMIT 1"
