@@ -99,7 +99,7 @@ class DetailsSheet(
                 charObj?.let { value ->
                     val info = value.infoValues[it]
                     context.toClipboard("Unicode", info)
-                    Toast.makeText(context, "$info copied to clipboard", LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, info), LENGTH_SHORT).show()
                 }
             }
         }
@@ -115,7 +115,7 @@ class DetailsSheet(
     }
 
     private val actionCellHeight = 48.dp(context)
-    private val actionViewInTable = ActionCell(context, "Find in Table").apply {
+    private val actionViewInTable = ActionCell(context, context.getString(R.string.details_find_in_table)).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_find_in_table)
         vertical += actionCellHeight + 16.dp(context)
@@ -126,7 +126,7 @@ class DetailsSheet(
         }
     }
 
-    private val actionCopy = ActionCell(context, "Copy to Clipboard", topItem = true).apply {
+    private val actionCopy = ActionCell(context, context.getString(R.string.details_copy_to_clipboard), topItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_copy)
         vertical += actionCellHeight
@@ -134,12 +134,12 @@ class DetailsSheet(
             charObj?.let { value ->
                 val char = value.char
                 context.toClipboard("Unicode", char)
-                Toast.makeText(context, "$char copied to clipboard", LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, char), LENGTH_SHORT).show()
             }
         }
     }
     private var divider2PositionY = vertical.toFloat() + screenPadding
-    private val actionShare = ActionCell(context, "Share Link", bottomItem = true).apply {
+    private val actionShare = ActionCell(context, context.getString(R.string.details_share_link), bottomItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
         setIcon(R.drawable.ic_link)
         vertical += actionCellHeight
@@ -159,7 +159,7 @@ class DetailsSheet(
         onLongClick = {
             charObj?.let { value ->
                 context.toClipboard("Unicode", value.getLink())
-                Toast.makeText(context, "Link copied to clipboard", LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.toast_link_copied_to_clipboard), LENGTH_SHORT).show()
             }
         }
     }
@@ -192,8 +192,12 @@ class DetailsSheet(
         }
     }
 
-    // TODO: add strings to localeManager
-    private val infoNames: Array<String> = arrayOf("Code", "HTML", "CSS", "Version")
+    private val infoNames: Array<String> = arrayOf(
+        context.getString(R.string.details_info_code),
+        context.getString(R.string.details_info_html),
+        context.getString(R.string.details_info_css),
+        context.getString(R.string.details_info_version),
+    )
     fun bind(codePoint: CodePoint, abbreviations: Map<CodePoint, String>) = launch {
         val obj: CharObj = unicodeStorage.getCharObj(codePoint) ?: return@launch
         title.text = obj.name

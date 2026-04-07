@@ -60,7 +60,7 @@ class TableScreen(
         override fun onClick(codePoint: CodePoint) = delegate.onItemClick(codePoint)
         override fun onLongClick(codePoint: CodePoint) {
             context.toClipboard("Unicode", codePoint.char)
-            Toast.makeText(context, "${codePoint.char} copied to clipboard", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, codePoint.char), Toast.LENGTH_SHORT).show()
         }
     }
     private val tableAdapter = object : TableAdapter() {
@@ -122,7 +122,7 @@ class TableScreen(
 
     private var popup: BlockSelectorPopup? = null
 
-    private val topBar: TopBar = TopBar(context, "Unicode") {
+    private val topBar: TopBar = TopBar(context, context.getString(R.string.app_name)) {
         if (tableController.blocks.isEmpty()) return@TopBar
 
         val popup = popup ?: kotlin.run {
@@ -191,7 +191,7 @@ class TableScreen(
     private val divider = View(context)
     private val tableViewDelegate = object : TableView.Delegate {
         override fun onBlockChanged(name: String?) {
-            topBar.setTitle(name ?: "Unicode")
+            topBar.setTitle(name ?: context.getString(R.string.app_name))
         }
     }
     private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate)
@@ -208,7 +208,7 @@ class TableScreen(
         typeface = roboto_regular
         setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
         gravity = Gravity.CENTER
-        text = "No results found"
+        text = context.getString(R.string.search_no_results)
         visibility = GONE
     }
 

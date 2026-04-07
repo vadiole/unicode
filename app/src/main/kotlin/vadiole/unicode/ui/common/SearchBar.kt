@@ -40,12 +40,12 @@ class SearchBar(context: Context, delegate: Delegate) : FrameLayout(context) {
         }
     }
     val searchView = SearchView(context, searchViewDelegate).apply {
-        hint = "Search"
+        hint = context.getString(R.string.search_hint)
     }
     private val cancelMaxTranslation: Float
         get() = cancelButton.measuredWidth - 14f.dp(context)
     private val cancelButton = TextButton(context).apply {
-        text = "Cancel"
+        text = context.getString(R.string.action_cancel)
         setPadding(14.dp(context), 0, 16.dp(context), 0)
         onClick = {
             searchView.clearFocus()

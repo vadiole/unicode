@@ -28,7 +28,7 @@ class CharInfoView(context: Context) : View(context) {
     private var viewCenterX: Float = 0f
     private val valueCoordinateY = 25f.dp(context)
     private val nameCoordinateY = 44f.dp(context)
-    var name: String = "Code"
+    var name: String = context.getString(R.string.details_info_code)
         set(value) {
             field = value
             invalidate()

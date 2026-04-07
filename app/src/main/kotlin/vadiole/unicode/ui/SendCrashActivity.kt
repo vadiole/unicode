@@ -15,6 +15,7 @@ import androidx.core.content.FileProvider
 import java.io.File
 import kotlin.system.exitProcess
 import vadiole.unicode.BuildConfig
+import vadiole.unicode.R
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.common.dp
 
@@ -29,7 +30,7 @@ class SendCrashActivity : Activity() {
         val stacktracePath = intent.getStringExtra(STACKTRACE_FILE_PATH) ?: return
         val userConfig = UserConfig(this)
         dialog = AlertDialog.Builder(this)
-            .setTitle("Unicode has stopped")
+            .setTitle(getString(R.string.crash_dialog_title))
             .setView(
                 LinearLayout(this).apply {
                     layoutParams = LinearLayout.LayoutParams(
@@ -44,7 +45,7 @@ class SendCrashActivity : Activity() {
                                 LinearLayout.LayoutParams.WRAP_CONTENT
                             )
                             setPadding(24.dp(context), 8.dp(context), 24.dp(context), 8.dp(context))
-                            text = "Would you like to send a crash report?"
+                            text = getString(R.string.crash_dialog_message)
                             textSize = 17f
                         }
                     )
@@ -60,7 +61,7 @@ class SendCrashActivity : Activity() {
                                     setMargins(20.dp(context), 0, 20.dp(context), 0)
                                 }
                                 setPadding(0, 16.dp(context), 0, 16.dp(context))
-                                text = "Don't ask again"
+                                text = getString(R.string.crash_dont_ask_again)
                                 isChecked = false
                                 setOnCheckedChangeListener { _, isChecked ->
                                     userConfig.crashReportDisabled = isChecked
@@ -70,7 +71,7 @@ class SendCrashActivity : Activity() {
                     }
                 }
             )
-            .setPositiveButton("Send") { _, _ ->
+            .setPositiveButton(getString(R.string.crash_send)) { _, _ ->
                 val stacktraceFile = File(stacktracePath)
                 if (!stacktraceFile.exists()) return@setPositiveButton
                 val stacktraceUri = FileProvider.getUriForFile(this, "${BuildConfig.APPLICATION_ID}.fileprovider", stacktraceFile)
@@ -79,22 +80,22 @@ class SendCrashActivity : Activity() {
                 val intent = Intent(Intent.ACTION_SEND)
                     .putExtra(Intent.EXTRA_EMAIL, arrayOf(String(target)))
                     .putExtra(Intent.EXTRA_STREAM, stacktraceUri)
-                    .putExtra(Intent.EXTRA_SUBJECT, "Unicode app")
+                    .putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crash_email_subject))
                     .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     .apply {
                         setSelector(emailSelectorIntent)
                         clipData = ClipData("stacktrace", arrayOf("text/plain"), ClipData.Item(stacktraceUri))
                     }
                 try {
-                    startActivity(Intent.createChooser(intent, "Send via email"))
+                    startActivity(Intent.createChooser(intent, getString(R.string.crash_send_via_email)))
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    Toast.makeText(this, "No email clients installed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.crash_no_email_clients), Toast.LENGTH_LONG).show()
                     finishAndRemoveTask()
                     exitProcess(0)
                 }
             }
-            .setNegativeButton("Cancel") { _, _ ->
+            .setNegativeButton(getString(R.string.action_cancel)) { _, _ ->
                 finishAndRemoveTask()
                 exitProcess(0)
             }

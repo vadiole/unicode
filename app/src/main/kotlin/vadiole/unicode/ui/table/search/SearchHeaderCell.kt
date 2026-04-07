@@ -20,7 +20,7 @@ class SearchHeaderCell(context: Context) : FrameLayout(context) {
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
         setTextColor(this@SearchHeaderCell.context.getColor(R.color.windowTextSecondary))
-        text = "Recents"
+        text = context.getString(R.string.search_recents)
     }
 
     init {
