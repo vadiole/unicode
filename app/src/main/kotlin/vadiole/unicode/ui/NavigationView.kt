@@ -38,6 +38,12 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var scaleYAnimation: SpringAnimation? = null
     private var isDetailsOpenOrOpening = false
     private var isBackGestureInProgress = false
+
+    companion object {
+        private const val SPRING_STIFFNESS = 600f
+        private const val BACK_GESTURE_SCALE_FACTOR = 0.1f
+        private const val BACK_GESTURE_TRANSLATION_FACTOR = 0.1f
+    }
     private var touchDownX = -1f
     private var touchDownY = -1f
     private var touchDownTranslationY = -1f
@@ -71,6 +77,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
             hideDetailsBottomSheet()
             tableScreen.hideSearch()
             tableScreen.scrollToChar(codePoint)
+            updateBackEnabled()
         }
     }
     var detailsSheet: DetailsSheet? = null
@@ -102,10 +109,11 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     fun showDetailsBottomSheet(codePoint: CodePoint = CodePoint(-1), withVelocity: Float = 0f, skipAnimation: Boolean = false) {
         val detailsSheet = detailsSheet
         if (detailsSheet != null) {
+            resetBackGestureState(detailsSheet)
             if (codePoint.value >= 0) {
                 detailsSheet.bind(codePoint = codePoint, abbreviations = tableController.abbreviations)
             }
-            visibility = VISIBLE
+            dimView.visibility = VISIBLE
             isDetailsOpenOrOpening = true
             if (skipAnimation) {
                 detailsSheet.translationY = 0f
@@ -130,6 +138,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         if (!isDetailsOpenOrOpening) return
         val detailsSheet = detailsSheet ?: return
         isDetailsOpenOrOpening = false
+        updateBackEnabled()
         startSpringAnimation(detailsSheet, detailsSheet.measuredHeight, withVelocity)
     }
 
@@ -137,7 +146,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         openAnimation?.cancel()
         openAnimation = SpringAnimation(view, DynamicAnimation.TRANSLATION_Y).apply {
             spring = SpringForce(toPosition.toFloat()).apply {
-                stiffness = 600f
+                stiffness = SPRING_STIFFNESS
                 dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
             }
             setStartVelocity(startVelocity)
@@ -253,7 +262,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     }
 
     private fun updateDimBackground(translationY: Float, height: Int) {
-        val percentDone = (height - translationY) / height * 0.6f
+        if (height <= 0) return
+        val percentDone = ((height - translationY) / height * 0.6f).coerceIn(0f, 0.6f)
         dimView.alpha = percentDone
         dimView.isVisible = percentDone > 0
     }
@@ -270,18 +280,17 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     override val isBackEnabled = MutableStateFlow(false)
 
     override fun onBackStarted(backEvent: BackEvent) {
-        if (isDetailsOpenOrOpening) {
-            openAnimation?.cancel()
-            scaleXAnimation?.cancel()
-            scaleYAnimation?.cancel()
-            isBackGestureInProgress = true
-            val sheet = detailsSheet ?: return
-            sheet.pivotX = sheet.measuredWidth / 2f
-            sheet.pivotY = 0f
-            sheet.scaleX = 1f
-            sheet.scaleY = 1f
-            sheet.translationY = 0f
-        }
+        if (!isDetailsOpenOrOpening) return
+        val sheet = detailsSheet ?: return
+        openAnimation?.cancel()
+        scaleXAnimation?.cancel()
+        scaleYAnimation?.cancel()
+        isBackGestureInProgress = true
+        sheet.pivotX = sheet.measuredWidth / 2f
+        sheet.pivotY = 0f
+        sheet.scaleX = 1f
+        sheet.scaleY = 1f
+        sheet.translationY = 0f
     }
 
     override fun onBackProgressed(backEvent: BackEvent) {
@@ -289,11 +298,11 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         val sheet = detailsSheet ?: return
         val progress = backEvent.progress
 
-        val scale = 1f - progress * 0.1f
+        val scale = 1f - progress * BACK_GESTURE_SCALE_FACTOR
         sheet.scaleX = scale
         sheet.scaleY = scale
 
-        val maxTranslation = sheet.measuredHeight * 0.1f
+        val maxTranslation = sheet.measuredHeight * BACK_GESTURE_TRANSLATION_FACTOR
         sheet.translationY = progress * maxTranslation
         updateDimBackground(sheet.translationY, sheet.measuredHeight)
     }
@@ -302,21 +311,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         if (!isBackGestureInProgress) return
         isBackGestureInProgress = false
         val sheet = detailsSheet ?: return
-
-        scaleXAnimation = SpringAnimation(sheet, DynamicAnimation.SCALE_X).apply {
-            spring = SpringForce(1f).apply {
-                stiffness = 600f
-                dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-            }
-            start()
-        }
-        scaleYAnimation = SpringAnimation(sheet, DynamicAnimation.SCALE_Y).apply {
-            spring = SpringForce(1f).apply {
-                stiffness = 600f
-                dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-            }
-            start()
-        }
+        startScaleSpring(sheet, 1f)
         startSpringAnimation(sheet, toPosition = 0, startVelocity = 0f)
     }
 
@@ -324,10 +319,6 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         when {
             isDetailsOpenOrOpening -> {
                 isBackGestureInProgress = false
-                detailsSheet?.let { sheet ->
-                    sheet.scaleX = 1f
-                    sheet.scaleY = 1f
-                }
                 hideDetailsBottomSheet()
             }
 
@@ -335,6 +326,35 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
                 tableScreen.hideSearch()
                 updateBackEnabled()
             }
+        }
+    }
+
+    private fun resetBackGestureState(sheet: View) {
+        if (isBackGestureInProgress) {
+            isBackGestureInProgress = false
+        }
+        scaleXAnimation?.cancel()
+        scaleYAnimation?.cancel()
+        sheet.scaleX = 1f
+        sheet.scaleY = 1f
+    }
+
+    private fun startScaleSpring(view: View, target: Float) {
+        scaleXAnimation?.cancel()
+        scaleXAnimation = SpringAnimation(view, DynamicAnimation.SCALE_X).apply {
+            spring = SpringForce(target).apply {
+                stiffness = SPRING_STIFFNESS
+                dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
+            }
+            start()
+        }
+        scaleYAnimation?.cancel()
+        scaleYAnimation = SpringAnimation(view, DynamicAnimation.SCALE_Y).apply {
+            spring = SpringForce(target).apply {
+                stiffness = SPRING_STIFFNESS
+                dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
+            }
+            start()
         }
     }
 
