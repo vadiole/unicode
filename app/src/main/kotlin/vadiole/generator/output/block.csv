@@ -193,146 +193,154 @@
 192;Hatran;67808;67839
 193;Phoenician;67840;67871
 194;Lydian;67872;67903
-195;Meroitic Hieroglyphs;67968;67999
-196;Meroitic Cursive;68000;68095
-197;Kharoshthi;68096;68191
-198;Old South Arabian;68192;68223
-199;Old North Arabian;68224;68255
-200;Manichaean;68288;68351
-201;Avestan;68352;68415
-202;Inscriptional Parthian;68416;68447
-203;Inscriptional Pahlavi;68448;68479
-204;Psalter Pahlavi;68480;68527
-205;Old Turkic;68608;68687
-206;Old Hungarian;68736;68863
-207;Hanifi Rohingya;68864;68927
-208;Garay;68928;69007
-209;Rumi Numeral Symbols;69216;69247
-210;Yezidi;69248;69311
-211;Arabic Extended-C;69312;69375
-212;Old Sogdian;69376;69423
-213;Sogdian;69424;69487
-214;Old Uyghur;69488;69551
-215;Chorasmian;69552;69599
-216;Elymaic;69600;69631
-217;Brahmi;69632;69759
-218;Kaithi;69760;69839
-219;Sora Sompeng;69840;69887
-220;Chakma;69888;69967
-221;Mahajani;69968;70015
-222;Sharada;70016;70111
-223;Sinhala Archaic Numbers;70112;70143
-224;Khojki;70144;70223
-225;Multani;70272;70319
-226;Khudawadi;70320;70399
-227;Grantha;70400;70527
-228;Tulu-Tigalari;70528;70655
-229;Newa;70656;70783
-230;Tirhuta;70784;70879
-231;Siddham;71040;71167
-232;Modi;71168;71263
-233;Mongolian Supplement;71264;71295
-234;Takri;71296;71375
-235;Myanmar Extended-C;71376;71423
-236;Ahom;71424;71503
-237;Dogra;71680;71759
-238;Warang Citi;71840;71935
-239;Dives Akuru;71936;72031
-240;Nandinagari;72096;72191
-241;Zanabazar Square;72192;72271
-242;Soyombo;72272;72367
-243;Unified Canadian Aboriginal Syllabics Extended-A;72368;72383
-244;Pau Cin Hau;72384;72447
-245;Devanagari Extended-A;72448;72543
-246;Sunuwar;72640;72703
-247;Bhaiksuki;72704;72815
-248;Marchen;72816;72895
-249;Masaram Gondi;72960;73055
-250;Gunjala Gondi;73056;73135
-251;Makasar;73440;73471
-252;Kawi;73472;73567
-253;Lisu Supplement;73648;73663
-254;Tamil Supplement;73664;73727
-255;Cuneiform;73728;74751
-256;Cuneiform Numbers and Punctuation;74752;74879
-257;Early Dynastic Cuneiform;74880;75087
-258;Cypro-Minoan;77712;77823
-259;Egyptian Hieroglyphs;77824;78895
-260;Egyptian Hieroglyph Format Controls;78896;78943
-261;Egyptian Hieroglyphs Extended-A;78944;82943
-262;Anatolian Hieroglyphs;82944;83583
-263;Gurung Khema;90368;90431
-264;Bamum Supplement;92160;92735
-265;Mro;92736;92783
-266;Tangsa;92784;92879
-267;Bassa Vah;92880;92927
-268;Pahawh Hmong;92928;93071
-269;Kirat Rai;93504;93567
-270;Medefaidrin;93760;93855
-271;Miao;93952;94111
-272;Ideographic Symbols and Punctuation;94176;94207
-273;Tangut;94208;100351
-274;Tangut Components;100352;101119
-275;Khitan Small Script;101120;101631
-276;Tangut Supplement;101632;101759
-277;Kana Extended-B;110576;110591
-278;Kana Supplement;110592;110847
-279;Kana Extended-A;110848;110895
-280;Small Kana Extension;110896;110959
-281;Nushu;110960;111359
-282;Duployan;113664;113823
-283;Shorthand Format Controls;113824;113839
-284;Symbols for Legacy Computing Supplement;117760;118463
-285;Znamenny Musical Notation;118528;118735
-286;Byzantine Musical Symbols;118784;119039
-287;Musical Symbols;119040;119295
-288;Ancient Greek Musical Notation;119296;119375
-289;Kaktovik Numerals;119488;119519
-290;Mayan Numerals;119520;119551
-291;Tai Xuan Jing Symbols;119552;119647
-292;Counting Rod Numerals;119648;119679
-293;Mathematical Alphanumeric Symbols;119808;120831
-294;Sutton SignWriting;120832;121519
-295;Latin Extended-G;122624;122879
-296;Glagolitic Supplement;122880;122927
-297;Cyrillic Extended-D;122928;123023
-298;Nyiakeng Puachue Hmong;123136;123215
-299;Toto;123536;123583
-300;Wancho;123584;123647
-301;Nag Mundari;124112;124159
-302;Ol Onal;124368;124415
-303;Ethiopic Extended-B;124896;124927
-304;Mende Kikakui;124928;125151
-305;Adlam;125184;125279
-306;Indic Siyaq Numbers;126064;126143
-307;Ottoman Siyaq Numbers;126208;126287
-308;Arabic Mathematical Alphabetic Symbols;126464;126719
-309;Mahjong Tiles;126976;127023
-310;Domino Tiles;127024;127135
-311;Playing Cards;127136;127231
-312;Enclosed Alphanumeric Supplement;127232;127487
-313;Enclosed Ideographic Supplement;127488;127743
-314;Miscellaneous Symbols and Pictographs;127744;128511
-315;Emoticons;128512;128591
-316;Ornamental Dingbats;128592;128639
-317;Transport and Map Symbols;128640;128767
-318;Alchemical Symbols;128768;128895
-319;Geometric Shapes Extended;128896;129023
-320;Supplemental Arrows-C;129024;129279
-321;Supplemental Symbols and Pictographs;129280;129535
-322;Chess Symbols;129536;129647
-323;Symbols and Pictographs Extended-A;129648;129791
-324;Symbols for Legacy Computing;129792;130047
-325;CJK Unified Ideographs Extension B;131072;173791
-326;CJK Unified Ideographs Extension C;173824;177983
-327;CJK Unified Ideographs Extension D;177984;178207
-328;CJK Unified Ideographs Extension E;178208;183983
-329;CJK Unified Ideographs Extension F;183984;191471
-330;CJK Unified Ideographs Extension I;191472;192095
-331;CJK Compatibility Ideographs Supplement;194560;195103
-332;CJK Unified Ideographs Extension G;196608;201551
-333;CJK Unified Ideographs Extension H;201552;205743
-334;Tags;917504;917631
-335;Variation Selectors Supplement;917760;917999
-336;Supplementary Private Use Area-A;983040;1048575
-337;Supplementary Private Use Area-B;1048576;1114111
+195;Sidetic;67904;67935
+196;Meroitic Hieroglyphs;67968;67999
+197;Meroitic Cursive;68000;68095
+198;Kharoshthi;68096;68191
+199;Old South Arabian;68192;68223
+200;Old North Arabian;68224;68255
+201;Manichaean;68288;68351
+202;Avestan;68352;68415
+203;Inscriptional Parthian;68416;68447
+204;Inscriptional Pahlavi;68448;68479
+205;Psalter Pahlavi;68480;68527
+206;Old Turkic;68608;68687
+207;Old Hungarian;68736;68863
+208;Hanifi Rohingya;68864;68927
+209;Garay;68928;69007
+210;Rumi Numeral Symbols;69216;69247
+211;Yezidi;69248;69311
+212;Arabic Extended-C;69312;69375
+213;Old Sogdian;69376;69423
+214;Sogdian;69424;69487
+215;Old Uyghur;69488;69551
+216;Chorasmian;69552;69599
+217;Elymaic;69600;69631
+218;Brahmi;69632;69759
+219;Kaithi;69760;69839
+220;Sora Sompeng;69840;69887
+221;Chakma;69888;69967
+222;Mahajani;69968;70015
+223;Sharada;70016;70111
+224;Sinhala Archaic Numbers;70112;70143
+225;Khojki;70144;70223
+226;Multani;70272;70319
+227;Khudawadi;70320;70399
+228;Grantha;70400;70527
+229;Tulu-Tigalari;70528;70655
+230;Newa;70656;70783
+231;Tirhuta;70784;70879
+232;Siddham;71040;71167
+233;Modi;71168;71263
+234;Mongolian Supplement;71264;71295
+235;Takri;71296;71375
+236;Myanmar Extended-C;71376;71423
+237;Ahom;71424;71503
+238;Dogra;71680;71759
+239;Warang Citi;71840;71935
+240;Dives Akuru;71936;72031
+241;Nandinagari;72096;72191
+242;Zanabazar Square;72192;72271
+243;Soyombo;72272;72367
+244;Unified Canadian Aboriginal Syllabics Extended-A;72368;72383
+245;Pau Cin Hau;72384;72447
+246;Devanagari Extended-A;72448;72543
+247;Sharada Supplement;72544;72575
+248;Sunuwar;72640;72703
+249;Bhaiksuki;72704;72815
+250;Marchen;72816;72895
+251;Masaram Gondi;72960;73055
+252;Gunjala Gondi;73056;73135
+253;Tolong Siki;73136;73199
+254;Makasar;73440;73471
+255;Kawi;73472;73567
+256;Lisu Supplement;73648;73663
+257;Tamil Supplement;73664;73727
+258;Cuneiform;73728;74751
+259;Cuneiform Numbers and Punctuation;74752;74879
+260;Early Dynastic Cuneiform;74880;75087
+261;Cypro-Minoan;77712;77823
+262;Egyptian Hieroglyphs;77824;78895
+263;Egyptian Hieroglyph Format Controls;78896;78943
+264;Egyptian Hieroglyphs Extended-A;78944;82943
+265;Anatolian Hieroglyphs;82944;83583
+266;Gurung Khema;90368;90431
+267;Bamum Supplement;92160;92735
+268;Mro;92736;92783
+269;Tangsa;92784;92879
+270;Bassa Vah;92880;92927
+271;Pahawh Hmong;92928;93071
+272;Kirat Rai;93504;93567
+273;Medefaidrin;93760;93855
+274;Beria Erfe;93856;93919
+275;Miao;93952;94111
+276;Ideographic Symbols and Punctuation;94176;94207
+277;Tangut;94208;100351
+278;Tangut Components;100352;101119
+279;Khitan Small Script;101120;101631
+280;Tangut Supplement;101632;101759
+281;Tangut Components Supplement;101760;101887
+282;Kana Extended-B;110576;110591
+283;Kana Supplement;110592;110847
+284;Kana Extended-A;110848;110895
+285;Small Kana Extension;110896;110959
+286;Nushu;110960;111359
+287;Duployan;113664;113823
+288;Shorthand Format Controls;113824;113839
+289;Symbols for Legacy Computing Supplement;117760;118463
+290;Miscellaneous Symbols Supplement;118464;118527
+291;Znamenny Musical Notation;118528;118735
+292;Byzantine Musical Symbols;118784;119039
+293;Musical Symbols;119040;119295
+294;Ancient Greek Musical Notation;119296;119375
+295;Kaktovik Numerals;119488;119519
+296;Mayan Numerals;119520;119551
+297;Tai Xuan Jing Symbols;119552;119647
+298;Counting Rod Numerals;119648;119679
+299;Mathematical Alphanumeric Symbols;119808;120831
+300;Sutton SignWriting;120832;121519
+301;Latin Extended-G;122624;122879
+302;Glagolitic Supplement;122880;122927
+303;Cyrillic Extended-D;122928;123023
+304;Nyiakeng Puachue Hmong;123136;123215
+305;Toto;123536;123583
+306;Wancho;123584;123647
+307;Nag Mundari;124112;124159
+308;Ol Onal;124368;124415
+309;Tai Yo;124608;124671
+310;Ethiopic Extended-B;124896;124927
+311;Mende Kikakui;124928;125151
+312;Adlam;125184;125279
+313;Indic Siyaq Numbers;126064;126143
+314;Ottoman Siyaq Numbers;126208;126287
+315;Arabic Mathematical Alphabetic Symbols;126464;126719
+316;Mahjong Tiles;126976;127023
+317;Domino Tiles;127024;127135
+318;Playing Cards;127136;127231
+319;Enclosed Alphanumeric Supplement;127232;127487
+320;Enclosed Ideographic Supplement;127488;127743
+321;Miscellaneous Symbols and Pictographs;127744;128511
+322;Emoticons;128512;128591
+323;Ornamental Dingbats;128592;128639
+324;Transport and Map Symbols;128640;128767
+325;Alchemical Symbols;128768;128895
+326;Geometric Shapes Extended;128896;129023
+327;Supplemental Arrows-C;129024;129279
+328;Supplemental Symbols and Pictographs;129280;129535
+329;Chess Symbols;129536;129647
+330;Symbols and Pictographs Extended-A;129648;129791
+331;Symbols for Legacy Computing;129792;130047
+332;CJK Unified Ideographs Extension B;131072;173791
+333;CJK Unified Ideographs Extension C;173824;177983
+334;CJK Unified Ideographs Extension D;177984;178207
+335;CJK Unified Ideographs Extension E;178208;183983
+336;CJK Unified Ideographs Extension F;183984;191471
+337;CJK Unified Ideographs Extension I;191472;192095
+338;CJK Compatibility Ideographs Supplement;194560;195103
+339;CJK Unified Ideographs Extension G;196608;201551
+340;CJK Unified Ideographs Extension H;201552;205743
+341;CJK Unified Ideographs Extension J;205744;210047
+342;Tags;917504;917631
+343;Variation Selectors Supplement;917760;917999
+344;Supplementary Private Use Area-A;983040;1048575
+345;Supplementary Private Use Area-B;1048576;1114111
