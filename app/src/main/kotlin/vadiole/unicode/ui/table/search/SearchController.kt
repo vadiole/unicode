@@ -3,11 +3,33 @@ package vadiole.unicode.ui.table.search
 import android.graphics.Paint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.data.UnicodeStorage
+import vadiole.unicode.data.config.RecentRepository
 
-class SearchController(private val unicodeStorage: UnicodeStorage) {
+class SearchController(
+    private val unicodeStorage: UnicodeStorage,
+    private val recentRepository: RecentRepository,
+) {
     private val glyphPaint = Paint()
     private val hasGlyph: (String) -> Boolean = glyphPaint::hasGlyph
     var searchResult: Array<SearchResult> = emptyArray()
+    var recentResult: Array<SearchResult> = emptyArray()
+
+    suspend fun loadRecents() {
+        val codePoints = recentRepository.getRecents()
+        if (codePoints.isEmpty()) {
+            recentResult = emptyArray()
+            return
+        }
+        val resultMap = unicodeStorage.findCharsByCodePoints(codePoints, hasGlyph)
+        val results = ArrayList<SearchResult>(resultMap.size)
+        for (cp in codePoints) {
+            val result = resultMap[cp.value]
+            if (result != null) {
+                results.add(result)
+            }
+        }
+        recentResult = results.toTypedArray()
+    }
 
     suspend fun search(query: String, count: Int = -1) {
         if (query.isEmpty()) {

@@ -56,7 +56,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
     private val tableController = TableController(unicodeStorage, userConfig)
-    private val searchController = SearchController(unicodeStorage)
+    private val searchController = SearchController(unicodeStorage, recentRepository)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onItemClick(codePoint: CodePoint) {
             recentRepository.record(codePoint)

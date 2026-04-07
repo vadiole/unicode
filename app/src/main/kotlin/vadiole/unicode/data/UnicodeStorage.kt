@@ -148,6 +148,24 @@ class UnicodeStorage(private val context: Context) {
         }
     }
 
+    suspend fun findCharsByCodePoints(codePoints: CodePointArray, hasGlyph: (String) -> Boolean): Map<Int, SearchResult> = withContext(dispatcher) {
+        if (codePoints.isEmpty()) return@withContext emptyMap()
+        val placeholders = codePoints.joinToString(",") { it.value.toString() }
+        val query = "SELECT code_point, name FROM char WHERE code_point IN ($placeholders)"
+        val result = mutableMapOf<Int, SearchResult>()
+        openDatabase().rawQuery(query, null).use { cursor ->
+            val cpIndex = cursor.getColumnIndex("code_point")
+            val nameIndex = cursor.getColumnIndex("name")
+            while (cursor.moveToNext()) {
+                val cp = CodePoint(cursor.getInt(cpIndex))
+                if (hasGlyph(cp.char)) {
+                    result[cp.value] = SearchResult(cp, cursor.getString(nameIndex))
+                }
+            }
+        }
+        result
+    }
+
     suspend fun findCharsByName(input: String, count: Int, hasGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
         val escaped = escapeLike(input.uppercase())
         val query = if (count > 0) {

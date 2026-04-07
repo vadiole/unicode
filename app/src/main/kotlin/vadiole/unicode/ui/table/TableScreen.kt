@@ -3,10 +3,13 @@ package vadiole.unicode.ui.table
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.Gravity.LEFT
 import android.view.Gravity.TOP
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.updatePadding
@@ -24,11 +27,13 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.navigationBars
+import vadiole.unicode.ui.common.roboto_regular
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.hideKeyboard
 import vadiole.unicode.ui.table.search.SearchController
+import vadiole.unicode.ui.table.search.SearchHeaderCell
 import vadiole.unicode.ui.table.search.SearchResultCell
 import vadiole.unicode.ui.table.search.SearchResultView
 import vadiole.unicode.ui.table.selector.BlockSelectorPopup
@@ -79,17 +84,39 @@ class TableScreen(
             delegate.onItemClick(codePoint)
         }
     }
+    private var searchJob: Job? = null
+    private var isShowingRecents = false
     private val searchAdapter = object : CollectionView.Adapter() {
-        override fun getItemCount(): Int = searchController.searchResult.size
+        override fun getItemViewType(position: Int): Int {
+            if (isShowingRecents && position == 0) return VIEW_TYPE_HEADER
+            return VIEW_TYPE_RESULT
+        }
+
+        override fun getItemCount(): Int {
+            return if (isShowingRecents) {
+                val count = searchController.recentResult.size
+                if (count > 0) count + 1 else 0
+            } else {
+                searchController.searchResult.size
+            }
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
-            return CollectionView.Cell(SearchResultCell(context, searchResultCellDelegate))
+            return when (viewType) {
+                VIEW_TYPE_HEADER -> CollectionView.Cell(SearchHeaderCell(context))
+                else -> CollectionView.Cell(SearchResultCell(context, searchResultCellDelegate))
+            }
         }
 
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
+            if (holder.itemViewType == VIEW_TYPE_HEADER) return
             val view = holder.itemView as SearchResultCell
-            val data = searchController.searchResult[position]
-            val abbreviations = tableController.abbreviations
-            view.bind(data, abbreviations)
+            val data = if (isShowingRecents) {
+                searchController.recentResult[position - 1]
+            } else {
+                searchController.searchResult[position]
+            }
+            view.bind(data, tableController.abbreviations)
         }
     }
 
@@ -113,7 +140,16 @@ class TableScreen(
         override fun onFocused(): Boolean {
             tableView.visibility = GONE
             searchResultView.visibility = VISIBLE
+            noResultsView.visibility = GONE
+            isShowingRecents = true
+            searchController.recentResult = emptyArray()
+            searchAdapter.notifyDataSetChanged()
             delegate.onSearchFocused()
+            searchJob?.cancel()
+            searchJob = launch {
+                searchController.loadRecents()
+                searchAdapter.notifyDataSetChanged()
+            }
             return true
         }
 
@@ -122,16 +158,27 @@ class TableScreen(
             return hideSearch()
         }
 
-        private var searchJob: Job? = null
         override fun onTextChanged(string: String) {
             searchJob?.cancel()
             searchJob = launch {
-                searchResultView.stopScroll()
-                searchController.search(string, 64)
-                searchResultView.scrollToPosition(0)
-                searchAdapter.notifyDataSetChanged()
-                searchController.search(string)
-                searchAdapter.notifyDataSetChanged()
+                if (string.isEmpty()) {
+                    isShowingRecents = true
+                    noResultsView.visibility = GONE
+                    searchResultView.stopScroll()
+                    searchController.loadRecents()
+                    searchResultView.scrollToPosition(0)
+                    searchAdapter.notifyDataSetChanged()
+                } else {
+                    isShowingRecents = false
+                    searchResultView.stopScroll()
+                    searchController.search(string, 64)
+                    searchResultView.scrollToPosition(0)
+                    searchAdapter.notifyDataSetChanged()
+                    noResultsView.visibility = if (searchController.searchResult.isEmpty()) VISIBLE else GONE
+                    searchController.search(string)
+                    searchAdapter.notifyDataSetChanged()
+                    noResultsView.visibility = if (searchController.searchResult.isEmpty()) VISIBLE else GONE
+                }
             }
         }
 
@@ -154,6 +201,14 @@ class TableScreen(
         }
     }
     private val searchResultView = SearchResultView(context, searchAdapter, searchResultViewDelegate).apply {
+        visibility = GONE
+    }
+    private val noResultsView = TextView(context).apply {
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16f)
+        typeface = roboto_regular
+        setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
+        gravity = Gravity.CENTER
+        text = "No results found"
         visibility = GONE
     }
 
@@ -179,6 +234,7 @@ class TableScreen(
         addView(divider, frameParams(matchParent, 1, marginTop = 92.dp(context)))
         addView(tableView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
         addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
+        addView(noResultsView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
         launch {
             tableController.loadChars(fast = true)
             tableController.loadAbbreviations()
@@ -195,9 +251,11 @@ class TableScreen(
 
     fun hideSearch(): Boolean {
         if (searchResultView.visibility != GONE) {
+            searchJob?.cancel()
             searchBar.searchView.clearFocus()
             tableView.visibility = VISIBLE
             searchResultView.visibility = GONE
+            noResultsView.visibility = GONE
             return true
         }
         return false
@@ -223,5 +281,10 @@ class TableScreen(
         fun onSearchFocused()
 
         fun onSearchUnfocused()
+    }
+
+    companion object {
+        private const val VIEW_TYPE_RESULT = 0
+        private const val VIEW_TYPE_HEADER = 1
     }
 }

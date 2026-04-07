@@ -46,8 +46,8 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
                 intArrayOf(android.R.attr.state_pressed)
             ),
             intArrayOf(
-                this.context.getColor(R.color.windowSurfacePressed),
                 this.context.getColor(R.color.windowSurface),
+                this.context.getColor(R.color.windowSurfacePressed),
             ),
         )
         layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
