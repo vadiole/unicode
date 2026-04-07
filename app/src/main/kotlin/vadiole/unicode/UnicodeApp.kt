@@ -2,7 +2,10 @@ package vadiole.unicode
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.os.Handler
+import android.os.Looper
 import vadiole.unicode.data.UnicodeStorage
+import vadiole.unicode.data.config.RecentRepository
 import vadiole.unicode.data.config.UserConfig
 
 @SuppressLint("StaticFieldLeak")
@@ -14,6 +17,8 @@ class UnicodeApp : Application() {
         Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
         unicodeStorageInternal = UnicodeStorage(this)
         userConfigInternal = UserConfig(this)
+        recentRepositoryInternal = RecentRepository(this)
+        Handler(Looper.getMainLooper()).postDelayed({ recentRepository.load() }, 1000)
         if (userConfig.crashReportDisabled) {
             Thread.setDefaultUncaughtExceptionHandler(defaultHandler)
         }
@@ -27,5 +32,9 @@ class UnicodeApp : Application() {
         private var userConfigInternal: UserConfig? = null
         val userConfig: UserConfig
             get() = requireNotNull(userConfigInternal)
+
+        private var recentRepositoryInternal: RecentRepository? = null
+        val recentRepository: RecentRepository
+            get() = requireNotNull(recentRepositoryInternal)
     }
 }

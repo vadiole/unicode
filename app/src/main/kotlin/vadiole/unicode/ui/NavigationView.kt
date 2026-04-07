@@ -1,6 +1,7 @@
 package vadiole.unicode.ui
 
 import android.content.Context
+import android.os.Build
 import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewConfiguration
 import android.view.WindowInsets
 import android.widget.FrameLayout
 import android.window.BackEvent
+import androidx.annotation.RequiresApi
 import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
@@ -18,6 +20,7 @@ import kotlin.math.atan
 import kotlin.math.hypot
 import kotlinx.coroutines.flow.MutableStateFlow
 import vadiole.unicode.R
+import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.CodePoint
@@ -56,6 +59,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private val searchController = SearchController(unicodeStorage)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onItemClick(codePoint: CodePoint) {
+            recentRepository.record(codePoint)
             showDetailsBottomSheet(codePoint)
         }
 
@@ -293,6 +297,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         sheet.translationY = 0f
     }
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onBackProgressed(backEvent: BackEvent) {
         if (!isBackGestureInProgress) return
         val sheet = detailsSheet ?: return
