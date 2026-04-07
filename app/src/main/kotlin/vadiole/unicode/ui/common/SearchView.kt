@@ -26,7 +26,7 @@ class SearchView(context: Context, private val delegate: Delegate) : EditText(co
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
 
         override fun afterTextChanged(s: Editable) {
-            val input = s.toString().trim()
+            val input = s.toString()
             if (input != lastInput) {
                 lastInput = input
                 delegate.onTextChanged(input)

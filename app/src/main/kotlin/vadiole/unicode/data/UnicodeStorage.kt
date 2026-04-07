@@ -1,6 +1,7 @@
 package vadiole.unicode.data
 
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.openDatabase
@@ -11,6 +12,7 @@ import java.util.zip.ZipInputStream
 import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.withContext
+import vadiole.unicode.BuildConfig
 
 class UnicodeStorage(private val context: Context) {
     private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
@@ -134,33 +136,88 @@ class UnicodeStorage(private val context: Context) {
         return@withContext result
     }
 
-    suspend fun findCharsByName(input: String, count: Int): Array<SearchResult> = withContext(dispatcher) {
+    suspend fun findCharByCodePoint(codePoint: Int, hasGlyph: (String) -> Boolean): SearchResult? = withContext(dispatcher) {
+        val args = arrayOf(codePoint.toString())
+        openDatabase().rawQuery(queryFindCharByCodePoint, args).use { cursor ->
+            if (cursor.count == 0) return@withContext null
+            cursor.moveToFirst()
+            val cp = CodePoint(cursor.getInt(cursor.getColumnIndex("code_point")))
+            if (!hasGlyph(cp.char)) return@withContext null
+            val name = cursor.getString(cursor.getColumnIndex("name"))
+            SearchResult(cp, name)
+        }
+    }
+
+    suspend fun findCharsByName(input: String, count: Int, hasGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
+        val escaped = escapeLike(input.uppercase())
         val query = if (count > 0) {
             "$queryFindChars LIMIT $count"
         } else {
             queryFindChars
         }
         val args = arrayOf(
-            "%$input%",
-            input, "% $input", "$input %", "$input%", "% $input %",
+            "%$escaped%", "%$escaped%",
+            escaped, escaped,
+            "% $escaped", "% $escaped",
+            "$escaped%", "$escaped%",
+            "$escaped %", "$escaped %",
+            "% $escaped %", "% $escaped %",
         )
-        val result: Array<SearchResult>
-        measureTimeMillis {
+        return@withContext searchByName(query, args, hasGlyph)
+    }
+
+    suspend fun findCharsByNameMultiWord(tokens: List<String>, count: Int, hasGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
+        val escapedTokens = tokens.map { escapeLike(it.uppercase()) }
+        val nameConditions = escapedTokens.joinToString(" AND ") { "name LIKE ? ESCAPE '\\'" }
+        val name2Conditions = escapedTokens.joinToString(" AND ") { "name2 LIKE ? ESCAPE '\\'" }
+        val whereClause = "($nameConditions) OR ($name2Conditions)"
+
+        val lastToken = escapedTokens.last()
+        val orderClause = "ORDER BY (" +
+                "CASE " +
+                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 1 " +
+                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 2 " +
+                "ELSE 3 END), " +
+                "id"
+
+        val sql = "SELECT id, code_point, name FROM char WHERE $whereClause $orderClause"
+        val limitedSql = if (count > 0) "$sql LIMIT $count" else sql
+
+        val args = mutableListOf<String>()
+        for (token in escapedTokens) args.add("%$token%")
+        for (token in escapedTokens) args.add("%$token%")
+        args.add("% $lastToken")
+        args.add("% $lastToken")
+        args.add("$lastToken%")
+        args.add("$lastToken%")
+
+        return@withContext searchByName(limitedSql, args.toTypedArray(), hasGlyph)
+    }
+
+    private suspend fun searchByName(query: String, args: Array<String>, hasGlyph: (String) -> Boolean): Array<SearchResult> {
+        val result: ArrayList<SearchResult>
+        val millis = measureTimeMillis {
             openDatabase().rawQuery(query, args).use { cursor ->
-                val rowsCount = cursor.count
-                val codePointIndex = cursor.getColumnIndex("code_point")
-                val nameIndex = cursor.getColumnIndex("name")
-                result = Array(rowsCount) {
-                    cursor.moveToPosition(it)
-                    val codePoint = cursor.getInt(codePointIndex)
-                    val name = cursor.getString(nameIndex)
-                    SearchResult(CodePoint(codePoint), name)
-                }
+                result = cursor.toSearchResults(hasGlyph)
             }
-        }.also {
-            Log.d("UnicodeStorage", "perf $it")
         }
-        return@withContext result
+        if (BuildConfig.DEBUG) {
+            Log.d("UnicodeStorage", "search: ${millis}ms")
+        }
+        return result.toTypedArray()
+    }
+
+    private fun Cursor.toSearchResults(hasGlyph: (String) -> Boolean): ArrayList<SearchResult> {
+        val codePointIndex = getColumnIndex("code_point")
+        val nameIndex = getColumnIndex("name")
+        val results = ArrayList<SearchResult>(count)
+        while (moveToNext()) {
+            val cp = CodePoint(getInt(codePointIndex))
+            if (hasGlyph(cp.char)) {
+                results.add(SearchResult(cp, getString(nameIndex)))
+            }
+        }
+        return results
     }
 
     companion object {
@@ -171,18 +228,24 @@ class UnicodeStorage(private val context: Context) {
                 "FROM char c INNER JOIN block b ON c.block_id = b.id " +
                 "WHERE code_point = ? LIMIT 1"
         private const val queryGetBlocks = "SELECT id, `end`, name FROM block"
+        private const val queryFindCharByCodePoint =
+                "SELECT code_point, name FROM char WHERE code_point = ? LIMIT 1"
         private const val queryFindChars = "SELECT id, code_point, name " +
                 "FROM char " +
-                "WHERE name LIKE ? " +
+                "WHERE name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' " +
                 "ORDER BY (" +
                 "CASE " +
-                "WHEN name = ? THEN 1 " +
-                "WHEN name LIKE ? THEN 2 " +
-                "WHEN name LIKE ? THEN 4 " +
-                "WHEN name LIKE ? THEN 3 " +
-                "WHEN name LIKE ? THEN 5 " +
+                "WHEN name = ? OR name2 = ? THEN 1 " +
+                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 2 " +
+                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 3 " +
+                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 4 " +
+                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 5 " +
                 "ELSE 6 END), " +
                 "id"
+
+        private fun escapeLike(input: String): String {
+            return input.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+        }
         private const val queryGetAbbreviations = "SELECT code_point, c.name AS char_name " +
                 "FROM char c " +
                 "WHERE code_point <= 159 AND (code_point >= 127 OR (code_point >> 5) = 0)"
