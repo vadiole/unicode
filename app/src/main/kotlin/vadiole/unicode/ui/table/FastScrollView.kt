@@ -56,6 +56,8 @@ class FastScrollView(
     private val bubbleMarginStart = 24f.dp(context)
     private val bubbleMinHeight = 48f.dp(context)
     private val arrowOverlap = 1f.dp(context)
+    private val precisionThreshold1 = 100.dp(context)
+    private val precisionThreshold2 = 200.dp(context)
     private val gestureExclusionHeight = thumbMinHeight * 2
 
     // Colors
@@ -98,6 +100,11 @@ class FastScrollView(
     private var bubbleScale = 0.85f
     private var blockName: String? = null
     private var previousBlockName: String? = null
+    private var precisionLevel = 0
+    private var anchorY = 0f
+    private var anchorProgress = 0f
+    private var isPrecisionActive = false
+    private var thumbHeightFraction = 0f
     private val gestureExclusionRect = mutableListOf<Rect>()
 
     // Throttle
@@ -172,6 +179,17 @@ class FastScrollView(
         }
     }
 
+    private val thumbHeightAnimator = ValueAnimator().apply {
+        duration = 200
+        interpolator = DecelerateInterpolator()
+        addUpdateListener { animator ->
+            thumbHeightFraction = animator.animatedValue as Float
+            calculateThumbRect()
+            if (isDragging) calculateBubbleGeometry()
+            invalidate()
+        }
+    }
+
     init {
         setWillNotDraw(false)
     }
@@ -180,6 +198,7 @@ class FastScrollView(
         super.onDetachedFromWindow()
         thumbColorAnimator.cancel()
         thumbScaleAnimator.cancel()
+        thumbHeightAnimator.cancel()
         bubbleAlphaAnimator.cancel()
         bubbleScaleAnimator.cancel()
     }
@@ -187,8 +206,9 @@ class FastScrollView(
     @androidx.annotation.RequiresApi(Build.VERSION_CODES.Q)
     private fun updateGestureExclusionRects() {
         val thumbCenterY = thumbRect.centerY().toInt()
-        val top = (thumbCenterY - gestureExclusionHeight / 2).coerceAtLeast(0)
-        val bottom = (top + gestureExclusionHeight).coerceAtMost(height)
+        val exclusionHeight = maxOf(gestureExclusionHeight, thumbRect.height().toInt() * 2)
+        val top = (thumbCenterY - exclusionHeight / 2).coerceAtLeast(0)
+        val bottom = (top + exclusionHeight).coerceAtMost(height)
         gestureExclusionRect.clear()
         gestureExclusionRect.add(
             Rect(width - touchAreaWidth, top, width, bottom)
@@ -245,7 +265,7 @@ class FastScrollView(
         val trackBottom = height.toFloat() - paddingBottom
         val trackHeight = trackBottom - trackTop
         if (trackHeight <= 0) return
-        val thumbHeight = thumbMinHeight.toFloat()
+        val thumbHeight = thumbMinHeight * (1f + thumbHeightFraction)
         val availableTrack = trackHeight - thumbHeight
         if (availableTrack <= 0) return
         block(trackTop, thumbHeight, availableTrack)
@@ -444,6 +464,10 @@ class FastScrollView(
             MotionEvent.ACTION_DOWN -> {
                 if (isInEdgeZone(event.x)) {
                     isDragging = true
+                    isPrecisionActive = false
+                    precisionLevel = 0
+                    thumbHeightAnimator.cancel()
+                    thumbHeightFraction = 0f
                     lastHapticTime = 0L
                     lastDispatchTime = 0L
                     parent?.requestDisallowInterceptTouchEvent(true)
@@ -453,7 +477,7 @@ class FastScrollView(
                         calculateBubbleGeometry()
                     } else {
                         dragTouchOffset = 0f
-                        updateProgressFromTouch(event.y)
+                        updateProgressFromTouch(event.y, event.x)
                     }
                     animateThumbColor(scrollIndicatorActiveColor)
                     animateThumbScale(thumbScaleActive)
@@ -469,7 +493,7 @@ class FastScrollView(
                     if (dragTouchOffset == null) {
                         dragTouchOffset = event.y - thumbRect.centerY()
                     }
-                    updateProgressFromTouch(event.y - (dragTouchOffset ?: 0f))
+                    updateProgressFromTouch(event.y - (dragTouchOffset ?: 0f), event.x)
                     return true
                 }
             }
@@ -481,6 +505,8 @@ class FastScrollView(
                         pendingProgress = -1f
                     }
                     isDragging = false
+                    isPrecisionActive = false
+                    precisionLevel = 0
                     previousBlockName = null
                     cachedBubbleLeft = null
                     cachedBubbleTop = null
@@ -491,6 +517,7 @@ class FastScrollView(
                     animateBubble(0f)
                     animateThumbColor(scrollIndicatorColor)
                     animateThumbScale(1f)
+                    animateThumbHeight(0)
                     delegate.onFastScrollEnd()
                     return true
                 }
@@ -499,12 +526,60 @@ class FastScrollView(
         return false
     }
 
-    private fun updateProgressFromTouch(y: Float) {
+    private fun precisionLevelFromX(eventX: Float): Int {
+        val distanceFromRight = (width - eventX).coerceAtLeast(0f)
+        return when {
+            distanceFromRight >= precisionThreshold2 -> 2
+            distanceFromRight >= precisionThreshold1 -> 1
+            else -> 0
+        }
+    }
+
+    private fun precisionSpeedFactor(level: Int): Float = when (level) {
+        1 -> 0.25f
+        2 -> 0.0625f
+        else -> 1f
+    }
+
+    private fun animateThumbHeight(targetLevel: Int) {
+        thumbHeightAnimator.cancel()
+        thumbHeightAnimator.setFloatValues(thumbHeightFraction, targetLevel.toFloat())
+        thumbHeightAnimator.start()
+    }
+
+    private fun onPrecisionLevelChanged(oldLevel: Int, newLevel: Int) {
+        animateThumbHeight(newLevel)
+        val haptic = HapticFeedbackConstants.LONG_PRESS
+        performHapticFeedback(haptic)
+    }
+
+    private fun updateProgressFromTouch(y: Float, eventX: Float) {
         withTrackMetrics { trackTop, thumbHeight, availableTrack ->
-            val progress = ((y - trackTop - thumbHeight / 2) / availableTrack).coerceIn(0f, 1f)
-            scrollProgress = progress
+            val newLevel = precisionLevelFromX(eventX)
+
+            if (!isPrecisionActive) {
+                val progress = ((y - trackTop - thumbHeight / 2) / availableTrack).coerceIn(0f, 1f)
+                scrollProgress = progress
+                anchorY = y
+                anchorProgress = progress
+                precisionLevel = newLevel
+                isPrecisionActive = true
+            } else {
+                if (newLevel != precisionLevel) {
+                    anchorY = y
+                    anchorProgress = scrollProgress
+                    val oldLevel = precisionLevel
+                    precisionLevel = newLevel
+                    onPrecisionLevelChanged(oldLevel, newLevel)
+                }
+                val speedFactor = precisionSpeedFactor(precisionLevel)
+                val deltaY = y - anchorY
+                val deltaProgress = (deltaY / availableTrack) * speedFactor
+                scrollProgress = (anchorProgress + deltaProgress).coerceIn(0f, 1f)
+            }
+
             calculateThumbRect()
-            val newBlockName = delegate.getBlockName(progress)
+            val newBlockName = delegate.getBlockName(scrollProgress)
             if (newBlockName != null && newBlockName != previousBlockName) {
                 val now = SystemClock.uptimeMillis()
                 if (now - lastHapticTime >= throttleIntervalMs) {
@@ -523,10 +598,10 @@ class FastScrollView(
             val now = SystemClock.uptimeMillis()
             if (now - lastDispatchTime >= throttleIntervalMs) {
                 pendingProgress = -1f
-                delegate.onFastScroll(progress)
+                delegate.onFastScroll(scrollProgress)
                 lastDispatchTime = now
             } else {
-                pendingProgress = progress
+                pendingProgress = scrollProgress
             }
             invalidate()
         }
