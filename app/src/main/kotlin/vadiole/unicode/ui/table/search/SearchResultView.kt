@@ -37,7 +37,7 @@ class SearchResultView(
         setAdapter(adapter)
         addItemDecoration(itemDecoration)
         addItemDecoration(scrollBars)
-        scrollbarDrawable.setColor(this.context.getColor(R.color.dialogSurfacePressed))
+        scrollbarDrawable.setColor(this.context.getColor(R.color.scrollIndicator))
     }
 
     override fun onScrollStateChanged(state: Int) {

@@ -19,6 +19,9 @@
     <color name="windowTextAccentPressed">#800A84FF</color>
     <color name="windowTextSelection">#40007BFF</color>
     <color name="windowDivider">#53545558</color>
+    <color name="scrollIndicator">#4D989899</color>
+    <color name="scrollIndicatorActive">#80989899</color>
+    <color name="scrollIndicatorGrip">#FF989899</color>
     <color name="topBarBackground">#FF1E1E1F</color>
     <color name="tabBarBackground">#FF1E1E1F</color>
     <color name="tabBarItem">#FFB5C2D3</color>

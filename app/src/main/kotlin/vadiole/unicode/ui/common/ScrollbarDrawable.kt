@@ -17,6 +17,7 @@ class ScrollbarDrawable : Drawable() {
         isAntiAlias = true
         color = Color.GRAY
     }
+    private var baseAlpha = 255
     private var range = 0
     private var offset = 0
     private var extent = 0
@@ -35,6 +36,7 @@ class ScrollbarDrawable : Drawable() {
 
     fun setColor(color: Int) {
         scrollBarPaint.color = color
+        baseAlpha = Color.alpha(color)
     }
 
     override fun onBoundsChange(bounds: Rect) {
@@ -95,7 +97,7 @@ class ScrollbarDrawable : Drawable() {
     }
 
     override fun setAlpha(alpha: Int) {
-        scrollBarPaint.alpha = alpha
+        scrollBarPaint.alpha = baseAlpha * alpha / 255
     }
 
     override fun setColorFilter(colorFilter: ColorFilter?) {

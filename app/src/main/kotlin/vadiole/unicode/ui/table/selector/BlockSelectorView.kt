@@ -76,7 +76,7 @@ class BlockSelectorView(
     init {
         backgroundDrawable.color = this.context.getColor(R.color.dialogSurface)
         anchorDrawable.setTint(this.context.getColor(R.color.dialogSurface))
-        scrollbarDrawable.setColor(this.context.getColor(R.color.dialogSurfacePressed))
+        scrollbarDrawable.setColor(this.context.getColor(R.color.scrollIndicator))
         background = backgroundDrawable
         recycledViewPool.setMaxRecycledViews(0, 32)
         layoutManager = blockSelectorLayoutManager
