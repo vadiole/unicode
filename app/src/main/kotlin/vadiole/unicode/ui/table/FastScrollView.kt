@@ -11,6 +11,7 @@ import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.RectF
 import android.os.Build
+import android.os.SystemClock
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
@@ -98,6 +99,12 @@ class FastScrollView(
     private var blockName: String? = null
     private var previousBlockName: String? = null
     private val gestureExclusionRect = mutableListOf<Rect>()
+
+    // Throttle
+    private val throttleIntervalMs = if (Build.VERSION.SDK_INT >= 34) 17L else 30L
+    private var lastHapticTime = 0L
+    private var lastDispatchTime = 0L
+    private var pendingProgress = -1f
 
     // Cached rects
     private val thumbRect = RectF()
@@ -433,6 +440,8 @@ class FastScrollView(
             MotionEvent.ACTION_DOWN -> {
                 if (isInEdgeZone(event.x)) {
                     isDragging = true
+                    lastHapticTime = 0L
+                    lastDispatchTime = 0L
                     parent?.requestDisallowInterceptTouchEvent(true)
                     if (isInThumbZone(event.x, event.y)) {
                         dragTouchOffset = null
@@ -463,6 +472,10 @@ class FastScrollView(
 
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 if (isDragging) {
+                    if (pendingProgress >= 0f) {
+                        delegate.onFastScroll(pendingProgress)
+                        pendingProgress = -1f
+                    }
                     isDragging = false
                     previousBlockName = null
                     cachedBubbleLeft = null
@@ -489,17 +502,28 @@ class FastScrollView(
             calculateThumbRect()
             val newBlockName = delegate.getBlockName(progress)
             if (newBlockName != null && newBlockName != previousBlockName) {
-                val hapticConstant = if (Build.VERSION.SDK_INT >= 34) {
-                    HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
-                } else {
-                    HapticFeedbackConstants.CLOCK_TICK
+                val now = SystemClock.uptimeMillis()
+                if (now - lastHapticTime >= throttleIntervalMs) {
+                    val hapticConstant = if (Build.VERSION.SDK_INT >= 34) {
+                        HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
+                    } else {
+                        HapticFeedbackConstants.CLOCK_TICK
+                    }
+                    performHapticFeedback(hapticConstant)
+                    lastHapticTime = now
                 }
-                performHapticFeedback(hapticConstant)
             }
             previousBlockName = newBlockName
             blockName = newBlockName
             calculateBubbleGeometry()
-            delegate.onFastScroll(progress)
+            val now = SystemClock.uptimeMillis()
+            if (now - lastDispatchTime >= throttleIntervalMs) {
+                pendingProgress = -1f
+                delegate.onFastScroll(progress)
+                lastDispatchTime = now
+            } else {
+                pendingProgress = progress
+            }
             invalidate()
         }
     }
