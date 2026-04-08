@@ -7,7 +7,9 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.Gravity.LEFT
 import android.view.Gravity.TOP
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
@@ -139,6 +141,7 @@ class TableScreen(
     private val searchDelegate = object : SearchBar.Delegate {
         override fun onFocused(): Boolean {
             tableView.visibility = GONE
+            fastScrollView.visibility = GONE
             searchResultView.visibility = VISIBLE
             noResultsView.visibility = GONE
             isShowingRecents = true
@@ -189,12 +192,33 @@ class TableScreen(
     }
     private val searchBar = SearchBar(context, searchDelegate)
     private val divider = View(context)
+    private var fastScrollView: FastScrollView
     private val tableViewDelegate = object : TableView.Delegate {
         override fun onBlockChanged(name: String?) {
             topBar.setTitle(name ?: context.getString(R.string.app_name))
         }
+
+        override fun onScrollProgressChanged(progress: Float) {
+            fastScrollView.setScrollProgress(progress)
+        }
     }
     private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate)
+    private val fastScrollDelegate = object : FastScrollView.Delegate {
+        override fun onFastScrollStart() = Unit
+
+        override fun onFastScroll(progress: Float) {
+            tableView.scrollToProgress(progress)
+        }
+
+        override fun onFastScrollEnd() = Unit
+
+        override fun getBlockName(progress: Float): String? {
+            val itemCount = tableAdapter.itemCount
+            if (itemCount <= 0) return null
+            val position = (itemCount * progress).toInt().coerceIn(0, itemCount - 1)
+            return tableController.getBlock(position * spanCount)?.name
+        }
+    }
     private val searchResultViewDelegate: SearchResultView.Delegate = object : SearchResultView.Delegate {
         override fun onStartScrolling() {
             hideKeyboard()
@@ -212,7 +236,13 @@ class TableScreen(
         visibility = GONE
     }
 
+    private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
+    private var downX = 0f
+    private var downY = 0f
+    private var isFastScrollIntercepted = false
+
     init {
+        fastScrollView = FastScrollView(context, fastScrollDelegate)
         clipChildren = true
         clipToPadding = false
         divider.setBackgroundColor(context.getColor(R.color.windowDivider))
@@ -223,6 +253,7 @@ class TableScreen(
             tableView.updatePadding(
                 bottom = insets.navigationBars.bottom
             )
+            fastScrollView.setPadding(0, 0, 0, insets.navigationBars.bottom)
             searchResultView.updatePadding(
                 bottom = insets.navigationBars.bottom
             )
@@ -233,6 +264,7 @@ class TableScreen(
         addView(searchBar, frameParams(matchParent, 50.dp(context), marginTop = 42.dp(context)))
         addView(divider, frameParams(matchParent, 1, marginTop = 92.dp(context)))
         addView(tableView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
+        addView(fastScrollView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
         addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
         addView(noResultsView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
         launch {
@@ -245,6 +277,56 @@ class TableScreen(
         }
     }
 
+    override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
+        if (fastScrollView.visibility != VISIBLE) return false
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                downX = event.x
+                downY = event.y
+                isFastScrollIntercepted = false
+            }
+            MotionEvent.ACTION_MOVE -> {
+                val localX = downX - fastScrollView.left
+                val localY = downY - fastScrollView.top
+                if (!fastScrollView.isInThumbZone(localX, localY) &&
+                    !fastScrollView.isInEdgeZone(localX)
+                ) return false
+                val dx = event.x - downX
+                val dy = event.y - downY
+                if (dx * dx + dy * dy > scaledTouchSlop * scaledTouchSlop) {
+                    isFastScrollIntercepted = true
+                    val down = MotionEvent.obtain(
+                        event.downTime, event.eventTime,
+                        MotionEvent.ACTION_DOWN,
+                        fastScrollView.width.toFloat() - 1f,
+                        downY - fastScrollView.top,
+                        0
+                    )
+                    fastScrollView.onTouchEvent(down)
+                    down.recycle()
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (isFastScrollIntercepted) {
+            val fsEvent = MotionEvent.obtain(event)
+            fsEvent.offsetLocation(-fastScrollView.left.toFloat(), -fastScrollView.top.toFloat())
+            fastScrollView.onTouchEvent(fsEvent)
+            fsEvent.recycle()
+            if (event.actionMasked == MotionEvent.ACTION_UP ||
+                event.actionMasked == MotionEvent.ACTION_CANCEL
+            ) {
+                isFastScrollIntercepted = false
+            }
+            return true
+        }
+        return super.onTouchEvent(event)
+    }
+
     fun isSearchVisible(): Boolean {
         return searchResultView.visibility == VISIBLE
     }
@@ -254,6 +336,7 @@ class TableScreen(
             searchJob?.cancel()
             searchBar.searchView.clearFocus()
             tableView.visibility = VISIBLE
+            fastScrollView.visibility = VISIBLE
             searchResultView.visibility = GONE
             noResultsView.visibility = GONE
             return true

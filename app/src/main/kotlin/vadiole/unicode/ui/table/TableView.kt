@@ -3,11 +3,7 @@ package vadiole.unicode.ui.table
 import android.content.Context
 import androidx.core.view.doOnNextLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import vadiole.unicode.R
-
 import vadiole.unicode.ui.common.CollectionView
-import vadiole.unicode.ui.common.ScrollbarDrawable
-import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.extension.setPaddingHorizontal
@@ -19,21 +15,13 @@ class TableView(
     private val delegate: Delegate,
 ) : CollectionView(context) {
     private val tableLayoutManager = LinearLayoutManager(context)
-    private val scrollbarDrawable = ScrollbarDrawable()
-    private val scrollBarItemDecoration = VerticalScrollBarItemDecoration(
-        recyclerView = this,
-        scrollbarDrawable = scrollbarDrawable,
-        scrollBarWidth = 4.dp(context),
-    )
 
     init {
         recycledViewPool.setMaxRecycledViews(0, spanCount * 6)
         layoutManager = tableLayoutManager
         setItemViewCacheSize(spanCount * 2)
         setAdapter(adapter)
-        addItemDecoration(scrollBarItemDecoration)
         setPaddingHorizontal(8.dp(context))
-        scrollbarDrawable.setColor(this.context.getColor(R.color.dialogSurfacePressed))
     }
 
     override fun onScrolled(dx: Int, dy: Int) {
@@ -42,6 +30,23 @@ class TableView(
         if (block != null) {
             delegate.onBlockChanged(block.name)
         }
+        delegate.onScrollProgressChanged(getScrollProgress())
+    }
+
+    fun getScrollProgress(): Float {
+        val range = computeVerticalScrollRange()
+        val extent = computeVerticalScrollExtent()
+        val offset = computeVerticalScrollOffset()
+        val scrollable = range - extent
+        if (scrollable <= 0) return 0f
+        return (offset.toFloat() / scrollable).coerceIn(0f, 1f)
+    }
+
+    fun scrollToProgress(progress: Float) {
+        val itemCount = adapter.itemCount
+        if (itemCount <= 0) return
+        val targetPosition = (itemCount * progress).toInt().coerceIn(0, itemCount - 1)
+        tableLayoutManager.scrollToPositionWithOffset(targetPosition, 0)
     }
 
     fun scrollToPositionInCenter(row: Int, indexInRow: Int) {
@@ -59,6 +64,7 @@ class TableView(
 
     interface Delegate {
         fun onBlockChanged(name: String?)
+        fun onScrollProgressChanged(progress: Float)
     }
 
 }

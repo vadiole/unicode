@@ -51,7 +51,7 @@ class TableController(
     }
 
     fun getBlock(position: Int): Block? {
-        if (position <= 0) return null
+        if (position < 0) return null
         if (blocks.isEmpty()) return null
         if (position >= tableChars.size) return null
         val codePoint = tableChars[position]
@@ -74,6 +74,7 @@ class TableController(
                 val index = blocks.binarySearch(toIndex = lastBlockIndex) { block ->
                     block.contains(codePoint)
                 }
+                if (index < 0 || index >= blocks.size) return null
                 val block = blocks[index]
                 lastBlockIndex = index
                 lastBlock = block
@@ -84,6 +85,7 @@ class TableController(
                 val index = blocks.binarySearch(fromIndex = lastBlockIndex) { block ->
                     block.contains(codePoint)
                 }
+                if (index < 0 || index >= blocks.size) return null
                 val block = blocks[index]
                 lastBlockIndex = index
                 lastBlock = block

@@ -98,7 +98,7 @@ class UnicodeStorage(private val context: Context) {
             val idIndex = cursor.getColumnIndex("id")
             val endIndex = cursor.getColumnIndex("end")
             val nameIndex = cursor.getColumnIndex("name")
-            var lastEnd = 0
+            var lastEnd = -1
             result = Array(cursor.count) {
                 cursor.moveToNext()
                 Block(

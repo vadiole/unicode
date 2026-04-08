@@ -1,0 +1,470 @@
+package vadiole.unicode.ui.table
+
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.Rect
+import android.graphics.RectF
+import android.os.Build
+import android.view.HapticFeedbackConstants
+import android.view.MotionEvent
+import android.view.View
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
+import android.view.animation.PathInterpolator
+import vadiole.unicode.R
+import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.roboto_semibold
+
+class FastScrollView(
+    context: Context,
+    private val delegate: Delegate,
+) : View(context) {
+
+    interface Delegate {
+        fun onFastScrollStart()
+        fun onFastScroll(progress: Float)
+        fun onFastScrollEnd()
+        fun getBlockName(progress: Float): String?
+    }
+
+    // Dimensions
+    private val thumbWidth = 6.dp(context)
+    private val thumbMinHeight = 48.dp(context)
+    private val thumbCornerRadius = thumbWidth / 2f
+    private val touchAreaWidth = 44.dp(context)
+    private val touchEdgeWidth = 20.dp(context)
+    private val thumbMarginEnd = 4.dp(context)
+    private val gripLineWidth = 4f.dp(context)
+    private val gripLineHeight = 1f
+    private val gripLineSpacing = 2f.dp(context)
+
+    private val bubblePaddingHorizontal = 16f.dp(context)
+    private val bubblePaddingVertical = 4f.dp(context)
+    private val bubbleCornerRadius = 10f.dp(context)
+    private val bubbleMarginEnd = 12.dp(context)
+    private val bubbleTextSize = 15f.dp(context)
+    private val bubbleArrowWidth = 8f.dp(context)
+    private val bubbleArrowHeight = 12f.dp(context)
+    private val bubbleMarginStart = 24f.dp(context)
+    private val bubbleMinHeight = 48f.dp(context)
+    private val arrowOverlap = 1f.dp(context)
+    private val gestureExclusionHeight = thumbMinHeight * 2
+
+    // Paint objects
+    private val thumbPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL
+        color = context.getColor(R.color.windowTextSecondary)
+    }
+
+    private val bubbleShadowRadius = 6f.dp(context)
+    private val bubbleShadowDy = 2f.dp(context)
+    private val bubbleShadowColor = 0x2A000000.toInt()
+    private val bubbleShadowBaseAlpha = bubbleShadowColor ushr 24
+
+    private val bubblePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL
+        color = context.getColor(R.color.dialogSurface)
+        setShadowLayer(bubbleShadowRadius, 0f, bubbleShadowDy, bubbleShadowColor)
+    }
+
+    private val bubbleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textSize = bubbleTextSize
+        color = context.getColor(R.color.windowTextPrimary)
+        typeface = roboto_semibold
+        textAlign = Paint.Align.LEFT
+        isSubpixelText = true
+    }
+
+    // State
+    private var scrollProgress = 0f
+    private var isDragging = false
+    private var dragTouchOffset: Float? = 0f
+    private val thumbAlphaIdle = 0.3f
+    private val thumbAlphaActive = 0.5f
+    private var thumbAlpha = thumbAlphaIdle
+    private var bubbleAlpha = 0f
+    private var bubbleScale = 0.85f
+    private var blockName: String? = null
+    private var previousBlockName: String? = null
+    private val gestureExclusionRect = mutableListOf<Rect>()
+
+    // Cached rects
+    private val thumbRect = RectF()
+    private val bubbleRect = RectF()
+    private val bubblePath = Path()
+    private var cachedBubbleLeft: Float? = null
+    private var cachedBubbleTop: Float? = null
+    private var cachedBubbleRight: Float? = null
+    private var cachedBubbleBottom: Float? = null
+    private var cachedArrowCenterY: Float? = null
+
+    // Pre-computed bubble geometry (set in calculateBubbleGeometry, read in drawBubble)
+    private val bubbleFontMetrics = Paint.FontMetrics()
+    private var bubbleTextX = 0f
+    private var bubbleTextY = 0f
+    private var bubbleDisplayName = ""
+    private var bubblePivotX = 0f
+    private var bubblePivotY = 0f
+    private var bubbleGeometryValid = false
+
+    // Animators
+    private val thumbShowAnimator = ValueAnimator().apply {
+        duration = 150
+        interpolator = DecelerateInterpolator()
+        addUpdateListener { animator ->
+            thumbAlpha = animator.animatedValue as Float
+            invalidate()
+        }
+    }
+
+    private val linearInterpolator = LinearInterpolator()
+    private val scaleEnterInterpolator = PathInterpolator(0.05f, 0.7f, 0.1f, 1.0f)
+    private val scaleExitInterpolator = AccelerateInterpolator()
+
+    private val bubbleAlphaAnimator = ValueAnimator().apply {
+        interpolator = linearInterpolator
+        addUpdateListener { animator ->
+            bubbleAlpha = animator.animatedValue as Float
+            invalidate()
+        }
+        addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                if (bubbleAlpha == 0f) {
+                    blockName = null
+                }
+            }
+        })
+    }
+
+    private val bubbleScaleAnimator = ValueAnimator().apply {
+        addUpdateListener { animator ->
+            bubbleScale = animator.animatedValue as Float
+            invalidate()
+        }
+    }
+
+    init {
+        setWillNotDraw(false)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        thumbShowAnimator.cancel()
+        bubbleAlphaAnimator.cancel()
+        bubbleScaleAnimator.cancel()
+    }
+
+    @androidx.annotation.RequiresApi(Build.VERSION_CODES.Q)
+    private fun updateGestureExclusionRects() {
+        val thumbCenterY = thumbRect.centerY().toInt()
+        val top = (thumbCenterY - gestureExclusionHeight / 2).coerceAtLeast(0)
+        val bottom = (top + gestureExclusionHeight).coerceAtMost(height)
+        gestureExclusionRect.clear()
+        gestureExclusionRect.add(
+            Rect(width - touchAreaWidth, top, width, bottom)
+        )
+        systemGestureExclusionRects = gestureExclusionRect
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        calculateThumbRect()
+        if (isDragging) {
+            calculateBubbleGeometry()
+        }
+    }
+
+    fun setScrollProgress(progress: Float) {
+        if (isDragging) return
+        scrollProgress = progress.coerceIn(0f, 1f)
+        calculateThumbRect()
+        invalidate()
+    }
+
+    private fun animateThumbAlpha(target: Float) {
+        thumbShowAnimator.cancel()
+        thumbShowAnimator.setFloatValues(thumbAlpha, target)
+        thumbShowAnimator.start()
+    }
+
+    private fun animateBubble(target: Float) {
+        bubbleAlphaAnimator.cancel()
+        bubbleScaleAnimator.cancel()
+        val isShow = target > bubbleAlpha
+        val targetScale = if (isShow) 1f else 0.85f
+
+        bubbleAlphaAnimator.duration = if (isShow) 150 else 100
+        bubbleAlphaAnimator.setFloatValues(bubbleAlpha, target)
+        bubbleAlphaAnimator.start()
+
+        bubbleScaleAnimator.duration = if (isShow) 250 else 200
+        bubbleScaleAnimator.interpolator = if (isShow) scaleEnterInterpolator else scaleExitInterpolator
+        bubbleScaleAnimator.setFloatValues(bubbleScale, targetScale)
+        bubbleScaleAnimator.start()
+    }
+
+    private inline fun withTrackMetrics(block: (trackTop: Float, thumbHeight: Float, availableTrack: Float) -> Unit) {
+        val trackTop = paddingTop.toFloat()
+        val trackBottom = height.toFloat() - paddingBottom
+        val trackHeight = trackBottom - trackTop
+        if (trackHeight <= 0) return
+        val thumbHeight = thumbMinHeight.toFloat()
+        val availableTrack = trackHeight - thumbHeight
+        if (availableTrack <= 0) return
+        block(trackTop, thumbHeight, availableTrack)
+    }
+
+    private fun calculateThumbRect() {
+        withTrackMetrics { trackTop, thumbHeight, availableTrack ->
+            val thumbTop = trackTop + availableTrack * scrollProgress
+            val currentThumbWidth = thumbWidth.toFloat()
+            val left = width - currentThumbWidth - thumbMarginEnd
+            thumbRect.set(left, thumbTop, left + currentThumbWidth, thumbTop + thumbHeight)
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            updateGestureExclusionRects()
+        }
+    }
+
+    private fun calculateBubbleGeometry() {
+        val name = blockName
+        if (name == null) {
+            bubbleGeometryValid = false
+            return
+        }
+
+        bubbleTextPaint.getFontMetrics(bubbleFontMetrics)
+        val textHeight = bubbleFontMetrics.descent - bubbleFontMetrics.ascent
+
+        val bubbleRight = thumbRect.left - bubbleMarginEnd - bubbleArrowWidth
+        val maxBubbleWidth = bubbleRight - bubbleMarginStart
+        if (maxBubbleWidth <= 0) {
+            bubbleGeometryValid = false
+            return
+        }
+        val maxTextWidth = maxBubbleWidth - bubblePaddingHorizontal * 2
+        val textWidth = bubbleTextPaint.measureText(name).coerceAtMost(maxTextWidth)
+        val bubbleWidth = textWidth + bubblePaddingHorizontal * 2
+        val bubbleLeft = bubbleRight - bubbleWidth
+
+        val contentHeight = textHeight + bubblePaddingVertical * 2
+        val bubbleHeight = maxOf(contentHeight, bubbleMinHeight)
+
+        val thumbCenterY = thumbRect.centerY()
+        val bubbleTop = thumbCenterY - bubbleHeight / 2
+
+        bubbleRect.set(bubbleLeft, bubbleTop, bubbleRight, bubbleTop + bubbleHeight)
+
+        // Clamp bubble to view bounds
+        val topBound = paddingTop.toFloat()
+        val bottomBound = height.toFloat() - paddingBottom
+        if (bubbleRect.top < topBound) {
+            bubbleRect.offset(0f, topBound - bubbleRect.top)
+        }
+        if (bubbleRect.bottom > bottomBound) {
+            bubbleRect.offset(0f, -(bubbleRect.bottom - bottomBound))
+        }
+
+        // Build path with arrow (cached)
+        val arrowTipX = bubbleRect.right + bubbleArrowWidth
+        val arrowCenterY = thumbCenterY.coerceIn(
+            bubbleRect.top + bubbleCornerRadius,
+            bubbleRect.bottom - bubbleCornerRadius
+        )
+
+        if (bubbleRect.left != cachedBubbleLeft ||
+            bubbleRect.top != cachedBubbleTop ||
+            bubbleRect.right != cachedBubbleRight ||
+            bubbleRect.bottom != cachedBubbleBottom ||
+            arrowCenterY != cachedArrowCenterY
+        ) {
+            cachedBubbleLeft = bubbleRect.left
+            cachedBubbleTop = bubbleRect.top
+            cachedBubbleRight = bubbleRect.right
+            cachedBubbleBottom = bubbleRect.bottom
+            cachedArrowCenterY = arrowCenterY
+
+            bubblePath.reset()
+            bubblePath.addRoundRect(bubbleRect, bubbleCornerRadius, bubbleCornerRadius, Path.Direction.CW)
+            bubblePath.moveTo(bubbleRect.right - arrowOverlap, arrowCenterY - bubbleArrowHeight / 2)
+            bubblePath.lineTo(arrowTipX, arrowCenterY)
+            bubblePath.lineTo(bubbleRect.right - arrowOverlap, arrowCenterY + bubbleArrowHeight / 2)
+            bubblePath.close()
+        }
+
+        // Pre-compute text drawing coordinates
+        bubbleTextX = bubbleRect.left + bubblePaddingHorizontal
+        bubbleTextY = bubbleRect.centerY() - (bubbleFontMetrics.ascent + bubbleFontMetrics.descent) / 2
+        bubbleDisplayName = if (bubbleTextPaint.measureText(name) > maxTextWidth) {
+            ellipsizeText(name, maxTextWidth)
+        } else {
+            name
+        }
+        bubblePivotX = bubbleRect.right + bubbleArrowWidth
+        bubblePivotY = arrowCenterY
+
+        bubbleGeometryValid = true
+    }
+
+    internal fun isInEdgeZone(x: Float): Boolean {
+        return x >= width - touchEdgeWidth
+    }
+
+    internal fun isInThumbZone(x: Float, y: Float): Boolean {
+        if (x < width - touchAreaWidth) return false
+        val centerY = thumbRect.centerY()
+        val halfZone = gestureExclusionHeight / 2f
+        return y >= centerY - halfZone && y <= centerY + halfZone
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        if (height <= 0 || width <= 0) return
+
+        // Draw thumb
+        if (thumbAlpha > 0f) {
+            val savedAlpha = thumbPaint.alpha
+            val alpha = (thumbAlpha * 255).toInt()
+            thumbPaint.alpha = alpha
+            canvas.drawRoundRect(thumbRect, thumbCornerRadius, thumbCornerRadius, thumbPaint)
+
+            // Grip lines
+            val cx = thumbRect.centerX()
+            val cy = thumbRect.centerY()
+            val halfW = gripLineWidth / 2f
+            val halfH = gripLineHeight / 2f
+            val halfGap = gripLineSpacing / 2f
+            val savedColor = thumbPaint.color
+            thumbPaint.color = 0xFF000000.toInt()
+            thumbPaint.alpha = 255
+            canvas.drawRoundRect(cx - halfW, cy - halfGap - halfH, cx + halfW, cy - halfGap + halfH, halfH, halfH, thumbPaint)
+            canvas.drawRoundRect(cx - halfW, cy + halfGap - halfH, cx + halfW, cy + halfGap + halfH, halfH, halfH, thumbPaint)
+            thumbPaint.color = savedColor
+
+            thumbPaint.alpha = savedAlpha
+        }
+
+        // Draw bubble
+        if (bubbleAlpha > 0f && blockName != null) {
+            drawBubble(canvas)
+        }
+    }
+
+    private fun drawBubble(canvas: Canvas) {
+        if (!bubbleGeometryValid) return
+
+        val savedAlpha = bubblePaint.alpha
+        val savedTextAlpha = bubbleTextPaint.alpha
+        val alpha = (bubbleAlpha * 255).toInt()
+        bubblePaint.alpha = alpha
+        bubbleTextPaint.alpha = alpha
+
+        val modulatedShadowAlpha = (bubbleShadowBaseAlpha * bubbleAlpha).toInt()
+        bubblePaint.setShadowLayer(bubbleShadowRadius, 0f, bubbleShadowDy, modulatedShadowAlpha shl 24)
+
+        canvas.save()
+        canvas.translate(bubblePivotX, bubblePivotY)
+        canvas.scale(bubbleScale, bubbleScale)
+        canvas.translate(-bubblePivotX, -bubblePivotY)
+
+        canvas.drawPath(bubblePath, bubblePaint)
+        canvas.drawText(bubbleDisplayName, bubbleTextX, bubbleTextY, bubbleTextPaint)
+
+        canvas.restore()
+
+        bubblePaint.alpha = savedAlpha
+        bubbleTextPaint.alpha = savedTextAlpha
+        bubblePaint.setShadowLayer(bubbleShadowRadius, 0f, bubbleShadowDy, bubbleShadowColor)
+    }
+
+    private fun ellipsizeText(text: String, maxWidth: Float): String {
+        val ellipsis = "\u2026"
+        val ellipsisWidth = bubbleTextPaint.measureText(ellipsis)
+        var end = text.length
+        while (end > 0 && bubbleTextPaint.measureText(text, 0, end) + ellipsisWidth > maxWidth) {
+            end--
+        }
+        return text.substring(0, end) + ellipsis
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                if (isInEdgeZone(event.x)) {
+                    isDragging = true
+                    parent?.requestDisallowInterceptTouchEvent(true)
+                    if (isInThumbZone(event.x, event.y)) {
+                        dragTouchOffset = null
+                        blockName = delegate.getBlockName(scrollProgress)
+                        calculateBubbleGeometry()
+                    } else {
+                        dragTouchOffset = 0f
+                        updateProgressFromTouch(event.y)
+                    }
+                    animateThumbAlpha(thumbAlphaActive)
+                    animateBubble(1f)
+                    delegate.onFastScrollStart()
+                    return true
+                }
+                return false
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+                if (isDragging) {
+                    if (dragTouchOffset == null) {
+                        dragTouchOffset = event.y - thumbRect.centerY()
+                    }
+                    updateProgressFromTouch(event.y - (dragTouchOffset ?: 0f))
+                    return true
+                }
+            }
+
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                if (isDragging) {
+                    isDragging = false
+                    previousBlockName = null
+                    cachedBubbleLeft = null
+                    cachedBubbleTop = null
+                    cachedBubbleRight = null
+                    cachedBubbleBottom = null
+                    cachedArrowCenterY = null
+                    parent?.requestDisallowInterceptTouchEvent(false)
+                    animateBubble(0f)
+                    animateThumbAlpha(thumbAlphaIdle)
+                    delegate.onFastScrollEnd()
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    private fun updateProgressFromTouch(y: Float) {
+        withTrackMetrics { trackTop, thumbHeight, availableTrack ->
+            val progress = ((y - trackTop - thumbHeight / 2) / availableTrack).coerceIn(0f, 1f)
+            scrollProgress = progress
+            calculateThumbRect()
+            val newBlockName = delegate.getBlockName(progress)
+            if (newBlockName != null && newBlockName != previousBlockName) {
+                val hapticConstant = if (Build.VERSION.SDK_INT >= 34) {
+                    HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
+                } else {
+                    HapticFeedbackConstants.CLOCK_TICK
+                }
+                performHapticFeedback(hapticConstant)
+            }
+            previousBlockName = newBlockName
+            blockName = newBlockName
+            calculateBubbleGeometry()
+            delegate.onFastScroll(progress)
+            invalidate()
+        }
+    }
+}
