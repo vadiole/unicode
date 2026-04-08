@@ -1,6 +1,3 @@
--renamesourcefileattribute SourceFile
--verbose
--optimizationpasses 5
 -overloadaggressively
 -allowaccessmodification
 

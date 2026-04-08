@@ -1,19 +1,20 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
 }
 
 android {
     namespace = "vadiole.unicode"
-    compileSdk = 35
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         applicationId = "vadiole.unicode"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 160
         versionName = "1.6.0"
-        setProperty("archivesBaseName", "unicode-v$versionName")
+        base.archivesName.set("unicode-v$versionName")
     }
 
     androidResources {
@@ -51,8 +52,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    buildFeatures {
+        buildConfig = true
     }
 
     lint {
@@ -72,10 +73,10 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.16.0")
+    implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.dynamicanimation:dynamicanimation:1.1.0")
     implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 }
