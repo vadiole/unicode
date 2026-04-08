@@ -18,6 +18,7 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import vadiole.unicode.R
+import vadiole.unicode.ui.common.Squircle2
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.roboto_semibold
 
@@ -47,10 +48,10 @@ class FastScrollView(
     private val bubblePaddingHorizontal = 16f.dp(context)
     private val bubblePaddingVertical = 4f.dp(context)
     private val bubbleCornerRadius = 10f.dp(context)
-    private val bubbleMarginEnd = 12.dp(context)
+    private val bubbleMarginEnd = 24.dp(context)
     private val bubbleTextSize = 15f.dp(context)
-    private val bubbleArrowWidth = 8f.dp(context)
-    private val bubbleArrowHeight = 12f.dp(context)
+    private val bubbleArrowWidth = 12f.dp(context)
+    private val bubbleArrowHeight = 20f.dp(context)
     private val bubbleMarginStart = 24f.dp(context)
     private val bubbleMinHeight = 48f.dp(context)
     private val arrowOverlap = 1f.dp(context)
@@ -102,6 +103,7 @@ class FastScrollView(
     private val thumbRect = RectF()
     private val bubbleRect = RectF()
     private val bubblePath = Path()
+    private val bubbleSquircle = Squircle2(bubbleCornerRadius.toInt())
     private var cachedBubbleLeft: Float? = null
     private var cachedBubbleTop: Float? = null
     private var cachedBubbleRight: Float? = null
@@ -294,10 +296,9 @@ class FastScrollView(
         }
 
         // Build path with arrow (cached)
-        val arrowTipX = bubbleRect.right + bubbleArrowWidth
         val arrowCenterY = thumbCenterY.coerceIn(
-            bubbleRect.top + bubbleCornerRadius,
-            bubbleRect.bottom - bubbleCornerRadius
+            bubbleRect.top + maxOf(bubbleCornerRadius, bubbleArrowHeight / 2),
+            bubbleRect.bottom - maxOf(bubbleCornerRadius, bubbleArrowHeight / 2)
         )
 
         if (bubbleRect.left != cachedBubbleLeft ||
@@ -312,11 +313,28 @@ class FastScrollView(
             cachedBubbleBottom = bubbleRect.bottom
             cachedArrowCenterY = arrowCenterY
 
+            bubbleSquircle.setBounds(
+                bubbleRect.left.toInt(), bubbleRect.top.toInt(),
+                bubbleRect.right.toInt(), bubbleRect.bottom.toInt()
+            )
             bubblePath.reset()
-            bubblePath.addRoundRect(bubbleRect, bubbleCornerRadius, bubbleCornerRadius, Path.Direction.CW)
-            bubblePath.moveTo(bubbleRect.right - arrowOverlap, arrowCenterY - bubbleArrowHeight / 2)
-            bubblePath.lineTo(arrowTipX, arrowCenterY)
-            bubblePath.lineTo(bubbleRect.right - arrowOverlap, arrowCenterY + bubbleArrowHeight / 2)
+            bubblePath.addPath(bubbleSquircle.path)
+
+            val halfArrow = bubbleArrowHeight / 2f
+            val baseX = bubbleRect.right - arrowOverlap
+            val tipX = bubbleRect.right + bubbleArrowWidth
+
+            bubblePath.moveTo(baseX, arrowCenterY - halfArrow)
+            bubblePath.cubicTo(
+                baseX, arrowCenterY - halfArrow * 0.5f,
+                tipX, arrowCenterY - halfArrow * 0.3f,
+                tipX, arrowCenterY
+            )
+            bubblePath.cubicTo(
+                tipX, arrowCenterY + halfArrow * 0.3f,
+                baseX, arrowCenterY + halfArrow * 0.5f,
+                baseX, arrowCenterY + halfArrow
+            )
             bubblePath.close()
         }
 
