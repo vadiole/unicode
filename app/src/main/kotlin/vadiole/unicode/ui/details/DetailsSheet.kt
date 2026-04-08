@@ -2,6 +2,7 @@ package vadiole.unicode.ui.details
 
 import android.content.Context
 import android.graphics.Canvas
+import android.os.Build
 import android.graphics.Paint
 import android.text.TextUtils
 import android.util.TypedValue
@@ -68,6 +69,15 @@ class DetailsSheet(
         typeface = roboto_semibold
         letterSpacing = 0.03f
         isSingleLine = true
+        onLongClick = {
+            charObj?.let { value ->
+                val name = value.name
+                context.toClipboard("Unicode", name)
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, name), LENGTH_SHORT).show()
+                }
+            }
+        }
     })
     private val subtitleHeight = 18.dp(context)
     private val subtitle = TextView(context).apply(fun TextView.() {
@@ -90,6 +100,15 @@ class DetailsSheet(
         layoutParams = frameParams(matchParent, charViewHeight, gravity = Gravity.TOP, marginTop = vertical)
         vertical += charViewHeight
         textSize = 100f.dp(context)
+        onLongClick = {
+            charObj?.let { value ->
+                val char = value.char
+                context.toClipboard("Unicode", char)
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, char), LENGTH_SHORT).show()
+                }
+            }
+        }
     }
     private val infoViewHeight = 56.dp(context)
     private val infoViews = List(4) {
@@ -99,7 +118,9 @@ class DetailsSheet(
                 charObj?.let { value ->
                     val info = value.infoValues[it]
                     context.toClipboard("Unicode", info)
-                    Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, info), LENGTH_SHORT).show()
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                        Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, info), LENGTH_SHORT).show()
+                    }
                 }
             }
         }
@@ -134,7 +155,9 @@ class DetailsSheet(
             charObj?.let { value ->
                 val char = value.char
                 context.toClipboard("Unicode", char)
-                Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, char), LENGTH_SHORT).show()
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, char), LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -159,7 +182,9 @@ class DetailsSheet(
         onLongClick = {
             charObj?.let { value ->
                 context.toClipboard("Unicode", value.getLink())
-                Toast.makeText(context, context.getString(R.string.toast_link_copied_to_clipboard), LENGTH_SHORT).show()
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    Toast.makeText(context, context.getString(R.string.toast_link_copied_to_clipboard), LENGTH_SHORT).show()
+                }
             }
         }
     }
