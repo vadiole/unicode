@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Ακύρωση</string>
+    <string name="error_unknown">Παρουσιάστηκε άγνωστο σφάλμα</string>
+    <string name="toast_copied_to_clipboard">%s αντιγράφηκε στο πρόχειρο</string>
+    <string name="toast_link_copied_to_clipboard">Ο σύνδεσμος αντιγράφηκε στο πρόχειρο</string>
+
+    <!-- Search -->
+    <string name="search_hint">Αναζήτηση</string>
+    <string name="search_no_results">Δεν βρέθηκαν αποτελέσματα</string>
+    <string name="search_recents">Πρόσφατα</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Εύρεση στον πίνακα</string>
+    <string name="details_copy_to_clipboard">Αντιγραφή στο πρόχειρο</string>
+    <string name="details_share_link">Κοινοποίηση συνδέσμου</string>
+    <string name="details_info_code">Κωδικός</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Έκδοση</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Το Unicode σταμάτησε</string>
+    <string name="crash_dialog_message">Θέλεις να στείλεις αναφορά σφάλματος;</string>
+    <string name="crash_dont_ask_again">Να μην ερωτηθώ ξανά</string>
+    <string name="crash_send">Αποστολή</string>
+    <string name="crash_email_subject">Εφαρμογή Unicode</string>
+    <string name="crash_send_via_email">Αποστολή μέσω email</string>
+    <string name="crash_no_email_clients">Δεν υπάρχουν εφαρμογές email</string>
+</resources>

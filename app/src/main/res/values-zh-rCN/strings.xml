@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">取消</string>
+    <string name="error_unknown">发生未知错误</string>
+    <string name="toast_copied_to_clipboard">%s 已复制到剪贴板</string>
+    <string name="toast_link_copied_to_clipboard">链接已复制到剪贴板</string>
+
+    <!-- Search -->
+    <string name="search_hint">搜索</string>
+    <string name="search_no_results">未找到结果</string>
+    <string name="search_recents">最近搜索</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">在表中查找</string>
+    <string name="details_copy_to_clipboard">复制到剪贴板</string>
+    <string name="details_share_link">分享链接</string>
+    <string name="details_info_code">编码</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">版本</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode 已停止运行</string>
+    <string name="crash_dialog_message">是否发送崩溃报告？</string>
+    <string name="crash_dont_ask_again">不再询问</string>
+    <string name="crash_send">发送</string>
+    <string name="crash_email_subject">Unicode 应用</string>
+    <string name="crash_send_via_email">通过邮件发送</string>
+    <string name="crash_no_email_clients">未安装邮件应用</string>
+</resources>

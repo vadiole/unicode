@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Prekliči</string>
+    <string name="error_unknown">Prišlo je do neznane napake</string>
+    <string name="toast_copied_to_clipboard">%s kopirano v odložišče</string>
+    <string name="toast_link_copied_to_clipboard">Povezava kopirana v odložišče</string>
+
+    <!-- Search -->
+    <string name="search_hint">Iskanje</string>
+    <string name="search_no_results">Ni zadetkov</string>
+    <string name="search_recents">Nedavno</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Poišči v tabeli</string>
+    <string name="details_copy_to_clipboard">Kopiraj v odložišče</string>
+    <string name="details_share_link">Deli povezavo</string>
+    <string name="details_info_code">Koda</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Različica</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode se je ustavil</string>
+    <string name="crash_dialog_message">Želiš poslati poročilo o napaki?</string>
+    <string name="crash_dont_ask_again">Ne vprašaj več</string>
+    <string name="crash_send">Pošlji</string>
+    <string name="crash_email_subject">Aplikacija Unicode</string>
+    <string name="crash_send_via_email">Pošlji po e-pošti</string>
+    <string name="crash_no_email_clients">Ni nameščenih e-poštnih aplikacij</string>
+</resources>

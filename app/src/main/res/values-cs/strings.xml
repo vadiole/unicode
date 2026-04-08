@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Zrušit</string>
+    <string name="error_unknown">Došlo k neznámé chybě</string>
+    <string name="toast_copied_to_clipboard">%s zkopírováno do schránky</string>
+    <string name="toast_link_copied_to_clipboard">Odkaz zkopírován do schránky</string>
+
+    <!-- Search -->
+    <string name="search_hint">Hledat</string>
+    <string name="search_no_results">Nic nenalezeno</string>
+    <string name="search_recents">Nedávné</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Najít v tabulce</string>
+    <string name="details_copy_to_clipboard">Kopírovat do schránky</string>
+    <string name="details_share_link">Sdílet odkaz</string>
+    <string name="details_info_code">Kód</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Verze</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode se neočekávaně zastavil</string>
+    <string name="crash_dialog_message">Chceš odeslat hlášení o pádu?</string>
+    <string name="crash_dont_ask_again">Znovu se neptat</string>
+    <string name="crash_send">Odeslat</string>
+    <string name="crash_email_subject">Aplikace Unicode</string>
+    <string name="crash_send_via_email">Odeslat e-mailem</string>
+    <string name="crash_no_email_clients">Nejsou nainstalovány žádné e-mailové aplikace</string>
+</resources>

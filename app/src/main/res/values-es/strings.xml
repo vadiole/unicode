@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Cancelar</string>
+    <string name="error_unknown">Ocurrió un error desconocido</string>
+    <string name="toast_copied_to_clipboard">%s copiado al portapapeles</string>
+    <string name="toast_link_copied_to_clipboard">Enlace copiado al portapapeles</string>
+
+    <!-- Search -->
+    <string name="search_hint">Buscar</string>
+    <string name="search_no_results">No se encontraron resultados</string>
+    <string name="search_recents">Recientes</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Buscar en la tabla</string>
+    <string name="details_copy_to_clipboard">Copiar al portapapeles</string>
+    <string name="details_share_link">Compartir enlace</string>
+    <string name="details_info_code">Código</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Versión</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode se detuvo</string>
+    <string name="crash_dialog_message">¿Quieres enviar un informe de error?</string>
+    <string name="crash_dont_ask_again">No volver a preguntar</string>
+    <string name="crash_send">Enviar</string>
+    <string name="crash_email_subject">App Unicode</string>
+    <string name="crash_send_via_email">Enviar por correo</string>
+    <string name="crash_no_email_clients">No hay apps de correo instaladas</string>
+</resources>

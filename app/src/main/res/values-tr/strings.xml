@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Vazgeç</string>
+    <string name="error_unknown">Bilinmeyen bir hata oluştu</string>
+    <string name="toast_copied_to_clipboard">%s panoya kopyalandı</string>
+    <string name="toast_link_copied_to_clipboard">Bağlantı panoya kopyalandı</string>
+
+    <!-- Search -->
+    <string name="search_hint">Ara</string>
+    <string name="search_no_results">Sonuç bulunamadı</string>
+    <string name="search_recents">Son aramalar</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Tabloda Bul</string>
+    <string name="details_copy_to_clipboard">Panoya Kopyala</string>
+    <string name="details_share_link">Bağlantıyı Paylaş</string>
+    <string name="details_info_code">Kod</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Sürüm</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode durdu</string>
+    <string name="crash_dialog_message">Çökme raporu göndermek ister misin?</string>
+    <string name="crash_dont_ask_again">Bir daha sorma</string>
+    <string name="crash_send">Gönder</string>
+    <string name="crash_email_subject">Unicode uygulaması</string>
+    <string name="crash_send_via_email">E-postayla gönder</string>
+    <string name="crash_no_email_clients">E-posta uygulaması yüklü değil</string>
+</resources>

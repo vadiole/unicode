@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Annuller</string>
+    <string name="error_unknown">Der opstod en ukendt fejl</string>
+    <string name="toast_copied_to_clipboard">%s kopieret til udklipsholder</string>
+    <string name="toast_link_copied_to_clipboard">Link kopieret til udklipsholder</string>
+
+    <!-- Search -->
+    <string name="search_hint">Søg</string>
+    <string name="search_no_results">Ingen resultater fundet</string>
+    <string name="search_recents">Seneste</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Find i tabel</string>
+    <string name="details_copy_to_clipboard">Kopiér til udklipsholder</string>
+    <string name="details_share_link">Del link</string>
+    <string name="details_info_code">Kode</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Version</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode er stoppet</string>
+    <string name="crash_dialog_message">Vil du sende en fejlrapport?</string>
+    <string name="crash_dont_ask_again">Spørg ikke igen</string>
+    <string name="crash_send">Send</string>
+    <string name="crash_email_subject">Unicode-app</string>
+    <string name="crash_send_via_email">Send via e-mail</string>
+    <string name="crash_no_email_clients">Ingen e-mailklienter installeret</string>
+</resources>

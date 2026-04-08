@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">キャンセル</string>
+    <string name="error_unknown">不明なエラーが発生しました</string>
+    <string name="toast_copied_to_clipboard">%s をクリップボードにコピーしました</string>
+    <string name="toast_link_copied_to_clipboard">リンクをクリップボードにコピーしました</string>
+
+    <!-- Search -->
+    <string name="search_hint">検索</string>
+    <string name="search_no_results">結果が見つかりません</string>
+    <string name="search_recents">履歴</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">テーブルで探す</string>
+    <string name="details_copy_to_clipboard">クリップボードにコピー</string>
+    <string name="details_share_link">リンクを共有</string>
+    <string name="details_info_code">コード</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">バージョン</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode が停止しました</string>
+    <string name="crash_dialog_message">クラッシュレポートを送信しますか？</string>
+    <string name="crash_dont_ask_again">今後表示しない</string>
+    <string name="crash_send">送信</string>
+    <string name="crash_email_subject">Unicode アプリ</string>
+    <string name="crash_send_via_email">メールで送信</string>
+    <string name="crash_no_email_clients">メールアプリがインストールされていません</string>
+</resources>

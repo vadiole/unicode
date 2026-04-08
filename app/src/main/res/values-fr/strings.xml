@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Annuler</string>
+    <string name="error_unknown">Une erreur inconnue est survenue</string>
+    <string name="toast_copied_to_clipboard">%s copié dans le presse-papiers</string>
+    <string name="toast_link_copied_to_clipboard">Lien copié dans le presse-papiers</string>
+
+    <!-- Search -->
+    <string name="search_hint">Rechercher</string>
+    <string name="search_no_results">Aucun résultat</string>
+    <string name="search_recents">Récents</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Trouver dans le tableau</string>
+    <string name="details_copy_to_clipboard">Copier dans le presse-papiers</string>
+    <string name="details_share_link">Partager le lien</string>
+    <string name="details_info_code">Code</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Version</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode s\'est arrêté</string>
+    <string name="crash_dialog_message">Envoyer un rapport d\'erreur\u00A0?</string>
+    <string name="crash_dont_ask_again">Ne plus demander</string>
+    <string name="crash_send">Envoyer</string>
+    <string name="crash_email_subject">Application Unicode</string>
+    <string name="crash_send_via_email">Envoyer par e-mail</string>
+    <string name="crash_no_email_clients">Aucune application de messagerie installée</string>
+</resources>

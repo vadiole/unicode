@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">रद्द करें</string>
+    <string name="error_unknown">अज्ञात त्रुटि हुई</string>
+    <string name="toast_copied_to_clipboard">%s क्लिपबोर्ड पर कॉपी हुआ</string>
+    <string name="toast_link_copied_to_clipboard">लिंक क्लिपबोर्ड पर कॉपी हुआ</string>
+
+    <!-- Search -->
+    <string name="search_hint">खोजें</string>
+    <string name="search_no_results">कुछ नहीं मिला</string>
+    <string name="search_recents">हाल के</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">तालिका में खोजें</string>
+    <string name="details_copy_to_clipboard">क्लिपबोर्ड पर कॉपी करें</string>
+    <string name="details_share_link">लिंक शेयर करें</string>
+    <string name="details_info_code">कोड</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">वर्शन</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode अचानक बंद हो गया</string>
+    <string name="crash_dialog_message">क्रैश रिपोर्ट भेजना चाहोगे?</string>
+    <string name="crash_dont_ask_again">दोबारा मत पूछो</string>
+    <string name="crash_send">भेजें</string>
+    <string name="crash_email_subject">Unicode ऐप</string>
+    <string name="crash_send_via_email">ईमेल से भेजें</string>
+    <string name="crash_no_email_clients">कोई ईमेल ऐप इंस्टॉल नहीं है</string>
+</resources>

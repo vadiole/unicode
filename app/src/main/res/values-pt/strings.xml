@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Cancelar</string>
+    <string name="error_unknown">Ocorreu um erro desconhecido</string>
+    <string name="toast_copied_to_clipboard">%s copiado para a área de transferência</string>
+    <string name="toast_link_copied_to_clipboard">Link copiado para a área de transferência</string>
+
+    <!-- Search -->
+    <string name="search_hint">Pesquisar</string>
+    <string name="search_no_results">Sem resultados</string>
+    <string name="search_recents">Recentes</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Encontrar na tabela</string>
+    <string name="details_copy_to_clipboard">Copiar para a área de transferência</string>
+    <string name="details_share_link">Partilhar link</string>
+    <string name="details_info_code">Código</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Versão</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">O Unicode parou</string>
+    <string name="crash_dialog_message">Queres enviar um relatório de erro?</string>
+    <string name="crash_dont_ask_again">Não perguntar novamente</string>
+    <string name="crash_send">Enviar</string>
+    <string name="crash_email_subject">App Unicode</string>
+    <string name="crash_send_via_email">Enviar por email</string>
+    <string name="crash_no_email_clients">Nenhum cliente de email instalado</string>
+</resources>
