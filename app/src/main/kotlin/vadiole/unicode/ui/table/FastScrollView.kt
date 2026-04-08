@@ -110,6 +110,7 @@ class FastScrollView(
     private val thumbRect = RectF()
     private val bubbleRect = RectF()
     private val bubblePath = Path()
+    private val arrowPath = Path()
     private val bubbleSquircle = Squircle2(bubbleCornerRadius.toInt())
     private var cachedBubbleLeft: Float? = null
     private var cachedBubbleTop: Float? = null
@@ -324,25 +325,28 @@ class FastScrollView(
                 bubbleRect.left.toInt(), bubbleRect.top.toInt(),
                 bubbleRect.right.toInt(), bubbleRect.bottom.toInt()
             )
-            bubblePath.reset()
-            bubblePath.addPath(bubbleSquircle.path)
 
             val halfArrow = bubbleArrowHeight / 2f
             val baseX = bubbleRect.right - arrowOverlap
             val tipX = bubbleRect.right + bubbleArrowWidth
 
-            bubblePath.moveTo(baseX, arrowCenterY - halfArrow)
-            bubblePath.cubicTo(
+            arrowPath.reset()
+            arrowPath.moveTo(baseX, arrowCenterY - halfArrow)
+            arrowPath.cubicTo(
                 baseX, arrowCenterY - halfArrow * 0.5f,
                 tipX, arrowCenterY - halfArrow * 0.3f,
                 tipX, arrowCenterY
             )
-            bubblePath.cubicTo(
+            arrowPath.cubicTo(
                 tipX, arrowCenterY + halfArrow * 0.3f,
                 baseX, arrowCenterY + halfArrow * 0.5f,
                 baseX, arrowCenterY + halfArrow
             )
-            bubblePath.close()
+            arrowPath.close()
+
+            bubblePath.reset()
+            bubblePath.addPath(bubbleSquircle.path)
+            bubblePath.op(arrowPath, Path.Op.UNION)
         }
 
         // Pre-compute text drawing coordinates
