@@ -29,7 +29,6 @@ fun frameParams(
     margins: Rect = Rect()
 ): FrameLayout.LayoutParams {
     val layoutParams = FrameLayout.LayoutParams(width, height, gravity)
-    layoutParams.gravity
     layoutParams.setMargins(margins.left, margins.top, margins.right, margins.bottom)
     return layoutParams
 }

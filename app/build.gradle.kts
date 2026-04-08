@@ -33,18 +33,17 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            vcsInfo.include = false
             proguardFiles("proguard-rules.pro")
         }
     }
 
     packaging {
-        resources.excludes.addAll(
-            listOf(
-                "META-INF/LICENSE",
-                "META-INF/NOTICE",
-                "META-INF/java.properties",
-            )
-        )
+        resources {
+            excludes += "kotlin/**"
+            excludes += "DebugProbesKt.bin"
+            excludes += "META-INF/**"
+        }
     }
 
     compileOptions {
@@ -76,7 +75,5 @@ dependencies {
     implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.dynamicanimation:dynamicanimation:1.1.0")
-    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 }

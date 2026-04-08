@@ -47,13 +47,6 @@ class RecentRepository(private val context: Context) {
         return CodePointArray(recents.size) { index -> CodePoint(recents[index]) }
     }
 
-    fun count(): Int = recents.size
-
-    fun clear() {
-        recents.clear()
-        saveToDisk()
-    }
-
     private fun saveToDisk() {
         val raw = recents.joinToString(",")
         sharedPreferences?.edit()?.putString(KEY_RECENTS, raw)?.apply()

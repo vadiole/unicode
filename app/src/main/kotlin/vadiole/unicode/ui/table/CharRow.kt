@@ -166,7 +166,6 @@ class CharRow(
         if (abbreviation != null) {
             canvas.drawText(abbreviation, charCoordX, abbreviationCoordY, abbreviationPaint)
         } else {
-            Character.UnicodeBlock.SPECIALS
             canvas.drawText(codePoint.char, charCoordX, charCoordY, charPaint)
         }
     }

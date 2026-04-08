@@ -19,7 +19,6 @@ class TableView(
     private val delegate: Delegate,
 ) : CollectionView(context) {
     private val tableLayoutManager = LinearLayoutManager(context)
-    private val itemDecoration = TableItemDecoration()
     private val scrollbarDrawable = ScrollbarDrawable()
     private val scrollBarItemDecoration = VerticalScrollBarItemDecoration(
         recyclerView = this,
@@ -32,7 +31,6 @@ class TableView(
         layoutManager = tableLayoutManager
         setItemViewCacheSize(spanCount * 2)
         setAdapter(adapter)
-        addItemDecoration(itemDecoration)
         addItemDecoration(scrollBarItemDecoration)
         setPaddingHorizontal(8.dp(context))
         scrollbarDrawable.setColor(this.context.getColor(R.color.dialogSurfacePressed))
