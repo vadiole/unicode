@@ -41,10 +41,13 @@ class TableController(
     }
 
     suspend fun loadBlocks() = worker {
-        blocks = unicodeStorage.getBlocks()
-        blocks = blocks.filterMaybe { block ->
+        val allBlocks = unicodeStorage.getBlocks()
+        val filteredBlocks = allBlocks.filterMaybe { block ->
             getPosition(block) != 0 || block.start == 0
         }.toTypedArray()
+        lastBlock = null
+        lastBlockIndex = -1
+        blocks = filteredBlocks
     }
 
     fun getBlock(position: Int): Block? {
@@ -95,7 +98,6 @@ class TableController(
 
     fun getPosition(block: Block): Int {
         if (tableChars.isEmpty()) return 0
-        if (blocks.isEmpty()) return 0
         if (block.start == 0) return 0
 
         var low = 0
