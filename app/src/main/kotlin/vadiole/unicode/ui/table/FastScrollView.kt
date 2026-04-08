@@ -14,10 +14,9 @@ import android.os.Build
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
-import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import android.view.animation.PathInterpolator
+import android.view.animation.OvershootInterpolator
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.roboto_semibold
@@ -70,7 +69,7 @@ class FastScrollView(
 
     private val bubbleShadowRadius = 6f.dp(context)
     private val bubbleShadowDy = 2f.dp(context)
-    private val bubbleShadowColor = 0x2A000000.toInt()
+    private val bubbleShadowColor = 0x2A000000
     private val bubbleShadowBaseAlpha = bubbleShadowColor ushr 24
 
     private val bubblePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -92,6 +91,8 @@ class FastScrollView(
     private var isDragging = false
     private var dragTouchOffset: Float? = 0f
     private var bubbleAlpha = 0f
+    private val thumbScaleActive = 7f / 6f
+    private var thumbScale = 1f
     private var bubbleScale = 0.85f
     private var blockName: String? = null
     private var previousBlockName: String? = null
@@ -117,19 +118,27 @@ class FastScrollView(
     private var bubbleGeometryValid = false
 
     // Animators
+    private val argbEvaluator = ArgbEvaluator()
     private val thumbColorAnimator = ValueAnimator().apply {
         duration = 150
         interpolator = DecelerateInterpolator()
-        setEvaluator(ArgbEvaluator())
         addUpdateListener { animator ->
             thumbPaint.color = animator.animatedValue as Int
             invalidate()
         }
     }
 
+    private val thumbScaleAnimator = ValueAnimator().apply {
+        duration = 200
+        interpolator = OvershootInterpolator(1.5f)
+        addUpdateListener { animator ->
+            thumbScale = animator.animatedValue as Float
+            invalidate()
+        }
+    }
+
     private val linearInterpolator = LinearInterpolator()
-    private val scaleEnterInterpolator = PathInterpolator(0.05f, 0.7f, 0.1f, 1.0f)
-    private val scaleExitInterpolator = AccelerateInterpolator()
+    private val bubbleScaleInterpolator = OvershootInterpolator(1.5f)
 
     private val bubbleAlphaAnimator = ValueAnimator().apply {
         interpolator = linearInterpolator
@@ -160,6 +169,7 @@ class FastScrollView(
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         thumbColorAnimator.cancel()
+        thumbScaleAnimator.cancel()
         bubbleAlphaAnimator.cancel()
         bubbleScaleAnimator.cancel()
     }
@@ -191,9 +201,16 @@ class FastScrollView(
         invalidate()
     }
 
+    private fun animateThumbScale(target: Float) {
+        thumbScaleAnimator.cancel()
+        thumbScaleAnimator.setFloatValues(thumbScale, target)
+        thumbScaleAnimator.start()
+    }
+
     private fun animateThumbColor(target: Int) {
         thumbColorAnimator.cancel()
         thumbColorAnimator.setIntValues(thumbPaint.color, target)
+        thumbColorAnimator.setEvaluator(argbEvaluator)
         thumbColorAnimator.start()
     }
 
@@ -208,7 +225,7 @@ class FastScrollView(
         bubbleAlphaAnimator.start()
 
         bubbleScaleAnimator.duration = if (isShow) 250 else 200
-        bubbleScaleAnimator.interpolator = if (isShow) scaleEnterInterpolator else scaleExitInterpolator
+        bubbleScaleAnimator.interpolator = bubbleScaleInterpolator
         bubbleScaleAnimator.setFloatValues(bubbleScale, targetScale)
         bubbleScaleAnimator.start()
     }
@@ -333,6 +350,8 @@ class FastScrollView(
         if (height <= 0 || width <= 0) return
 
         // Draw thumb
+        canvas.save()
+        canvas.scale(thumbScale, thumbScale, thumbRect.centerX(), thumbRect.centerY())
         canvas.drawRoundRect(thumbRect, thumbCornerRadius, thumbCornerRadius, thumbPaint)
 
         // Grip lines
@@ -346,6 +365,7 @@ class FastScrollView(
         canvas.drawRoundRect(cx - halfW, cy - halfGap - halfH, cx + halfW, cy - halfGap + halfH, halfH, halfH, thumbPaint)
         canvas.drawRoundRect(cx - halfW, cy + halfGap - halfH, cx + halfW, cy + halfGap + halfH, halfH, halfH, thumbPaint)
         thumbPaint.color = savedColor
+        canvas.restore()
 
         // Draw bubble
         if (bubbleAlpha > 0f && blockName != null) {
@@ -405,6 +425,7 @@ class FastScrollView(
                         updateProgressFromTouch(event.y)
                     }
                     animateThumbColor(scrollIndicatorActiveColor)
+                    animateThumbScale(thumbScaleActive)
                     animateBubble(1f)
                     delegate.onFastScrollStart()
                     return true
@@ -434,6 +455,7 @@ class FastScrollView(
                     parent?.requestDisallowInterceptTouchEvent(false)
                     animateBubble(0f)
                     animateThumbColor(scrollIndicatorColor)
+                    animateThumbScale(1f)
                     delegate.onFastScrollEnd()
                     return true
                 }
