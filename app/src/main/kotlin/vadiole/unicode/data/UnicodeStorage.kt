@@ -175,11 +175,11 @@ class UnicodeStorage(private val context: Context) {
         }
         val args = arrayOf(
             "%$escaped%", "%$escaped%",
-            escaped, escaped,
-            "% $escaped", "% $escaped",
-            "$escaped%", "$escaped%",
-            "$escaped %", "$escaped %",
-            "% $escaped %", "% $escaped %",
+            escaped,
+            "% $escaped",
+            "$escaped %",
+            "$escaped%",
+            "% $escaped %",
         )
         return@withContext searchByName(query, args, hasGlyph)
     }
@@ -193,8 +193,8 @@ class UnicodeStorage(private val context: Context) {
         val lastToken = escapedTokens.last()
         val orderClause = "ORDER BY (" +
                 "CASE " +
-                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 1 " +
-                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 2 " +
+                "WHEN name LIKE ? ESCAPE '\\' THEN 1 " +
+                "WHEN name LIKE ? ESCAPE '\\' THEN 2 " +
                 "ELSE 3 END), " +
                 "id"
 
@@ -205,8 +205,6 @@ class UnicodeStorage(private val context: Context) {
         for (token in escapedTokens) args.add("%$token%")
         for (token in escapedTokens) args.add("%$token%")
         args.add("% $lastToken")
-        args.add("% $lastToken")
-        args.add("$lastToken%")
         args.add("$lastToken%")
 
         return@withContext searchByName(limitedSql, args.toTypedArray(), hasGlyph)
@@ -253,11 +251,11 @@ class UnicodeStorage(private val context: Context) {
                 "WHERE name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' " +
                 "ORDER BY (" +
                 "CASE " +
-                "WHEN name = ? OR name2 = ? THEN 1 " +
-                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 2 " +
-                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 3 " +
-                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 4 " +
-                "WHEN name LIKE ? ESCAPE '\\' OR name2 LIKE ? ESCAPE '\\' THEN 5 " +
+                "WHEN name = ? THEN 1 " +
+                "WHEN name LIKE ? ESCAPE '\\' THEN 2 " +
+                "WHEN name LIKE ? ESCAPE '\\' THEN 3 " +
+                "WHEN name LIKE ? ESCAPE '\\' THEN 4 " +
+                "WHEN name LIKE ? ESCAPE '\\' THEN 5 " +
                 "ELSE 6 END), " +
                 "id"
 
