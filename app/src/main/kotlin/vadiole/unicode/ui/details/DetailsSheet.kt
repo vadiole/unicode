@@ -1,18 +1,27 @@
 package vadiole.unicode.ui.details
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Paint
 import android.os.Build
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.MotionEvent
+import android.view.View
+import android.view.animation.PathInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.view.ViewCompat
 import androidx.core.view.updateLayoutParams
+import kotlin.math.atan2
+import kotlin.math.sqrt
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
@@ -111,6 +120,24 @@ class DetailsSheet(
             }
         }
     }
+    private val zoomMatrix = Matrix()
+    private val tmpMatrixValues = FloatArray(9)
+    private val identityValues = FloatArray(9).also { Matrix().getValues(it) }
+    private val snapBackStartValues = FloatArray(9)
+    private var pointerId0 = MotionEvent.INVALID_POINTER_ID
+    private var pointerId1 = MotionEvent.INVALID_POINTER_ID
+    private var prevSpan = 0f
+    private var prevAngle = 0f
+    private var prevFocusX = 0f
+    private var prevFocusY = 0f
+    private var isZooming = false
+    private var snapBackAnim: ValueAnimator? = null
+    private val minSpan = 10.dp(context).toFloat()
+    private companion object {
+        const val RAD_TO_DEG = (180.0 / Math.PI).toFloat()
+        const val TWO_PI = (2.0 * Math.PI).toFloat()
+        val PI_F = Math.PI.toFloat()
+    }
     private val infoViewHeight = 56.dp(context)
     private val infoViews = List(4) {
         CharInfoView(context).apply {
@@ -200,6 +227,7 @@ class DetailsSheet(
         val height = vertical + screenPadding * 2 + 36.dp(context)
         layoutParams = frameParams(matchParent, height, gravity = Gravity.BOTTOM)
         clipChildren = false
+        clipToPadding = false
         setPadding(screenPadding)
         setWillNotDraw(false)
         addView(title)
@@ -209,12 +237,137 @@ class DetailsSheet(
         addView(actionViewInTable)
         addView(actionCopy)
         addView(actionShare)
+        charView.setOnTouchListener { v, event ->
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    pointerId0 = event.getPointerId(0)
+                    false
+                }
+                MotionEvent.ACTION_POINTER_DOWN -> {
+                    v.cancelLongPress()
+                    parent?.requestDisallowInterceptTouchEvent(true)
+                    snapBackAnim?.cancel()
+                    pointerId0 = event.getPointerId(0)
+                    pointerId1 = event.getPointerId(1)
+                    val x0 = event.getX(0)
+                    val y0 = event.getY(0)
+                    val x1 = event.getX(1)
+                    val y1 = event.getY(1)
+                    val dx = x1 - x0
+                    val dy = y1 - y0
+                    prevSpan = sqrt(dx * dx + dy * dy).coerceAtLeast(minSpan)
+                    prevAngle = atan2(dy.toDouble(), dx.toDouble()).toFloat()
+                    prevFocusX = (x0 + x1) / 2f
+                    prevFocusY = (y0 + y1) / 2f
+                    isZooming = true
+                    charView.translationZ = 1f
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    if (!isZooming) return@setOnTouchListener false
+                    val idx0 = event.findPointerIndex(pointerId0)
+                    val idx1 = event.findPointerIndex(pointerId1)
+                    if (idx0 < 0 || idx1 < 0) {
+                        endZoomGesture()
+                        return@setOnTouchListener true
+                    }
+                    val x0 = event.getX(idx0)
+                    val y0 = event.getY(idx0)
+                    val x1 = event.getX(idx1)
+                    val y1 = event.getY(idx1)
+                    val dx = x1 - x0
+                    val dy = y1 - y0
+                    val currSpan = sqrt(dx * dx + dy * dy).coerceAtLeast(minSpan)
+                    val currAngle = atan2(dy.toDouble(), dx.toDouble()).toFloat()
+                    val currFocusX = (x0 + x1) / 2f
+                    val currFocusY = (y0 + y1) / 2f
+                    val dScale = currSpan / prevSpan
+                    var dAngle = currAngle - prevAngle
+                    if (dAngle > PI_F) dAngle -= TWO_PI
+                    if (dAngle < -PI_F) dAngle += TWO_PI
+                    val parentFocusX = charView.left + currFocusX
+                    val parentFocusY = charView.top + currFocusY
+                    zoomMatrix.postScale(dScale, dScale, parentFocusX, parentFocusY)
+                    zoomMatrix.postRotate(
+                        dAngle * RAD_TO_DEG,
+                        parentFocusX,
+                        parentFocusY,
+                    )
+                    zoomMatrix.postTranslate(currFocusX - prevFocusX, currFocusY - prevFocusY)
+                    prevSpan = currSpan
+                    prevAngle = currAngle
+                    prevFocusX = currFocusX
+                    prevFocusY = currFocusY
+                    invalidate()
+                    true
+                }
+                MotionEvent.ACTION_POINTER_UP -> {
+                    val liftedId = event.getPointerId(event.actionIndex)
+                    if (liftedId == pointerId0 || liftedId == pointerId1) {
+                        endZoomGesture()
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    if (isZooming) {
+                        endZoomGesture()
+                        true
+                    } else {
+                        false
+                    }
+                }
+                else -> false
+            }
+        }
         ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
             val bottomInset = insets.navigationBars.bottom
             updateLayoutParams<LayoutParams> {
                 this.height = height + bottomInset
             }
             insets
+        }
+    }
+
+    override fun drawChild(canvas: Canvas, child: View, drawingTime: Long): Boolean {
+        if (child === charView && !zoomMatrix.isIdentity) {
+            val count = canvas.save()
+            canvas.concat(zoomMatrix)
+            val result = super.drawChild(canvas, child, drawingTime)
+            canvas.restoreToCount(count)
+            return result
+        }
+        return super.drawChild(canvas, child, drawingTime)
+    }
+
+    private fun endZoomGesture() {
+        isZooming = false
+        pointerId0 = MotionEvent.INVALID_POINTER_ID
+        pointerId1 = MotionEvent.INVALID_POINTER_ID
+        animateSnapBack()
+    }
+
+    private fun animateSnapBack() {
+        snapBackAnim?.cancel()
+        zoomMatrix.getValues(snapBackStartValues)
+        snapBackAnim = ValueAnimator.ofFloat(1f, 0f).apply {
+            duration = 250
+            interpolator = PathInterpolator(0.4f, 0f, 0.2f, 1f)
+            addUpdateListener { animator ->
+                val t = animator.animatedValue as Float
+                for (i in 0 until 9) {
+                    tmpMatrixValues[i] = identityValues[i] + (snapBackStartValues[i] - identityValues[i]) * t
+                }
+                zoomMatrix.setValues(tmpMatrixValues)
+                invalidate()
+            }
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    zoomMatrix.reset()
+                    charView.translationZ = 0f
+                    invalidate()
+                }
+            })
+            start()
         }
     }
 
@@ -235,6 +388,13 @@ class DetailsSheet(
             infoView.value = obj.infoValues[index]
         }
         charObj = obj
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        snapBackAnim?.cancel()
+        zoomMatrix.reset()
+        charView.translationZ = 0f
     }
 
     private val dividerPaint = getDividerPaint()
