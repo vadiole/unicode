@@ -7,6 +7,8 @@ class UserConfig(context: Context) {
         private const val key_showUnsupportedChars = "showUnsupportedChars"
         private const val key_firstCrashReport = "firstCrashReport"
         private const val key_crashReportDisabled = "crashReportDisabled"
+        private const val key_usedPinchToZoom = "usedPinchToZoom"
+        private const val key_usedFastScroll = "usedFastScroll"
     }
 
     private val sharedPreferences = context.getSharedPreferences("unicode", Context.MODE_PRIVATE)
@@ -28,5 +30,17 @@ class UserConfig(context: Context) {
         get() = sharedPreferences.getBoolean(key_crashReportDisabled, false)
         set(value) {
             editor.putBoolean(key_crashReportDisabled, value).commit()
+        }
+
+    var usedPinchToZoom: Boolean
+        get() = sharedPreferences.getBoolean(key_usedPinchToZoom, false)
+        set(value) {
+            editor.putBoolean(key_usedPinchToZoom, value).apply()
+        }
+
+    var usedFastScroll: Boolean
+        get() = sharedPreferences.getBoolean(key_usedFastScroll, false)
+        set(value) {
+            editor.putBoolean(key_usedFastScroll, value).apply()
         }
 }

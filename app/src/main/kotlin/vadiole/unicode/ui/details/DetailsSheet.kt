@@ -26,6 +26,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
+import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.CharObj
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.ActionCell
@@ -261,6 +262,9 @@ class DetailsSheet(
                     prevFocusY = (y0 + y1) / 2f
                     isZooming = true
                     charView.translationZ = 1f
+                    if (!userConfig.usedPinchToZoom) {
+                        userConfig.usedPinchToZoom = true
+                    }
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {

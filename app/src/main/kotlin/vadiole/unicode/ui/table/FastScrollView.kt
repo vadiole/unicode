@@ -19,6 +19,7 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import vadiole.unicode.R
+import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.Squircle4
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.roboto_semibold
@@ -464,6 +465,9 @@ class FastScrollView(
             MotionEvent.ACTION_DOWN -> {
                 if (isInEdgeZone(event.x)) {
                     isDragging = true
+                    if (!userConfig.usedFastScroll) {
+                        userConfig.usedFastScroll = true
+                    }
                     isPrecisionActive = false
                     precisionLevel = 0
                     thumbHeightAnimator.cancel()
