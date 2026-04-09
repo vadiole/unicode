@@ -2,8 +2,8 @@ package vadiole.unicode.ui.details
 
 import android.content.Context
 import android.graphics.Canvas
-import android.os.Build
 import android.graphics.Paint
+import android.os.Build
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.Gravity
@@ -51,10 +51,11 @@ class DetailsSheet(
     private var charObj: CharObj? = null
     private val screenPadding = 20.dp(context)
     private val verticalPadding = 10.dp(context)
-    private val backgroundDrawable = SquircleDrawable(20.dp(context)).apply {
-        skipBottomRight = true
-        skipBottomLeft = true
-    }
+    private val backgroundDrawable = SquircleDrawable(
+        cornerRadius = 0,
+        topLeftRadius = 20.dp(context),
+        topRightRadius = 20.dp(context),
+    )
     private val backgroundPaint = Paint()
     private var vertical = 0
     private val titleHeight = 21.dp(context)

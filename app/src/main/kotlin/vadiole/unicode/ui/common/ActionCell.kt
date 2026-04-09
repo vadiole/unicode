@@ -14,17 +14,12 @@ class ActionCell(
     private val topItem: Boolean = false,
     private val bottomItem: Boolean = false,
 ) : TextView(context) {
-    private val backgroundDrawable = SquircleDrawable(13.dp(context)).apply {
+    private val backgroundDrawable = run {
+        val r = 13.dp(context)
         when {
-            topItem -> {
-                skipBottomRight = true
-                skipBottomLeft = true
-            }
-
-            bottomItem -> {
-                skipTopLeft = true
-                skipTopRight = true
-            }
+            topItem -> SquircleDrawable(cornerRadius = 0, topLeftRadius = r, topRightRadius = r)
+            bottomItem -> SquircleDrawable(cornerRadius = 0, bottomRightRadius = r, bottomLeftRadius = r)
+            else -> SquircleDrawable(r)
         }
     }
 

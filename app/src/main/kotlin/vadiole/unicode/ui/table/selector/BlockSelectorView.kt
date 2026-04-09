@@ -13,16 +13,15 @@ import android.view.animation.PathInterpolator
 import android.view.animation.ScaleAnimation
 import androidx.core.animation.addListener
 import androidx.core.graphics.drawable.updateBounds
+import androidx.core.graphics.withClip
 import androidx.recyclerview.widget.LinearLayoutManager
 import vadiole.unicode.R
-
 import vadiole.unicode.data.Block
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.ScrollbarDrawable
-import vadiole.unicode.ui.common.Squircle
+import vadiole.unicode.ui.common.Squircle4
 import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
-
 import vadiole.unicode.ui.common.dp
 
 class BlockSelectorView(
@@ -34,9 +33,7 @@ class BlockSelectorView(
         fun onBlockSelected(block: Block)
     }
 
-    private val squircle = Squircle().apply {
-        cornerRadiusPx = 8.dp(context)
-    }
+    private val squircle = Squircle4(8.dp(context))
     private val backgroundDrawable = ColorDrawable()
 
     private val blockSelectorLayoutManager = LinearLayoutManager(context).apply {
@@ -84,7 +81,10 @@ class BlockSelectorView(
         setAdapter(adapter)
         addItemDecoration(divider)
         addItemDecoration(scrollBars)
-        squircle.attach(this)
+        addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+            if (left == oldLeft && top == oldTop && right == oldRight && bottom == oldBottom) return@addOnLayoutChangeListener
+            squircle.setBounds(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat())
+        }
         setPadding(0, 8.dp(context) + topMargin, 0, 8.dp(context))
         layoutAnimation = LayoutAnimationController(
             AnimationSet(true).apply {
@@ -139,7 +139,7 @@ class BlockSelectorView(
 
     override fun draw(c: Canvas) {
         drawAnchor(c)
-        squircle.clip(c) {
+        c.withClip(squircle.path) {
             super.draw(c)
         }
     }
@@ -188,7 +188,7 @@ class BlockSelectorView(
         val right = right - horizontalOffset
         val top = top + topOffset + topMargin
         val bottom = bottom - bottomOffset
-        squircle.attach(this, left, top, right, bottom)
+        squircle.setBounds(left, top, right, bottom)
         anchorDrawable.updateBounds(top = topOffset.toInt(), bottom = topOffset.toInt() + anchorDrawable.intrinsicHeight)
         invalidate()
     }
