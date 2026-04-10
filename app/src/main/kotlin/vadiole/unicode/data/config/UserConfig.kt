@@ -9,6 +9,7 @@ class UserConfig(context: Context) {
         private const val key_crashReportDisabled = "crashReportDisabled"
         private const val key_usedPinchToZoom = "usedPinchToZoom"
         private const val key_usedFastScroll = "usedFastScroll"
+        private const val key_searchResultGrid = "searchResultGrid"
     }
 
     private val sharedPreferences = context.getSharedPreferences("unicode", Context.MODE_PRIVATE)
@@ -42,5 +43,11 @@ class UserConfig(context: Context) {
         get() = sharedPreferences.getBoolean(key_usedFastScroll, false)
         set(value) {
             editor.putBoolean(key_usedFastScroll, value).apply()
+        }
+
+    var searchResultGrid: Boolean
+        get() = sharedPreferences.getBoolean(key_searchResultGrid, false)
+        set(value) {
+            editor.putBoolean(key_searchResultGrid, value).apply()
         }
 }

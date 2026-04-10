@@ -18,8 +18,10 @@ import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
+import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
+import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.data.binarySearch
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
@@ -47,6 +49,7 @@ class TableScreen(
     private val searchController: SearchController,
     private val delegate: Delegate,
 ) : Screen(context) {
+    private var isGridMode = userConfig.searchResultGrid
     private var spanCount = 8
     private var topInset = 0
     private val statusBarPaint = Paint().apply {
@@ -86,32 +89,52 @@ class TableScreen(
             delegate.onItemClick(codePoint)
         }
     }
+    private val searchGridCellDelegate = object : CharRow.Delegate {
+        override fun onClick(codePoint: CodePoint) {
+            hideKeyboard()
+            delegate.onItemClick(codePoint)
+        }
+
+        override fun onLongClick(codePoint: CodePoint) {
+            context.toClipboard("Unicode", codePoint.char)
+            Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, codePoint.char), Toast.LENGTH_SHORT).show()
+        }
+    }
     private var searchJob: Job? = null
     private var isShowingRecents = false
     private val searchAdapter = object : CollectionView.Adapter() {
         override fun getItemViewType(position: Int): Int {
             if (isShowingRecents && position == 0) return VIEW_TYPE_HEADER
-            return VIEW_TYPE_RESULT
+            return if (isGridMode) VIEW_TYPE_GRID_ROW else VIEW_TYPE_RESULT
         }
 
         override fun getItemCount(): Int {
-            return if (isShowingRecents) {
-                val count = searchController.recentResult.size
-                if (count > 0) count + 1 else 0
-            } else {
-                searchController.searchResult.size
-            }
+            val resultCount = if (isShowingRecents) searchController.recentResult.size else searchController.searchResult.size
+            val dataCount = if (isGridMode) (resultCount + spanCount - 1) / spanCount else resultCount
+            return if (isShowingRecents && resultCount > 0) dataCount + 1 else dataCount
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
             return when (viewType) {
                 VIEW_TYPE_HEADER -> CollectionView.Cell(SearchHeaderCell(context))
+                VIEW_TYPE_GRID_ROW -> CollectionView.Cell(CharRow(context, spanCount, searchGridCellDelegate))
                 else -> CollectionView.Cell(SearchResultCell(context, searchResultCellDelegate))
             }
         }
 
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             if (holder.itemViewType == VIEW_TYPE_HEADER) return
+            if (holder.itemViewType == VIEW_TYPE_GRID_ROW) {
+                val row = holder.itemView as CharRow
+                val headerOffset = if (isShowingRecents) 1 else 0
+                val rowIndex = position - headerOffset
+                val results = if (isShowingRecents) searchController.recentResult else searchController.searchResult
+                val startIdx = rowIndex * spanCount
+                val count = minOf(spanCount, results.size - startIdx)
+                val codePoints = CodePointArray(count) { i -> results[startIdx + i].codePoint }
+                row.bind(codePoints, tableController.abbreviations)
+                return
+            }
             val view = holder.itemView as SearchResultCell
             val data = if (isShowingRecents) {
                 searchController.recentResult[position - 1]
@@ -143,6 +166,8 @@ class TableScreen(
             tableView.visibility = GONE
             fastScrollView.visibility = GONE
             searchResultView.visibility = VISIBLE
+            searchModeToggle.visibility = VISIBLE
+            searchResultView.setGridMode(isGridMode)
             noResultsView.visibility = GONE
             isShowingRecents = true
             searchController.recentResult = emptyArray()
@@ -235,6 +260,23 @@ class TableScreen(
         text = context.getString(R.string.search_no_results)
         visibility = GONE
     }
+    private val searchModeToggle = TextView(context).apply {
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14f)
+        typeface = roboto_regular
+        setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
+        gravity = Gravity.CENTER_VERTICAL or Gravity.END
+        setPadding(12.dp(context), 0, 12.dp(context), 0)
+        text = context.getString(if (isGridMode) R.string.search_mode_list else R.string.search_mode_grid)
+        visibility = GONE
+        setOnClickListener {
+            isGridMode = !isGridMode
+            userConfig.searchResultGrid = isGridMode
+            text = context.getString(if (isGridMode) R.string.search_mode_list else R.string.search_mode_grid)
+            searchResultView.setGridMode(isGridMode)
+            searchResultView.scrollToPosition(0)
+            searchAdapter.notifyDataSetChanged()
+        }
+    }
 
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private var downX = 0f
@@ -265,8 +307,9 @@ class TableScreen(
         addView(divider, frameParams(matchParent, 1, marginTop = 92.dp(context)))
         addView(tableView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
         addView(fastScrollView, frameParams(matchParent, matchParent, marginTop = 92.dp(context)))
-        addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
-        addView(noResultsView, frameParams(matchParent, matchParent, marginTop = 92.dp(context), marginBottom = (-42).dp(context)))
+        addView(searchModeToggle, frameParams(matchParent, 36.dp(context), marginTop = 92.dp(context)))
+        addView(searchResultView, frameParams(matchParent, matchParent, marginTop = 128.dp(context), marginBottom = (-42).dp(context)))
+        addView(noResultsView, frameParams(matchParent, matchParent, marginTop = 128.dp(context), marginBottom = (-42).dp(context)))
         launch {
             tableController.loadChars(fast = true)
             tableController.loadAbbreviations()
@@ -338,6 +381,7 @@ class TableScreen(
             tableView.visibility = VISIBLE
             fastScrollView.visibility = VISIBLE
             searchResultView.visibility = GONE
+            searchModeToggle.visibility = GONE
             noResultsView.visibility = GONE
             return true
         }
@@ -369,5 +413,6 @@ class TableScreen(
     companion object {
         private const val VIEW_TYPE_RESULT = 0
         private const val VIEW_TYPE_HEADER = 1
+        private const val VIEW_TYPE_GRID_ROW = 2
     }
 }

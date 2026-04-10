@@ -12,6 +12,8 @@
     <string name="search_hint">Search</string>
     <string name="search_no_results">No results found</string>
     <string name="search_recents">Recents</string>
+    <string name="search_mode_grid">Grid</string>
+    <string name="search_mode_list">List</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Find in Table</string>

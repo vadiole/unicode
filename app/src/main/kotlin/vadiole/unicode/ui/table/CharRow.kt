@@ -93,6 +93,7 @@ class CharRow(
         val index = floor(event.x / width * count).toInt()
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
+                if (index >= codePoints.size) return false
                 actionDownIndex = index
                 charRipples[index] = true
                 postDelayed(longClickRunnable, longClickDuration)

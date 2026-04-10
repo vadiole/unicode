@@ -32,12 +32,23 @@ class SearchResultView(
 
     init {
         recycledViewPool.setMaxRecycledViews(0, 32)
+        recycledViewPool.setMaxRecycledViews(2, 16)
         layoutManager = searchLayoutManager
         setItemViewCacheSize(8)
         setAdapter(adapter)
         addItemDecoration(itemDecoration)
         addItemDecoration(scrollBars)
         scrollbarDrawable.setColor(this.context.getColor(R.color.scrollIndicator))
+    }
+
+    fun setGridMode(isGrid: Boolean) {
+        if (isGrid) {
+            removeItemDecoration(itemDecoration)
+            setPadding(8.dp(context), 0, 8.dp(context), paddingBottom)
+        } else {
+            if (itemDecorationCount == 1) addItemDecoration(itemDecoration)
+            setPadding(0, 0, 0, paddingBottom)
+        }
     }
 
     override fun onScrollStateChanged(state: Int) {
