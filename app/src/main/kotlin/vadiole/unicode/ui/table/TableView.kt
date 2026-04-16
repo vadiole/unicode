@@ -42,12 +42,29 @@ class TableView(
         return (offset.toFloat() / scrollable).coerceIn(0f, 1f)
     }
 
-    fun scrollToProgress(progress: Float) {
+    fun scrollToProgress(progress: Float, precisionLevel: Int) {
         val itemCount = adapter.itemCount
         if (itemCount <= 0) return
+        // At the slowest drag speed one finger pixel spans a fraction of a row, so row-snap
+        // becomes visible stutter — land on an exact pixel offset instead.
+        if (isOffsetPrecision(precisionLevel)) {
+            val range = computeVerticalScrollRange()
+            val extent = computeVerticalScrollExtent()
+            val scrollable = range - extent
+            val rowHeight = range / itemCount
+            if (scrollable > 0 && rowHeight > 0) {
+                val targetPx = (scrollable * progress.coerceIn(0f, 1f)).toLong()
+                val row = (targetPx / rowHeight).toInt().coerceAtMost(itemCount - 1)
+                val intraRowOffset = (targetPx - row.toLong() * rowHeight).toInt()
+                tableLayoutManager.scrollToPositionWithOffset(row, -intraRowOffset)
+                return
+            }
+        }
         val targetPosition = (itemCount * progress).toInt().coerceIn(0, itemCount - 1)
         tableLayoutManager.scrollToPositionWithOffset(targetPosition, 0)
     }
+
+    private fun isOffsetPrecision(precisionLevel: Int): Boolean = precisionLevel == 2
 
     fun scrollToPositionInCenter(row: Int, indexInRow: Int) {
         val offset = measuredHeight / 2

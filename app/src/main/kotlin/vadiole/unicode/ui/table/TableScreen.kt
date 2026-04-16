@@ -232,8 +232,8 @@ class TableScreen(
     private val fastScrollDelegate = object : FastScrollView.Delegate {
         override fun onFastScrollStart() = Unit
 
-        override fun onFastScroll(progress: Float, precise: Boolean) {
-            tableView.scrollToProgress(progress, precise)
+        override fun onFastScroll(progress: Float, precisionLevel: Int) {
+            tableView.scrollToProgress(progress, precisionLevel)
         }
 
         override fun onFastScrollEnd() = Unit

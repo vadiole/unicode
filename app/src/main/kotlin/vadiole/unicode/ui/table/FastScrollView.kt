@@ -31,7 +31,7 @@ class FastScrollView(
 
     interface Delegate {
         fun onFastScrollStart()
-        fun onFastScroll(progress: Float)
+        fun onFastScroll(progress: Float, precisionLevel: Int)
         fun onFastScrollEnd()
         fun getBlockName(progress: Float): String?
     }
@@ -505,7 +505,7 @@ class FastScrollView(
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 if (isDragging) {
                     if (pendingProgress >= 0f) {
-                        delegate.onFastScroll(pendingProgress)
+                        delegate.onFastScroll(pendingProgress, precisionLevel)
                         pendingProgress = -1f
                     }
                     isDragging = false
@@ -602,7 +602,7 @@ class FastScrollView(
             val now = SystemClock.uptimeMillis()
             if (now - lastDispatchTime >= throttleIntervalMs) {
                 pendingProgress = -1f
-                delegate.onFastScroll(scrollProgress)
+                delegate.onFastScroll(scrollProgress, precisionLevel)
                 lastDispatchTime = now
             } else {
                 pendingProgress = scrollProgress
