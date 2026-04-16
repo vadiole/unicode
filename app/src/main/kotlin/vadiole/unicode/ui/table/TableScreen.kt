@@ -157,9 +157,10 @@ class TableScreen(
             }
         }
 
-        val xOffset = (width - popup.view.calculateWidth()) / 2
+        val anchor = this@TableScreen.topBar
+        val xOffset = (anchor.width - popup.view.calculateWidth()) / 2
         val yOffset = (-8).dp(context)
-        popup.showAsDropDown(this, xOffset, yOffset, LEFT or TOP)
+        popup.showAsDropDown(anchor, xOffset, yOffset, LEFT or TOP)
     }
     private val searchDelegate = object : SearchBar.Delegate {
         override fun onFocused(): Boolean {
@@ -231,8 +232,8 @@ class TableScreen(
     private val fastScrollDelegate = object : FastScrollView.Delegate {
         override fun onFastScrollStart() = Unit
 
-        override fun onFastScroll(progress: Float) {
-            tableView.scrollToProgress(progress)
+        override fun onFastScroll(progress: Float, precise: Boolean) {
+            tableView.scrollToProgress(progress, precise)
         }
 
         override fun onFastScrollEnd() = Unit
