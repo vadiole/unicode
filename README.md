@@ -1,5 +1,5 @@
 <h1 align="start">Unicode</h1>
-<h4 align="start">Application for searching, viewing and copying characters from Unicode 15</h4>
+<h4 align="start">Application for searching, viewing and copying characters from Unicode 17</h4>
 
 <img src="https://raw.githubusercontent.com/vadiole/Unicode/master/assets/Screenshot-1.png" alt="screenshot 1" width="24.6%" height="24%"> <img src="https://raw.githubusercontent.com/vadiole/Unicode/master/assets/Screenshot-2.png" alt="screenshot 2" width="24.6%" height="23%"> <img src="https://raw.githubusercontent.com/vadiole/Unicode/master/assets/Screenshot-3.png" alt="screenshot 2" width="24.6%" height="24%"> <img src="https://raw.githubusercontent.com/vadiole/Unicode/master/assets/Screenshot-4.png" alt="screenshot 4" width="24.6%" height="24%">
 
