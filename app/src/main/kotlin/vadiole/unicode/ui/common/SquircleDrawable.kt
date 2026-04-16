@@ -18,7 +18,7 @@ class SquircleDrawable(
     bottomLeftRadius: Int = cornerRadius,
 ) : StateColorDrawable() {
 
-    private val squircle = Squircle4(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius)
+    private val squircle = Squircle(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius)
 
     override fun isStateful(): Boolean = true
 

@@ -20,7 +20,7 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
-import vadiole.unicode.ui.common.Squircle4
+import vadiole.unicode.ui.common.Squircle
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.roboto_semibold
 
@@ -119,7 +119,7 @@ class FastScrollView(
     private val bubbleRect = RectF()
     private val bubblePath = Path()
     private val arrowPath = Path()
-    private val bubbleSquircle = Squircle4(bubbleCornerRadius.toInt())
+    private val bubbleSquircle = Squircle(bubbleCornerRadius.toInt())
     private var cachedBubbleLeft: Float? = null
     private var cachedBubbleTop: Float? = null
     private var cachedBubbleRight: Float? = null

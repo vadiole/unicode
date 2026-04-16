@@ -11,7 +11,7 @@ import kotlin.math.min
  *
  * [Read more about Squircle](https://www.figma.com/blog/desperately-seeking-squircles)
  */
-class Squircle4(
+class Squircle(
     topLeftRadius: Int,
     topRightRadius: Int,
     bottomRightRadius: Int,

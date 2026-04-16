@@ -20,7 +20,7 @@ import vadiole.unicode.data.Block
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.ScrollbarDrawable
-import vadiole.unicode.ui.common.Squircle4
+import vadiole.unicode.ui.common.Squircle
 import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 import vadiole.unicode.ui.common.dp
 
@@ -33,7 +33,7 @@ class BlockSelectorView(
         fun onBlockSelected(block: Block)
     }
 
-    private val squircle = Squircle4(8.dp(context))
+    private val squircle = Squircle(8.dp(context))
     private val backgroundDrawable = ColorDrawable()
 
     private val blockSelectorLayoutManager = LinearLayoutManager(context).apply {
