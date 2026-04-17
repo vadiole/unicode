@@ -13,21 +13,22 @@ class TopBar(
     title: String,
     onTitleClick: TextView.() -> Unit = {},
 ) : FrameLayout(context) {
+    private val chevron = context.getDrawable(R.drawable.ic_chevron_down)!!.mutate().apply {
+        setTint(context.getColor(R.color.windowTextSecondary))
+        setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+    }
     val titleView = TextView(context).apply {
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
         setLineHeightX(22.dp(context))
         typeface = roboto_semibold
         includeFontPadding = false
         gravity = Gravity.CENTER
         onClick = onTitleClick
         letterSpacing = 0.03f
-        text = title
-        setPadding(24.dp(context), 0, 24.dp(context), 0)
+        setPadding(44.dp(context), 0, 44.dp(context), 0)
         compoundDrawablePadding = 4.dp(context)
-        val chevron = context.getDrawable(R.drawable.ic_chevron_down)!!.mutate().apply {
-            setTint(context.getColor(R.color.windowTextSecondary))
-            setBounds(0, 0, intrinsicWidth, intrinsicHeight)
-        }
+        maxLines = 1
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, MAX_TITLE_SP.toFloat())
+        text = title
         setCompoundDrawablesRelative(null, null, chevron, null)
     }
 
@@ -38,6 +39,35 @@ class TopBar(
     }
 
     fun setTitle(text: String) {
+        if (titleView.text.toString() == text) return
         titleView.text = text
+        fitTitle()
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        fitTitle()
+    }
+
+    private fun fitTitle() {
+        val available = width - 2 * 44.dp(context) - chevron.intrinsicWidth - titleView.compoundDrawablePadding
+        if (available <= 0) return
+        val text = titleView.text.toString()
+        val paint = titleView.paint
+        val metrics = resources.displayMetrics
+        var fittingSp = MIN_TITLE_SP
+        for (sizeSp in MAX_TITLE_SP downTo MIN_TITLE_SP) {
+            paint.textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sizeSp.toFloat(), metrics)
+            if (paint.measureText(text) <= available) {
+                fittingSp = sizeSp
+                break
+            }
+        }
+        titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, fittingSp.toFloat())
+    }
+
+    companion object {
+        private const val MIN_TITLE_SP = 9
+        private const val MAX_TITLE_SP = 17
     }
 }
