@@ -15,9 +15,11 @@ import android.os.SystemClock
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
+import kotlin.math.abs
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.Squircle
@@ -107,6 +109,21 @@ class FastScrollView(
     private var isPrecisionActive = false
     private var thumbHeightFraction = 0f
     private val gestureExclusionRect = mutableListOf<Rect>()
+    private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+    private var touchDownY = 0f
+    private var scrollSlopPassed = false
+
+    // Direction history (last 200ms); suppress vertical when horizontal dominates.
+    private val directionWindowMs = 200L
+    private val directionCapacity = 32
+    private val directionTimes = LongArray(directionCapacity)
+    private val directionDx = FloatArray(directionCapacity)
+    private val directionDy = FloatArray(directionCapacity)
+    private var directionHead = 0
+    private var directionCount = 0
+    private var lastMoveX = 0f
+    private var lastMoveY = 0f
+    private val horizontalDominanceRatio = 0.75f
 
     // Throttle
     private val throttleIntervalMs = if (Build.VERSION.SDK_INT >= 34) 17L else 30L
@@ -464,6 +481,12 @@ class FastScrollView(
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 if (isInEdgeZone(event.x)) {
+                    touchDownY = event.y
+                    scrollSlopPassed = false
+                    lastMoveX = event.x
+                    lastMoveY = event.y
+                    directionHead = 0
+                    directionCount = 0
                     isDragging = true
                     if (!userConfig.usedFastScroll) {
                         userConfig.usedFastScroll = true
@@ -494,6 +517,32 @@ class FastScrollView(
 
             MotionEvent.ACTION_MOVE -> {
                 if (isDragging) {
+                    recordDirectionSample(event)
+                    val newLevel = precisionLevelFromX(event.x)
+                    if (newLevel != precisionLevel) {
+                        val oldLevel = precisionLevel
+                        precisionLevel = newLevel
+                        onPrecisionLevelChanged(oldLevel, newLevel)
+                        if (scrollSlopPassed) {
+                            anchorY = event.y - (dragTouchOffset ?: 0f)
+                            anchorProgress = scrollProgress
+                        }
+                    }
+                    if (!scrollSlopPassed) {
+                        if (abs(event.y - touchDownY) < touchSlop) return true
+                        scrollSlopPassed = true
+                        if (dragTouchOffset == null) {
+                            dragTouchOffset = event.y - thumbRect.centerY()
+                        }
+                        anchorY = event.y - (dragTouchOffset ?: 0f)
+                        anchorProgress = scrollProgress
+                        isPrecisionActive = true
+                    }
+                    if (isHorizontalDominant(event.eventTime)) {
+                        anchorY = event.y - (dragTouchOffset ?: 0f)
+                        anchorProgress = scrollProgress
+                        return true
+                    }
                     if (dragTouchOffset == null) {
                         dragTouchOffset = event.y - thumbRect.centerY()
                     }
@@ -528,6 +577,40 @@ class FastScrollView(
             }
         }
         return false
+    }
+
+    private fun recordDirectionSample(event: MotionEvent) {
+        val dx = event.x - lastMoveX
+        val dy = event.y - lastMoveY
+        lastMoveX = event.x
+        lastMoveY = event.y
+        val idx = (directionHead + directionCount) % directionCapacity
+        directionTimes[idx] = event.eventTime
+        directionDx[idx] = dx
+        directionDy[idx] = dy
+        if (directionCount < directionCapacity) {
+            directionCount++
+        } else {
+            directionHead = (directionHead + 1) % directionCapacity
+        }
+    }
+
+    private fun isHorizontalDominant(nowMs: Long): Boolean {
+        val cutoff = nowMs - directionWindowMs
+        while (directionCount > 0 && directionTimes[directionHead] < cutoff) {
+            directionHead = (directionHead + 1) % directionCapacity
+            directionCount--
+        }
+        var sumDx = 0f
+        var sumDy = 0f
+        for (i in 0 until directionCount) {
+            val idx = (directionHead + i) % directionCapacity
+            sumDx += abs(directionDx[idx])
+            sumDy += abs(directionDy[idx])
+        }
+        val total = sumDx + sumDy
+        if (total < touchSlop) return false
+        return sumDx / total >= horizontalDominanceRatio
     }
 
     private fun precisionLevelFromX(eventX: Float): Int {
