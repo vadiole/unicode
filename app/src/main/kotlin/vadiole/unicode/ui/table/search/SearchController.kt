@@ -1,8 +1,10 @@
 package vadiole.unicode.ui.table.search
 
 import android.graphics.Paint
+import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.data.UnicodeStorage
+import vadiole.unicode.data.UnicodeStorage.Companion.isInvisible
 import vadiole.unicode.data.config.RecentRepository
 
 class SearchController(
@@ -10,7 +12,9 @@ class SearchController(
     private val recentRepository: RecentRepository,
 ) {
     private val glyphPaint = Paint()
-    private val hasGlyph: (String) -> Boolean = glyphPaint::hasGlyph
+    private val shouldInclude: (CodePoint, String?) -> Boolean = { cp, category ->
+        isInvisible(cp, category) || glyphPaint.hasGlyph(cp.char)
+    }
     var searchResult: Array<SearchResult> = emptyArray()
     var recentResult: Array<SearchResult> = emptyArray()
 
@@ -20,7 +24,7 @@ class SearchController(
             recentResult = emptyArray()
             return
         }
-        val resultMap = unicodeStorage.findCharsByCodePoints(codePoints, hasGlyph)
+        val resultMap = unicodeStorage.findCharsByCodePoints(codePoints, shouldInclude)
         val results = ArrayList<SearchResult>(resultMap.size)
         for (cp in codePoints) {
             val result = resultMap[cp.value]
@@ -44,7 +48,7 @@ class SearchController(
         val hexCodePoint = tryParseHexCodePoint(trimmed)
         val codePointMatch = hexCodePoint ?: directCodePoint
         if (codePointMatch != null) {
-            val direct = unicodeStorage.findCharByCodePoint(codePointMatch, hasGlyph)
+            val direct = unicodeStorage.findCharByCodePoint(codePointMatch, shouldInclude)
             if (direct != null) {
                 results.add(direct)
             }
@@ -53,9 +57,9 @@ class SearchController(
         if (hexCodePoint == null && trimmed.isNotEmpty()) {
             val tokens = whitespaceRegex.split(trimmed)
             val nameResults = if (tokens.size == 1) {
-                unicodeStorage.findCharsByName(tokens[0], count, hasGlyph)
+                unicodeStorage.findCharsByName(tokens[0], count, shouldInclude)
             } else {
-                unicodeStorage.findCharsByNameMultiWord(tokens, count, hasGlyph)
+                unicodeStorage.findCharsByNameMultiWord(tokens, count, shouldInclude)
             }
 
             for (r in nameResults) {

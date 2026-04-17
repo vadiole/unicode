@@ -31,11 +31,12 @@ class Char(
     val codePoint: Int,
     val name: String,
     val name2: String,
+    val category: String,
     val version: String,
     val blockId: Int,
 ) {
     fun print(out: PrintWriter) {
-        out.println("$id;$codePoint;$name;$name2;$version;$blockId")
+        out.println("$id;$codePoint;$name;$name2;$category;$version;$blockId")
     }
 }
 
@@ -73,6 +74,7 @@ fun main() {
         .mapIndexed { id, lineData ->
             val codePoint = lineData[0].toInt(16)
             var name = lineData[1]
+            val category = lineData[2]
             var name2 = lineData[10]
             if (name == "<control>") {
                 name = name2
@@ -108,7 +110,7 @@ fun main() {
                 .find { version ->
                     version.contains(codePoint)
                 }?.version ?: "1.0"
-            Char(id, codePoint, name, name2, version, blockId)
+            Char(id, codePoint, name, name2, category, version, blockId)
         }
 
     File("$root/output/char.csv").printWriter().use { out ->
