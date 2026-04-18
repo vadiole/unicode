@@ -13,7 +13,7 @@
 - Memory usage: no boxing for large data, object reuse if possible.
 - `ui/common/`: UI component library, e.g. `Dp.kt`, `Typeface.kt`, `Screen.kt`, `Squircle.kt`, `TopBar.kt` etc.
 - colors in `colors.xml`
-- no tests, no xml layouts, no compose
+- no tests, no xml layouts, no compose, no ContextCompat
 - normal gradle build and launch
 
 ## UI interaction quality
