@@ -141,7 +141,8 @@ class TableScreen(
             } else {
                 searchController.searchResult[position]
             }
-            view.bind(data, tableController.abbreviations)
+            val tokens = if (isShowingRecents) null else searchController.queryTokens
+            view.bind(data, tableController.abbreviations, tokens)
         }
     }
 

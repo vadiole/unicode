@@ -223,13 +223,16 @@ class UnicodeStorage(private val context: Context) {
         val name2Conditions = escapedTokens.joinToString(" AND ") { "name2 LIKE ? ESCAPE '\\'" }
         val whereClause = "($nameConditions) OR ($name2Conditions)"
 
-        val lastToken = escapedTokens.last()
-        val orderClause = "ORDER BY (" +
-                "CASE " +
-                "WHEN name LIKE ? ESCAPE '\\' THEN 1 " +
-                "WHEN name LIKE ? ESCAPE '\\' THEN 2 " +
-                "ELSE 3 END), " +
-                "id"
+        val paddedName = "(' ' || name || ' ')"
+        val paddedName2 = "(' ' || IFNULL(name2, '') || ' ')"
+        val matchScoreSum = escapedTokens.joinToString(" + ") {
+            "(CASE " +
+                    "WHEN $paddedName LIKE ? ESCAPE '\\' OR $paddedName2 LIKE ? ESCAPE '\\' THEN 0 " +
+                    "WHEN $paddedName LIKE ? ESCAPE '\\' OR $paddedName2 LIKE ? ESCAPE '\\' THEN 1 " +
+                    "ELSE 2 END)"
+        }
+
+        val orderClause = "ORDER BY ($matchScoreSum), id"
 
         val sql = "SELECT id, code_point, name, category FROM char WHERE $whereClause $orderClause"
         val limitedSql = if (count > 0) "$sql LIMIT $count" else sql
@@ -237,8 +240,12 @@ class UnicodeStorage(private val context: Context) {
         val args = mutableListOf<String>()
         for (token in escapedTokens) args.add("%$token%")
         for (token in escapedTokens) args.add("%$token%")
-        args.add("% $lastToken")
-        args.add("$lastToken%")
+        for (token in escapedTokens) {
+            args.add("% $token %")
+            args.add("% $token %")
+            args.add("% $token%")
+            args.add("% $token%")
+        }
 
         return@withContext searchByName(limitedSql, args.toTypedArray(), shouldInclude)
     }
