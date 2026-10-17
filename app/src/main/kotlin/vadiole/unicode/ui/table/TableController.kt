@@ -7,7 +7,6 @@ import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
-import vadiole.unicode.data.filterMaybe
 import vadiole.unicode.ui.extension.binarySearch
 import vadiole.unicode.ui.extension.filterMaybe
 import vadiole.unicode.ui.extension.worker
@@ -30,10 +29,8 @@ class TableController(
 
     suspend fun loadChars(fast: Boolean) = worker {
         val count = if (fast) 256 else -1
-        var codePoints = unicodeStorage.getCodePoints(count)
-        if (!userConfig.showUnsupportedChars) {
-            codePoints = codePoints.filterMaybe { glyphPaint.hasGlyph(it.char) }
-        }
+        val showAll = userConfig.showUnsupportedChars
+        val codePoints = unicodeStorage.getCodePoints(count) { showAll || glyphPaint.hasGlyph(it) }
         tableChars = codePoints
         if (!fast) {
             totalChars = codePoints.size

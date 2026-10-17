@@ -12,8 +12,8 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 26
         targetSdk = 37
-        versionCode = 171
-        versionName = "1.7.0"
+        versionCode = 172
+        versionName = "1.8.0"
         base.archivesName.set("unicode-v$versionName")
     }
 
