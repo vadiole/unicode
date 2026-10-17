@@ -5,13 +5,13 @@ plugins {
 android {
     namespace = "vadiole.unicode"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
         applicationId = "vadiole.unicode"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 171
         versionName = "1.7.0"
         base.archivesName.set("unicode-v$versionName")
