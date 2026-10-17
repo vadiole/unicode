@@ -23,7 +23,7 @@
     <string name="details_info_version">Версія</string>
 
     <!-- Crash report -->
-    <string name="crash_dialog_title">Unicode неочикуванно зупинився</string>
+    <string name="crash_dialog_title">Unicode неочікувано зупинився</string>
     <string name="crash_dialog_message">Надіслати звіт про збій?</string>
     <string name="crash_dont_ask_again">Більше не питати</string>
     <string name="crash_send">Надіслати</string>

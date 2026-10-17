@@ -25,7 +25,7 @@
     <!-- Crash report -->
     <string name="crash_dialog_title">Unicode მოულოდნელად გაჩერდა</string>
     <string name="crash_dialog_message">გსურთ შეცდომის ანგარიშის გაგზავნა?</string>
-    <string name="crash_dont_ask_again">აღარ მკითხო</string>
+    <string name="crash_dont_ask_again">აღარ მკითხოთ</string>
     <string name="crash_send">გაგზავნა</string>
     <string name="crash_email_subject">აპი Unicode</string>
     <string name="crash_send_via_email">ელფოსტით გაგზავნა</string>

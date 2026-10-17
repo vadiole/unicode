@@ -11,12 +11,12 @@
     <!-- Search -->
     <string name="search_hint">Ara</string>
     <string name="search_no_results">Sonuç bulunamadı</string>
-    <string name="search_recents">Son aramalar</string>
+    <string name="search_recents">Son kullanılanlar</string>
 
     <!-- Details -->
-    <string name="details_find_in_table">Tabloda Bul</string>
-    <string name="details_copy_to_clipboard">Panoya Kopyala</string>
-    <string name="details_share_link">Bağlantıyı Paylaş</string>
+    <string name="details_find_in_table">Tabloda bul</string>
+    <string name="details_copy_to_clipboard">Panoya kopyala</string>
+    <string name="details_share_link">Bağlantıyı paylaş</string>
     <string name="details_info_code">Kod</string>
     <string name="details_info_html">HTML</string>
     <string name="details_info_css">CSS</string>
