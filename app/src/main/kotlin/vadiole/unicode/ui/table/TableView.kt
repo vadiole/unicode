@@ -42,9 +42,22 @@ class TableView(
         return (offset.toFloat() / scrollable).coerceIn(0f, 1f)
     }
 
-    fun scrollToProgress(progress: Float) {
+    fun scrollToProgress(progress: Float, precisionLevel: Int) {
         val itemCount = adapter.itemCount
         if (itemCount <= 0) return
+        if (precisionLevel == 2) {
+            val range = computeVerticalScrollRange()
+            val extent = computeVerticalScrollExtent()
+            val scrollable = range - extent
+            val rowHeight = range / itemCount
+            if (scrollable > 0 && rowHeight > 0) {
+                val targetPx = (scrollable * progress.coerceIn(0f, 1f)).toLong()
+                val row = (targetPx / rowHeight).toInt().coerceAtMost(itemCount - 1)
+                val intraRowOffset = (targetPx - row.toLong() * rowHeight).toInt()
+                tableLayoutManager.scrollToPositionWithOffset(row, -intraRowOffset)
+                return
+            }
+        }
         val targetPosition = (itemCount * progress).toInt().coerceIn(0, itemCount - 1)
         tableLayoutManager.scrollToPositionWithOffset(targetPosition, 0)
     }
