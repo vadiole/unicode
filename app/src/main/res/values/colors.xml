@@ -29,4 +29,5 @@
     <color name="searchFieldSurface">#1F737980</color>
     <color name="searchFieldSurfacePressed">#1F2E3033</color>
     <color name="searchFieldCursor">#FF4498F2</color>
+    <color name="searchMatchHighlight">#1A1A1A1A</color>
 </resources>
