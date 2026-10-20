@@ -10,7 +10,7 @@ class SpringAnimator(
     private val dampingRatio: Float = SpringForce.DAMPING_RATIO_NO_BOUNCY,
 ) {
     private val floatValueHolder = FloatValueHolder(initialValue)
-    private val springAnimation = SpringAnimation(floatValueHolder)
+    private val springAnimation = SpringAnimation(floatValueHolder).setMinimumVisibleChange(0.001f)
 
     fun onUpdate(callback: (value: Float) -> Unit): SpringAnimator {
         springAnimation.addUpdateListener { _, value, _ ->

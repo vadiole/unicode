@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">ძიება</string>
+    <string name="search_close">ძიების დახურვა</string>
     <string name="search_no_results">არაფერი მოიძებნა</string>
     <string name="search_recents">ბოლო</string>
+    <string name="search_title">ძიება</string>
 
     <!-- Details -->
     <string name="details_find_in_table">ცხრილში მოძებნა</string>

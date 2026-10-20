@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">Søk</string>
+    <string name="search_close">Lukk søk</string>
     <string name="search_no_results">Ingen resultater funnet</string>
     <string name="search_recents">Siste</string>
+    <string name="search_title">Søk</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Finn i tabell</string>

@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">Iskanje</string>
+    <string name="search_close">Zapri iskanje</string>
     <string name="search_no_results">Ni zadetkov</string>
     <string name="search_recents">Nedavno</string>
+    <string name="search_title">Iskanje</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Poišči v tabeli</string>

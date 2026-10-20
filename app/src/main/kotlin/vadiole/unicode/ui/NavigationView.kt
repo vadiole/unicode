@@ -41,6 +41,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var scaleYAnimation: SpringAnimation? = null
     private var isDetailsOpenOrOpening = false
     private var isBackGestureInProgress = false
+    private var isSearchBackInProgress = false
 
     companion object {
         private const val SPRING_STIFFNESS = 600f
@@ -58,16 +59,16 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private val tableController = TableController(unicodeStorage, userConfig)
     private val searchController = SearchController(unicodeStorage, recentRepository)
     private val tableDelegate = object : TableScreen.Delegate {
-        override fun onItemClick(codePoint: CodePoint) {
+        override fun onShowDetails(codePoint: CodePoint) {
             recentRepository.record(codePoint)
             showDetailsBottomSheet(codePoint)
         }
 
-        override fun onSearchFocused() {
+        override fun onSearchShown() {
             updateBackEnabled()
         }
 
-        override fun onSearchUnfocused() {
+        override fun onSearchHidden() {
             updateBackEnabled()
         }
     }
@@ -284,7 +285,13 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     override val isBackEnabled = MutableStateFlow(false)
 
     override fun onBackStarted(backEvent: BackEvent) {
-        if (!isDetailsOpenOrOpening) return
+        if (!isDetailsOpenOrOpening) {
+            if (tableScreen.isSearchVisible()) {
+                isSearchBackInProgress = true
+                tableScreen.startSearchBack()
+            }
+            return
+        }
         val sheet = detailsSheet ?: return
         openAnimation?.cancel()
         scaleXAnimation?.cancel()
@@ -299,6 +306,10 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
 
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onBackProgressed(backEvent: BackEvent) {
+        if (isSearchBackInProgress) {
+            tableScreen.progressSearchBack(backEvent.progress)
+            return
+        }
         if (!isBackGestureInProgress) return
         val sheet = detailsSheet ?: return
         val progress = backEvent.progress
@@ -313,6 +324,11 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     }
 
     override fun onBackCancelled() {
+        if (isSearchBackInProgress) {
+            isSearchBackInProgress = false
+            tableScreen.cancelSearchBack()
+            return
+        }
         if (!isBackGestureInProgress) return
         isBackGestureInProgress = false
         val sheet = detailsSheet ?: return
@@ -328,6 +344,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
             }
 
             tableScreen.isSearchVisible() -> {
+                isSearchBackInProgress = false
                 tableScreen.hideSearch()
                 updateBackEnabled()
             }

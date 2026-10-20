@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">Hledat</string>
+    <string name="search_close">Zavřít hledání</string>
     <string name="search_no_results">Nic nenalezeno</string>
     <string name="search_recents">Nedávné</string>
+    <string name="search_title">Hledání</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Najít v tabulce</string>

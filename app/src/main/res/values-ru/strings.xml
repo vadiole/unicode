@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">Поиск</string>
+    <string name="search_close">Закрыть поиск</string>
     <string name="search_no_results">Ничего не найдено</string>
     <string name="search_recents">Недавние</string>
+    <string name="search_title">Поиск</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Найти в таблице</string>

@@ -1,212 +1,97 @@
 package vadiole.unicode.ui.common
 
 import android.graphics.Path
+import android.graphics.RectF
+import kotlin.math.PI
+import kotlin.math.cos
 import kotlin.math.min
+import kotlin.math.sin
+import kotlin.math.sqrt
+import kotlin.math.tan
 
 /**
- * iOS-like rounded rectangle with continuous curvature (squircle).
- *
- * Optimized version: precomputed constants (no pow/sqrt at runtime),
- * zero per-call heap allocations, bounds caching, and translation offset.
- *
- * [Read more about Squircle](https://www.figma.com/blog/desperately-seeking-squircles)
+ * [Source](https://github.com/vadiole/squircle/blob/main/SquircleDrawable.kt)
  */
-class Squircle4(
-    topLeftRadius: Int,
-    topRightRadius: Int,
-    bottomRightRadius: Int,
-    bottomLeftRadius: Int,
-    smoothing: Float = SMOOTHING_IOS,
+fun Path.addSquircle(rect: RectF, radius: Float, smoothing: Float = 0.6f) {
+    addSquircle(rect.left, rect.top, rect.right, rect.bottom, radius, radius, radius, radius, smoothing)
+}
+
+fun Path.addSquircle(rect: RectF, radii: FloatArray, smoothing: Float = 0.6f) {
+    require(radii.size == 4 || radii.size == 8) { "radii must have 4 or 8 values" }
+    val step = radii.size / 4
+    addSquircle(rect.left, rect.top, rect.right, rect.bottom, radii[0], radii[step], radii[2 * step], radii[3 * step], smoothing)
+}
+
+private fun Path.addSquircle(
+    left: Float,
+    top: Float,
+    right: Float,
+    bottom: Float,
+    topLeft: Float,
+    topRight: Float,
+    bottomRight: Float,
+    bottomLeft: Float,
+    smoothing: Float,
 ) {
+    require(smoothing in 0f..1f) { "smoothing must be from 0 to 1" }
+    val width = right - left
+    val height = bottom - top
+    if (width <= 0f || height <= 0f) return
+    val tl = topLeft.coerceAtLeast(0f)
+    val tr = topRight.coerceAtLeast(0f)
+    val br = bottomRight.coerceAtLeast(0f)
+    val bl = bottomLeft.coerceAtLeast(0f)
+    val scale = minOf(1f, fit(width, tl + tr), fit(height, tr + br), fit(width, br + bl), fit(height, bl + tl))
+    val r0 = tl * scale
+    val r1 = tr * scale
+    val r2 = br * scale
+    val r3 = bl * scale
+    corner(0, left, top, r0, min(share(height, r0, r3), share(width, r0, r1)), smoothing)
+    corner(1, right, top, r1, min(share(width, r1, r0), share(height, r1, r2)), smoothing)
+    corner(2, right, bottom, r2, min(share(height, r2, r1), share(width, r2, r3)), smoothing)
+    corner(3, left, bottom, r3, min(share(width, r3, r2), share(height, r3, r0)), smoothing)
+    close()
+}
 
-    constructor(radius: Int) : this(radius, radius, radius, radius)
-    constructor(radius: Int, smoothing: Float) : this(radius, radius, radius, radius, smoothing)
+private val IN_X = floatArrayOf(0f, 1f, 0f, -1f)
+private val IN_Y = floatArrayOf(-1f, 0f, 1f, 0f)
 
-    val path = Path()
-
-    private val r0 = topLeftRadius.coerceAtLeast(0).toFloat()
-    private val r1 = topRightRadius.coerceAtLeast(0).toFloat()
-    private val r2 = bottomRightRadius.coerceAtLeast(0).toFloat()
-    private val r3 = bottomLeftRadius.coerceAtLeast(0).toFloat()
-    private val smoothing = smoothing.coerceIn(0f, 1f)
-    private val isUniform = r0 == r1 && r1 == r2 && r2 == r3
-
-    // Workspace for clamped radii (non-uniform path only)
-    private val cr = FloatArray(4)
-
-    // Per-corner bezier control point offsets
-    private val pa = FloatArray(4)
-    private val pb = FloatArray(4)
-    private val pc = FloatArray(4)
-    // Per-corner total edge consumption: r * (1 + smoothing)
-    private val pd = FloatArray(4)
-
-    // Bounds cache for skip/offset optimization
-    private var lastL = Float.NaN
-    private var lastT = Float.NaN
-    private var lastR = Float.NaN
-    private var lastB = Float.NaN
-
-    fun setBounds(left: Int, top: Int, right: Int, bottom: Int) {
-        recalculate(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat())
+private fun Path.corner(index: Int, cornerX: Float, cornerY: Float, radius: Float, budget: Float, smoothing: Float) {
+    val ix = IN_X[index]
+    val iy = IN_Y[index]
+    val r = min(radius, budget)
+    if (r <= 0f) {
+        if (index == 0) moveTo(cornerX, cornerY) else lineTo(cornerX, cornerY)
+        return
     }
-
-    fun setBounds(left: Float, top: Float, right: Float, bottom: Float) {
-        recalculate(left, top, right, bottom)
+    val s = min(smoothing, budget / r - 1f)
+    val p = (1f + s) * r
+    val angle = (PI / 4).toFloat() * s
+    val arc = sqrt(2f) * r * sin((PI / 4).toFloat() - angle)
+    val tangent = r * tan(angle / 2f)
+    val c = tangent * cos(angle)
+    val d = tangent * sin(angle)
+    val b = (p - arc - c - d) / 3f
+    val a = 2f * b
+    val startX = cornerX - p * ix
+    val startY = cornerY - p * iy
+    val endX = cornerX - p * iy
+    val endY = cornerY + p * ix
+    if (index == 0) moveTo(startX, startY) else lineTo(startX, startY)
+    if (s > 0f) {
+        cubicTo(startX + a * ix, startY + a * iy, startX + (a + b) * ix, startY + (a + b) * iy, startX + (a + b + c) * ix - d * iy, startY + (a + b + c) * iy + d * ix)
     }
-
-    private fun recalculate(left: Float, top: Float, right: Float, bottom: Float) {
-        if (left == lastL && top == lastT && right == lastR && bottom == lastB) return
-
-        val w = right - left
-        val h = bottom - top
-
-        // Same size, different position — offset the existing path
-        val lw = lastR - lastL
-        val lh = lastB - lastT
-        if (w == lw && h == lh) {
-            path.offset(left - lastL, top - lastT)
-            lastL = left; lastT = top; lastR = right; lastB = bottom
-            return
-        }
-
-        lastL = left; lastT = top; lastR = right; lastB = bottom
-
-        if (w <= 0f || h <= 0f) {
-            path.rewind()
-            return
-        }
-
-        if (isUniform) {
-            computeUniform(w, h)
-        } else {
-            computeNonUniform(w, h)
-        }
-
-        buildPath(left, top, right, bottom)
+    if (s < 1f) {
+        val centerX = cornerX - r * ix - r * iy
+        val centerY = cornerY - r * iy + r * ix
+        val start = 180f + 90f * index + angle * (180f / PI.toFloat())
+        arcTo(centerX - r, centerY - r, centerX + r, centerY + r, start, 90f - 2f * angle * (180f / PI.toFloat()), false)
     }
-
-    private fun computeUniform(w: Float, h: Float) {
-        val ri = min(r0, min(w, h) * 0.5f)
-        if (ri <= 0f) {
-            pd[0] = 0f; pd[1] = 0f; pd[2] = 0f; pd[3] = 0f
-            return
-        }
-        val twoR = ri + ri
-        val si = min(
-            ((w / twoR) - 1f).coerceIn(0f, this.smoothing),
-            ((h / twoR) - 1f).coerceIn(0f, this.smoothing),
-        )
-        val ci = C * ri
-        val bi = B * ri
-        val di = ri * (1f + si)
-        val ai = di - ci - ci - bi
-        pa[0] = ai; pa[1] = ai; pa[2] = ai; pa[3] = ai
-        pb[0] = bi; pb[1] = bi; pb[2] = bi; pb[3] = bi
-        pc[0] = ci; pc[1] = ci; pc[2] = ci; pc[3] = ci
-        pd[0] = di; pd[1] = di; pd[2] = di; pd[3] = di
-    }
-
-    private fun computeNonUniform(w: Float, h: Float) {
-        cr[0] = r0; cr[1] = r1; cr[2] = r2; cr[3] = r3
-        var scale = 1f
-        val ts = cr[0] + cr[1]
-        if (ts > 0f) scale = min(scale, w / ts)
-        val rs = cr[1] + cr[2]
-        if (rs > 0f) scale = min(scale, h / rs)
-        val bs = cr[2] + cr[3]
-        if (bs > 0f) scale = min(scale, w / bs)
-        val ls = cr[3] + cr[0]
-        if (ls > 0f) scale = min(scale, h / ls)
-        if (scale < 1f) {
-            cr[0] *= scale; cr[1] *= scale; cr[2] *= scale; cr[3] *= scale
-        }
-
-        val s01 = cr[0] + cr[1]
-        val eTop = if (s01 > 0f) ((w / s01) - 1f).coerceIn(0f, this.smoothing) else this.smoothing
-        val s12 = cr[1] + cr[2]
-        val eRight = if (s12 > 0f) ((h / s12) - 1f).coerceIn(0f, this.smoothing) else this.smoothing
-        val s23 = cr[2] + cr[3]
-        val eBottom = if (s23 > 0f) ((w / s23) - 1f).coerceIn(0f, this.smoothing) else this.smoothing
-        val s30 = cr[3] + cr[0]
-        val eLeft = if (s30 > 0f) ((h / s30) - 1f).coerceIn(0f, this.smoothing) else this.smoothing
-
-        val s0 = min(eTop, eLeft)
-        val s1 = min(eTop, eRight)
-        val s2 = min(eRight, eBottom)
-        val s3 = min(eBottom, eLeft)
-
-        for (i in 0..3) {
-            val ri = cr[i]
-            if (ri <= 0f) {
-                pa[i] = 0f; pb[i] = 0f; pc[i] = 0f; pd[i] = 0f
-            } else {
-                val si = when (i) { 0 -> s0; 1 -> s1; 2 -> s2; else -> s3 }
-                val ci = C * ri
-                val bi = B * ri
-                val di = ri * (1f + si)
-                pa[i] = di - ci - ci - bi
-                pb[i] = bi
-                pc[i] = ci
-                pd[i] = di
-            }
-        }
-    }
-
-    private fun buildPath(left: Float, top: Float, right: Float, bottom: Float) {
-        path.rewind()
-
-        val a0 = pa[0]; val b0 = pb[0]; val c0 = pc[0]; val d0 = pd[0]
-        val a1 = pa[1]; val b1 = pb[1]; val c1 = pc[1]; val d1 = pd[1]
-        val a2 = pa[2]; val b2 = pb[2]; val c2 = pc[2]; val d2 = pd[2]
-        val a3 = pa[3]; val b3 = pb[3]; val c3 = pc[3]; val d3 = pd[3]
-
-        // Top-left
-        if (d0 > 0f) {
-            val ab = a0 + b0
-            path.moveTo(left, top + d0)
-            path.rCubicTo(0f, -a0, 0f, -ab, c0, -(ab + c0))
-            path.rCubicTo(c0, -c0, b0 + c0, -c0, ab + c0, -c0)
-        } else {
-            path.moveTo(left, top)
-        }
-
-        // Top-right
-        if (d1 > 0f) {
-            val ab = a1 + b1
-            path.lineTo(right - d1, top)
-            path.rCubicTo(a1, 0f, ab, 0f, ab + c1, c1)
-            path.rCubicTo(c1, c1, c1, b1 + c1, c1, ab + c1)
-        } else {
-            path.lineTo(right, top)
-        }
-
-        // Bottom-right
-        if (d2 > 0f) {
-            val ab = a2 + b2
-            path.lineTo(right, bottom - d2)
-            path.rCubicTo(0f, a2, 0f, ab, -c2, ab + c2)
-            path.rCubicTo(-c2, c2, -(b2 + c2), c2, -(ab + c2), c2)
-        } else {
-            path.lineTo(right, bottom)
-        }
-
-        // Bottom-left
-        if (d3 > 0f) {
-            val ab = a3 + b3
-            path.lineTo(left + d3, bottom)
-            path.rCubicTo(-a3, 0f, -ab, 0f, -(ab + c3), -c3)
-            path.rCubicTo(-c3, -c3, -c3, -(b3 + c3), -c3, -(ab + c3))
-        } else {
-            path.lineTo(left, bottom)
-        }
-
-        path.close()
-    }
-
-    companion object {
-        const val SMOOTHING_IOS = 0.6f
-        private const val C = 0.2929f    // 1 - cos(45°)
-        private const val B = 0.36398f   // 3√2 × C² — replaces pow(1.5) computation
+    if (s > 0f) {
+        cubicTo(endX + (a + b) * iy, endY - (a + b) * ix, endX + a * iy, endY - a * ix, endX, endY)
     }
 }
+
+private fun fit(side: Float, sum: Float) = if (sum > 0f) side / sum else 1f
+
+private fun share(side: Float, radius: Float, other: Float) = if (radius > 0f) side * radius / (radius + other) else 0f

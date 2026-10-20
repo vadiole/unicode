@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">Buscar</string>
+    <string name="search_close">Cerrar búsqueda</string>
     <string name="search_no_results">No se encontraron resultados</string>
     <string name="search_recents">Recientes</string>
+    <string name="search_title">Buscar</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Buscar en la tabla</string>

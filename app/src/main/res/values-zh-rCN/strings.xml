@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">搜索</string>
+    <string name="search_close">关闭搜索</string>
     <string name="search_no_results">未找到结果</string>
     <string name="search_recents">最近使用</string>
+    <string name="search_title">搜索</string>
 
     <!-- Details -->
     <string name="details_find_in_table">在表中查找</string>

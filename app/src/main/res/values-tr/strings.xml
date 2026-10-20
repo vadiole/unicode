@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">Ara</string>
+    <string name="search_close">Aramayı kapat</string>
     <string name="search_no_results">Sonuç bulunamadı</string>
     <string name="search_recents">Son kullanılanlar</string>
+    <string name="search_title">Ara</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Tabloda bul</string>

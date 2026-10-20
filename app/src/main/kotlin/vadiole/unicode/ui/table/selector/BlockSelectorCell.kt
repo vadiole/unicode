@@ -31,7 +31,7 @@ class BlockSelectorCell(context: Context) : TextView(context) {
     init {
         layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
         setTextColor(this.context.getColor(R.color.windowTextPrimary))
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14f)
         typeface = mono_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false

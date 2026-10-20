@@ -36,7 +36,7 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         textSize = 24f.dp(context)
     }
     val name = TextView(context).apply {
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14f)
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13f)
         typeface = mono_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false

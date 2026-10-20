@@ -30,8 +30,8 @@ class ActionCell(
                 intArrayOf(-android.R.attr.state_pressed),
             ),
             intArrayOf(
-                this.context.getColor(R.color.dialogSurfacePressed),
-                this.context.getColor(R.color.dialogSurface),
+                this.context.getColor(R.color.layer1Pressed),
+                this.context.getColor(R.color.layer1),
             )
         )
         compoundDrawableTintList = this.context.getColorStateList(R.color.windowTextPrimary)
@@ -42,8 +42,7 @@ class ActionCell(
         minHeight = 48.dp(context)
         includeFontPadding = false
         typeface = mono_regular
-        letterSpacing = 0.03f
-        textSize = 17f
+        textSize = 16f
         isClickable = true
         isFocusable = true
         setPaddingHorizontal(16.dp(context))

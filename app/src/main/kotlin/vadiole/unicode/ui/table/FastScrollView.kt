@@ -7,7 +7,6 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.RectF
 import android.os.Build
@@ -22,9 +21,9 @@ import android.view.animation.OvershootInterpolator
 import kotlin.math.abs
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
-import vadiole.unicode.ui.common.Squircle4
+import vadiole.unicode.ui.common.FloatingSurfaceDrawable
 import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.mono_semibold
+import vadiole.unicode.ui.common.mono_regular
 
 class FastScrollView(
     context: Context,
@@ -53,7 +52,7 @@ class FastScrollView(
     private val bubblePaddingVertical = 4f.dp(context)
     private val bubbleCornerRadius = 10f.dp(context)
     private val bubbleMarginEnd = 24.dp(context)
-    private val bubbleTextSize = 15f.dp(context)
+    private val bubbleTextSize = 14f.dp(context)
     private val bubbleArrowWidth = 12f.dp(context)
     private val bubbleArrowHeight = 20f.dp(context)
     private val bubbleMarginStart = 24f.dp(context)
@@ -74,21 +73,20 @@ class FastScrollView(
         color = scrollIndicatorColor
     }
 
-    private val bubbleShadowRadius = 6f.dp(context)
-    private val bubbleShadowDy = 2f.dp(context)
-    private val bubbleShadowColor = 0x2A000000
-    private val bubbleShadowBaseAlpha = bubbleShadowColor ushr 24
-
-    private val bubblePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.FILL
-        color = context.getColor(R.color.dialogSurface)
-        setShadowLayer(bubbleShadowRadius, 0f, bubbleShadowDy, bubbleShadowColor)
-    }
+    private val bubbleSurfaceDrawable = FloatingSurfaceDrawable(
+        context = context,
+        pathProvider = FloatingSurfaceDrawable.squircleWithArrow(
+            cornerRadius = bubbleCornerRadius.toInt(),
+            arrowWidth = bubbleArrowWidth,
+            arrowHeight = bubbleArrowHeight,
+            arrowOverlap = arrowOverlap,
+        ),
+    )
 
     private val bubbleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = bubbleTextSize
         color = context.getColor(R.color.windowTextPrimary)
-        typeface = mono_semibold
+        typeface = mono_regular
         textAlign = Paint.Align.LEFT
         isSubpixelText = true
     }
@@ -131,24 +129,15 @@ class FastScrollView(
 
     // Cached rects
     private val thumbRect = RectF()
-    private val bubbleRect = RectF()
-    private val bubblePath = Path()
-    private val arrowPath = Path()
-    private val bubbleSquircle = Squircle4(bubbleCornerRadius.toInt())
-    private var cachedBubbleLeft: Float? = null
-    private var cachedBubbleTop: Float? = null
-    private var cachedBubbleRight: Float? = null
-    private var cachedBubbleBottom: Float? = null
-    private var cachedArrowCenterY: Float? = null
-
-    // Pre-computed bubble geometry (set in calculateBubbleGeometry, read in drawBubble)
-    private val bubbleFontMetrics = Paint.FontMetrics()
+    private val bubbleLayerBounds = RectF()
+    private val bubbleFontMetrics = Paint.FontMetrics().also { bubbleTextPaint.getFontMetrics(it) }
+    private val bubbleHeight = maxOf(bubbleFontMetrics.descent - bubbleFontMetrics.ascent + bubblePaddingVertical * 2, bubbleMinHeight)
+    private var bubbleTextWidth = 0f
     private var bubbleTextX = 0f
     private var bubbleTextY = 0f
     private var bubbleDisplayName = ""
     private var bubblePivotX = 0f
     private var bubblePivotY = 0f
-    private var bubbleGeometryValid = false
 
     // Animators
     private val argbEvaluator = ArgbEvaluator()
@@ -201,7 +190,7 @@ class FastScrollView(
         addUpdateListener { animator ->
             thumbHeightFraction = animator.animatedValue as Float
             calculateThumbRect()
-            if (isDragging) calculateBubbleGeometry()
+            if (isDragging) layoutBubble()
             invalidate()
         }
     }
@@ -236,7 +225,7 @@ class FastScrollView(
         super.onSizeChanged(w, h, oldw, oldh)
         calculateThumbRect()
         if (isDragging) {
-            calculateBubbleGeometry()
+            layoutBubble()
         }
     }
 
@@ -300,103 +289,48 @@ class FastScrollView(
         }
     }
 
-    private fun calculateBubbleGeometry() {
-        val name = blockName
-        if (name == null) {
-            bubbleGeometryValid = false
+    private fun measureBubble() {
+        val name = blockName ?: return
+        bubbleTextWidth = bubbleTextPaint.measureText(name)
+    }
+
+    private fun layoutBubble() {
+        val name = blockName ?: return
+        val right = thumbRect.left - bubbleMarginEnd - bubbleArrowWidth
+        val maxWidth = right - bubbleMarginStart
+        if (height <= 0 || maxWidth <= 0) {
+            bubbleSurfaceDrawable.setBounds(0, 0, 0, 0)
             return
         }
 
-        bubbleTextPaint.getFontMetrics(bubbleFontMetrics)
-        val textHeight = bubbleFontMetrics.descent - bubbleFontMetrics.ascent
+        val w = (bubbleTextWidth + bubblePaddingHorizontal * 2).coerceAtMost(maxWidth)
+        val h = bubbleHeight
+        val top = (thumbRect.centerY() - h / 2)
+            .coerceAtLeast(paddingTop.toFloat())
+            .coerceAtMost(height - paddingBottom - h)
 
-        val bubbleRight = thumbRect.left - bubbleMarginEnd - bubbleArrowWidth
-        val maxBubbleWidth = bubbleRight - bubbleMarginStart
-        if (maxBubbleWidth <= 0) {
-            bubbleGeometryValid = false
-            return
-        }
-        val maxTextWidth = maxBubbleWidth - bubblePaddingHorizontal * 2
-        val textWidth = bubbleTextPaint.measureText(name).coerceAtMost(maxTextWidth)
-        val bubbleWidth = textWidth + bubblePaddingHorizontal * 2
-        val bubbleLeft = bubbleRight - bubbleWidth
-
-        val contentHeight = textHeight + bubblePaddingVertical * 2
-        val bubbleHeight = maxOf(contentHeight, bubbleMinHeight)
-
-        val thumbCenterY = thumbRect.centerY()
-        val bubbleTop = thumbCenterY - bubbleHeight / 2
-
-        bubbleRect.set(bubbleLeft, bubbleTop, bubbleRight, bubbleTop + bubbleHeight)
-
-        // Clamp bubble to view bounds
-        val topBound = paddingTop.toFloat()
-        val bottomBound = height.toFloat() - paddingBottom
-        if (bubbleRect.top < topBound) {
-            bubbleRect.offset(0f, topBound - bubbleRect.top)
-        }
-        if (bubbleRect.bottom > bottomBound) {
-            bubbleRect.offset(0f, -(bubbleRect.bottom - bottomBound))
-        }
-
-        // Build path with arrow (cached)
-        val arrowCenterY = thumbCenterY.coerceIn(
-            bubbleRect.top + maxOf(bubbleCornerRadius, bubbleArrowHeight / 2),
-            bubbleRect.bottom - maxOf(bubbleCornerRadius, bubbleArrowHeight / 2)
+        bubbleSurfaceDrawable.setBounds(
+            (right - w).toInt(), top.toInt(), right.toInt(), (top + h).toInt()
         )
 
-        if (bubbleRect.left != cachedBubbleLeft ||
-            bubbleRect.top != cachedBubbleTop ||
-            bubbleRect.right != cachedBubbleRight ||
-            bubbleRect.bottom != cachedBubbleBottom ||
-            arrowCenterY != cachedArrowCenterY
-        ) {
-            cachedBubbleLeft = bubbleRect.left
-            cachedBubbleTop = bubbleRect.top
-            cachedBubbleRight = bubbleRect.right
-            cachedBubbleBottom = bubbleRect.bottom
-            cachedArrowCenterY = arrowCenterY
+        val bounds = bubbleSurfaceDrawable.bounds
+        bubblePivotX = bounds.right + bubbleArrowWidth
+        bubblePivotY = bounds.exactCenterY()
+        bubbleLayerBounds.set(
+            bounds.left.toFloat(),
+            bounds.top.toFloat(),
+            bounds.right + bubbleArrowWidth,
+            bounds.bottom.toFloat()
+        )
 
-            bubbleSquircle.setBounds(
-                bubbleRect.left.toInt(), bubbleRect.top.toInt(),
-                bubbleRect.right.toInt(), bubbleRect.bottom.toInt()
-            )
-
-            val halfArrow = bubbleArrowHeight / 2f
-            val baseX = bubbleRect.right - arrowOverlap
-            val tipX = bubbleRect.right + bubbleArrowWidth
-
-            arrowPath.reset()
-            arrowPath.moveTo(baseX, arrowCenterY - halfArrow)
-            arrowPath.cubicTo(
-                baseX, arrowCenterY - halfArrow * 0.5f,
-                tipX, arrowCenterY - halfArrow * 0.3f,
-                tipX, arrowCenterY
-            )
-            arrowPath.cubicTo(
-                tipX, arrowCenterY + halfArrow * 0.3f,
-                baseX, arrowCenterY + halfArrow * 0.5f,
-                baseX, arrowCenterY + halfArrow
-            )
-            arrowPath.close()
-
-            bubblePath.reset()
-            bubblePath.addPath(bubbleSquircle.path)
-            bubblePath.op(arrowPath, Path.Op.UNION)
-        }
-
-        // Pre-compute text drawing coordinates
-        bubbleTextX = bubbleRect.left + bubblePaddingHorizontal
-        bubbleTextY = bubbleRect.centerY() - (bubbleFontMetrics.ascent + bubbleFontMetrics.descent) / 2
-        bubbleDisplayName = if (bubbleTextPaint.measureText(name) > maxTextWidth) {
+        val maxTextWidth = bounds.width() - bubblePaddingHorizontal * 2
+        bubbleDisplayName = if (bubbleTextWidth > maxTextWidth) {
             ellipsizeText(name, maxTextWidth)
         } else {
             name
         }
-        bubblePivotX = bubbleRect.right + bubbleArrowWidth
-        bubblePivotY = arrowCenterY
-
-        bubbleGeometryValid = true
+        bubbleTextX = bounds.left + bubblePaddingHorizontal
+        bubbleTextY = bounds.exactCenterY() - (bubbleFontMetrics.ascent + bubbleFontMetrics.descent) / 2
     }
 
     internal fun isInEdgeZone(x: Float): Boolean {
@@ -439,30 +373,35 @@ class FastScrollView(
     }
 
     private fun drawBubble(canvas: Canvas) {
-        if (!bubbleGeometryValid) return
+        if (bubbleSurfaceDrawable.bounds.isEmpty) return
 
-        val savedAlpha = bubblePaint.alpha
         val savedTextAlpha = bubbleTextPaint.alpha
         val alpha = (bubbleAlpha * 255).toInt()
-        bubblePaint.alpha = alpha
-        bubbleTextPaint.alpha = alpha
-
-        val modulatedShadowAlpha = (bubbleShadowBaseAlpha * bubbleAlpha).toInt()
-        bubblePaint.setShadowLayer(bubbleShadowRadius, 0f, bubbleShadowDy, modulatedShadowAlpha shl 24)
 
         canvas.save()
         canvas.translate(bubblePivotX, bubblePivotY)
         canvas.scale(bubbleScale, bubbleScale)
         canvas.translate(-bubblePivotX, -bubblePivotY)
 
-        canvas.drawPath(bubblePath, bubblePaint)
+        if (alpha < 255) {
+            val layer = canvas.saveLayerAlpha(
+                bubbleLayerBounds.left,
+                bubbleLayerBounds.top,
+                bubbleLayerBounds.right,
+                bubbleLayerBounds.bottom,
+                alpha
+            )
+            bubbleSurfaceDrawable.draw(canvas)
+            canvas.restoreToCount(layer)
+        } else {
+            bubbleSurfaceDrawable.draw(canvas)
+        }
+
+        bubbleTextPaint.alpha = alpha
         canvas.drawText(bubbleDisplayName, bubbleTextX, bubbleTextY, bubbleTextPaint)
 
         canvas.restore()
-
-        bubblePaint.alpha = savedAlpha
         bubbleTextPaint.alpha = savedTextAlpha
-        bubblePaint.setShadowLayer(bubbleShadowRadius, 0f, bubbleShadowDy, bubbleShadowColor)
     }
 
     private fun ellipsizeText(text: String, maxWidth: Float): String {
@@ -499,7 +438,8 @@ class FastScrollView(
                     if (isInThumbZone(event.x, event.y)) {
                         dragTouchOffset = null
                         blockName = delegate.getBlockName(scrollProgress)
-                        calculateBubbleGeometry()
+                        measureBubble()
+                        layoutBubble()
                     } else {
                         dragTouchOffset = 0f
                         updateProgressFromTouch(event.y, event.x)
@@ -559,11 +499,6 @@ class FastScrollView(
                     isPrecisionActive = false
                     precisionLevel = 0
                     previousBlockName = null
-                    cachedBubbleLeft = null
-                    cachedBubbleTop = null
-                    cachedBubbleRight = null
-                    cachedBubbleBottom = null
-                    cachedArrowCenterY = null
                     parent?.requestDisallowInterceptTouchEvent(false)
                     animateBubble(0f)
                     animateThumbColor(scrollIndicatorColor)
@@ -672,7 +607,8 @@ class FastScrollView(
             }
             previousBlockName = newBlockName
             blockName = newBlockName
-            calculateBubbleGeometry()
+            measureBubble()
+            layoutBubble()
             val now = SystemClock.uptimeMillis()
             if (now - lastDispatchTime >= throttleIntervalMs) {
                 pendingProgress = -1f

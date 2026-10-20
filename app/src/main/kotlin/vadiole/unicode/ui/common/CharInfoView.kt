@@ -11,19 +11,17 @@ class CharInfoView(context: Context) : View(context) {
     private val backgroundDrawable = SquircleDrawable(12.dp(context))
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
-        textSize = 14f.dp(context)
+        textSize = 13f.dp(context)
         typeface = mono_regular
         style = Paint.Style.FILL
         isSubpixelText = true
-        letterSpacing = 0.02f
     }
     private val namePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
-        textSize = 12f.dp(context)
+        textSize = 11f.dp(context)
         typeface = mono_regular
         style = Paint.Style.FILL
         isSubpixelText = true
-        letterSpacing = 0.02f
     }
     private var viewCenterX: Float = 0f
     private val valueCoordinateY = 25f.dp(context)
@@ -47,8 +45,8 @@ class CharInfoView(context: Context) : View(context) {
                     intArrayOf(-android.R.attr.state_pressed),
                 ),
                 intArrayOf(
-                    this.context.getColor(R.color.dialogSurfacePressed),
-                    this.context.getColor(R.color.dialogSurface),
+                    this.context.getColor(R.color.layer1Pressed),
+                    this.context.getColor(R.color.layer1),
                 )
             )
         }

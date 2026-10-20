@@ -22,6 +22,7 @@ class TableView(
         setItemViewCacheSize(spanCount * 2)
         setAdapter(adapter)
         setPaddingHorizontal(8.dp(context))
+        clipChildren = true
     }
 
     override fun onScrolled(dx: Int, dy: Int) {

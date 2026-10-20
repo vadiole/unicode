@@ -10,8 +10,10 @@
 
     <!-- Search -->
     <string name="search_hint">Αναζήτηση</string>
+    <string name="search_close">Κλείσιμο αναζήτησης</string>
     <string name="search_no_results">Δεν βρέθηκαν αποτελέσματα</string>
     <string name="search_recents">Πρόσφατα</string>
+    <string name="search_title">Αναζήτηση</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Εύρεση στον πίνακα</string>

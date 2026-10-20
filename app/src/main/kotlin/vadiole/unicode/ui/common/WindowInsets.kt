@@ -8,3 +8,6 @@ val WindowInsetsCompat.navigationBars: Insets
 
 val WindowInsetsCompat.statusBars: Insets
     get() = getInsets(WindowInsetsCompat.Type.statusBars())
+
+val WindowInsetsCompat.ime: Insets
+    get() = getInsets(WindowInsetsCompat.Type.ime())

@@ -1,9 +1,6 @@
 package vadiole.unicode.ui.table.selector
 
-import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.drawable.ColorDrawable
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -11,16 +8,12 @@ import android.view.animation.AnimationSet
 import android.view.animation.LayoutAnimationController
 import android.view.animation.PathInterpolator
 import android.view.animation.ScaleAnimation
-import androidx.core.animation.addListener
-import androidx.core.graphics.drawable.updateBounds
-import androidx.core.graphics.withClip
 import androidx.recyclerview.widget.LinearLayoutManager
 import vadiole.unicode.R
 import vadiole.unicode.data.Block
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.ScrollbarDrawable
-import vadiole.unicode.ui.common.Squircle4
 import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 import vadiole.unicode.ui.common.dp
 
@@ -33,9 +26,11 @@ class BlockSelectorView(
         fun onBlockSelected(block: Block)
     }
 
-    private val squircle = Squircle4(8.dp(context))
-    private val backgroundDrawable = ColorDrawable()
-
+    private val floatingInset = BlockSelectorGeometry.FLOATING_INSET_DP.dp(context)
+    private val topMargin = (
+        BlockSelectorGeometry.ARROW_HEIGHT_DP.dp(context) -
+            BlockSelectorGeometry.ARROW_OVERLAP_DP.dp(context)
+        ).toInt()
     private val blockSelectorLayoutManager = LinearLayoutManager(context).apply {
         orientation = LinearLayoutManager.VERTICAL
     }
@@ -66,26 +61,21 @@ class BlockSelectorView(
         scrollBarWidth = 4.dp(context),
     )
     private val divider = CollectionItemDecoration(leftPadding = 14f.dp(context))
-    private var showAnimator: ValueAnimator? = null
-    private val anchorDrawable = context.getDrawable(R.drawable.ic_anchor)!!.mutate()
-    private val topMargin = anchorDrawable.intrinsicHeight - 4.dp(context)
 
     init {
-        backgroundDrawable.color = this.context.getColor(R.color.dialogSurface)
-        anchorDrawable.setTint(this.context.getColor(R.color.dialogSurface))
         scrollbarDrawable.setColor(this.context.getColor(R.color.scrollIndicator))
-        background = backgroundDrawable
         recycledViewPool.setMaxRecycledViews(0, 32)
         layoutManager = blockSelectorLayoutManager
         setItemViewCacheSize(8)
         setAdapter(adapter)
         addItemDecoration(divider)
         addItemDecoration(scrollBars)
-        addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-            if (left == oldLeft && top == oldTop && right == oldRight && bottom == oldBottom) return@addOnLayoutChangeListener
-            squircle.setBounds(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat())
-        }
-        setPadding(0, 8.dp(context) + topMargin, 0, 8.dp(context))
+        setPadding(
+            floatingInset.toInt(),
+            BlockSelectorGeometry.CONTENT_VERTICAL_PADDING_DP.dp(context) + topMargin + floatingInset.toInt(),
+            floatingInset.toInt(),
+            BlockSelectorGeometry.CONTENT_VERTICAL_PADDING_DP.dp(context) + floatingInset.toInt()
+        )
         layoutAnimation = LayoutAnimationController(
             AnimationSet(true).apply {
                 interpolator = showInterpolator
@@ -117,80 +107,14 @@ class BlockSelectorView(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        val centerX = w * 0.5f
-        anchorDrawable.setBounds(
-            centerX.toInt() - anchorDrawable.intrinsicWidth / 2,
-            0,
-            centerX.toInt() + anchorDrawable.intrinsicWidth / 2,
-            anchorDrawable.intrinsicHeight
-        )
-    }
-
     fun calculateWidth(): Int {
         val displayWidth = context.resources.displayMetrics.widthPixels
-        return (500 - 16).dp(context).coerceAtMost((displayWidth * .95f).toInt())
+        return 500.dp(context).coerceAtMost((displayWidth * .95f).toInt())
     }
 
     fun calculateHeight(): Int {
         val displayHeight = context.resources.displayMetrics.heightPixels
-        return (700 - 16 - 64).dp(context).coerceAtMost((displayHeight * .75f).toInt())
-    }
-
-    override fun draw(c: Canvas) {
-        drawAnchor(c)
-        c.withClip(squircle.path) {
-            super.draw(c)
-        }
-    }
-
-    private fun drawAnchor(c: Canvas) {
-        anchorDrawable.draw(c)
-    }
-
-    fun show() {
-        val lastProgress = showAnimator?.animatedValue as? Float ?: 0f
-        showAnimator?.cancel()
-        showAnimator = ValueAnimator.ofFloat(lastProgress, 1f).apply {
-            duration = 300
-            interpolator = showInterpolator
-            addUpdateListener { animator ->
-                setShowProgress(animator.animatedValue as Float, dismiss = false)
-            }
-            start()
-        }
-    }
-
-    fun dismiss(onEnd: () -> Unit) {
-        val currentProgress = showAnimator?.animatedValue as? Float ?: 1f
-        showAnimator?.cancel()
-        showAnimator = ValueAnimator.ofFloat(currentProgress, 0f).apply {
-            duration = 300
-            interpolator = showInterpolator
-            addUpdateListener { progress ->
-                setShowProgress(progress.animatedValue as Float, true)
-            }
-            addListener(onEnd = { onEnd() })
-            start()
-        }
-    }
-
-    private fun setShowProgress(progress: Float, dismiss: Boolean) {
-        val actualProgress = 1f - progress
-        alpha = progress
-        val translationModifier = if (dismiss) -1 else -1
-        val clipModifier = if (dismiss) 0.1f else 1f
-        translationY = translationModifier * 8.dp(context).toFloat() * actualProgress
-        val horizontalOffset = (right - left) * 0.4f * actualProgress * clipModifier
-        val topOffset = 12.dp(context).toFloat() * actualProgress
-        val bottomOffset = (bottom - top) * 0.9f * actualProgress * clipModifier
-        val left = left + horizontalOffset
-        val right = right - horizontalOffset
-        val top = top + topOffset + topMargin
-        val bottom = bottom - bottomOffset
-        squircle.setBounds(left, top, right, bottom)
-        anchorDrawable.updateBounds(top = topOffset.toInt(), bottom = topOffset.toInt() + anchorDrawable.intrinsicHeight)
-        invalidate()
+        return (700 - 64).dp(context).coerceAtMost((displayHeight * .75f).toInt())
     }
 
     companion object {
