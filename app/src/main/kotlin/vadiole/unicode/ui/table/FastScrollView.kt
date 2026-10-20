@@ -24,7 +24,7 @@ import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.Squircle4
 import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.roboto_semibold
+import vadiole.unicode.ui.common.mono_semibold
 
 class FastScrollView(
     context: Context,
@@ -88,7 +88,7 @@ class FastScrollView(
     private val bubbleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = bubbleTextSize
         color = context.getColor(R.color.windowTextPrimary)
-        typeface = roboto_semibold
+        typeface = mono_semibold
         textAlign = Paint.Align.LEFT
         isSubpixelText = true
     }

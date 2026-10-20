@@ -18,7 +18,7 @@ import vadiole.unicode.ui.common.StateColorDrawable
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.roboto_regular
+import vadiole.unicode.ui.common.mono_regular
 import vadiole.unicode.ui.extension.onClick
 
 class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context) {
@@ -37,7 +37,7 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
     val name = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14f)
-        typeface = (roboto_regular)
+        typeface = mono_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
         setPadding(0, 0, 16.dp(context), 0)

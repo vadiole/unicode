@@ -40,8 +40,8 @@ import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.navigationBars
-import vadiole.unicode.ui.common.roboto_regular
-import vadiole.unicode.ui.common.roboto_semibold
+import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.mono_semibold
 import vadiole.unicode.ui.common.setLineHeightX
 import vadiole.unicode.ui.common.share
 import vadiole.unicode.ui.common.toClipboard
@@ -77,7 +77,7 @@ class DetailsSheet(
         includeFontPadding = false
         vertical += titleHeight
         ellipsize = TextUtils.TruncateAt.END
-        typeface = roboto_semibold
+        typeface = mono_semibold
         letterSpacing = 0.03f
         isSingleLine = true
         onLongClick = {
@@ -100,7 +100,7 @@ class DetailsSheet(
         vertical += subtitleHeight + verticalPadding
         ellipsize = TextUtils.TruncateAt.END
         includeFontPadding = false
-        typeface = roboto_regular
+        typeface = mono_regular
         letterSpacing = 0.02f
         isSingleLine = true
     })

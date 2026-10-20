@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "vadiole.unicode"
-        minSdk = 26
+        minSdk = 28
         targetSdk = 37
         versionCode = 172
         versionName = "1.8.0"

@@ -12,7 +12,7 @@ class CharInfoView(context: Context) : View(context) {
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         textSize = 14f.dp(context)
-        typeface = roboto_regular
+        typeface = mono_regular
         style = Paint.Style.FILL
         isSubpixelText = true
         letterSpacing = 0.02f
@@ -20,7 +20,7 @@ class CharInfoView(context: Context) : View(context) {
     private val namePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         textSize = 12f.dp(context)
-        typeface = roboto_regular
+        typeface = mono_regular
         style = Paint.Style.FILL
         isSubpixelText = true
         letterSpacing = 0.02f

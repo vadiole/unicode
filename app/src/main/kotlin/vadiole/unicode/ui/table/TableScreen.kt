@@ -29,7 +29,7 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.navigationBars
-import vadiole.unicode.ui.common.roboto_regular
+import vadiole.unicode.ui.common.mono_regular
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
@@ -230,7 +230,7 @@ class TableScreen(
     }
     private val noResultsView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16f)
-        typeface = roboto_regular
+        typeface = mono_regular
         setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
         gravity = Gravity.CENTER
         text = context.getString(R.string.search_no_results)

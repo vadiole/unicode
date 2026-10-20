@@ -71,7 +71,7 @@ open class TextButton(context: Context) : View(context) {
         setPaddingHorizontal(8.dp(context))
         isClickable = true
         isFocusable = true
-        typeface = roboto_regular
+        typeface = mono_regular
     }
 
     override fun drawableStateChanged() {

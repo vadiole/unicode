@@ -10,13 +10,13 @@ import vadiole.unicode.R
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.roboto_regular
+import vadiole.unicode.ui.common.mono_regular
 
 class SearchHeaderCell(context: Context) : FrameLayout(context) {
 
     private val titleView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14f)
-        typeface = roboto_regular
+        typeface = mono_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
         setTextColor(this@SearchHeaderCell.context.getColor(R.color.windowTextSecondary))

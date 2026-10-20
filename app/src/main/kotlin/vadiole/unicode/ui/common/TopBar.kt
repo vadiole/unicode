@@ -17,7 +17,7 @@ class TopBar(
     val titleView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17f)
         setLineHeightX(22.dp(context))
-        typeface = roboto_semibold
+        typeface = mono_semibold
         includeFontPadding = false
         gravity = Gravity.CENTER
         onClick = onTitleClick

@@ -41,7 +41,7 @@ class ActionCell(
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         minHeight = 48.dp(context)
         includeFontPadding = false
-        typeface = roboto_regular
+        typeface = mono_regular
         letterSpacing = 0.03f
         textSize = 17f
         isClickable = true

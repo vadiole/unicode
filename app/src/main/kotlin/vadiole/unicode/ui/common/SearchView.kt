@@ -62,7 +62,7 @@ class SearchView(context: Context, private val delegate: Delegate) : EditText(co
         setPadding(8.dp(context), 0, 26.dp(context), 0)
         setCompoundDrawablesWithIntrinsicBounds(magnifyingGlassDrawable, null, null, null)
         isSingleLine = true
-        typeface = roboto_regular
+        typeface = mono_regular
         includeFontPadding = false
         isLongClickable = true
         background = backgroundDrawable
