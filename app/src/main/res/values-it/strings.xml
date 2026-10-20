@@ -15,6 +15,12 @@
     <string name="search_recents">Recenti</string>
     <string name="search_title">Cerca</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_back">Indietro</string>
+    <string name="settings_show_unsupported">Mostra caratteri non supportati</string>
+    <string name="settings_crash_reports">Segnalazioni di arresto anomalo</string>
+
     <!-- Details -->
     <string name="details_find_in_table">Trova nella tabella</string>
     <string name="details_copy_to_clipboard">Copia negli appunti</string>

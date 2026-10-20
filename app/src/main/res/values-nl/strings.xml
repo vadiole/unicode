@@ -15,6 +15,12 @@
     <string name="search_recents">Recent</string>
     <string name="search_title">Zoeken</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_back">Terug</string>
+    <string name="settings_show_unsupported">Niet-ondersteunde tekens tonen</string>
+    <string name="settings_crash_reports">Crashrapporten</string>
+
     <!-- Details -->
     <string name="details_find_in_table">Zoeken in tabel</string>
     <string name="details_copy_to_clipboard">Kopiëren naar klembord</string>

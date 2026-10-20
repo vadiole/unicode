@@ -15,6 +15,12 @@
     <string name="search_recents">Nedávné</string>
     <string name="search_title">Hledání</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Nastavení</string>
+    <string name="settings_back">Zpět</string>
+    <string name="settings_show_unsupported">Zobrazit nepodporované znaky</string>
+    <string name="settings_crash_reports">Hlášení o pádech</string>
+
     <!-- Details -->
     <string name="details_find_in_table">Najít v tabulce</string>
     <string name="details_copy_to_clipboard">Kopírovat do schránky</string>

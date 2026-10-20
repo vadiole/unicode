@@ -15,9 +15,12 @@ class TopBar(
     context: Context,
     title: String,
     onTitleClick: TextView.() -> Unit = {},
+    onSettingsClick: () -> Unit = {},
 ) : FrameLayout(context) {
     private val sidePadding = 16.dp(context)
     private val titleEndPadding = 8.dp(context)
+    private val settingsMargin = 4.dp(context)
+    private val settingsSize = 48.dp(context)
     private val chevron = context.getDrawable(R.drawable.ic_chevron_down)!!.mutate().apply {
         setTint(context.getColor(R.color.windowTextSecondary))
         setBounds(0, 0, intrinsicWidth, intrinsicHeight)
@@ -37,6 +40,17 @@ class TopBar(
         text = context.getString(R.string.search_title)
         alpha = 0f
     }
+    private val settingsButton = IconButton(
+        context = context,
+        icon = context.getDrawable(R.drawable.ic_settings)!!,
+        size = settingsSize,
+        iconColor = context.getColor(R.color.windowTextSecondary),
+        floating = false,
+    ).apply {
+        contentDescription = context.getString(R.string.settings_title)
+        onClick = { onSettingsClick() }
+    }
+
     private val titlePaint = Paint(titleView.paint)
     private var isSearchShown = false
     private var hasQuery = false
@@ -47,6 +61,7 @@ class TopBar(
         addView(titleView, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(recentsTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(searchTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
+        addView(settingsButton, frameParams(settingsSize, settingsSize, Gravity.RIGHT or Gravity.CENTER_VERTICAL, marginRight = settingsMargin))
         val isDark = resources.configuration.isDarkMode
         addView(View(context).apply {
             setBackgroundColor(context.getColor(if (isDark) R.color.floatingBorder else R.color.windowDivider))
@@ -75,7 +90,9 @@ class TopBar(
         isSearchShown = shown
         val alpha = if (shown) 0f else 1f
         titleView.alpha = alpha
+        settingsButton.alpha = alpha
         titleView.isEnabled = !shown
+        settingsButton.isEnabled = !shown
         applySearchTitles()
     }
 
@@ -91,12 +108,13 @@ class TopBar(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        titleView.maxWidth = w
+        titleView.maxWidth = w - settingsSize - settingsMargin
         fitTitle()
     }
 
     private fun fitTitle() {
-        val available = width - sidePadding - titleEndPadding - chevron.intrinsicWidth - titleView.compoundDrawablePadding
+        val available = width - settingsSize - settingsMargin - sidePadding - titleEndPadding -
+            chevron.intrinsicWidth - titleView.compoundDrawablePadding
         if (available <= 0) return
         val text = titleView.text.toString()
         val metrics = resources.displayMetrics

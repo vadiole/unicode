@@ -15,6 +15,12 @@
     <string name="search_recents">Πρόσφατα</string>
     <string name="search_title">Αναζήτηση</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_back">Πίσω</string>
+    <string name="settings_show_unsupported">Εμφάνιση μη υποστηριζόμενων χαρακτήρων</string>
+    <string name="settings_crash_reports">Αναφορές σφαλμάτων</string>
+
     <!-- Details -->
     <string name="details_find_in_table">Εύρεση στον πίνακα</string>
     <string name="details_copy_to_clipboard">Αντιγραφή στο πρόχειρο</string>

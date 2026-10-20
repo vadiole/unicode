@@ -15,6 +15,12 @@
     <string name="search_recents">हाल के</string>
     <string name="search_title">खोजें</string>
 
+    <!-- Settings -->
+    <string name="settings_title">सेटिंग</string>
+    <string name="settings_back">वापस</string>
+    <string name="settings_show_unsupported">असमर्थित वर्ण दिखाएँ</string>
+    <string name="settings_crash_reports">क्रैश रिपोर्ट</string>
+
     <!-- Details -->
     <string name="details_find_in_table">तालिका में खोजें</string>
     <string name="details_copy_to_clipboard">क्लिपबोर्ड पर कॉपी करें</string>

@@ -15,6 +15,12 @@
     <string name="search_recents">Siste</string>
     <string name="search_title">Søk</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Innstillinger</string>
+    <string name="settings_back">Tilbake</string>
+    <string name="settings_show_unsupported">Vis tegn som ikke støttes</string>
+    <string name="settings_crash_reports">Krasjrapporter</string>
+
     <!-- Details -->
     <string name="details_find_in_table">Finn i tabell</string>
     <string name="details_copy_to_clipboard">Kopier til utklippstavlen</string>

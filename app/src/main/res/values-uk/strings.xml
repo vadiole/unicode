@@ -15,6 +15,12 @@
     <string name="search_recents">Останні</string>
     <string name="search_title">Пошук</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Налаштування</string>
+    <string name="settings_back">Назад</string>
+    <string name="settings_show_unsupported">Показувати непідтримувані символи</string>
+    <string name="settings_crash_reports">Звіти про збої</string>
+
     <!-- Details -->
     <string name="details_find_in_table">Знайти в таблиці</string>
     <string name="details_copy_to_clipboard">Копіювати в буфер обміну</string>

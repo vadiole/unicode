@@ -138,6 +138,7 @@ class TableScreen(
         context = context,
         title = context.getString(R.string.app_name),
         onTitleClick = { showBlockSelector() },
+        onSettingsClick = { delegate.onSettingsClick() },
     )
     private val searchDelegate = object : SearchBar.Delegate {
         override fun onExpanded() = showSearch()
@@ -403,6 +404,15 @@ class TableScreen(
         popup.showAsDropDown(topBar, xOffset, yOffset, LEFT or TOP)
     }
 
+    fun reloadChars() {
+        launch {
+            tableController.loadChars(fast = false)
+            tableAdapter.notifyDataSetChanged()
+            tableController.loadBlocks()
+            popup = null
+        }
+    }
+
     fun isSearchVisible(): Boolean = searchBar.isExpanded()
 
     fun startSearchBack() = searchBar.startScrub()
@@ -486,5 +496,7 @@ class TableScreen(
         fun onSearchShown()
 
         fun onSearchHidden()
+
+        fun onSettingsClick()
     }
 }
