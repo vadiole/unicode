@@ -72,9 +72,15 @@ class TableView(
         }
     }
 
-    fun scrollToPositionTop(row: Int) {
-        tableLayoutManager.scrollToPositionWithOffset(row, 0)
+    fun scrollToPositionTop(row: Int, offset: Int = 0) {
+        tableLayoutManager.scrollToPositionWithOffset(row, offset)
     }
+
+    val firstVisibleRow: Int
+        get() = tableLayoutManager.findFirstVisibleItemPosition()
+
+    val firstVisibleRowOffset: Int
+        get() = tableLayoutManager.findViewByPosition(firstVisibleRow)?.top ?: 0
 
     interface Delegate {
         fun onBlockChanged(name: String?)

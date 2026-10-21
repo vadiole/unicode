@@ -90,10 +90,14 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         stopTap()
         onLongPress()
     }
+    private var pendingScrollX = -1
     private val scrollView = object : HorizontalScrollView(context) {
         override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
             super.onLayout(changed, l, t, r, b)
-            if (scrollToEndPending) {
+            if (pendingScrollX >= 0) {
+                scrollTo(pendingScrollX, 0)
+                pendingScrollX = -1
+            } else if (scrollToEndPending) {
                 scrollToEndPending = false
                 scrollTo(textView.width, 0)
             }
@@ -174,6 +178,18 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     }
 
     fun reveal(end: Int) = textView.reveal(end, bounce = true)
+
+    var scrollPosition: Int
+        get() {
+            val max = textView.width - scrollView.width
+            return if (scrollToEndPending || scrollView.scrollX >= max) -1 else scrollView.scrollX
+        }
+        set(value) {
+            if (value < 0) return
+            scrollToEndPending = false
+            pendingScrollX = value
+            scrollView.requestLayout()
+        }
 
     private fun onLongPress() {
         if (hasContent) {

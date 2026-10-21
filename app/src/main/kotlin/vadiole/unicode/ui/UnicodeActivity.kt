@@ -105,6 +105,11 @@ class UnicodeActivity : Activity() {
         isResumed = false
     }
 
+    override fun onStop() {
+        super.onStop()
+        navigationViewNullable?.saveState()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         navigationViewNullable = null

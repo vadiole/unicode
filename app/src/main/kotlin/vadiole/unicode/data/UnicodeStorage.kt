@@ -7,8 +7,11 @@ import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.OPEN_READWRITE
 import android.database.sqlite.SQLiteDatabase.openDatabase
 import android.util.Log
+import java.io.DataInputStream
+import java.io.DataOutputStream
 import java.io.File
 import java.io.IOException
+import java.nio.ByteBuffer
 import java.util.concurrent.Executors
 import java.util.zip.ZipInputStream
 import kotlin.system.measureTimeMillis
@@ -89,6 +92,42 @@ class UnicodeStorage(private val context: Context) {
         }
 
         return@withContext CodePointArray(result.copyOf(size))
+    }
+
+    suspend fun readCache(name: String, key: String): IntArray? = withContext(dispatcher) {
+        val file = File(File(context.filesDir, cacheDir), name)
+        if (!file.exists()) return@withContext null
+        try {
+            DataInputStream(file.inputStream().buffered()).use { input ->
+                if (input.readUTF() != "$databaseName;$key") return@withContext null
+                val size = input.readInt()
+                if (size !in 0..totalCharacters) return@withContext null
+                val bytes = ByteArray(size * 4)
+                input.readFully(bytes)
+                val values = IntArray(bytes.size / 4)
+                ByteBuffer.wrap(bytes).asIntBuffer().get(values)
+                values
+            }
+        } catch (e: IOException) {
+            null
+        }
+    }
+
+    suspend fun writeCache(name: String, key: String, values: IntArray) = withContext(dispatcher) {
+        val dir = File(context.filesDir, cacheDir).also { it.mkdirs() }
+        val temp = File(dir, "$name.tmp")
+        try {
+            DataOutputStream(temp.outputStream().buffered()).use { output ->
+                output.writeUTF("$databaseName;$key")
+                output.writeInt(values.size)
+                val bytes = ByteBuffer.allocate(values.size * 4)
+                bytes.asIntBuffer().put(values)
+                output.write(bytes.array())
+            }
+            temp.renameTo(File(dir, name))
+        } catch (e: IOException) {
+            temp.delete()
+        }
     }
 
     suspend fun getAbbreviations(): Map<CodePoint, String> = withContext(dispatcher) {
@@ -276,6 +315,7 @@ class UnicodeStorage(private val context: Context) {
     companion object {
         const val totalCharacters = 41341
         private const val databaseDir = "sql"
+        private const val cacheDir = "cache"
         private const val databaseName = "u18.sqlite"
         private const val VS_BMP_FIRST = 0xFE00
         private const val VS_BMP_LAST = 0xFE0F

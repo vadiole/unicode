@@ -13,6 +13,9 @@ class UserConfig(context: Context) {
         private const val key_usedCollect = "usedCollect"
         private const val key_usedCopy = "usedCopy"
         private const val key_dockEnabled = "dockEnabled"
+        private const val key_tableScrollCodePoint = "tableScrollCodePoint"
+        private const val key_tableScrollOffset = "tableScrollOffset"
+        private const val key_dockScroll = "dockScroll"
     }
 
     private val sharedPreferences = context.getSharedPreferences("unicode", Context.MODE_PRIVATE)
@@ -78,5 +81,23 @@ class UserConfig(context: Context) {
         get() = sharedPreferences.getBoolean(key_dockEnabled, true)
         set(value) {
             editor.putBoolean(key_dockEnabled, value).apply()
+        }
+
+    var tableScrollCodePoint: Int
+        get() = sharedPreferences.getInt(key_tableScrollCodePoint, -1)
+        set(value) {
+            editor.putInt(key_tableScrollCodePoint, value).apply()
+        }
+
+    var tableScrollOffset: Int
+        get() = sharedPreferences.getInt(key_tableScrollOffset, 0)
+        set(value) {
+            editor.putInt(key_tableScrollOffset, value).apply()
+        }
+
+    var dockScroll: Int
+        get() = sharedPreferences.getInt(key_dockScroll, -1)
+        set(value) {
+            editor.putInt(key_dockScroll, value).apply()
         }
 }

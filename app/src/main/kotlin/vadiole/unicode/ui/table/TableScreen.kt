@@ -27,8 +27,10 @@ import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
+import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
+import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.data.binarySearch
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
@@ -366,16 +368,41 @@ class TableScreen(
         bottomContainer.addView(dockView, linearParams(matchParent, wrapContent))
         addView(flyOverlay, frameParams(matchParent, matchParent))
         dockView.setText(dockController.text)
+        dockView.scrollPosition = userConfig.dockScroll
         updateDockTip(animate = false)
         updateContentInsets()
         launch {
-            tableController.loadChars(fast = true)
+            val scrollCodePoint = userConfig.tableScrollCodePoint
+            val isCached = tableController.loadCachedChars()
+            if (!isCached && scrollCodePoint <= 0) {
+                tableController.loadChars(fast = true)
+            }
             tableController.loadAbbreviations()
             tableAdapter.notifyDataSetChanged()
-            tableController.loadChars(fast = false)
-            tableAdapter.notifyDataSetChanged()
-            tableController.loadBlocks()
+            if (isCached) {
+                scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
+                tableController.loadBlocks()
+                reloadChars()
+            } else {
+                tableController.loadChars(fast = false)
+                tableAdapter.notifyDataSetChanged()
+                scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
+                tableController.loadBlocks()
+            }
         }
+    }
+
+    private fun firstVisibleCodePoint(chars: CodePointArray = tableController.tableChars): Int {
+        val row = tableView.firstVisibleRow
+        val index = row * spanCount
+        return if (row > 0 && index < chars.size) chars[index].value else -1
+    }
+
+    private fun scrollToCodePoint(codePoint: Int, offset: Int) {
+        if (codePoint <= 0) return
+        val index = tableController.tableChars.binarySearch(CodePoint(codePoint))
+        val position = if (index >= 0) index else -(index + 1)
+        tableView.scrollToPositionTop(position / spanCount, offset)
     }
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
@@ -422,6 +449,14 @@ class TableScreen(
         flyOverlay.cancelAll()
         dockView.visibility = if (enabled) VISIBLE else GONE
         updateContentInsets()
+    }
+
+    fun saveState() {
+        if (tableView.firstVisibleRow >= 0 && tableController.tableChars.isNotEmpty()) {
+            userConfig.tableScrollCodePoint = firstVisibleCodePoint()
+            userConfig.tableScrollOffset = tableView.firstVisibleRowOffset
+        }
+        userConfig.dockScroll = dockView.scrollPosition
     }
 
     private fun copyText(text: String) {
@@ -554,8 +589,12 @@ class TableScreen(
 
     fun reloadChars() {
         launch {
-            tableController.loadChars(fast = false)
+            val chars = tableController.tableChars
+            if (!tableController.loadChars(fast = false)) return@launch
+            val topCodePoint = firstVisibleCodePoint(chars)
+            val topOffset = tableView.firstVisibleRowOffset
             tableAdapter.notifyDataSetChanged()
+            scrollToCodePoint(topCodePoint, topOffset)
             tableController.loadBlocks()
             popup = null
         }

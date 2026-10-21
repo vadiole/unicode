@@ -183,6 +183,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         if (!isDetailsOpenOrOpening) sheet.doOnLayout { it.translationY = it.measuredHeight.toFloat() }
     }
 
+    fun saveState() = tableScreen.saveState()
+
     private fun showSettings() {
         if (nav.current() is SettingsScreen) return
         val screen = SettingsScreen(context, userConfig, settingsDelegate)
