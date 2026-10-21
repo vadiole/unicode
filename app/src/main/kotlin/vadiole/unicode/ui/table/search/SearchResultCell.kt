@@ -7,6 +7,7 @@ import android.text.SpannableString
 import android.text.style.BackgroundColorSpan
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +21,13 @@ import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.mono_regular
 import vadiole.unicode.ui.extension.onClick
+import vadiole.unicode.ui.extension.onLongClick
 
 class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context) {
 
     interface Delegate {
-        fun onClick(codePoint: CodePoint)
+        fun onClick(codePoint: CodePoint, source: View, centerX: Float, centerY: Float, glyphSize: Float)
+        fun onLongClick(codePoint: CodePoint)
     }
 
     private val backgroundDrawable = StateColorDrawable()
@@ -32,8 +35,9 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     private var codePoint: CodePoint? = null
     private var highlightStarts = IntArray(4)
     private var highlightEnds = IntArray(4)
+    private val glyphSize = 24f.dp(context)
     val charView = CharTextView(context).apply {
-        textSize = 24f.dp(context)
+        textSize = glyphSize
     }
     val name = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13f)
@@ -66,7 +70,13 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         onClick = {
             val codePoint = codePoint
             if (codePoint != null) {
-                delegate.onClick(codePoint)
+                delegate.onClick(codePoint, charView, charView.width / 2f, charView.height / 2f, glyphSize)
+            }
+        }
+        onLongClick = {
+            val codePoint = codePoint
+            if (codePoint != null) {
+                delegate.onLongClick(codePoint)
             }
         }
     }

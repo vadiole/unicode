@@ -15,14 +15,22 @@
     <string name="search_recents">ბოლო</string>
     <string name="search_title">ძიება</string>
 
+    <!-- Dock -->
+    <string name="dock_tip_collect">შეეხეთ სიმბოლოებს შესაგროვებლად</string>
+    <string name="dock_tip_copy">შეეხეთ ზოლს კრებულის დასაკოპირებლად</string>
+    <string name="dock_backspace">ბოლო სიმბოლოს წაშლა</string>
+    <string name="dock_copy_all">ყველაფრის კოპირება</string>
+
     <!-- Settings -->
     <string name="settings_title">პარამეტრები</string>
     <string name="settings_back">უკან</string>
+    <string name="settings_dock">შეხებით შეგროვება</string>
     <string name="settings_show_unsupported">მხარდაუჭერელი სიმბოლოების ჩვენება</string>
     <string name="settings_crash_reports">შეცდომის ანგარიშები</string>
 
     <!-- Details -->
     <string name="details_find_in_table">ცხრილში მოძებნა</string>
+    <string name="details_add">კრებულში დამატება</string>
     <string name="details_copy_to_clipboard">ბუფერში კოპირება</string>
     <string name="details_share_link">ბმულის გაზიარება</string>
     <string name="details_info_code">კოდი</string>

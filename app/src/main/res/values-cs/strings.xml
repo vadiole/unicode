@@ -15,14 +15,22 @@
     <string name="search_recents">Nedávné</string>
     <string name="search_title">Hledání</string>
 
+    <!-- Dock -->
+    <string name="dock_tip_collect">Klepnutím na znaky je přidáte</string>
+    <string name="dock_tip_copy">Klepnutím na lištu zkopírujete sbírku</string>
+    <string name="dock_backspace">Smazat poslední znak</string>
+    <string name="dock_copy_all">Kopírovat vše</string>
+
     <!-- Settings -->
     <string name="settings_title">Nastavení</string>
     <string name="settings_back">Zpět</string>
+    <string name="settings_dock">Sbírat klepnutím</string>
     <string name="settings_show_unsupported">Zobrazit nepodporované znaky</string>
     <string name="settings_crash_reports">Hlášení o pádech</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Najít v tabulce</string>
+    <string name="details_add">Přidat do sbírky</string>
     <string name="details_copy_to_clipboard">Kopírovat do schránky</string>
     <string name="details_share_link">Sdílet odkaz</string>
     <string name="details_info_code">Kód</string>

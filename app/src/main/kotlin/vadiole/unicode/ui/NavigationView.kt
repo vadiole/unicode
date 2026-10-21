@@ -32,6 +32,7 @@ import vadiole.unicode.ui.extension.isVisible
 import vadiole.unicode.ui.settings.SettingsScreen
 import vadiole.unicode.ui.table.TableController
 import vadiole.unicode.ui.table.TableScreen
+import vadiole.unicode.ui.table.dock.DockController
 import vadiole.unicode.ui.table.search.SearchController
 
 class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
@@ -61,10 +62,15 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var pendingCharSkipAnimation = false
     private val tableController = TableController(unicodeStorage, userConfig)
     private val searchController = SearchController(unicodeStorage, recentRepository)
+    private val dockController = DockController(userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onShowDetails(codePoint: CodePoint) {
             recentRepository.record(codePoint)
             showDetailsBottomSheet(codePoint)
+        }
+
+        override fun onItemAdded(codePoint: CodePoint) {
+            recentRepository.record(codePoint)
         }
 
         override fun onSearchShown() {
@@ -79,12 +85,13 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
             showSettings()
         }
     }
-    private val tableScreen = TableScreen(context, tableController, searchController, tableDelegate)
+    private val tableScreen = TableScreen(context, tableController, searchController, dockController, tableDelegate)
     private val screenContainer = FrameLayout(context)
     private val nav = Nav(screenContainer)
     private val settingsDelegate = object : SettingsScreen.Delegate {
         override fun onBack() = hideSettings()
         override fun onShowUnsupportedCharsChanged() = tableScreen.reloadChars()
+        override fun onDockEnabledChanged() = applyDockEnabled()
     }
     private val dimView = View(context).apply {
         layoutParams = frameParams(matchParent, matchParent)
@@ -97,6 +104,11 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
             tableScreen.scrollToChar(codePoint)
             updateBackEnabled()
         }
+
+        override fun addToDock(codePoint: CodePoint) {
+            hideDetailsBottomSheet()
+            tableScreen.addToDock(codePoint)
+        }
     }
     var detailsSheet: DetailsSheet? = null
 
@@ -105,11 +117,13 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         isMotionEventSplittingEnabled = false
         addView(screenContainer, frameParams(matchParent, matchParent))
         nav.setRoot(tableScreen)
+        tableScreen.setDockEnabled(userConfig.dockEnabled)
 
         post {
             detailsSheet = DetailsSheet(context, detailsDelegate).also { detailsSheet ->
                 addView(dimView)
                 addView(detailsSheet)
+                detailsSheet.setDockEnabled(userConfig.dockEnabled)
                 if (!pendingCharSkipAnimation) {
                     detailsSheet.doOnLayout {
                         it.translationY = it.measuredHeight.toFloat()
@@ -159,6 +173,14 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         isDetailsOpenOrOpening = false
         updateBackEnabled()
         startSpringAnimation(detailsSheet, detailsSheet.measuredHeight, withVelocity)
+    }
+
+    private fun applyDockEnabled() {
+        val enabled = userConfig.dockEnabled
+        tableScreen.setDockEnabled(enabled)
+        val sheet = detailsSheet ?: return
+        sheet.setDockEnabled(enabled)
+        if (!isDetailsOpenOrOpening) sheet.doOnLayout { it.translationY = it.measuredHeight.toFloat() }
     }
 
     private fun showSettings() {

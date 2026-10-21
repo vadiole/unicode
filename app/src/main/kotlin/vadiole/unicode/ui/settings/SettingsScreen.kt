@@ -35,6 +35,7 @@ class SettingsScreen(
     interface Delegate {
         fun onBack()
         fun onShowUnsupportedCharsChanged()
+        fun onDockEnabledChanged()
     }
 
     private val backButton = IconButton(
@@ -75,6 +76,14 @@ class SettingsScreen(
     private fun createGroup() = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
         setBackgroundColor(context.getColor(R.color.layer1))
+        addView(
+            ToggleRow(context, context.getString(R.string.settings_dock), userConfig.dockEnabled) { checked ->
+                userConfig.dockEnabled = checked
+                delegate.onDockEnabledChanged()
+            },
+            linearParams(matchParent, 56.dp(context))
+        )
+        addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
         addView(
             ToggleRow(context, context.getString(R.string.settings_show_unsupported), userConfig.showUnsupportedChars) { checked ->
                 userConfig.showUnsupportedChars = checked

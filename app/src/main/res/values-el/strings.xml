@@ -15,14 +15,22 @@
     <string name="search_recents">Πρόσφατα</string>
     <string name="search_title">Αναζήτηση</string>
 
+    <!-- Dock -->
+    <string name="dock_tip_collect">Πατήστε χαρακτήρες για να τους συλλέξετε</string>
+    <string name="dock_tip_copy">Πατήστε τη γραμμή για αντιγραφή της συλλογής</string>
+    <string name="dock_backspace">Διαγραφή τελευταίου χαρακτήρα</string>
+    <string name="dock_copy_all">Αντιγραφή όλων</string>
+
     <!-- Settings -->
     <string name="settings_title">Ρυθμίσεις</string>
     <string name="settings_back">Πίσω</string>
+    <string name="settings_dock">Συλλογή με πάτημα</string>
     <string name="settings_show_unsupported">Εμφάνιση μη υποστηριζόμενων χαρακτήρων</string>
     <string name="settings_crash_reports">Αναφορές σφαλμάτων</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Εύρεση στον πίνακα</string>
+    <string name="details_add">Προσθήκη στη συλλογή</string>
     <string name="details_copy_to_clipboard">Αντιγραφή στο πρόχειρο</string>
     <string name="details_share_link">Κοινοποίηση συνδέσμου</string>
     <string name="details_info_code">Κωδικός</string>

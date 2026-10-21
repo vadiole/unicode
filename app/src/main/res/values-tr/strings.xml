@@ -15,14 +15,22 @@
     <string name="search_recents">Son kullanılanlar</string>
     <string name="search_title">Ara</string>
 
+    <!-- Dock -->
+    <string name="dock_tip_collect">Toplamak için karakterlere dokunun</string>
+    <string name="dock_tip_copy">Koleksiyonu kopyalamak için alt çubuğa dokunun</string>
+    <string name="dock_backspace">Son karakteri sil</string>
+    <string name="dock_copy_all">Tümünü kopyala</string>
+
     <!-- Settings -->
     <string name="settings_title">Ayarlar</string>
     <string name="settings_back">Geri</string>
+    <string name="settings_dock">Toplamak için dokunun</string>
     <string name="settings_show_unsupported">Desteklenmeyen karakterleri göster</string>
     <string name="settings_crash_reports">Çökme raporları</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Tabloda bul</string>
+    <string name="details_add">Koleksiyona ekle</string>
     <string name="details_copy_to_clipboard">Panoya kopyala</string>
     <string name="details_share_link">Bağlantıyı paylaş</string>
     <string name="details_info_code">Kod</string>

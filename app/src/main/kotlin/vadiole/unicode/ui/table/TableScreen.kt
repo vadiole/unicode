@@ -1,13 +1,16 @@
 package vadiole.unicode.ui.table
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.os.Build
+import android.os.SystemClock
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.Gravity.LEFT
 import android.view.Gravity.TOP
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -42,6 +45,9 @@ import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.hideKeyboard
+import vadiole.unicode.ui.table.dock.DockController
+import vadiole.unicode.ui.table.dock.DockView
+import vadiole.unicode.ui.table.dock.FlyOverlay
 import vadiole.unicode.ui.table.search.SearchController
 import vadiole.unicode.ui.table.search.SearchResultCell
 import vadiole.unicode.ui.table.search.SearchResultView
@@ -52,6 +58,7 @@ class TableScreen(
     context: Context,
     private val tableController: TableController,
     private val searchController: SearchController,
+    private val dockController: DockController,
     private val delegate: Delegate,
 ) : Screen(context) {
     private var spanCount = 8
@@ -61,6 +68,11 @@ class TableScreen(
     private val statusBarPaint = Paint().apply {
         style = Paint.Style.FILL
     }
+    private val addHaptic = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
+    } else {
+        HapticFeedbackConstants.CLOCK_TICK
+    }
     private val blockSelectorDelegate = object : BlockSelectorView.Delegate {
         override fun onBlockSelected(block: Block) {
             popup?.dismiss()
@@ -68,9 +80,13 @@ class TableScreen(
         }
     }
     private val charCellDelegate = object : CharRow.Delegate {
-        override fun onClick(codePoint: CodePoint) = delegate.onShowDetails(codePoint)
+        override fun onClick(codePoint: CodePoint, source: View, centerX: Float, centerY: Float, glyphSize: Float) {
+            if (isDockEnabled) flyToDock(codePoint, source, centerX, centerY, glyphSize) else delegate.onShowDetails(codePoint)
+        }
 
-        override fun onLongClick(codePoint: CodePoint) = copyChar(codePoint)
+        override fun onLongClick(codePoint: CodePoint) {
+            if (isDockEnabled) delegate.onShowDetails(codePoint) else copyText(codePoint.char)
+        }
     }
     private val tableAdapter = object : TableAdapter() {
         override fun getItemCount(): Int = tableController.totalChars / spanCount
@@ -88,9 +104,22 @@ class TableScreen(
         }
     }
     private val searchResultCellDelegate = object : SearchResultCell.Delegate {
-        override fun onClick(codePoint: CodePoint) {
-            hideKeyboard()
-            delegate.onShowDetails(codePoint)
+        override fun onClick(codePoint: CodePoint, source: View, centerX: Float, centerY: Float, glyphSize: Float) {
+            if (isDockEnabled) {
+                flyToDock(codePoint, source, centerX, centerY, glyphSize)
+            } else {
+                hideKeyboard()
+                delegate.onShowDetails(codePoint)
+            }
+        }
+
+        override fun onLongClick(codePoint: CodePoint) {
+            if (isDockEnabled) {
+                hideKeyboard()
+                delegate.onShowDetails(codePoint)
+            } else {
+                copyText(codePoint.char)
+            }
         }
     }
     private var searchJob: Job? = null
@@ -148,6 +177,62 @@ class TableScreen(
     }
     private val searchBarHeight = SearchBar.barHeight(context)
     private val searchBar = SearchBar(context, searchDelegate)
+    private val dockDelegate: DockView.Delegate = object : DockView.Delegate {
+        override fun onBackspace() {
+            flyOverlay.cancelAll()
+            if (dockController.backspace()) dockView.setText(dockController.text)
+        }
+
+        override fun onClear() {
+            flyOverlay.cancelAll()
+            if (dockController.clear()) dockView.setText(dockController.text)
+        }
+
+        override fun onCopyAll() {
+            val text = dockController.text
+            if (text.isEmpty()) return
+            copyText(text)
+            dockController.markCopied()
+            updateDockTip(animate = true)
+        }
+
+        override fun onRestore(): Boolean {
+            if (!dockController.restore()) return false
+            dockView.setText(dockController.text, popFrom = 0)
+            return true
+        }
+
+        override fun onTipCollapse(offset: Float) {
+            tipCollapseOffset = offset
+            applyKeyboardLift(keyboardLiftIme)
+        }
+
+        override fun onTipCollapsed() {
+            tipCollapseOffset = 0f
+            applyKeyboardLift(keyboardLiftIme)
+            updateContentInsets()
+        }
+    }
+    private val dockView: DockView = DockView(context, dockDelegate)
+    private var isDockEnabled = true
+    private var tipCollapseOffset = 0f
+    private val flyOverlayDelegate = object : FlyOverlay.Delegate {
+        override fun getSlotCenter(slotLeft: Float, slotRight: Float, out: FloatArray) =
+            dockView.getSlotCenter(slotLeft, slotRight, out)
+
+        override fun onLanded(end: Int) {
+            dockView.reveal(end)
+            val now = SystemClock.uptimeMillis()
+            if (now - lastLandingHaptic >= landingHapticInterval) {
+                lastLandingHaptic = now
+                performHapticFeedback(addHaptic)
+            }
+        }
+    }
+    private val flyOverlay = FlyOverlay(context, flyOverlayDelegate)
+    private val landingHapticInterval = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) 17L else 30L
+    private var lastLandingHaptic = 0L
+    private var keyboardLiftIme = 0
     private val bottomContainer = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
         clipChildren = false
@@ -278,6 +363,10 @@ class TableScreen(
         resultsLayer.addView(searchFastScrollView, frameParams(matchParent, matchParent))
         addView(bottomContainer, frameParams(matchParent, wrapContent, gravity = Gravity.BOTTOM))
         bottomContainer.addView(searchBar, linearParams(matchParent, searchBarHeight))
+        bottomContainer.addView(dockView, linearParams(matchParent, wrapContent))
+        addView(flyOverlay, frameParams(matchParent, matchParent))
+        dockView.setText(dockController.text)
+        updateDockTip(animate = false)
         updateContentInsets()
         launch {
             tableController.loadChars(fast = true)
@@ -327,17 +416,30 @@ class TableScreen(
         return false
     }
 
-    private fun copyChar(codePoint: CodePoint) {
-        context.toClipboard("Unicode", codePoint.char)
+    fun setDockEnabled(enabled: Boolean) {
+        if (isDockEnabled == enabled) return
+        isDockEnabled = enabled
+        flyOverlay.cancelAll()
+        dockView.visibility = if (enabled) VISIBLE else GONE
+        updateContentInsets()
+    }
+
+    private fun copyText(text: String) {
+        context.toClipboard("Unicode", text)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, codePoint.char), Toast.LENGTH_SHORT).show()
+            val preview = if (text.length > 24) text.take(if (text[23].isHighSurrogate()) 23 else 24) + "…" else text
+            Toast.makeText(context, context.getString(R.string.toast_copied_to_clipboard, preview), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun updateContentInsets() {
-        if (bottomContainer.paddingBottom != navigationInset) bottomContainer.setPadding(0, 0, 0, navigationInset)
-        val chromeBottom = navigationInset + searchBarHeight
+        val dockChrome = if (isDockEnabled) dockView.chromeHeight else 0
+        val bottomPadding = if (isDockEnabled) 0 else navigationInset
+        if (bottomContainer.paddingBottom != bottomPadding) bottomContainer.setPadding(0, 0, 0, bottomPadding)
+        val dockHeight = dockChrome + navigationInset
+        val chromeBottom = dockHeight + searchBarHeight
         val keyboardLift = (imeInset - navigationInset).coerceAtLeast(0)
+        dockView.setBottomInset(navigationInset)
         if (tableView.paddingBottom != chromeBottom) tableView.updatePadding(bottom = chromeBottom)
         if (fastScrollView.paddingBottom != chromeBottom) fastScrollView.setPadding(0, 0, 0, chromeBottom)
         val resultsBottom = chromeBottom + keyboardLift
@@ -347,7 +449,17 @@ class TableScreen(
     }
 
     private fun applyKeyboardLift(ime: Int) {
-        bottomContainer.translationY = -(ime - navigationInset).coerceAtLeast(0).toFloat()
+        keyboardLiftIme = ime
+        bottomContainer.translationY = tipCollapseOffset - (ime - navigationInset).coerceAtLeast(0)
+    }
+
+    private fun updateDockTip(animate: Boolean) {
+        val tip = when {
+            dockController.usedCopy -> DockView.Tip.Hidden
+            dockController.usedCollect -> DockView.Tip.Copy
+            else -> DockView.Tip.Collect
+        }
+        dockView.setTip(tip, animate)
     }
 
     private fun applySearchProgress(p: Float) {
@@ -402,6 +514,42 @@ class TableScreen(
         val titleCenterX = titleView.left + (titleView.paddingLeft + titleView.width - titleView.paddingRight) / 2f
         popup.setAnchorX(titleCenterX - xOffset)
         popup.showAsDropDown(topBar, xOffset, yOffset, LEFT or TOP)
+    }
+
+    fun addToDock(codePoint: CodePoint) {
+        val start = dockController.length
+        dockController.add(codePoint)
+        dockView.setText(dockController.text, popFrom = start)
+        updateDockTip(animate = true)
+        performHapticFeedback(addHaptic)
+        delegate.onItemAdded(codePoint)
+    }
+
+    private fun flyToDock(codePoint: CodePoint, source: View, centerX: Float, centerY: Float, glyphSize: Float) {
+        if (!ValueAnimator.areAnimatorsEnabled()) {
+            addToDock(codePoint)
+            return
+        }
+        val start = dockController.length
+        val slotLeft = dockView.textWidth
+        dockController.add(codePoint)
+        dockView.setText(dockController.text, hiddenFrom = start)
+        val slotRight = dockView.textWidth
+        val abbreviation = tableController.abbreviations[codePoint]
+        flyOverlay.launch(
+            label = abbreviation ?: codePoint.char,
+            isAbbreviation = abbreviation != null,
+            source = source,
+            centerX = centerX,
+            centerY = centerY,
+            glyphSize = glyphSize,
+            slotLeft = slotLeft,
+            slotRight = slotRight,
+            end = dockController.length,
+        )
+        updateDockTip(animate = true)
+        performHapticFeedback(addHaptic)
+        delegate.onItemAdded(codePoint)
     }
 
     fun reloadChars() {
@@ -492,6 +640,8 @@ class TableScreen(
 
     interface Delegate {
         fun onShowDetails(codePoint: CodePoint)
+
+        fun onItemAdded(codePoint: CodePoint)
 
         fun onSearchShown()
 

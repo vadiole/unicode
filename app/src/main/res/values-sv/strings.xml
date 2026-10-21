@@ -15,14 +15,22 @@
     <string name="search_recents">Senaste</string>
     <string name="search_title">Sök</string>
 
+    <!-- Dock -->
+    <string name="dock_tip_collect">Tryck på tecken för att samla dem</string>
+    <string name="dock_tip_copy">Tryck på fältet för att kopiera samlingen</string>
+    <string name="dock_backspace">Ta bort sista tecknet</string>
+    <string name="dock_copy_all">Kopiera allt</string>
+
     <!-- Settings -->
     <string name="settings_title">Inställningar</string>
     <string name="settings_back">Tillbaka</string>
+    <string name="settings_dock">Tryck för att samla</string>
     <string name="settings_show_unsupported">Visa tecken som inte stöds</string>
     <string name="settings_crash_reports">Felrapporter</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Hitta i tabell</string>
+    <string name="details_add">Lägg till i samlingen</string>
     <string name="details_copy_to_clipboard">Kopiera till urklipp</string>
     <string name="details_share_link">Dela länk</string>
     <string name="details_info_code">Kod</string>

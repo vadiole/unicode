@@ -15,14 +15,22 @@
     <string name="search_recents">Recentes</string>
     <string name="search_title">Pesquisar</string>
 
+    <!-- Dock -->
+    <string name="dock_tip_collect">Toque nos carateres para os juntar</string>
+    <string name="dock_tip_copy">Toque na barra para copiar a coleção</string>
+    <string name="dock_backspace">Apagar o último carater</string>
+    <string name="dock_copy_all">Copiar tudo</string>
+
     <!-- Settings -->
     <string name="settings_title">Definições</string>
     <string name="settings_back">Voltar</string>
+    <string name="settings_dock">Toque para juntar</string>
     <string name="settings_show_unsupported">Mostrar carateres não suportados</string>
     <string name="settings_crash_reports">Relatórios de erro</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Encontrar na tabela</string>
+    <string name="details_add">Adicionar à coleção</string>
     <string name="details_copy_to_clipboard">Copiar para a área de transferência</string>
     <string name="details_share_link">Partilhar link</string>
     <string name="details_info_code">Código</string>

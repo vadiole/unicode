@@ -20,6 +20,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import kotlin.math.atan2
 import kotlin.math.sqrt
@@ -56,6 +57,7 @@ class DetailsSheet(
 ) : Screen(context) {
     interface Delegate {
         fun findInTable(codePoint: CodePoint)
+        fun addToDock(codePoint: CodePoint)
     }
 
     private var charObj: CharObj? = null
@@ -178,6 +180,26 @@ class DetailsSheet(
         infoViews.forEach(::addView)
     }
 
+    private val actionAdd = ActionCell(context, context.getString(R.string.details_add), topItem = true).apply {
+        layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP)
+        setIcon(R.drawable.ic_add)
+        onClick = {
+            charObj?.let { value ->
+                delegate.addToDock(CodePoint(value.codePointRaw))
+            }
+        }
+    }
+
+    private val actionViewInTable = ActionCell(context, context.getString(R.string.details_find_in_table), bottomItem = true).apply {
+        layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP, marginTop = actionCellHeight)
+        setIcon(R.drawable.ic_find_in_table)
+        onClick = {
+            charObj?.let { value ->
+                delegate.findInTable(CodePoint(value.codePointRaw))
+            }
+        }
+    }
+
     private val actionCopy = ActionCell(context, context.getString(R.string.details_copy_to_clipboard), topItem = true).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP)
         setIcon(R.drawable.ic_copy)
@@ -221,6 +243,7 @@ class DetailsSheet(
     private val actionFindInTable = ActionCell(context, context.getString(R.string.details_find_in_table)).apply {
         layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP)
         setIcon(R.drawable.ic_find_in_table)
+        visibility = GONE
         onClick = {
             charObj?.let { value ->
                 delegate.findInTable(CodePoint(value.codePointRaw))
@@ -233,9 +256,26 @@ class DetailsSheet(
         setBackgroundColor(context.getColor(R.color.windowDivider))
     }
 
+    private val divider3 = View(context).apply {
+        layoutParams = frameParams(matchParent, hairlinePx, Gravity.TOP, marginTop = actionCellHeight)
+        setBackgroundColor(context.getColor(R.color.windowDivider))
+    }
+
     private val tableActionGroup = FrameLayout(context).apply {
-        layoutParams = linearParams(matchParent, actionCellHeight, marginTop = verticalPadding * 3)
+        layoutParams = linearParams(matchParent, actionCellHeight * 2, marginTop = verticalPadding * 3)
+        addView(actionAdd)
+        addView(actionViewInTable)
+        addView(divider3)
         addView(actionFindInTable)
+    }
+
+    fun setDockEnabled(enabled: Boolean) {
+        val dockVisibility = if (enabled) VISIBLE else GONE
+        actionAdd.visibility = dockVisibility
+        actionViewInTable.visibility = dockVisibility
+        divider3.visibility = dockVisibility
+        actionFindInTable.visibility = if (enabled) GONE else VISIBLE
+        tableActionGroup.updateLayoutParams { height = actionCellHeight * if (enabled) 2 else 1 }
     }
 
     private val actionGroup = FrameLayout(context).apply {

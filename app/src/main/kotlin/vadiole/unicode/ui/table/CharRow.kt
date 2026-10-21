@@ -1,5 +1,8 @@
 package vadiole.unicode.ui.table
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
@@ -8,6 +11,7 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import android.view.animation.PathInterpolator
 import androidx.core.graphics.ColorUtils
 import kotlin.math.floor
 import vadiole.unicode.R
@@ -37,7 +41,7 @@ class CharRow(
                 performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 val codePoint = codePoints[index]
                 delegate.onLongClick(codePoint)
-                cancelClick(index)
+                releaseClick(index)
             }
         }
     }
@@ -56,11 +60,51 @@ class CharRow(
     private var rippleRadius: Float = 200f.dp(context) / count
     private var actionDownIndex = -1
     private var highlightIndex = -1
+    private val rippleAlpha: Int
+    private var rippleIndex = -1
+    private var rippleTouchX = 0f
+    private var rippleTouchY = 0f
+    private var rippleGrow = 0f
+    private var rippleFade = 1f
+    private var isRippleReleased = false
+    private val easeOut = PathInterpolator(0.23f, 1f, 0.32f, 1f)
+    private val rippleGrowAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
+        interpolator = easeOut
+        addUpdateListener {
+            rippleGrow = it.animatedValue as Float
+            invalidate()
+        }
+        addListener(object : AnimatorListenerAdapter() {
+            private var cancelled = false
+
+            override fun onAnimationStart(animation: Animator) {
+                cancelled = false
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+                cancelled = true
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                if (!cancelled && isRippleReleased) fadeRipple()
+            }
+        })
+    }
+    private val rippleFadeAnimator = ValueAnimator.ofFloat(1f, 0f).apply {
+        duration = RIPPLE_FADE_DURATION
+        interpolator = easeOut
+        addUpdateListener {
+            rippleFade = it.animatedValue as Float
+            if (rippleFade <= 0f) rippleIndex = -1
+            invalidate()
+        }
+    }
 
     init {
         charPaint.color = context.getColor(R.color.windowTextPrimary)
         abbreviationPaint.color = ColorUtils.setAlphaComponent(context.getColor(R.color.windowTextPrimary), 128)
-        ripplePaint.color = context.getColor(R.color.windowSurfacePressed)
+        ripplePaint.color = context.getColor(R.color.ripple)
+        rippleAlpha = ripplePaint.alpha
         charPaint.textSize = charSize
         abbreviationPaint.textSize = abbreviationSize
         isClickable = true
@@ -71,6 +115,7 @@ class CharRow(
         this.codePoints = codePoints
         this.abbreviations = abbreviations
         charRipples.fill(false)
+        clearRipple()
         invalidate()
     }
 
@@ -93,19 +138,19 @@ class CharRow(
         val index = floor(event.x / width * count).toInt()
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
+                if (index >= codePoints.size) return false
                 actionDownIndex = index
-                charRipples[index] = true
+                startRipple(index, event.x, event.y)
                 postDelayed(longClickRunnable, longClickDuration)
-                invalidate()
             }
 
             MotionEvent.ACTION_UP -> {
                 if (actionDownIndex >= 0) {
                     if (actionDownIndex == index) {
                         val codePoint = codePoints[index]
-                        delegate.onClick(codePoint)
+                        delegate.onClick(codePoint, this, charCoordsX[index], charPivotY, charSize)
                     }
-                    cancelClick(actionDownIndex)
+                    releaseClick(actionDownIndex)
                 }
             }
 
@@ -125,11 +170,73 @@ class CharRow(
         return true
     }
 
+    private fun releaseClick(index: Int) {
+        if (actionDownIndex != index) return
+        actionDownIndex = -1
+        removeCallbacks(longClickRunnable)
+        isRippleReleased = true
+        if (rippleGrowAnimator.isRunning) {
+            val from = rippleGrow
+            rippleGrowAnimator.cancel()
+            rippleGrowAnimator.setFloatValues(from, 1f)
+            rippleGrowAnimator.duration = RIPPLE_FINISH_DURATION
+            rippleGrowAnimator.start()
+        } else {
+            fadeRipple()
+        }
+    }
+
     private fun cancelClick(index: Int) {
-        charRipples[index] = false
+        if (actionDownIndex != index) return
+        actionDownIndex = -1
+        removeCallbacks(longClickRunnable)
+        isRippleReleased = true
+        rippleGrowAnimator.cancel()
+        fadeRipple()
+    }
+
+    private fun startRipple(index: Int, x: Float, y: Float) {
+        rippleGrowAnimator.cancel()
+        rippleFadeAnimator.cancel()
+        rippleIndex = index
+        rippleTouchX = x
+        rippleTouchY = y
+        rippleFade = 1f
+        isRippleReleased = false
+        if (ValueAnimator.areAnimatorsEnabled()) {
+            rippleGrow = 0f
+            rippleGrowAnimator.setFloatValues(0f, 1f)
+            rippleGrowAnimator.duration = RIPPLE_GROW_DURATION
+            rippleGrowAnimator.start()
+        } else {
+            rippleGrow = 1f
+        }
+        invalidate()
+    }
+
+    private fun fadeRipple() {
+        if (rippleIndex < 0) return
+        rippleFadeAnimator.cancel()
+        if (ValueAnimator.areAnimatorsEnabled()) {
+            rippleFadeAnimator.setFloatValues(rippleFade, 0f)
+            rippleFadeAnimator.start()
+        } else {
+            clearRipple()
+        }
+    }
+
+    private fun clearRipple() {
+        rippleGrowAnimator.cancel()
+        rippleFadeAnimator.cancel()
+        rippleIndex = -1
         actionDownIndex = -1
         removeCallbacks(longClickRunnable)
         invalidate()
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        clearRipple()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -156,9 +263,21 @@ class CharRow(
             val charPivotX = charCoordsX[index]
             if (charRipples[index]) {
                 canvas.drawCircle(charPivotX, charPivotY, rippleRadius, ripplePaint)
+            } else if (index == rippleIndex) {
+                drawRipple(canvas, charPivotX)
             }
             drawChar(canvas, codePoint, charCoordX, charCoordY)
         }
+    }
+
+    private fun drawRipple(canvas: Canvas, centerX: Float) {
+        val g = rippleGrow
+        val x = rippleTouchX + (centerX - rippleTouchX) * g
+        val y = rippleTouchY + (charPivotY - rippleTouchY) * g
+        val radius = rippleRadius * (RIPPLE_START_RADIUS + (1f - RIPPLE_START_RADIUS) * g)
+        ripplePaint.alpha = (rippleAlpha * rippleFade).toInt()
+        canvas.drawCircle(x, y, radius, ripplePaint)
+        ripplePaint.alpha = rippleAlpha
     }
 
     private fun drawChar(canvas: Canvas, codePoint: CodePoint, charCoordX: Float, charCoordY: Float) {
@@ -173,7 +292,14 @@ class CharRow(
     override fun hasOverlappingRendering() = false
 
     interface Delegate {
-        fun onClick(codePoint: CodePoint)
+        fun onClick(codePoint: CodePoint, source: View, centerX: Float, centerY: Float, glyphSize: Float)
         fun onLongClick(codePoint: CodePoint)
+    }
+
+    private companion object {
+        const val RIPPLE_GROW_DURATION = 400L
+        const val RIPPLE_FINISH_DURATION = 150L
+        const val RIPPLE_FADE_DURATION = 200L
+        const val RIPPLE_START_RADIUS = 0.2f
     }
 }
