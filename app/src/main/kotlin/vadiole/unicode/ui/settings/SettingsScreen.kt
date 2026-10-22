@@ -16,6 +16,7 @@ import vadiole.unicode.ui.common.IconButton
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.StateColorDrawable
 import vadiole.unicode.ui.common.ToggleSwitch
+import vadiole.unicode.ui.common.borderWidth
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
@@ -67,7 +68,9 @@ class SettingsScreen(
     private val content = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
         addView(header, linearParams(matchParent, 48.dp(context)))
-        addView(createDivider(), linearParams(matchParent, 1))
+        addView(View(context).apply {
+            setBackgroundColor(context.getColor(R.color.floatingBorder))
+        }, linearParams(matchParent, borderWidth(context).toInt()))
         addView(createDivider(), linearParams(matchParent, 1, marginTop = 16.dp(context)))
         addView(createGroup(), linearParams(matchParent, wrapContent))
         addView(createDivider(), linearParams(matchParent, 1))

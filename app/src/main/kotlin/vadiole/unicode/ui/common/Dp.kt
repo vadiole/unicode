@@ -6,3 +6,5 @@ import kotlin.math.ceil
 fun Float.dp(context: Context) = this * context.resources.displayMetrics.density
 
 fun Int.dp(context: Context): Int = ceil(this * context.resources.displayMetrics.density).toInt()
+
+fun borderWidth(context: Context) = if (context.resources.configuration.isDarkMode) 1f.dp(context) else 1f

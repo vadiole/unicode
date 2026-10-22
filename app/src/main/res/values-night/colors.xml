@@ -18,5 +18,5 @@
     <color name="scrollIndicatorGrip">#FF989899</color>
     <color name="floatingBorder">#0DFFFFFF</color>
     <color name="searchFieldCursor">#FF4498F2</color>
-    <color name="searchMatchHighlight">#1AF5F5F5</color>
+    <color name="searchMatchHighlight">#3DFFFFFF</color>
 </resources>

@@ -21,7 +21,7 @@ class FloatingSurfaceDrawable(
         fun update(bounds: Rect, borderInset: Float, surfacePath: Path, borderPath: Path)
     }
 
-    private val borderWidth = 1f.dp(context)
+    private val borderWidth = borderWidth(context)
 
     private val surfacePath = Path()
     private val borderPath = Path()

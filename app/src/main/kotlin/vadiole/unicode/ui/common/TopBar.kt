@@ -62,10 +62,9 @@ class TopBar(
         addView(recentsTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(searchTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(settingsButton, frameParams(settingsSize, settingsSize, Gravity.RIGHT or Gravity.CENTER_VERTICAL, marginRight = settingsMargin))
-        val isDark = resources.configuration.isDarkMode
         addView(View(context).apply {
-            setBackgroundColor(context.getColor(if (isDark) R.color.floatingBorder else R.color.windowDivider))
-        }, frameParams(matchParent, if (isDark) 1f.dp(context).toInt() else 1, Gravity.BOTTOM))
+            setBackgroundColor(context.getColor(R.color.floatingBorder))
+        }, frameParams(matchParent, borderWidth(context).toInt(), Gravity.BOTTOM))
     }
 
     private fun createTitle() = TextView(context).apply {

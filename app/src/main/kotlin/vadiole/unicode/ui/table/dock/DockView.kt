@@ -26,8 +26,8 @@ import kotlin.math.abs
 import kotlin.math.ceil
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.IconButton
-import vadiole.unicode.ui.common.isDarkMode
 import vadiole.unicode.ui.common.StateColorDrawable
+import vadiole.unicode.ui.common.borderWidth
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
@@ -64,9 +64,9 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     private val tipShift = 4f.dp(context)
     private val easeOut = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
-    private val dividerHeight = if (resources.configuration.isDarkMode) 1f.dp(context) else 1f
+    private val dividerHeight = borderWidth(context)
     private val dividerPaint = Paint().apply {
-        color = context.getColor(if (resources.configuration.isDarkMode) R.color.floatingBorder else R.color.windowDivider)
+        color = context.getColor(R.color.floatingBorder)
     }
     private val tipView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
