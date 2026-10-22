@@ -22,8 +22,10 @@ import kotlin.math.abs
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.FloatingSurfaceDrawable
+import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.sp
 
 class FastScrollView(
     context: Context,
@@ -52,7 +54,7 @@ class FastScrollView(
     private val bubblePaddingVertical = 4f.dp(context)
     private val bubbleCornerRadius = 10f.dp(context)
     private val bubbleMarginEnd = 24.dp(context)
-    private val bubbleTextSize = 14f.dp(context)
+    private val bubbleTextSize = TEXT_BODY.sp(context)
     private val bubbleArrowWidth = 12f.dp(context)
     private val bubbleArrowHeight = 20f.dp(context)
     private val bubbleMarginStart = 24f.dp(context)

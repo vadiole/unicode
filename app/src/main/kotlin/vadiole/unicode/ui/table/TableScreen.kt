@@ -35,14 +35,15 @@ import vadiole.unicode.data.binarySearch
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SearchBar
+import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.TopBar
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.ime
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
@@ -294,7 +295,7 @@ class TableScreen(
     }
     private val searchResultView = SearchResultView(context, searchAdapter, searchResultViewDelegate)
     private val noResultsView = TextView(context).apply {
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15f)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
         typeface = mono_regular
         setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
         gravity = Gravity.CENTER

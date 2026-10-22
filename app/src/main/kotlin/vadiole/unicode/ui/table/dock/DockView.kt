@@ -27,6 +27,7 @@ import kotlin.math.ceil
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.IconButton
 import vadiole.unicode.ui.common.StateColorDrawable
+import vadiole.unicode.ui.common.TEXT_CAPTION
 import vadiole.unicode.ui.common.borderWidth
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
@@ -56,7 +57,6 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     }
 
     val contentHeight = 56.dp(context)
-    private val tipHeight = 28.dp(context)
     val chromeHeight: Int
         get() = contentHeight + if (tipView.visibility == VISIBLE) tipHeight else 0
     private val buttonWidth = 48.dp(context)
@@ -69,7 +69,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         color = context.getColor(R.color.floatingBorder)
     }
     private val tipView = TextView(context).apply {
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_CAPTION)
         typeface = mono_regular
         includeFontPadding = false
         gravity = Gravity.CENTER
@@ -78,6 +78,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         setTextColor(context.getColor(R.color.windowTextSecondary))
         visibility = GONE
     }
+    private val tipHeight = maxOf(28.dp(context), tipView.paint.getFontMetricsInt(null) + 8.dp(context))
     private val textView = DockTextView(context).apply {
         setPadding(16.dp(context), 0, 8.dp(context), 0)
     }

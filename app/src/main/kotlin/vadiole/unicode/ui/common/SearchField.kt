@@ -36,7 +36,7 @@ class SearchField(context: Context, private val onQueryChanged: (String) -> Unit
         highlightColor = this.context.getColor(R.color.windowTextSelection)
         background = null
         addTextChangedListener(textWatcher)
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16f)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
         isSingleLine = true
         typeface = mono_regular
         includeFontPadding = false

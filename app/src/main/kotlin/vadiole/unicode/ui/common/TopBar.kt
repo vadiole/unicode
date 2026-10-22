@@ -130,6 +130,6 @@ class TopBar(
 
     companion object {
         private const val MIN_TITLE_SP = 9
-        private const val MAX_TITLE_SP = 16
+        private const val MAX_TITLE_SP = 17
     }
 }

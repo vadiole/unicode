@@ -16,10 +16,12 @@ import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.ui.common.CharTextView
 import vadiole.unicode.ui.common.StateColorDrawable
+import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
 import vadiole.unicode.ui.extension.onLongClick
 
@@ -40,11 +42,11 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         textSize = glyphSize
     }
     val name = TextView(context).apply {
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13f)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
         typeface = mono_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
-        setPadding(0, 0, 16.dp(context), 0)
+        setPadding(0, 6.dp(context), 16.dp(context), 6.dp(context))
     }
 
     init {
@@ -60,9 +62,10 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
                 this.context.getColor(R.color.windowSurfacePressed),
             ),
         )
-        layoutParams = RecyclerView.LayoutParams(matchParent, 48.dp(context))
-        addView(name, frameParams(matchParent, 48.dp(context), marginLeft = 64.dp(context)))
-        addView(charView, frameParams(64.dp(context), 48.dp(context), gravity = Gravity.LEFT))
+        layoutParams = RecyclerView.LayoutParams(matchParent, wrapContent)
+        minimumHeight = 48.dp(context)
+        addView(name, frameParams(matchParent, wrapContent, Gravity.CENTER_VERTICAL, marginLeft = 64.dp(context)))
+        addView(charView, frameParams(64.dp(context), matchParent, gravity = Gravity.LEFT))
         background = backgroundDrawable
         isClickable = true
         isFocusable = true

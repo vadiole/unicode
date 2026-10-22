@@ -15,15 +15,17 @@ import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.common.IconButton
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.StateColorDrawable
+import vadiole.unicode.ui.common.TEXT_BODY
+import vadiole.unicode.ui.common.TEXT_TITLE
 import vadiole.unicode.ui.common.ToggleSwitch
 import vadiole.unicode.ui.common.borderWidth
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.mono_regular
 import vadiole.unicode.ui.common.mono_semibold
+import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
@@ -51,7 +53,7 @@ class SettingsScreen(
     }
 
     private val title = TextView(context).apply {
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_TITLE)
         typeface = mono_semibold
         includeFontPadding = false
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
@@ -84,7 +86,7 @@ class SettingsScreen(
                 userConfig.dockEnabled = checked
                 delegate.onDockEnabledChanged()
             },
-            linearParams(matchParent, 56.dp(context))
+            linearParams(matchParent, wrapContent)
         )
         addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
         addView(
@@ -92,14 +94,14 @@ class SettingsScreen(
                 userConfig.showUnsupportedChars = checked
                 delegate.onShowUnsupportedCharsChanged()
             },
-            linearParams(matchParent, 56.dp(context))
+            linearParams(matchParent, wrapContent)
         )
         addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
         addView(
             ToggleRow(context, context.getString(R.string.settings_crash_reports), !userConfig.crashReportDisabled) { checked ->
                 userConfig.crashReportDisabled = !checked
             },
-            linearParams(matchParent, 56.dp(context))
+            linearParams(matchParent, wrapContent)
         )
     }
 
@@ -143,15 +145,17 @@ class SettingsScreen(
                     ),
                 )
             }
+            minimumHeight = 56.dp(context)
             val labelView = TextView(context).apply {
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+                setPadding(0, 12.dp(context), 0, 12.dp(context))
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
                 typeface = mono_regular
                 includeFontPadding = false
                 gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
                 setTextColor(context.getColor(R.color.windowTextPrimary))
                 text = label
             }
-            addView(labelView, frameParams(matchParent, matchParent, marginLeft = 16.dp(context), marginRight = 72.dp(context)))
+            addView(labelView, frameParams(matchParent, wrapContent, Gravity.LEFT or Gravity.CENTER_VERTICAL, marginLeft = 16.dp(context), marginRight = 72.dp(context)))
             addView(switch, frameParams(wrapContent, wrapContent, Gravity.RIGHT or Gravity.CENTER_VERTICAL, marginRight = 16.dp(context)))
             isClickable = true
             isFocusable = true

@@ -6,7 +6,6 @@ import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import vadiole.unicode.R
-import vadiole.unicode.ui.extension.setPaddingHorizontal
 
 class ActionCell(
     context: Context,
@@ -42,10 +41,10 @@ class ActionCell(
         minHeight = 48.dp(context)
         includeFontPadding = false
         typeface = mono_regular
-        textSize = 16f
+        textSize = TEXT_BODY
         isClickable = true
         isFocusable = true
-        setPaddingHorizontal(16.dp(context))
+        setPadding(16.dp(context), 10.dp(context), 16.dp(context), 10.dp(context))
     }
 
     fun setIcon(@DrawableRes iconId: Int) {

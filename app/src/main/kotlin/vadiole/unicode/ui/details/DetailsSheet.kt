@@ -14,13 +14,11 @@ import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.PathInterpolator
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.view.ViewCompat
-import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import kotlin.math.atan2
 import kotlin.math.sqrt
@@ -37,14 +35,15 @@ import vadiole.unicode.ui.common.CharTextView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SpacerDrawable
 import vadiole.unicode.ui.common.SquircleDrawable
+import vadiole.unicode.ui.common.TEXT_SECONDARY
+import vadiole.unicode.ui.common.TEXT_TITLE
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.mono_regular
 import vadiole.unicode.ui.common.mono_semibold
-import vadiole.unicode.ui.common.setLineHeightX
+import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.share
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
@@ -66,8 +65,6 @@ class DetailsSheet(
     private val titleHeight = 21.dp(context)
     private val subtitleHeight = 18.dp(context)
     private val charViewHeight = 200.dp(context)
-    private val infoViewHeight = 56.dp(context)
-    private val actionCellHeight = 48.dp(context)
     private val actionGroupGap = 16.dp(context)
     private val bottomBuffer = 36.dp(context)
     private val hairlinePx = 1
@@ -80,9 +77,9 @@ class DetailsSheet(
     private val backgroundPaint = Paint()
 
     private val title = TextView(context).apply {
-        layoutParams = linearParams(matchParent, titleHeight)
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15f)
-        setLineHeightX(titleHeight)
+        layoutParams = linearParams(matchParent, wrapContent)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_TITLE)
+        minHeight = titleHeight
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         includeFontPadding = false
         ellipsize = TextUtils.TruncateAt.END
@@ -100,9 +97,9 @@ class DetailsSheet(
     }
 
     private val subtitle = TextView(context).apply {
-        layoutParams = linearParams(matchParent, subtitleHeight)
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12f)
-        setLineHeightX(subtitleHeight)
+        layoutParams = linearParams(matchParent, wrapContent)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
+        minHeight = subtitleHeight
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         textAlignment = TEXT_ALIGNMENT_CENTER
         ellipsize = TextUtils.TruncateAt.END
@@ -160,7 +157,7 @@ class DetailsSheet(
 
     private val infoViews = List(4) {
         CharInfoView(context).apply {
-            layoutParams = linearParams(matchParent, infoViewHeight, weight = 1f)
+            layoutParams = linearParams(matchParent, wrapContent, weight = 1f)
             onLongClick = {
                 charObj?.let { value ->
                     val info = value.infoValues[it]
@@ -174,14 +171,14 @@ class DetailsSheet(
     }
 
     private val infoViewsContainer = LinearLayout(context).apply {
-        layoutParams = linearParams(matchParent, infoViewHeight)
+        layoutParams = linearParams(matchParent, wrapContent)
         showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
         dividerDrawable = SpacerDrawable(width = 8.dp(context))
         infoViews.forEach(::addView)
     }
 
     private val actionAdd = ActionCell(context, context.getString(R.string.details_add), topItem = true).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP)
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_add)
         onClick = {
             charObj?.let { value ->
@@ -191,7 +188,7 @@ class DetailsSheet(
     }
 
     private val actionViewInTable = ActionCell(context, context.getString(R.string.details_find_in_table), bottomItem = true).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP, marginTop = actionCellHeight)
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_find_in_table)
         onClick = {
             charObj?.let { value ->
@@ -201,7 +198,7 @@ class DetailsSheet(
     }
 
     private val actionCopy = ActionCell(context, context.getString(R.string.details_copy_to_clipboard), topItem = true).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP)
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_copy)
         onClick = {
             charObj?.let { value ->
@@ -215,7 +212,7 @@ class DetailsSheet(
     }
 
     private val actionShare = ActionCell(context, context.getString(R.string.details_share_link), bottomItem = true).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP, marginTop = actionCellHeight)
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_link)
         var canClick = true
         onClick = {
@@ -241,7 +238,7 @@ class DetailsSheet(
     }
 
     private val actionFindInTable = ActionCell(context, context.getString(R.string.details_find_in_table)).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, Gravity.TOP)
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_find_in_table)
         visibility = GONE
         onClick = {
@@ -252,20 +249,21 @@ class DetailsSheet(
     }
 
     private val divider2 = View(context).apply {
-        layoutParams = frameParams(matchParent, hairlinePx, Gravity.TOP, marginTop = actionCellHeight)
+        layoutParams = linearParams(matchParent, hairlinePx)
         setBackgroundColor(context.getColor(R.color.windowDivider))
     }
 
     private val divider3 = View(context).apply {
-        layoutParams = frameParams(matchParent, hairlinePx, Gravity.TOP, marginTop = actionCellHeight)
+        layoutParams = linearParams(matchParent, hairlinePx)
         setBackgroundColor(context.getColor(R.color.windowDivider))
     }
 
-    private val tableActionGroup = FrameLayout(context).apply {
-        layoutParams = linearParams(matchParent, actionCellHeight * 2, marginTop = verticalPadding * 3)
+    private val tableActionGroup = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        layoutParams = linearParams(matchParent, wrapContent, marginTop = verticalPadding * 3)
         addView(actionAdd)
-        addView(actionViewInTable)
         addView(divider3)
+        addView(actionViewInTable)
         addView(actionFindInTable)
     }
 
@@ -275,14 +273,14 @@ class DetailsSheet(
         actionViewInTable.visibility = dockVisibility
         divider3.visibility = dockVisibility
         actionFindInTable.visibility = if (enabled) GONE else VISIBLE
-        tableActionGroup.updateLayoutParams { height = actionCellHeight * if (enabled) 2 else 1 }
     }
 
-    private val actionGroup = FrameLayout(context).apply {
-        layoutParams = linearParams(matchParent, actionCellHeight * 2, marginTop = actionGroupGap)
+    private val actionGroup = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        layoutParams = linearParams(matchParent, wrapContent, marginTop = actionGroupGap)
         addView(actionCopy)
-        addView(actionShare)
         addView(divider2)
+        addView(actionShare)
     }
 
     private val bottomBlock = LinearLayout(context).apply {
