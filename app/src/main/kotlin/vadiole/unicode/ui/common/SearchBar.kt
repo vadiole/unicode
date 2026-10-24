@@ -63,7 +63,6 @@ class SearchBar(
         context = context,
         icon = context.getDrawable(R.drawable.ic_close)!!,
         iconSize = iconSize,
-        iconColor = context.getColor(R.color.windowTextPrimary),
     ).apply {
         setPadding(buttonGap, touchExtension, edgePadding, touchExtension)
         contentDescription = context.getString(R.string.search_close)
@@ -80,7 +79,6 @@ class SearchBar(
         context = context,
         icon = context.getDrawable(R.drawable.ic_search)!!,
         iconSize = iconSize,
-        iconColor = context.getColor(R.color.windowTextPrimary),
     ).apply {
         setPadding(buttonGap, touchExtension, edgePadding, touchExtension)
         contentDescription = context.getString(R.string.search_hint)

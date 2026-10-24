@@ -44,7 +44,6 @@ class SettingsScreen(
     private val backButton = IconButton(
         context = context,
         icon = context.getDrawable(R.drawable.ic_chevron_down)!!,
-        iconColor = context.getColor(R.color.windowTextPrimary),
         floating = false,
     ).apply {
         rotation = 90f

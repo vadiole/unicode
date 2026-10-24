@@ -126,7 +126,6 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         context = context,
         icon = context.getDrawable(R.drawable.ic_backspace)!!,
         size = buttonWidth,
-        iconColor = context.getColor(R.color.windowTextSecondary),
         floating = false,
     ).apply {
         contentDescription = context.getString(R.string.dock_backspace)

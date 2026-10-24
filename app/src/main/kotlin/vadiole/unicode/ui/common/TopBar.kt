@@ -43,7 +43,6 @@ class TopBar(
         context = context,
         icon = context.getDrawable(R.drawable.ic_settings)!!,
         size = settingsSize,
-        iconColor = context.getColor(R.color.windowTextSecondary),
         floating = false,
     ).apply {
         contentDescription = context.getString(R.string.settings_title)

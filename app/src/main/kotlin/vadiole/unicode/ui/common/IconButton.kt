@@ -16,7 +16,7 @@ class IconButton(
     icon: Drawable,
     private val iconSize: Int = 24.dp(context),
     private val size: Int = 48.dp(context),
-    iconColor: Int = context.getColor(R.color.windowTextSecondary),
+    iconColor: Int = context.getColor(R.color.windowTextPrimary),
     private val floating: Boolean = true,
 ) : View(context) {
 
