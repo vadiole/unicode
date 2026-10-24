@@ -14,7 +14,7 @@ import vadiole.unicode.ui.extension.onClick
 class TopBar(
     context: Context,
     title: String,
-    onTitleClick: TextView.() -> Unit = {},
+    onTitleClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
 ) : FrameLayout(context) {
     private val sidePadding = 16.dp(context)
@@ -25,8 +25,7 @@ class TopBar(
         setTint(context.getColor(R.color.windowTextSecondary))
         setBounds(0, 0, intrinsicWidth, intrinsicHeight)
     }
-    val titleView = createTitle().apply {
-        onClick = onTitleClick
+    private val titleView = createTitle().apply {
         compoundDrawablePadding = 4.dp(context)
         ellipsize = TextUtils.TruncateAt.END
         text = title
@@ -57,6 +56,7 @@ class TopBar(
 
     init {
         setBackgroundColor(this.context.getColor(R.color.layer1))
+        onClick = { if (!isSearchShown) onTitleClick() }
         val titleGravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         addView(titleView, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(recentsTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
@@ -90,7 +90,6 @@ class TopBar(
         val alpha = if (shown) 0f else 1f
         titleView.alpha = alpha
         settingsButton.alpha = alpha
-        titleView.isEnabled = !shown
         settingsButton.isEnabled = !shown
         applySearchTitles()
     }

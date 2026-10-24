@@ -544,11 +544,13 @@ class TableScreen(
             }
         }
 
+        if (popup.isShowing) {
+            popup.reopen()
+            return
+        }
         val xOffset = (topBar.width - popup.view.calculateWidth()) / 2
         val yOffset = (-8).dp(context)
-        val titleView = topBar.titleView
-        val titleCenterX = titleView.left + (titleView.paddingLeft + titleView.width - titleView.paddingRight) / 2f
-        popup.setAnchorX(titleCenterX - xOffset)
+        popup.setAnchorX(0f)
         popup.showAsDropDown(topBar, xOffset, yOffset, LEFT or TOP)
     }
 

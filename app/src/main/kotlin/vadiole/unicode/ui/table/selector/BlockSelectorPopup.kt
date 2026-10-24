@@ -53,12 +53,36 @@ open class BlockSelectorPopup(val view: BlockSelectorView, x: Int, y: Int) :
         surfaceView.anchorX = x
     }
 
+    private var isDismissing = false
+
     override fun dismiss() {
+        if (isDismissing) return
+        isDismissing = true
+        setTouchInteractive(false)
         dismissDim()
-        surfaceView.dismiss { super.dismiss() }
+        surfaceView.dismiss {
+            isDismissing = false
+            super.dismiss()
+        }
+    }
+
+    fun reopen() {
+        if (!isDismissing) return
+        isDismissing = false
+        setTouchInteractive(true)
+        dimBehind()
+        surfaceView.show()
+    }
+
+    private fun setTouchInteractive(interactive: Boolean) {
+        isTouchable = interactive
+        isFocusable = interactive
+        update()
     }
 
     override fun showAsDropDown(anchor: View?, xoff: Int, yoff: Int, gravity: Int) {
+        isTouchable = true
+        isFocusable = true
         super.showAsDropDown(anchor, xoff, yoff, gravity)
         dimBehind()
         surfaceView.show()
