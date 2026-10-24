@@ -10,13 +10,13 @@
     <color name="windowSurface">#00000000</color>
     <color name="windowSurfacePressed">#0F000000</color>
     <color name="windowTextPrimary">#FF000000</color>
-    <color name="windowTextSecondary">#FF88888C</color>
+    <color name="windowTextSecondary">#FF6C6C70</color>
     <color name="windowTextSelection">#40007BFF</color>
     <color name="windowDivider">#2E3C3C43</color>
     <color name="scrollIndicator">#4D88888C</color>
     <color name="scrollIndicatorActive">#8088888C</color>
     <color name="scrollIndicatorGrip">#FF88888C</color>
     <color name="floatingBorder">#2E3C3C43</color>
-    <color name="searchFieldCursor">#FF4498F2</color>
+    <color name="searchFieldCursor">#FF3A86E0</color>
     <color name="searchMatchHighlight">#26000000</color>
 </resources>
