@@ -14,6 +14,8 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.R
 import vadiole.unicode.ui.extension.onClick
+import kotlin.math.PI
+import kotlin.math.sin
 
 class SearchBar(
     context: Context,
@@ -59,36 +61,21 @@ class SearchBar(
         setPadding(iconInset + iconSize + 8.dp(context), touchExtension, edgePadding, touchExtension)
     }
 
-    private val closeButton = IconButton(
-        context = context,
-        icon = context.getDrawable(R.drawable.ic_close)!!,
-        iconSize = iconSize,
-    ).apply {
-        setPadding(buttonGap, touchExtension, edgePadding, touchExtension)
-        contentDescription = context.getString(R.string.search_close)
-        onClick = { collapse() }
-    }
-
-    private val closeContainer = FrameLayout(context).apply {
-        clipChildren = false
-        clipToPadding = false
-        addView(closeButton)
-    }
-
-    private val searchButton = IconButton(
+    private val actionButton = IconButton(
         context = context,
         icon = context.getDrawable(R.drawable.ic_search)!!,
+        altIcon = context.getDrawable(R.drawable.ic_close)!!,
         iconSize = iconSize,
     ).apply {
         setPadding(buttonGap, touchExtension, edgePadding, touchExtension)
         contentDescription = context.getString(R.string.search_hint)
-        onClick = { expand() }
+        onClick = { if (isExpandedState) collapse() else expand() }
     }
 
-    private val searchContainer = FrameLayout(context).apply {
+    private val actionContainer = FrameLayout(context).apply {
         clipChildren = false
         clipToPadding = false
-        addView(searchButton)
+        addView(actionButton)
     }
 
     private val progressHolder = FloatValueHolder(0f)
@@ -100,15 +87,13 @@ class SearchBar(
         setMinimumVisibleChange(0.001f)
         addUpdateListener { _, value, _ -> applyProgress(value.coerceIn(0f, 1f)) }
     }
-    private var isKeyboardPending = false
 
     init {
         clipChildren = false
         clipToPadding = false
         addView(surfaceView)
         addView(searchField)
-        addView(closeContainer)
-        addView(searchContainer)
+        addView(actionContainer)
         setSearchFieldEnabled(false)
         applyProgress(0f)
     }
@@ -116,9 +101,10 @@ class SearchBar(
     fun expand() {
         if (isExpandedState) return
         isExpandedState = true
+        actionButton.contentDescription = context.getString(R.string.search_close)
         setSearchFieldEnabled(true)
         searchField.requestFocus()
-        isKeyboardPending = true
+        showKeyboard()
         delegate.onExpanded()
         animateProgress(1f)
     }
@@ -126,8 +112,8 @@ class SearchBar(
     fun collapse() {
         if (!isExpandedState) return
         isExpandedState = false
+        actionButton.contentDescription = context.getString(R.string.search_hint)
         searchField.clearQuery()
-        isKeyboardPending = false
         hideKeyboard()
         searchField.clearFocus()
         setSearchFieldEnabled(false)
@@ -154,8 +140,7 @@ class SearchBar(
         val fieldWidth = (width - edgePadding * 2 - fieldSize - buttonGap).coerceAtLeast(0)
         surfaceView.measure(exactly(width), exactly(height))
         searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
-        closeContainer.measure(exactly(buttonWidth), exactly(buttonHeight))
-        searchContainer.measure(exactly(buttonWidth), exactly(buttonHeight))
+        actionContainer.measure(exactly(buttonWidth), exactly(buttonHeight))
         setMeasuredDimension(width, height)
     }
 
@@ -165,12 +150,9 @@ class SearchBar(
         surfaceView.layout(0, 0, width, bottom - top)
         searchField.layout(edgePadding, rowTop, edgePadding + searchField.measuredWidth, rowTop + buttonHeight)
         val buttonLeft = width - buttonWidth
-        closeContainer.layout(buttonLeft, rowTop, width, rowTop + buttonHeight)
-        searchContainer.layout(buttonLeft, rowTop, width, rowTop + buttonHeight)
-        closeContainer.pivotX = buttonGap + fieldSize / 2f
-        closeContainer.pivotY = touchExtension + fieldSize / 2f
-        searchContainer.pivotX = closeContainer.pivotX
-        searchContainer.pivotY = closeContainer.pivotY
+        actionContainer.layout(buttonLeft, rowTop, width, rowTop + buttonHeight)
+        actionContainer.pivotX = buttonGap + fieldSize / 2f
+        actionContainer.pivotY = touchExtension + fieldSize / 2f
         val fieldRight = width - edgePadding - fieldSize - buttonGap
         surfaceDrawable.setBounds(edgePadding, fieldTop, fieldRight, fieldTop + fieldSize)
         val iconLeft = edgePadding + iconInset
@@ -195,17 +177,10 @@ class SearchBar(
     }
 
     private fun applyProgress(p: Float) {
-        if (isKeyboardPending && p >= 0.7f) {
-            isKeyboardPending = false
-            showKeyboard()
-        }
-        val searchButtonProgress = ((p - 0.2f) / 0.75f).coerceIn(0f, 1f)
-        val searchButtonScale = 1f - 0.2f * searchButtonProgress
-        searchContainer.alpha = 1f - searchButtonProgress
-        searchContainer.scaleX = searchButtonScale
-        searchContainer.scaleY = searchButtonScale
-        searchContainer.visibility = if (!isExpandedState || searchButtonProgress < 1f) VISIBLE else INVISIBLE
-        setControlEnabled(searchButton, !isExpandedState)
+        val actionScale = 1f - ACTION_PULSE * sin(PI.toFloat() * p)
+        actionContainer.scaleX = actionScale
+        actionContainer.scaleY = actionScale
+        actionButton.iconProgress = p
 
         val fieldProgress = (p / 0.6f).coerceIn(0f, 1f)
         val fieldScale = 1.08f - 0.08f * p
@@ -218,27 +193,7 @@ class SearchBar(
         searchField.scaleY = fieldScale
         if (!isExpandedState && p <= 0f) searchField.visibility = INVISIBLE
 
-        val closeProgress = ((p - 0.3f) / 0.7f).coerceIn(0f, 1f)
-        val closeScale = 0.9f + 0.1f * closeProgress
-        closeContainer.alpha = closeProgress
-        closeContainer.scaleX = closeScale
-        closeContainer.scaleY = closeScale
-        closeContainer.visibility = if (isExpandedState || closeProgress > 0f) VISIBLE else INVISIBLE
-        setControlEnabled(closeButton, isExpandedState)
-
         delegate.onAnimationRunning(p)
-    }
-
-    private fun setControlEnabled(view: View, enabled: Boolean) {
-        if (view.isEnabled == enabled) return
-        view.isEnabled = enabled
-        view.isClickable = enabled
-        view.isFocusable = enabled
-        view.importantForAccessibility = if (enabled) {
-            IMPORTANT_FOR_ACCESSIBILITY_YES
-        } else {
-            IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
-        }
     }
 
     private fun setSearchFieldEnabled(enabled: Boolean) {
@@ -279,6 +234,8 @@ class SearchBar(
     }
 
     companion object {
+        private const val ACTION_PULSE = 0.12f
+
         fun barHeight(context: Context): Int = 72.dp(context)
     }
 }

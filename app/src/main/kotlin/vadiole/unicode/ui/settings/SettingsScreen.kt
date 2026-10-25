@@ -2,6 +2,7 @@ package vadiole.unicode.ui.settings
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.drawable.RotateDrawable
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
@@ -43,10 +44,15 @@ class SettingsScreen(
 
     private val backButton = IconButton(
         context = context,
-        icon = context.getDrawable(R.drawable.ic_chevron_down)!!,
+        icon = RotateDrawable().apply {
+            drawable = context.getDrawable(R.drawable.ic_chevron_down)
+            fromDegrees = 90f
+            toDegrees = 90f
+            level = 10000
+        },
         floating = false,
     ).apply {
-        rotation = 90f
+        setPadding(4.dp(context), 0, 4.dp(context), 0)
         contentDescription = context.getString(R.string.settings_back)
         onClick = { delegate.onBack() }
     }
@@ -62,7 +68,7 @@ class SettingsScreen(
 
     private val header = FrameLayout(context).apply {
         setBackgroundColor(context.getColor(R.color.layer1))
-        addView(backButton, frameParams(48.dp(context), 48.dp(context), Gravity.LEFT or Gravity.CENTER_VERTICAL, marginLeft = 4.dp(context)))
+        addView(backButton, frameParams(56.dp(context), matchParent, Gravity.LEFT))
         addView(title, frameParams(wrapContent, matchParent, Gravity.LEFT, marginLeft = 56.dp(context)))
     }
 

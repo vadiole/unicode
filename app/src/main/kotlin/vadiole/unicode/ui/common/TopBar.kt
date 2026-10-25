@@ -47,6 +47,7 @@ class TopBar(
         size = settingsSize,
         floating = false,
     ).apply {
+        setPadding(0, 0, settingsMargin, 0)
         contentDescription = context.getString(R.string.settings_title)
         onClick = { onSettingsClick() }
     }
@@ -62,7 +63,7 @@ class TopBar(
         addView(titleView, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(recentsTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(searchTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
-        addView(settingsButton, frameParams(settingsSize, settingsSize, Gravity.RIGHT or Gravity.CENTER_VERTICAL, marginRight = settingsMargin))
+        addView(settingsButton, frameParams(settingsSize + settingsMargin, matchParent, Gravity.RIGHT))
         addView(View(context).apply {
             setBackgroundColor(context.getColor(R.color.floatingBorder))
         }, frameParams(matchParent, borderWidth(context).toInt(), Gravity.BOTTOM))

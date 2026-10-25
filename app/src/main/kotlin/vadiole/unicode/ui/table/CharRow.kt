@@ -57,7 +57,9 @@ class CharRow(
     private var charCoordY: Float = 0f
     private var abbreviationCoordY: Float = 0f
     private var charPivotY: Float = 0f
-    private var rippleRadius: Float = 200f.dp(context) / count
+    private val maxRippleRadius = 200f.dp(context) / count
+    private val rippleInset = 1.5f.dp(context)
+    private var rippleRadius: Float = maxRippleRadius
     private var actionDownIndex = -1
     private var highlightIndex = -1
     private val rippleAlpha: Int
@@ -248,6 +250,7 @@ class CharRow(
         charCoordY = (h - charPaint.descent() - charPaint.ascent()) / 2
         abbreviationCoordY = (h - abbreviationPaint.descent() - abbreviationPaint.ascent()) / 2
         charPivotY = h / 2f
+        rippleRadius = minOf(maxRippleRadius, minOf(singleCharWidth, h) / 2f - rippleInset)
     }
 
     override fun onMeasure(width: Int, height: Int) {

@@ -61,6 +61,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         get() = contentHeight + if (tipView.visibility == VISIBLE) tipHeight else 0
     private val buttonWidth = 48.dp(context)
     private val edgePadding = 4.dp(context)
+    private val backspaceExtraLeft = (contentHeight - buttonWidth) / 2
     private val tipShift = 4f.dp(context)
     private val easeOut = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -128,6 +129,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         size = buttonWidth,
         floating = false,
     ).apply {
+        setPadding(backspaceExtraLeft, 0, 0, 0)
         contentDescription = context.getString(R.string.dock_backspace)
         onClick = { delegate.onBackspace() }
         onLongClick = { delegate.onClear() }
@@ -135,7 +137,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     private val row = FrameLayout(context).apply {
         clipChildren = false
         addView(scrollView, frameParams(matchParent, matchParent, marginRight = buttonWidth + edgePadding))
-        addView(backspaceButton, frameParams(buttonWidth, matchParent, Gravity.RIGHT, marginRight = edgePadding))
+        addView(backspaceButton, frameParams(buttonWidth + backspaceExtraLeft, matchParent, Gravity.RIGHT, marginRight = edgePadding))
     }
     private var hasContent = true
     private var tip = Tip.Hidden
