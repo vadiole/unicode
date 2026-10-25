@@ -169,6 +169,7 @@ class TableScreen(
     private val topBar: TopBar = TopBar(
         context = context,
         title = context.getString(R.string.app_name),
+        centerTitle = userConfig.centerTitle,
         onTitleClick = { showBlockSelector() },
         onSettingsClick = { delegate.onSettingsClick() },
     )
@@ -550,7 +551,7 @@ class TableScreen(
         }
         val xOffset = (topBar.width - popup.view.calculateWidth()) / 2
         val yOffset = (-8).dp(context)
-        popup.setAnchorX(0f)
+        popup.setAnchorX(if (topBar.centerTitle) Float.NaN else 0f)
         popup.showAsDropDown(topBar, xOffset, yOffset, LEFT or TOP)
     }
 

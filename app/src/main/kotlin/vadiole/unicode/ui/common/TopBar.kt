@@ -14,13 +14,15 @@ import vadiole.unicode.ui.extension.onClick
 class TopBar(
     context: Context,
     title: String,
+    val centerTitle: Boolean = false,
     onTitleClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
 ) : FrameLayout(context) {
-    private val sidePadding = 16.dp(context)
-    private val titleEndPadding = 8.dp(context)
     private val settingsMargin = 4.dp(context)
     private val settingsSize = 48.dp(context)
+    private val sidePadding = if (centerTitle) 0 else 16.dp(context)
+    private val titleEndPadding = if (centerTitle) 0 else 8.dp(context)
+    private val reservedWidth = (settingsSize + settingsMargin) * if (centerTitle) 2 else 1
     private val chevron = context.getDrawable(R.drawable.ic_chevron_down)!!.mutate().apply {
         setTint(context.getColor(R.color.windowTextSecondary))
         setBounds(0, 0, intrinsicWidth, intrinsicHeight)
@@ -56,7 +58,7 @@ class TopBar(
     init {
         setBackgroundColor(this.context.getColor(R.color.layer1))
         onClick = { if (!isSearchShown) onTitleClick() }
-        val titleGravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
+        val titleGravity = (if (centerTitle) Gravity.CENTER_HORIZONTAL else Gravity.LEFT) or Gravity.CENTER_VERTICAL
         addView(titleView, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(recentsTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(searchTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
@@ -105,12 +107,12 @@ class TopBar(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        titleView.maxWidth = w - settingsSize - settingsMargin
+        titleView.maxWidth = w - reservedWidth
         fitTitle()
     }
 
     private fun fitTitle() {
-        val available = width - settingsSize - settingsMargin - sidePadding - titleEndPadding -
+        val available = width - reservedWidth - sidePadding - titleEndPadding -
             chevron.intrinsicWidth - titleView.compoundDrawablePadding
         if (available <= 0) return
         val text = titleView.text.toString()

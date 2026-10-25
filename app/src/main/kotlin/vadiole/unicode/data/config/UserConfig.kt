@@ -13,6 +13,7 @@ class UserConfig(context: Context) {
         private const val key_usedCollect = "usedCollect"
         private const val key_usedCopy = "usedCopy"
         private const val key_dockEnabled = "dockEnabled"
+        private const val key_centerTitle = "centerTitle"
         private const val key_tableScrollCodePoint = "tableScrollCodePoint"
         private const val key_tableScrollOffset = "tableScrollOffset"
         private const val key_dockScroll = "dockScroll"
@@ -22,12 +23,17 @@ class UserConfig(context: Context) {
     private val editor = sharedPreferences.edit()
 
     init {
-        if (!sharedPreferences.contains(key_dockEnabled)) {
+        if (!sharedPreferences.contains(key_dockEnabled) || !sharedPreferences.contains(key_centerTitle)) {
             val info = context.packageManager.getPackageInfo(context.packageName, 0)
             val isUpdate = info.firstInstallTime != info.lastUpdateTime
-            editor.putBoolean(key_dockEnabled, !isUpdate).apply()
+            if (!sharedPreferences.contains(key_dockEnabled)) editor.putBoolean(key_dockEnabled, !isUpdate)
+            if (!sharedPreferences.contains(key_centerTitle)) editor.putBoolean(key_centerTitle, isUpdate)
+            editor.apply()
         }
     }
+
+    val centerTitle: Boolean
+        get() = sharedPreferences.getBoolean(key_centerTitle, false)
 
     var showUnsupportedChars: Boolean
         get() = sharedPreferences.getBoolean(key_showUnsupportedChars, false)
