@@ -10,6 +10,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.dp
+import kotlin.math.hypot
 
 class FlyOverlay(context: Context, private val delegate: Delegate) : View(context) {
     interface Delegate {
@@ -18,7 +19,7 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
     }
 
     private val launch = 96f.dp(context)
-    private val liftDelay = 60L
+    private val referenceDistance = 400f.dp(context)
     private val dockGlyphSize = DockView.glyphSize(context)
     private val charColor = context.getColor(R.color.windowTextPrimary)
     private val abbreviationColor = ColorUtils.setAlphaComponent(charColor, 128)
@@ -66,8 +67,9 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
         val x0 = flyer.startX
         val x2 = target[0] - originX
         val away = if (x2 < x0) -launch else launch
-        flyer.away = if (isInside(x0, x0 + away, x2, flyer.textSize * LIFT_SCALE / 2f)) away else -away
-        flyer.start()
+        flyer.away = if (isInside(x0, x0 + away, x2, flyer.textSize / 2f)) away else -away
+        val distance = hypot(x2 - x0, target[1] - originY - flyer.startY)
+        flyer.start(stiffness = (BASE_STIFFNESS * referenceDistance / distance.coerceAtLeast(1f)).coerceIn(MIN_STIFFNESS, MAX_STIFFNESS))
         active.add(flyer)
         invalidate()
     }
@@ -99,8 +101,7 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
             val q = 1f - p
             val x = q * q * x0 + 2f * q * p * x1 + p * p * x2
             val y = q * q * y0 + 2f * q * p * y1 + p * p * y2
-            val lift = flyer.lift.value
-            val scale = lift + (flyer.endScale - lift) * p.coerceIn(0f, 1f)
+            val scale = 1f + (flyer.endScale - 1f) * p.coerceIn(0f, 1f)
             paint.textSize = flyer.textSize
             paint.color = if (flyer.isAbbreviation) abbreviationColor else charColor
             val baseline = -(paint.ascent() + paint.descent()) / 2f
@@ -125,7 +126,7 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
         cancelAll()
     }
 
-    private inner class Flyer : Runnable {
+    private inner class Flyer {
         var label = ""
         var isAbbreviation = false
         var startX = 0f
@@ -137,10 +138,8 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
         var end = 0
         var away = 0f
         val progress = FloatValueHolder()
-        val lift = FloatValueHolder()
         private val progressSpring = SpringAnimation(progress).apply {
             spring = SpringForce(1f).apply {
-                stiffness = 400f
                 dampingRatio = 0.85f
             }
             setMinimumVisibleChange(0.001f)
@@ -148,32 +147,15 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
                 if (value >= LANDING) land() else invalidate()
             }
         }
-        private val liftSpring = SpringAnimation(lift).apply {
-            spring = SpringForce(LIFT_SCALE).apply {
-                stiffness = 1500f
-                dampingRatio = 0.6f
-            }
-            setMinimumVisibleChange(0.001f)
-            addUpdateListener { _, _, _ -> invalidate() }
-        }
-
-        fun start() {
+        fun start(stiffness: Float) {
             progress.value = 0f
-            lift.value = 1f
-            liftSpring.setStartValue(1f)
-            liftSpring.start()
-            postDelayed(this, liftDelay)
-        }
-
-        override fun run() {
+            progressSpring.spring.stiffness = stiffness
             progressSpring.setStartValue(0f)
             progressSpring.start()
         }
 
         fun stop() {
-            removeCallbacks(this)
             progressSpring.cancel()
-            liftSpring.cancel()
         }
 
         private fun land() {
@@ -185,7 +167,9 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
     }
 
     private companion object {
-        const val LIFT_SCALE = 1.15f
+        const val BASE_STIFFNESS = 140f
+        const val MIN_STIFFNESS = 70f
+        const val MAX_STIFFNESS = 350f
         const val LANDING = 0.98f
     }
 }
