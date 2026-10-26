@@ -9,6 +9,7 @@
 - Data comes from a read-only database, `assets/<unicode_version>.sqlite.zip`, unzipped into `filesDir/sql/` on first open.
 - Screens extend `Screen : FrameLayout, CoroutineScope` and cancel their scope in `onDetachedFromWindow`.
 - UI is views in kotlin, navigation via custom `NavigationView : FrameLayout`.
+- `Nav` manages the screen stack and screen transitions, including predictive back; `NavigationView` coordinates screens and the character details sheet.
 - Motion uses spring animations (`androidx.dynamicanimation`), rounded surfaces use Squircle.
 - A plain `Controller` class owns data for a screen; a `Delegate` interface forwards events up.
 - Performance is high: no heavy operations in often called methods like drawing or touch.
