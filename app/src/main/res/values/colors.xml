@@ -4,6 +4,7 @@
     <color name="layer1">#FFFAFAFB</color>
     <color name="layer1Pressed">#FFEAEAED</color>
     <color name="ripple">#1F000000</color>
+    <color name="navigationBarScrim">#66000000</color>
 
     <color name="colorPrimary">#FF4498F2</color>
     <color name="dialogDim">#FF000000</color>

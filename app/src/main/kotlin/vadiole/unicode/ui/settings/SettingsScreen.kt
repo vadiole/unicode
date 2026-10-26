@@ -2,7 +2,6 @@ package vadiole.unicode.ui.settings
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.drawable.RotateDrawable
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
@@ -44,12 +43,7 @@ class SettingsScreen(
 
     private val backButton = IconButton(
         context = context,
-        icon = RotateDrawable().apply {
-            drawable = context.getDrawable(R.drawable.ic_chevron_down)
-            fromDegrees = 90f
-            toDegrees = 90f
-            level = 10000
-        },
+        icon = context.getDrawable(R.drawable.ic_chevron_left)!!,
         floating = false,
     ).apply {
         setPadding(4.dp(context), 0, 4.dp(context), 0)

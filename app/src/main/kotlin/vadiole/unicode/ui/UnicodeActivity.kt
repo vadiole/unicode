@@ -14,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.insetsController
 import vadiole.unicode.ui.common.isDarkMode
@@ -26,6 +27,9 @@ class UnicodeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setDecorFitsSystemWindows(window, false)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            window.navigationBarColor = getColor(R.color.navigationBarScrim)
+        }
         val navigationView = NavigationView(this)
         navigationViewNullable = navigationView
         setContentView(navigationView)
