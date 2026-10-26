@@ -19,6 +19,7 @@ class SearchResultView(
 
     private val searchLayoutManager = LinearLayoutManager(context)
     private val itemDecoration = CollectionItemDecoration(leftPadding = 14f.dp(context))
+    var keyboardInset = 0
 
     init {
         recycledViewPool.setMaxRecycledViews(0, 32)
@@ -45,9 +46,11 @@ class SearchResultView(
     }
 
     private fun updateScrollProgress() {
-        val scrollable = computeVerticalScrollRange() - computeVerticalScrollExtent()
+        val range = computeVerticalScrollRange()
+        val scrollable = range - computeVerticalScrollExtent()
         val progress = if (scrollable > 0) (computeVerticalScrollOffset().toFloat() / scrollable).coerceIn(0f, 1f) else 0f
-        delegate.onScrollProgressChanged(progress, canScrollVertically(-1) || canScrollVertically(1))
+        val heightWithoutKeyboard = height - paddingTop - paddingBottom + keyboardInset
+        delegate.onScrollProgressChanged(progress, range > heightWithoutKeyboard)
     }
 
     fun scrollToProgress(progress: Float) {

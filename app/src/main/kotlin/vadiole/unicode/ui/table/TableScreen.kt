@@ -480,6 +480,7 @@ class TableScreen(
         if (tableView.paddingBottom != chromeBottom) tableView.updatePadding(bottom = chromeBottom)
         if (fastScrollView.paddingBottom != chromeBottom) fastScrollView.setPadding(0, 0, 0, chromeBottom)
         val resultsBottom = chromeBottom + keyboardLift
+        searchResultView.keyboardInset = keyboardLift
         if (searchResultView.paddingBottom != resultsBottom) searchResultView.updatePadding(bottom = resultsBottom)
         if (noResultsView.paddingBottom != resultsBottom) noResultsView.setPadding(0, 0, 0, resultsBottom)
         if (searchFastScrollView.paddingBottom != resultsBottom) searchFastScrollView.setPadding(0, 0, 0, resultsBottom)
