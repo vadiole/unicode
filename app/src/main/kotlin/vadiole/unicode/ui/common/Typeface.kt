@@ -1,10 +1,15 @@
 package vadiole.unicode.ui.common
 
 import android.graphics.Typeface
+import android.os.Build
 import android.view.View
 
 private val monoRegular: Typeface = Typeface.DEFAULT
-private val monoSemibold: Typeface = Typeface.create(Typeface.DEFAULT, 600, false)
+private val monoSemibold: Typeface = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+    Typeface.create(Typeface.DEFAULT, 600, false)
+} else {
+    Typeface.create("sans-serif-medium", Typeface.NORMAL)
+}
 
 @Suppress("UnusedReceiverParameter")
 val View.mono_regular: Typeface

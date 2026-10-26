@@ -1,6 +1,5 @@
 package vadiole.unicode.ui.table
 
-import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -37,6 +36,7 @@ import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SearchBar
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.TopBar
+import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.ime
@@ -565,7 +565,7 @@ class TableScreen(
     }
 
     private fun flyToDock(codePoint: CodePoint, source: View, centerX: Float, centerY: Float, glyphSize: Float) {
-        if (!ValueAnimator.areAnimatorsEnabled()) {
+        if (!animatorsEnabled) {
             addToDock(codePoint)
             return
         }

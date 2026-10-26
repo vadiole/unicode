@@ -17,6 +17,7 @@ import kotlin.math.floor
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
+import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.dp
 
 class CharRow(
@@ -205,7 +206,7 @@ class CharRow(
         rippleTouchY = y
         rippleFade = 1f
         isRippleReleased = false
-        if (ValueAnimator.areAnimatorsEnabled()) {
+        if (animatorsEnabled) {
             rippleGrow = 0f
             rippleGrowAnimator.setFloatValues(0f, 1f)
             rippleGrowAnimator.duration = RIPPLE_GROW_DURATION
@@ -219,7 +220,7 @@ class CharRow(
     private fun fadeRipple() {
         if (rippleIndex < 0) return
         rippleFadeAnimator.cancel()
-        if (ValueAnimator.areAnimatorsEnabled()) {
+        if (animatorsEnabled) {
             rippleFadeAnimator.setFloatValues(rippleFade, 0f)
             rippleFadeAnimator.start()
         } else {

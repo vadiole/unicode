@@ -1,6 +1,5 @@
 package vadiole.unicode.ui.common
 
-import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
@@ -167,7 +166,7 @@ class SearchBar(
     private fun exactly(size: Int) = MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY)
 
     private fun animateProgress(target: Float) {
-        if (!ValueAnimator.areAnimatorsEnabled()) {
+        if (!animatorsEnabled) {
             progressSpring.cancel()
             progressHolder.value = target
             applyProgress(target)

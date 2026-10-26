@@ -28,6 +28,7 @@ import vadiole.unicode.R
 import vadiole.unicode.ui.common.IconButton
 import vadiole.unicode.ui.common.StateColorDrawable
 import vadiole.unicode.ui.common.TEXT_CAPTION
+import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.borderWidth
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
@@ -212,7 +213,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         if (tip == value) return
         val previous = tip
         tip = value
-        val canAnimate = animate && isLaidOut && ValueAnimator.areAnimatorsEnabled()
+        val canAnimate = animate && isLaidOut && animatorsEnabled
         tipView.animate().cancel()
         when {
             value == Tip.Hidden -> if (canAnimate) collapseTip() else hideTip()
@@ -295,7 +296,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
 
     private fun setHasContent(value: Boolean) {
         if (hasContent == value) return
-        val animate = isLaidOut && ValueAnimator.areAnimatorsEnabled()
+        val animate = isLaidOut && animatorsEnabled
         hasContent = value
         backspaceButton.isEnabled = value
         backspaceButton.animate().cancel()
@@ -404,7 +405,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             if (target <= revealed) return
             popAnimator.cancel()
             bounceSpring.cancel()
-            if (ValueAnimator.areAnimatorsEnabled()) {
+            if (animatorsEnabled) {
                 popStart = revealed
                 popStartWidth = charPaint.measureText(text, 0, popStart)
                 popEndWidth = charPaint.measureText(text, 0, target)

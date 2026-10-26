@@ -70,7 +70,7 @@ class ToggleSwitch(context: Context) : Switch(context) {
         super.setChecked(checked)
         syncing = false
         jumpDrawablesToCurrentState()
-        val smooth = animate && isAttachedToWindow && isLaidOut && ValueAnimator.areAnimatorsEnabled()
+        val smooth = animate && isAttachedToWindow && isLaidOut && animatorsEnabled
         if (smooth && captured) thumb?.spring(checked) else thumb?.snap(checked)
         moveColors(if (checked) 1f else 0f, smooth)
     }

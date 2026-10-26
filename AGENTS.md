@@ -1,7 +1,7 @@
 ## Unicode App
 
 - An Android app for searching, viewing, and copying characters from Unicode.
-- Kotlin, minSdk 28, UI with code and custom views, minimal dependencies, single activity.
+- Kotlin, minSdk 23, UI with code and custom views, minimal dependencies, single activity.
 
 ## General
 

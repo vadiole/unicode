@@ -6,7 +6,7 @@
         <item name="android:colorPrimaryDark">@color/colorPrimary</item>
         <item name="android:colorControlActivated">@color/colorPrimary</item>
         <item name="android:windowBackground">@color/layer0</item>
-        <item name="android:windowSplashscreenContent">@drawable/splash_screen</item>
+        <item name="android:windowSplashscreenContent" tools:targetApi="o">@drawable/splash_screen</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
