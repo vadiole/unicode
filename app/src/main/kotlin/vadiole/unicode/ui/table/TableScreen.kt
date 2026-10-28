@@ -43,7 +43,7 @@ import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.ime
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.font_regular
 import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
@@ -312,7 +312,7 @@ class TableScreen(
     private val searchResultView = SearchResultView(context, searchAdapter, searchResultViewDelegate)
     private val noResultsView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
-        typeface = mono_regular
+        typeface = font_regular
         setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
         gravity = Gravity.CENTER
         text = context.getString(R.string.search_no_results)

@@ -34,7 +34,7 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.font_regular
 import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
@@ -73,7 +73,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     }
     private val tipView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_CAPTION)
-        typeface = mono_regular
+        typeface = font_regular
         includeFontPadding = false
         gravity = Gravity.CENTER
         isSingleLine = true

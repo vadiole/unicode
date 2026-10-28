@@ -27,7 +27,7 @@ class SettingsTopBar(context: Context, title: String, onBack: () -> Unit) : Fram
         }, frameParams(56.dp(context), barHeight, Gravity.LEFT or Gravity.BOTTOM))
         addView(TextView(context).apply {
             textSize = TEXT_TITLE
-            typeface = mono_semibold
+            typeface = font_semibold
             includeFontPadding = false
             gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
             setTextColor(context.getColor(R.color.windowTextPrimary))

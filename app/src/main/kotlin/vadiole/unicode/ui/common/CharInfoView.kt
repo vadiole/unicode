@@ -12,14 +12,14 @@ class CharInfoView(context: Context) : View(context) {
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         textSize = TEXT_SECONDARY.sp(context)
-        typeface = mono_regular
+        typeface = font_regular
         style = Paint.Style.FILL
         isSubpixelText = true
     }
     private val namePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         textSize = TEXT_CAPTION.sp(context)
-        typeface = mono_regular
+        typeface = font_regular
         style = Paint.Style.FILL
         isSubpixelText = true
     }

@@ -35,7 +35,7 @@ class SettingsList(context: Context) : ScrollView(context) {
         add(TextView(context).apply {
             this.text = text
             textSize = TEXT_SECONDARY
-            typeface = mono_regular
+            typeface = font_regular
             includeFontPadding = false
             setTextColor(context.getColor(R.color.windowTextSecondary))
             setPadding(16.dp(context), 0, 16.dp(context), 0)

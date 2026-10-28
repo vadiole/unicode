@@ -21,7 +21,7 @@ import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.font_regular
 import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
@@ -45,7 +45,7 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
     val name = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
-        typeface = mono_regular
+        typeface = font_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
         setPadding(0, 6.dp(context), 16.dp(context), 6.dp(context))

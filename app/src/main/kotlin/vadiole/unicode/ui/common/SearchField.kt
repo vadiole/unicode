@@ -38,7 +38,7 @@ class SearchField(context: Context, private val onQueryChanged: (String) -> Unit
         addTextChangedListener(textWatcher)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
         isSingleLine = true
-        typeface = mono_regular
+        typeface = font_regular
         includeFontPadding = false
         isLongClickable = true
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL

@@ -41,8 +41,8 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
-import vadiole.unicode.ui.common.mono_semibold
+import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.font_semibold
 import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.share
 import vadiole.unicode.ui.common.toClipboard
@@ -84,7 +84,7 @@ class DetailsSheet(
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         includeFontPadding = false
         ellipsize = TextUtils.TruncateAt.END
-        typeface = mono_semibold
+        typeface = font_semibold
         isSingleLine = true
         onLongClick = {
             charObj?.let { value ->
@@ -105,7 +105,7 @@ class DetailsSheet(
         textAlignment = TEXT_ALIGNMENT_CENTER
         ellipsize = TextUtils.TruncateAt.END
         includeFontPadding = false
-        typeface = mono_regular
+        typeface = font_regular
         isSingleLine = true
     }
 

@@ -12,7 +12,7 @@ import vadiole.unicode.R
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.font_regular
 import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
 
@@ -23,7 +23,7 @@ class BlockSelectorCell(context: Context) : TextView(context) {
         minHeight = 48.dp(context)
         setTextColor(this.context.getColor(R.color.windowTextPrimary))
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
-        typeface = mono_regular
+        typeface = font_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
         setPadding(16.dp(context), 4.dp(context), 16.dp(context), 4.dp(context))

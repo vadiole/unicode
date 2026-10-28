@@ -65,7 +65,7 @@ class TopBar(
 
     private fun createTitle() = TextView(context).apply {
         setLineHeightX(22.dp(context))
-        typeface = mono_semibold
+        typeface = font_semibold
         includeFontPadding = false
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         setPadding(sidePadding, 0, titleEndPadding, 0)
