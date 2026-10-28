@@ -1,7 +1,7 @@
 package vadiole.unicode.ui.settings
 
 import android.content.Context
-import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
@@ -16,7 +16,6 @@ import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.common.IconButton
 import vadiole.unicode.ui.common.Screen
-import vadiole.unicode.ui.common.StateColorDrawable
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.TEXT_TITLE
 import vadiole.unicode.ui.common.ToggleSwitch
@@ -28,6 +27,7 @@ import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.mono_regular
 import vadiole.unicode.ui.common.mono_semibold
 import vadiole.unicode.ui.common.navigationBars
+import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
@@ -156,18 +156,7 @@ class SettingsScreen(
         }
 
         init {
-            background = StateColorDrawable().apply {
-                colors = ColorStateList(
-                    arrayOf(
-                        intArrayOf(-android.R.attr.state_pressed),
-                        intArrayOf(android.R.attr.state_pressed)
-                    ),
-                    intArrayOf(
-                        context.getColor(R.color.layer1),
-                        context.getColor(R.color.layer1Pressed),
-                    ),
-                )
-            }
+            background = context.rippleDrawable(ColorDrawable(context.getColor(R.color.layer1)))
             minimumHeight = 56.dp(context)
             val labelView = TextView(context).apply {
                 setPadding(0, 12.dp(context), 0, 12.dp(context))

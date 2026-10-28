@@ -4,9 +4,9 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.text.TextPaint
 import android.util.TypedValue
 import android.view.Gravity
@@ -26,7 +26,6 @@ import kotlin.math.abs
 import kotlin.math.ceil
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.IconButton
-import vadiole.unicode.ui.common.StateColorDrawable
 import vadiole.unicode.ui.common.TEXT_CAPTION
 import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.borderWidth
@@ -35,6 +34,7 @@ import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
 import vadiole.unicode.ui.extension.onLongClick
@@ -148,12 +148,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     init {
         orientation = VERTICAL
         clipChildren = false
-        background = StateColorDrawable().apply {
-            colors = ColorStateList(
-                arrayOf(intArrayOf(-android.R.attr.state_pressed), intArrayOf(android.R.attr.state_pressed)),
-                intArrayOf(context.getColor(R.color.layer1), context.getColor(R.color.layer1Pressed)),
-            )
-        }
+        background = context.rippleDrawable(ColorDrawable(context.getColor(R.color.layer1)))
         setWillNotDraw(false)
         isClickable = true
         contentDescription = context.getString(R.string.dock_copy_all)
@@ -273,6 +268,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             MotionEvent.ACTION_DOWN -> {
                 tapDownX = event.x
                 isTapTracking = true
+                drawableHotspotChanged(event.x + row.left + scrollView.left, event.y + row.top + scrollView.top)
                 isPressed = hasContent
                 postDelayed(longPressRunnable, longPressTimeout)
             }

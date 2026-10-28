@@ -13,7 +13,7 @@ class ActionCell(
     private val topItem: Boolean = false,
     private val bottomItem: Boolean = false,
 ) : TextView(context) {
-    private val backgroundDrawable = run {
+    private fun createShape() = run {
         val r = 13.dp(context)
         when {
             topItem -> SquircleDrawable(cornerRadius = 0, topLeftRadius = r, topRightRadius = r)
@@ -23,19 +23,12 @@ class ActionCell(
     }
 
     init {
-        backgroundDrawable.colors = ColorStateList(
-            arrayOf(
-                intArrayOf(android.R.attr.state_pressed),
-                intArrayOf(-android.R.attr.state_pressed),
-            ),
-            intArrayOf(
-                this.context.getColor(R.color.layer1Pressed),
-                this.context.getColor(R.color.layer1),
-            )
-        )
         compoundDrawableTintList = this.context.getColorStateList(R.color.windowTextPrimary)
         setTextColor(this.context.getColor(R.color.windowTextPrimary))
-        background = backgroundDrawable
+        background = context.rippleDrawable(
+            createShape().apply { colors = ColorStateList.valueOf(context.getColor(R.color.layer1)) },
+            createShape().apply { colors = ColorStateList.valueOf(android.graphics.Color.WHITE) },
+        )
         text = name
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         minHeight = 48.dp(context)

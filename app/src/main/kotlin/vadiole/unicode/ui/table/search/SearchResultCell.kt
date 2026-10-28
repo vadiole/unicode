@@ -1,7 +1,7 @@
 package vadiole.unicode.ui.table.search
 
 import android.content.Context
-import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -16,12 +16,12 @@ import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.ui.common.CharTextView
-import vadiole.unicode.ui.common.StateColorDrawable
 import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
 import vadiole.unicode.ui.extension.onLongClick
@@ -34,7 +34,6 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         fun onLongClick(codePoint: CodePoint)
     }
 
-    private val backgroundDrawable = StateColorDrawable()
     private val highlightColor = context.getColor(R.color.searchMatchHighlight)
     private var codePoint: CodePoint? = null
     private var highlightStarts = IntArray(4)
@@ -54,21 +53,11 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     init {
         charView.textColor = this.context.getColor(R.color.windowTextPrimary)
         name.setTextColor(this.context.getColor(R.color.windowTextPrimary))
-        backgroundDrawable.colors = ColorStateList(
-            arrayOf(
-                intArrayOf(-android.R.attr.state_pressed),
-                intArrayOf(android.R.attr.state_pressed)
-            ),
-            intArrayOf(
-                this.context.getColor(R.color.windowSurface),
-                this.context.getColor(R.color.windowSurfacePressed),
-            ),
-        )
         layoutParams = RecyclerView.LayoutParams(matchParent, wrapContent)
         minimumHeight = 48.dp(context)
         addView(name, frameParams(matchParent, wrapContent, Gravity.CENTER_VERTICAL, marginLeft = 64.dp(context)))
         addView(charView, frameParams(64.dp(context), matchParent, gravity = Gravity.LEFT))
-        background = backgroundDrawable
+        background = context.rippleDrawable(ColorDrawable(context.getColor(R.color.windowSurface)))
         isClickable = true
         isFocusable = true
         clipChildren = false
