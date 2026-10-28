@@ -6,7 +6,6 @@ import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import vadiole.unicode.R
-import vadiole.unicode.ui.extension.setPaddingHorizontal
 
 class ActionCell(
     context: Context,
@@ -30,8 +29,8 @@ class ActionCell(
                 intArrayOf(-android.R.attr.state_pressed),
             ),
             intArrayOf(
-                this.context.getColor(R.color.dialogSurfacePressed),
-                this.context.getColor(R.color.dialogSurface),
+                this.context.getColor(R.color.layer1Pressed),
+                this.context.getColor(R.color.layer1),
             )
         )
         compoundDrawableTintList = this.context.getColorStateList(R.color.windowTextPrimary)
@@ -41,12 +40,11 @@ class ActionCell(
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         minHeight = 48.dp(context)
         includeFontPadding = false
-        typeface = roboto_regular
-        letterSpacing = 0.03f
-        textSize = 17f
+        typeface = mono_regular
+        textSize = TEXT_BODY
         isClickable = true
         isFocusable = true
-        setPaddingHorizontal(16.dp(context))
+        setPadding(16.dp(context), 10.dp(context), 16.dp(context), 10.dp(context))
     }
 
     fun setIcon(@DrawableRes iconId: Int) {

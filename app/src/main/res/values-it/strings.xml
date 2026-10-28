@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">Cerca</string>
+    <string name="search_close">Chiudi ricerca</string>
     <string name="search_no_results">Nessun risultato trovato</string>
     <string name="search_recents">Recenti</string>
+    <string name="search_title">Cerca</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">Tocca i caratteri per raccoglierli</string>
+    <string name="dock_tip_copy">Tocca la barra per copiare la raccolta</string>
+    <string name="dock_backspace">Elimina l\'ultimo carattere</string>
+    <string name="dock_copy_all">Copia tutto</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_back">Indietro</string>
+    <string name="settings_dock">Tocca per raccogliere</string>
+    <string name="settings_show_unsupported">Mostra caratteri non supportati</string>
+    <string name="settings_crash_reports">Segnalazioni di arresto anomalo</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Trova nella tabella</string>
+    <string name="details_add">Aggiungi alla raccolta</string>
     <string name="details_copy_to_clipboard">Copia negli appunti</string>
     <string name="details_share_link">Condividi link</string>
     <string name="details_info_code">Codice</string>

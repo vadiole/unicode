@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">Søg</string>
+    <string name="search_close">Luk søgning</string>
     <string name="search_no_results">Ingen resultater fundet</string>
     <string name="search_recents">Seneste</string>
+    <string name="search_title">Søg</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">Tryk på tegn for at samle dem</string>
+    <string name="dock_tip_copy">Tryk på bjælken for at kopiere samlingen</string>
+    <string name="dock_backspace">Slet sidste tegn</string>
+    <string name="dock_copy_all">Kopiér alt</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Indstillinger</string>
+    <string name="settings_back">Tilbage</string>
+    <string name="settings_dock">Tryk for at samle</string>
+    <string name="settings_show_unsupported">Vis tegn, der ikke understøttes</string>
+    <string name="settings_crash_reports">Fejlrapporter</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Find i tabel</string>
+    <string name="details_add">Føj til samlingen</string>
     <string name="details_copy_to_clipboard">Kopiér til udklipsholder</string>
     <string name="details_share_link">Del link</string>
     <string name="details_info_code">Kode</string>

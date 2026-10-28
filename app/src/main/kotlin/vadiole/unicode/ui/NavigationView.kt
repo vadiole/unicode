@@ -29,8 +29,10 @@ import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.details.DetailsSheet
 import vadiole.unicode.ui.extension.isVisible
+import vadiole.unicode.ui.settings.SettingsScreen
 import vadiole.unicode.ui.table.TableController
 import vadiole.unicode.ui.table.TableScreen
+import vadiole.unicode.ui.table.dock.DockController
 import vadiole.unicode.ui.table.search.SearchController
 
 class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
@@ -41,6 +43,9 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var scaleYAnimation: SpringAnimation? = null
     private var isDetailsOpenOrOpening = false
     private var isBackGestureInProgress = false
+    private var isNavBackInProgress = false
+    private var isSearchBackInProgress = false
+    private var isGestureIgnored = false
 
     companion object {
         private const val SPRING_STIFFNESS = 600f
@@ -57,21 +62,37 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var pendingCharSkipAnimation = false
     private val tableController = TableController(unicodeStorage, userConfig)
     private val searchController = SearchController(unicodeStorage, recentRepository)
+    private val dockController = DockController(userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
-        override fun onItemClick(codePoint: CodePoint) {
+        override fun onShowDetails(codePoint: CodePoint) {
             recentRepository.record(codePoint)
             showDetailsBottomSheet(codePoint)
         }
 
-        override fun onSearchFocused() {
+        override fun onItemAdded(codePoint: CodePoint) {
+            recentRepository.record(codePoint)
+        }
+
+        override fun onSearchShown() {
             updateBackEnabled()
         }
 
-        override fun onSearchUnfocused() {
+        override fun onSearchHidden() {
             updateBackEnabled()
         }
+
+        override fun onSettingsClick() {
+            showSettings()
+        }
     }
-    private val tableScreen = TableScreen(context, tableController, searchController, tableDelegate)
+    private val tableScreen = TableScreen(context, tableController, searchController, dockController, tableDelegate)
+    private val screenContainer = FrameLayout(context)
+    private val nav = Nav(screenContainer)
+    private val settingsDelegate = object : SettingsScreen.Delegate {
+        override fun onBack() = hideSettings()
+        override fun onShowUnsupportedCharsChanged() = tableScreen.reloadChars()
+        override fun onDockEnabledChanged() = applyDockEnabled()
+    }
     private val dimView = View(context).apply {
         layoutParams = frameParams(matchParent, matchParent)
         visibility = GONE
@@ -83,18 +104,26 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
             tableScreen.scrollToChar(codePoint)
             updateBackEnabled()
         }
+
+        override fun addToDock(codePoint: CodePoint) {
+            hideDetailsBottomSheet()
+            tableScreen.addToDock(codePoint)
+        }
     }
     var detailsSheet: DetailsSheet? = null
 
     init {
         clipChildren = false
         isMotionEventSplittingEnabled = false
-        addView(tableScreen)
+        addView(screenContainer, frameParams(matchParent, matchParent))
+        nav.setRoot(tableScreen)
+        tableScreen.setDockEnabled(userConfig.dockEnabled)
 
         post {
             detailsSheet = DetailsSheet(context, detailsDelegate).also { detailsSheet ->
                 addView(dimView)
                 addView(detailsSheet)
+                detailsSheet.setDockEnabled(userConfig.dockEnabled)
                 if (!pendingCharSkipAnimation) {
                     detailsSheet.doOnLayout {
                         it.translationY = it.measuredHeight.toFloat()
@@ -146,6 +175,30 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         startSpringAnimation(detailsSheet, detailsSheet.measuredHeight, withVelocity)
     }
 
+    private fun applyDockEnabled() {
+        val enabled = userConfig.dockEnabled
+        tableScreen.setDockEnabled(enabled)
+        val sheet = detailsSheet ?: return
+        sheet.setDockEnabled(enabled)
+        if (!isDetailsOpenOrOpening) sheet.doOnLayout { it.translationY = it.measuredHeight.toFloat() }
+    }
+
+    fun saveState() = tableScreen.saveState()
+
+    private fun showSettings() {
+        if (nav.current() is SettingsScreen) return
+        val screen = SettingsScreen(context, userConfig, settingsDelegate)
+        nav.push(screen)
+        screen.requestApplyInsets()
+        updateBackEnabled()
+    }
+
+    private fun hideSettings() {
+        isNavBackInProgress = false
+        nav.pop()
+        updateBackEnabled()
+    }
+
     private fun startSpringAnimation(view: View, toPosition: Int, startVelocity: Float) {
         openAnimation?.cancel()
         openAnimation = SpringAnimation(view, DynamicAnimation.TRANSLATION_Y).apply {
@@ -167,6 +220,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         if (isBackGestureInProgress) return false
         val content = detailsSheet ?: return false
+        if (event.actionMasked == MotionEvent.ACTION_DOWN) isGestureIgnored = !isDetailsOpenOrOpening && openAnimation?.isRunning != true
+        if (isGestureIgnored) return false
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 touchDownX = event.rawX
@@ -283,8 +338,18 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
 
     override val isBackEnabled = MutableStateFlow(false)
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onBackStarted(backEvent: BackEvent) {
-        if (!isDetailsOpenOrOpening) return
+        if (!isDetailsOpenOrOpening) {
+            if (nav.canPop()) {
+                isNavBackInProgress = true
+                nav.startBack(fromLeft = backEvent.swipeEdge == BackEvent.EDGE_LEFT, touchY = backEvent.touchY)
+            } else if (tableScreen.isSearchVisible()) {
+                isSearchBackInProgress = true
+                tableScreen.startSearchBack()
+            }
+            return
+        }
         val sheet = detailsSheet ?: return
         openAnimation?.cancel()
         scaleXAnimation?.cancel()
@@ -299,6 +364,14 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
 
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onBackProgressed(backEvent: BackEvent) {
+        if (isNavBackInProgress) {
+            nav.progressBack(backEvent.progress, backEvent.touchY)
+            return
+        }
+        if (isSearchBackInProgress) {
+            tableScreen.progressSearchBack(backEvent.progress)
+            return
+        }
         if (!isBackGestureInProgress) return
         val sheet = detailsSheet ?: return
         val progress = backEvent.progress
@@ -313,6 +386,16 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     }
 
     override fun onBackCancelled() {
+        if (isNavBackInProgress) {
+            isNavBackInProgress = false
+            nav.cancelBack()
+            return
+        }
+        if (isSearchBackInProgress) {
+            isSearchBackInProgress = false
+            tableScreen.cancelSearchBack()
+            return
+        }
         if (!isBackGestureInProgress) return
         isBackGestureInProgress = false
         val sheet = detailsSheet ?: return
@@ -327,7 +410,10 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
                 hideDetailsBottomSheet()
             }
 
+            nav.canPop() -> hideSettings()
+
             tableScreen.isSearchVisible() -> {
+                isSearchBackInProgress = false
                 tableScreen.hideSearch()
                 updateBackEnabled()
             }
@@ -364,6 +450,6 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     }
 
     private fun updateBackEnabled() {
-        isBackEnabled.value = isDetailsOpenOrOpening || tableScreen.isSearchVisible()
+        isBackEnabled.value = isDetailsOpenOrOpening || nav.canPop() || tableScreen.isSearchVisible()
     }
 }

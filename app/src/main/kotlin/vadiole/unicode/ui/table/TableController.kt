@@ -1,13 +1,13 @@
 package vadiole.unicode.ui.table
 
 import android.graphics.Paint
+import android.os.Build
 import android.util.Log
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
-import vadiole.unicode.data.filterMaybe
 import vadiole.unicode.ui.extension.binarySearch
 import vadiole.unicode.ui.extension.filterMaybe
 import vadiole.unicode.ui.extension.worker
@@ -16,7 +16,7 @@ class TableController(
     private val unicodeStorage: UnicodeStorage,
     private val userConfig: UserConfig,
 ) {
-    var totalChars = UnicodeStorage.totalCharacters
+    var totalChars = 0
     var tableChars: CodePointArray = CodePointArray(0)
     var abbreviations: Map<CodePoint, String> = emptyMap()
     var blocks: Array<Block> = emptyArray()
@@ -28,17 +28,25 @@ class TableController(
         abbreviations = unicodeStorage.getAbbreviations()
     }
 
-    suspend fun loadChars(fast: Boolean) = worker {
-        val count = if (fast) 256 else -1
-        var codePoints = unicodeStorage.getCodePoints(count)
-        if (!userConfig.showUnsupportedChars) {
-            codePoints = codePoints.filterMaybe { glyphPaint.hasGlyph(it.char) }
-        }
-        tableChars = codePoints
-        if (!fast) {
-            totalChars = codePoints.size
-        }
+    suspend fun loadCachedChars(): Boolean {
+        val cached = unicodeStorage.readCache(CACHE_NAME, cacheKey(userConfig.showUnsupportedChars)) ?: return false
+        tableChars = CodePointArray(cached)
+        totalChars = cached.size
+        return true
     }
+
+    suspend fun loadChars(fast: Boolean): Boolean {
+        val count = if (fast) 256 else -1
+        val showAll = userConfig.showUnsupportedChars
+        val codePoints = unicodeStorage.getCodePoints(count) { showAll || glyphPaint.hasGlyph(it) }
+        val isChanged = !codePoints.storage.contentEquals(tableChars.storage)
+        if (!fast && isChanged) unicodeStorage.writeCache(CACHE_NAME, cacheKey(showAll), codePoints.storage)
+        tableChars = codePoints
+        totalChars = if (fast) UnicodeStorage.totalCharacters else codePoints.size
+        return isChanged
+    }
+
+    private fun cacheKey(showAll: Boolean) = "$showAll;${Build.FINGERPRINT}"
 
     suspend fun loadBlocks() = worker {
         val allBlocks = unicodeStorage.getBlocks()
@@ -140,5 +148,9 @@ class TableController(
             }
         }
         return codePoints
+    }
+
+    private companion object {
+        const val CACHE_NAME = "table"
     }
 }

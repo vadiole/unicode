@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">खोजें</string>
+    <string name="search_close">खोज बंद करें</string>
     <string name="search_no_results">कुछ नहीं मिला</string>
     <string name="search_recents">हाल के</string>
+    <string name="search_title">खोजें</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">इकट्ठा करने के लिए वर्णों पर टैप करें</string>
+    <string name="dock_tip_copy">संग्रह कॉपी करने के लिए पट्टी पर टैप करें</string>
+    <string name="dock_backspace">आखिरी वर्ण हटाएँ</string>
+    <string name="dock_copy_all">सब कॉपी करें</string>
+
+    <!-- Settings -->
+    <string name="settings_title">सेटिंग</string>
+    <string name="settings_back">वापस</string>
+    <string name="settings_dock">टैप करके इकट्ठा करें</string>
+    <string name="settings_show_unsupported">असमर्थित वर्ण दिखाएँ</string>
+    <string name="settings_crash_reports">क्रैश रिपोर्ट</string>
 
     <!-- Details -->
     <string name="details_find_in_table">तालिका में खोजें</string>
+    <string name="details_add">संग्रह में जोड़ें</string>
     <string name="details_copy_to_clipboard">क्लिपबोर्ड पर कॉपी करें</string>
     <string name="details_share_link">लिंक शेयर करें</string>
     <string name="details_info_code">कोड</string>
@@ -25,7 +41,7 @@
     <!-- Crash report -->
     <string name="crash_dialog_title">Unicode अचानक बंद हो गया</string>
     <string name="crash_dialog_message">क्रैश रिपोर्ट भेजना चाहोगे?</string>
-    <string name="crash_dont_ask_again">दोबारा मत पूछो</string>
+    <string name="crash_dont_ask_again">फिर से न पूछें</string>
     <string name="crash_send">भेजें</string>
     <string name="crash_email_subject">Unicode ऐप</string>
     <string name="crash_send_via_email">ईमेल से भेजें</string>

@@ -17,7 +17,7 @@
         <shape android:shape="oval">
             <stroke
                 android:width="74dp"
-                android:color="@color/windowBackground" />
+                android:color="@color/layer0" />
         </shape>
     </item>
 </layer-list>

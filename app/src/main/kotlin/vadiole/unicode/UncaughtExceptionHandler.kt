@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import androidx.core.os.ConfigurationCompat
 import vadiole.unicode.ui.SendCrashActivity
 import java.io.File
 import java.lang.Thread.UncaughtExceptionHandler
@@ -45,7 +46,7 @@ class UncaughtExceptionHandler(private val context: Context) : UncaughtException
                 "| Version: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})\n" +
                 "| Device: ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL} (${android.os.Build.PRODUCT})\n" +
                 "| Android: ${android.os.Build.VERSION.RELEASE} (${android.os.Build.VERSION.SDK_INT})\n" +
-                "| Locales: ${context.resources.configuration.locales.toLanguageTags()}\n" +
+                "| Locales: ${ConfigurationCompat.getLocales(context.resources.configuration).toLanguageTags()}\n" +
                 "+------------------------------------------------------------+"
     }
 }

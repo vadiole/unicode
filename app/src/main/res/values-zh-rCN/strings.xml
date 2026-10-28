@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">搜索</string>
+    <string name="search_close">关闭搜索</string>
     <string name="search_no_results">未找到结果</string>
-    <string name="search_recents">最近搜索</string>
+    <string name="search_recents">最近使用</string>
+    <string name="search_title">搜索</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">点按字符即可收集</string>
+    <string name="dock_tip_copy">点按底栏即可复制合集</string>
+    <string name="dock_backspace">删除最后一个字符</string>
+    <string name="dock_copy_all">全部复制</string>
+
+    <!-- Settings -->
+    <string name="settings_title">设置</string>
+    <string name="settings_back">返回</string>
+    <string name="settings_dock">点按收集</string>
+    <string name="settings_show_unsupported">显示不支持的字符</string>
+    <string name="settings_crash_reports">崩溃报告</string>
 
     <!-- Details -->
     <string name="details_find_in_table">在表中查找</string>
+    <string name="details_add">添加到合集</string>
     <string name="details_copy_to_clipboard">复制到剪贴板</string>
     <string name="details_share_link">分享链接</string>
     <string name="details_info_code">编码</string>

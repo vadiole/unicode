@@ -35,11 +35,6 @@ inline fun CodePointArray(size: Int, init: (Int) -> CodePoint): CodePointArray {
     return CodePointArray(IntArray(size) { index -> (init(index)).value })
 }
 
-inline fun CodePointArray.filterMaybe(predicate: (CodePoint) -> Boolean): CodePointArray {
-    val filtered = storage.filterTo(ArrayList(size)) { predicate(CodePoint(it)) }
-    return CodePointArray(filtered.toIntArray())
-}
-
 fun CodePointArray.binarySearch(element: CodePoint, fromIndex: Int = 0, toIndex: Int = size): Int {
     return java.util.Arrays.binarySearch(storage, fromIndex, toIndex, element.value)
 }

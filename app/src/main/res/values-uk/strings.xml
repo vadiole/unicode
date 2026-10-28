@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">Пошук</string>
+    <string name="search_close">Закрити пошук</string>
     <string name="search_no_results">Нічого не знайдено</string>
     <string name="search_recents">Останні</string>
+    <string name="search_title">Пошук</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">Торкайтеся символів, щоб зібрати їх</string>
+    <string name="dock_tip_copy">Скопіюйте добірку, торкнувшись панелі</string>
+    <string name="dock_backspace">Видалити останній символ</string>
+    <string name="dock_copy_all">Копіювати все</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Налаштування</string>
+    <string name="settings_back">Назад</string>
+    <string name="settings_dock">Збирати дотиком</string>
+    <string name="settings_show_unsupported">Показувати непідтримувані символи</string>
+    <string name="settings_crash_reports">Звіти про збої</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Знайти в таблиці</string>
+    <string name="details_add">Додати до добірки</string>
     <string name="details_copy_to_clipboard">Копіювати в буфер обміну</string>
     <string name="details_share_link">Поділитися посиланням</string>
     <string name="details_info_code">Код</string>
@@ -23,7 +39,7 @@
     <string name="details_info_version">Версія</string>
 
     <!-- Crash report -->
-    <string name="crash_dialog_title">Unicode неочикуванно зупинився</string>
+    <string name="crash_dialog_title">Unicode неочікувано зупинився</string>
     <string name="crash_dialog_message">Надіслати звіт про збій?</string>
     <string name="crash_dont_ask_again">Більше не питати</string>
     <string name="crash_send">Надіслати</string>

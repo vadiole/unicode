@@ -43,11 +43,6 @@ inline var View.isVisible: Boolean
     }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun View.setPadding(@Px size: Int) {
-    setPadding(size, size, size, size)
-}
-
-@Suppress("NOTHING_TO_INLINE")
 inline fun View.setPaddingHorizontal(@Px size: Int) {
     setPadding(size, paddingTop, size, paddingBottom)
 }

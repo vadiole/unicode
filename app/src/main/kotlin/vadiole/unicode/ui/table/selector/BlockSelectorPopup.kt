@@ -5,7 +5,12 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.PopupWindow
 
-open class BlockSelectorPopup(val view: BlockSelectorView, x: Int, y: Int) : PopupWindow(view, x, y) {
+open class BlockSelectorPopup(val view: BlockSelectorView, x: Int, y: Int) :
+    PopupWindow(BlockSelectorSurfaceView(view.context, view), x, y) {
+
+    private val surfaceView: BlockSelectorSurfaceView
+        get() = contentView as BlockSelectorSurfaceView
+
     init {
         isFocusable = true
         animationStyle = 0
@@ -19,7 +24,7 @@ open class BlockSelectorPopup(val view: BlockSelectorView, x: Int, y: Int) : Pop
         val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val layoutParams = (container.layoutParams as WindowManager.LayoutParams).apply {
             flags = flags or WindowManager.LayoutParams.FLAG_DIM_BEHIND
-            dimAmount = 0.2f
+            dimAmount = 0.32f
         }
         windowManager.updateViewLayout(container, layoutParams)
     }
@@ -44,14 +49,42 @@ open class BlockSelectorPopup(val view: BlockSelectorView, x: Int, y: Int) : Pop
         }
     }
 
+    fun setAnchorX(x: Float) {
+        surfaceView.anchorX = x
+    }
+
+    private var isDismissing = false
+
     override fun dismiss() {
+        if (isDismissing) return
+        isDismissing = true
+        setTouchInteractive(false)
         dismissDim()
-        view.dismiss { super.dismiss() }
+        surfaceView.dismiss {
+            isDismissing = false
+            super.dismiss()
+        }
+    }
+
+    fun reopen() {
+        if (!isDismissing) return
+        isDismissing = false
+        setTouchInteractive(true)
+        dimBehind()
+        surfaceView.show()
+    }
+
+    private fun setTouchInteractive(interactive: Boolean) {
+        isTouchable = interactive
+        isFocusable = interactive
+        update()
     }
 
     override fun showAsDropDown(anchor: View?, xoff: Int, yoff: Int, gravity: Int) {
+        isTouchable = true
+        isFocusable = true
         super.showAsDropDown(anchor, xoff, yoff, gravity)
         dimBehind()
-        view.show()
+        surfaceView.show()
     }
 }

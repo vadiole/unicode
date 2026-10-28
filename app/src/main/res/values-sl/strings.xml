@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">Iskanje</string>
+    <string name="search_close">Zapri iskanje</string>
     <string name="search_no_results">Ni zadetkov</string>
     <string name="search_recents">Nedavno</string>
+    <string name="search_title">Iskanje</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">Tapnite znake, da jih zberete</string>
+    <string name="dock_tip_copy">Tapnite vrstico, da kopirate zbirko</string>
+    <string name="dock_backspace">Izbriši zadnji znak</string>
+    <string name="dock_copy_all">Kopiraj vse</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Nastavitve</string>
+    <string name="settings_back">Nazaj</string>
+    <string name="settings_dock">Tapnite za zbiranje</string>
+    <string name="settings_show_unsupported">Prikaži nepodprte znake</string>
+    <string name="settings_crash_reports">Poročila o napakah</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Poišči v tabeli</string>
+    <string name="details_add">Dodaj v zbirko</string>
     <string name="details_copy_to_clipboard">Kopiraj v odložišče</string>
     <string name="details_share_link">Deli povezavo</string>
     <string name="details_info_code">Koda</string>

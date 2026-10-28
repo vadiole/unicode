@@ -13,6 +13,7 @@ class SearchController(
     private val hasGlyph: (String) -> Boolean = glyphPaint::hasGlyph
     var searchResult: Array<SearchResult> = emptyArray()
     var recentResult: Array<SearchResult> = emptyArray()
+    var queryTokens: Array<String> = emptyArray()
 
     suspend fun loadRecents() {
         val codePoints = recentRepository.getRecents()
@@ -33,6 +34,7 @@ class SearchController(
 
     suspend fun search(query: String, count: Int = -1) {
         if (query.isEmpty()) {
+            queryTokens = emptyArray()
             searchResult = emptyArray()
             return
         }
@@ -63,6 +65,11 @@ class SearchController(
                     results.add(r)
                 }
             }
+            val unique = LinkedHashSet<String>(tokens.size)
+            for (t in tokens) unique.add(t.uppercase(java.util.Locale.ROOT))
+            queryTokens = unique.toTypedArray()
+        } else {
+            queryTokens = emptyArray()
         }
 
         searchResult = results.toTypedArray()

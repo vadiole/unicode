@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">検索</string>
+    <string name="search_close">検索を閉じる</string>
     <string name="search_no_results">結果が見つかりません</string>
     <string name="search_recents">履歴</string>
+    <string name="search_title">検索</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">文字をタップして集める</string>
+    <string name="dock_tip_copy">バーをタップしてコレクションをコピー</string>
+    <string name="dock_backspace">最後の文字を削除</string>
+    <string name="dock_copy_all">すべてコピー</string>
+
+    <!-- Settings -->
+    <string name="settings_title">設定</string>
+    <string name="settings_back">戻る</string>
+    <string name="settings_dock">タップで集める</string>
+    <string name="settings_show_unsupported">非対応の文字を表示</string>
+    <string name="settings_crash_reports">クラッシュレポート</string>
 
     <!-- Details -->
     <string name="details_find_in_table">テーブルで探す</string>
+    <string name="details_add">コレクションに追加</string>
     <string name="details_copy_to_clipboard">クリップボードにコピー</string>
     <string name="details_share_link">リンクを共有</string>
     <string name="details_info_code">コード</string>

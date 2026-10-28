@@ -2,14 +2,11 @@ package vadiole.unicode.ui.common
 
 import android.graphics.Canvas
 import android.graphics.ColorFilter
+import android.graphics.Path
 import android.graphics.PixelFormat
 import android.graphics.Rect
+import android.graphics.RectF
 
-/**
- * StateListDrawable with iOS-like rounded corners
- *
- * [Read more about Squircle](https://www.figma.com/blog/desperately-seeking-squircles)
- */
 class SquircleDrawable(
     cornerRadius: Int,
     topLeftRadius: Int = cornerRadius,
@@ -18,7 +15,14 @@ class SquircleDrawable(
     bottomLeftRadius: Int = cornerRadius,
 ) : StateColorDrawable() {
 
-    private val squircle = Squircle4(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius)
+    private val radii = floatArrayOf(
+        topLeftRadius.toFloat(),
+        topRightRadius.toFloat(),
+        bottomRightRadius.toFloat(),
+        bottomLeftRadius.toFloat(),
+    )
+    private val rect = RectF()
+    private val path = Path()
 
     override fun isStateful(): Boolean = true
 
@@ -30,10 +34,12 @@ class SquircleDrawable(
     override fun getOpacity(): Int = PixelFormat.OPAQUE
 
     override fun onBoundsChange(bounds: Rect) {
-        squircle.setBounds(bounds.left, bounds.top, bounds.right, bounds.bottom)
+        rect.set(bounds)
+        path.rewind()
+        path.addSquircle(rect, radii)
     }
 
     override fun draw(canvas: Canvas) {
-        canvas.drawPath(squircle.path, paint)
+        canvas.drawPath(path, paint)
     }
 }

@@ -19,7 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.view.ViewCompat
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import kotlin.math.atan2
 import kotlin.math.sqrt
 import kotlinx.coroutines.delay
@@ -35,20 +35,20 @@ import vadiole.unicode.ui.common.CharTextView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SpacerDrawable
 import vadiole.unicode.ui.common.SquircleDrawable
+import vadiole.unicode.ui.common.TEXT_SECONDARY
+import vadiole.unicode.ui.common.TEXT_TITLE
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
+import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.mono_semibold
 import vadiole.unicode.ui.common.navigationBars
-import vadiole.unicode.ui.common.roboto_regular
-import vadiole.unicode.ui.common.roboto_semibold
-import vadiole.unicode.ui.common.setLineHeightX
 import vadiole.unicode.ui.common.share
 import vadiole.unicode.ui.common.toClipboard
-import vadiole.unicode.ui.extension.getDividerPaint
+import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
 import vadiole.unicode.ui.extension.onLongClick
-import vadiole.unicode.ui.extension.setPadding
 
 class DetailsSheet(
     context: Context,
@@ -56,29 +56,34 @@ class DetailsSheet(
 ) : Screen(context) {
     interface Delegate {
         fun findInTable(codePoint: CodePoint)
+        fun addToDock(codePoint: CodePoint)
     }
 
     private var charObj: CharObj? = null
     private val screenPadding = 20.dp(context)
     private val verticalPadding = 10.dp(context)
+    private val titleHeight = 21.dp(context)
+    private val subtitleHeight = 18.dp(context)
+    private val charViewHeight = 200.dp(context)
+    private val actionGroupGap = 16.dp(context)
+    private val bottomBuffer = 36.dp(context)
+    private val hairlinePx = 1
+
     private val backgroundDrawable = SquircleDrawable(
         cornerRadius = 0,
         topLeftRadius = 20.dp(context),
         topRightRadius = 20.dp(context),
     )
     private val backgroundPaint = Paint()
-    private var vertical = 0
-    private val titleHeight = 21.dp(context)
-    private val title = TextView(context).apply(fun TextView.() {
-        layoutParams = frameParams(matchParent, titleHeight, gravity = Gravity.TOP)
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16f)
-        setLineHeightX(21.dp(context))
+
+    private val title = TextView(context).apply {
+        layoutParams = linearParams(matchParent, wrapContent)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_TITLE)
+        minHeight = titleHeight
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         includeFontPadding = false
-        vertical += titleHeight
         ellipsize = TextUtils.TruncateAt.END
-        typeface = roboto_semibold
-        letterSpacing = 0.03f
+        typeface = mono_semibold
         isSingleLine = true
         onLongClick = {
             charObj?.let { value ->
@@ -89,27 +94,35 @@ class DetailsSheet(
                 }
             }
         }
-    })
-    private val subtitleHeight = 18.dp(context)
-    private val subtitle = TextView(context).apply(fun TextView.() {
-        layoutParams = frameParams(matchParent, subtitleHeight, gravity = Gravity.TOP, marginTop = vertical)
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13f)
-        setLineHeightX(18.dp(context))
+    }
+
+    private val subtitle = TextView(context).apply {
+        layoutParams = linearParams(matchParent, wrapContent)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
+        minHeight = subtitleHeight
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         textAlignment = TEXT_ALIGNMENT_CENTER
-        vertical += subtitleHeight + verticalPadding
         ellipsize = TextUtils.TruncateAt.END
         includeFontPadding = false
-        typeface = roboto_regular
-        letterSpacing = 0.02f
+        typeface = mono_regular
         isSingleLine = true
-    })
-    private var divider1PositionY = 2f * screenPadding + titleHeight + subtitleHeight
-    private val charViewHeight = 200.dp(context)
+    }
+
+    private val topBlock = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        layoutParams = linearParams(matchParent, wrapContent)
+        setPadding(screenPadding, screenPadding, screenPadding, 0)
+        addView(title)
+        addView(subtitle)
+    }
+
+    private val divider1 = View(context).apply {
+        layoutParams = linearParams(matchParent, hairlinePx, marginTop = screenPadding)
+        setBackgroundColor(context.getColor(R.color.windowDivider))
+    }
+
     private val charView = CharTextView(context).apply {
-        vertical += verticalPadding
-        layoutParams = frameParams(matchParent, charViewHeight, gravity = Gravity.TOP, marginTop = vertical)
-        vertical += charViewHeight
+        layoutParams = linearParams(matchParent, charViewHeight)
         textSize = 100f.dp(context)
         onLongClick = {
             charObj?.let { value ->
@@ -121,6 +134,7 @@ class DetailsSheet(
             }
         }
     }
+
     private val zoomMatrix = Matrix()
     private val tmpMatrixValues = FloatArray(9)
     private val identityValues = FloatArray(9).also { Matrix().getValues(it) }
@@ -134,15 +148,16 @@ class DetailsSheet(
     private var isZooming = false
     private var snapBackAnim: ValueAnimator? = null
     private val minSpan = 10.dp(context).toFloat()
+
     private companion object {
         const val RAD_TO_DEG = (180.0 / Math.PI).toFloat()
         const val TWO_PI = (2.0 * Math.PI).toFloat()
         val PI_F = Math.PI.toFloat()
     }
-    private val infoViewHeight = 56.dp(context)
+
     private val infoViews = List(4) {
         CharInfoView(context).apply {
-            layoutParams = linearParams(matchParent, infoViewHeight, weight = 1f)
+            layoutParams = linearParams(matchParent, wrapContent, weight = 1f)
             onLongClick = {
                 charObj?.let { value ->
                     val info = value.infoValues[it]
@@ -154,21 +169,27 @@ class DetailsSheet(
             }
         }
     }
+
     private val infoViewsContainer = LinearLayout(context).apply {
-        layoutParams = frameParams(matchParent, infoViewHeight, Gravity.TOP, marginTop = vertical)
-        vertical += infoViewHeight + verticalPadding * 3
+        layoutParams = linearParams(matchParent, wrapContent)
         showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
         dividerDrawable = SpacerDrawable(width = 8.dp(context))
-        infoViews.forEach { infoView ->
-            addView(infoView)
+        infoViews.forEach(::addView)
+    }
+
+    private val actionAdd = ActionCell(context, context.getString(R.string.details_add), topItem = true).apply {
+        layoutParams = linearParams(matchParent, wrapContent)
+        setIcon(R.drawable.ic_add)
+        onClick = {
+            charObj?.let { value ->
+                delegate.addToDock(CodePoint(value.codePointRaw))
+            }
         }
     }
 
-    private val actionCellHeight = 48.dp(context)
-    private val actionViewInTable = ActionCell(context, context.getString(R.string.details_find_in_table)).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
+    private val actionViewInTable = ActionCell(context, context.getString(R.string.details_find_in_table), bottomItem = true).apply {
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_find_in_table)
-        vertical += actionCellHeight + 16.dp(context)
         onClick = {
             charObj?.let { value ->
                 delegate.findInTable(CodePoint(value.codePointRaw))
@@ -177,9 +198,8 @@ class DetailsSheet(
     }
 
     private val actionCopy = ActionCell(context, context.getString(R.string.details_copy_to_clipboard), topItem = true).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_copy)
-        vertical += actionCellHeight
         onClick = {
             charObj?.let { value ->
                 val char = value.char
@@ -190,11 +210,10 @@ class DetailsSheet(
             }
         }
     }
-    private var divider2PositionY = vertical.toFloat() + screenPadding
+
     private val actionShare = ActionCell(context, context.getString(R.string.details_share_link), bottomItem = true).apply {
-        layoutParams = frameParams(matchParent, actionCellHeight, marginTop = vertical)
+        layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_link)
-        vertical += actionCellHeight
         var canClick = true
         onClick = {
             if (canClick) {
@@ -218,63 +237,136 @@ class DetailsSheet(
         }
     }
 
+    private val actionFindInTable = ActionCell(context, context.getString(R.string.details_find_in_table)).apply {
+        layoutParams = linearParams(matchParent, wrapContent)
+        setIcon(R.drawable.ic_find_in_table)
+        visibility = GONE
+        onClick = {
+            charObj?.let { value ->
+                delegate.findInTable(CodePoint(value.codePointRaw))
+            }
+        }
+    }
+
+    private val divider2 = View(context).apply {
+        layoutParams = linearParams(matchParent, hairlinePx)
+        setBackgroundColor(context.getColor(R.color.windowDivider))
+    }
+
+    private val divider3 = View(context).apply {
+        layoutParams = linearParams(matchParent, hairlinePx)
+        setBackgroundColor(context.getColor(R.color.windowDivider))
+    }
+
+    private val tableActionGroup = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        layoutParams = linearParams(matchParent, wrapContent, marginTop = verticalPadding * 3)
+        addView(actionAdd)
+        addView(divider3)
+        addView(actionViewInTable)
+        addView(actionFindInTable)
+    }
+
+    fun setDockEnabled(enabled: Boolean) {
+        val dockVisibility = if (enabled) VISIBLE else GONE
+        actionAdd.visibility = dockVisibility
+        actionViewInTable.visibility = dockVisibility
+        divider3.visibility = dockVisibility
+        actionFindInTable.visibility = if (enabled) GONE else VISIBLE
+    }
+
+    private val actionGroup = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        layoutParams = linearParams(matchParent, wrapContent, marginTop = actionGroupGap)
+        addView(actionCopy)
+        addView(divider2)
+        addView(actionShare)
+    }
+
+    private val bottomBlock = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        layoutParams = linearParams(matchParent, wrapContent)
+        setPadding(screenPadding, 0, screenPadding, screenPadding + bottomBuffer)
+        addView(infoViewsContainer)
+        addView(tableActionGroup)
+        addView(actionGroup)
+    }
+
+    private val content = object : LinearLayout(context) {
+        override fun drawChild(canvas: Canvas, child: View, drawingTime: Long): Boolean {
+            if (child === charView && !zoomMatrix.isIdentity) {
+                val count = canvas.save()
+                canvas.concat(zoomMatrix)
+                val result = super.drawChild(canvas, child, drawingTime)
+                canvas.restoreToCount(count)
+                return result
+            }
+            return super.drawChild(canvas, child, drawingTime)
+        }
+    }.apply {
+        orientation = LinearLayout.VERTICAL
+        layoutParams = frameParams(matchParent, wrapContent)
+        addView(topBlock)
+        addView(divider1)
+        addView(charView)
+        addView(bottomBlock)
+    }
+
     init {
-        backgroundDrawable.colors = this.context.getColorStateList(R.color.dialogBackground)
-        backgroundPaint.color = this.context.getColor(R.color.dialogBackground)
+        backgroundDrawable.colors = this.context.getColorStateList(R.color.layer0)
+        backgroundPaint.color = this.context.getColor(R.color.layer0)
         charView.textColor = this.context.getColor(R.color.windowTextPrimary)
         title.setTextColor(this.context.getColor(R.color.windowTextPrimary))
         subtitle.setTextColor(this.context.getColor(R.color.windowTextSecondary))
         background = backgroundDrawable
-        val height = vertical + screenPadding * 2 + 36.dp(context)
-        layoutParams = frameParams(matchParent, height, gravity = Gravity.BOTTOM)
+        layoutParams = frameParams(matchParent, wrapContent, gravity = Gravity.BOTTOM)
         clipChildren = false
-        clipToPadding = false
-        setPadding(screenPadding)
         setWillNotDraw(false)
-        addView(title)
-        addView(subtitle)
-        addView(charView)
-        addView(infoViewsContainer)
-        addView(actionViewInTable)
-        addView(actionCopy)
-        addView(actionShare)
-        charView.setOnTouchListener { v, event ->
-            when (event.actionMasked) {
-                MotionEvent.ACTION_DOWN -> {
-                    pointerId0 = event.getPointerId(0)
-                    false
-                }
-                MotionEvent.ACTION_POINTER_DOWN -> {
-                    v.cancelLongPress()
-                    parent?.requestDisallowInterceptTouchEvent(true)
-                    snapBackAnim?.cancel()
-                    pointerId0 = event.getPointerId(0)
-                    pointerId1 = event.getPointerId(1)
-                    val x0 = event.getX(0)
-                    val y0 = event.getY(0)
-                    val x1 = event.getX(1)
-                    val y1 = event.getY(1)
-                    val dx = x1 - x0
-                    val dy = y1 - y0
-                    prevSpan = sqrt(dx * dx + dy * dy).coerceAtLeast(minSpan)
-                    prevAngle = atan2(dy.toDouble(), dx.toDouble()).toFloat()
-                    prevFocusX = (x0 + x1) / 2f
-                    prevFocusY = (y0 + y1) / 2f
-                    isZooming = true
-                    charView.translationZ = 1f
-                    if (!userConfig.usedPinchToZoom) {
-                        userConfig.usedPinchToZoom = true
-                    }
-                    true
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    if (!isZooming) return@setOnTouchListener false
-                    val idx0 = event.findPointerIndex(pointerId0)
-                    val idx1 = event.findPointerIndex(pointerId1)
-                    if (idx0 < 0 || idx1 < 0) {
-                        endZoomGesture()
-                        return@setOnTouchListener true
-                    }
+        addView(content)
+        charView.setOnTouchListener(::handleZoomTouch)
+        ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
+            bottomBlock.updatePadding(bottom = screenPadding + bottomBuffer + insets.navigationBars.bottom)
+            insets
+        }
+    }
+
+    private fun handleZoomTouch(v: View, event: MotionEvent): Boolean = when (event.actionMasked) {
+        MotionEvent.ACTION_DOWN -> {
+            pointerId0 = event.getPointerId(0)
+            false
+        }
+        MotionEvent.ACTION_POINTER_DOWN -> {
+            v.cancelLongPress()
+            parent?.requestDisallowInterceptTouchEvent(true)
+            snapBackAnim?.cancel()
+            pointerId0 = event.getPointerId(0)
+            pointerId1 = event.getPointerId(1)
+            val x0 = event.getX(0)
+            val y0 = event.getY(0)
+            val x1 = event.getX(1)
+            val y1 = event.getY(1)
+            val dx = x1 - x0
+            val dy = y1 - y0
+            prevSpan = sqrt(dx * dx + dy * dy).coerceAtLeast(minSpan)
+            prevAngle = atan2(dy.toDouble(), dx.toDouble()).toFloat()
+            prevFocusX = (x0 + x1) / 2f
+            prevFocusY = (y0 + y1) / 2f
+            isZooming = true
+            charView.translationZ = 1f
+            if (!userConfig.usedPinchToZoom) {
+                userConfig.usedPinchToZoom = true
+            }
+            true
+        }
+        MotionEvent.ACTION_MOVE -> {
+            if (!isZooming) {
+                false
+            } else {
+                val idx0 = event.findPointerIndex(pointerId0)
+                val idx1 = event.findPointerIndex(pointerId1)
+                if (idx0 < 0 || idx1 < 0) {
+                    endZoomGesture()
+                } else {
                     val x0 = event.getX(idx0)
                     val y0 = event.getY(idx0)
                     val x1 = event.getX(idx1)
@@ -292,55 +384,33 @@ class DetailsSheet(
                     val parentFocusX = charView.left + currFocusX
                     val parentFocusY = charView.top + currFocusY
                     zoomMatrix.postScale(dScale, dScale, parentFocusX, parentFocusY)
-                    zoomMatrix.postRotate(
-                        dAngle * RAD_TO_DEG,
-                        parentFocusX,
-                        parentFocusY,
-                    )
+                    zoomMatrix.postRotate(dAngle * RAD_TO_DEG, parentFocusX, parentFocusY)
                     zoomMatrix.postTranslate(currFocusX - prevFocusX, currFocusY - prevFocusY)
                     prevSpan = currSpan
                     prevAngle = currAngle
                     prevFocusX = currFocusX
                     prevFocusY = currFocusY
-                    invalidate()
-                    true
+                    content.invalidate()
                 }
-                MotionEvent.ACTION_POINTER_UP -> {
-                    val liftedId = event.getPointerId(event.actionIndex)
-                    if (liftedId == pointerId0 || liftedId == pointerId1) {
-                        endZoomGesture()
-                    }
-                    true
-                }
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    if (isZooming) {
-                        endZoomGesture()
-                        true
-                    } else {
-                        false
-                    }
-                }
-                else -> false
+                true
             }
         }
-        ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
-            val bottomInset = insets.navigationBars.bottom
-            updateLayoutParams<LayoutParams> {
-                this.height = height + bottomInset
+        MotionEvent.ACTION_POINTER_UP -> {
+            val liftedId = event.getPointerId(event.actionIndex)
+            if (liftedId == pointerId0 || liftedId == pointerId1) {
+                endZoomGesture()
             }
-            insets
+            true
         }
-    }
-
-    override fun drawChild(canvas: Canvas, child: View, drawingTime: Long): Boolean {
-        if (child === charView && !zoomMatrix.isIdentity) {
-            val count = canvas.save()
-            canvas.concat(zoomMatrix)
-            val result = super.drawChild(canvas, child, drawingTime)
-            canvas.restoreToCount(count)
-            return result
+        MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+            if (isZooming) {
+                endZoomGesture()
+                true
+            } else {
+                false
+            }
         }
-        return super.drawChild(canvas, child, drawingTime)
+        else -> false
     }
 
     private fun endZoomGesture() {
@@ -362,13 +432,13 @@ class DetailsSheet(
                     tmpMatrixValues[i] = identityValues[i] + (snapBackStartValues[i] - identityValues[i]) * t
                 }
                 zoomMatrix.setValues(tmpMatrixValues)
-                invalidate()
+                content.invalidate()
             }
             addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     zoomMatrix.reset()
                     charView.translationZ = 0f
-                    invalidate()
+                    content.invalidate()
                 }
             })
             start()
@@ -401,19 +471,11 @@ class DetailsSheet(
         charView.translationZ = 0f
     }
 
-    private val dividerPaint = getDividerPaint()
     override fun draw(canvas: Canvas) {
         canvas.drawRect(
             0f, measuredHeight - 20f.dp(context), measuredWidth.toFloat(), measuredHeight * 200f,
             backgroundPaint
         )
         super.draw(canvas)
-        canvas.drawLine(0f, divider1PositionY, measuredWidth.toFloat(), divider1PositionY, dividerPaint)
-        canvas.drawLine(
-            screenPadding.toFloat(),
-            divider2PositionY,
-            measuredWidth.toFloat() - screenPadding, divider2PositionY,
-            dividerPaint,
-        )
     }
 }

@@ -10,11 +10,27 @@
 
     <!-- Search -->
     <string name="search_hint">Поиск</string>
+    <string name="search_close">Закрыть поиск</string>
     <string name="search_no_results">Ничего не найдено</string>
     <string name="search_recents">Недавние</string>
+    <string name="search_title">Поиск</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">Нажимайте на символы, чтобы собрать их</string>
+    <string name="dock_tip_copy">Скопируйте коллекцию, нажав на панель</string>
+    <string name="dock_backspace">Удалить последний символ</string>
+    <string name="dock_copy_all">Копировать всё</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_back">Назад</string>
+    <string name="settings_dock">Собирать нажатием</string>
+    <string name="settings_show_unsupported">Показывать неподдерживаемые символы</string>
+    <string name="settings_crash_reports">Отчёты о сбоях</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Найти в таблице</string>
+    <string name="details_add">Добавить в коллекцию</string>
     <string name="details_copy_to_clipboard">Копировать в буфер обмена</string>
     <string name="details_share_link">Поделиться ссылкой</string>
     <string name="details_info_code">Код</string>
