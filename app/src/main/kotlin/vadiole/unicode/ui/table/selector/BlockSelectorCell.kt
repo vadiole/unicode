@@ -1,6 +1,7 @@
 package vadiole.unicode.ui.table.selector
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.text.TextUtils
 import android.util.TypedValue
@@ -28,6 +29,9 @@ class BlockSelectorCell(context: Context) : TextView(context) {
         setPadding(16.dp(context), 4.dp(context), 16.dp(context), 4.dp(context))
         maxLines = 3
         ellipsize = TextUtils.TruncateAt.END
-        background = context.rippleDrawable(ColorDrawable(context.getColor(R.color.windowSurface)))
+        background = context.rippleDrawable(
+            content = ColorDrawable(context.getColor(R.color.windowSurface)),
+            mask = ColorDrawable(Color.WHITE),
+        )
     }
 }

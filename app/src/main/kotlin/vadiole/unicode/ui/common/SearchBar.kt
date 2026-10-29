@@ -3,6 +3,9 @@ package vadiole.unicode.ui.common
 import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.drawable.InsetDrawable
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RoundRectShape
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
@@ -57,6 +60,9 @@ class SearchBar(
 
     private val searchField = SearchField(context) { query -> delegate.onTextChanged(query) }.apply {
         hint = context.getString(R.string.search_hint)
+        val radius = fieldSize / 2f
+        val mask = ShapeDrawable(RoundRectShape(FloatArray(8) { radius }, null, null))
+        background = InsetDrawable(context.rippleDrawable(mask = mask), 0, touchExtension, 0, touchExtension)
         setPadding(iconInset + iconSize + 8.dp(context), touchExtension, edgePadding, touchExtension)
     }
 

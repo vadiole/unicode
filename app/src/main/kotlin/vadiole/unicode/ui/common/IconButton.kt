@@ -1,11 +1,9 @@
 package vadiole.unicode.ui.common
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.InsetDrawable
-import android.graphics.drawable.RippleDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import android.view.View
@@ -67,7 +65,7 @@ class IconButton(
 
     private fun updateBackgroundInset() {
         if (!floating) {
-            val ripple = RippleDrawable(ColorStateList.valueOf(context.getColor(R.color.ripple)), null, null).apply {
+            val ripple = context.rippleDrawable(mask = rippleMask).apply {
                 radius = 20.dp(context)
             }
             background = InsetDrawable(ripple, paddingLeft, paddingTop, paddingRight, paddingBottom)
@@ -75,7 +73,7 @@ class IconButton(
         }
         background = InsetDrawable(surfaceDrawable, paddingLeft, paddingTop, paddingRight, paddingBottom)
         val mask = InsetDrawable(rippleMask, paddingLeft, paddingTop, paddingRight, paddingBottom)
-        foreground = RippleDrawable(ColorStateList.valueOf(context.getColor(R.color.ripple)), null, mask)
+        foreground = context.rippleDrawable(mask = mask)
     }
 
     private fun updateIconBounds() {

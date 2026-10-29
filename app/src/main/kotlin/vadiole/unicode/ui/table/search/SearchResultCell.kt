@@ -1,6 +1,7 @@
 package vadiole.unicode.ui.table.search
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.text.Spannable
 import android.text.SpannableString
@@ -57,7 +58,10 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         minimumHeight = 48.dp(context)
         addView(name, frameParams(matchParent, wrapContent, Gravity.CENTER_VERTICAL, marginLeft = 64.dp(context)))
         addView(charView, frameParams(64.dp(context), matchParent, gravity = Gravity.LEFT))
-        background = context.rippleDrawable(ColorDrawable(context.getColor(R.color.windowSurface)))
+        background = context.rippleDrawable(
+            content = ColorDrawable(context.getColor(R.color.windowSurface)),
+            mask = ColorDrawable(Color.WHITE),
+        )
         isClickable = true
         isFocusable = true
         clipChildren = false

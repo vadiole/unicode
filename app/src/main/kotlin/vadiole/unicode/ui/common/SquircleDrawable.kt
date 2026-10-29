@@ -31,7 +31,7 @@ class SquircleDrawable(
     override fun setColorFilter(colorFilter: ColorFilter?) = Unit
 
     @Deprecated("Deprecated in Java")
-    override fun getOpacity(): Int = PixelFormat.OPAQUE
+    override fun getOpacity(): Int = PixelFormat.TRANSLUCENT
 
     override fun onBoundsChange(bounds: Rect) {
         rect.set(bounds)

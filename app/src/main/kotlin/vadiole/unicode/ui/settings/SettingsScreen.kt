@@ -1,6 +1,7 @@
 package vadiole.unicode.ui.settings
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.TypedValue
 import android.view.Gravity
@@ -156,7 +157,10 @@ class SettingsScreen(
         }
 
         init {
-            background = context.rippleDrawable(ColorDrawable(context.getColor(R.color.layer1)))
+            background = context.rippleDrawable(
+                content = ColorDrawable(context.getColor(R.color.layer1)),
+                mask = ColorDrawable(Color.WHITE),
+            )
             minimumHeight = 56.dp(context)
             val labelView = TextView(context).apply {
                 setPadding(0, 12.dp(context), 0, 12.dp(context))

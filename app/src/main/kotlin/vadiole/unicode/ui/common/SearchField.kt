@@ -46,8 +46,18 @@ class SearchField(context: Context, private val onQueryChanged: (String) -> Unit
         inputType = InputType.TYPE_CLASS_TEXT
     }
 
+    override fun drawableStateChanged() {
+        super.drawableStateChanged()
+        background?.state = if (isEnabled && isPressed) PRESSED_STATE else EMPTY_STATE
+    }
+
     fun clearQuery() {
         lastInput = ""
         setText("")
+    }
+
+    private companion object {
+        val PRESSED_STATE = intArrayOf(android.R.attr.state_enabled, android.R.attr.state_pressed)
+        val EMPTY_STATE = intArrayOf()
     }
 }

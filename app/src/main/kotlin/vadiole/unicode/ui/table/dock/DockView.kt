@@ -6,6 +6,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.text.TextPaint
 import android.util.TypedValue
@@ -148,7 +149,10 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     init {
         orientation = VERTICAL
         clipChildren = false
-        background = context.rippleDrawable(ColorDrawable(context.getColor(R.color.layer1)))
+        background = context.rippleDrawable(
+            content = ColorDrawable(context.getColor(R.color.layer1)),
+            mask = ColorDrawable(Color.WHITE),
+        )
         setWillNotDraw(false)
         isClickable = true
         contentDescription = context.getString(R.string.dock_copy_all)

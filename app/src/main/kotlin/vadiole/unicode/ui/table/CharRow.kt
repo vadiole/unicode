@@ -2,11 +2,9 @@ package vadiole.unicode.ui.table
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.RippleDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import android.view.HapticFeedbackConstants
@@ -19,6 +17,7 @@ import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.rippleDrawable
 
 class CharRow(
     context: Context,
@@ -63,11 +62,7 @@ class CharRow(
     private var rippleRadius: Float = maxRippleRadius
     private var actionDownIndex = -1
     private var highlightIndex = -1
-    private val ripple = RippleDrawable(
-        ColorStateList.valueOf(context.getColor(R.color.ripple)),
-        null,
-        ShapeDrawable(OvalShape()),
-    ).apply {
+    private val ripple = context.rippleDrawable(mask = ShapeDrawable(OvalShape())).apply {
         callback = this@CharRow
     }
 
