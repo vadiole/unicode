@@ -39,20 +39,29 @@ class SearchController(
             return
         }
 
-        val results = mutableListOf<SearchResult>()
-
-        val directCodePoint = tryParseCharLiteral(query)
         val trimmed = query.trim()
-        val hexCodePoint = tryParseHexCodePoint(trimmed)
-        val codePointMatch = hexCodePoint ?: directCodePoint
-        if (codePointMatch != null) {
-            val direct = unicodeStorage.findCharByCodePoint(codePointMatch, hasGlyph)
-            if (direct != null) {
-                results.add(direct)
+        val codeQuery = parseCodeQuery(trimmed)
+        if (codeQuery != null && codeQuery.explicit) {
+            queryTokens = emptyArray()
+            searchResult = findByCode(codeQuery, count)
+            return
+        }
+
+        val results = mutableListOf<SearchResult>()
+        var directCodePoint = -1
+        if (codeQuery != null) {
+            results.addAll(findByCode(codeQuery, count))
+        } else {
+            directCodePoint = tryParseCharLiteral(query) ?: -1
+            if (directCodePoint >= 0) {
+                val direct = unicodeStorage.findCharByCodePoint(directCodePoint, hasGlyph)
+                if (direct != null) {
+                    results.add(direct)
+                }
             }
         }
 
-        if (hexCodePoint == null && trimmed.isNotEmpty()) {
+        if (trimmed.isNotEmpty()) {
             val tokens = whitespaceRegex.split(trimmed)
             val nameResults = if (tokens.size == 1) {
                 unicodeStorage.findCharsByName(tokens[0], count, hasGlyph)
@@ -61,7 +70,9 @@ class SearchController(
             }
 
             for (r in nameResults) {
-                if (codePointMatch == null || r.codePoint.value != codePointMatch) {
+                val cp = r.codePoint.value
+                val duplicate = codeQuery?.matches(cp) ?: (cp == directCodePoint)
+                if (!duplicate) {
                     results.add(r)
                 }
             }
@@ -75,17 +86,60 @@ class SearchController(
         searchResult = results.toTypedArray()
     }
 
-    private fun tryParseHexCodePoint(input: String): Int? {
-        val stripped = when {
-            input.startsWith("U+", ignoreCase = true) -> input.substring(2)
-            input.startsWith("0x", ignoreCase = true) -> input.substring(2)
-            input.startsWith("\\u", ignoreCase = true) -> input.substring(2)
+    private suspend fun findByCode(query: CodeQuery, count: Int): Array<SearchResult> {
+        return unicodeStorage.findCharsByCodePointPrefix(query.exact, query.prefixLength, query.ranges, count, hasGlyph)
+    }
+
+    private fun parseCodeQuery(input: String): CodeQuery? {
+        val explicit = input.startsWith("U+", ignoreCase = true) ||
+                input.startsWith("0x", ignoreCase = true) ||
+                input.startsWith("\\u", ignoreCase = true)
+        val digits = when {
+            explicit -> input.substring(2)
+            input.startsWith("u", ignoreCase = true) -> input.substring(1)
+            input.length >= 2 -> input
             else -> return null
         }
-        if (stripped.isEmpty() || stripped.length > 6) return null
-        if (!stripped.all { it in '0'..'9' || it in 'a'..'f' || it in 'A'..'F' }) return null
-        val value = stripped.toIntOrNull(16) ?: return null
-        return if (value in 0..0x10FFFF) value else null
+        if (digits.isEmpty() || digits.length > 8) return null
+        var value = 0
+        var hasDigit = false
+        for (c in digits) {
+            val d = when (c) {
+                in '0'..'9' -> c - '0'
+                in 'a'..'f' -> c - 'a' + 10
+                in 'A'..'F' -> c - 'A' + 10
+                else -> return null
+            }
+            if (d < 10) hasDigit = true
+            value = value * 16 + d
+            if (value > MAX_CODE_POINT) return null
+        }
+        if (!explicit && !hasDigit) return null
+
+        val ranges = IntArray(6)
+        var rangeCount = 0
+        val leadingZero = digits[0] == '0'
+        for (width in maxOf(4, digits.length + 1)..6) {
+            if (width > 4 && leadingZero) break
+            val shift = 4 * (width - digits.length)
+            val lo = value.toLong() shl shift
+            if (lo > MAX_CODE_POINT) break
+            val hi = minOf(lo + (1L shl shift) - 1, MAX_CODE_POINT.toLong())
+            ranges[rangeCount * 2] = lo.toInt()
+            ranges[rangeCount * 2 + 1] = hi.toInt()
+            rangeCount++
+        }
+        return CodeQuery(explicit, value, digits.length, ranges.copyOf(rangeCount * 2))
+    }
+
+    private class CodeQuery(val explicit: Boolean, val exact: Int, val prefixLength: Int, val ranges: IntArray) {
+        fun matches(cp: Int): Boolean {
+            if (cp == exact) return true
+            for (i in ranges.indices step 2) {
+                if (cp >= ranges[i] && cp <= ranges[i + 1]) return true
+            }
+            return false
+        }
     }
 
     private fun tryParseCharLiteral(input: String): Int? {
@@ -96,5 +150,6 @@ class SearchController(
 
     companion object {
         private val whitespaceRegex = "\\s+".toRegex()
+        private const val MAX_CODE_POINT = 0x10FFFF
     }
 }

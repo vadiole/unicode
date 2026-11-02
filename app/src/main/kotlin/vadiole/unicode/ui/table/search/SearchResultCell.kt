@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.text.style.BackgroundColorSpan
 import android.util.TypedValue
 import android.view.Gravity
@@ -24,6 +25,7 @@ import vadiole.unicode.ui.common.mono_regular
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
 import vadiole.unicode.ui.extension.onLongClick
+import java.util.Locale
 
 class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context) {
 
@@ -85,10 +87,25 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
 
     fun bind(data: SearchResult, abbreviations: Map<CodePoint, String>, tokens: Array<String>?) {
-        name.text = buildHighlightedName(data.name, tokens)
+        val highlightedName = buildHighlightedName(data.name, tokens)
+        name.text = if (data.codeMatchLength == 0) {
+            highlightedName
+        } else {
+            appendCode(highlightedName, data.codePoint.value, data.codeMatchLength, data.codeMatchAtEnd)
+        }
         charView.text = data.codePoint.char
         charView.abbreviation = abbreviations[data.codePoint]
         codePoint = data.codePoint
+    }
+
+    private fun appendCode(name: CharSequence, codePoint: Int, matchLength: Int, matchAtEnd: Boolean): CharSequence {
+        val hex = Integer.toHexString(codePoint).uppercase(Locale.ROOT).padStart(4, '0')
+        val builder = SpannableStringBuilder(name).append(" [U+").append(hex).append(']')
+        val hexEnd = builder.length - 1
+        val length = minOf(matchLength, hex.length)
+        val start = if (matchAtEnd) hexEnd - length else hexEnd - hex.length
+        builder.setSpan(BackgroundColorSpan(highlightColor), start, start + length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        return builder
     }
 
     private fun buildHighlightedName(source: String, tokens: Array<String>?): CharSequence {

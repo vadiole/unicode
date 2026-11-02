@@ -234,6 +234,40 @@ class UnicodeStorage(private val context: Context) {
         result
     }
 
+    suspend fun findCharsByCodePointPrefix(
+        exact: Int,
+        prefixLength: Int,
+        ranges: IntArray,
+        count: Int,
+        hasGlyph: (String) -> Boolean,
+    ): Array<SearchResult> = withContext(dispatcher) {
+        val sql = StringBuilder("SELECT code_point, name, category FROM char WHERE code_point = ?")
+        val args = ArrayList<String>(ranges.size + 2)
+        args.add(exact.toString())
+        for (i in ranges.indices step 2) {
+            sql.append(" OR code_point BETWEEN ? AND ?")
+            args.add(ranges[i].toString())
+            args.add(ranges[i + 1].toString())
+        }
+        sql.append(" ORDER BY code_point = ? DESC, code_point")
+        args.add(exact.toString())
+        if (count > 0) sql.append(" LIMIT ").append(count)
+        val results: ArrayList<SearchResult>
+        openDatabase().rawQuery(sql.toString(), args.toTypedArray()).use { cursor ->
+            val codePointIndex = cursor.getColumnIndex("code_point")
+            val nameIndex = cursor.getColumnIndex("name")
+            val categoryIndex = cursor.getColumnIndex("category")
+            results = ArrayList(cursor.count)
+            while (cursor.moveToNext()) {
+                val cp = CodePoint(cursor.getInt(codePointIndex))
+                if (isShown(cp, cursor.getString(categoryIndex), hasGlyph)) {
+                    results.add(SearchResult(cp, cursor.getString(nameIndex), prefixLength, cp.value == exact))
+                }
+            }
+        }
+        results.toTypedArray()
+    }
+
     suspend fun findCharsByName(input: String, count: Int, hasGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
         val escaped = escapeLike(input.uppercase())
         val query = if (count > 0) {
