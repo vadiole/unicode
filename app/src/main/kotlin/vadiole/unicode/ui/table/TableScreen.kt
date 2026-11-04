@@ -22,6 +22,7 @@ import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat.setWindowInsetsAnimationCallback
 import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -179,8 +180,10 @@ class TableScreen(
         override fun onTextChanged(query: String) = runSearch(query)
         override fun onAnimationRunning(progress: Float) = applySearchProgress(progress)
     }
+    private val topBarHeight = 48.dp(context)
     private val searchBarHeight = SearchBar.barHeight(context)
-    private val searchBar = SearchBar(context, searchDelegate)
+    private var searchAtTop = userConfig.searchAtTop
+    private var searchBar = SearchBar(context, searchDelegate, atTop = searchAtTop)
     private val dockDelegate: DockView.Delegate = object : DockView.Delegate {
         override fun onBackspace() {
             flyOverlay.cancelAll()
@@ -317,6 +320,7 @@ class TableScreen(
         }
         clipChildren = false
         clipToPadding = false
+        isFocusableInTouchMode = true
         statusBarPaint.color = context.getColor(R.color.layer1)
         setWillNotDraw(false)
         setOnApplyWindowInsetsListener(this) { _, insets ->
@@ -355,7 +359,7 @@ class TableScreen(
             }
         )
         addView(rootContainer, frameParams(matchParent, matchParent))
-        rootContainer.addView(topBar, linearParams(matchParent, 48.dp(context)))
+        rootContainer.addView(topBar, linearParams(matchParent, topBarHeight))
         rootContainer.addView(contentContainer, linearParams(matchParent, 0, weight = 1f))
         contentContainer.addView(tableLayer, frameParams(matchParent, matchParent))
         contentContainer.addView(resultsLayer, frameParams(matchParent, matchParent))
@@ -366,8 +370,8 @@ class TableScreen(
         resultsLayer.addView(noResultsView, frameParams(matchParent, matchParent))
         resultsLayer.addView(searchFastScrollView, frameParams(matchParent, matchParent))
         addView(bottomContainer, frameParams(matchParent, wrapContent, gravity = Gravity.BOTTOM))
-        bottomContainer.addView(searchBar, linearParams(matchParent, searchBarHeight))
         bottomContainer.addView(dockView, linearParams(matchParent, wrapContent))
+        attachSearchBar()
         addView(flyOverlay, frameParams(matchParent, matchParent))
         dockView.setText(dockController.text)
         dockView.scrollPosition = userConfig.dockScroll
@@ -445,6 +449,28 @@ class TableScreen(
         return false
     }
 
+    fun setSearchAtTop(atTop: Boolean) {
+        if (searchAtTop == atTop) return
+        hideSearch()
+        (searchBar.parent as ViewGroup).removeView(searchBar)
+        searchAtTop = atTop
+        searchBar = SearchBar(context, searchDelegate, atTop = atTop)
+        attachSearchBar()
+        applySearchProgress(0f)
+        updateContentInsets()
+    }
+
+    private fun attachSearchBar() {
+        if (searchAtTop) {
+            rootContainer.addView(searchBar, 1, linearParams(matchParent, searchBarHeight))
+        } else {
+            bottomContainer.addView(searchBar, 0, linearParams(matchParent, searchBarHeight))
+        }
+        contentContainer.updateLayoutParams<LinearLayout.LayoutParams> {
+            bottomMargin = if (searchAtTop) -topBarHeight else 0
+        }
+    }
+
     fun setDockEnabled(enabled: Boolean) {
         if (isDockEnabled == enabled) return
         isDockEnabled = enabled
@@ -474,11 +500,12 @@ class TableScreen(
         val bottomPadding = if (isDockEnabled) 0 else navigationInset
         if (bottomContainer.paddingBottom != bottomPadding) bottomContainer.setPadding(0, 0, 0, bottomPadding)
         val dockHeight = dockChrome + navigationInset
-        val chromeBottom = dockHeight + searchBarHeight
+        val chromeBottom = dockHeight + if (searchAtTop) 0 else searchBarHeight
+        val tableBottom = chromeBottom + if (searchAtTop) topBarHeight else 0
         val keyboardLift = (imeInset - navigationInset).coerceAtLeast(0)
         dockView.setBottomInset(navigationInset)
-        if (tableView.paddingBottom != chromeBottom) tableView.updatePadding(bottom = chromeBottom)
-        if (fastScrollView.paddingBottom != chromeBottom) fastScrollView.setPadding(0, 0, 0, chromeBottom)
+        if (tableView.paddingBottom != tableBottom) tableView.updatePadding(bottom = tableBottom)
+        if (fastScrollView.paddingBottom != tableBottom) fastScrollView.setPadding(0, 0, 0, tableBottom)
         val resultsBottom = chromeBottom + keyboardLift
         searchResultView.keyboardInset = keyboardLift
         if (searchResultView.paddingBottom != resultsBottom) searchResultView.updatePadding(bottom = resultsBottom)
@@ -501,12 +528,14 @@ class TableScreen(
     }
 
     private fun applySearchProgress(p: Float) {
-        val tableScale = 1f - 0.08f * p
+        applyTopSearchProgress(if (searchAtTop) p else 0f)
+        val scaleProgress = if (searchAtTop) 0f else p
+        val tableScale = 1f - 0.08f * scaleProgress
         tableLayer.scaleX = tableScale
         tableLayer.scaleY = tableScale
         tableDim.alpha = 0.2f * p
         tableDim.visibility = if (p > 0f) VISIBLE else GONE
-        val resultsScale = 1.08f - 0.08f * p
+        val resultsScale = if (searchAtTop) 1f else 1.08f - 0.08f * p
         resultsLayer.scaleX = resultsScale
         resultsLayer.scaleY = resultsScale
         resultsLayer.alpha = (p / 0.6f).coerceIn(0f, 1f)
@@ -516,6 +545,20 @@ class TableScreen(
         if (tableLayer.layerType != layerType) tableLayer.setLayerType(layerType, null)
         tableLayer.visibility = if (p >= 1f) INVISIBLE else VISIBLE
         resultsLayer.visibility = if (p <= 0f) INVISIBLE else VISIBLE
+    }
+
+    private fun applyTopSearchProgress(p: Float) {
+        val offset = -topBarHeight * p
+        topBar.translationY = offset
+        topBar.alpha = 1f - p
+        topBar.visibility = if (p >= 1f) INVISIBLE else VISIBLE
+        topBar.importantForAccessibility = if (searchAtTop && searchBar.isExpanded()) {
+            IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+        } else {
+            IMPORTANT_FOR_ACCESSIBILITY_AUTO
+        }
+        contentContainer.translationY = offset
+        if (searchAtTop) searchBar.translationY = offset
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -622,7 +665,7 @@ class TableScreen(
     private fun showSearch() {
         noResultsView.visibility = GONE
         isShowingRecents = true
-        topBar.setSearchShown(true)
+        topBar.setSearchShown(!searchAtTop)
         searchController.recentResult = emptyArray()
         searchAdapter.notifyDataSetChanged()
         searchResultView.scrollToPosition(0)

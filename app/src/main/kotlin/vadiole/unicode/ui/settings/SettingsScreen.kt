@@ -113,6 +113,15 @@ class SettingsScreen(
             linearParams(matchParent, wrapContent)
         )
         addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
+        if (userConfig.topSearchEligible) {
+            addView(
+                ToggleRow(context, context.getString(R.string.settings_search_at_top), userConfig.searchAtTop) { checked ->
+                    userConfig.searchAtTop = checked
+                },
+                linearParams(matchParent, wrapContent)
+            )
+            addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
+        }
         addView(
             ToggleRow(context, context.getString(R.string.settings_show_unsupported), userConfig.showUnsupportedChars) { checked ->
                 userConfig.showUnsupportedChars = checked

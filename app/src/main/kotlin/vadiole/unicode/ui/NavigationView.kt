@@ -195,6 +195,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
 
     private fun hideSettings() {
         isNavBackInProgress = false
+        tableScreen.setSearchAtTop(userConfig.searchAtTop)
         nav.pop()
         updateBackEnabled()
     }

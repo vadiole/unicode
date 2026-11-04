@@ -25,6 +25,7 @@
     <string name="settings_title">Settings</string>
     <string name="settings_back">Back</string>
     <string name="settings_dock">Tap to collect</string>
+    <string name="settings_search_at_top">Search at the top</string>
     <string name="settings_show_unsupported">Show unsupported characters</string>
     <string name="settings_crash_reports">Crash reports</string>
     <string name="settings_save_recents">Save recent characters</string>
