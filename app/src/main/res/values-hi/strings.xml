@@ -25,8 +25,22 @@
     <string name="settings_title">सेटिंग</string>
     <string name="settings_back">वापस</string>
     <string name="settings_dock">टैप करके इकट्ठा करें</string>
+    <string name="settings_search_at_top">खोज बार सबसे ऊपर</string>
     <string name="settings_show_unsupported">असमर्थित वर्ण दिखाएँ</string>
     <string name="settings_crash_reports">क्रैश रिपोर्ट</string>
+    <string name="settings_save_recents">हाल के वर्ण सहेजें</string>
+    <string name="settings_clear_recents">हाल के वर्ण मिटाएँ</string>
+    <string name="toast_recents_cleared">हाल के वर्ण मिटा दिए गए</string>
+    <string name="about_title">ऐप के बारे में</string>
+    <string name="about_app_version">ऐप वर्शन</string>
+    <string name="about_unicode_version">Unicode वर्शन</string>
+    <string name="about_rate">Google Play पर रेटिंग दें</string>
+    <string name="about_feedback">फ़ीडबैक और सुझाव</string>
+    <string name="about_feedback_note">बग की रिपोर्ट करें या कोई नया फ़ीचर सुझाएँ। मैं हर ईमेल पढ़ता हूँ!</string>
+    <string name="about_author">डिज़ाइन और डेवलपमेंट: @vadiole</string>
+    <string name="about_feedback_subject">फ़ीडबैक और सुझाव</string>
+    <string name="about_info_copied">ऐप की जानकारी कॉपी हुई</string>
+    <string name="about_no_browser">कोई ब्राउज़र इंस्टॉल नहीं है</string>
 
     <!-- Details -->
     <string name="details_find_in_table">तालिका में खोजें</string>

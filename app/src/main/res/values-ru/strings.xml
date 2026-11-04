@@ -25,8 +25,22 @@
     <string name="settings_title">Настройки</string>
     <string name="settings_back">Назад</string>
     <string name="settings_dock">Собирать нажатием</string>
+    <string name="settings_search_at_top">Поиск сверху</string>
     <string name="settings_show_unsupported">Показывать неподдерживаемые символы</string>
     <string name="settings_crash_reports">Отчёты о сбоях</string>
+    <string name="settings_save_recents">Сохранять недавние символы</string>
+    <string name="settings_clear_recents">Очистить недавние символы</string>
+    <string name="toast_recents_cleared">Недавние символы очищены</string>
+    <string name="about_title">О приложении</string>
+    <string name="about_app_version">Версия приложения</string>
+    <string name="about_unicode_version">Версия Unicode</string>
+    <string name="about_rate">Оценить в Google Play</string>
+    <string name="about_feedback">Отзывы и идеи</string>
+    <string name="about_feedback_note">Сообщите об ошибке или предложите новую функцию. Я читаю каждое письмо!</string>
+    <string name="about_author">Задизайнил и разработал @vadiole</string>
+    <string name="about_feedback_subject">Отзывы и идеи</string>
+    <string name="about_info_copied">Информация о приложении скопирована</string>
+    <string name="about_no_browser">Браузер не установлен</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Найти в таблице</string>

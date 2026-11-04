@@ -25,8 +25,22 @@
     <string name="settings_title">Definições</string>
     <string name="settings_back">Voltar</string>
     <string name="settings_dock">Toque para juntar</string>
+    <string name="settings_search_at_top">Pesquisa no topo</string>
     <string name="settings_show_unsupported">Mostrar carateres não suportados</string>
     <string name="settings_crash_reports">Relatórios de erro</string>
+    <string name="settings_save_recents">Guardar carateres recentes</string>
+    <string name="settings_clear_recents">Limpar carateres recentes</string>
+    <string name="toast_recents_cleared">Carateres recentes limpos</string>
+    <string name="about_title">Acerca de</string>
+    <string name="about_app_version">Versão da app</string>
+    <string name="about_unicode_version">Versão do Unicode</string>
+    <string name="about_rate">Avaliar no Google Play</string>
+    <string name="about_feedback">Comentários e ideias</string>
+    <string name="about_feedback_note">Comunique um erro ou sugira uma funcionalidade. Leio todos os emails!</string>
+    <string name="about_author">Concebido e desenvolvido por @vadiole</string>
+    <string name="about_feedback_subject">Comentários e ideias</string>
+    <string name="about_info_copied">Informações da app copiadas</string>
+    <string name="about_no_browser">Nenhum navegador instalado</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Encontrar na tabela</string>

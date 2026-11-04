@@ -25,8 +25,22 @@
     <string name="settings_title">Ρυθμίσεις</string>
     <string name="settings_back">Πίσω</string>
     <string name="settings_dock">Συλλογή με πάτημα</string>
+    <string name="settings_search_at_top">Αναζήτηση στο επάνω μέρος</string>
     <string name="settings_show_unsupported">Εμφάνιση μη υποστηριζόμενων χαρακτήρων</string>
     <string name="settings_crash_reports">Αναφορές σφαλμάτων</string>
+    <string name="settings_save_recents">Αποθήκευση πρόσφατων χαρακτήρων</string>
+    <string name="settings_clear_recents">Απαλοιφή πρόσφατων χαρακτήρων</string>
+    <string name="toast_recents_cleared">Οι πρόσφατοι χαρακτήρες διαγράφηκαν</string>
+    <string name="about_title">Σχετικά</string>
+    <string name="about_app_version">Έκδοση εφαρμογής</string>
+    <string name="about_unicode_version">Έκδοση Unicode</string>
+    <string name="about_rate">Βαθμολογήστε στο Google Play</string>
+    <string name="about_feedback">Σχόλια και ιδέες</string>
+    <string name="about_feedback_note">Αναφέρετε ένα σφάλμα ή προτείνετε μια λειτουργία. Διαβάζω κάθε email!</string>
+    <string name="about_author">Σχεδίαση και ανάπτυξη: @vadiole</string>
+    <string name="about_feedback_subject">Σχόλια και ιδέες</string>
+    <string name="about_info_copied">Οι πληροφορίες εφαρμογής αντιγράφηκαν</string>
+    <string name="about_no_browser">Δεν υπάρχει εγκατεστημένο πρόγραμμα περιήγησης</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Εύρεση στον πίνακα</string>

@@ -25,8 +25,22 @@
     <string name="settings_title">Inställningar</string>
     <string name="settings_back">Tillbaka</string>
     <string name="settings_dock">Tryck för att samla</string>
+    <string name="settings_search_at_top">Sök överst</string>
     <string name="settings_show_unsupported">Visa tecken som inte stöds</string>
     <string name="settings_crash_reports">Felrapporter</string>
+    <string name="settings_save_recents">Spara senaste tecken</string>
+    <string name="settings_clear_recents">Rensa senaste tecken</string>
+    <string name="toast_recents_cleared">Senaste tecken har rensats</string>
+    <string name="about_title">Om</string>
+    <string name="about_app_version">Appversion</string>
+    <string name="about_unicode_version">Unicode-version</string>
+    <string name="about_rate">Betygsätt på Google Play</string>
+    <string name="about_feedback">Feedback och idéer</string>
+    <string name="about_feedback_note">Rapportera en bugg eller föreslå en funktion. Jag läser varje mejl!</string>
+    <string name="about_author">Designad och utvecklad av @vadiole</string>
+    <string name="about_feedback_subject">Feedback och idéer</string>
+    <string name="about_info_copied">Appinformation kopierad</string>
+    <string name="about_no_browser">Ingen webbläsare installerad</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Hitta i tabell</string>

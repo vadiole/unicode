@@ -25,8 +25,22 @@
     <string name="settings_title">Ayarlar</string>
     <string name="settings_back">Geri</string>
     <string name="settings_dock">Toplamak için dokunun</string>
+    <string name="settings_search_at_top">Arama çubuğu üstte</string>
     <string name="settings_show_unsupported">Desteklenmeyen karakterleri göster</string>
     <string name="settings_crash_reports">Çökme raporları</string>
+    <string name="settings_save_recents">Son karakterleri kaydet</string>
+    <string name="settings_clear_recents">Son karakterleri temizle</string>
+    <string name="toast_recents_cleared">Son karakterler temizlendi</string>
+    <string name="about_title">Hakkında</string>
+    <string name="about_app_version">Uygulama sürümü</string>
+    <string name="about_unicode_version">Unicode sürümü</string>
+    <string name="about_rate">Google Play\'de puan ver</string>
+    <string name="about_feedback">Geri bildirim ve fikirler</string>
+    <string name="about_feedback_note">Hata bildirin veya yeni bir özellik önerin. Her e-postayı okuyorum!</string>
+    <string name="about_author">Tasarım ve geliştirme: @vadiole</string>
+    <string name="about_feedback_subject">Geri bildirim ve fikirler</string>
+    <string name="about_info_copied">Uygulama bilgileri kopyalandı</string>
+    <string name="about_no_browser">Yüklü tarayıcı yok</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Tabloda bul</string>
