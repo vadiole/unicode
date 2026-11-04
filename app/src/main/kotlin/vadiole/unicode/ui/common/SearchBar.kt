@@ -218,8 +218,7 @@ class SearchBar(
 
     private fun applyTopProgress(p: Float) {
         layoutTopField(p)
-        actionContainer.alpha = p
-        actionContainer.translationX = 8f.dp(context) * (1f - p)
+        actionContainer.translationX = (fieldSize + edgePadding) * (1f - p)
         actionContainer.visibility = if (p > 0f) VISIBLE else INVISIBLE
     }
 

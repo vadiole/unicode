@@ -319,7 +319,7 @@ class TableScreen(
             visibility = INVISIBLE
         }
         clipChildren = false
-        clipToPadding = false
+        clipToPadding = true
         isFocusableInTouchMode = true
         statusBarPaint.color = context.getColor(R.color.layer1)
         setWillNotDraw(false)
@@ -561,7 +561,7 @@ class TableScreen(
     private fun applyTopSearchProgress(p: Float) {
         val offset = -topBarHeight * p
         topBar.translationY = offset
-        topBar.alpha = 1f - p
+        topBar.setContentAlpha(1f - p)
         topBar.visibility = if (p >= 1f) INVISIBLE else VISIBLE
         topBar.importantForAccessibility = if (searchAtTop && searchBar.isExpanded()) {
             IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS

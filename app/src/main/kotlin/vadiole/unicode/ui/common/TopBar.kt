@@ -83,11 +83,15 @@ class TopBar(
     fun setSearchShown(shown: Boolean) {
         if (isSearchShown == shown) return
         isSearchShown = shown
-        val alpha = if (shown) 0f else 1f
-        titleView.alpha = alpha
-        settingsButton.alpha = alpha
         settingsButton.isEnabled = !shown
-        searchTitle.alpha = if (shown) 1f else 0f
+        setContentAlpha(1f)
+    }
+
+    fun setContentAlpha(alpha: Float) {
+        val titleAlpha = if (isSearchShown) 0f else alpha
+        titleView.alpha = titleAlpha
+        settingsButton.alpha = titleAlpha
+        searchTitle.alpha = if (isSearchShown) alpha else 0f
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
