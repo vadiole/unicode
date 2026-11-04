@@ -6,11 +6,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Build
 import android.os.SystemClock
-import android.os.VibrationAttributes
-import android.os.VibrationEffect
-import android.os.VibratorManager
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.ViewConfiguration
@@ -25,19 +21,7 @@ class HoldActionCell(context: Context, label: String, private val action: () -> 
     }
     private val progressAlpha = progressPaint.alpha
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
-    private val vibrator = if (Build.VERSION.SDK_INT >= 33) {
-        context.getSystemService(VibratorManager::class.java)?.defaultVibrator
-    } else null
-    private val tickEffect = if (Build.VERSION.SDK_INT >= 33 &&
-        vibrator?.areAllPrimitivesSupported(VibrationEffect.Composition.PRIMITIVE_LOW_TICK) == true
-    ) {
-        VibrationEffect.startComposition()
-            .addPrimitive(VibrationEffect.Composition.PRIMITIVE_LOW_TICK, 0.5f)
-            .compose()
-    } else null
-    private val touchAttributes = if (Build.VERSION.SDK_INT >= 33) {
-        VibrationAttributes.createForUsage(VibrationAttributes.USAGE_TOUCH)
-    } else null
+    private val tickHaptic = TickHaptic(this, 0.5f)
     private var downX = 0f
     private var downY = 0f
     private var startedAt = 0L
@@ -48,16 +32,7 @@ class HoldActionCell(context: Context, label: String, private val action: () -> 
     private val tick = object : Runnable {
         override fun run() {
             if (!holding) return
-            if (Build.VERSION.SDK_INT >= 33 && tickEffect != null) {
-                vibrator?.vibrate(tickEffect, touchAttributes!!)
-            } else {
-                val constant = if (Build.VERSION.SDK_INT >= 34) {
-                    HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
-                } else {
-                    HapticFeedbackConstants.CLOCK_TICK
-                }
-                performHapticFeedback(constant)
-            }
+            tickHaptic.perform()
             postDelayed(this, TICK_INTERVAL)
         }
     }

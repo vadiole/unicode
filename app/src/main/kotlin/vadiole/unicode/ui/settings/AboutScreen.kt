@@ -9,6 +9,8 @@ import android.graphics.RectF
 import android.net.Uri
 import android.os.Build
 import android.view.Gravity
+import android.view.HapticFeedbackConstants
+import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -16,10 +18,13 @@ import vadiole.unicode.BuildConfig
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.ActionCell
+import vadiole.unicode.ui.common.EmojiFireworksView
 import vadiole.unicode.ui.common.Screen
-import vadiole.unicode.ui.common.SettingsTopBar
 import vadiole.unicode.ui.common.SettingsGroup
 import vadiole.unicode.ui.common.SettingsList
+import vadiole.unicode.ui.common.SettingsTopBar
+import vadiole.unicode.ui.common.TickHaptic
+import vadiole.unicode.ui.common.TouchEffect
 import vadiole.unicode.ui.common.addSquircle
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
@@ -38,8 +43,10 @@ class AboutScreen(context: Context, onBack: () -> Unit) : Screen(context) {
         "Config: ${ConfigCode.encode(userConfig)}",
     ).joinToString("\n")
 
+    private val fireworks = EmojiFireworksView(context, FIREWORK_EMOJIS)
+
     private val list = SettingsList(context).apply {
-        add(AppIcon(context), marginTop = 32.dp(context), gravity = Gravity.CENTER_HORIZONTAL, width = 112.dp(context), height = 112.dp(context))
+        add(AppIcon(context, fireworks), marginTop = 32.dp(context), gravity = Gravity.CENTER_HORIZONTAL, width = 112.dp(context), height = 112.dp(context))
         add(SettingsGroup(context, listOf(
             ActionCell(context, context.getString(R.string.about_app_version)).apply {
                 value = appVersion
@@ -79,9 +86,12 @@ class AboutScreen(context: Context, onBack: () -> Unit) : Screen(context) {
         setBackgroundColor(context.getColor(R.color.layer0))
         addView(LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
-            addView(SettingsTopBar(context, context.getString(R.string.about_title), onBack), linearParams(matchParent, wrapContent))
+            addView(SettingsTopBar(context, context.getString(R.string.about_title), onBack).apply {
+                addOnLayoutChangeListener { _, _, _, _, bottom, _, _, _, _ -> fireworks.topInset = bottom }
+            }, linearParams(matchParent, wrapContent))
             addView(list, linearParams(matchParent, 0, weight = 1f))
         }, frameParams(matchParent, matchParent))
+        addView(fireworks, frameParams(matchParent, matchParent))
     }
 
     private fun openLink(url: String) {
@@ -103,13 +113,57 @@ class AboutScreen(context: Context, onBack: () -> Unit) : Screen(context) {
         }
     }
 
-    private class AppIcon(context: Context) : View(context) {
+    private class AppIcon(context: Context, private val fireworks: EmojiFireworksView) : View(context) {
         private val path = Path()
         private val backgroundIcon = context.getDrawable(R.drawable.ic_launcher_background)!!
         private val foregroundIcon = context.getDrawable(R.drawable.ic_launcher_foreground)!!
+        private val tickHaptic = TickHaptic(this, 0.8f)
+        private var holding = false
+        private val tick = object : Runnable {
+            override fun run() {
+                if (!holding) return
+                tickHaptic.perform()
+                postDelayed(this, TICK_INTERVAL)
+            }
+        }
+        private val complete = Runnable {
+            if (holding && fireworks.isReady) {
+                performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                fireworks.start()
+            }
+            stopHold()
+        }
 
         init {
             importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
+            setOnTouchListener(TouchEffect(maxDragPx = 16f.dp(context), pressedScale = 1.08f))
+        }
+
+        override fun onTouchEvent(event: MotionEvent): Boolean {
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    parent?.requestDisallowInterceptTouchEvent(true)
+                    stopHold()
+                    if (fireworks.isReady) {
+                        holding = true
+                        postDelayed(tick, TICK_INTERVAL)
+                        postDelayed(complete, HOLD_DURATION)
+                    }
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> stopHold()
+            }
+            return true
+        }
+
+        private fun stopHold() {
+            holding = false
+            removeCallbacks(tick)
+            removeCallbacks(complete)
+        }
+
+        override fun onDetachedFromWindow() {
+            stopHold()
+            super.onDetachedFromWindow()
         }
 
         override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -126,9 +180,19 @@ class AboutScreen(context: Context, onBack: () -> Unit) : Screen(context) {
             foregroundIcon.draw(canvas)
             canvas.restoreToCount(count)
         }
+
+        private companion object {
+            const val HOLD_DURATION = 600L
+            const val TICK_INTERVAL = 100L
+        }
     }
 
     private companion object {
-        const val DIVIDER = "- - - - - - - - - -"
+        val FIREWORK_EMOJIS = listOf(
+            "🧉", "🪎", "🔩", "⚗️", "🪠", "🐦‍🔥", "🫯", "🥻", "🐞", "🌈", "❤️", "🤍", "💛", "💙", "🦋", "🩷", "💜", "🩵",
+            "🍓", "🍒", "🥐", "🍁", "🛰️", "🪐", "🧬", "🦾", "🪵", "🍄", "⚖️", "☄️", "🔬", "🌊", "⚡", "🎞️", "📸", "🌅",
+            "🪁", "🚁", "🎹", "🧭", "⛵", "🏕️", "🪢", "🪉", "🪼", "🪸", "🍋", "🕯️", "🪴", "🌱", "🌵", "🏔️", "🐬",
+        )
+        const val DIVIDER = "— — — — — — — —"
     }
 }
