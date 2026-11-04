@@ -5,7 +5,11 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.os.Build
 import android.os.SystemClock
+import android.os.VibrationAttributes
+import android.os.VibrationEffect
+import android.os.VibratorManager
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
@@ -22,6 +26,19 @@ import vadiole.unicode.ui.common.mono_regular
 class HoldActionRow(context: Context, label: String, private val action: () -> Unit) : TextView(context) {
     private val progressPaint = Paint().apply { color = context.getColor(R.color.layer1Pressed) }
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+    private val vibrator = if (Build.VERSION.SDK_INT >= 33) {
+        context.getSystemService(VibratorManager::class.java)?.defaultVibrator
+    } else null
+    private val tickEffect = if (Build.VERSION.SDK_INT >= 33 &&
+        vibrator?.areAllPrimitivesSupported(VibrationEffect.Composition.PRIMITIVE_LOW_TICK) == true
+    ) {
+        VibrationEffect.startComposition()
+            .addPrimitive(VibrationEffect.Composition.PRIMITIVE_LOW_TICK, 0.5f)
+            .compose()
+    } else null
+    private val touchAttributes = if (Build.VERSION.SDK_INT >= 33) {
+        VibrationAttributes.createForUsage(VibrationAttributes.USAGE_TOUCH)
+    } else null
     private var downX = 0f
     private var downY = 0f
     private var startedAt = 0L
@@ -29,6 +46,22 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
     private var progress = 0f
     private var releaseAnimation: AnimatorSet? = null
     private val complete = Runnable { finishHold() }
+    private val tick = object : Runnable {
+        override fun run() {
+            if (!holding) return
+            if (Build.VERSION.SDK_INT >= 33 && tickEffect != null) {
+                vibrator?.vibrate(tickEffect, touchAttributes!!)
+            } else {
+                val constant = if (Build.VERSION.SDK_INT >= 34) {
+                    HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
+                } else {
+                    HapticFeedbackConstants.CLOCK_TICK
+                }
+                performHapticFeedback(constant)
+            }
+            postDelayed(this, TICK_INTERVAL)
+        }
+    }
     private val frame = object : Runnable {
         override fun run() {
             if (!holding) return
@@ -67,6 +100,7 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
                 holding = true
                 isPressed = true
                 postDelayed(complete, HOLD_DURATION)
+                postDelayed(tick, TICK_INTERVAL)
                 postOnAnimation(frame)
             }
             MotionEvent.ACTION_MOVE -> if (holding &&
@@ -143,6 +177,7 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
         holding = false
         isPressed = false
         removeCallbacks(complete)
+        removeCallbacks(tick)
         removeCallbacks(frame)
     }
 
@@ -155,6 +190,7 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
     }
 
     private companion object {
-        const val HOLD_DURATION = 2000L
+        const val HOLD_DURATION = 1000L
+        const val TICK_INTERVAL = 100L
     }
 }
