@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
 
-class RecentRepository(private val context: Context) {
+class RecentRepository(private val context: Context, private val userConfig: UserConfig) {
 
     companion object {
         private const val PREFS_NAME = "recents"
@@ -33,6 +33,7 @@ class RecentRepository(private val context: Context) {
     }
 
     fun record(codePoint: CodePoint) {
+        if (!userConfig.recentsEnabled) return
         if (!loaded) load()
         recents.remove(codePoint.value)
         recents.add(0, codePoint.value)
@@ -45,6 +46,12 @@ class RecentRepository(private val context: Context) {
     fun getRecents(): CodePointArray {
         if (!loaded) load()
         return CodePointArray(recents.size) { index -> CodePoint(recents[index]) }
+    }
+
+    fun clear() {
+        if (!loaded) load()
+        recents.clear()
+        saveToDisk()
     }
 
     private fun saveToDisk() {

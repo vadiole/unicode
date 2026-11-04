@@ -8,9 +8,11 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.updateLayoutParams
 import vadiole.unicode.R
+import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.common.IconButton
 import vadiole.unicode.ui.common.Screen
@@ -66,6 +68,13 @@ class SettingsScreen(
         addView(title, frameParams(wrapContent, matchParent, Gravity.LEFT, marginLeft = 56.dp(context)))
     }
 
+    private val clearRecentsRow = HoldActionRow(context, context.getString(R.string.settings_clear_recents)) {
+        recentRepository.clear()
+        Toast.makeText(context, R.string.toast_recents_cleared, Toast.LENGTH_SHORT).show()
+    }.apply {
+        isEnabled = userConfig.recentsEnabled
+    }
+
     private val content = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
         addView(header, linearParams(matchParent, 48.dp(context)))
@@ -74,6 +83,21 @@ class SettingsScreen(
         }, linearParams(matchParent, borderWidth(context).toInt()))
         addView(createDivider(), linearParams(matchParent, 1, marginTop = 16.dp(context)))
         addView(createGroup(), linearParams(matchParent, wrapContent))
+        addView(createDivider(), linearParams(matchParent, 1))
+        addView(createDivider(), linearParams(matchParent, 1, marginTop = 16.dp(context)))
+        addView(LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            setBackgroundColor(context.getColor(R.color.layer1))
+            addView(
+                ToggleRow(context, context.getString(R.string.settings_save_recents), userConfig.recentsEnabled) { checked ->
+                    userConfig.recentsEnabled = checked
+                    clearRecentsRow.isEnabled = checked
+                },
+                linearParams(matchParent, wrapContent)
+            )
+            addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
+            addView(clearRecentsRow, linearParams(matchParent, wrapContent))
+        }, linearParams(matchParent, wrapContent))
         addView(createDivider(), linearParams(matchParent, 1))
     }
 

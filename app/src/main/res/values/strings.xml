@@ -27,6 +27,9 @@
     <string name="settings_dock">Tap to collect</string>
     <string name="settings_show_unsupported">Show unsupported characters</string>
     <string name="settings_crash_reports">Crash reports</string>
+    <string name="settings_save_recents">Save recent characters</string>
+    <string name="settings_clear_recents">Clear recent characters</string>
+    <string name="toast_recents_cleared">Recent characters cleared</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Find in Table</string>

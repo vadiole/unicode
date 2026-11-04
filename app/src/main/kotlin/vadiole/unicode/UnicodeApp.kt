@@ -17,7 +17,7 @@ class UnicodeApp : Application() {
         Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
         unicodeStorageInternal = UnicodeStorage(this)
         userConfigInternal = UserConfig(this)
-        recentRepositoryInternal = RecentRepository(this)
+        recentRepositoryInternal = RecentRepository(this, userConfig)
         Handler(Looper.getMainLooper()).postDelayed({ recentRepository.load() }, 1000)
         if (userConfig.crashReportDisabled) {
             Thread.setDefaultUncaughtExceptionHandler(defaultHandler)

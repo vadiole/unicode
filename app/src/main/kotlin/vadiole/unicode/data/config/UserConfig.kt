@@ -12,6 +12,7 @@ class UserConfig(context: Context) {
         private const val key_collected = "collected"
         private const val key_usedCollect = "usedCollect"
         private const val key_usedCopy = "usedCopy"
+        private const val key_recentsEnabled = "recentsEnabled"
         private const val key_dockEnabled = "dockEnabled"
         private const val key_centerTitle = "centerTitle"
         private const val key_tableScrollCodePoint = "tableScrollCodePoint"
@@ -81,6 +82,12 @@ class UserConfig(context: Context) {
         get() = sharedPreferences.getBoolean(key_usedCopy, false)
         set(value) {
             editor.putBoolean(key_usedCopy, value).apply()
+        }
+
+    var recentsEnabled: Boolean
+        get() = sharedPreferences.getBoolean(key_recentsEnabled, true)
+        set(value) {
+            editor.putBoolean(key_recentsEnabled, value).apply()
         }
 
     var dockEnabled: Boolean
