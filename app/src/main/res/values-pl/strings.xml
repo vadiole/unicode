@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Anuluj</string>
+    <string name="error_unknown">Wystąpił nieznany błąd</string>
+    <string name="toast_copied_to_clipboard">Skopiowano %s do schowka</string>
+    <string name="toast_link_copied_to_clipboard">Skopiowano link do schowka</string>
+
+    <!-- Search -->
+    <string name="search_hint">Szukaj</string>
+    <string name="search_close">Zamknij wyszukiwanie</string>
+    <string name="search_no_results">Brak wyników</string>
+    <string name="search_recents">Ostatnie</string>
+    <string name="search_title">Wyszukiwanie</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">Dotykaj znaków, aby je zbierać</string>
+    <string name="dock_tip_copy">Dotknij panelu, aby skopiować kolekcję</string>
+    <string name="dock_backspace">Usuń ostatni znak</string>
+    <string name="dock_copy_all">Kopiuj wszystko</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_back">Wstecz</string>
+    <string name="settings_dock">Zbieranie dotknięciem</string>
+    <string name="settings_search_at_top">Pasek wyszukiwania u góry</string>
+    <string name="settings_show_unsupported">Pokazuj nieobsługiwane znaki</string>
+    <string name="settings_crash_reports">Raporty o awariach</string>
+    <string name="settings_save_recents">Zapisuj ostatnie znaki</string>
+    <string name="settings_clear_recents">Wyczyść ostatnie znaki</string>
+    <string name="toast_recents_cleared">Wyczyszczono ostatnie znaki</string>
+    <string name="about_title">O aplikacji</string>
+    <string name="about_app_version">Wersja aplikacji</string>
+    <string name="about_unicode_version">Wersja Unicode</string>
+    <string name="about_rate">Oceń w Google Play</string>
+    <string name="about_feedback">Opinie i pomysły</string>
+    <string name="about_feedback_note">Zgłoś błąd lub zaproponuj nową funkcję. Czytam każdą wiadomość!</string>
+    <string name="about_author">Zaprojektował i stworzył @vadiole</string>
+    <string name="about_feedback_subject">Opinie i pomysły</string>
+    <string name="about_info_copied">Skopiowano informacje o aplikacji</string>
+    <string name="about_no_browser">Brak zainstalowanej przeglądarki</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">Znajdź w tabeli</string>
+    <string name="details_add">Dodaj do kolekcji</string>
+    <string name="details_copy_to_clipboard">Kopiuj do schowka</string>
+    <string name="details_share_link">Udostępnij link</string>
+    <string name="details_info_code">Kod</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Wersja</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Aplikacja Unicode przestała działać</string>
+    <string name="crash_dialog_message">Wysłać raport o awarii?</string>
+    <string name="crash_dont_ask_again">Nie pytaj ponownie</string>
+    <string name="crash_send">Wyślij</string>
+    <string name="crash_email_subject">Aplikacja Unicode</string>
+    <string name="crash_send_via_email">Wyślij e-mailem</string>
+    <string name="crash_no_email_clients">Brak zainstalowanych aplikacji pocztowych</string>
+</resources>
