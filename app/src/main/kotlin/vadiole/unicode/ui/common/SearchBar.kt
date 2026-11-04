@@ -148,12 +148,7 @@ class SearchBar(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
-        val actionSpace = if (atTop) {
-            ((fieldSize + buttonGap) * progressHolder.value.coerceIn(0f, 1f)).roundToInt()
-        } else {
-            fieldSize + buttonGap
-        }
-        val fieldWidth = (width - edgePadding * 2 - actionSpace).coerceAtLeast(0)
+        val fieldWidth = (fieldRight(width, progressHolder.value.coerceIn(0f, 1f)) - edgePadding).coerceAtLeast(0)
         surfaceView.measure(exactly(width), exactly(height))
         searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
         actionContainer.measure(exactly(buttonWidth), exactly(buttonHeight))
@@ -164,14 +159,13 @@ class SearchBar(
         val width = right - left
         val rowTop = fieldTop - touchExtension
         surfaceView.layout(0, 0, width, bottom - top)
-        searchField.layout(edgePadding, rowTop, edgePadding + searchField.measuredWidth, rowTop + buttonHeight)
+        layoutField(progressHolder.value.coerceIn(0f, 1f))
         val buttonRight = if (atTop) width - edgePadding else width
         val buttonLeft = buttonRight - buttonWidth
         actionContainer.layout(buttonLeft, rowTop, buttonRight, rowTop + buttonHeight)
         actionContainer.pivotX = buttonGap + fieldSize / 2f
         actionContainer.pivotY = touchExtension + fieldSize / 2f
-        val fieldRight = if (atTop) width - edgePadding else width - edgePadding - fieldSize - buttonGap
-        surfaceDrawable.setBounds(edgePadding, fieldTop, fieldRight, fieldTop + fieldSize)
+        val fieldRight = fieldRight(width, 0f)
         val iconLeft = edgePadding + iconInset
         val iconTop = fieldTop + (fieldSize - iconSize) / 2
         fieldIcon.setBounds(iconLeft, iconTop, iconLeft + iconSize, iconTop + iconSize)
@@ -179,18 +173,23 @@ class SearchBar(
         surfaceView.pivotY = fieldTop + fieldSize / 2f
         searchField.pivotX = searchField.measuredWidth / 2f
         searchField.pivotY = touchExtension + fieldSize / 2f
-        if (atTop) layoutTopField(progressHolder.value.coerceIn(0f, 1f))
     }
 
-    private fun layoutTopField(p: Float) {
+    private fun fieldRight(width: Int, p: Float): Int {
+        val actionSpace = if (atTop) ((fieldSize + buttonGap) * p).roundToInt() else fieldSize + buttonGap
+        return width - edgePadding - actionSpace
+    }
+
+    private fun layoutField(p: Float) {
         if (width == 0) return
-        val fieldRight = width - edgePadding - ((fieldSize + buttonGap) * p).roundToInt()
+        val fieldRight = fieldRight(width, p)
         val fieldWidth = (fieldRight - edgePadding).coerceAtLeast(0)
         if (searchField.measuredWidth != fieldWidth) {
             searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
         }
         val rowTop = fieldTop - touchExtension
-        searchField.layout(edgePadding, rowTop, fieldRight, rowTop + buttonHeight)
+        val layoutRight = if (atTop) fieldRight else edgePadding + fieldWidth
+        searchField.layout(edgePadding, rowTop, layoutRight, rowTop + buttonHeight)
         surfaceDrawable.setBounds(edgePadding, fieldTop, fieldRight, fieldTop + fieldSize)
         surfaceView.invalidate()
     }
@@ -217,7 +216,7 @@ class SearchBar(
     }
 
     private fun applyTopProgress(p: Float) {
-        layoutTopField(p)
+        layoutField(p)
         actionContainer.translationX = (fieldSize + edgePadding) * (1f - p)
         actionContainer.visibility = if (p > 0f) VISIBLE else INVISIBLE
     }

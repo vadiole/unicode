@@ -132,17 +132,16 @@ class TableScreen(
     private val areRecentsDisplayed: Boolean
         get() = isShowingRecents && userConfig.recentsEnabled && searchController.recentResult.isNotEmpty()
     private val searchAdapter = object : CollectionView.Adapter() {
-        private val hasRecentsHeader: Boolean
-            get() = searchAtTop && areRecentsDisplayed
+        private val items
+            get() = if (isShowingRecents) searchController.recentResult else searchController.searchResult
+        private val headerCount: Int
+            get() = if (searchAtTop && areRecentsDisplayed) 1 else 0
 
         override fun getItemViewType(position: Int): Int {
-            return if (hasRecentsHeader && position == 0) VIEW_TYPE_HEADER else VIEW_TYPE_RESULT
+            return if (headerCount > 0 && position == 0) VIEW_TYPE_HEADER else VIEW_TYPE_RESULT
         }
 
-        override fun getItemCount(): Int {
-            val count = if (isShowingRecents) searchController.recentResult.size else searchController.searchResult.size
-            return count + if (hasRecentsHeader) 1 else 0
-        }
+        override fun getItemCount(): Int = items.size + headerCount
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
             val view = if (viewType == VIEW_TYPE_HEADER) {
@@ -156,11 +155,7 @@ class TableScreen(
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             if (holder.itemViewType == VIEW_TYPE_HEADER) return
             val view = holder.itemView as SearchResultCell
-            val data = if (isShowingRecents) {
-                searchController.recentResult[position - if (hasRecentsHeader) 1 else 0]
-            } else {
-                searchController.searchResult[position]
-            }
+            val data = items[position - headerCount]
             val tokens = if (isShowingRecents) null else searchController.queryTokens
             view.bind(data, tableController.abbreviations, tokens)
         }
@@ -692,6 +687,7 @@ class TableScreen(
     private fun updateSearchResults() {
         topBar.setSearchRecents(!searchAtTop && areRecentsDisplayed)
         searchAdapter.notifyDataSetChanged()
+        noResultsView.visibility = if (!isShowingRecents && searchController.searchResult.isEmpty()) VISIBLE else GONE
     }
 
     private fun showSearch() {
@@ -733,10 +729,8 @@ class TableScreen(
                 searchController.search(query, 64)
                 searchResultView.scrollToPosition(0)
                 updateSearchResults()
-                noResultsView.visibility = if (searchController.searchResult.isEmpty()) VISIBLE else GONE
                 searchController.search(query)
                 updateSearchResults()
-                noResultsView.visibility = if (searchController.searchResult.isEmpty()) VISIBLE else GONE
             }
         }
     }

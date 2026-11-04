@@ -12,7 +12,7 @@ class SearchController(
     private val userConfig: UserConfig,
 ) {
     private val glyphPaint = Paint()
-    private val hasGlyph: (String) -> Boolean = { userConfig.showUnsupportedChars || glyphPaint.hasGlyph(it) }
+    private val acceptGlyph: (String) -> Boolean = { userConfig.showUnsupportedChars || glyphPaint.hasGlyph(it) }
     var searchResult: Array<SearchResult> = emptyArray()
     var recentResult: Array<SearchResult> = emptyArray()
     var queryTokens: Array<String> = emptyArray()
@@ -23,7 +23,7 @@ class SearchController(
             recentResult = emptyArray()
             return
         }
-        val resultMap = unicodeStorage.findCharsByCodePoints(codePoints, hasGlyph)
+        val resultMap = unicodeStorage.findCharsByCodePoints(codePoints, acceptGlyph)
         val results = ArrayList<SearchResult>(resultMap.size)
         for (cp in codePoints) {
             val result = resultMap[cp.value]
@@ -56,7 +56,7 @@ class SearchController(
         } else {
             directCodePoint = tryParseCharLiteral(query) ?: -1
             if (directCodePoint >= 0) {
-                val direct = unicodeStorage.findCharByCodePoint(directCodePoint, hasGlyph)
+                val direct = unicodeStorage.findCharByCodePoint(directCodePoint, acceptGlyph)
                 if (direct != null) {
                     results.add(direct)
                 }
@@ -66,9 +66,9 @@ class SearchController(
         if (trimmed.isNotEmpty()) {
             val tokens = whitespaceRegex.split(trimmed)
             val nameResults = if (tokens.size == 1) {
-                unicodeStorage.findCharsByName(tokens[0], count, hasGlyph)
+                unicodeStorage.findCharsByName(tokens[0], count, acceptGlyph)
             } else {
-                unicodeStorage.findCharsByNameMultiWord(tokens, count, hasGlyph)
+                unicodeStorage.findCharsByNameMultiWord(tokens, count, acceptGlyph)
             }
 
             for (r in nameResults) {
@@ -89,7 +89,7 @@ class SearchController(
     }
 
     private suspend fun findByCode(query: CodeQuery, count: Int): Array<SearchResult> {
-        return unicodeStorage.findCharsByCodePointPrefix(query.exact, query.prefixLength, query.ranges, count, hasGlyph)
+        return unicodeStorage.findCharsByCodePointPrefix(query.exact, query.prefixLength, query.ranges, count, acceptGlyph)
     }
 
     private fun parseCodeQuery(input: String): CodeQuery? {

@@ -46,6 +46,7 @@ class UserConfig(context: Context) {
     val topSearchEligible: Boolean
         get() = sharedPreferences.getBoolean(key_topSearchEligible, false)
 
+    // Retained to retire top search later only for users who never enabled it.
     val topSearchEverEnabled: Boolean
         get() = sharedPreferences.getBoolean(key_topSearchEverEnabled, false)
 
