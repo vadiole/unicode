@@ -12,12 +12,14 @@ class ActionCell(
     name: String,
     private val topItem: Boolean = false,
     private val bottomItem: Boolean = false,
+    private val middleItem: Boolean = false,
 ) : TextView(context) {
     private fun createShape() = run {
         val r = 13.dp(context)
         when {
             topItem -> SquircleDrawable(cornerRadius = 0, topLeftRadius = r, topRightRadius = r)
             bottomItem -> SquircleDrawable(cornerRadius = 0, bottomRightRadius = r, bottomLeftRadius = r)
+            middleItem -> SquircleDrawable(0)
             else -> SquircleDrawable(r)
         }
     }

@@ -15,6 +15,7 @@ class UserConfig(context: Context) {
         private const val key_recentsEnabled = "recentsEnabled"
         private const val key_dockEnabled = "dockEnabled"
         private const val key_centerTitle = "centerTitle"
+        private const val key_mergedDetailsActions = "mergedDetailsActions"
         private const val key_tableScrollCodePoint = "tableScrollCodePoint"
         private const val key_tableScrollOffset = "tableScrollOffset"
         private const val key_dockScroll = "dockScroll"
@@ -24,14 +25,20 @@ class UserConfig(context: Context) {
     private val editor = sharedPreferences.edit()
 
     init {
-        if (!sharedPreferences.contains(key_dockEnabled) || !sharedPreferences.contains(key_centerTitle)) {
+        if (!sharedPreferences.contains(key_dockEnabled) || !sharedPreferences.contains(key_centerTitle) ||
+            !sharedPreferences.contains(key_mergedDetailsActions)
+        ) {
             val info = context.packageManager.getPackageInfo(context.packageName, 0)
             val isUpdate = info.firstInstallTime != info.lastUpdateTime
             if (!sharedPreferences.contains(key_dockEnabled)) editor.putBoolean(key_dockEnabled, !isUpdate)
             if (!sharedPreferences.contains(key_centerTitle)) editor.putBoolean(key_centerTitle, isUpdate)
+            if (!sharedPreferences.contains(key_mergedDetailsActions)) editor.putBoolean(key_mergedDetailsActions, !isUpdate)
             editor.apply()
         }
     }
+
+    val mergedDetailsActions: Boolean
+        get() = sharedPreferences.getBoolean(key_mergedDetailsActions, false)
 
     val centerTitle: Boolean
         get() = sharedPreferences.getBoolean(key_centerTitle, false)
