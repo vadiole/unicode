@@ -1,5 +1,6 @@
 package vadiole.unicode.ui.settings
 
+import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
@@ -16,6 +17,7 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.TextView
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.TEXT_BODY
@@ -25,6 +27,7 @@ import vadiole.unicode.ui.common.mono_regular
 
 class HoldActionRow(context: Context, label: String, private val action: () -> Unit) : TextView(context) {
     private val progressPaint = Paint().apply { color = context.getColor(R.color.layer1Pressed) }
+    private val progressAlpha = progressPaint.alpha
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val vibrator = if (Build.VERSION.SDK_INT >= 33) {
         context.getSystemService(VibratorManager::class.java)?.defaultVibrator
@@ -44,7 +47,7 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
     private var startedAt = 0L
     private var holding = false
     private var progress = 0f
-    private var releaseAnimation: AnimatorSet? = null
+    private var releaseAnimation: Animator? = null
     private val complete = Runnable { finishHold() }
     private val tick = object : Runnable {
         override fun run() {
@@ -110,7 +113,7 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
                 if (SystemClock.uptimeMillis() - startedAt >= HOLD_DURATION) finishHold()
                 else performClick()
             }
-            MotionEvent.ACTION_CANCEL -> releaseHold(nudge = false)
+            MotionEvent.ACTION_CANCEL -> if (holding) releaseHold(nudge = false)
         }
         return true
     }
@@ -143,7 +146,20 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
         invalidate()
         performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
         action()
-        releaseHold(nudge = false)
+        if (!animatorsEnabled) {
+            resetHold()
+            return
+        }
+        releaseAnimation = ValueAnimator.ofInt(progressAlpha, 0).apply {
+            startDelay = 120L
+            duration = 180L
+            interpolator = LinearInterpolator()
+            addUpdateListener {
+                progressPaint.alpha = it.animatedValue as Int
+                invalidate()
+            }
+            start()
+        }
     }
 
     private fun releaseHold(nudge: Boolean) {
@@ -185,6 +201,7 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
         stopHold()
         releaseAnimation?.cancel()
         releaseAnimation = null
+        progressPaint.alpha = progressAlpha
         progress = 0f
         invalidate()
     }
