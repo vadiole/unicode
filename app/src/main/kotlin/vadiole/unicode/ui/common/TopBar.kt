@@ -87,6 +87,10 @@ class TopBar(
         setContentAlpha(1f)
     }
 
+    fun setSearchRecents(shown: Boolean) {
+        searchTitle.setText(if (shown) R.string.search_recents else R.string.search_title)
+    }
+
     fun setContentAlpha(alpha: Float) {
         val titleAlpha = if (isSearchShown) 0f else alpha
         titleView.alpha = titleAlpha

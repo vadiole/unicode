@@ -53,6 +53,7 @@ import vadiole.unicode.ui.table.dock.DockController
 import vadiole.unicode.ui.table.dock.DockView
 import vadiole.unicode.ui.table.dock.FlyOverlay
 import vadiole.unicode.ui.table.search.SearchController
+import vadiole.unicode.ui.table.search.SearchHeaderCell
 import vadiole.unicode.ui.table.search.SearchResultCell
 import vadiole.unicode.ui.table.search.SearchResultView
 import vadiole.unicode.ui.table.selector.BlockSelectorPopup
@@ -128,19 +129,35 @@ class TableScreen(
     }
     private var searchJob: Job? = null
     private var isShowingRecents = false
+    private val areRecentsDisplayed: Boolean
+        get() = isShowingRecents && userConfig.recentsEnabled && searchController.recentResult.isNotEmpty()
     private val searchAdapter = object : CollectionView.Adapter() {
+        private val hasRecentsHeader: Boolean
+            get() = searchAtTop && areRecentsDisplayed
+
+        override fun getItemViewType(position: Int): Int {
+            return if (hasRecentsHeader && position == 0) VIEW_TYPE_HEADER else VIEW_TYPE_RESULT
+        }
+
         override fun getItemCount(): Int {
-            return if (isShowingRecents) searchController.recentResult.size else searchController.searchResult.size
+            val count = if (isShowingRecents) searchController.recentResult.size else searchController.searchResult.size
+            return count + if (hasRecentsHeader) 1 else 0
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
-            return CollectionView.Cell(SearchResultCell(context, searchResultCellDelegate))
+            val view = if (viewType == VIEW_TYPE_HEADER) {
+                SearchHeaderCell(context)
+            } else {
+                SearchResultCell(context, searchResultCellDelegate)
+            }
+            return CollectionView.Cell(view)
         }
 
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
+            if (holder.itemViewType == VIEW_TYPE_HEADER) return
             val view = holder.itemView as SearchResultCell
             val data = if (isShowingRecents) {
-                searchController.recentResult[position]
+                searchController.recentResult[position - if (hasRecentsHeader) 1 else 0]
             } else {
                 searchController.searchResult[position]
             }
@@ -672,18 +689,23 @@ class TableScreen(
         return true
     }
 
+    private fun updateSearchResults() {
+        topBar.setSearchRecents(!searchAtTop && areRecentsDisplayed)
+        searchAdapter.notifyDataSetChanged()
+    }
+
     private fun showSearch() {
         noResultsView.visibility = GONE
         isShowingRecents = true
         topBar.setSearchShown(!searchAtTop)
         searchController.recentResult = emptyArray()
-        searchAdapter.notifyDataSetChanged()
+        updateSearchResults()
         searchResultView.scrollToPosition(0)
         delegate.onSearchShown()
         searchJob?.cancel()
         searchJob = launch {
             searchController.loadRecents()
-            searchAdapter.notifyDataSetChanged()
+            updateSearchResults()
         }
     }
 
@@ -704,16 +726,16 @@ class TableScreen(
                 searchResultView.stopScroll()
                 searchController.loadRecents()
                 searchResultView.scrollToPosition(0)
-                searchAdapter.notifyDataSetChanged()
+                updateSearchResults()
             } else {
                 isShowingRecents = false
                 searchResultView.stopScroll()
                 searchController.search(query, 64)
                 searchResultView.scrollToPosition(0)
-                searchAdapter.notifyDataSetChanged()
+                updateSearchResults()
                 noResultsView.visibility = if (searchController.searchResult.isEmpty()) VISIBLE else GONE
                 searchController.search(query)
-                searchAdapter.notifyDataSetChanged()
+                updateSearchResults()
                 noResultsView.visibility = if (searchController.searchResult.isEmpty()) VISIBLE else GONE
             }
         }
@@ -731,6 +753,11 @@ class TableScreen(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawRect(0f, 0f, measuredWidth.toFloat(), topInset.toFloat(), statusBarPaint)
+    }
+
+    private companion object {
+        const val VIEW_TYPE_RESULT = 0
+        const val VIEW_TYPE_HEADER = 1
     }
 
     interface Delegate {
