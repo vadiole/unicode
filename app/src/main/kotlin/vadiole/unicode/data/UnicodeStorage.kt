@@ -347,10 +347,10 @@ class UnicodeStorage(private val context: Context) {
     }
 
     companion object {
-        const val totalCharacters = 41341
+        const val totalCharacters = BuildConfig.TOTAL_CHARACTERS
+        private const val databaseName = BuildConfig.DATABASE_NAME
         private const val databaseDir = "sql"
         private const val cacheDir = "cache"
-        private const val databaseName = "u18.sqlite"
         private const val VS_BMP_FIRST = 0xFE00
         private const val VS_BMP_LAST = 0xFE0F
         private const val VS_SUPP_FIRST = 0xE0100

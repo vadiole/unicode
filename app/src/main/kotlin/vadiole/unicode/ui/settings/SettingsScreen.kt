@@ -1,35 +1,21 @@
 package vadiole.unicode.ui.settings
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.util.TypedValue
-import android.view.Gravity
-import android.view.View
-import android.widget.FrameLayout
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
-import androidx.core.view.updateLayoutParams
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.data.config.UserConfig
-import vadiole.unicode.ui.common.IconButton
+import vadiole.unicode.ui.common.ActionCell
 import vadiole.unicode.ui.common.Screen
-import vadiole.unicode.ui.common.TEXT_BODY
-import vadiole.unicode.ui.common.TEXT_TITLE
-import vadiole.unicode.ui.common.ToggleSwitch
-import vadiole.unicode.ui.common.borderWidth
-import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.HoldActionCell
+import vadiole.unicode.ui.common.ToggleCell
+import vadiole.unicode.ui.common.SettingsTopBar
+import vadiole.unicode.ui.common.SettingsGroup
+import vadiole.unicode.ui.common.SettingsList
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
-import vadiole.unicode.ui.common.mono_semibold
-import vadiole.unicode.ui.common.navigationBars
-import vadiole.unicode.ui.common.rippleDrawable
-import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
 
@@ -42,149 +28,56 @@ class SettingsScreen(
         fun onBack()
         fun onShowUnsupportedCharsChanged()
         fun onDockEnabledChanged()
+        fun onAbout()
     }
 
-    private val backButton = IconButton(
-        context = context,
-        icon = context.getDrawable(R.drawable.ic_chevron_left)!!,
-        floating = false,
-    ).apply {
-        setPadding(4.dp(context), 0, 4.dp(context), 0)
-        contentDescription = context.getString(R.string.settings_back)
-        onClick = { delegate.onBack() }
-    }
-
-    private val title = TextView(context).apply {
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_TITLE)
-        typeface = mono_semibold
-        includeFontPadding = false
-        gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
-        setTextColor(context.getColor(R.color.windowTextPrimary))
-        text = context.getString(R.string.settings_title)
-    }
-
-    private val header = FrameLayout(context).apply {
-        setBackgroundColor(context.getColor(R.color.layer1))
-        addView(backButton, frameParams(56.dp(context), matchParent, Gravity.LEFT))
-        addView(title, frameParams(wrapContent, matchParent, Gravity.LEFT, marginLeft = 56.dp(context)))
-    }
-
-    private val clearRecentsRow = HoldActionRow(context, context.getString(R.string.settings_clear_recents)) {
+    private val clearRecentsCell = HoldActionCell(context, context.getString(R.string.settings_clear_recents)) {
         recentRepository.clear()
         Toast.makeText(context, R.string.toast_recents_cleared, Toast.LENGTH_SHORT).show()
     }.apply {
         isEnabled = userConfig.recentsEnabled
     }
 
-    private val content = LinearLayout(context).apply {
-        orientation = LinearLayout.VERTICAL
-        addView(header, linearParams(matchParent, 48.dp(context)))
-        addView(View(context).apply {
-            setBackgroundColor(context.getColor(R.color.floatingBorder))
-        }, linearParams(matchParent, borderWidth(context).toInt()))
-        addView(createDivider(), linearParams(matchParent, 1, marginTop = 16.dp(context)))
-        addView(createGroup(), linearParams(matchParent, wrapContent))
-        addView(createDivider(), linearParams(matchParent, 1))
-        addView(createDivider(), linearParams(matchParent, 1, marginTop = 16.dp(context)))
-        addView(LinearLayout(context).apply {
-            orientation = LinearLayout.VERTICAL
-            setBackgroundColor(context.getColor(R.color.layer1))
-            addView(
-                ToggleRow(context, context.getString(R.string.settings_save_recents), userConfig.recentsEnabled) { checked ->
-                    userConfig.recentsEnabled = checked
-                    clearRecentsRow.isEnabled = checked
-                },
-                linearParams(matchParent, wrapContent)
-            )
-            addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
-            addView(clearRecentsRow, linearParams(matchParent, wrapContent))
-        }, linearParams(matchParent, wrapContent))
-        addView(createDivider(), linearParams(matchParent, 1))
-    }
-
-    private fun createGroup() = LinearLayout(context).apply {
-        orientation = LinearLayout.VERTICAL
-        setBackgroundColor(context.getColor(R.color.layer1))
-        addView(
-            ToggleRow(context, context.getString(R.string.settings_dock), userConfig.dockEnabled) { checked ->
+    private val list = SettingsList(context).apply {
+        add(SettingsGroup(context, buildList {
+            add(ToggleCell(context, context.getString(R.string.settings_dock), userConfig.dockEnabled) { checked ->
                 userConfig.dockEnabled = checked
                 delegate.onDockEnabledChanged()
-            },
-            linearParams(matchParent, wrapContent)
-        )
-        addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
-        if (userConfig.topSearchEligible) {
-            addView(
-                ToggleRow(context, context.getString(R.string.settings_search_at_top), userConfig.searchAtTop) { checked ->
+            })
+            if (userConfig.topSearchEligible) {
+                add(ToggleCell(context, context.getString(R.string.settings_search_at_top), userConfig.searchAtTop) { checked ->
                     userConfig.searchAtTop = checked
-                },
-                linearParams(matchParent, wrapContent)
-            )
-            addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
-        }
-        addView(
-            ToggleRow(context, context.getString(R.string.settings_show_unsupported), userConfig.showUnsupportedChars) { checked ->
+                })
+            }
+            add(ToggleCell(context, context.getString(R.string.settings_show_unsupported), userConfig.showUnsupportedChars) { checked ->
                 userConfig.showUnsupportedChars = checked
                 delegate.onShowUnsupportedCharsChanged()
+            })
+        }))
+        add(SettingsGroup(context, listOf(
+            ToggleCell(context, context.getString(R.string.settings_save_recents), userConfig.recentsEnabled) { checked ->
+                userConfig.recentsEnabled = checked
+                clearRecentsCell.isEnabled = checked
             },
-            linearParams(matchParent, wrapContent)
-        )
-        addView(createDivider(), linearParams(matchParent, 1, marginLeft = 16.dp(context)))
-        addView(
-            ToggleRow(context, context.getString(R.string.settings_crash_reports), !userConfig.crashReportDisabled) { checked ->
+            clearRecentsCell,
+        )))
+        add(SettingsGroup(context, listOf(
+            ToggleCell(context, context.getString(R.string.settings_crash_reports), !userConfig.crashReportDisabled) { checked ->
                 userConfig.crashReportDisabled = !checked
             },
-            linearParams(matchParent, wrapContent)
-        )
+            ActionCell(context, context.getString(R.string.about_title)).apply {
+                setChevron()
+                onClick = { delegate.onAbout() }
+            },
+        )))
     }
 
     init {
         setBackgroundColor(context.getColor(R.color.layer0))
-        addView(content, frameParams(matchParent, matchParent))
-        setOnApplyWindowInsetsListener(this) { _, insets ->
-            val top = insets.statusBars.top
-            header.setPadding(0, top, 0, 0)
-            header.updateLayoutParams { height = 48.dp(context) + top }
-            setPadding(0, 0, 0, insets.navigationBars.bottom)
-            insets
-        }
-    }
-
-    private fun createDivider() = View(context).apply {
-        setBackgroundColor(context.getColor(R.color.windowDivider))
-    }
-
-    private class ToggleRow(
-        context: Context,
-        label: String,
-        checked: Boolean,
-        onChanged: (Boolean) -> Unit,
-    ) : FrameLayout(context) {
-        private val switch = ToggleSwitch(context).apply {
-            setState(checked, animate = false)
-            onToggle = onChanged
-        }
-
-        init {
-            background = context.rippleDrawable(
-                content = ColorDrawable(context.getColor(R.color.layer1)),
-                mask = ColorDrawable(Color.WHITE),
-            )
-            minimumHeight = 56.dp(context)
-            val labelView = TextView(context).apply {
-                setPadding(0, 12.dp(context), 0, 12.dp(context))
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
-                typeface = mono_regular
-                includeFontPadding = false
-                gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
-                setTextColor(context.getColor(R.color.windowTextPrimary))
-                text = label
-            }
-            addView(labelView, frameParams(matchParent, wrapContent, Gravity.LEFT or Gravity.CENTER_VERTICAL, marginLeft = 16.dp(context), marginRight = 72.dp(context)))
-            addView(switch, frameParams(wrapContent, wrapContent, Gravity.RIGHT or Gravity.CENTER_VERTICAL, marginRight = 16.dp(context)))
-            isClickable = true
-            isFocusable = true
-            onClick = { switch.toggle() }
-        }
+        addView(LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(SettingsTopBar(context, context.getString(R.string.settings_title)) { delegate.onBack() }, linearParams(matchParent, wrapContent))
+            addView(list, linearParams(matchParent, 0, weight = 1f))
+        }, frameParams(matchParent, matchParent))
     }
 }

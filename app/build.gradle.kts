@@ -14,6 +14,9 @@ android {
         targetSdk = 37
         versionCode = 173
         versionName = "1.9.0"
+        buildConfigField("String", "UNICODE_VERSION", "\"18.0.0\"")
+        buildConfigField("String", "DATABASE_NAME", "\"u18.sqlite\"")
+        buildConfigField("int", "TOTAL_CHARACTERS", "41341")
         base.archivesName.set("unicode-v$versionName")
     }
 

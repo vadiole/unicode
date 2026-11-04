@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.settings
+package vadiole.unicode.ui.common
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -11,22 +11,18 @@ import android.os.SystemClock
 import android.os.VibrationAttributes
 import android.os.VibrationEffect
 import android.os.VibratorManager
-import android.util.TypedValue
-import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import android.widget.TextView
 import vadiole.unicode.R
-import vadiole.unicode.ui.common.TEXT_BODY
-import vadiole.unicode.ui.common.animatorsEnabled
-import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.mono_regular
 
-class HoldActionRow(context: Context, label: String, private val action: () -> Unit) : TextView(context) {
-    private val progressPaint = Paint().apply { color = context.getColor(R.color.layer1Pressed) }
+class HoldActionCell(context: Context, label: String, private val action: () -> Unit) : ActionCell(context, label) {
+    private val progressPaint = Paint().apply {
+        val ripple = context.getColor(R.color.ripple)
+        color = ripple and 0xFFFFFF or (minOf(255, (ripple ushr 24) * 2) shl 24)
+    }
     private val progressAlpha = progressPaint.alpha
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val vibrator = if (Build.VERSION.SDK_INT >= 33) {
@@ -75,16 +71,6 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
     }
 
     init {
-        minimumHeight = 56.dp(context)
-        setPadding(16.dp(context), 12.dp(context), 16.dp(context), 12.dp(context))
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
-        typeface = mono_regular
-        includeFontPadding = false
-        gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
-        setTextColor(context.getColor(R.color.windowTextPrimary))
-        text = label
-        isClickable = true
-        isFocusable = true
         setOnClickListener { releaseHold(nudge = true) }
         setOnLongClickListener {
             if (isEnabled) action()
@@ -119,7 +105,12 @@ class HoldActionRow(context: Context, label: String, private val action: () -> U
     }
 
     override fun onDraw(canvas: Canvas) {
-        if (progress > 0f) canvas.drawRect(0f, 0f, width * progress, height.toFloat(), progressPaint)
+        if (progress > 0f) {
+            val count = canvas.save()
+            canvas.clipPath(shapePath)
+            canvas.drawRect(0f, 0f, width * progress, height.toFloat(), progressPaint)
+            canvas.restoreToCount(count)
+        }
         super.onDraw(canvas)
     }
 

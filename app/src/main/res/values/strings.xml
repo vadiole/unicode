@@ -31,6 +31,16 @@
     <string name="settings_save_recents">Save recent characters</string>
     <string name="settings_clear_recents">Clear recent characters</string>
     <string name="toast_recents_cleared">Recent characters cleared</string>
+    <string name="about_title">About</string>
+    <string name="about_app_version">App version</string>
+    <string name="about_unicode_version">Unicode version</string>
+    <string name="about_rate">Rate on Google Play</string>
+    <string name="about_feedback">Feedback &amp; ideas</string>
+    <string name="about_feedback_note">Report a bug or suggest a feature. I read every email!</string>
+    <string name="about_author">Designed and developed by @vadiole</string>
+    <string name="about_feedback_subject">Feedback and ideas</string>
+    <string name="about_info_copied">App information copied</string>
+    <string name="about_no_browser">No browser installed</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Find in Table</string>
