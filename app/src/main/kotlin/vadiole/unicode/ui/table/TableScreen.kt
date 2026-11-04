@@ -622,7 +622,6 @@ class TableScreen(
     private fun showSearch() {
         noResultsView.visibility = GONE
         isShowingRecents = true
-        topBar.setSearchTitle(hasQuery = false)
         topBar.setSearchShown(true)
         searchController.recentResult = emptyArray()
         searchAdapter.notifyDataSetChanged()
@@ -644,7 +643,6 @@ class TableScreen(
 
     private fun runSearch(query: String) {
         if (!searchBar.isExpanded()) return
-        topBar.setSearchTitle(hasQuery = query.isNotEmpty())
         searchJob?.cancel()
         searchJob = launch {
             if (query.isEmpty()) {
