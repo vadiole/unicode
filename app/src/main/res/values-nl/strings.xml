@@ -25,8 +25,22 @@
     <string name="settings_title">Instellingen</string>
     <string name="settings_back">Terug</string>
     <string name="settings_dock">Tik om te verzamelen</string>
+    <string name="settings_search_at_top">Zoeken bovenaan</string>
     <string name="settings_show_unsupported">Niet-ondersteunde tekens tonen</string>
     <string name="settings_crash_reports">Crashrapporten</string>
+    <string name="settings_save_recents">Recente tekens opslaan</string>
+    <string name="settings_clear_recents">Recente tekens wissen</string>
+    <string name="toast_recents_cleared">Recente tekens gewist</string>
+    <string name="about_title">Over</string>
+    <string name="about_app_version">App-versie</string>
+    <string name="about_unicode_version">Unicode-versie</string>
+    <string name="about_rate">Beoordelen op Google Play</string>
+    <string name="about_feedback">Feedback en ideeën</string>
+    <string name="about_feedback_note">Meld een bug of stel een functie voor. Ik lees elke e-mail!</string>
+    <string name="about_author">Ontworpen en ontwikkeld door @vadiole</string>
+    <string name="about_feedback_subject">Feedback en ideeën</string>
+    <string name="about_info_copied">App-informatie gekopieerd</string>
+    <string name="about_no_browser">Geen browser geïnstalleerd</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Zoeken in tabel</string>

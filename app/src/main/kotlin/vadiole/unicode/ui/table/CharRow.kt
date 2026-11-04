@@ -1,24 +1,23 @@
 package vadiole.unicode.ui.table
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.OvalShape
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
-import android.view.animation.PathInterpolator
 import androidx.core.graphics.ColorUtils
 import kotlin.math.floor
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
-import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.rippleDrawable
 
 class CharRow(
     context: Context,
@@ -63,51 +62,14 @@ class CharRow(
     private var rippleRadius: Float = maxRippleRadius
     private var actionDownIndex = -1
     private var highlightIndex = -1
-    private val rippleAlpha: Int
-    private var rippleIndex = -1
-    private var rippleTouchX = 0f
-    private var rippleTouchY = 0f
-    private var rippleGrow = 0f
-    private var rippleFade = 1f
-    private var isRippleReleased = false
-    private val easeOut = PathInterpolator(0.23f, 1f, 0.32f, 1f)
-    private val rippleGrowAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
-        interpolator = easeOut
-        addUpdateListener {
-            rippleGrow = it.animatedValue as Float
-            invalidate()
-        }
-        addListener(object : AnimatorListenerAdapter() {
-            private var cancelled = false
-
-            override fun onAnimationStart(animation: Animator) {
-                cancelled = false
-            }
-
-            override fun onAnimationCancel(animation: Animator) {
-                cancelled = true
-            }
-
-            override fun onAnimationEnd(animation: Animator) {
-                if (!cancelled && isRippleReleased) fadeRipple()
-            }
-        })
-    }
-    private val rippleFadeAnimator = ValueAnimator.ofFloat(1f, 0f).apply {
-        duration = RIPPLE_FADE_DURATION
-        interpolator = easeOut
-        addUpdateListener {
-            rippleFade = it.animatedValue as Float
-            if (rippleFade <= 0f) rippleIndex = -1
-            invalidate()
-        }
+    private val ripple = context.rippleDrawable(mask = ShapeDrawable(OvalShape())).apply {
+        callback = this@CharRow
     }
 
     init {
         charPaint.color = context.getColor(R.color.windowTextPrimary)
         abbreviationPaint.color = ColorUtils.setAlphaComponent(context.getColor(R.color.windowTextPrimary), 128)
         ripplePaint.color = context.getColor(R.color.ripple)
-        rippleAlpha = ripplePaint.alpha
         charPaint.textSize = charSize
         abbreviationPaint.textSize = abbreviationSize
         isClickable = true
@@ -117,6 +79,8 @@ class CharRow(
     fun bind(codePoints: CodePointArray, abbreviations: Map<CodePoint, String>) {
         this.codePoints = codePoints
         this.abbreviations = abbreviations
+        removeCallbacks(clearHighlightRunnable)
+        clearHighlight()
         charRipples.fill(false)
         clearRipple()
         invalidate()
@@ -141,8 +105,7 @@ class CharRow(
         val index = floor(event.x / width * count).toInt()
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
-                if (index >= codePoints.size) return false
-                actionDownIndex = index
+                if (index !in codePoints.indices) return false
                 startRipple(index, event.x, event.y)
                 postDelayed(longClickRunnable, longClickDuration)
             }
@@ -159,14 +122,17 @@ class CharRow(
 
             MotionEvent.ACTION_CANCEL -> {
                 if (actionDownIndex >= 0) {
-                    cancelClick(actionDownIndex)
+                    releaseClick(actionDownIndex)
                 }
             }
 
             MotionEvent.ACTION_MOVE -> {
-                if (actionDownIndex >= 0 && actionDownIndex != index) {
-                    cancelClick(actionDownIndex)
-                    return false
+                if (actionDownIndex >= 0) {
+                    if (actionDownIndex != index) {
+                        releaseClick(actionDownIndex)
+                        return false
+                    }
+                    ripple.setHotspot(event.x, event.y)
                 }
             }
         }
@@ -177,69 +143,45 @@ class CharRow(
         if (actionDownIndex != index) return
         actionDownIndex = -1
         removeCallbacks(longClickRunnable)
-        isRippleReleased = true
-        if (rippleGrowAnimator.isRunning) {
-            val from = rippleGrow
-            rippleGrowAnimator.cancel()
-            rippleGrowAnimator.setFloatValues(from, 1f)
-            rippleGrowAnimator.duration = RIPPLE_FINISH_DURATION
-            rippleGrowAnimator.start()
-        } else {
-            fadeRipple()
-        }
-    }
-
-    private fun cancelClick(index: Int) {
-        if (actionDownIndex != index) return
-        actionDownIndex = -1
-        removeCallbacks(longClickRunnable)
-        isRippleReleased = true
-        rippleGrowAnimator.cancel()
-        fadeRipple()
+        ripple.state = EMPTY_STATE
     }
 
     private fun startRipple(index: Int, x: Float, y: Float) {
-        rippleGrowAnimator.cancel()
-        rippleFadeAnimator.cancel()
-        rippleIndex = index
-        rippleTouchX = x
-        rippleTouchY = y
-        rippleFade = 1f
-        isRippleReleased = false
-        if (animatorsEnabled) {
-            rippleGrow = 0f
-            rippleGrowAnimator.setFloatValues(0f, 1f)
-            rippleGrowAnimator.duration = RIPPLE_GROW_DURATION
-            rippleGrowAnimator.start()
-        } else {
-            rippleGrow = 1f
-        }
-        invalidate()
-    }
-
-    private fun fadeRipple() {
-        if (rippleIndex < 0) return
-        rippleFadeAnimator.cancel()
-        if (animatorsEnabled) {
-            rippleFadeAnimator.setFloatValues(rippleFade, 0f)
-            rippleFadeAnimator.start()
-        } else {
-            clearRipple()
-        }
+        clearRipple()
+        actionDownIndex = index
+        val centerX = charCoordsX[index]
+        ripple.setBounds(
+            (centerX - rippleRadius).toInt(),
+            (charPivotY - rippleRadius).toInt(),
+            (centerX + rippleRadius).toInt(),
+            (charPivotY + rippleRadius).toInt(),
+        )
+        ripple.setHotspot(x, y)
+        ripple.state = PRESSED_STATE
     }
 
     private fun clearRipple() {
-        rippleGrowAnimator.cancel()
-        rippleFadeAnimator.cancel()
-        rippleIndex = -1
+        ripple.state = EMPTY_STATE
+        ripple.jumpToCurrentState()
         actionDownIndex = -1
         removeCallbacks(longClickRunnable)
         invalidate()
     }
 
+    override fun verifyDrawable(who: Drawable): Boolean {
+        return who === ripple || super.verifyDrawable(who)
+    }
+
+    override fun jumpDrawablesToCurrentState() {
+        super.jumpDrawablesToCurrentState()
+        ripple.jumpToCurrentState()
+    }
+
     override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
         clearRipple()
+        removeCallbacks(clearHighlightRunnable)
+        clearHighlight()
+        super.onDetachedFromWindow()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -262,26 +204,15 @@ class CharRow(
 
     @SuppressLint("MissingSuperCall")
     override fun draw(canvas: Canvas) {
+        ripple.draw(canvas)
         codePoints.forEachIndexed { index, codePoint ->
             val charCoordX = charCoordsX[index]
             val charPivotX = charCoordsX[index]
             if (charRipples[index]) {
                 canvas.drawCircle(charPivotX, charPivotY, rippleRadius, ripplePaint)
-            } else if (index == rippleIndex) {
-                drawRipple(canvas, charPivotX)
             }
             drawChar(canvas, codePoint, charCoordX, charCoordY)
         }
-    }
-
-    private fun drawRipple(canvas: Canvas, centerX: Float) {
-        val g = rippleGrow
-        val x = rippleTouchX + (centerX - rippleTouchX) * g
-        val y = rippleTouchY + (charPivotY - rippleTouchY) * g
-        val radius = rippleRadius * (RIPPLE_START_RADIUS + (1f - RIPPLE_START_RADIUS) * g)
-        ripplePaint.alpha = (rippleAlpha * rippleFade).toInt()
-        canvas.drawCircle(x, y, radius, ripplePaint)
-        ripplePaint.alpha = rippleAlpha
     }
 
     private fun drawChar(canvas: Canvas, codePoint: CodePoint, charCoordX: Float, charCoordY: Float) {
@@ -301,9 +232,7 @@ class CharRow(
     }
 
     private companion object {
-        const val RIPPLE_GROW_DURATION = 400L
-        const val RIPPLE_FINISH_DURATION = 150L
-        const val RIPPLE_FADE_DURATION = 200L
-        const val RIPPLE_START_RADIUS = 0.2f
+        val PRESSED_STATE = intArrayOf(android.R.attr.state_enabled, android.R.attr.state_pressed)
+        val EMPTY_STATE = intArrayOf()
     }
 }

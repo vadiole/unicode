@@ -1,9 +1,11 @@
 package vadiole.unicode.ui.table.search
 
 import android.content.Context
-import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.text.style.BackgroundColorSpan
 import android.util.TypedValue
 import android.view.Gravity
@@ -15,15 +17,16 @@ import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.ui.common.CharTextView
-import vadiole.unicode.ui.common.StateColorDrawable
 import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
 import vadiole.unicode.ui.extension.onLongClick
+import java.util.Locale
 
 class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context) {
 
@@ -32,7 +35,6 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
         fun onLongClick(codePoint: CodePoint)
     }
 
-    private val backgroundDrawable = StateColorDrawable()
     private val highlightColor = context.getColor(R.color.searchMatchHighlight)
     private var codePoint: CodePoint? = null
     private var highlightStarts = IntArray(4)
@@ -43,7 +45,7 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
     val name = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
-        typeface = mono_regular
+        typeface = font_regular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
         setPadding(0, 6.dp(context), 16.dp(context), 6.dp(context))
@@ -52,21 +54,14 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     init {
         charView.textColor = this.context.getColor(R.color.windowTextPrimary)
         name.setTextColor(this.context.getColor(R.color.windowTextPrimary))
-        backgroundDrawable.colors = ColorStateList(
-            arrayOf(
-                intArrayOf(-android.R.attr.state_pressed),
-                intArrayOf(android.R.attr.state_pressed)
-            ),
-            intArrayOf(
-                this.context.getColor(R.color.windowSurface),
-                this.context.getColor(R.color.windowSurfacePressed),
-            ),
-        )
         layoutParams = RecyclerView.LayoutParams(matchParent, wrapContent)
         minimumHeight = 48.dp(context)
         addView(name, frameParams(matchParent, wrapContent, Gravity.CENTER_VERTICAL, marginLeft = 64.dp(context)))
         addView(charView, frameParams(64.dp(context), matchParent, gravity = Gravity.LEFT))
-        background = backgroundDrawable
+        background = context.rippleDrawable(
+            content = ColorDrawable(context.getColor(R.color.windowSurface)),
+            mask = ColorDrawable(Color.WHITE),
+        )
         isClickable = true
         isFocusable = true
         clipChildren = false
@@ -85,10 +80,25 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
 
     fun bind(data: SearchResult, abbreviations: Map<CodePoint, String>, tokens: Array<String>?) {
-        name.text = buildHighlightedName(data.name, tokens)
+        val highlightedName = buildHighlightedName(data.name, tokens)
+        name.text = if (data.codeMatchLength == 0) {
+            highlightedName
+        } else {
+            appendCode(highlightedName, data.codePoint.value, data.codeMatchLength, data.codeMatchAtEnd)
+        }
         charView.text = data.codePoint.char
         charView.abbreviation = abbreviations[data.codePoint]
         codePoint = data.codePoint
+    }
+
+    private fun appendCode(name: CharSequence, codePoint: Int, matchLength: Int, matchAtEnd: Boolean): CharSequence {
+        val hex = Integer.toHexString(codePoint).uppercase(Locale.ROOT).padStart(4, '0')
+        val builder = SpannableStringBuilder(name).append(" [U+").append(hex).append(']')
+        val hexEnd = builder.length - 1
+        val length = minOf(matchLength, hex.length)
+        val start = if (matchAtEnd) hexEnd - length else hexEnd - hex.length
+        builder.setSpan(BackgroundColorSpan(highlightColor), start, start + length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        return builder
     }
 
     private fun buildHighlightedName(source: String, tokens: Array<String>?): CharSequence {

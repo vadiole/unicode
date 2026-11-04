@@ -25,8 +25,22 @@
     <string name="settings_title">設定</string>
     <string name="settings_back">戻る</string>
     <string name="settings_dock">タップで集める</string>
+    <string name="settings_search_at_top">検索バーを上部に表示</string>
     <string name="settings_show_unsupported">非対応の文字を表示</string>
     <string name="settings_crash_reports">クラッシュレポート</string>
+    <string name="settings_save_recents">文字の履歴を保存</string>
+    <string name="settings_clear_recents">文字の履歴を消去</string>
+    <string name="toast_recents_cleared">文字の履歴を消去しました</string>
+    <string name="about_title">このアプリについて</string>
+    <string name="about_app_version">アプリのバージョン</string>
+    <string name="about_unicode_version">Unicode のバージョン</string>
+    <string name="about_rate">Google Play で評価</string>
+    <string name="about_feedback">フィードバック・アイデア</string>
+    <string name="about_feedback_note">不具合の報告や機能の提案をお寄せください。メールはすべて読んでいます！</string>
+    <string name="about_author">デザイン・開発：@vadiole</string>
+    <string name="about_feedback_subject">フィードバック・アイデア</string>
+    <string name="about_info_copied">アプリ情報をコピーしました</string>
+    <string name="about_no_browser">ブラウザがインストールされていません</string>
 
     <!-- Details -->
     <string name="details_find_in_table">テーブルで探す</string>

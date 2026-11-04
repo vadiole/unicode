@@ -29,6 +29,7 @@ import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.details.DetailsSheet
 import vadiole.unicode.ui.extension.isVisible
+import vadiole.unicode.ui.settings.AboutScreen
 import vadiole.unicode.ui.settings.SettingsScreen
 import vadiole.unicode.ui.table.TableController
 import vadiole.unicode.ui.table.TableScreen
@@ -61,7 +62,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
     private val tableController = TableController(unicodeStorage, userConfig)
-    private val searchController = SearchController(unicodeStorage, recentRepository)
+    private val searchController = SearchController(unicodeStorage, recentRepository, userConfig)
     private val dockController = DockController(userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onShowDetails(codePoint: CodePoint) {
@@ -92,6 +93,12 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         override fun onBack() = hideSettings()
         override fun onShowUnsupportedCharsChanged() = tableScreen.reloadChars()
         override fun onDockEnabledChanged() = applyDockEnabled()
+        override fun onAbout() {
+            val screen = AboutScreen(context) { hideSettings() }
+            nav.push(screen)
+            screen.requestApplyInsets()
+            updateBackEnabled()
+        }
     }
     private val dimView = View(context).apply {
         layoutParams = frameParams(matchParent, matchParent)
@@ -195,6 +202,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
 
     private fun hideSettings() {
         isNavBackInProgress = false
+        tableScreen.setSearchAtTop(userConfig.searchAtTop)
         nav.pop()
         updateBackEnabled()
     }

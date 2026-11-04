@@ -12,14 +12,17 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 23
         targetSdk = 37
-        versionCode = 172
-        versionName = "1.8.0"
+        versionCode = 173
+        versionName = "1.9.0"
+        buildConfigField("String", "UNICODE_VERSION", "\"18.0.0\"")
+        buildConfigField("String", "DATABASE_NAME", "\"u18.sqlite\"")
+        buildConfigField("int", "TOTAL_CHARACTERS", "41341")
         base.archivesName.set("unicode-v$versionName")
     }
 
     androidResources {
         generateLocaleConfig = true
-        localeFilters += listOf("en", "cs", "da", "el", "es", "fr", "hi", "it", "ja", "ka", "nb", "nl", "pt", "pt-rBR", "ru", "sl", "sv", "tr", "uk", "zh-rCN")
+        localeFilters += listOf("en", "cs", "da", "de", "el", "es", "fr", "hi", "it", "ja", "ka", "nb", "nl", "pl", "pt", "pt-rBR", "ru", "sl", "sv", "tr", "uk", "zh-rCN")
     }
 
     buildTypes {

@@ -9,18 +9,17 @@ import kotlin.math.ceil
 import vadiole.unicode.R
 
 class CharInfoView(context: Context) : View(context) {
-    private val backgroundDrawable = SquircleDrawable(12.dp(context))
     private val valuePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         textSize = TEXT_SECONDARY.sp(context)
-        typeface = mono_regular
+        typeface = font_regular
         style = Paint.Style.FILL
         isSubpixelText = true
     }
     private val namePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         textSize = TEXT_CAPTION.sp(context)
-        typeface = mono_regular
+        typeface = font_regular
         style = Paint.Style.FILL
         isSubpixelText = true
     }
@@ -47,23 +46,18 @@ class CharInfoView(context: Context) : View(context) {
         }
 
     init {
-        backgroundDrawable.colors = run {
-            ColorStateList(
-                arrayOf(
-                    intArrayOf(android.R.attr.state_pressed),
-                    intArrayOf(-android.R.attr.state_pressed),
-                ),
-                intArrayOf(
-                    this.context.getColor(R.color.layer1Pressed),
-                    this.context.getColor(R.color.layer1),
-                )
-            )
-        }
         valuePaint.color = this.context.getColor(R.color.windowTextPrimary)
         namePaint.color = this.context.getColor(R.color.windowTextSecondary)
         isClickable = true
         isFocusable = true
-        background = backgroundDrawable
+        background = context.rippleDrawable(
+            SquircleDrawable(12.dp(context)).apply {
+                colors = ColorStateList.valueOf(context.getColor(R.color.layer1))
+            },
+            SquircleDrawable(12.dp(context)).apply {
+                colors = ColorStateList.valueOf(android.graphics.Color.WHITE)
+            },
+        )
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

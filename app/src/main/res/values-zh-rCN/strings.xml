@@ -25,8 +25,22 @@
     <string name="settings_title">设置</string>
     <string name="settings_back">返回</string>
     <string name="settings_dock">点按收集</string>
+    <string name="settings_search_at_top">搜索栏置顶</string>
     <string name="settings_show_unsupported">显示不支持的字符</string>
     <string name="settings_crash_reports">崩溃报告</string>
+    <string name="settings_save_recents">保存最近使用的字符</string>
+    <string name="settings_clear_recents">清除最近使用的字符</string>
+    <string name="toast_recents_cleared">已清除最近使用的字符</string>
+    <string name="about_title">关于</string>
+    <string name="about_app_version">应用版本</string>
+    <string name="about_unicode_version">Unicode 版本</string>
+    <string name="about_rate">在 Google Play 上评分</string>
+    <string name="about_feedback">反馈与建议</string>
+    <string name="about_feedback_note">报告问题或提出功能建议。每封邮件我都会看！</string>
+    <string name="about_author">由 @vadiole 设计和开发</string>
+    <string name="about_feedback_subject">反馈与建议</string>
+    <string name="about_info_copied">已复制应用信息</string>
+    <string name="about_no_browser">未安装浏览器</string>
 
     <!-- Details -->
     <string name="details_find_in_table">在表中查找</string>

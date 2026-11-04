@@ -25,8 +25,22 @@
     <string name="settings_title">Impostazioni</string>
     <string name="settings_back">Indietro</string>
     <string name="settings_dock">Tocca per raccogliere</string>
+    <string name="settings_search_at_top">Ricerca in alto</string>
     <string name="settings_show_unsupported">Mostra caratteri non supportati</string>
     <string name="settings_crash_reports">Segnalazioni di arresto anomalo</string>
+    <string name="settings_save_recents">Salva caratteri recenti</string>
+    <string name="settings_clear_recents">Cancella caratteri recenti</string>
+    <string name="toast_recents_cleared">Caratteri recenti cancellati</string>
+    <string name="about_title">Informazioni</string>
+    <string name="about_app_version">Versione app</string>
+    <string name="about_unicode_version">Versione Unicode</string>
+    <string name="about_rate">Valuta su Google Play</string>
+    <string name="about_feedback">Feedback e idee</string>
+    <string name="about_feedback_note">Segnala un bug o suggerisci una funzione. Leggo ogni email!</string>
+    <string name="about_author">Progettato e sviluppato da @vadiole</string>
+    <string name="about_feedback_subject">Feedback e idee</string>
+    <string name="about_info_copied">Informazioni sull\'app copiate</string>
+    <string name="about_no_browser">Nessun browser installato</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Trova nella tabella</string>

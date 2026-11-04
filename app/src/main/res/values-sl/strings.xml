@@ -25,8 +25,22 @@
     <string name="settings_title">Nastavitve</string>
     <string name="settings_back">Nazaj</string>
     <string name="settings_dock">Tapnite za zbiranje</string>
+    <string name="settings_search_at_top">Iskanje na vrhu</string>
     <string name="settings_show_unsupported">Prikaži nepodprte znake</string>
     <string name="settings_crash_reports">Poročila o napakah</string>
+    <string name="settings_save_recents">Shranjuj nedavne znake</string>
+    <string name="settings_clear_recents">Počisti nedavne znake</string>
+    <string name="toast_recents_cleared">Nedavni znaki so počiščeni</string>
+    <string name="about_title">O aplikaciji</string>
+    <string name="about_app_version">Različica aplikacije</string>
+    <string name="about_unicode_version">Različica Unicode</string>
+    <string name="about_rate">Ocenite v Trgovini Google Play</string>
+    <string name="about_feedback">Povratne informacije in ideje</string>
+    <string name="about_feedback_note">Prijavite napako ali predlagajte funkcijo. Preberem vsako e-poštno sporočilo!</string>
+    <string name="about_author">Oblikoval in razvil @vadiole</string>
+    <string name="about_feedback_subject">Povratne informacije in ideje</string>
+    <string name="about_info_copied">Podatki o aplikaciji so kopirani</string>
+    <string name="about_no_browser">Ni nameščenega brskalnika</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Poišči v tabeli</string>

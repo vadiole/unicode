@@ -33,10 +33,6 @@ class TopBar(
         text = title
         setCompoundDrawablesRelative(null, null, chevron, null)
     }
-    private val recentsTitle = createTitle().apply {
-        text = context.getString(R.string.search_recents)
-        alpha = 0f
-    }
     private val searchTitle = createTitle().apply {
         text = context.getString(R.string.search_title)
         alpha = 0f
@@ -54,14 +50,12 @@ class TopBar(
 
     private val titlePaint = Paint(titleView.paint)
     private var isSearchShown = false
-    private var hasQuery = false
 
     init {
         setBackgroundColor(this.context.getColor(R.color.layer1))
         onClick = { if (!isSearchShown) onTitleClick() }
         val titleGravity = (if (centerTitle) Gravity.CENTER_HORIZONTAL else Gravity.LEFT) or Gravity.CENTER_VERTICAL
         addView(titleView, frameParams(wrapContent, matchParent, gravity = titleGravity))
-        addView(recentsTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(searchTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(settingsButton, frameParams(settingsSize + settingsMargin, matchParent, Gravity.RIGHT))
         addView(View(context).apply {
@@ -71,7 +65,7 @@ class TopBar(
 
     private fun createTitle() = TextView(context).apply {
         setLineHeightX(22.dp(context))
-        typeface = mono_semibold
+        typeface = font_semibold
         includeFontPadding = false
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         setPadding(sidePadding, 0, titleEndPadding, 0)
@@ -89,21 +83,19 @@ class TopBar(
     fun setSearchShown(shown: Boolean) {
         if (isSearchShown == shown) return
         isSearchShown = shown
-        val alpha = if (shown) 0f else 1f
-        titleView.alpha = alpha
-        settingsButton.alpha = alpha
         settingsButton.isEnabled = !shown
-        applySearchTitles()
+        setContentAlpha(1f)
     }
 
-    fun setSearchTitle(hasQuery: Boolean) {
-        this.hasQuery = hasQuery
-        applySearchTitles()
+    fun setSearchRecents(shown: Boolean) {
+        searchTitle.setText(if (shown) R.string.search_recents else R.string.search_title)
     }
 
-    private fun applySearchTitles() {
-        recentsTitle.alpha = if (isSearchShown && !hasQuery) 1f else 0f
-        searchTitle.alpha = if (isSearchShown && hasQuery) 1f else 0f
+    fun setContentAlpha(alpha: Float) {
+        val titleAlpha = if (isSearchShown) 0f else alpha
+        titleView.alpha = titleAlpha
+        settingsButton.alpha = titleAlpha
+        searchTitle.alpha = if (isSearchShown) alpha else 0f
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {

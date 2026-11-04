@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unicode</string>
+
+    <!-- Common -->
+    <string name="action_cancel">Abbrechen</string>
+    <string name="error_unknown">Ein unbekannter Fehler ist aufgetreten</string>
+    <string name="toast_copied_to_clipboard">%s in die Zwischenablage kopiert</string>
+    <string name="toast_link_copied_to_clipboard">Link in die Zwischenablage kopiert</string>
+
+    <!-- Search -->
+    <string name="search_hint">Suchen</string>
+    <string name="search_close">Suche schließen</string>
+    <string name="search_no_results">Keine Ergebnisse</string>
+    <string name="search_recents">Zuletzt verwendet</string>
+    <string name="search_title">Suche</string>
+
+    <!-- Dock -->
+    <string name="dock_tip_collect">Tippe auf Zeichen, um sie zu sammeln</string>
+    <string name="dock_tip_copy">Tippe auf die Leiste, um die Sammlung zu kopieren</string>
+    <string name="dock_backspace">Letztes Zeichen löschen</string>
+    <string name="dock_copy_all">Alle kopieren</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_back">Zurück</string>
+    <string name="settings_dock">Zum Sammeln tippen</string>
+    <string name="settings_search_at_top">Suchleiste oben</string>
+    <string name="settings_show_unsupported">Nicht unterstützte Zeichen anzeigen</string>
+    <string name="settings_crash_reports">Absturzberichte</string>
+    <string name="settings_save_recents">Zuletzt verwendete Zeichen speichern</string>
+    <string name="settings_clear_recents">Zuletzt verwendete Zeichen löschen</string>
+    <string name="toast_recents_cleared">Zuletzt verwendete Zeichen gelöscht</string>
+    <string name="about_title">Über die App</string>
+    <string name="about_app_version">App-Version</string>
+    <string name="about_unicode_version">Unicode-Version</string>
+    <string name="about_rate">Bei Google Play bewerten</string>
+    <string name="about_feedback">Feedback &amp; Ideen</string>
+    <string name="about_feedback_note">Melde einen Fehler oder schlage eine Funktion vor. Ich lese jede E-Mail!</string>
+    <string name="about_author">Gestaltet und entwickelt von @vadiole</string>
+    <string name="about_feedback_subject">Feedback und Ideen</string>
+    <string name="about_info_copied">App-Informationen kopiert</string>
+    <string name="about_no_browser">Kein Browser installiert</string>
+
+    <!-- Details -->
+    <string name="details_find_in_table">In Tabelle finden</string>
+    <string name="details_add">Zur Sammlung hinzufügen</string>
+    <string name="details_copy_to_clipboard">In Zwischenablage kopieren</string>
+    <string name="details_share_link">Link teilen</string>
+    <string name="details_info_code">Code</string>
+    <string name="details_info_html">HTML</string>
+    <string name="details_info_css">CSS</string>
+    <string name="details_info_version">Version</string>
+
+    <!-- Crash report -->
+    <string name="crash_dialog_title">Unicode wurde beendet</string>
+    <string name="crash_dialog_message">Möchtest du einen Absturzbericht senden?</string>
+    <string name="crash_dont_ask_again">Nicht mehr fragen</string>
+    <string name="crash_send">Senden</string>
+    <string name="crash_email_subject">Unicode-App</string>
+    <string name="crash_send_via_email">Per E-Mail senden</string>
+    <string name="crash_no_email_clients">Keine E-Mail-App installiert</string>
+</resources>

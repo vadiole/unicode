@@ -3,6 +3,9 @@ package vadiole.unicode.ui.common
 import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.drawable.InsetDrawable
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RoundRectShape
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
@@ -14,11 +17,13 @@ import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.R
 import vadiole.unicode.ui.extension.onClick
 import kotlin.math.PI
+import kotlin.math.roundToInt
 import kotlin.math.sin
 
 class SearchBar(
     context: Context,
     private val delegate: Delegate,
+    private val atTop: Boolean = false,
 ) : FrameLayout(context) {
 
     interface Delegate {
@@ -35,7 +40,7 @@ class SearchBar(
     private val touchExtension = 8.dp(context)
     private val iconSize = 24.dp(context)
     private val iconInset = 12.dp(context)
-    private val buttonWidth = buttonGap + fieldSize + edgePadding
+    private val buttonWidth = if (atTop) fieldSize else buttonGap + fieldSize + edgePadding
     private val buttonHeight = fieldSize + touchExtension * 2
 
     private var isExpandedState = false
@@ -57,16 +62,23 @@ class SearchBar(
 
     private val searchField = SearchField(context) { query -> delegate.onTextChanged(query) }.apply {
         hint = context.getString(R.string.search_hint)
+        val radius = fieldSize / 2f
+        val mask = ShapeDrawable(RoundRectShape(FloatArray(8) { radius }, null, null))
+        background = InsetDrawable(context.rippleDrawable(mask = mask), 0, touchExtension, 0, touchExtension)
         setPadding(iconInset + iconSize + 8.dp(context), touchExtension, edgePadding, touchExtension)
+        if (atTop) {
+            onClick = { expand() }
+            setOnFocusChangeListener { _, focused -> if (focused) expand() }
+        }
     }
 
     private val actionButton = IconButton(
         context = context,
-        icon = context.getDrawable(R.drawable.ic_search)!!,
-        altIcon = context.getDrawable(R.drawable.ic_close)!!,
+        icon = context.getDrawable(if (atTop) R.drawable.ic_close else R.drawable.ic_search)!!,
+        altIcon = if (atTop) null else context.getDrawable(R.drawable.ic_close)!!,
         iconSize = iconSize,
     ).apply {
-        setPadding(buttonGap, touchExtension, edgePadding, touchExtension)
+        setPadding(if (atTop) 0 else buttonGap, touchExtension, if (atTop) 0 else edgePadding, touchExtension)
         contentDescription = context.getString(R.string.search_hint)
         onClick = { if (isExpandedState) collapse() else expand() }
     }
@@ -94,7 +106,7 @@ class SearchBar(
         addView(searchField)
         addView(actionContainer)
         setSearchFieldEnabled(false)
-        applyProgress(0f)
+        applyProgress(0f, notify = false)
     }
 
     fun expand() {
@@ -111,7 +123,7 @@ class SearchBar(
     fun collapse() {
         if (!isExpandedState) return
         isExpandedState = false
-        actionButton.contentDescription = context.getString(R.string.search_hint)
+        actionButton.contentDescription = context.getString(if (atTop) R.string.search_close else R.string.search_hint)
         searchField.clearQuery()
         hideKeyboard()
         searchField.clearFocus()
@@ -136,7 +148,7 @@ class SearchBar(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
-        val fieldWidth = (width - edgePadding * 2 - fieldSize - buttonGap).coerceAtLeast(0)
+        val fieldWidth = (fieldRight(width, progressHolder.value.coerceIn(0f, 1f)) - edgePadding).coerceAtLeast(0)
         surfaceView.measure(exactly(width), exactly(height))
         searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
         actionContainer.measure(exactly(buttonWidth), exactly(buttonHeight))
@@ -147,13 +159,13 @@ class SearchBar(
         val width = right - left
         val rowTop = fieldTop - touchExtension
         surfaceView.layout(0, 0, width, bottom - top)
-        searchField.layout(edgePadding, rowTop, edgePadding + searchField.measuredWidth, rowTop + buttonHeight)
-        val buttonLeft = width - buttonWidth
-        actionContainer.layout(buttonLeft, rowTop, width, rowTop + buttonHeight)
+        layoutField(progressHolder.value.coerceIn(0f, 1f))
+        val buttonRight = if (atTop) width - edgePadding else width
+        val buttonLeft = buttonRight - buttonWidth
+        actionContainer.layout(buttonLeft, rowTop, buttonRight, rowTop + buttonHeight)
         actionContainer.pivotX = buttonGap + fieldSize / 2f
         actionContainer.pivotY = touchExtension + fieldSize / 2f
-        val fieldRight = width - edgePadding - fieldSize - buttonGap
-        surfaceDrawable.setBounds(edgePadding, fieldTop, fieldRight, fieldTop + fieldSize)
+        val fieldRight = fieldRight(width, 0f)
         val iconLeft = edgePadding + iconInset
         val iconTop = fieldTop + (fieldSize - iconSize) / 2
         fieldIcon.setBounds(iconLeft, iconTop, iconLeft + iconSize, iconTop + iconSize)
@@ -161,6 +173,25 @@ class SearchBar(
         surfaceView.pivotY = fieldTop + fieldSize / 2f
         searchField.pivotX = searchField.measuredWidth / 2f
         searchField.pivotY = touchExtension + fieldSize / 2f
+    }
+
+    private fun fieldRight(width: Int, p: Float): Int {
+        val actionSpace = if (atTop) ((fieldSize + buttonGap) * p).roundToInt() else fieldSize + buttonGap
+        return width - edgePadding - actionSpace
+    }
+
+    private fun layoutField(p: Float) {
+        if (width == 0) return
+        val fieldRight = fieldRight(width, p)
+        val fieldWidth = (fieldRight - edgePadding).coerceAtLeast(0)
+        if (searchField.measuredWidth != fieldWidth) {
+            searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
+        }
+        val rowTop = fieldTop - touchExtension
+        val layoutRight = if (atTop) fieldRight else edgePadding + fieldWidth
+        searchField.layout(edgePadding, rowTop, layoutRight, rowTop + buttonHeight)
+        surfaceDrawable.setBounds(edgePadding, fieldTop, fieldRight, fieldTop + fieldSize)
+        surfaceView.invalidate()
     }
 
     private fun exactly(size: Int) = MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY)
@@ -175,7 +206,22 @@ class SearchBar(
         progressSpring.animateToFinalPosition(target)
     }
 
-    private fun applyProgress(p: Float) {
+    private fun applyProgress(p: Float, notify: Boolean = true) {
+        if (atTop) {
+            applyTopProgress(p)
+        } else {
+            applyBottomProgress(p)
+        }
+        if (notify) delegate.onAnimationRunning(p)
+    }
+
+    private fun applyTopProgress(p: Float) {
+        layoutField(p)
+        actionContainer.translationX = (fieldSize + edgePadding) * (1f - p)
+        actionContainer.visibility = if (p > 0f) VISIBLE else INVISIBLE
+    }
+
+    private fun applyBottomProgress(p: Float) {
         val actionScale = 1f - ACTION_PULSE * sin(PI.toFloat() * p)
         actionContainer.scaleX = actionScale
         actionContainer.scaleY = actionScale
@@ -191,16 +237,19 @@ class SearchBar(
         searchField.scaleX = fieldScale
         searchField.scaleY = fieldScale
         if (!isExpandedState && p <= 0f) searchField.visibility = INVISIBLE
-
-        delegate.onAnimationRunning(p)
     }
 
     private fun setSearchFieldEnabled(enabled: Boolean) {
-        if (enabled) searchField.visibility = VISIBLE
-        searchField.isEnabled = enabled
-        searchField.isFocusable = enabled
+        if (atTop) {
+            actionButton.isEnabled = enabled
+            actionButton.importantForAccessibility = if (enabled) IMPORTANT_FOR_ACCESSIBILITY_YES else IMPORTANT_FOR_ACCESSIBILITY_NO
+        }
+        if (enabled || atTop) searchField.visibility = VISIBLE
+        searchField.isEnabled = enabled || atTop
+        searchField.isFocusable = enabled || atTop
         searchField.isFocusableInTouchMode = enabled
-        searchField.importantForAccessibility = if (enabled) {
+        searchField.isCursorVisible = enabled
+        searchField.importantForAccessibility = if (enabled || atTop) {
             IMPORTANT_FOR_ACCESSIBILITY_YES
         } else {
             IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS

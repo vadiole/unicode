@@ -25,8 +25,22 @@
     <string name="settings_title">პარამეტრები</string>
     <string name="settings_back">უკან</string>
     <string name="settings_dock">შეხებით შეგროვება</string>
+    <string name="settings_search_at_top">ძიება ზემოთ</string>
     <string name="settings_show_unsupported">მხარდაუჭერელი სიმბოლოების ჩვენება</string>
     <string name="settings_crash_reports">შეცდომის ანგარიშები</string>
+    <string name="settings_save_recents">ბოლო სიმბოლოების შენახვა</string>
+    <string name="settings_clear_recents">ბოლო სიმბოლოების გასუფთავება</string>
+    <string name="toast_recents_cleared">ბოლო სიმბოლოები გასუფთავდა</string>
+    <string name="about_title">აპის შესახებ</string>
+    <string name="about_app_version">აპის ვერსია</string>
+    <string name="about_unicode_version">Unicode-ის ვერსია</string>
+    <string name="about_rate">შეაფასეთ Google Play-ზე</string>
+    <string name="about_feedback">უკუკავშირი და იდეები</string>
+    <string name="about_feedback_note">შემატყობინეთ ხარვეზის შესახებ ან შემომთავაზეთ ახალი ფუნქცია. ყველა წერილს ვკითხულობ!</string>
+    <string name="about_author">დიზაინი და შემუშავება: @vadiole</string>
+    <string name="about_feedback_subject">უკუკავშირი და იდეები</string>
+    <string name="about_info_copied">აპის ინფორმაცია დაკოპირდა</string>
+    <string name="about_no_browser">ბრაუზერი არ არის დაინსტალირებული</string>
 
     <!-- Details -->
     <string name="details_find_in_table">ცხრილში მოძებნა</string>

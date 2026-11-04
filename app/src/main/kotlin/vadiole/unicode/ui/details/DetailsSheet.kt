@@ -41,8 +41,8 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.mono_regular
-import vadiole.unicode.ui.common.mono_semibold
+import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.font_semibold
 import vadiole.unicode.ui.common.navigationBars
 import vadiole.unicode.ui.common.share
 import vadiole.unicode.ui.common.toClipboard
@@ -59,6 +59,7 @@ class DetailsSheet(
         fun addToDock(codePoint: CodePoint)
     }
 
+    private val mergedActions = userConfig.mergedDetailsActions
     private var charObj: CharObj? = null
     private val screenPadding = 20.dp(context)
     private val verticalPadding = 10.dp(context)
@@ -83,7 +84,7 @@ class DetailsSheet(
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         includeFontPadding = false
         ellipsize = TextUtils.TruncateAt.END
-        typeface = mono_semibold
+        typeface = font_semibold
         isSingleLine = true
         onLongClick = {
             charObj?.let { value ->
@@ -104,7 +105,7 @@ class DetailsSheet(
         textAlignment = TEXT_ALIGNMENT_CENTER
         ellipsize = TextUtils.TruncateAt.END
         includeFontPadding = false
-        typeface = mono_regular
+        typeface = font_regular
         isSingleLine = true
     }
 
@@ -177,7 +178,9 @@ class DetailsSheet(
         infoViews.forEach(::addView)
     }
 
-    private val actionAdd = ActionCell(context, context.getString(R.string.details_add), topItem = true).apply {
+    private val actionAdd = ActionCell(
+        context, context.getString(R.string.details_add), topItem = !mergedActions, middleItem = mergedActions,
+    ).apply {
         layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_add)
         onClick = {
@@ -211,7 +214,9 @@ class DetailsSheet(
         }
     }
 
-    private val actionShare = ActionCell(context, context.getString(R.string.details_share_link), bottomItem = true).apply {
+    private val actionShare = ActionCell(
+        context, context.getString(R.string.details_share_link), bottomItem = !mergedActions, middleItem = mergedActions,
+    ).apply {
         layoutParams = linearParams(matchParent, wrapContent)
         setIcon(R.drawable.ic_link)
         var canClick = true
@@ -261,26 +266,38 @@ class DetailsSheet(
     private val tableActionGroup = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
         layoutParams = linearParams(matchParent, wrapContent, marginTop = verticalPadding * 3)
-        addView(actionAdd)
-        addView(divider3)
-        addView(actionViewInTable)
-        addView(actionFindInTable)
+        if (!mergedActions) {
+            addView(actionAdd)
+            addView(divider3)
+            addView(actionViewInTable)
+            addView(actionFindInTable)
+        }
     }
 
     fun setDockEnabled(enabled: Boolean) {
         val dockVisibility = if (enabled) VISIBLE else GONE
         actionAdd.visibility = dockVisibility
-        actionViewInTable.visibility = dockVisibility
+        actionViewInTable.visibility = if (mergedActions) VISIBLE else dockVisibility
         divider3.visibility = dockVisibility
-        actionFindInTable.visibility = if (enabled) GONE else VISIBLE
+        actionFindInTable.visibility = if (mergedActions || enabled) GONE else VISIBLE
     }
 
     private val actionGroup = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
-        layoutParams = linearParams(matchParent, wrapContent, marginTop = actionGroupGap)
+        layoutParams = linearParams(matchParent, wrapContent, marginTop = if (mergedActions) verticalPadding * 3 else actionGroupGap)
         addView(actionCopy)
         addView(divider2)
+        if (mergedActions) {
+            addView(actionAdd)
+            addView(divider3)
+        }
         addView(actionShare)
+        if (mergedActions) {
+            addView(View(context).apply {
+                setBackgroundColor(context.getColor(R.color.windowDivider))
+            }, linearParams(matchParent, hairlinePx))
+            addView(actionViewInTable)
+        }
     }
 
     private val bottomBlock = LinearLayout(context).apply {
@@ -288,7 +305,7 @@ class DetailsSheet(
         layoutParams = linearParams(matchParent, wrapContent)
         setPadding(screenPadding, 0, screenPadding, screenPadding + bottomBuffer)
         addView(infoViewsContainer)
-        addView(tableActionGroup)
+        if (!mergedActions) addView(tableActionGroup)
         addView(actionGroup)
     }
 

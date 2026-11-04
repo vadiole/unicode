@@ -25,8 +25,22 @@
     <string name="settings_title">Indstillinger</string>
     <string name="settings_back">Tilbage</string>
     <string name="settings_dock">Tryk for at samle</string>
+    <string name="settings_search_at_top">Søgning øverst</string>
     <string name="settings_show_unsupported">Vis tegn, der ikke understøttes</string>
     <string name="settings_crash_reports">Fejlrapporter</string>
+    <string name="settings_save_recents">Gem seneste tegn</string>
+    <string name="settings_clear_recents">Ryd seneste tegn</string>
+    <string name="toast_recents_cleared">Seneste tegn er ryddet</string>
+    <string name="about_title">Om</string>
+    <string name="about_app_version">Appversion</string>
+    <string name="about_unicode_version">Unicode-version</string>
+    <string name="about_rate">Bedøm på Google Play</string>
+    <string name="about_feedback">Feedback og idéer</string>
+    <string name="about_feedback_note">Rapportér en fejl, eller foreslå en funktion. Jeg læser hver eneste e-mail!</string>
+    <string name="about_author">Designet og udviklet af @vadiole</string>
+    <string name="about_feedback_subject">Feedback og idéer</string>
+    <string name="about_info_copied">Appoplysninger kopieret</string>
+    <string name="about_no_browser">Ingen browser installeret</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Find i tabel</string>

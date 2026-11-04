@@ -66,7 +66,7 @@ class UnicodeStorage(private val context: Context) {
         return@withContext databaseFile.absolutePath
     }
 
-    suspend fun getCodePoints(count: Int, hasGlyph: (String) -> Boolean): CodePointArray = withContext(dispatcher) {
+    suspend fun getCodePoints(count: Int, acceptGlyph: (String) -> Boolean): CodePointArray = withContext(dispatcher) {
         val query = if (count > 0) {
             "SELECT code_point, category FROM char WHERE id < ? LIMIT ?"
         } else {
@@ -85,7 +85,7 @@ class UnicodeStorage(private val context: Context) {
             result = IntArray(cursor.count)
             while (cursor.moveToNext()) {
                 val codePoint = CodePoint(cursor.getInt(codePointIndex))
-                if (isShown(codePoint, cursor.getString(categoryIndex), hasGlyph)) {
+                if (isShown(codePoint, cursor.getString(categoryIndex), acceptGlyph)) {
                     result[size++] = codePoint.value
                 }
             }
@@ -203,19 +203,19 @@ class UnicodeStorage(private val context: Context) {
         return@withContext result
     }
 
-    suspend fun findCharByCodePoint(codePoint: Int, hasGlyph: (String) -> Boolean): SearchResult? = withContext(dispatcher) {
+    suspend fun findCharByCodePoint(codePoint: Int, acceptGlyph: (String) -> Boolean): SearchResult? = withContext(dispatcher) {
         val args = arrayOf(codePoint.toString())
         openDatabase().rawQuery(queryFindCharByCodePoint, args).use { cursor ->
             if (cursor.count == 0) return@withContext null
             cursor.moveToFirst()
             val cp = CodePoint(cursor.getInt(cursor.getColumnIndex("code_point")))
-            if (!isShown(cp, cursor.getString(cursor.getColumnIndex("category")), hasGlyph)) return@withContext null
+            if (!isShown(cp, cursor.getString(cursor.getColumnIndex("category")), acceptGlyph)) return@withContext null
             val name = cursor.getString(cursor.getColumnIndex("name"))
             SearchResult(cp, name)
         }
     }
 
-    suspend fun findCharsByCodePoints(codePoints: CodePointArray, hasGlyph: (String) -> Boolean): Map<Int, SearchResult> = withContext(dispatcher) {
+    suspend fun findCharsByCodePoints(codePoints: CodePointArray, acceptGlyph: (String) -> Boolean): Map<Int, SearchResult> = withContext(dispatcher) {
         if (codePoints.isEmpty()) return@withContext emptyMap()
         val placeholders = codePoints.joinToString(",") { it.value.toString() }
         val query = "SELECT code_point, name, category FROM char WHERE code_point IN ($placeholders)"
@@ -226,7 +226,7 @@ class UnicodeStorage(private val context: Context) {
             val categoryIndex = cursor.getColumnIndex("category")
             while (cursor.moveToNext()) {
                 val cp = CodePoint(cursor.getInt(cpIndex))
-                if (isShown(cp, cursor.getString(categoryIndex), hasGlyph)) {
+                if (isShown(cp, cursor.getString(categoryIndex), acceptGlyph)) {
                     result[cp.value] = SearchResult(cp, cursor.getString(nameIndex))
                 }
             }
@@ -234,7 +234,41 @@ class UnicodeStorage(private val context: Context) {
         result
     }
 
-    suspend fun findCharsByName(input: String, count: Int, hasGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
+    suspend fun findCharsByCodePointPrefix(
+        exact: Int,
+        prefixLength: Int,
+        ranges: IntArray,
+        count: Int,
+        acceptGlyph: (String) -> Boolean,
+    ): Array<SearchResult> = withContext(dispatcher) {
+        val sql = StringBuilder("SELECT code_point, name, category FROM char WHERE code_point = ?")
+        val args = ArrayList<String>(ranges.size + 2)
+        args.add(exact.toString())
+        for (i in ranges.indices step 2) {
+            sql.append(" OR code_point BETWEEN ? AND ?")
+            args.add(ranges[i].toString())
+            args.add(ranges[i + 1].toString())
+        }
+        sql.append(" ORDER BY code_point = ? DESC, code_point")
+        args.add(exact.toString())
+        if (count > 0) sql.append(" LIMIT ").append(count)
+        val results: ArrayList<SearchResult>
+        openDatabase().rawQuery(sql.toString(), args.toTypedArray()).use { cursor ->
+            val codePointIndex = cursor.getColumnIndex("code_point")
+            val nameIndex = cursor.getColumnIndex("name")
+            val categoryIndex = cursor.getColumnIndex("category")
+            results = ArrayList(cursor.count)
+            while (cursor.moveToNext()) {
+                val cp = CodePoint(cursor.getInt(codePointIndex))
+                if (isShown(cp, cursor.getString(categoryIndex), acceptGlyph)) {
+                    results.add(SearchResult(cp, cursor.getString(nameIndex), prefixLength, cp.value == exact))
+                }
+            }
+        }
+        results.toTypedArray()
+    }
+
+    suspend fun findCharsByName(input: String, count: Int, acceptGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
         val escaped = escapeLike(input.uppercase())
         val query = if (count > 0) {
             "$queryFindChars LIMIT $count"
@@ -249,10 +283,10 @@ class UnicodeStorage(private val context: Context) {
             "$escaped%",
             "% $escaped %",
         )
-        return@withContext searchByName(query, args, hasGlyph)
+        return@withContext searchByName(query, args, acceptGlyph)
     }
 
-    suspend fun findCharsByNameMultiWord(tokens: List<String>, count: Int, hasGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
+    suspend fun findCharsByNameMultiWord(tokens: List<String>, count: Int, acceptGlyph: (String) -> Boolean): Array<SearchResult> = withContext(dispatcher) {
         val escapedTokens = tokens.map { escapeLike(it.uppercase()) }
         val nameConditions = escapedTokens.joinToString(" AND ") { "name LIKE ? ESCAPE '\\'" }
         val name2Conditions = escapedTokens.joinToString(" AND ") { "name2 LIKE ? ESCAPE '\\'" }
@@ -282,14 +316,14 @@ class UnicodeStorage(private val context: Context) {
             args.add("% $token%")
         }
 
-        return@withContext searchByName(limitedSql, args.toTypedArray(), hasGlyph)
+        return@withContext searchByName(limitedSql, args.toTypedArray(), acceptGlyph)
     }
 
-    private suspend fun searchByName(query: String, args: Array<String>, hasGlyph: (String) -> Boolean): Array<SearchResult> {
+    private suspend fun searchByName(query: String, args: Array<String>, acceptGlyph: (String) -> Boolean): Array<SearchResult> {
         val result: ArrayList<SearchResult>
         val millis = measureTimeMillis {
             openDatabase().rawQuery(query, args).use { cursor ->
-                result = cursor.toSearchResults(hasGlyph)
+                result = cursor.toSearchResults(acceptGlyph)
             }
         }
         if (BuildConfig.DEBUG) {
@@ -298,14 +332,14 @@ class UnicodeStorage(private val context: Context) {
         return result.toTypedArray()
     }
 
-    private fun Cursor.toSearchResults(hasGlyph: (String) -> Boolean): ArrayList<SearchResult> {
+    private fun Cursor.toSearchResults(acceptGlyph: (String) -> Boolean): ArrayList<SearchResult> {
         val codePointIndex = getColumnIndex("code_point")
         val nameIndex = getColumnIndex("name")
         val categoryIndex = getColumnIndex("category")
         val results = ArrayList<SearchResult>(count)
         while (moveToNext()) {
             val cp = CodePoint(getInt(codePointIndex))
-            if (isShown(cp, getString(categoryIndex), hasGlyph)) {
+            if (isShown(cp, getString(categoryIndex), acceptGlyph)) {
                 results.add(SearchResult(cp, getString(nameIndex)))
             }
         }
@@ -313,10 +347,10 @@ class UnicodeStorage(private val context: Context) {
     }
 
     companion object {
-        const val totalCharacters = 41341
+        const val totalCharacters = BuildConfig.TOTAL_CHARACTERS
+        private const val databaseName = BuildConfig.DATABASE_NAME
         private const val databaseDir = "sql"
         private const val cacheDir = "cache"
-        private const val databaseName = "u18.sqlite"
         private const val VS_BMP_FIRST = 0xFE00
         private const val VS_BMP_LAST = 0xFE0F
         private const val VS_SUPP_FIRST = 0xE0100
@@ -344,11 +378,11 @@ class UnicodeStorage(private val context: Context) {
             return input.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
         }
 
-        private fun isShown(codePoint: CodePoint, category: String?, hasGlyph: (String) -> Boolean): Boolean {
+        private fun isShown(codePoint: CodePoint, category: String?, acceptGlyph: (String) -> Boolean): Boolean {
             if (category == "Cc" || category == "Cf" || category == "Zl" || category == "Zp") return true
             val cp = codePoint.value
             if (cp in VS_BMP_FIRST..VS_BMP_LAST || cp in VS_SUPP_FIRST..VS_SUPP_LAST) return true
-            return hasGlyph(codePoint.char)
+            return acceptGlyph(codePoint.char)
         }
 
         private val queryGetAbbreviations = "SELECT code_point, c.name AS char_name " +

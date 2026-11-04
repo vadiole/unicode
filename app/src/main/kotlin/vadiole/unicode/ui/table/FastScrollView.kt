@@ -24,7 +24,7 @@ import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.FloatingSurfaceDrawable
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.mono_regular
+import vadiole.unicode.ui.common.font_regular
 import vadiole.unicode.ui.common.sp
 
 class FastScrollView(
@@ -88,7 +88,7 @@ class FastScrollView(
     private val bubbleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = bubbleTextSize
         color = context.getColor(R.color.windowTextPrimary)
-        typeface = mono_regular
+        typeface = font_regular
         textAlign = Paint.Align.LEFT
         isSubpixelText = true
     }
@@ -419,6 +419,7 @@ class FastScrollView(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
+                if (event.y < paddingTop || event.y >= height - paddingBottom) return false
                 if (isInEdgeZone(event.x)) {
                     touchDownY = event.y
                     scrollSlopPassed = false

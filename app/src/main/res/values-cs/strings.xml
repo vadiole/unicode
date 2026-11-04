@@ -25,8 +25,22 @@
     <string name="settings_title">Nastavení</string>
     <string name="settings_back">Zpět</string>
     <string name="settings_dock">Sbírat klepnutím</string>
+    <string name="settings_search_at_top">Vyhledávání nahoře</string>
     <string name="settings_show_unsupported">Zobrazit nepodporované znaky</string>
     <string name="settings_crash_reports">Hlášení o pádech</string>
+    <string name="settings_save_recents">Ukládat nedávné znaky</string>
+    <string name="settings_clear_recents">Vymazat nedávné znaky</string>
+    <string name="toast_recents_cleared">Nedávné znaky vymazány</string>
+    <string name="about_title">O aplikaci</string>
+    <string name="about_app_version">Verze aplikace</string>
+    <string name="about_unicode_version">Verze Unicode</string>
+    <string name="about_rate">Ohodnotit na Google Play</string>
+    <string name="about_feedback">Zpětná vazba a nápady</string>
+    <string name="about_feedback_note">Nahlas chybu nebo navrhni novou funkci. Čtu každý e-mail!</string>
+    <string name="about_author">Navrhl a vytvořil @vadiole</string>
+    <string name="about_feedback_subject">Zpětná vazba a nápady</string>
+    <string name="about_info_copied">Informace o aplikaci zkopírovány</string>
+    <string name="about_no_browser">Není nainstalován žádný prohlížeč</string>
 
     <!-- Details -->
     <string name="details_find_in_table">Najít v tabulce</string>
