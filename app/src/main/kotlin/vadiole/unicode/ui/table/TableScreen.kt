@@ -462,7 +462,7 @@ class TableScreen(
 
     private fun attachSearchBar() {
         if (searchAtTop) {
-            rootContainer.addView(searchBar, 1, linearParams(matchParent, searchBarHeight))
+            contentContainer.addView(searchBar, frameParams(matchParent, searchBarHeight, gravity = TOP))
         } else {
             bottomContainer.addView(searchBar, 0, linearParams(matchParent, searchBarHeight))
         }
@@ -502,15 +502,26 @@ class TableScreen(
         val dockHeight = dockChrome + navigationInset
         val chromeBottom = dockHeight + if (searchAtTop) 0 else searchBarHeight
         val tableBottom = chromeBottom + if (searchAtTop) topBarHeight else 0
+        val contentTop = if (searchAtTop) searchBarHeight else 0
         val keyboardLift = (imeInset - navigationInset).coerceAtLeast(0)
         dockView.setBottomInset(navigationInset)
-        if (tableView.paddingBottom != tableBottom) tableView.updatePadding(bottom = tableBottom)
-        if (fastScrollView.paddingBottom != tableBottom) fastScrollView.setPadding(0, 0, 0, tableBottom)
+        if (tableView.paddingTop != contentTop || tableView.paddingBottom != tableBottom) {
+            tableView.updatePadding(top = contentTop, bottom = tableBottom)
+        }
+        if (fastScrollView.paddingTop != contentTop || fastScrollView.paddingBottom != tableBottom) {
+            fastScrollView.setPadding(0, contentTop, 0, tableBottom)
+        }
         val resultsBottom = chromeBottom + keyboardLift
         searchResultView.keyboardInset = keyboardLift
-        if (searchResultView.paddingBottom != resultsBottom) searchResultView.updatePadding(bottom = resultsBottom)
-        if (noResultsView.paddingBottom != resultsBottom) noResultsView.setPadding(0, 0, 0, resultsBottom)
-        if (searchFastScrollView.paddingBottom != resultsBottom) searchFastScrollView.setPadding(0, 0, 0, resultsBottom)
+        if (searchResultView.paddingTop != contentTop || searchResultView.paddingBottom != resultsBottom) {
+            searchResultView.updatePadding(top = contentTop, bottom = resultsBottom)
+        }
+        if (noResultsView.paddingTop != contentTop || noResultsView.paddingBottom != resultsBottom) {
+            noResultsView.setPadding(0, contentTop, 0, resultsBottom)
+        }
+        if (searchFastScrollView.paddingTop != contentTop || searchFastScrollView.paddingBottom != resultsBottom) {
+            searchFastScrollView.setPadding(0, contentTop, 0, resultsBottom)
+        }
     }
 
     private fun applyKeyboardLift(ime: Int) {
@@ -558,7 +569,6 @@ class TableScreen(
             IMPORTANT_FOR_ACCESSIBILITY_AUTO
         }
         contentContainer.translationY = offset
-        if (searchAtTop) searchBar.translationY = offset
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

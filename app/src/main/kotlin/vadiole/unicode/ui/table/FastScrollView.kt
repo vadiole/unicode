@@ -419,6 +419,7 @@ class FastScrollView(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
+                if (event.y < paddingTop || event.y >= height - paddingBottom) return false
                 if (isInEdgeZone(event.x)) {
                     touchDownY = event.y
                     scrollSlopPassed = false

@@ -17,6 +17,7 @@ import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.R
 import vadiole.unicode.ui.extension.onClick
 import kotlin.math.PI
+import kotlin.math.roundToInt
 import kotlin.math.sin
 
 class SearchBar(
@@ -64,8 +65,7 @@ class SearchBar(
         val radius = fieldSize / 2f
         val mask = ShapeDrawable(RoundRectShape(FloatArray(8) { radius }, null, null))
         background = InsetDrawable(context.rippleDrawable(mask = mask), 0, touchExtension, 0, touchExtension)
-        val endPadding = if (atTop) fieldSize + 8.dp(context) else edgePadding
-        setPadding(iconInset + iconSize + 8.dp(context), touchExtension, endPadding, touchExtension)
+        setPadding(iconInset + iconSize + 8.dp(context), touchExtension, edgePadding, touchExtension)
         if (atTop) {
             onClick = { expand() }
             setOnFocusChangeListener { _, focused -> if (focused) expand() }
@@ -77,7 +77,6 @@ class SearchBar(
         icon = context.getDrawable(if (atTop) R.drawable.ic_close else R.drawable.ic_search)!!,
         altIcon = if (atTop) null else context.getDrawable(R.drawable.ic_close)!!,
         iconSize = iconSize,
-        floating = !atTop,
     ).apply {
         setPadding(if (atTop) 0 else buttonGap, touchExtension, if (atTop) 0 else edgePadding, touchExtension)
         contentDescription = context.getString(R.string.search_hint)
@@ -149,7 +148,11 @@ class SearchBar(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
-        val actionSpace = if (atTop) 0 else fieldSize + buttonGap
+        val actionSpace = if (atTop) {
+            ((fieldSize + buttonGap) * progressHolder.value.coerceIn(0f, 1f)).roundToInt()
+        } else {
+            fieldSize + buttonGap
+        }
         val fieldWidth = (width - edgePadding * 2 - actionSpace).coerceAtLeast(0)
         surfaceView.measure(exactly(width), exactly(height))
         searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
@@ -176,6 +179,20 @@ class SearchBar(
         surfaceView.pivotY = fieldTop + fieldSize / 2f
         searchField.pivotX = searchField.measuredWidth / 2f
         searchField.pivotY = touchExtension + fieldSize / 2f
+        if (atTop) layoutTopField(progressHolder.value.coerceIn(0f, 1f))
+    }
+
+    private fun layoutTopField(p: Float) {
+        if (width == 0) return
+        val fieldRight = width - edgePadding - ((fieldSize + buttonGap) * p).roundToInt()
+        val fieldWidth = (fieldRight - edgePadding).coerceAtLeast(0)
+        if (searchField.measuredWidth != fieldWidth) {
+            searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
+        }
+        val rowTop = fieldTop - touchExtension
+        searchField.layout(edgePadding, rowTop, fieldRight, rowTop + buttonHeight)
+        surfaceDrawable.setBounds(edgePadding, fieldTop, fieldRight, fieldTop + fieldSize)
+        surfaceView.invalidate()
     }
 
     private fun exactly(size: Int) = MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY)
@@ -200,6 +217,7 @@ class SearchBar(
     }
 
     private fun applyTopProgress(p: Float) {
+        layoutTopField(p)
         actionContainer.alpha = p
         actionContainer.translationX = 8f.dp(context) * (1f - p)
         actionContainer.visibility = if (p > 0f) VISIBLE else INVISIBLE

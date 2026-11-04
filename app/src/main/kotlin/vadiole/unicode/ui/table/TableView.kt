@@ -80,7 +80,7 @@ class TableView(
         get() = tableLayoutManager.findFirstVisibleItemPosition()
 
     val firstVisibleRowOffset: Int
-        get() = tableLayoutManager.findViewByPosition(firstVisibleRow)?.top ?: 0
+        get() = tableLayoutManager.findViewByPosition(firstVisibleRow)?.let { it.top - paddingTop } ?: 0
 
     interface Delegate {
         fun onBlockChanged(name: String?)
