@@ -1,13 +1,18 @@
 package vadiole.unicode.ui.table.search
 
+import android.graphics.Paint
 import vadiole.unicode.data.SearchResult
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.RecentRepository
+import vadiole.unicode.data.config.UserConfig
 
 class SearchController(
     private val unicodeStorage: UnicodeStorage,
     private val recentRepository: RecentRepository,
+    private val userConfig: UserConfig,
 ) {
+    private val glyphPaint = Paint()
+    private val hasGlyph: (String) -> Boolean = { userConfig.showUnsupportedChars || glyphPaint.hasGlyph(it) }
     var searchResult: Array<SearchResult> = emptyArray()
     var recentResult: Array<SearchResult> = emptyArray()
     var queryTokens: Array<String> = emptyArray()
@@ -18,7 +23,7 @@ class SearchController(
             recentResult = emptyArray()
             return
         }
-        val resultMap = unicodeStorage.findCharsByCodePoints(codePoints)
+        val resultMap = unicodeStorage.findCharsByCodePoints(codePoints, hasGlyph)
         val results = ArrayList<SearchResult>(resultMap.size)
         for (cp in codePoints) {
             val result = resultMap[cp.value]
@@ -51,7 +56,7 @@ class SearchController(
         } else {
             directCodePoint = tryParseCharLiteral(query) ?: -1
             if (directCodePoint >= 0) {
-                val direct = unicodeStorage.findCharByCodePoint(directCodePoint)
+                val direct = unicodeStorage.findCharByCodePoint(directCodePoint, hasGlyph)
                 if (direct != null) {
                     results.add(direct)
                 }
@@ -61,9 +66,9 @@ class SearchController(
         if (trimmed.isNotEmpty()) {
             val tokens = whitespaceRegex.split(trimmed)
             val nameResults = if (tokens.size == 1) {
-                unicodeStorage.findCharsByName(tokens[0], count)
+                unicodeStorage.findCharsByName(tokens[0], count, hasGlyph)
             } else {
-                unicodeStorage.findCharsByNameMultiWord(tokens, count)
+                unicodeStorage.findCharsByNameMultiWord(tokens, count, hasGlyph)
             }
 
             for (r in nameResults) {
@@ -84,7 +89,7 @@ class SearchController(
     }
 
     private suspend fun findByCode(query: CodeQuery, count: Int): Array<SearchResult> {
-        return unicodeStorage.findCharsByCodePointPrefix(query.exact, query.prefixLength, query.ranges, count)
+        return unicodeStorage.findCharsByCodePointPrefix(query.exact, query.prefixLength, query.ranges, count, hasGlyph)
     }
 
     private fun parseCodeQuery(input: String): CodeQuery? {
