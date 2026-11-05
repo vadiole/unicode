@@ -98,6 +98,7 @@ class FastScrollView(
     // State
     private var scrollProgress = 0f
     private var isDragging = false
+    private var activePointerId = MotionEvent.INVALID_POINTER_ID
     private var dragTouchOffset: Float? = 0f
     private var bubbleAlpha = 0f
     private val thumbScaleActive = 7f / 6f
@@ -200,6 +201,7 @@ class FastScrollView(
         super.onDetachedFromWindow()
         removeCallbacks(dispatchScroll)
         pendingProgress = -1f
+        if (isDragging) finishDrag()
         thumbScaleAnimator.cancel()
         thumbHeightAnimator.cancel()
         bubbleAlphaAnimator.cancel()
@@ -434,6 +436,7 @@ class FastScrollView(
                     directionHead = 0
                     directionCount = 0
                     isDragging = true
+                    activePointerId = event.getPointerId(0)
                     if (!userConfig.usedFastScroll) {
                         userConfig.usedFastScroll = true
                     }
@@ -460,60 +463,91 @@ class FastScrollView(
                 return false
             }
 
+            MotionEvent.ACTION_POINTER_DOWN -> return isDragging
+
+            MotionEvent.ACTION_POINTER_UP -> {
+                if (!isDragging) return false
+                if (event.getPointerId(event.actionIndex) == activePointerId) {
+                    val index = if (event.actionIndex == 0) 1 else 0
+                    activePointerId = event.getPointerId(index)
+                    touchDownY = event.getY(index)
+                    lastMoveX = event.getX(index)
+                    lastMoveY = touchDownY
+                    directionHead = 0
+                    directionCount = 0
+                    scrollSlopPassed = false
+                    dragTouchOffset = null
+                    isPrecisionActive = false
+                }
+                return true
+            }
+
             MotionEvent.ACTION_MOVE -> {
                 if (isDragging) {
-                    recordDirectionSample(event)
-                    val newLevel = precisionLevelFromX(event.x)
+                    val index = event.findPointerIndex(activePointerId)
+                    if (index < 0) {
+                        finishDrag()
+                        return true
+                    }
+                    val x = event.getX(index)
+                    val y = event.getY(index)
+                    recordDirectionSample(x, y, event.eventTime)
+                    val newLevel = precisionLevelFromX(x)
                     if (newLevel != precisionLevel) {
                         val oldLevel = precisionLevel
                         precisionLevel = newLevel
                         onPrecisionLevelChanged(oldLevel, newLevel)
                         if (scrollSlopPassed) {
-                            anchorY = event.y - (dragTouchOffset ?: 0f)
+                            anchorY = y - (dragTouchOffset ?: 0f)
                             anchorProgress = scrollProgress
                         }
                     }
                     if (!scrollSlopPassed) {
-                        if (abs(event.y - touchDownY) < touchSlop) return true
+                        if (abs(y - touchDownY) < touchSlop) return true
                         scrollSlopPassed = true
                         if (dragTouchOffset == null) {
-                            dragTouchOffset = event.y - thumbRect.centerY()
+                            dragTouchOffset = y - thumbRect.centerY()
                         }
-                        anchorY = event.y - (dragTouchOffset ?: 0f)
+                        anchorY = y - (dragTouchOffset ?: 0f)
                         anchorProgress = scrollProgress
                         isPrecisionActive = true
                     }
                     if (isHorizontalDominant(event.eventTime)) {
-                        anchorY = event.y - (dragTouchOffset ?: 0f)
+                        anchorY = y - (dragTouchOffset ?: 0f)
                         anchorProgress = scrollProgress
                         return true
                     }
                     if (dragTouchOffset == null) {
-                        dragTouchOffset = event.y - thumbRect.centerY()
+                        dragTouchOffset = y - thumbRect.centerY()
                     }
-                    updateProgressFromTouch(event.y - (dragTouchOffset ?: 0f), event.x)
+                    updateProgressFromTouch(y - (dragTouchOffset ?: 0f), x)
                     return true
                 }
             }
 
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 if (isDragging) {
-                    removeCallbacks(dispatchScroll)
-                    dispatchPendingScroll()
-                    isDragging = false
-                    isPrecisionActive = false
-                    precisionLevel = 0
-                    previousBlockName = null
-                    parent?.requestDisallowInterceptTouchEvent(false)
-                    animateBubble(0f)
-                    animateThumbScale(1f)
-                    animateThumbHeight(0)
-                    delegate.onFastScrollEnd()
+                    finishDrag()
                     return true
                 }
             }
         }
         return false
+    }
+
+    private fun finishDrag() {
+        removeCallbacks(dispatchScroll)
+        dispatchPendingScroll()
+        isDragging = false
+        activePointerId = MotionEvent.INVALID_POINTER_ID
+        isPrecisionActive = false
+        precisionLevel = 0
+        previousBlockName = null
+        parent?.requestDisallowInterceptTouchEvent(false)
+        animateBubble(0f)
+        animateThumbScale(1f)
+        animateThumbHeight(0)
+        delegate.onFastScrollEnd()
     }
 
     private fun dispatchPendingScroll() {
@@ -523,13 +557,13 @@ class FastScrollView(
         delegate.onFastScroll(progress, precisionLevel)
     }
 
-    private fun recordDirectionSample(event: MotionEvent) {
-        val dx = event.x - lastMoveX
-        val dy = event.y - lastMoveY
-        lastMoveX = event.x
-        lastMoveY = event.y
+    private fun recordDirectionSample(x: Float, y: Float, eventTime: Long) {
+        val dx = x - lastMoveX
+        val dy = y - lastMoveY
+        lastMoveX = x
+        lastMoveY = y
         val idx = (directionHead + directionCount) % directionCapacity
-        directionTimes[idx] = event.eventTime
+        directionTimes[idx] = eventTime
         directionDx[idx] = dx
         directionDy[idx] = dy
         if (directionCount < directionCapacity) {
