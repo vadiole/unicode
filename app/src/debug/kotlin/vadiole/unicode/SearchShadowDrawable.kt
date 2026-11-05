@@ -13,11 +13,11 @@ import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 
-internal class SearchShadowDrawable(context: Context) : Drawable() {
-    private val bitmap = (context.getDrawable(R.drawable.prototype_search_shadow) as BitmapDrawable).bitmap
+internal class SearchShadowDrawable(context: Context, texture: Int = R.drawable.prototype_search_shadow) : Drawable() {
+    private val bitmap = (context.getDrawable(texture) as BitmapDrawable).bitmap
     private val scale = context.resources.displayMetrics.density / 4f
     private val half = bitmap.width / 2
-    private val padding = 24f * context.resources.displayMetrics.density
+    private val padding = (bitmap.width / 8f - 24f) * context.resources.displayMetrics.density
     private val source = Rect()
     private val target = RectF()
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
