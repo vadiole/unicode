@@ -18,6 +18,8 @@
 - colors in `colors.xml`
 - no tests, no xml layouts, no compose, no ContextCompat
 - After completing a task or fix, build and launch the app: `./gradlew installDebug && adb shell am start -n vadiole.unicode.debug/vadiole.unicode.ui.UnicodeActivity` 
+- Device testing (debug config presets, per-app language, screenshots): `docs/testing.md`.
+- Release: `./gradlew assembleRelease bundleRelease`, signed from `unicode.signing.*` in `~/.gradle/gradle.properties`; the R8 mapping is copied to `app/mapping/`.
 
 ## UI interaction quality
 
