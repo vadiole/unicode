@@ -127,10 +127,10 @@ class FastScrollView(
     private val horizontalDominanceRatio = 0.75f
 
     // Throttle
-    private val throttleIntervalMs = if (Build.VERSION.SDK_INT >= 34) 17L else 30L
+    private val hapticIntervalMs = if (Build.VERSION.SDK_INT >= 34) 17L else 30L
     private var lastHapticTime = 0L
-    private var lastDispatchTime = 0L
     private var pendingProgress = -1f
+    private val dispatchScroll = Runnable { dispatchPendingScroll() }
 
     // Cached rects
     private val thumbRect = RectF()
@@ -198,6 +198,8 @@ class FastScrollView(
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
+        removeCallbacks(dispatchScroll)
+        pendingProgress = -1f
         thumbScaleAnimator.cancel()
         thumbHeightAnimator.cancel()
         bubbleAlphaAnimator.cancel()
@@ -430,7 +432,6 @@ class FastScrollView(
                     thumbHeightAnimator.cancel()
                     thumbHeightFraction = 0f
                     lastHapticTime = 0L
-                    lastDispatchTime = 0L
                     parent?.requestDisallowInterceptTouchEvent(true)
                     if (isInThumbZone(event.x, event.y)) {
                         dragTouchOffset = null
@@ -487,10 +488,8 @@ class FastScrollView(
 
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 if (isDragging) {
-                    if (pendingProgress >= 0f) {
-                        delegate.onFastScroll(pendingProgress, precisionLevel)
-                        pendingProgress = -1f
-                    }
+                    removeCallbacks(dispatchScroll)
+                    dispatchPendingScroll()
                     isDragging = false
                     isPrecisionActive = false
                     precisionLevel = 0
@@ -505,6 +504,13 @@ class FastScrollView(
             }
         }
         return false
+    }
+
+    private fun dispatchPendingScroll() {
+        if (pendingProgress < 0f) return
+        val progress = pendingProgress
+        pendingProgress = -1f
+        delegate.onFastScroll(progress, precisionLevel)
     }
 
     private fun recordDirectionSample(event: MotionEvent) {
@@ -590,7 +596,7 @@ class FastScrollView(
             val newBlockName = delegate.getBlockName(scrollProgress)
             if (newBlockName != null && newBlockName != previousBlockName) {
                 val now = SystemClock.uptimeMillis()
-                if (now - lastHapticTime >= throttleIntervalMs) {
+                if (now - lastHapticTime >= hapticIntervalMs) {
                     val hapticConstant = if (Build.VERSION.SDK_INT >= 34) {
                         HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
                     } else {
@@ -604,14 +610,8 @@ class FastScrollView(
             blockName = newBlockName
             measureBubble()
             layoutBubble()
-            val now = SystemClock.uptimeMillis()
-            if (now - lastDispatchTime >= throttleIntervalMs) {
-                pendingProgress = -1f
-                delegate.onFastScroll(scrollProgress, precisionLevel)
-                lastDispatchTime = now
-            } else {
-                pendingProgress = scrollProgress
-            }
+            if (pendingProgress < 0f) postOnAnimation(dispatchScroll)
+            pendingProgress = scrollProgress
             invalidate()
         }
     }
