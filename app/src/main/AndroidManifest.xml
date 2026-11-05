@@ -61,11 +61,9 @@
             android:launchMode="singleTask"
             android:noHistory="true"
             android:process=":sendcrash"
-            android:screenOrientation="portrait"
             android:taskAffinity=":sendcrash"
             android:theme="@style/Theme.Dialog.Transparent"
-            android:windowSoftInputMode="stateHidden"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity">
+            android:windowSoftInputMode="stateHidden">
 
             <intent-filter>
                 <action android:name="vadiole.unicode.SEND_CRASH" />

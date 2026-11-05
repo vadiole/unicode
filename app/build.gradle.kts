@@ -59,6 +59,7 @@ android {
     }
 
     lint {
+        baseline = file("lint-baseline.xml")
         disable.addAll(
             listOf(
                 "UseKtx",
@@ -67,7 +68,6 @@ android {
                 "ViewConstructor",
                 "UnusedAttribute",
                 "NotifyDataSetChanged",
-                "ktNoinlineFunc",
                 "ClickableViewAccessibility",
             )
         )
