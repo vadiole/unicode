@@ -331,11 +331,16 @@ class FastScrollView(
         bubbleTextY = bounds.exactCenterY() - (bubbleFontMetrics.ascent + bubbleFontMetrics.descent) / 2
     }
 
-    internal fun isInEdgeZone(x: Float): Boolean {
+    internal fun isInDragZone(x: Float, y: Float): Boolean {
+        return y >= paddingTop && y < height - paddingBottom &&
+            (isInEdgeZone(x) || isInThumbZone(x, y))
+    }
+
+    private fun isInEdgeZone(x: Float): Boolean {
         return x >= width - paddingRight - touchEdgeWidth
     }
 
-    internal fun isInThumbZone(x: Float, y: Float): Boolean {
+    private fun isInThumbZone(x: Float, y: Float): Boolean {
         if (x < width - paddingRight - touchAreaWidth) return false
         val centerY = thumbRect.centerY()
         val halfZone = gestureExclusionHeight / 2f
@@ -412,11 +417,16 @@ class FastScrollView(
         return text.substring(0, end) + ellipsis
     }
 
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.actionMasked == MotionEvent.ACTION_DOWN && !isInEdgeZone(event.x)) return false
+        return super.dispatchTouchEvent(event)
+    }
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 if (event.y < paddingTop || event.y >= height - paddingBottom) return false
-                if (isInEdgeZone(event.x)) {
+                if (isInDragZone(event.x, event.y)) {
                     touchDownY = event.y
                     scrollSlopPassed = false
                     lastMoveX = event.x

@@ -12,7 +12,6 @@ import android.view.Gravity.TOP
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -325,11 +324,7 @@ class TableScreen(
         text = context.getString(R.string.search_no_results)
         visibility = GONE
     }
-    private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
-    private val tmpLocation = IntArray(2)
-    private var downRawX = 0f
-    private var downRawY = 0f
-    private var interceptedFastScrollView: FastScrollView? = null
+    private val fastScrollGestureRouter = FastScrollGestureRouter(this)
     private var isImeAnimationRunning = false
 
     init {
@@ -431,41 +426,8 @@ class TableScreen(
     }
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
-        val fastScrollView = if (searchBar.isExpanded()) searchFastScrollView else fastScrollView
-        if (!fastScrollView.isShown) return false
-        when (event.actionMasked) {
-            MotionEvent.ACTION_DOWN -> {
-                downRawX = event.rawX
-                downRawY = event.rawY
-                interceptedFastScrollView = null
-            }
-
-            MotionEvent.ACTION_MOVE -> {
-                fastScrollView.getLocationOnScreen(tmpLocation)
-                val localX = downRawX - tmpLocation[0]
-                val localY = downRawY - tmpLocation[1]
-                if (localY < fastScrollView.paddingTop || localY >= fastScrollView.height - fastScrollView.paddingBottom) return false
-                if (!fastScrollView.isInThumbZone(localX, localY) &&
-                    !fastScrollView.isInEdgeZone(localX)
-                ) return false
-                val dx = event.rawX - downRawX
-                val dy = event.rawY - downRawY
-                if (dx * dx + dy * dy > scaledTouchSlop * scaledTouchSlop) {
-                    interceptedFastScrollView = fastScrollView
-                    val down = MotionEvent.obtain(
-                        event.downTime, event.eventTime,
-                        MotionEvent.ACTION_DOWN,
-                        fastScrollView.width.toFloat() - 1f,
-                        localY,
-                        0
-                    )
-                    fastScrollView.onTouchEvent(down)
-                    down.recycle()
-                    return true
-                }
-            }
-        }
-        return false
+        val scroller = if (searchBar.isExpanded()) searchFastScrollView else fastScrollView
+        return fastScrollGestureRouter.onInterceptTouchEvent(event, scroller)
     }
 
     fun setSearchAtTop(atTop: Boolean) {
@@ -589,21 +551,12 @@ class TableScreen(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        val fastScrollView = interceptedFastScrollView
-        if (fastScrollView != null) {
-            val fsEvent = MotionEvent.obtain(event)
-            fastScrollView.getLocationOnScreen(tmpLocation)
-            fsEvent.setLocation(event.rawX - tmpLocation[0], event.rawY - tmpLocation[1])
-            fastScrollView.onTouchEvent(fsEvent)
-            fsEvent.recycle()
-            if (event.actionMasked == MotionEvent.ACTION_UP ||
-                event.actionMasked == MotionEvent.ACTION_CANCEL
-            ) {
-                interceptedFastScrollView = null
-            }
-            return true
-        }
-        return super.onTouchEvent(event)
+        return fastScrollGestureRouter.onTouchEvent(event) || super.onTouchEvent(event)
+    }
+
+    override fun onDetachedFromWindow() {
+        fastScrollGestureRouter.cancel()
+        super.onDetachedFromWindow()
     }
 
     private fun showBlockSelector() {
