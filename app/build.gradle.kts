@@ -25,6 +25,19 @@ android {
         localeFilters += listOf("en", "cs", "da", "de", "el", "es", "fr", "hi", "it", "ja", "ka", "nb", "nl", "pl", "pt", "pt-rBR", "ru", "sl", "sv", "tr", "uk", "zh-rCN")
     }
 
+    signingConfigs {
+        val storeFile = providers.gradleProperty("unicode.signing.storeFile").orNull
+        if (storeFile != null) {
+            create("release") {
+                val password = file(providers.gradleProperty("unicode.signing.passwordFile").get()).readText().trim()
+                this.storeFile = file(storeFile)
+                storePassword = password
+                keyAlias = providers.gradleProperty("unicode.signing.keyAlias").get()
+                keyPassword = password
+            }
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
@@ -37,6 +50,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             vcsInfo.include = false
+            signingConfig = signingConfigs.findByName("release")
             proguardFiles("proguard-rules.pro")
         }
     }
@@ -72,6 +86,15 @@ android {
             )
         )
     }
+}
+
+val copyReleaseMapping = tasks.register<Copy>("copyReleaseMapping") {
+    from(layout.buildDirectory.file("outputs/mapping/release/mapping.txt"))
+    into(layout.projectDirectory.dir("mapping"))
+}
+
+tasks.matching { it.name == "minifyReleaseWithR8" }.configureEach {
+    finalizedBy(copyReleaseMapping)
 }
 
 dependencies {
