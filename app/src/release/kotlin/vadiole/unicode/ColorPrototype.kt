@@ -5,7 +5,7 @@ import android.content.Context
 object ColorPrototype {
     val primaryScroller: Boolean get() = false
 
-    fun scrollerSurface(context: Context): android.graphics.drawable.Drawable? = null
+    fun scrollerSurface(context: Context, cornerRadius: Float): android.graphics.drawable.Drawable? = null
 
     fun wrap(context: Context): Context = context
 

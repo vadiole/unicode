@@ -27,10 +27,10 @@ object ColorPrototype {
     val allFixes = Fix.entries.toSet() - Fix.SCROLLER_PRIMARY
     val primaryScroller: Boolean get() = Fix.SCROLLER_PRIMARY in fixes
 
-    fun scrollerSurface(context: Context): Drawable? =
+    fun scrollerSurface(context: Context, cornerRadius: Float): Drawable? =
         if (Fix.SCROLLER_SURFACE in fixes) FloatingSurfaceDrawable(
             context,
-            FloatingSurfaceDrawable.pill(),
+            FloatingSurfaceDrawable.squircle(cornerRadius),
             FastScrollShadowDrawable(context),
         ) else null
 

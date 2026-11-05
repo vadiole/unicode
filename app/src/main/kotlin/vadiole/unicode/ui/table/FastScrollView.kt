@@ -7,6 +7,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.RectF
 import android.os.Build
@@ -25,6 +26,7 @@ import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.FloatingSurfaceDrawable
 import vadiole.unicode.ui.common.TEXT_BODY
+import vadiole.unicode.ui.common.addSquircle
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.font_regular
 import vadiole.unicode.ui.common.sp
@@ -44,7 +46,7 @@ class FastScrollView(
     // Dimensions
     private val thumbWidth = 6.dp(context)
     private val thumbMinHeight = 48.dp(context)
-    private val thumbCornerRadius = thumbWidth / 2f
+    private val thumbCornerRadius = thumbWidth / 3f
     private val touchAreaWidth = 44.dp(context)
     private val touchEdgeWidth = 20.dp(context)
     private val thumbMarginEnd = 4.dp(context)
@@ -67,7 +69,7 @@ class FastScrollView(
     private val gestureExclusionHeight = thumbMinHeight * 2
 
     // Colors
-    private val thumbSurfaceDrawable = ColorPrototype.scrollerSurface(context)
+    private val thumbSurfaceDrawable = ColorPrototype.scrollerSurface(context, thumbCornerRadius)
     private val primaryScroller = ColorPrototype.primaryScroller
     private val scrollIndicatorColor = context.getColor(if (primaryScroller) R.color.primaryControl else R.color.scrollIndicator)
     private val scrollIndicatorActiveColor = context.getColor(if (primaryScroller) R.color.primaryControl else R.color.scrollIndicatorActive)
@@ -139,6 +141,8 @@ class FastScrollView(
 
     // Cached rects
     private val thumbRect = RectF()
+    private val thumbPathBounds = RectF()
+    private val thumbPath = Path()
     private val bubbleLayerBounds = RectF()
     private val bubbleFontMetrics = Paint.FontMetrics().also { bubbleTextPaint.getFontMetrics(it) }
     private val bubbleHeight = maxOf(bubbleFontMetrics.descent - bubbleFontMetrics.ascent + bubblePaddingVertical * 2, bubbleMinHeight)
@@ -293,6 +297,11 @@ class FastScrollView(
             val left = width - currentThumbWidth - thumbMarginEnd
             thumbRect.set(left, thumbTop, left + currentThumbWidth, thumbTop + thumbHeight)
             thumbSurfaceDrawable?.setBounds(0, 0, thumbWidth, thumbHeight.roundToInt())
+            if (thumbPathBounds.height() != thumbHeight) {
+                thumbPathBounds.set(0f, 0f, currentThumbWidth, thumbHeight)
+                thumbPath.rewind()
+                thumbPath.addSquircle(thumbPathBounds, thumbCornerRadius)
+            }
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -362,14 +371,12 @@ class FastScrollView(
         // Draw thumb
         canvas.save()
         canvas.scale(thumbScale, thumbScale, thumbRect.centerX(), thumbRect.centerY())
+        canvas.translate(thumbRect.left, thumbRect.top)
         val surface = thumbSurfaceDrawable
         if (surface != null) {
-            val saved = canvas.save()
-            canvas.translate(thumbRect.left, thumbRect.top)
             surface.draw(canvas)
-            canvas.restoreToCount(saved)
         } else {
-            canvas.drawRoundRect(thumbRect, thumbCornerRadius, thumbCornerRadius, thumbPaint)
+            canvas.drawPath(thumbPath, thumbPaint)
         }
 
         canvas.restore()
