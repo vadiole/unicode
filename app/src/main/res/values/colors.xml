@@ -9,7 +9,7 @@
     <color name="primaryControl">#FF262628</color>
     <color name="dialogDim">#FF000000</color>
     <color name="windowSurface">#00000000</color>
-    <color name="windowTextPrimary">#FF000000</color>
+    <color name="windowTextPrimary">#FF262628</color>
     <color name="windowTextSecondary">#FF6C6C70</color>
     <color name="characterAbbreviation">#80000000</color>
     <color name="windowTextSelection">#40007BFF</color>
