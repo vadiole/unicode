@@ -685,6 +685,10 @@ class TableScreen(
         delegate.onSearchHidden()
     }
 
+    fun refreshRecents() {
+        if (isShowingRecents) runSearch("")
+    }
+
     private fun runSearch(query: String) {
         if (!searchBar.isExpanded()) return
         searchJob?.cancel()
