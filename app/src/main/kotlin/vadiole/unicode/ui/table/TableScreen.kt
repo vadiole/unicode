@@ -199,12 +199,18 @@ class TableScreen(
     private val dockDelegate: DockView.Delegate = object : DockView.Delegate {
         override fun onBackspace() {
             flyOverlay.cancelAll()
-            if (dockController.backspace()) dockView.setText(dockController.text)
+            if (dockController.backspace()) {
+                dockView.setText(dockController.text)
+                updateDockTip(animate = true)
+            }
         }
 
         override fun onClear() {
             flyOverlay.cancelAll()
-            if (dockController.clear()) dockView.setText(dockController.text)
+            if (dockController.clear()) {
+                dockView.setText(dockController.text)
+                updateDockTip(animate = true)
+            }
         }
 
         override fun onCopyAll() {
@@ -218,6 +224,7 @@ class TableScreen(
         override fun onRestore(): Boolean {
             if (!dockController.restore()) return false
             dockView.setText(dockController.text, popFrom = 0)
+            updateDockTip(animate = true)
             return true
         }
 
@@ -542,12 +549,10 @@ class TableScreen(
     }
 
     private fun updateDockTip(animate: Boolean) {
-        val tip = when {
-            dockController.usedCopy -> DockView.Tip.Hidden
-            dockController.usedCollect -> DockView.Tip.Copy
-            else -> DockView.Tip.Collect
-        }
+        val tip = if (!dockController.usedCopy && dockController.length > 0) DockView.Tip.Copy else DockView.Tip.Hidden
+        val previousHeight = dockView.chromeHeight
         dockView.setTip(tip, animate)
+        if (dockView.chromeHeight != previousHeight) updateContentInsets()
     }
 
     private fun applySearchProgress(p: Float) {

@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.InsetDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
+import android.os.Build
 import android.view.View
 import vadiole.unicode.R
 
@@ -42,6 +43,11 @@ class IconButton(
         minimumHeight = size
         updateBackgroundInset()
         setOnTouchListener(TouchEffect(maxDragPx = 8f.dp(context)))
+    }
+
+    override fun setContentDescription(contentDescription: CharSequence?) {
+        super.setContentDescription(contentDescription)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) tooltipText = contentDescription
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
