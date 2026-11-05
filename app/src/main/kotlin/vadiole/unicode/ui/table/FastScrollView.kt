@@ -49,7 +49,7 @@ class FastScrollView(
     private val touchEdgeWidth = 20.dp(context)
     private val thumbMarginEnd = 4.dp(context)
     private val gripLineWidth = 4f.dp(context)
-    private val gripLineHeight = 1f
+    private val gripLineHeight = 1f.dp(context)
     private val gripLineSpacing = 2f.dp(context)
 
     private val bubblePaddingHorizontal = 16f.dp(context)
