@@ -49,7 +49,7 @@ class FastScrollView(
     private val touchEdgeWidth = 20.dp(context)
     private val thumbMarginEnd = 4.dp(context)
     private val gripLineWidth = 4f.dp(context)
-    private val gripLineHeight = 1f.dp(context)
+    private val gripLineHeight = 0.5f.dp(context).roundToInt().coerceAtLeast(1).toFloat()
     private val gripLineSpacing = 2f.dp(context)
 
     private val bubblePaddingHorizontal = 16f.dp(context)
@@ -372,18 +372,20 @@ class FastScrollView(
             canvas.drawRoundRect(thumbRect, thumbCornerRadius, thumbCornerRadius, thumbPaint)
         }
 
-        // Grip lines
+        canvas.restore()
+
         val cx = thumbRect.centerX()
         val cy = thumbRect.centerY()
-        val halfW = gripLineWidth / 2f
+        val halfW = gripLineWidth * thumbScale / 2f
         val halfH = gripLineHeight / 2f
-        val halfGap = gripLineSpacing / 2f
+        val halfGap = gripLineSpacing * thumbScale / 2f
+        val firstTop = (cy - halfGap - halfH).roundToInt().toFloat()
+        val secondTop = (cy + halfGap - halfH).roundToInt().toFloat()
         val savedColor = thumbPaint.color
         thumbPaint.color = scrollIndicatorGripColor
-        canvas.drawRoundRect(cx - halfW, cy - halfGap - halfH, cx + halfW, cy - halfGap + halfH, halfH, halfH, thumbPaint)
-        canvas.drawRoundRect(cx - halfW, cy + halfGap - halfH, cx + halfW, cy + halfGap + halfH, halfH, halfH, thumbPaint)
+        canvas.drawRoundRect(cx - halfW, firstTop, cx + halfW, firstTop + gripLineHeight, halfH, halfH, thumbPaint)
+        canvas.drawRoundRect(cx - halfW, secondTop, cx + halfW, secondTop + gripLineHeight, halfH, halfH, thumbPaint)
         thumbPaint.color = savedColor
-        canvas.restore()
 
         // Draw bubble
         if (bubbleAlpha > 0f && blockName != null) {
