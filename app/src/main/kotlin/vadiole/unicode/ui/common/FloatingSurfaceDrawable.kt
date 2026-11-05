@@ -86,13 +86,6 @@ class FloatingSurfaceDrawable(
             borderPath.addSquircle(rect, radius - borderInset)
         }
 
-        fun squircle(cornerRadius: Float): PathProvider {
-            val rect = RectF()
-            return PathProvider { bounds, borderInset, surfacePath, borderPath ->
-                addSquircles(rect, bounds, borderInset, cornerRadius, surfacePath, borderPath)
-            }
-        }
-
         fun circle(): PathProvider = PathProvider { bounds, borderInset, surfacePath, borderPath ->
             val cx = bounds.exactCenterX()
             val cy = bounds.exactCenterY()

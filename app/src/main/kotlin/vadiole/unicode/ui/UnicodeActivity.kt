@@ -2,7 +2,6 @@ package vadiole.unicode.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -16,7 +15,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import vadiole.unicode.ColorPrototype
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.insetsController
@@ -26,10 +24,6 @@ class UnicodeActivity : Activity() {
     private var navigationViewNullable: NavigationView? = null
     private val coroutineScope = CoroutineScope(Dispatchers.Main.immediate + SupervisorJob())
     private var isResumed = false
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(ColorPrototype.wrap(newBase))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
