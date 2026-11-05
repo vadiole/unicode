@@ -16,6 +16,7 @@ object ColorPrototype {
         SECONDARY(R.string.prototype_secondary),
         ACCENT(R.string.prototype_accent),
         BORDERS(R.string.prototype_borders),
+        SEARCH_SHADOW(R.string.prototype_search_shadow),
     }
 
     var fixes: Set<Fix> = emptySet()
@@ -26,6 +27,9 @@ object ColorPrototype {
     var panelX = -1
     var panelY = -1
     private var snapshot: ColorPrototypeSnapshot? = null
+
+    fun searchShadow(context: Context): android.graphics.drawable.Drawable? =
+        if (Fix.SEARCH_SHADOW in fixes) SearchShadowDrawable(context) else null
 
     fun wrap(context: Context): Context {
         val configuration = Configuration(context.resources.configuration)

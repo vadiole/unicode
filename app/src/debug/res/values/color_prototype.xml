@@ -12,10 +12,11 @@
     <item name="prototype_secondary" type="id" />
     <item name="prototype_accent" type="id" />
     <item name="prototype_borders" type="id" />
+    <item name="prototype_search_shadow" type="id" />
     <string name="prototype_title" translatable="false">Colors · %1$s %2$s</string>
     <string name="prototype_original" translatable="false">Original</string>
     <string name="prototype_fixed" translatable="false">All fixes</string>
-    <string name="prototype_custom" translatable="false">Custom %1$d/5</string>
+    <string name="prototype_custom" translatable="false">Custom %1$d/6</string>
     <string name="prototype_system" translatable="false">System</string>
     <string name="prototype_light" translatable="false">Light</string>
     <string name="prototype_dark" translatable="false">Dark</string>
@@ -24,6 +25,7 @@
     <string name="prototype_secondary" translatable="false">Darker secondary text · light</string>
     <string name="prototype_accent" translatable="false">Stronger blue accent · light</string>
     <string name="prototype_borders" translatable="false">Stronger floating borders</string>
+    <string name="prototype_search_shadow" translatable="false">Soft search shadows · dithered</string>
     <string name="prototype_sample" translatable="false">Accent sample · %1$s</string>
     <string name="prototype_drag" translatable="false">Tap to expand or collapse. Drag to move.</string>
     <style name="PrototypeAccent">

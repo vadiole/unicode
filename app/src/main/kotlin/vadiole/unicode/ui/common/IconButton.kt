@@ -18,6 +18,7 @@ class IconButton(
     iconColor: Int = context.getColor(R.color.windowTextPrimary),
     private val floating: Boolean = true,
     altIcon: Drawable? = null,
+    surfaceShadow: Drawable? = null,
 ) : View(context) {
 
     private val currentIcon: Drawable = icon.mutate().apply {
@@ -26,7 +27,7 @@ class IconButton(
     private val altIcon: Drawable? = altIcon?.mutate()?.apply {
         setTint(iconColor)
     }
-    private val surfaceDrawable = FloatingSurfaceDrawable(context, FloatingSurfaceDrawable.circle())
+    private val surfaceDrawable = FloatingSurfaceDrawable(context, FloatingSurfaceDrawable.circle(), surfaceShadow)
     private val rippleMask = ShapeDrawable(OvalShape())
 
     var iconProgress = 0f

@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.dynamicanimation.animation.FloatValueHolder
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
+import vadiole.unicode.ColorPrototype
 import vadiole.unicode.R
 import vadiole.unicode.ui.extension.onClick
 import kotlin.math.PI
@@ -48,6 +49,7 @@ class SearchBar(
     private val surfaceDrawable = FloatingSurfaceDrawable(
         context = context,
         pathProvider = FloatingSurfaceDrawable.pill(),
+        shadow = ColorPrototype.searchShadow(context),
     )
     private val fieldIcon = context.getDrawable(R.drawable.ic_search)!!.mutate().apply {
         setTint(context.getColor(R.color.windowTextSecondary))
@@ -77,6 +79,7 @@ class SearchBar(
         icon = context.getDrawable(if (atTop) R.drawable.ic_close else R.drawable.ic_search)!!,
         altIcon = if (atTop) null else context.getDrawable(R.drawable.ic_close)!!,
         iconSize = iconSize,
+        surfaceShadow = ColorPrototype.searchShadow(context),
     ).apply {
         setPadding(if (atTop) 0 else buttonGap, touchExtension, if (atTop) 0 else edgePadding, touchExtension)
         contentDescription = context.getString(R.string.search_hint)

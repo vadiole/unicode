@@ -76,7 +76,7 @@ internal class ColorPrototypeOverlay(private val activity: Activity) {
                 ColorPrototype.select(activity, mode = Configuration.UI_MODE_NIGHT_YES)
             },
         ))
-        val ids = intArrayOf(R.id.prototype_abbreviations, R.id.prototype_scrollbar, R.id.prototype_secondary, R.id.prototype_accent, R.id.prototype_borders)
+        val ids = intArrayOf(R.id.prototype_abbreviations, R.id.prototype_scrollbar, R.id.prototype_secondary, R.id.prototype_accent, R.id.prototype_borders, R.id.prototype_search_shadow)
         for (fix in ColorPrototype.Fix.entries) {
             body.addView(CheckBox(activity).apply {
                 id = ids[fix.ordinal]
