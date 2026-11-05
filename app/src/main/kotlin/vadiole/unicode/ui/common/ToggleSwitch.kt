@@ -26,7 +26,7 @@ class ToggleSwitch(context: Context) : Switch(context) {
 
     private val evaluator = ArgbEvaluator()
     private val offTrack = context.getColor(R.color.windowDivider)
-    private val onTrack = context.getColor(R.color.windowTextPrimary)
+    private val onTrack = context.getColor(R.color.primaryControl)
     private val offThumb = context.getColor(R.color.windowTextSecondary)
     private val onThumb = context.getColor(R.color.layer0)
 
