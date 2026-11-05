@@ -2,6 +2,7 @@ package vadiole.unicode.ui.common
 
 import android.content.Context
 import android.graphics.Paint
+import android.os.Build
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.Gravity
@@ -54,6 +55,7 @@ class TopBar(
     init {
         setBackgroundColor(this.context.getColor(R.color.layer1))
         onClick = { if (!isSearchShown) onTitleClick() }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) tooltipText = context.getString(R.string.table_choose_block)
         val titleGravity = (if (centerTitle) Gravity.CENTER_HORIZONTAL else Gravity.LEFT) or Gravity.CENTER_VERTICAL
         addView(titleView, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(searchTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
@@ -83,6 +85,9 @@ class TopBar(
     fun setSearchShown(shown: Boolean) {
         if (isSearchShown == shown) return
         isSearchShown = shown
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            tooltipText = if (shown) null else context.getString(R.string.table_choose_block)
+        }
         settingsButton.isEnabled = !shown
         setContentAlpha(1f)
     }

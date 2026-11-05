@@ -208,9 +208,9 @@ class UnicodeStorage(private val context: Context) {
         openDatabase().rawQuery(queryFindCharByCodePoint, args).use { cursor ->
             if (cursor.count == 0) return@withContext null
             cursor.moveToFirst()
-            val cp = CodePoint(cursor.getInt(cursor.getColumnIndex("code_point")))
-            if (!isShown(cp, cursor.getString(cursor.getColumnIndex("category")), acceptGlyph)) return@withContext null
-            val name = cursor.getString(cursor.getColumnIndex("name"))
+            val cp = CodePoint(cursor.getInt(cursor.getColumnIndexOrThrow("code_point")))
+            if (!isShown(cp, cursor.getString(cursor.getColumnIndexOrThrow("category")), acceptGlyph)) return@withContext null
+            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
             SearchResult(cp, name)
         }
     }

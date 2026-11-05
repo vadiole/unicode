@@ -14,12 +14,14 @@
     <string name="search_no_results">未找到结果</string>
     <string name="search_recents">最近使用</string>
     <string name="search_title">搜索</string>
+    <string name="table_choose_block">选择 Unicode 区块</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">点按字符即可收集</string>
     <string name="dock_tip_copy">点按底栏即可复制合集</string>
     <string name="dock_backspace">删除最后一个字符</string>
     <string name="dock_copy_all">全部复制</string>
+    <string name="dock_clear_all">清空合集</string>
 
     <!-- Settings -->
     <string name="settings_title">设置</string>

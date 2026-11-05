@@ -1,5 +1,6 @@
 package vadiole.unicode.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
@@ -75,6 +76,7 @@ class UnicodeActivity : Activity() {
         }
     }
 
+    @SuppressLint("GestureBackNavigation")
     override fun onBackPressed() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             super.onBackPressed()

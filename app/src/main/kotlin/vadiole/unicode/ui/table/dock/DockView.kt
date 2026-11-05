@@ -8,10 +8,10 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.text.TextPaint
 import android.util.TypedValue
 import android.view.Gravity
-import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -20,6 +20,8 @@ import android.widget.FrameLayout
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.ViewCompat.replaceAccessibilityAction
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat
 import androidx.dynamicanimation.animation.FloatValueHolder
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -28,6 +30,7 @@ import kotlin.math.ceil
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.IconButton
 import vadiole.unicode.ui.common.TEXT_CAPTION
+import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.borderWidth
 import vadiole.unicode.ui.common.dp
@@ -50,7 +53,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         fun onTipCollapsed()
     }
 
-    enum class Tip { Collect, Copy, Hidden }
+    enum class Tip { Copy, Hidden }
 
     companion object {
         private const val BOUNCE_VELOCITY = 6f
@@ -64,7 +67,6 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     private val buttonWidth = 48.dp(context)
     private val edgePadding = 4.dp(context)
     private val backspaceExtraLeft = (contentHeight - buttonWidth) / 2
-    private val tipShift = 4f.dp(context)
     private val easeOut = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val dividerHeight = borderWidth(context)
@@ -82,6 +84,17 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         visibility = GONE
     }
     private val tipHeight = maxOf(28.dp(context), tipView.paint.getFontMetricsInt(null) + 8.dp(context))
+    private val emptyHint = TextView(context).apply {
+        setText(R.string.dock_tip_collect)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
+        typeface = font_regular
+        includeFontPadding = false
+        gravity = Gravity.CENTER
+        setPadding(16.dp(context), 4.dp(context), 16.dp(context), 4.dp(context))
+        setTextColor(context.getColor(R.color.windowTextSecondary))
+        importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
+        visibility = GONE
+    }
     private val textView = DockTextView(context).apply {
         setPadding(16.dp(context), 0, 8.dp(context), 0)
     }
@@ -92,7 +105,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     private val longPressRunnable = Runnable {
         if (!isTapTracking) return@Runnable
         stopTap()
-        onLongPress()
+        performLongClick()
     }
     private var pendingScrollX = -1
     private val scrollView = object : HorizontalScrollView(context) {
@@ -135,10 +148,12 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         contentDescription = context.getString(R.string.dock_backspace)
         onClick = { delegate.onBackspace() }
         onLongClick = { delegate.onClear() }
+        replaceAccessibilityAction(this, AccessibilityActionCompat.ACTION_LONG_CLICK, context.getString(R.string.dock_clear_all), null)
     }
     private val row = FrameLayout(context).apply {
         clipChildren = false
         addView(scrollView, frameParams(matchParent, matchParent, marginRight = buttonWidth + edgePadding))
+        addView(emptyHint, frameParams(matchParent, matchParent))
         addView(backspaceButton, frameParams(buttonWidth + backspaceExtraLeft, matchParent, Gravity.RIGHT, marginRight = edgePadding))
     }
     private var hasContent = true
@@ -157,10 +172,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         isClickable = true
         contentDescription = context.getString(R.string.dock_copy_all)
         onClick = { if (hasContent) delegate.onCopyAll() }
-        setOnLongClickListener {
-            onLongPress()
-            true
-        }
+        setOnLongClickListener { onLongPress() }
         addView(tipView, linearParams(matchParent, tipHeight))
         addView(row, linearParams(matchParent, contentHeight))
     }
@@ -193,13 +205,10 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             scrollView.requestLayout()
         }
 
-    private fun onLongPress() {
-        if (hasContent) {
-            performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            delegate.onCopyAll()
-        } else if (delegate.onRestore()) {
-            performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-        }
+    private fun onLongPress(): Boolean {
+        if (!hasContent) return delegate.onRestore()
+        delegate.onCopyAll()
+        return true
     }
 
     fun getSlotCenter(slotLeft: Float, slotRight: Float, out: FloatArray) {
@@ -210,35 +219,21 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
 
     fun setTip(value: Tip, animate: Boolean) {
         if (tip == value) return
-        val previous = tip
         tip = value
         val canAnimate = animate && isLaidOut && animatorsEnabled
-        tipView.animate().cancel()
-        when {
-            value == Tip.Hidden -> if (canAnimate) collapseTip() else hideTip()
-            !canAnimate || previous == Tip.Hidden -> {
-                tipView.text = tipText(value)
-                tipView.alpha = 1f
-                tipView.translationY = 0f
-                tipView.visibility = VISIBLE
-            }
-            else -> tipView.animate()
-                .alpha(0f)
-                .translationY(-tipShift)
-                .setDuration(100)
-                .setInterpolator(easeOut)
-                .withEndAction {
-                    tipView.text = tipText(value)
-                    tipView.translationY = tipShift
-                    tipView.animate().alpha(1f).translationY(0f).setDuration(100).setInterpolator(easeOut).start()
-                }
-                .start()
+        if (value == Tip.Hidden) {
+            if (canAnimate) collapseTip() else hideTip()
+        } else {
+            collapseAnimator?.removeAllListeners()
+            collapseAnimator?.cancel()
+            collapseAnimator = null
+            row.translationY = 0f
+            delegate.onTipCollapse(0f)
+            tipView.setText(R.string.dock_tip_copy)
+            tipView.alpha = 1f
+            tipView.visibility = VISIBLE
         }
     }
-
-    private fun tipText(value: Tip): String = context.getString(
-        if (value == Tip.Collect) R.string.dock_tip_collect else R.string.dock_tip_copy
-    )
 
     private fun collapseTip() {
         collapseAnimator?.cancel()
@@ -249,6 +244,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             addUpdateListener {
                 val f = it.animatedValue as Float
                 tipView.alpha = (1f - f / 0.6f).coerceAtLeast(0f)
+                row.translationY = -height * f
                 delegate.onTipCollapse(height * f)
             }
             addListener(object : AnimatorListenerAdapter() {
@@ -263,7 +259,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         if (tipView.visibility == GONE) return
         tipView.visibility = GONE
         tipView.alpha = 1f
-        tipView.translationY = 0f
+        row.translationY = 0f
         delegate.onTipCollapsed()
     }
 
@@ -298,6 +294,12 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         if (hasContent == value) return
         val animate = isLaidOut && animatorsEnabled
         hasContent = value
+        emptyHint.visibility = if (value) GONE else VISIBLE
+        isClickable = value
+        contentDescription = context.getString(if (value) R.string.dock_copy_all else R.string.dock_tip_collect)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            tooltipText = if (value) null else context.getString(R.string.dock_tip_collect)
+        }
         backspaceButton.isEnabled = value
         backspaceButton.animate().cancel()
         val alpha = if (value) 1f else 0f

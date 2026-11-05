@@ -6,8 +6,8 @@ import android.graphics.Paint
 import android.graphics.Typeface
 import android.view.Gravity
 import android.view.View
-import androidx.core.graphics.ColorUtils
 import kotlin.math.min
+import vadiole.unicode.R
 
 open class CharTextView(context: Context) : View(context) {
     var text: String = ""
@@ -30,7 +30,7 @@ open class CharTextView(context: Context) : View(context) {
     var textColor: Int
         get() = textPaint.color
         set(value) {
-            abbreviationPaint.color = ColorUtils.setAlphaComponent(value, 128)
+            abbreviationPaint.color = context.getColor(R.color.characterAbbreviation)
             textPaint.color = value
             postInvalidate()
         }

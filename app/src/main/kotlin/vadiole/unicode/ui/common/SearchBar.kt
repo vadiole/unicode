@@ -48,6 +48,7 @@ class SearchBar(
     private val surfaceDrawable = FloatingSurfaceDrawable(
         context = context,
         pathProvider = FloatingSurfaceDrawable.pill(),
+        shadow = SearchShadowDrawable(context),
     )
     private val fieldIcon = context.getDrawable(R.drawable.ic_search)!!.mutate().apply {
         setTint(context.getColor(R.color.windowTextSecondary))
@@ -77,6 +78,7 @@ class SearchBar(
         icon = context.getDrawable(if (atTop) R.drawable.ic_close else R.drawable.ic_search)!!,
         altIcon = if (atTop) null else context.getDrawable(R.drawable.ic_close)!!,
         iconSize = iconSize,
+        surfaceShadow = SearchShadowDrawable(context),
     ).apply {
         setPadding(if (atTop) 0 else buttonGap, touchExtension, if (atTop) 0 else edgePadding, touchExtension)
         contentDescription = context.getString(R.string.search_hint)

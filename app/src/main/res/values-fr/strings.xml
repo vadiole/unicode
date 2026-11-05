@@ -14,12 +14,14 @@
     <string name="search_no_results">Aucun résultat</string>
     <string name="search_recents">Récents</string>
     <string name="search_title">Recherche</string>
+    <string name="table_choose_block">Choisir un bloc Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Touchez des caractères pour les collecter</string>
     <string name="dock_tip_copy">Touchez la barre pour copier la collection</string>
     <string name="dock_backspace">Supprimer le dernier caractère</string>
     <string name="dock_copy_all">Tout copier</string>
+    <string name="dock_clear_all">Vider la collection</string>
 
     <!-- Settings -->
     <string name="settings_title">Paramètres</string>

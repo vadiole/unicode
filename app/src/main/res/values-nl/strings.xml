@@ -14,12 +14,14 @@
     <string name="search_no_results">Geen resultaten gevonden</string>
     <string name="search_recents">Recent</string>
     <string name="search_title">Zoeken</string>
+    <string name="table_choose_block">Unicode-blok kiezen</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Tik op tekens om ze te verzamelen</string>
     <string name="dock_tip_copy">Tik op de balk om de collectie te kopiëren</string>
     <string name="dock_backspace">Laatste teken verwijderen</string>
     <string name="dock_copy_all">Alles kopiëren</string>
+    <string name="dock_clear_all">Collectie wissen</string>
 
     <!-- Settings -->
     <string name="settings_title">Instellingen</string>

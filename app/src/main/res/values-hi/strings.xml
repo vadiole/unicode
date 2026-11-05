@@ -14,12 +14,14 @@
     <string name="search_no_results">कुछ नहीं मिला</string>
     <string name="search_recents">हाल के</string>
     <string name="search_title">खोजें</string>
+    <string name="table_choose_block">Unicode ब्लॉक चुनें</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">इकट्ठा करने के लिए वर्णों पर टैप करें</string>
     <string name="dock_tip_copy">संग्रह कॉपी करने के लिए पट्टी पर टैप करें</string>
     <string name="dock_backspace">आखिरी वर्ण हटाएँ</string>
     <string name="dock_copy_all">सब कॉपी करें</string>
+    <string name="dock_clear_all">संग्रह साफ़ करें</string>
 
     <!-- Settings -->
     <string name="settings_title">सेटिंग</string>

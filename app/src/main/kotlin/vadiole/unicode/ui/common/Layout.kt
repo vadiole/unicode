@@ -8,11 +8,12 @@ import android.widget.LinearLayout
 
 const val matchParent = ViewGroup.LayoutParams.MATCH_PARENT
 const val wrapContent = ViewGroup.LayoutParams.WRAP_CONTENT
+private const val UNSPECIFIED_GRAVITY = -1
 
 fun frameParams(
     width: Int,
     height: Int,
-    gravity: Int = FrameLayout.LayoutParams.UNSPECIFIED_GRAVITY,
+    gravity: Int = UNSPECIFIED_GRAVITY,
     marginLeft: Int = 0,
     marginTop: Int = 0,
     marginRight: Int = 0,
@@ -25,7 +26,7 @@ fun frameParams(
 fun frameParams(
     width: Int,
     height: Int,
-    gravity: Int = FrameLayout.LayoutParams.UNSPECIFIED_GRAVITY,
+    gravity: Int = UNSPECIFIED_GRAVITY,
     margins: Rect = Rect()
 ): FrameLayout.LayoutParams {
     val layoutParams = FrameLayout.LayoutParams(width, height, gravity)
