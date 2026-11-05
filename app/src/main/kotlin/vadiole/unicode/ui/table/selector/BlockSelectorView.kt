@@ -53,6 +53,11 @@ class BlockSelectorView(
 
     var onScrollProgressChanged: ((Float, Boolean) -> Unit)? = null
     private val divider = CollectionItemDecoration(leftPadding = 14f.dp(context))
+    private val measuringCell = BlockSelectorCell(context)
+    private val rowHeights = IntArray(blocks.size)
+    private var rowWidth = 0
+    private var viewportHeight = 0
+    private var maxScrollPosition = 0f
 
     init {
         recycledViewPool.setMaxRecycledViews(0, 32)
@@ -107,20 +112,53 @@ class BlockSelectorView(
     }
 
     private fun updateScrollProgress() {
-        val scrollable = computeVerticalScrollRange() - computeVerticalScrollExtent()
-        val progress = if (scrollable > 0) (computeVerticalScrollOffset().toFloat() / scrollable).coerceIn(0f, 1f) else 0f
-        onScrollProgressChanged?.invoke(progress, scrollable > 0)
+        updateScrollRange()
+        val position = blockSelectorLayoutManager.findFirstVisibleItemPosition()
+        val view = blockSelectorLayoutManager.findViewByPosition(position)
+        val progress = if (maxScrollPosition > 0f && view != null) {
+            val hiddenFraction = (paddingTop - blockSelectorLayoutManager.getDecoratedTop(view)).toFloat() / view.height
+            ((position + hiddenFraction) / maxScrollPosition).coerceIn(0f, 1f)
+        } else 0f
+        onScrollProgressChanged?.invoke(progress, maxScrollPosition > 0f)
+    }
+
+    private fun updateScrollRange() {
+        val width = width - paddingLeft - paddingRight
+        val height = height - paddingTop - paddingBottom
+        if (width <= 0 || height <= 0 || (rowWidth == width && viewportHeight == height)) return
+        if (rowWidth != width) rowHeights.fill(0)
+        rowWidth = width
+        viewportHeight = height
+        var remaining = height
+        maxScrollPosition = 0f
+        for (position in blocks.indices.reversed()) {
+            val rowHeight = rowHeight(position)
+            if (remaining < rowHeight) {
+                maxScrollPosition = position + 1f - remaining.toFloat() / rowHeight
+                break
+            }
+            remaining -= rowHeight
+        }
+    }
+
+    private fun rowHeight(position: Int): Int {
+        if (rowHeights[position] == 0) {
+            measuringCell.text = blocks[position].name
+            measuringCell.measure(
+                MeasureSpec.makeMeasureSpec(rowWidth, MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+            )
+            rowHeights[position] = measuringCell.measuredHeight
+        }
+        return rowHeights[position]
     }
 
     fun scrollToProgress(progress: Float) {
-        if (blocks.isEmpty()) return
-        val range = computeVerticalScrollRange()
-        val scrollable = range - computeVerticalScrollExtent()
-        val rowHeight = range.toFloat() / blocks.size
-        if (scrollable <= 0 || rowHeight <= 0f) return
-        val target = scrollable * progress.coerceIn(0f, 1f)
-        val position = (target / rowHeight).toInt().coerceAtMost(blocks.lastIndex)
-        val offset = (target - position * rowHeight).toInt()
+        updateScrollRange()
+        if (maxScrollPosition <= 0f) return
+        val target = maxScrollPosition * progress.coerceIn(0f, 1f)
+        val position = target.toInt().coerceAtMost(blocks.lastIndex)
+        val offset = ((target - position) * rowHeight(position)).toInt()
         blockSelectorLayoutManager.scrollToPositionWithOffset(position, -offset)
     }
 
