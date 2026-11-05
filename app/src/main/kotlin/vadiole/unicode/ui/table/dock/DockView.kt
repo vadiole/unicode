@@ -158,7 +158,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     }
     private var hasContent = true
     private var tip = Tip.Hidden
-    private var collapseAnimator: ValueAnimator? = null
+    private var tipAnimator: ValueAnimator? = null
     private val tmpLocation = IntArray(2)
 
     init {
@@ -220,42 +220,47 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     fun setTip(value: Tip, animate: Boolean) {
         if (tip == value) return
         tip = value
+        tipAnimator?.removeAllListeners()
+        tipAnimator?.cancel()
+        tipAnimator = null
         val canAnimate = animate && isLaidOut && animatorsEnabled
-        if (value == Tip.Hidden) {
-            if (canAnimate) collapseTip() else hideTip()
-        } else {
-            collapseAnimator?.removeAllListeners()
-            collapseAnimator?.cancel()
-            collapseAnimator = null
-            row.translationY = 0f
-            delegate.onTipCollapse(0f)
+        val hidden = value == Tip.Hidden
+        if (!hidden) {
+            if (tipView.visibility == GONE) setTipCollapse(1f)
             tipView.setText(R.string.dock_tip_copy)
-            tipView.alpha = 1f
             tipView.visibility = VISIBLE
+        }
+        if (canAnimate) {
+            val start = -row.translationY / tipHeight
+            val end = if (hidden) 1f else 0f
+            tipAnimator = ValueAnimator.ofFloat(start, end).apply {
+                duration = (250 * abs(end - start)).toLong()
+                interpolator = easeOut
+                addUpdateListener { setTipCollapse(it.animatedValue as Float) }
+                addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        tipAnimator = null
+                        if (hidden) hideTip()
+                    }
+                })
+                start()
+            }
+        } else if (hidden) {
+            hideTip()
+        } else {
+            setTipCollapse(0f)
         }
     }
 
-    private fun collapseTip() {
-        collapseAnimator?.cancel()
-        val height = tipHeight.toFloat()
-        collapseAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
-            duration = 250
-            interpolator = easeOut
-            addUpdateListener {
-                val f = it.animatedValue as Float
-                tipView.alpha = (1f - f / 0.6f).coerceAtLeast(0f)
-                row.translationY = -height * f
-                delegate.onTipCollapse(height * f)
-            }
-            addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) = hideTip()
-            })
-            start()
-        }
+    private fun setTipCollapse(fraction: Float) {
+        val offset = tipHeight * fraction
+        tipView.alpha = (1f - fraction / 0.6f).coerceAtLeast(0f)
+        row.translationY = -offset
+        delegate.onTipCollapse(offset)
     }
 
     private fun hideTip() {
-        collapseAnimator = null
+        tipAnimator = null
         if (tipView.visibility == GONE) return
         tipView.visibility = GONE
         tipView.alpha = 1f
@@ -331,7 +336,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         stopTap()
         backspaceButton.animate().cancel()
         tipView.animate().cancel()
-        collapseAnimator?.end()
+        tipAnimator?.end()
     }
 
     private class DockTextView(context: Context) : View(context) {
