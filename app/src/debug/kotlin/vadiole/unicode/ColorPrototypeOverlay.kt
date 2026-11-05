@@ -61,8 +61,8 @@ internal class ColorPrototypeOverlay(private val activity: Activity) {
             option(R.id.prototype_original, R.string.prototype_original, ColorPrototype.fixes.isEmpty()) {
                 ColorPrototype.select(activity, emptySet())
             },
-            option(R.id.prototype_fixed, R.string.prototype_fixed, ColorPrototype.fixes.size == ColorPrototype.Fix.entries.size) {
-                ColorPrototype.select(activity, ColorPrototype.Fix.entries.toSet())
+            option(R.id.prototype_fixed, R.string.prototype_fixed, ColorPrototype.fixes == ColorPrototype.allFixes) {
+                ColorPrototype.select(activity, ColorPrototype.allFixes)
             },
         ))
         body.addView(row(
@@ -76,7 +76,7 @@ internal class ColorPrototypeOverlay(private val activity: Activity) {
                 ColorPrototype.select(activity, mode = Configuration.UI_MODE_NIGHT_YES)
             },
         ))
-        val ids = intArrayOf(R.id.prototype_abbreviations, R.id.prototype_scrollbar, R.id.prototype_secondary, R.id.prototype_accent, R.id.prototype_borders, R.id.prototype_search_shadow, R.id.prototype_search_shadow_light)
+        val ids = intArrayOf(R.id.prototype_abbreviations, R.id.prototype_scrollbar, R.id.prototype_secondary, R.id.prototype_accent, R.id.prototype_borders, R.id.prototype_search_shadow, R.id.prototype_search_shadow_light, R.id.prototype_scroller_surface, R.id.prototype_scroller_primary)
         for (fix in ColorPrototype.Fix.entries) {
             body.addView(CheckBox(activity).apply {
                 id = ids[fix.ordinal]
@@ -88,7 +88,10 @@ internal class ColorPrototypeOverlay(private val activity: Activity) {
                 setPadding(dp(4), dp(4), dp(4), dp(4))
                 isChecked = fix in ColorPrototype.fixes
                 setOnCheckedChangeListener { _, checked ->
-                    ColorPrototype.select(activity, if (checked) ColorPrototype.fixes + fix else ColorPrototype.fixes - fix)
+                    var selected = if (checked) ColorPrototype.fixes + fix else ColorPrototype.fixes - fix
+                    if (checked && fix == ColorPrototype.Fix.SCROLLER_SURFACE) selected = selected - ColorPrototype.Fix.SCROLLER_PRIMARY
+                    if (checked && fix == ColorPrototype.Fix.SCROLLER_PRIMARY) selected = selected - ColorPrototype.Fix.SCROLLER_SURFACE
+                    ColorPrototype.select(activity, selected)
                 }
             }, LinearLayout.LayoutParams(-1, -2))
         }
@@ -146,9 +149,9 @@ internal class ColorPrototypeOverlay(private val activity: Activity) {
     }
 
     private fun update() {
-        val variant = when (ColorPrototype.fixes.size) {
-            0 -> activity.getString(R.string.prototype_original)
-            ColorPrototype.Fix.entries.size -> activity.getString(R.string.prototype_fixed)
+        val variant = when {
+            ColorPrototype.fixes.isEmpty() -> activity.getString(R.string.prototype_original)
+            ColorPrototype.fixes == ColorPrototype.allFixes -> activity.getString(R.string.prototype_fixed)
             else -> activity.getString(R.string.prototype_custom, ColorPrototype.fixes.size)
         }
         header.text = activity.getString(R.string.prototype_title, variant, if (ColorPrototype.expanded) "▴" else "▾")

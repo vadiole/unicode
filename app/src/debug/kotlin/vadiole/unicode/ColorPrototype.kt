@@ -5,9 +5,11 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.view.ContextThemeWrapper
 import android.view.ViewGroup
 import vadiole.unicode.ui.UnicodeActivity
+import vadiole.unicode.ui.common.FloatingSurfaceDrawable
 
 object ColorPrototype {
     enum class Fix(val label: Int) {
@@ -18,7 +20,19 @@ object ColorPrototype {
         BORDERS(R.string.prototype_borders),
         SEARCH_SHADOW(R.string.prototype_search_shadow),
         SEARCH_SHADOW_LIGHT(R.string.prototype_search_shadow_light),
+        SCROLLER_SURFACE(R.string.prototype_scroller_surface),
+        SCROLLER_PRIMARY(R.string.prototype_scroller_primary),
     }
+
+    val allFixes = Fix.entries.toSet() - Fix.SCROLLER_PRIMARY
+    val primaryScroller: Boolean get() = Fix.SCROLLER_PRIMARY in fixes
+
+    fun scrollerSurface(context: Context): Drawable? =
+        if (Fix.SCROLLER_SURFACE in fixes) FloatingSurfaceDrawable(
+            context,
+            FloatingSurfaceDrawable.pill(),
+            FastScrollShadowDrawable(context),
+        ) else null
 
     var fixes: Set<Fix> = emptySet()
         private set
@@ -29,7 +43,7 @@ object ColorPrototype {
     var panelY = -1
     private var snapshot: ColorPrototypeSnapshot? = null
 
-    fun searchShadow(context: Context): android.graphics.drawable.Drawable? = when {
+    fun searchShadow(context: Context): Drawable? = when {
         Fix.SEARCH_SHADOW_LIGHT in fixes -> SearchShadowDrawable(context, R.drawable.prototype_search_shadow_light)
         Fix.SEARCH_SHADOW in fixes -> SearchShadowDrawable(context)
         else -> null

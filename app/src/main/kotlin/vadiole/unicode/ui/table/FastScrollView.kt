@@ -19,6 +19,8 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import kotlin.math.abs
+import kotlin.math.roundToInt
+import vadiole.unicode.ColorPrototype
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.ui.common.FloatingSurfaceDrawable
@@ -65,9 +67,15 @@ class FastScrollView(
     private val gestureExclusionHeight = thumbMinHeight * 2
 
     // Colors
-    private val scrollIndicatorColor = context.getColor(R.color.scrollIndicator)
-    private val scrollIndicatorActiveColor = context.getColor(R.color.scrollIndicatorActive)
-    private val scrollIndicatorGripColor = context.getColor(R.color.scrollIndicatorGrip)
+    private val thumbSurfaceDrawable = ColorPrototype.scrollerSurface(context)
+    private val primaryScroller = ColorPrototype.primaryScroller
+    private val scrollIndicatorColor = context.getColor(if (primaryScroller) R.color.windowTextPrimary else R.color.scrollIndicator)
+    private val scrollIndicatorActiveColor = context.getColor(if (primaryScroller) R.color.windowTextPrimary else R.color.scrollIndicatorActive)
+    private val scrollIndicatorGripColor = context.getColor(when {
+        primaryScroller -> R.color.layer1
+        thumbSurfaceDrawable != null -> R.color.windowTextSecondary
+        else -> R.color.scrollIndicatorGrip
+    })
 
     // Paint objects
     private val thumbPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -284,6 +292,7 @@ class FastScrollView(
             val currentThumbWidth = thumbWidth.toFloat()
             val left = width - currentThumbWidth - thumbMarginEnd
             thumbRect.set(left, thumbTop, left + currentThumbWidth, thumbTop + thumbHeight)
+            thumbSurfaceDrawable?.setBounds(0, 0, thumbWidth, thumbHeight.roundToInt())
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -353,7 +362,15 @@ class FastScrollView(
         // Draw thumb
         canvas.save()
         canvas.scale(thumbScale, thumbScale, thumbRect.centerX(), thumbRect.centerY())
-        canvas.drawRoundRect(thumbRect, thumbCornerRadius, thumbCornerRadius, thumbPaint)
+        val surface = thumbSurfaceDrawable
+        if (surface != null) {
+            val saved = canvas.save()
+            canvas.translate(thumbRect.left, thumbRect.top)
+            surface.draw(canvas)
+            canvas.restoreToCount(saved)
+        } else {
+            canvas.drawRoundRect(thumbRect, thumbCornerRadius, thumbCornerRadius, thumbPaint)
+        }
 
         // Grip lines
         val cx = thumbRect.centerX()
