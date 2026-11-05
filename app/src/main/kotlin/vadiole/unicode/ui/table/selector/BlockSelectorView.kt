@@ -9,12 +9,9 @@ import android.view.animation.LayoutAnimationController
 import android.view.animation.PathInterpolator
 import android.view.animation.ScaleAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
-import vadiole.unicode.R
 import vadiole.unicode.data.Block
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
-import vadiole.unicode.ui.common.ScrollbarDrawable
-import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 import vadiole.unicode.ui.common.dp
 
 class BlockSelectorView(
@@ -54,26 +51,19 @@ class BlockSelectorView(
         }
     }
 
-    private val scrollbarDrawable = ScrollbarDrawable()
-    private val scrollBars = VerticalScrollBarItemDecoration(
-        recyclerView = this,
-        scrollbarDrawable = scrollbarDrawable,
-        scrollBarWidth = 4.dp(context),
-    )
+    var onScrollProgressChanged: ((Float, Boolean) -> Unit)? = null
     private val divider = CollectionItemDecoration(leftPadding = 14f.dp(context))
 
     init {
-        scrollbarDrawable.setColor(this.context.getColor(R.color.scrollIndicator))
         recycledViewPool.setMaxRecycledViews(0, 32)
         layoutManager = blockSelectorLayoutManager
         setItemViewCacheSize(8)
         setAdapter(adapter)
         addItemDecoration(divider)
-        addItemDecoration(scrollBars)
         setPadding(
             floatingInset.toInt(),
             BlockSelectorGeometry.CONTENT_VERTICAL_PADDING_DP.dp(context) + topMargin + floatingInset.toInt(),
-            floatingInset.toInt(),
+            floatingInset.toInt() + 16.dp(context),
             BlockSelectorGeometry.CONTENT_VERTICAL_PADDING_DP.dp(context) + floatingInset.toInt()
         )
         layoutAnimation = LayoutAnimationController(
@@ -105,6 +95,33 @@ class BlockSelectorView(
         val widthMeasureSpec = MeasureSpec.makeMeasureSpec(calculateWidth(), MeasureSpec.EXACTLY)
         val heightMeasureSpec = MeasureSpec.makeMeasureSpec(calculateHeight(), MeasureSpec.AT_MOST)
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+    }
+
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
+        updateScrollProgress()
+    }
+
+    override fun onScrolled(dx: Int, dy: Int) {
+        updateScrollProgress()
+    }
+
+    private fun updateScrollProgress() {
+        val scrollable = computeVerticalScrollRange() - computeVerticalScrollExtent()
+        val progress = if (scrollable > 0) (computeVerticalScrollOffset().toFloat() / scrollable).coerceIn(0f, 1f) else 0f
+        onScrollProgressChanged?.invoke(progress, scrollable > 0)
+    }
+
+    fun scrollToProgress(progress: Float) {
+        if (blocks.isEmpty()) return
+        val range = computeVerticalScrollRange()
+        val scrollable = range - computeVerticalScrollExtent()
+        val rowHeight = range.toFloat() / blocks.size
+        if (scrollable <= 0 || rowHeight <= 0f) return
+        val target = scrollable * progress.coerceIn(0f, 1f)
+        val position = (target / rowHeight).toInt().coerceAtMost(blocks.lastIndex)
+        val offset = (target - position * rowHeight).toInt()
+        blockSelectorLayoutManager.scrollToPositionWithOffset(position, -offset)
     }
 
     fun calculateWidth(): Int {

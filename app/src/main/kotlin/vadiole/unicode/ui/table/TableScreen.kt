@@ -612,10 +612,12 @@ class TableScreen(
         val popup = popup ?: kotlin.run {
             val blockSelectorView = BlockSelectorView(context, tableController.blocks, blockSelectorDelegate)
             BlockSelectorPopup(blockSelectorView, wrapContent, wrapContent).also {
+                it.setOnDismissListener { setMainScrollerHidden(false) }
                 popup = it
             }
         }
 
+        setMainScrollerHidden(true)
         if (popup.isShowing) {
             popup.reopen()
             return
@@ -624,6 +626,19 @@ class TableScreen(
         val yOffset = (-8).dp(context)
         popup.setAnchorX(if (topBar.centerTitle) Float.NaN else 0f)
         popup.showAsDropDown(topBar, xOffset, yOffset, LEFT or TOP)
+    }
+
+    private fun setMainScrollerHidden(hidden: Boolean) {
+        val alpha = if (hidden) 0f else 1f
+        fastScrollView.animate().cancel()
+        searchFastScrollView.animate().cancel()
+        if (animatorsEnabled) {
+            fastScrollView.animate().alpha(alpha).setDuration(150).start()
+            searchFastScrollView.animate().alpha(alpha).setDuration(150).start()
+        } else {
+            fastScrollView.alpha = alpha
+            searchFastScrollView.alpha = alpha
+        }
     }
 
     fun addToDock(codePoint: CodePoint) {
