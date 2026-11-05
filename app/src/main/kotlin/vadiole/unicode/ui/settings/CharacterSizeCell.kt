@@ -14,7 +14,7 @@ import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.wrapContent
 
 class CharacterSizeCell(context: Context, initialValue: Float) : LinearLayout(context) {
-    val slider = Slider(context, 0.75f..1.5f)
+    val slider = Slider(context, 0.75f..2f)
     private val label = ActionCell(context, context.getString(R.string.settings_character_size_in_table)).apply {
         background = null
         isClickable = false
