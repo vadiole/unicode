@@ -7,7 +7,6 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.widget.LinearLayout
 import android.widget.Toast
-import kotlin.math.roundToInt
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.data.config.UserConfig
@@ -64,38 +63,24 @@ class SettingsScreen(
             setAppearanceInteraction(active)
         }
     }
-    private val vignetteStrengthCell = SliderCell(
+    private val backgroundTintCell = SliderCell(
         context,
-        context.getString(R.string.settings_vignette_strength),
+        context.getString(R.string.settings_background_tint),
         0f..1f,
-        revealLayout.vignetteStrength,
+        revealLayout.backgroundTintOpacity,
     ).apply {
         slider.onValueChanged = { value ->
             setValue(value)
-            revealLayout.vignetteStrength = value
+            revealLayout.backgroundTintOpacity = value
         }
         slider.onInteractionChanged = ::setAppearanceInteraction
     }
-    private val vignetteSizeCell = SliderCell(
-        context,
-        context.getString(R.string.settings_vignette_size),
-        16f..256f,
-        revealLayout.vignetteSize,
-        formatValue = { "${it.roundToInt()} dp" },
-    ).apply {
-        slider.onValueChanged = { value ->
-            setValue(value)
-            revealLayout.vignetteSize = value
-        }
-        slider.onInteractionChanged = ::setAppearanceInteraction
-    }
-    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, vignetteStrengthCell, vignetteSizeCell)).apply {
+    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, backgroundTintCell)).apply {
         background = SquircleDrawable(13.dp(context)).apply {
             colors = ColorStateList.valueOf(context.getColor(R.color.layer1))
         }
         characterSizeCell.background = null
-        vignetteStrengthCell.background = null
-        vignetteSizeCell.background = null
+        backgroundTintCell.background = null
     }
 
     private val clearRecentsCell = HoldActionCell(context, context.getString(R.string.settings_clear_recents)) {

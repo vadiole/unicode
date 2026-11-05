@@ -5,31 +5,25 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.Path
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
+import vadiole.unicode.R
 
 class PathRevealLayout(context: Context) : FrameLayout(context) {
     var onRevealChanged: ((Boolean) -> Unit)? = null
     private val retainedPath = Path()
     private val outsidePath = Path()
-    private val edgeVeil = EdgeVeil(context)
+    private val tintPaint = Paint().apply { color = context.getColor(R.color.layer0) }
     private val shadow = PathShadow(context)
     private var progress = 0f
     private var animator: ValueAnimator? = null
     private var revealing = false
 
-    var vignetteStrength: Float
-        get() = edgeVeil.strength
+    var backgroundTintOpacity = 0.08f
         set(value) {
-            edgeVeil.strength = value.coerceIn(0f, 1f)
-            invalidate()
-        }
-
-    var vignetteSize: Float
-        get() = edgeVeil.sizeDp
-        set(value) {
-            edgeVeil.sizeDp = value
+            field = value.coerceIn(0f, 1f)
             invalidate()
         }
 
@@ -85,17 +79,13 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
         }
     }
 
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        super.onSizeChanged(w, h, oldw, oldh)
-        edgeVeil.setSize(w, h)
-    }
-
     override fun draw(canvas: Canvas) {
         if (progress == 0f) {
             super.draw(canvas)
             return
         }
-        edgeVeil.draw(canvas, progress)
+        tintPaint.alpha = (backgroundTintOpacity * progress * 255).toInt()
+        canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), tintPaint)
         if (progress < 1f) {
             val outside = canvas.save()
             canvas.clipPath(outsidePath)
