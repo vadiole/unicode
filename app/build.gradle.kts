@@ -12,7 +12,7 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 23
         targetSdk = 37
-        versionCode = 174
+        versionCode = 175
         versionName = "1.9.1"
         buildConfigField("String", "UNICODE_VERSION", "\"18.0.0\"")
         buildConfigField("String", "DATABASE_NAME", "\"u18.sqlite\"")
