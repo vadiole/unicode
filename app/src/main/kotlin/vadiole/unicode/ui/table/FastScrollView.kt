@@ -69,8 +69,8 @@ class FastScrollView(
     // Colors
     private val thumbSurfaceDrawable = ColorPrototype.scrollerSurface(context)
     private val primaryScroller = ColorPrototype.primaryScroller
-    private val scrollIndicatorColor = context.getColor(if (primaryScroller) R.color.windowTextPrimary else R.color.scrollIndicator)
-    private val scrollIndicatorActiveColor = context.getColor(if (primaryScroller) R.color.windowTextPrimary else R.color.scrollIndicatorActive)
+    private val scrollIndicatorColor = context.getColor(if (primaryScroller) R.color.primaryControl else R.color.scrollIndicator)
+    private val scrollIndicatorActiveColor = context.getColor(if (primaryScroller) R.color.primaryControl else R.color.scrollIndicatorActive)
     private val scrollIndicatorGripColor = context.getColor(when {
         primaryScroller -> R.color.layer1
         thumbSurfaceDrawable != null -> R.color.windowTextSecondary

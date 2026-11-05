@@ -6,6 +6,7 @@
     <color name="navigationBarScrim">#00000000</color>
 
     <color name="colorPrimary">#FF4498F2</color>
+    <color name="primaryControl">#FFEDEDEF</color>
     <color name="dialogDim">#FF000000</color>
     <color name="windowSurface">#00000000</color>
     <color name="windowTextPrimary">#FFFFFFFF</color>
