@@ -19,6 +19,20 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
     private var animator: ValueAnimator? = null
     private var revealing = false
 
+    var vignetteStrength: Float
+        get() = edgeVeil.strength
+        set(value) {
+            edgeVeil.strength = value.coerceIn(0f, 1f)
+            invalidate()
+        }
+
+    var vignetteSize: Float
+        get() = edgeVeil.sizeDp
+        set(value) {
+            edgeVeil.sizeDp = value
+            invalidate()
+        }
+
     fun reveal(path: Path) {
         retainedPath.set(path)
         outsidePath.set(path)

@@ -30,6 +30,8 @@
     <string name="settings_search_at_top">Search at the top</string>
     <string name="settings_show_unsupported">Show unsupported characters</string>
     <string name="settings_character_size_in_table" xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">Character size in table</string>
+    <string name="settings_vignette_strength" xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">Vignette strength</string>
+    <string name="settings_vignette_size" xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">Vignette size</string>
     <string name="settings_crash_reports">Crash reports</string>
     <string name="settings_save_recents">Save recent characters</string>
     <string name="settings_clear_recents">Clear recent characters</string>

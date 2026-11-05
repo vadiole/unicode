@@ -11,8 +11,8 @@ import kotlin.math.ceil
 import kotlin.math.floor
 
 class PathShadow(context: Context) {
-    private val ambientBlur = 18f.dp(context)
-    private val ambientOffset = 5f.dp(context)
+    private val ambientBlur = 36f.dp(context)
+    private val ambientOffset = 10f.dp(context)
     private val contactBlur = 5f.dp(context)
     private val contactOffset = 2f.dp(context)
     private val shape = Path()
@@ -44,7 +44,7 @@ class PathShadow(context: Context) {
         canvas.translate(-left, -top)
         val shadowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.TRANSPARENT
-            setShadowLayer(ambientBlur, 0f, ambientOffset, Color.argb(13, 0, 0, 0))
+            setShadowLayer(ambientBlur, 0f, ambientOffset, Color.argb(17, 0, 0, 0))
         }
         canvas.drawPath(shape, shadowPaint)
         shadowPaint.setShadowLayer(contactBlur, 0f, contactOffset, Color.argb(20, 0, 0, 0))

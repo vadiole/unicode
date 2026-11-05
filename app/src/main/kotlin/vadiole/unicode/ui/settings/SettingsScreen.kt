@@ -1,16 +1,20 @@
 package vadiole.unicode.ui.settings
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.RectF
 import android.widget.LinearLayout
 import android.widget.Toast
+import kotlin.math.roundToInt
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.common.ActionCell
 import vadiole.unicode.ui.common.PathRevealLayout
+import vadiole.unicode.ui.common.SliderCell
+import vadiole.unicode.ui.common.SquircleDrawable
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.HoldActionCell
@@ -43,7 +47,12 @@ class SettingsScreen(
         onRevealChanged = delegate::onTableRevealChanged
     }
     private var adjustingSize = false
-    private val characterSizeCell = CharacterSizeCell(context, userConfig.tableCharacterScale).apply {
+    private val characterSizeCell = SliderCell(
+        context,
+        context.getString(R.string.settings_character_size_in_table),
+        0.75f..2f,
+        userConfig.tableCharacterScale,
+    ).apply {
         slider.onValueChanged = { value ->
             setValue(value)
             delegate.onCharacterScaleChanged(value)
@@ -51,19 +60,42 @@ class SettingsScreen(
         }
         slider.onInteractionChanged = { active ->
             adjustingSize = active
-            if (active) {
-                val bounds = Rect(0, 0, width, height)
-                revealLayout.offsetDescendantRectToMyCoords(this, bounds)
-                val radius = 13f.dp(context)
-                val path = Path().apply {
-                    addRoundRect(RectF(bounds), radius, radius, Path.Direction.CW)
-                }
-                revealLayout.reveal(path)
-            } else {
-                userConfig.tableCharacterScale = slider.value
-                revealLayout.restore()
-            }
+            if (!active) userConfig.tableCharacterScale = slider.value
+            setAppearanceInteraction(active)
         }
+    }
+    private val vignetteStrengthCell = SliderCell(
+        context,
+        context.getString(R.string.settings_vignette_strength),
+        0f..1f,
+        revealLayout.vignetteStrength,
+    ).apply {
+        slider.onValueChanged = { value ->
+            setValue(value)
+            revealLayout.vignetteStrength = value
+        }
+        slider.onInteractionChanged = ::setAppearanceInteraction
+    }
+    private val vignetteSizeCell = SliderCell(
+        context,
+        context.getString(R.string.settings_vignette_size),
+        16f..256f,
+        revealLayout.vignetteSize,
+        formatValue = { "${it.roundToInt()} dp" },
+    ).apply {
+        slider.onValueChanged = { value ->
+            setValue(value)
+            revealLayout.vignetteSize = value
+        }
+        slider.onInteractionChanged = ::setAppearanceInteraction
+    }
+    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, vignetteStrengthCell, vignetteSizeCell)).apply {
+        background = SquircleDrawable(13.dp(context)).apply {
+            colors = ColorStateList.valueOf(context.getColor(R.color.layer1))
+        }
+        characterSizeCell.background = null
+        vignetteStrengthCell.background = null
+        vignetteSizeCell.background = null
     }
 
     private val clearRecentsCell = HoldActionCell(context, context.getString(R.string.settings_clear_recents)) {
@@ -89,7 +121,7 @@ class SettingsScreen(
                 delegate.onShowUnsupportedCharsChanged()
             })
         }))
-        add(characterSizeCell)
+        add(appearanceGroup)
         add(SettingsGroup(context, listOf(
             ToggleCell(context, context.getString(R.string.settings_save_recents), userConfig.recentsEnabled) { checked ->
                 userConfig.recentsEnabled = checked
@@ -115,6 +147,20 @@ class SettingsScreen(
             addView(SettingsTopBar(context, context.getString(R.string.settings_title)) { delegate.onBack() }, linearParams(matchParent, wrapContent))
             addView(list, linearParams(matchParent, 0, weight = 1f))
         }, frameParams(matchParent, matchParent))
+    }
+
+    private fun setAppearanceInteraction(active: Boolean) {
+        if (active) {
+            val bounds = Rect(0, 0, appearanceGroup.width, appearanceGroup.height)
+            revealLayout.offsetDescendantRectToMyCoords(appearanceGroup, bounds)
+            val radius = 13f.dp(context)
+            val path = Path().apply {
+                addRoundRect(RectF(bounds), radius, radius, Path.Direction.CW)
+            }
+            revealLayout.reveal(path)
+        } else {
+            revealLayout.restore()
+        }
     }
 
     fun stopTableReveal() {

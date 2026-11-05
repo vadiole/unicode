@@ -1,21 +1,20 @@
-package vadiole.unicode.ui.settings
+package vadiole.unicode.ui.common
 
 import android.content.Context
 import android.content.res.ColorStateList
 import android.widget.LinearLayout
 import kotlin.math.roundToInt
 import vadiole.unicode.R
-import vadiole.unicode.ui.common.ActionCell
-import vadiole.unicode.ui.common.Slider
-import vadiole.unicode.ui.common.SquircleDrawable
-import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.linearParams
-import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.wrapContent
 
-class CharacterSizeCell(context: Context, initialValue: Float) : LinearLayout(context) {
-    val slider = Slider(context, 0.75f..2f)
-    private val label = ActionCell(context, context.getString(R.string.settings_character_size_in_table)).apply {
+class SliderCell(
+    context: Context,
+    name: String,
+    range: ClosedFloatingPointRange<Float>,
+    initialValue: Float,
+    private val formatValue: (Float) -> String = { "${(it * 100).roundToInt()}%" },
+) : LinearLayout(context) {
+    val slider = Slider(context, range)
+    private val label = ActionCell(context, name).apply {
         background = null
         isClickable = false
         isFocusable = false
@@ -28,12 +27,12 @@ class CharacterSizeCell(context: Context, initialValue: Float) : LinearLayout(co
         }
         addView(label, linearParams(matchParent, wrapContent))
         addView(slider, linearParams(matchParent, 48.dp(context), marginLeft = 16.dp(context), marginRight = 16.dp(context), marginBottom = 8.dp(context)))
-        slider.contentDescription = context.getString(R.string.settings_character_size_in_table)
+        slider.contentDescription = name
         slider.value = initialValue
         setValue(initialValue)
     }
 
     fun setValue(value: Float) {
-        label.value = "${(value * 100).roundToInt()}%"
+        label.value = formatValue(value)
     }
 }
