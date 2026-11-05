@@ -6,7 +6,9 @@ import android.graphics.Canvas
 import android.graphics.Outline
 import android.graphics.Path
 import android.os.Build
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.ViewOutlineProvider
 import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
@@ -58,6 +60,10 @@ internal class BlockSelectorSurfaceView(
         setPadding(0, listView.paddingTop + cornerInset, 0, listView.paddingBottom + cornerInset)
         visibility = INVISIBLE
     }
+    private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+    private var downX = 0f
+    private var downY = 0f
+    private var interceptingFastScroll = false
     private val clipPath = Path()
     private var showAnimator: ValueAnimator? = null
     private var showProgress = 0f
@@ -86,6 +92,43 @@ internal class BlockSelectorSurfaceView(
             fastScrollView.outlineProvider = surfaceOutline
             fastScrollView.clipToOutline = true
         }
+    }
+
+    override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                downX = event.x
+                downY = event.y
+                interceptingFastScroll = false
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+                if (!fastScrollView.isShown) return false
+                if (downY < fastScrollView.paddingTop || downY >= fastScrollView.height - fastScrollView.paddingBottom) return false
+                if (!fastScrollView.isInThumbZone(downX, downY) && !fastScrollView.isInEdgeZone(downX)) return false
+                val dx = event.x - downX
+                val dy = event.y - downY
+                if (dx * dx + dy * dy > touchSlop * touchSlop) {
+                    val down = MotionEvent.obtain(
+                        event.downTime, event.eventTime, MotionEvent.ACTION_DOWN,
+                        fastScrollView.width.toFloat() - 1f, downY, 0,
+                    )
+                    interceptingFastScroll = fastScrollView.onTouchEvent(down)
+                    down.recycle()
+                    return interceptingFastScroll
+                }
+            }
+        }
+        return false
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (!interceptingFastScroll) return super.onTouchEvent(event)
+        fastScrollView.onTouchEvent(event)
+        if (event.actionMasked == MotionEvent.ACTION_UP || event.actionMasked == MotionEvent.ACTION_CANCEL) {
+            interceptingFastScroll = false
+        }
+        return true
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

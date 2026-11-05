@@ -63,7 +63,7 @@ class BlockSelectorView(
         setPadding(
             floatingInset.toInt(),
             BlockSelectorGeometry.CONTENT_VERTICAL_PADDING_DP.dp(context) + topMargin + floatingInset.toInt(),
-            floatingInset.toInt() + 16.dp(context),
+            floatingInset.toInt(),
             BlockSelectorGeometry.CONTENT_VERTICAL_PADDING_DP.dp(context) + floatingInset.toInt()
         )
         layoutAnimation = LayoutAnimationController(
