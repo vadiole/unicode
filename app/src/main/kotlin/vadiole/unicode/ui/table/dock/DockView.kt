@@ -227,6 +227,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             collapseAnimator?.removeAllListeners()
             collapseAnimator?.cancel()
             collapseAnimator = null
+            row.translationY = 0f
             delegate.onTipCollapse(0f)
             tipView.setText(R.string.dock_tip_copy)
             tipView.alpha = 1f
@@ -243,6 +244,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             addUpdateListener {
                 val f = it.animatedValue as Float
                 tipView.alpha = (1f - f / 0.6f).coerceAtLeast(0f)
+                row.translationY = -height * f
                 delegate.onTipCollapse(height * f)
             }
             addListener(object : AnimatorListenerAdapter() {
@@ -257,7 +259,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         if (tipView.visibility == GONE) return
         tipView.visibility = GONE
         tipView.alpha = 1f
-        tipView.translationY = 0f
+        row.translationY = 0f
         delegate.onTipCollapsed()
     }
 
