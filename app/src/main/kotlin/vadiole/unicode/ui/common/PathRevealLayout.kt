@@ -13,6 +13,8 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
     var onRevealChanged: ((Boolean) -> Unit)? = null
     private val retainedPath = Path()
     private val outsidePath = Path()
+    private val edgeVeil = EdgeVeil(context)
+    private val shadow = PathShadow(context)
     private var progress = 0f
     private var animator: ValueAnimator? = null
     private var revealing = false
@@ -21,6 +23,7 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
         retainedPath.set(path)
         outsidePath.set(path)
         outsidePath.toggleInverseFillType()
+        shadow.update(path)
         if (!revealing) {
             revealing = true
             onRevealChanged?.invoke(true)
@@ -68,11 +71,17 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
         }
     }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        edgeVeil.setSize(w, h)
+    }
+
     override fun draw(canvas: Canvas) {
         if (progress == 0f) {
             super.draw(canvas)
             return
         }
+        edgeVeil.draw(canvas, progress)
         if (progress < 1f) {
             val outside = canvas.save()
             canvas.clipPath(outsidePath)
@@ -81,6 +90,10 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
             canvas.restoreToCount(layer)
             canvas.restoreToCount(outside)
         }
+        val shadowClip = canvas.save()
+        canvas.clipPath(outsidePath)
+        shadow.draw(canvas, progress)
+        canvas.restoreToCount(shadowClip)
         val inside = canvas.save()
         canvas.clipPath(retainedPath)
         super.draw(canvas)
