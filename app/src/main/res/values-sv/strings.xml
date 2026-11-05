@@ -14,12 +14,14 @@
     <string name="search_no_results">Inga resultat hittades</string>
     <string name="search_recents">Senaste</string>
     <string name="search_title">Sök</string>
+    <string name="table_choose_block">Välj Unicode-block</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Tryck på tecken för att samla dem</string>
     <string name="dock_tip_copy">Tryck på fältet för att kopiera samlingen</string>
     <string name="dock_backspace">Ta bort sista tecknet</string>
     <string name="dock_copy_all">Kopiera allt</string>
+    <string name="dock_clear_all">Rensa samlingen</string>
 
     <!-- Settings -->
     <string name="settings_title">Inställningar</string>

@@ -14,12 +14,14 @@
     <string name="search_no_results">Нічого не знайдено</string>
     <string name="search_recents">Останні</string>
     <string name="search_title">Пошук</string>
+    <string name="table_choose_block">Вибрати блок Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Торкайтеся символів, щоб зібрати їх</string>
     <string name="dock_tip_copy">Скопіюйте добірку, торкнувшись панелі</string>
     <string name="dock_backspace">Видалити останній символ</string>
     <string name="dock_copy_all">Копіювати все</string>
+    <string name="dock_clear_all">Очистити добірку</string>
 
     <!-- Settings -->
     <string name="settings_title">Налаштування</string>

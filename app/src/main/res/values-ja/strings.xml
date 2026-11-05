@@ -14,12 +14,14 @@
     <string name="search_no_results">結果が見つかりません</string>
     <string name="search_recents">履歴</string>
     <string name="search_title">検索</string>
+    <string name="table_choose_block">Unicode ブロックを選択</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">文字をタップして集める</string>
     <string name="dock_tip_copy">バーをタップしてコレクションをコピー</string>
     <string name="dock_backspace">最後の文字を削除</string>
     <string name="dock_copy_all">すべてコピー</string>
+    <string name="dock_clear_all">コレクションを消去</string>
 
     <!-- Settings -->
     <string name="settings_title">設定</string>

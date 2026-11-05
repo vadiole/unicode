@@ -14,12 +14,14 @@
     <string name="search_no_results">Nic nenalezeno</string>
     <string name="search_recents">Nedávné</string>
     <string name="search_title">Hledání</string>
+    <string name="table_choose_block">Vybrat blok Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Klepnutím na znaky je přidáte</string>
     <string name="dock_tip_copy">Klepnutím na lištu zkopírujete sbírku</string>
     <string name="dock_backspace">Smazat poslední znak</string>
     <string name="dock_copy_all">Kopírovat vše</string>
+    <string name="dock_clear_all">Vymazat sbírku</string>
 
     <!-- Settings -->
     <string name="settings_title">Nastavení</string>

@@ -14,12 +14,14 @@
     <string name="search_no_results">Ничего не найдено</string>
     <string name="search_recents">Недавние</string>
     <string name="search_title">Поиск</string>
+    <string name="table_choose_block">Выбрать блок Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Нажимайте на символы, чтобы собрать их</string>
     <string name="dock_tip_copy">Скопируйте коллекцию, нажав на панель</string>
     <string name="dock_backspace">Удалить последний символ</string>
     <string name="dock_copy_all">Копировать всё</string>
+    <string name="dock_clear_all">Очистить коллекцию</string>
 
     <!-- Settings -->
     <string name="settings_title">Настройки</string>
