@@ -10,6 +10,7 @@
     <color name="windowSurface">#00000000</color>
     <color name="windowTextPrimary">#FFFFFFFF</color>
     <color name="windowTextSecondary">#FF989899</color>
+    <color name="characterAbbreviation">#80FFFFFF</color>
     <color name="windowTextSelection">#40007BFF</color>
     <color name="windowDivider">#53545558</color>
     <color name="scrollIndicator">#4D989899</color>

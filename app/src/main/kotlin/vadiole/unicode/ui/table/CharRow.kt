@@ -11,7 +11,6 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
-import androidx.core.graphics.ColorUtils
 import kotlin.math.floor
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
@@ -68,7 +67,7 @@ class CharRow(
 
     init {
         charPaint.color = context.getColor(R.color.windowTextPrimary)
-        abbreviationPaint.color = ColorUtils.setAlphaComponent(context.getColor(R.color.windowTextPrimary), 128)
+        abbreviationPaint.color = context.getColor(R.color.characterAbbreviation)
         ripplePaint.color = context.getColor(R.color.ripple)
         charPaint.textSize = charSize
         abbreviationPaint.textSize = abbreviationSize

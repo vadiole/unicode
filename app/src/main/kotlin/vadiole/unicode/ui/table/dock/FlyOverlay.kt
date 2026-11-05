@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.View
-import androidx.core.graphics.ColorUtils
 import androidx.dynamicanimation.animation.FloatValueHolder
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -22,7 +21,7 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
     private val referenceDistance = 400f.dp(context)
     private val dockGlyphSize = DockView.glyphSize(context)
     private val charColor = context.getColor(R.color.windowTextPrimary)
-    private val abbreviationColor = ColorUtils.setAlphaComponent(charColor, 128)
+    private val abbreviationColor = context.getColor(R.color.characterAbbreviation)
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         isSubpixelText = true

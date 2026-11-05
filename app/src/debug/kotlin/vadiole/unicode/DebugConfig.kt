@@ -17,10 +17,13 @@ class DebugConfig : ContentProvider() {
         app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 if (savedInstanceState == null) activity.intent.extras?.let { apply(activity, it) }
+                ColorPrototype.onCreated(activity)
             }
 
             override fun onActivityStarted(activity: Activity) = Unit
-            override fun onActivityResumed(activity: Activity) = Unit
+            override fun onActivityResumed(activity: Activity) {
+                ColorPrototype.attach(activity)
+            }
             override fun onActivityPaused(activity: Activity) = Unit
             override fun onActivityStopped(activity: Activity) = Unit
             override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) = Unit

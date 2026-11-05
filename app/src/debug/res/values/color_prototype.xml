@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="prototype_overlay" type="id" />
+    <item name="prototype_header" type="id" />
+    <item name="prototype_original" type="id" />
+    <item name="prototype_fixed" type="id" />
+    <item name="prototype_system" type="id" />
+    <item name="prototype_light" type="id" />
+    <item name="prototype_dark" type="id" />
+    <item name="prototype_abbreviations" type="id" />
+    <item name="prototype_scrollbar" type="id" />
+    <item name="prototype_secondary" type="id" />
+    <item name="prototype_accent" type="id" />
+    <item name="prototype_borders" type="id" />
+    <string name="prototype_title" translatable="false">Colors · %1$s %2$s</string>
+    <string name="prototype_original" translatable="false">Original</string>
+    <string name="prototype_fixed" translatable="false">All fixes</string>
+    <string name="prototype_custom" translatable="false">Custom %1$d/5</string>
+    <string name="prototype_system" translatable="false">System</string>
+    <string name="prototype_light" translatable="false">Light</string>
+    <string name="prototype_dark" translatable="false">Dark</string>
+    <string name="prototype_abbreviations" translatable="false">Readable abbreviations</string>
+    <string name="prototype_scrollbar" translatable="false">Stronger scrollbar</string>
+    <string name="prototype_secondary" translatable="false">Darker secondary text · light</string>
+    <string name="prototype_accent" translatable="false">Stronger blue accent · light</string>
+    <string name="prototype_borders" translatable="false">Stronger floating borders</string>
+    <string name="prototype_sample" translatable="false">Accent sample · %1$s</string>
+    <string name="prototype_drag" translatable="false">Tap to expand or collapse. Drag to move.</string>
+    <style name="PrototypeAccent">
+        <item name="android:colorPrimary">#FF3A86E0</item>
+        <item name="android:colorPrimaryDark">#FF3A86E0</item>
+        <item name="android:colorControlActivated">#FF3A86E0</item>
+    </style>
+</resources>
