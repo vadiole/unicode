@@ -22,6 +22,7 @@ class UserConfig(context: Context) {
         private const val key_tableScrollCodePoint = "tableScrollCodePoint"
         private const val key_tableScrollOffset = "tableScrollOffset"
         private const val key_dockScroll = "dockScroll"
+        private const val key_tableCharacterScale = "tableCharacterScale"
     }
 
     private val sharedPreferences = context.getSharedPreferences("unicode", Context.MODE_PRIVATE)
@@ -117,6 +118,12 @@ class UserConfig(context: Context) {
         get() = sharedPreferences.getBoolean(key_recentsEnabled, true)
         set(value) {
             editor.putBoolean(key_recentsEnabled, value).apply()
+        }
+
+    var tableCharacterScale: Float
+        get() = sharedPreferences.getFloat(key_tableCharacterScale, 1f)
+        set(value) {
+            editor.putFloat(key_tableCharacterScale, value).apply()
         }
 
     var dockEnabled: Boolean

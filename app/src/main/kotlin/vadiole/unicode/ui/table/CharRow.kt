@@ -49,8 +49,20 @@ class CharRow(
     }
     private val longClickDuration: Long = ViewConfiguration.getLongPressTimeout().toLong()
     private val ripplePaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val charSize = 144f.dp(context) / count
-    private val abbreviationSize = charSize * 0.5f
+    private val baseCharSize = 144f.dp(context) / count
+    private val charSize: Float
+        get() = baseCharSize * characterScale
+    private val abbreviationSize: Float
+        get() = charSize * 0.5f
+    var characterScale = 1f
+        set(value) {
+            if (field == value) return
+            field = value
+            charPaint.textSize = charSize
+            abbreviationPaint.textSize = abbreviationSize
+            updateBaselines(height)
+            invalidate()
+        }
     private val charRipples: BooleanArray = BooleanArray(count)
     private val charCoordsX: FloatArray = FloatArray(count)
     private var charCoordY: Float = 0f
@@ -189,10 +201,14 @@ class CharRow(
         repeat(count) { index ->
             charCoordsX[index] = singleCharWidth * index + centerOffsetX
         }
-        charCoordY = (h - charPaint.descent() - charPaint.ascent()) / 2
-        abbreviationCoordY = (h - abbreviationPaint.descent() - abbreviationPaint.ascent()) / 2
+        updateBaselines(h)
         charPivotY = h / 2f
         rippleRadius = minOf(maxRippleRadius, minOf(singleCharWidth, h) / 2f - rippleInset)
+    }
+
+    private fun updateBaselines(height: Int) {
+        charCoordY = (height - charPaint.descent() - charPaint.ascent()) / 2
+        abbreviationCoordY = (height - abbreviationPaint.descent() - abbreviationPaint.ascent()) / 2
     }
 
     override fun onMeasure(width: Int, height: Int) {

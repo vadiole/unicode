@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
@@ -66,6 +67,7 @@ class TableScreen(
     private val delegate: Delegate,
 ) : Screen(context) {
     private var spanCount = 8
+    private var characterScale = userConfig.tableCharacterScale
     private var topInset = 0
     private var navigationInset = 0
     private var imeInset = 0
@@ -104,6 +106,7 @@ class TableScreen(
             val cell = holder.itemView as CharRow
             val codePoints = tableController.getChars(position, spanCount)
             val abbreviations = tableController.abbreviations
+            cell.characterScale = characterScale
             cell.bind(codePoints, abbreviations)
         }
     }
@@ -274,7 +277,15 @@ class TableScreen(
             fastScrollView.setScrollProgress(progress)
         }
     }
-    private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate)
+    private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate).apply {
+        addOnChildAttachStateChangeListener(object : RecyclerView.OnChildAttachStateChangeListener {
+            override fun onChildViewAttachedToWindow(view: View) {
+                (view as CharRow).characterScale = characterScale
+            }
+
+            override fun onChildViewDetachedFromWindow(view: View) = Unit
+        })
+    }
     private val fastScrollDelegate = object : FastScrollView.Delegate {
         override fun onFastScrollStart() = Unit
 
@@ -683,6 +694,13 @@ class TableScreen(
         searchJob?.cancel()
         searchResultView.stopScroll()
         delegate.onSearchHidden()
+    }
+
+    fun setCharacterScale(value: Float) {
+        characterScale = value
+        for (index in 0 until tableView.childCount) {
+            (tableView.getChildAt(index) as CharRow).characterScale = value
+        }
     }
 
     fun refreshRecents() {

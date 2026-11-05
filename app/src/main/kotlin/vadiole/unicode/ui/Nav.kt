@@ -38,6 +38,10 @@ class Nav(private val container: FrameLayout) {
     private var leaving: Screen? = null
 
     private var cachedCornerRadius = -1f
+    private var revealedScreen: Screen? = null
+    private var revealedTranslationX = 0f
+    private var revealedVisibility = View.INVISIBLE
+    private var revealedAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_AUTO
 
     private val emphasized = PathInterpolator(Path().apply {
         moveTo(0f, 0f)
@@ -74,6 +78,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun push(screen: Screen) {
+        setPreviousRevealed(false)
         clearBackState()
         val exiting = leaving
         if (exiting != null) {
@@ -161,6 +166,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun pop(): Boolean {
+        setPreviousRevealed(false)
         if (stack.size <= 1) return false
         if (backProgress >= 0f) {
             commitBack()
@@ -199,6 +205,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun startBack(fromLeft: Boolean = true, touchY: Float = 0f) {
+        setPreviousRevealed(false)
         if (stack.size <= 1) return
         transition?.end()
         clearBackState()
@@ -364,6 +371,27 @@ class Nav(private val container: FrameLayout) {
             if (insets != null) cachedCornerRadius = radius
         }
         return radius
+    }
+
+    fun setPreviousRevealed(revealed: Boolean) {
+        if (!revealed) {
+            val screen = revealedScreen ?: return
+            screen.translationX = revealedTranslationX
+            screen.visibility = revealedVisibility
+            screen.importantForAccessibility = revealedAccessibility
+            revealedScreen = null
+            return
+        }
+        if (revealedScreen != null || stack.size < 2 || backProgress >= 0f) return
+        transition?.end()
+        val screen = stack[stack.lastIndex - 1]
+        revealedTranslationX = screen.translationX
+        revealedVisibility = screen.visibility
+        revealedAccessibility = screen.importantForAccessibility
+        revealedScreen = screen
+        screen.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+        screen.translationX = 0f
+        screen.visibility = View.VISIBLE
     }
 
     fun current(): Screen? = stack.lastOrNull()

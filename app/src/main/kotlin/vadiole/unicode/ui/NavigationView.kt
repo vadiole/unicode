@@ -93,6 +93,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         override fun onBack() = hideSettings()
         override fun onShowUnsupportedCharsChanged() = tableScreen.reloadChars()
         override fun onDockEnabledChanged() = applyDockEnabled()
+        override fun onCharacterScaleChanged(value: Float) = tableScreen.setCharacterScale(value)
+        override fun onTableRevealChanged(revealed: Boolean) = nav.setPreviousRevealed(revealed)
         override fun onAbout() {
             val screen = AboutScreen(context) { hideSettings() }
             nav.push(screen)
@@ -201,6 +203,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     }
 
     private fun hideSettings() {
+        (nav.current() as? SettingsScreen)?.stopTableReveal()
         isNavBackInProgress = false
         tableScreen.setSearchAtTop(userConfig.searchAtTop)
         tableScreen.refreshRecents()
@@ -351,6 +354,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     override fun onBackStarted(backEvent: BackEvent) {
         if (!isDetailsOpenOrOpening) {
             if (nav.canPop()) {
+                (nav.current() as? SettingsScreen)?.stopTableReveal()
                 isNavBackInProgress = true
                 nav.startBack(fromLeft = backEvent.swipeEdge == BackEvent.EDGE_LEFT, touchY = backEvent.touchY)
             } else if (tableScreen.isSearchVisible()) {
