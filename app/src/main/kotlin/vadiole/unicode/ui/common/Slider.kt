@@ -226,7 +226,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             focusPath.addSquircle(shapeRect, radius + focusOffset)
             shapeRect.inset(focusOffset, focusOffset)
         }
-        ringPath.rewind()
+        ringPath.reset()
         ringPath.addSquircle(shapeRect, radius)
         holePath.rewind()
         drawHole = border < radius
@@ -238,7 +238,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
 
         val lineW = lineWidth * (1f - p)
         linePaint.strokeWidth = lineW
-        linePaint.color = ColorUtils.setAlphaComponent(ColorUtils.blendARGB(lineColor, activeColor, p), ((1f - p) * 255).toInt())
+        linePaint.color = ColorUtils.setAlphaComponent(lineColor, ((1f - p) * 255).toInt())
         drawLine = lineW > MIN_LINE_WIDTH && linePaint.alpha > 0
         lineX = cx
         lineHalf = max(0f, (lineHeight + (h - lineHeight) * p - lineW) / 2f)
