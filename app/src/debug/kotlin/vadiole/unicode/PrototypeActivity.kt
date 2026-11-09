@@ -142,17 +142,22 @@ class PrototypeActivity : Activity() {
         ),
         "Hum" to listOf(
             toggle("Hum", slider::hum),
+            toggle("Per % step (off: movement)", slider::humPerStep),
+            choice("Step size", listOf(1, 2, 5), { "$it%" }, slider::humStepPercent),
+            param("Quiet after click, ms", 0f, 300f, 10f, { slider.humQuietAfterClickMs.toFloat() }, { slider.humQuietAfterClickMs = it.toLong() }),
             param("Min interval, ms", 0f, 150f, 5f, { slider.humIntervalMs.toFloat() }, { slider.humIntervalMs = it.toLong() }),
             number("Min amplitude", slider::humMinAmplitude, 0f, 1f, 0.01f),
             number("Max amplitude", slider::humMaxAmplitude, 0f, 1f, 0.01f),
             param("Full speed, dp/s", 100f, 5000f, 100f, { slider.humFullSpeed / density }, { slider.humFullSpeed = it * density }),
             number("Speed curve", slider::humSpeedCurve, 0.2f, 4f, 0.1f),
-            param("Min step, % of range", 0f, 5f, 0.1f, { slider.humStep * 100f }, { slider.humStep = it / 100f }),
+            param("Movement step, % of range", 0f, 5f, 0.1f, { slider.humStep * 100f }, { slider.humStep = it / 100f }),
             toggle("Force fallback", slider::humForceFallback),
         ),
         "Clicks" to listOf(
             toggle("End clicks", slider::endClicks),
             toggle("Detent click", slider::detentClick),
+            choice("Effect", listOf(Slider.CLICK, Slider.LOW_TICK, Slider.THRESHOLD, Slider.TICK), { clickEffects[it] }, slider::clickEffect),
+            number("Strength", slider::clickStrength, 0f, 1f, 0.05f),
             param("Detent band, % of range", 0f, 20f, 0.5f, { slider.detentBand * 100f }, { slider.detentBand = it / 100f }),
         ),
         "Touch" to listOf(
@@ -163,6 +168,26 @@ class PrototypeActivity : Activity() {
     )
 
     private val density get() = resources.displayMetrics.density
+    private val clickEffects = listOf("click", "low tick", "threshold", "tick")
+
+    private fun choice(label: String, options: List<Int>, name: (Int) -> String, property: KMutableProperty0<Int>): View {
+        val value = text(name(property.get()), TEXT_BODY, R.color.windowTextSecondary)
+        val seekBar = SeekBar(this).apply {
+            max = options.lastIndex
+            progress = options.indexOf(property.get()).coerceAtLeast(0)
+            setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                    if (!fromUser) return
+                    property.set(options[progress])
+                    value.text = name(options[progress])
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar) = Unit
+                override fun onStopTrackingTouch(seekBar: SeekBar) = Unit
+            })
+        }
+        return row(label, value, seekBar)
+    }
 
     private fun dp(label: String, property: KMutableProperty0<Float>, min: Float, max: Float, step: Float) =
         param(label, min, max, step, { property.get() / density }, { property.set(it * density) })
@@ -193,6 +218,10 @@ class PrototypeActivity : Activity() {
                 override fun onStopTrackingTouch(seekBar: SeekBar) = Unit
             })
         }
+        return row(label, value, seekBar)
+    }
+
+    private fun row(label: String, value: TextView, seekBar: SeekBar): View {
         return LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(0, 12.dp(context), 0, 4.dp(context))
