@@ -132,16 +132,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     var detentBand = 0.03f
     var endClicks = true
     var detentClick = true
-    var clickEffect = CLICK
-        set(value) {
-            field = value
-            clickHaptic = null
-        }
-    var clickStrength = 0.7f
-        set(value) {
-            field = value
-            clickHaptic = null
-        }
     var hum = true
     var humPerStep = true
     var humStepPercent = 1
@@ -196,12 +186,12 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private var speed = 0f
     private var interacting = false
 
+    private val click = TickHaptic(this, 0.8f)
     private val clickIntervalMs = if (Build.VERSION.SDK_INT >= 34) 17L else 30L
     private var lastClickTime = 0L
     private var lastHumTime = 0L
     private var lastHumValue = 0f
     private var lastHumStep = 0
-    private var clickHaptic: Any? = null
     private val vibrator: Vibrator? by lazy {
         if (Build.VERSION.SDK_INT >= 33) context.getSystemService(VibratorManager::class.java)?.defaultVibrator else null
     }
@@ -483,7 +473,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         if (enteredEnd || enteredDetent) {
             if (now - lastClickTime >= clickIntervalMs) {
                 lastClickTime = now
-                performClickHaptic()
+                click.perform()
             }
             lastHumValue = new
             lastHumStep = humStepOf(new)
@@ -493,27 +483,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     }
 
     private fun humStepOf(value: Float) = Math.floorDiv((value * 100).roundToInt(), humStepPercent.coerceAtLeast(1))
-
-    private fun performClickHaptic() {
-        val vibrator = vibrator
-        val attributes = touchAttributes
-        if (Build.VERSION.SDK_INT >= 33 && clickEffect != THRESHOLD && vibrator != null && attributes != null) {
-            val primitive = when (clickEffect) {
-                LOW_TICK -> VibrationEffect.Composition.PRIMITIVE_LOW_TICK
-                TICK -> VibrationEffect.Composition.PRIMITIVE_TICK
-                else -> VibrationEffect.Composition.PRIMITIVE_CLICK
-            }
-            if (vibrator.areAllPrimitivesSupported(primitive)) {
-                val effect = clickHaptic as? VibrationEffect ?: VibrationEffect.startComposition()
-                    .addPrimitive(primitive, clickStrength.coerceIn(0f, 1f))
-                    .compose()
-                    .also { clickHaptic = it }
-                vibrator.vibrate(effect, attributes)
-                return
-            }
-        }
-        if (Build.VERSION.SDK_INT >= 34) performHapticFeedback(HapticFeedbackConstants.GESTURE_THRESHOLD_ACTIVATE)
-    }
 
     private fun humTick(new: Float, now: Long) {
         val vibrator = vibrator
@@ -617,15 +586,11 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         shapesDirty = true
     }
 
-    companion object {
-        private const val IDLE = 0
-        private const val PENDING = 1
-        private const val DRAGGING = 2
-        private const val STEP = 0.05f
-        private const val HUM_BUCKETS = 8
-        const val CLICK = 0
-        const val LOW_TICK = 1
-        const val THRESHOLD = 2
-        const val TICK = 3
+    private companion object {
+        const val IDLE = 0
+        const val PENDING = 1
+        const val DRAGGING = 2
+        const val STEP = 0.05f
+        const val HUM_BUCKETS = 8
     }
 }

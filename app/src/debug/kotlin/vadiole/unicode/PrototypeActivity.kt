@@ -156,8 +156,6 @@ class PrototypeActivity : Activity() {
         "Clicks" to listOf(
             toggle("End clicks", slider::endClicks),
             toggle("Detent click", slider::detentClick),
-            choice("Effect", listOf(Slider.CLICK, Slider.LOW_TICK, Slider.THRESHOLD, Slider.TICK), { clickEffects[it] }, slider::clickEffect),
-            number("Strength", slider::clickStrength, 0f, 1f, 0.05f),
             param("Detent band, % of range", 0f, 20f, 0.5f, { slider.detentBand * 100f }, { slider.detentBand = it / 100f }),
         ),
         "Touch" to listOf(
@@ -168,7 +166,6 @@ class PrototypeActivity : Activity() {
     )
 
     private val density get() = resources.displayMetrics.density
-    private val clickEffects = listOf("click", "low tick", "threshold", "tick")
 
     private fun choice(label: String, options: List<Int>, name: (Int) -> String, property: KMutableProperty0<Int>): View {
         val value = text(name(property.get()), TEXT_BODY, R.color.windowTextSecondary)
