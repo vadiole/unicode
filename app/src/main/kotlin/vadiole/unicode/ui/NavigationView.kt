@@ -135,10 +135,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
                 addView(dimView)
                 addView(detailsSheet)
                 detailsSheet.setDockEnabled(userConfig.dockEnabled)
-                if (!pendingCharSkipAnimation) {
-                    detailsSheet.doOnLayout {
-                        it.translationY = it.measuredHeight.toFloat()
-                    }
+                detailsSheet.doOnLayout {
+                    if (!isDetailsOpenOrOpening) it.translationY = it.measuredHeight.toFloat()
                 }
             }
             requestApplyInsets()
