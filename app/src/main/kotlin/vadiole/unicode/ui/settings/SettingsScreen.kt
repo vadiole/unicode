@@ -14,6 +14,7 @@ import vadiole.unicode.ui.common.ActionCell
 import vadiole.unicode.ui.common.PathRevealLayout
 import vadiole.unicode.ui.common.SliderCell
 import vadiole.unicode.ui.common.SquircleDrawable
+import vadiole.unicode.ui.common.addSquircle
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.HoldActionCell
@@ -52,6 +53,7 @@ class SettingsScreen(
         0.75f..2f,
         userConfig.tableCharacterScale,
     ).apply {
+        slider.detent = 1f
         slider.onValueChanged = { value ->
             setValue(value)
             delegate.onCharacterScaleChanged(value)
@@ -140,7 +142,7 @@ class SettingsScreen(
             revealLayout.offsetDescendantRectToMyCoords(appearanceGroup, bounds)
             val radius = 13f.dp(context)
             val path = Path().apply {
-                addRoundRect(RectF(bounds), radius, radius, Path.Direction.CW)
+                addSquircle(RectF(bounds), radius)
             }
             revealLayout.reveal(path)
         } else {
