@@ -9,12 +9,14 @@ class CollectionItemDecoration(private val leftPadding: Float = 0f) : RecyclerVi
     private val bounds = Rect()
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         val dividerPaint = parent.getDividerPaint()
-        val right = parent.width.toFloat()
+        val isRtl = parent.layoutDirection == RecyclerView.LAYOUT_DIRECTION_RTL
+        val left = if (isRtl) 0f else leftPadding
+        val right = if (isRtl) parent.width - leftPadding else parent.width.toFloat()
         for (i in 0 until parent.childCount) {
             val child = parent.getChildAt(i)
             parent.getDecoratedBoundsWithMargins(child, bounds)
             val yCoord: Float = bounds.bottom + child.translationY
-            c.drawLine(leftPadding, yCoord, right, yCoord, dividerPaint)
+            c.drawLine(left, yCoord, right, yCoord, dividerPaint)
         }
     }
 }

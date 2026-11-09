@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase.OPEN_READONLY
 import android.database.sqlite.SQLiteDatabase.OPEN_READWRITE
 import android.database.sqlite.SQLiteDatabase.openDatabase
 import android.util.Log
+import android.util.SparseArray
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.File
@@ -22,6 +23,7 @@ import vadiole.unicode.BuildConfig
 class UnicodeStorage(private val context: Context) {
     private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
     private var database: SQLiteDatabase? = null
+    private var blockIcons: SparseArray<IntArray>? = null
 
     private suspend fun openDatabase(): SQLiteDatabase = withContext(dispatcher) {
         var currentDatabase = database
@@ -176,6 +178,27 @@ class UnicodeStorage(private val context: Context) {
                 )
             }
         }
+        return@withContext result
+    }
+
+    suspend fun getBlockIcons(): SparseArray<IntArray> = withContext(dispatcher) {
+        blockIcons?.let { return@withContext it }
+        val result = SparseArray<IntArray>(400)
+        context.assets.open(blockIconsName).bufferedReader().useLines { lines ->
+            lines.forEach { line ->
+                val tokens = line.trim().split(whitespace)
+                val start = tokens[0].toIntOrNull(16) ?: return@forEach
+                val icons = IntArray(tokens.size - 1)
+                var size = 0
+                for (index in 1 until tokens.size) {
+                    val token = tokens[index]
+                    val codePoint = token.codePointAt(0)
+                    if (token.length == Character.charCount(codePoint)) icons[size++] = codePoint
+                }
+                if (size > 0) result.append(start, icons.copyOf(size))
+            }
+        }
+        blockIcons = result
         return@withContext result
     }
 
@@ -351,6 +374,8 @@ class UnicodeStorage(private val context: Context) {
         private const val databaseName = BuildConfig.DATABASE_NAME
         private const val databaseDir = "sql"
         private const val cacheDir = "cache"
+        private const val blockIconsName = "block_icons.txt"
+        private val whitespace = Regex("\\s+")
         private const val VS_BMP_FIRST = 0xFE00
         private const val VS_BMP_LAST = 0xFE0F
         private const val VS_SUPP_FIRST = 0xE0100

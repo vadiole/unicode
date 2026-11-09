@@ -10,19 +10,22 @@ import android.view.animation.PathInterpolator
 import android.view.animation.ScaleAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import vadiole.unicode.data.Block
+import vadiole.unicode.data.BlockList
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.dp
 
 class BlockSelectorView(
     context: Context,
-    private val blocks: Array<Block>,
+    blockList: BlockList,
     private val delegate: Delegate,
 ) : CollectionView(context) {
     interface Delegate {
         fun onBlockSelected(block: Block)
     }
 
+    private val blocks = blockList.blocks
+    private val icons = blockList.icons
     private val floatingInset = BlockSelectorGeometry.FLOATING_INSET_DP.dp(context)
     private val topMargin = (
         BlockSelectorGeometry.ARROW_HEIGHT_DP.dp(context) -
@@ -40,7 +43,7 @@ class BlockSelectorView(
         override fun onBindViewHolder(holder: Cell, position: Int) {
             val block = blocks[position]
             val cell = holder.itemView as BlockSelectorCell
-            cell.text = block.name
+            cell.bind(block.name, icons, position * BlockList.ICON_SIZE)
             cell.setOnClickListener {
                 delegate.onBlockSelected(block)
             }
@@ -52,7 +55,7 @@ class BlockSelectorView(
     }
 
     var onScrollProgressChanged: ((Float, Boolean) -> Unit)? = null
-    private val divider = CollectionItemDecoration(leftPadding = 14f.dp(context))
+    private val divider = CollectionItemDecoration(leftPadding = floatingInset + BlockSelectorCell.textStart(context))
     private val measuringCell = BlockSelectorCell(context)
     private val rowHeights = IntArray(blocks.size)
     private var rowWidth = 0
