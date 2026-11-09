@@ -111,7 +111,8 @@ class PrototypeActivity : Activity() {
             dp("Height", slider::trackHeight, 2f, 24f, 0.5f),
             dp("Inner radius", slider::trackInnerRadius, 0f, 8f, 0.5f),
             dp("Gap", slider::gap, 0f, 8f, 0.5f),
-            dp("Pressed cutout", slider::pressedCutout, 0f, 8f, 0.5f),
+            dp("Pressed cutout outside", slider::pressedCutoutOutside, 0f, 8f, 0.5f),
+            dp("Pressed cutout inside", slider::pressedCutoutInside, 0f, 8f, 0.5f),
             dp("End gap", slider::endGap, 0f, 8f, 0.5f),
             toggle("Sliding track edges", slider::slidingEdges),
             toggle("Inside capsule: one color", slider::insideOneColor),
@@ -131,6 +132,7 @@ class PrototypeActivity : Activity() {
         ),
         "Line" to listOf(
             toggle("Show line", slider::showLine),
+            toggle("Line when pressed", slider::lineWhenPressed),
             dp("Width", slider::lineWidth, 0f, 6f, 0.25f),
             dp("Width pressed", slider::lineWidthPressed, 0f, 6f, 0.25f),
             dp("Height", slider::lineHeight, 0f, 30f, 1f),

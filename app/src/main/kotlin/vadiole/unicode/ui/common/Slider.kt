@@ -74,7 +74,12 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             field = value
             invalidateShapes()
         }
-    var pressedCutout = 0f
+    var pressedCutoutOutside = 0f
+        set(value) {
+            field = value
+            invalidateShapes()
+        }
+    var pressedCutoutInside = 0f
         set(value) {
             field = value
             invalidateShapes()
@@ -138,6 +143,11 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         set(value) {
             field = value
             lineFade.animateTo(value)
+        }
+    var lineWhenPressed = false
+        set(value) {
+            field = value
+            linePressedFade.animateTo(value)
         }
     var lineWidth = 2f.dp(context)
         set(value) {
@@ -227,6 +237,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val insideFade = Fade(insideOneColor)
     private val insideColorFade = Fade(insideActiveColor)
     private val lineFade = Fade(showLine)
+    private val linePressedFade = Fade(lineWhenPressed)
     private val lineColorFade = Fade(lineColorChange)
 
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -339,14 +350,14 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         val radius = minOf(w, h) / 2f
         val border = (borderWidth + (borderWidthPressed - borderWidth) * p).coerceIn(0f, radius)
 
-        val cut = gap + (pressedCutout - gap) * p
+        val cut = gap + (pressedCutoutOutside - gap) * p
         val stub = max(0f, endGap - cut)
         val stubStart = stub * nearStart
         val stubEnd = stub * nearEnd
-        val inset = (half + (border + pressedCutout - half) * p).coerceIn(0f, half)
+        val inset = (half + (border + pressedCutoutInside - half) * p).coerceIn(0f, half)
         val sliding = slidingFade.value
-        val slideStart = half + gap + stubStart + (pressedCutout - half - gap - stubStart) * p
-        val slideEnd = half + gap + stubEnd + (pressedCutout - half - gap - stubEnd) * p
+        val slideStart = half + gap + stubStart + (pressedCutoutOutside - half - gap - stubStart) * p
+        val slideEnd = half + gap + stubEnd + (pressedCutoutOutside - half - gap - stubEnd) * p
         val maskStart = lerp(cx - half - cut - stubStart, cx - slideStart, sliding)
         val maskEnd = lerp(cx + half + cut + stubEnd, cx + slideEnd, sliding)
         val revealStart = lerp(cx - half + inset, cx, sliding)
@@ -384,8 +395,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         val lineH = lineHeight + (h - 2f * linePressedInset - lineHeight) * p
         val lineColor = ColorUtils.blendARGB(lineIdleColor, displayedActiveColor, p * lineColorFade.value)
         linePaint.strokeWidth = lineW
-        linePaint.color = withAlpha(lineColor, lineFade.value)
-        drawLine = lineW > 0f && linePaint.alpha > 0
+        linePaint.color = withAlpha(lineColor, lineFade.value * lerp(1f, linePressedFade.value, p))
+        drawLine = lineW > MIN_LINE_WIDTH && linePaint.alpha > 0
         lineX = cx
         lineHalf = max(0f, (lineH - lineW) / 2f)
     }
@@ -743,5 +754,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         const val STEP = 0.05f
         const val HUM_BUCKETS = 8
         const val FADE_STIFFNESS = 500f
+        const val MIN_LINE_WIDTH = 0.01f
     }
 }
