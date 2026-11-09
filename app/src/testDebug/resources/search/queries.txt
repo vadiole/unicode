@@ -1,0 +1,1360 @@
+# <category>[+improve] <query>
+# +improve: the current result is a known weakness, a different result is reported but does not fail
+# escapes: \\ backslash, \s space at an edge or after a space, \x{HEX} any other code point
+
+# every keystroke prefix of realistic searches
+prefix a
+prefix ar
+prefix arr
+prefix+improve arro
+prefix+improve arrow
+prefix h
+prefix he
+prefix hea
+prefix hear
+prefix+improve heart
+prefix s
+prefix sm
+prefix smi
+prefix smil
+prefix+improve smile
+prefix l
+prefix la
+prefix lat
+prefix lati
+prefix latin
+prefix latin\s
+prefix latin s
+prefix latin sm
+prefix latin sma
+prefix latin smal
+prefix latin small
+prefix latin small\s
+prefix latin small l
+prefix latin small le
+prefix latin small let
+prefix latin small lett
+prefix latin small lette
+prefix latin small letter
+prefix latin small letter\s
+prefix latin small letter a
+prefix g
+prefix gr
+prefix gre
+prefix gree
+prefix greek
+prefix c
+prefix ch
+prefix che
+prefix chec
+prefix check
+prefix check\s
+prefix check m
+prefix check ma
+prefix check mar
+prefix+improve check mark
+prefix co
+prefix cop
+prefix copy
+prefix copyr
+prefix copyri
+prefix copyrig
+prefix copyrigh
+prefix+improve copyright
+prefix e
+prefix eu
+prefix eur
+prefix euro
+prefix d
+prefix de
+prefix deg
+prefix degr
+prefix degre
+prefix degree
+prefix b
+prefix bu
+prefix bul
+prefix bull
+prefix bulle
+prefix bullet
+prefix em
+prefix em\s
+prefix em d
+prefix em da
+prefix em das
+prefix em dash
+prefix n
+prefix no
+prefix non
+prefix non-
+prefix non-b
+prefix non-br
+prefix non-bre
+prefix non-brea
+prefix non-break
+prefix non-breaki
+prefix non-breakin
+prefix non-breaking
+prefix non-breaking\s
+prefix non-breaking s
+prefix non-breaking sp
+prefix non-breaking spa
+prefix non-breaking spac
+prefix non-breaking space
+prefix z
+prefix ze
+prefix zer
+prefix zero
+prefix zero\s
+prefix zero w
+prefix zero wi
+prefix zero wid
+prefix zero widt
+prefix zero width
+prefix zero width\s
+prefix zero width j
+prefix zero width jo
+prefix zero width joi
+prefix zero width join
+prefix zero width joine
+prefix zero width joiner
+prefix i
+prefix in
+prefix inf
+prefix infi
+prefix infin
+prefix infini
+prefix infinit
+prefix infinity
+prefix st
+prefix sta
+prefix+improve star
+prefix m
+prefix mu
+prefix mus
+prefix musi
+prefix music
+prefix ches
+prefix chess
+prefix bo
+prefix box
+prefix box\s
+prefix box d
+prefix box dr
+prefix box dra
+prefix box draw
+prefix box drawi
+prefix box drawin
+prefix box drawing
+prefix su
+prefix sup
+prefix supe
+prefix super
+prefix supers
+prefix supersc
+prefix superscr
+prefix superscri
+prefix superscrip
+prefix superscript
+prefix superscript\s
+prefix superscript t
+prefix superscript tw
+prefix superscript two
+prefix do
+prefix dol
+prefix doll
+prefix dolla
+prefix dollar
+prefix gri
+prefix grin
+prefix grinn
+prefix grinni
+prefix grinnin
+prefix grinning
+prefix grinning\s
+prefix grinning f
+prefix grinning fa
+prefix grinning fac
+prefix grinning face
+prefix r
+prefix ri
+prefix rig
+prefix righ
+prefix right
+prefix right\s
+prefix right a
+prefix right ar
+prefix right arr
+prefix right arro
+prefix+improve right arrow
+prefix rightw
+prefix rightwa
+prefix rightwar
+prefix rightward
+prefix rightwards
+prefix rightwards\s
+prefix rightwards a
+prefix rightwards ar
+prefix rightwards arr
+prefix rightwards arro
+prefix rightwards arrow
+prefix q
+prefix qu
+prefix que
+prefix ques
+prefix quest
+prefix questi
+prefix questio
+prefix+improve question
+prefix question\s
+prefix question m
+prefix question ma
+prefix question mar
+prefix question mark
+prefix t
+prefix tr
+prefix tra
+prefix trad
+prefix trade
+prefix trade\s
+prefix trade m
+prefix trade ma
+prefix trade mar
+prefix trade mark
+prefix cy
+prefix cyr
+prefix cyri
+prefix cyril
+prefix cyrill
+prefix cyrilli
+prefix cyrillic
+prefix heb
+prefix hebr
+prefix hebre
+prefix hebrew
+prefix hebrew\s
+prefix hebrew a
+prefix hebrew al
+prefix hebrew ale
+prefix hebrew alef
+prefix bl
+prefix bla
+prefix blac
+prefix black
+prefix black\s
+prefix black s
+prefix black sq
+prefix black squ
+prefix black squa
+prefix black squar
+prefix black square
+prefix dou
+prefix doub
+prefix doubl
+prefix double
+prefix double\s
+prefix double q
+prefix double qu
+prefix double quo
+prefix double quot
+prefix double quote
+prefix th
+prefix thu
+prefix thum
+prefix thumb
+prefix thumbs
+prefix thumbs\s
+prefix thumbs u
+prefix thumbs up
+prefix mul
+prefix mult
+prefix multi
+prefix multip
+prefix multipl
+prefix multipli
+prefix multiplic
+prefix multiplica
+prefix multiplicat
+prefix multiplicati
+prefix multiplicatio
+prefix multiplication
+prefix not
+prefix not\s
+prefix not e
+prefix not eq
+prefix not equ
+prefix not equa
+prefix not equal
+prefix not equal\s
+prefix not equal t
+prefix not equal to
+prefix p
+prefix pi
+prefix pil
+prefix pilc
+prefix pilcr
+prefix pilcro
+prefix pilcrow
+prefix hi
+prefix hir
+prefix hira
+prefix hirag
+prefix hiraga
+prefix hiragan
+prefix hiragana
+prefix sn
+prefix sno
+prefix snow
+prefix snowm
+prefix snowma
+prefix snowman
+prefix br
+prefix bra
+prefix brai
+prefix brail
+prefix braill
+prefix braille
+prefix f
+prefix fr
+prefix fra
+prefix frac
+prefix fract
+prefix fracti
+prefix fractio
+prefix fraction
+prefix fraction\s
+prefix fraction o
+prefix fraction on
+prefix fraction one
+prefix fraction one\s
+prefix fraction one h
+prefix fraction one ha
+prefix fraction one hal
+prefix fraction one half
+prefix com
+prefix comb
+prefix combi
+prefix combin
+prefix combini
+prefix combinin
+prefix combining
+prefix combining\s
+prefix combining a
+prefix combining ac
+prefix combining acu
+prefix combining acut
+prefix combining acute
+prefix le
+prefix les
+prefix less
+prefix less-
+prefix less-t
+prefix less-th
+prefix less-tha
+prefix+improve less-than
+prefix so
+prefix sof
+prefix soft
+prefix soft\s
+prefix soft h
+prefix soft hy
+prefix soft hyp
+prefix soft hyph
+prefix soft hyphe
+prefix soft hyphen
+prefix u
+prefix u+
+prefix u+2
+prefix u+21
+prefix u+219
+prefix u+2192
+prefix 0
+prefix 0x
+prefix 0x1
+prefix 0x1f
+prefix 0x1f6
+prefix 0x1f60
+prefix 0x1f600
+prefix \\
+prefix \\u
+prefix \\u0
+prefix \\u00
+prefix \\u00e
+prefix \\u00e9
+prefix 2
+prefix 21
+prefix 219
+prefix 2192
+prefix 1
+prefix 1f
+prefix 1f6
+prefix 1f60
+
+# single letters and digits
+letter j
+letter k
+letter o
+letter v
+letter w
+letter x
+letter y
+letter A
+letter Z
+letter Q
+digit 3
+digit 4
+digit 5
+digit 6
+digit 7
+digit 8
+digit 9
+
+# two-letter queries
+two an
+two as
+two at
+two be
+two en
+two is
+two it
+two of
+two ok
+two on
+two or
+two to
+two+improve tm
+two+improve up
+two zz
+two qq
+two xx
+two AB
+two Pi
+
+# in-word substrings
+substring ightwards
+substring ollar
+substring rrow
+substring eart
+substring mil
+substring etter
+substring tion
+substring ing
+substring ward
+substring -pointing
+substring -break
+substring wards arrow
+substring mall lett
+substring width jo
+
+# common single words
+word+improve zwj
+word+improve nbsp
+word+improve checkmark
+word+improve umlaut
+word+improve eszett
+word+improve poop
+word rtl
+word+improve bom
+word shy
+word lrm
+word zwnj
+word zwsp
+word emoji
+word trademark
+word hashtag
+word+improve tab
+word cat
+word cry
+word sun
+word ipa
+word+improve sum
+word dice
+word card
+word+improve dot
+word+improve lambda
+word underscore
+word period
+word+improve newline
+word enter
+word laugh
+word+improve hash
+word cent
+word+improve tick
+word cross
+word fire
+word face
+word+improve rightarrow
+word+improve thumbsup
+word smiley
+word+improve backslash
+word+improve slash
+word space
+word down
+word left
+word omega
+word alpha
+word half
+word diaeresis
+word warning
+word return
+word escape
+word delete
+word null
+word bell
+word ellipsis
+word quotation
+word apostrophe
+word hyphen
+word dash
+word digit
+word letter
+word sign
+word symbol
+word mark
+word with
+word and
+word for
+word the
+word arabic
+word thai
+word cjk
+word hangul
+word katakana
+word smiling
+word key
+word diamond
+word sharp
+word integral
+word ohm
+word celsius
+word micro
+word per mille
+word permille
+word registered
+word care of
+word rupee
+word bitcoin
+word xor
+word wj
+word vs16
+word variation selector
+word fitzpatrick
+word keycap
+word replacement
+word ligature
+word fi
+word long s
+word hacek
+word ring above
+word circumflex
+word grave
+word acute
+word double acute
+word guillemet
+word pipe
+word centigrade
+word non-spacing
+word overscore
+word byte
+word hamzah
+word transfinite
+word eulers
+word mho
+word center
+word centered
+word knotted
+
+# multi-word queries in natural order
+multi black heart
+multi heart suit
+multi smiling face
+multi face with tears
+multi latin capital letter a
+multi latin small letter e with acute
+multi e acute
+multi a with grave
+multi greek small letter alpha
+multi no-break space
+multi zero width space
+multi byte order mark
+multi right-to-left mark
+multi less-than or equal
+multi square root
+multi vulgar fraction
+multi one half
+multi superscript one
+multi degree celsius
+multi dollar sign
+multi euro sign
+multi at sign
+multi trade mark sign
+multi quotation mark
+multi full stop
+multi low line
+multi reverse solidus
+multi black star
+multi box drawings light horizontal
+multi white chess king
+multi musical symbol g clef
+multi music note
+multi die face
+multi playing card ace of spades
+multi thumbs up sign
+multi pile of poo
+multi face with tears of joy
+multi regional indicator symbol letter a
+multi combining acute accent
+multi variation selector-16
+multi tag latin small letter a
+multi hiragana letter a
+multi hangul syllable
+multi cjk ideograph
+multi hebrew letter alef
+multi roman numeral one
+multi fullwidth latin capital letter a
+multi mathematical bold capital a
+multi small letter a
+multi letter a
+multi a b
+multi a b c
+multi arrow up
+multi arrow right
+multi arrow left right
+multi upwards arrow
+multi rightwards double arrow
+multi sun with face
+multi skull and crossbones
+multi peace symbol
+multi yin yang
+multi warning sign
+multi micro sign
+multi horizontal ellipsis
+multi middle dot
+multi character tabulation
+multi line feed
+multi carriage return
+multi line feed (lf)
+multi (lf)
+multi start of heading
+multi new line
+multi non-breaking hyphen
+multi non-spacing acute
+multi greek small letter pi
+multi n-ary summation
+multi word joiner
+multi object replacement character
+multi replacement character
+multi shrug
+multi lat sm
+multi lat cap a
+multi gr alpha
+multi arr right
+multi box light
+multi small a
+multi capital a
+multi sm let a gra
+
+# multi-word queries in reversed order
+reversed arrow rightwards
+reversed a letter small latin
+reversed mark check
+reversed dash em
+reversed space no-break
+reversed joiner width zero
+reversed two superscript
+reversed suit heart
+reversed face smiling
+reversed sign dollar
+reversed sign copyright
+reversed alpha letter small greek
+reversed king chess white
+reversed horizontal light drawings box
+reversed half one fraction vulgar
+reversed accent acute combining
+reversed to equal not
+reversed mark question
+reversed sign trade mark
+reversed up thumbs
+
+# queries with repeated words
+repeat arrow arrow
+repeat a a
+repeat a a a
+repeat heart heart
+repeat latin latin small
+repeat sign sign
+repeat left left arrow
+repeat e e
+repeat right arrow right
+repeat zero zero
+repeat mark mark mark
+repeat to to
+
+# leading, trailing and extra whitespace
+space
+space \s
+space \s\s
+space \s\s\s
+space+improve \sa
+space a\s
+space \sa\s
+space \s\sarrow
+space arrow \s
+space \sarrow\s
+space right \sarrow
+space right \s\sarrow
+space \sright arrow\s
+space right\x{0009}arrow
+space \x{0009}arrow
+space arrow\x{0009}
+space right\x{00A0}arrow
+space right\x{3000}arrow
+space arrow\x{000A}
+space \s\x{00E9}
+space \s41
+space 41\s
+space 41 42
+space \su+41
+space u+41\s
+space u+ 41
+space u +41
+space 0x 41
+space e9\s
+space \s\x{2192}
+space+improve \x{2192}\s
+space a\x{200B}b
+space em \sdash\s
+space latin \ssmall \sletter \sa
+
+# mixed case
+case ARROW
+case Arrow
+case aRrOw
+case Latin Small Letter A
+case LATIN SMALL LETTER A
+case HEART
+case Heart
+case Greek
+case GREEK
+case Em Dash
+case COPYRIGHT sign
+case Zero Width Joiner
+case NO-BREAK SPACE
+case No-Break Space
+case Dollar
+case SMILE
+case Smile
+case Ightwards
+case U+2192
+case U+1F600
+case u+1f600
+case U+1f600
+case 0X41
+case 0x41
+case \\U0041
+case \\u0041
+case 1F600
+case 1f600
+case 00E9
+case 00e9
+case FACE
+case Face
+case \x{00DF}
+case \x{0131}
+case \x{0130}
+case stra\x{00DF}e
+case \x{00C9}
+
+# queries that only match the Unicode 1.0 name
+name2 centerline
+name2 apostrophe-quote
+name2 plus-or-minus
+name2 spacing
+name2 non-spacing grave
+name2 latin small letter a grave
+name2 latin capital letter a acute
+name2 latin small letter e hacek
+name2 greek small letter alpha tonos
+name2 opening parenthesis
+name2 closing parenthesis
+name2 opening square bracket
+name2 closing curly bracket
+name2 vertical bar
+name2 spacing underscore
+name2 spacing grave
+name2 spacing diaeresis
+name2 left pointing guillemet
+name2 registered trade mark sign
+name2 paragraph sign
+name2 period centered
+name2 small letter y diaeresis
+name2 minus sign
+name2 double comma quotation mark
+name2 single comma quotation mark
+name2 black up pointing triangle
+name2 forms light horizontal
+name2 hiragana letter small a
+name2 ideographic period
+name2 cjk ideographs
+name2 hangul choseong giyeog
+name2 degrees centigrade
+name2 degrees fahrenheit
+name2 angstrom unit
+name2 glottal stop
+name2 barred o
+name2 yogh
+name2 lambda bar
+name2 script f
+name2 d retroflex hook
+name2 upper case
+name2 lower case
+name2 graphic for null
+name2 zero-width
+name2 cyrillic capital letter ie
+name2 cyrillic small letter ghe with upturn
+name2 hebrew point
+name2 arabic taa marbutah
+name2 tibetan tseg
+
+# explicit code point forms
+code U+41
+code U+0041
+code U+00000041
+code U+000000041
+code U+0
+code U+00
+code U+0000
+code U+1
+code U+2
+code U+20
+code U+21
+code U+219
+code U+2190
+code U+E9
+code U+00E9
+code U+1F6
+code U+1F60
+code U+01F600
+code U+001F600
+code U+10FFFF
+code U+110000
+code U+FFFF
+code U+FFFE
+code U+FFFD
+code U+FEFF
+code U+D800
+code U+DFFF
+code U+D8
+code U+E000
+code U+E0
+code U+F8FF
+code U+F0000
+code U+100000
+code U+10FFFD
+code+improve U+4E2D
+code U+4E00
+code U+4E
+code U+9FFF
+code U+AC00
+code U+0378
+code U+2FE0
+code U+E0001
+code U+E01EF
+code U+200D
+code U+200
+code U+A
+code U+F
+code U+FF
+code U+
+code U+G
+code U+21 92
+code U+2192 arrow
+code U+-1
+code U++41
+code U+ZZ
+code U+face
+code U+bad
+code U+cafe
+code U+dead
+code U+beef
+code U+add
+code U
+code 0X
+code 0x0041
+code 0xE9
+code 0xface
+code 0x2192
+code 0x10ffff
+code 0x110000
+code 0xg
+code 0x41h
+code \\u2192
+code \\U0001F600
+code \\uD83D\\uDE00
+code \\u{1F600}
+code \\x41
+code \\\\
+code \\n
+code &#x2192;
+code &#8594;
+code &rarr;
+code %E2%86%92
+code u2192
+code u1f600
+code u41
+code u0041
+code ue9
+code uface
+code ubad
+code u+u
+code uu
+code U2192
+code u 2192
+code u-2192
+code u+2192;
+code <U+2192>
+code U+2192,
+code U+2192-U+2193
+code 2192h
+code \x{23}2192
+code x41
+code h41
+code 16#41
+code 41h
+code $41
+
+# bare hex of every length
+hex 41
+hex e9
+hex E9
+hex a9
+hex 20
+hex 00
+hex 2a
+hex 7f
+hex 80
+hex a0
+hex ff
+hex b0
+hex d8
+hex 10
+hex 21a
+hex 00a
+hex 0e9
+hex 0a9
+hex e00
+hex d80
+hex fff
+hex 100
+hex 263
+hex 0041
+hex 263a
+hex 2764
+hex fffd
+hex feff
+hex d800
+hex dfff
+hex e000
+hex f8ff
+hex ffff
+hex fffe
+hex 0378
+hex 4e2d
+hex 4e00
+hex ac00
+hex 200d
+hex 00a0
+hex 0000
+hex 0001
+hex 1f4a9
+hex 1f937
+hex 10fff
+hex e0001
+hex f0000
+hex e0100
+hex 2f800
+hex 1f6000
+hex 01f600
+hex 001f600
+hex 0001f600
+hex 00001f600
+hex 10ffff
+hex 10fffd
+hex 100000
+hex 110000
+hex ffffff
+hex 123456
+hex 2 192
+hex 21 92
+hex 1f600 1f601
+hex 2192 arrow
+hex arrow 2192
+hex 41 latin
+
+# bare hex that is also a word
+hexword cafe
+hexword bad
+hexword add
+hexword dead
+hexword beef
+hexword abc
+hexword def
+hexword abcdef
+hexword c0de
+hexword f00d
+hexword 1ce
+hexword a1
+hexword b2
+hexword c3
+hexword 3d
+hexword 0a
+hexword 0f
+hexword 1e3
+hexword 5e
+hexword e2
+
+# decimal-looking strings
+decimal 65
+decimal 97
+decimal 8594
+decimal 128512
+decimal 32
+decimal 1000000
+decimal 1114111
+decimal 1114112
+decimal 12345678
+decimal 123456789
+decimal 000000
+decimal 00000000
+decimal 000000000
+decimal 123
+decimal 12345
+decimal 42
+decimal 3.14
+decimal 1/2
+decimal -1
+decimal +1
+decimal 50%
+decimal 65535
+decimal 65536
+
+# literal characters pasted into the field
+literal $
+literal @
+literal \x{23}
+literal &
+literal *
+literal +
+literal -
+literal =
+literal <
+literal >
+literal /
+literal |
+literal ~
+literal ^
+literal `
+literal .
+literal ,
+literal ;
+literal :
+literal !
+literal ?
+literal (
+literal )
+literal [
+literal ]
+literal {
+literal }
+literal \x{00E9}
+literal \x{0436}
+literal \x{03B1}
+literal \x{03C0}
+literal \x{05D0}
+literal \x{3042}
+literal \x{D55C}
+literal+improve \x{4E2D}
+literal \x{6C34}
+literal \x{3400}
+literal \x{9FFF}
+literal \x{2192}
+literal \x{00A9}
+literal \x{2122}
+literal \x{20AC}
+literal \x{00B0}
+literal \x{00D7}
+literal \x{2022}
+literal \x{2026}
+literal \x{2014}
+literal \x{201C}
+literal \x{00AB}
+literal \x{00BF}
+literal \x{00A7}
+literal \x{221E}
+literal \x{2260}
+literal \x{2665}
+literal \x{2764}
+literal \x{2605}
+literal \x{266A}
+literal \x{2713}
+literal \x{263A}
+literal \x{2500}
+literal \x{00B2}
+literal \x{1F600}
+literal \x{1F4A9}
+literal \x{1F44D}
+literal \x{1F1FA}
+literal \x{1F3FB}
+literal \x{1D400}
+literal \x{10348}
+literal \x{1FAFF}
+literal \x{1FAE9}
+literal \x{20000}
+literal \x{2A6DF}
+literal \x{E0001}
+literal \x{E0100}
+literal \x{F0000}
+literal \x{10FFFD}
+literal \x{10FFFF}
+literal \x{FFFD}
+literal \x{FEFF}
+literal \x{FFFE}
+literal \x{FFFF}
+literal \x{E000}
+literal \x{F8FF}
+literal \x{D800}
+literal \x{DC00}
+literal \x{DFFF}
+literal \x{D83D}
+literal \x{0301}
+literal \x{0308}
+literal \x{20E3}
+literal \x{FE0F}
+literal \x{200D}
+literal \x{200B}
+literal \x{200E}
+literal \x{00A0}
+literal \x{00AD}
+literal \x{2028}
+literal \x{2029}
+literal \x{3000}
+literal \x{0000}
+literal \x{0001}
+literal \x{0009}
+literal \x{000A}
+literal \x{000D}
+literal \x{001B}
+literal \x{007F}
+literal \x{0085}
+literal \x{0378}
+literal \x{0600}
+literal \x{06DD}
+literal+improve e\x{0301}
+literal a\x{0308}
+literal+improve \x{1F44D}\x{1F3FB}
+literal \x{1F468}\x{200D}\x{1F469}\x{200D}\x{1F467}
+literal \x{1F1FA}\x{1F1F8}
+literal \x{2764}\x{FE0F}
+literal 1\x{FE0F}\x{20E3}
+literal \x{1F3F3}\x{FE0F}\x{200D}\x{1F308}
+literal \x{2192}\x{2190}
+literal \x{1F600}\x{1F600}
+literal \x{1F600}\x{1F602}
+literal \x{1F600}a
+literal a\x{1F600}
+literal \x{00E9}1
+literal \x{4E2D}\x{6587}
+literal \x{D55C}\x{AE00}
+literal \x{03B1}\x{03B2}
+literal \s\x{1F600}
+literal \x{D83D}\x{D83D}
+literal \x{DE00}\x{D83D}
+literal a\x{D83D}
+literal \x{D83D}a
+literal \x{2192}\x{2192}\x{2192}
+literal abc\x{1F600}
+literal \x{1F600} face
+literal \x{2192} arrow
+literal arrow \x{2192}
+literal \x{00E9} acute
+literal \x{01C6}
+literal \x{FB01}
+literal \x{00C5}
+literal K
+literal \x{00B5}
+literal \x{03BC}
+literal \x{017F}
+literal \x{0130}stanbul
+literal na\x{00EF}ve
+literal caf\x{00E9}
+literal \x{00FC}ber
+literal S\x{00E3}o
+literal \x{65E5}\x{672C}\x{8A9E}
+literal \x{0441}\x{043C}\x{0430}\x{0439}\x{043B}
+literal \x{0441}\x{0442}\x{0440}\x{0435}\x{043B}\x{043A}\x{0430}
+literal \x{03BA}\x{03B1}\x{03C1}\x{03B4}\x{03B9}\x{03AC}
+literal \x{0633}\x{0647}\x{0645}
+literal \x{77E2}\x{5370}
+literal \x{30CF}\x{30FC}\x{30C8}
+literal \x{5FC3}
+literal \x{2190}\x{2192}
+literal <-
+literal ->
+literal =>
+literal <=
+literal >=
+literal !=
+literal ==
+literal ...
+literal --
+literal ---
+literal (c)
+literal (r)
+literal (tm)
+literal +-
+literal ^2
+literal <3
+literal :)
+literal :-)
+literal ;)
+literal :(
+literal xD
+literal \x{00AF}\\_(\x{30C4})_/\x{00AF}
+
+# queries with no results
+none qqq
+none xyzzy
+none qwerty
+none arrowz
+none hearts suit black
+none latin small letter a with nothing
+none foo bar
+none lorem ipsum
+none arrow qqq
+none qqq arrow
+none unicorn rainbow sparkle
+none the quick brown fox
+none supercalifragilistic
+none aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+none hello world
+none http://example.com
+none user@example.com
+none select * from char
+none zwj joiner
+none smile emoji
+none \x{1F600} grin
+none u+2192 u+2193
+none 0x41 0x42
+
+# punctuation-only queries
+punct ?!
+punct \\/
+punct ()
+punct []
+punct {}
+punct <>
+punct -->
+punct \s-\s
+punct - -
+punct a-b
+punct a.b
+punct a/b
+punct a+b
+punct type-1
+punct face-1
+punct no-break
+punct right-to-left
+punct x-ray
+punct -a
+punct a-
+punct <control>
+punct <cjk
+punct ideograph,
+punct first>
+punct <private use, first>
+punct private use
+punct surrogate
+punct <non private
+punct control
+
+# SQL LIKE wildcards and quote characters
+like %
+like %%
+like %%%
+like _
+like __
+like ___
+like %_
+like _%
+like a%
+like %a
+like a%b
+like a_b
+like arr%
+like %row
+like ar_ow
+like arr_w
+like a%w
+like %arrow%
+like _rrow
+like arrow_
+like arrow%
+like 100%
+like per%
+like percent%sign
+like low_line
+like low line _
+like lat%small
+like % sign
+like _ line
+like '
+like ''
+like "
+like ""
+like 'a'
+like "a"
+like 'arrow'
+like "arrow"
+like "right arrow"
+like 'right arrow'
+like arrow'
+like arrow"
+like o'clock
+like it's
+like a'b
+like a"b
+like ' or 1=1 --
+like '; drop table char; --
+like " or ""="
+like ' union select 1,2,3,4 --
+like \\%
+like \\_
+like \\\\%
+like %\\
+like _\\
+like \\'
+like a\\
+like a\\b
+like \\a
+like \\arrow
+like arrow\\
+like ar\\row
+like [a]
+like NULL
+like+improve \x{0000}a
+like+improve a\x{0000}
+like+improve a\x{0000}b
+
+# long queries
+edge a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+edge+improve a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+edge latin small letter a with ring above and acute
+edge arabic ligature uighur kirghiz yeh with hamza above with alef maksura isolated form
+edge a b c d e f g h i j k l m n o p q r s t u v w x y z
+edge xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+edge ffffffff
+edge 10000000
+
+# queries of expectations.txt and weaknesses.txt not listed above
+weak+improve minus
+weak+improve plus

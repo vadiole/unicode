@@ -79,6 +79,12 @@ android {
         buildConfig = true
     }
 
+    sourceSets {
+        getByName("debug") {
+            assets.srcDir("src/testDebug/resources")
+        }
+    }
+
     lint {
         baseline = file("lint-baseline.xml")
         disable.addAll(
@@ -109,4 +115,5 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.dynamicanimation:dynamicanimation:1.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    testImplementation("junit:junit:4.13.2")
 }

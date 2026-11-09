@@ -1,0 +1,108 @@
+# Ranking expectations that hold today and must hold for any search engine.
+# top:<N> <code points> <query>    every code point is within the first N results
+# above <A>><B>[,<A>><B>] <query>  A is found and ranks above B
+# Code points are hex, comma separated, ranges as 2190..2193. Queries use the escapes of queries.txt.
+top:10 2190..2193 arrow
+top:10 2190..2193 ARROW
+top:10 2190..2193 \s\sarrow
+top:20 2190..2193 arrow arrow
+top:10 2192 ightwards
+top:5 2192 right arrow
+top:5 2192 right \sarrow
+top:5 2192 arrow right
+top:5 2192 rightwards arrow
+top:1 0061 latin small letter a
+top:1 0061 LATIN SMALL LETTER A
+top:1 0061 a letter small latin
+top:1 0041 latin capital letter a
+top:2 00C9,00E9 e acute
+top:1 00E9 latin small letter e with acute
+top:2 03B1 greek small letter alpha
+top:5 0391,03B1 alpha
+top:5 03A9,03C9 omega
+top:2 03A0,03C0 pi
+top:2 00A9 copyright
+top:10 2764 heart
+top:1 20AC euro
+above 20AC>20A0 euro
+top:1 00B0 degree
+above 00B0>2103 degree
+top:1 2022 bullet
+top:1 2022 bulle
+above 2022>2023 bullet
+top:1 2014 em dash
+top:1 2014 dash em
+above 2014>2E3A em dash
+top:1 00A0 non-breaking space
+top:1 00A0 no-break space
+top:1 200D zero width joiner
+above 200D>200C zero width joiner
+top:1 200B zero width space
+top:1 221E infinity
+top:3 221E infin
+above 221E>29DC infinity
+top:5 2605,2606 star
+top:12 2654..265F chess
+top:10 2500..2503 box drawing
+top:1 00B2 superscript two
+top:3 2713 check mark
+above 2713>2714 check mark
+top:1 0024 dollar
+top:1 0024 dolla
+top:3 0024 ollar
+above 0024>FF04 dollar
+top:1 1F600 grinning face
+above 1F600>1F601 grinning face
+top:1 003F question mark
+top:2 2122 trade mark
+top:1 2122 trademark
+top:1 00B6 pilcrow
+top:1 2603 snowman
+top:1 00BD fraction one half
+top:1 00BD half
+top:1 0301 combining acute
+top:1 00AD soft hyphen
+top:1 002E period
+top:1 005F underscore
+top:1 0000 null
+top:1 0007 bell
+top:1 1F525 fire
+top:1 1F408 cat
+top:1 2609 sun
+top:5 2260 not equal
+top:1 1F44D thumbs up
+top:1 0020 space
+top:1 0040 at
+top:1 000A (lf)
+top:1 1FA7B x-ray
+top:1 2192 U+2192
+top:1 2192 2192
+top:1 1F600 u+1f600
+top:1 1F600 0x1f600
+top:1 1F600 1f600
+top:1 0041 U+41
+top:1 0041 0x41
+top:1 0041 \\u0041
+top:1 0041 41
+top:1 00E9 U+E9
+top:1 00E9 \\u00e9
+top:1 00E9 e9
+top:1 200D U+200D
+top:1 0061 a
+above 0061>0041 a
+top:1 0041 A
+above 0041>0061 A
+top:1 0024 $
+top:1 0025 %
+top:1 005F _
+top:1 0027 '
+top:1 0022 "
+top:1 005C \\
+top:1 0020 \s
+top:1 00E9 \x{00E9}
+top:1 2192 \x{2192}
+top:1 1F600 \x{1F600}
+top:1 0301 \x{0301}
+top:1 200D \x{200D}
+top:1 00A0 \x{00A0}
+top:1 00DF \x{00DF}

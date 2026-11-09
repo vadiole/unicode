@@ -8,5 +8,10 @@
             android:authorities="${applicationId}.debugconfig"
             android:exported="true"
             tools:ignore="ExportedContentProvider" />
+        <provider
+            android:name="vadiole.unicode.SearchGolden"
+            android:authorities="${applicationId}.searchgolden"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
     </application>
 </manifest>
