@@ -40,7 +40,9 @@ class SearchBar(
     private val touchExtension = 8.dp(context)
     private val iconSize = 24.dp(context)
     private val iconInset = 12.dp(context)
-    private val buttonWidth = if (atTop) fieldSize else buttonGap + fieldSize + edgePadding
+    private val buttonSize = 52.dp(context)
+    private val buttonInset = touchExtension + (fieldSize - buttonSize) / 2
+    private val buttonWidth = if (atTop) buttonSize else buttonGap + buttonSize + edgePadding
     private val buttonHeight = fieldSize + touchExtension * 2
 
     private var isExpandedState = false
@@ -78,9 +80,10 @@ class SearchBar(
         icon = context.getDrawable(if (atTop) R.drawable.ic_close else R.drawable.ic_search)!!,
         altIcon = if (atTop) null else context.getDrawable(R.drawable.ic_close)!!,
         iconSize = iconSize,
+        size = buttonSize,
         surfaceShadow = SearchShadowDrawable(context),
     ).apply {
-        setPadding(if (atTop) 0 else buttonGap, touchExtension, if (atTop) 0 else edgePadding, touchExtension)
+        setPadding(if (atTop) 0 else buttonGap, buttonInset, if (atTop) 0 else edgePadding, buttonInset)
         contentDescription = context.getString(R.string.search_hint)
         onClick = { if (isExpandedState) collapse() else expand() }
     }
@@ -165,8 +168,8 @@ class SearchBar(
         val buttonRight = if (atTop) width - edgePadding else width
         val buttonLeft = buttonRight - buttonWidth
         actionContainer.layout(buttonLeft, rowTop, buttonRight, rowTop + buttonHeight)
-        actionContainer.pivotX = buttonGap + fieldSize / 2f
-        actionContainer.pivotY = touchExtension + fieldSize / 2f
+        actionContainer.pivotX = (if (atTop) 0 else buttonGap) + buttonSize / 2f
+        actionContainer.pivotY = buttonHeight / 2f
         val fieldRight = fieldRight(width, 0f)
         val iconLeft = edgePadding + iconInset
         val iconTop = fieldTop + (fieldSize - iconSize) / 2
@@ -178,7 +181,7 @@ class SearchBar(
     }
 
     private fun fieldRight(width: Int, p: Float): Int {
-        val actionSpace = if (atTop) ((fieldSize + buttonGap) * p).roundToInt() else fieldSize + buttonGap
+        val actionSpace = if (atTop) ((buttonSize + buttonGap) * p).roundToInt() else buttonSize + buttonGap
         return width - edgePadding - actionSpace
     }
 
@@ -219,7 +222,7 @@ class SearchBar(
 
     private fun applyTopProgress(p: Float) {
         layoutField(p)
-        actionContainer.translationX = (fieldSize + edgePadding) * (1f - p)
+        actionContainer.translationX = (buttonSize + edgePadding) * (1f - p)
         actionContainer.visibility = if (p > 0f) VISIBLE else INVISIBLE
     }
 
