@@ -410,6 +410,7 @@ class UnicodeStorage(private val context: Context) {
 
         private fun isShown(codePoint: CodePoint, category: String?, acceptGlyph: (String) -> Boolean): Boolean {
             val cp = codePoint.value
+            if (category == "Co" || category == "Cs") return false
             if (cp in prependedConcatenationMarks) return acceptGlyph(codePoint.char)
             if (category == "Cc" || category == "Cf" || category == "Zl" || category == "Zp") return true
             if (cp in VS_BMP_FIRST..VS_BMP_LAST || cp in VS_SUPP_FIRST..VS_SUPP_LAST) return true
