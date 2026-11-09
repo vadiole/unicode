@@ -119,17 +119,12 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             field = value
             invalidateShapes()
         }
-    var borderWidth = 0f
+    var borderWidth = 12f.dp(context)
         set(value) {
             field = value
             invalidateShapes()
         }
     var borderWidthPressed = 2f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var fillAlpha = 1f
         set(value) {
             field = value
             invalidateShapes()
@@ -208,8 +203,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val lineIdleColor = context.getColor(R.color.layer0)
     private val inactiveColor = context.getColor(R.color.windowDivider)
     private val trackPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val capsulePaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val borderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE }
+    private val ringPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val holePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val linePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeCap = Paint.Cap.ROUND
@@ -217,9 +212,9 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val activePath = Path()
     private val insideActivePath = Path()
     private val insideInactivePath = Path()
-    private val borderPath = Path()
+    private val holePath = Path()
     private val inactivePath = Path()
-    private val capsulePath = Path()
+    private val ringPath = Path().apply { fillType = Path.FillType.EVEN_ODD }
     private val shapeRect = RectF()
     private val segmentRect = RectF()
     private val radii = FloatArray(8)
@@ -230,7 +225,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private var previousActiveColor = activeColor
     private var insideActiveColorValue = 0
     private var insideInactiveColorValue = 0
-    private var drawBorder = false
+    private var drawHole = false
     private var drawLine = false
     private val activeColorFade = Fade(true)
     private val slidingFade = Fade(slidingEdges)
@@ -348,13 +343,14 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         val cx = x0 + (half - capsuleWidth / 2f) * (nearStart - nearEnd)
         val cy = height / 2f
         val radius = minOf(w, h) / 2f
-        val border = (borderWidth + (borderWidthPressed - borderWidth) * p).coerceIn(0f, radius)
+        val idleBorder = minOf(borderWidth, radius)
+        val border = (idleBorder + (borderWidthPressed - idleBorder) * p).coerceIn(0f, radius)
 
         val cut = gap + (pressedCutoutOutside - gap) * p
         val stub = max(0f, endGap - cut)
         val stubStart = stub * nearStart
         val stubEnd = stub * nearEnd
-        val inset = (half + (border + pressedCutoutInside - half) * p).coerceIn(0f, half)
+        val inset = (border + pressedCutoutInside * p).coerceIn(0f, half)
         val sliding = slidingFade.value
         val slideStart = half + gap + stubStart + (pressedCutoutOutside - half - gap - stubStart) * p
         val slideEnd = half + gap + stubEnd + (pressedCutoutOutside - half - gap - stubEnd) * p
@@ -379,17 +375,17 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         piece(activePath, inactivePath, max(maskEnd, left), right, edge, cy, trackInnerRadius, outer)
 
         shapeRect.set(cx - half, cy - h / 2f, cx + half, cy + h / 2f)
-        capsulePath.rewind()
-        capsulePath.addSquircle(shapeRect, radius)
-        capsulePaint.color = withAlpha(displayedActiveColor, fillAlpha + (pressedFillAlpha - fillAlpha) * p)
-        drawBorder = border > 0f
-        if (drawBorder) {
-            shapeRect.inset(border / 2f, border / 2f)
-            borderPath.rewind()
-            borderPath.addSquircle(shapeRect, radius - border / 2f)
-            borderPaint.strokeWidth = border
-            borderPaint.color = displayedActiveColor
+        ringPath.rewind()
+        ringPath.addSquircle(shapeRect, radius)
+        holePath.rewind()
+        drawHole = border < radius
+        if (drawHole) {
+            shapeRect.inset(border, border)
+            holePath.addSquircle(shapeRect, radius - border)
+            ringPath.addPath(holePath)
         }
+        ringPaint.color = displayedActiveColor
+        holePaint.color = withAlpha(displayedActiveColor, pressedFillAlpha)
 
         val lineW = lineWidth + (lineWidthPressed - lineWidth) * p
         val lineH = lineHeight + (h - 2f * linePressedInset - lineHeight) * p
@@ -440,8 +436,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         canvas.drawPath(insideActivePath, trackPaint)
         trackPaint.color = insideInactiveColorValue
         canvas.drawPath(insideInactivePath, trackPaint)
-        if (capsulePaint.alpha > 0) canvas.drawPath(capsulePath, capsulePaint)
-        if (drawBorder) canvas.drawPath(borderPath, borderPaint)
+        if (drawHole && holePaint.alpha > 0) canvas.drawPath(holePath, holePaint)
+        canvas.drawPath(ringPath, ringPaint)
         if (drawLine) {
             val cy = height / 2f
             canvas.drawLine(lineX, cy - lineHalf, lineX, cy + lineHalf, linePaint)

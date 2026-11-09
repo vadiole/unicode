@@ -125,10 +125,9 @@ class PrototypeActivity : Activity() {
             dp("Width", slider::capsuleWidth, 4f, 64f, 1f),
             dp("Height", slider::capsuleHeight, 4f, 48f, 1f),
             number("Pressed scale", slider::pressedScale, 1f, 2f, 0.05f),
-            dp("Border width idle", slider::borderWidth, 0f, 8f, 0.25f),
+            dp("Border width idle", slider::borderWidth, 0f, 16f, 0.25f),
             dp("Border width pressed", slider::borderWidthPressed, 0f, 8f, 0.25f),
-            number("Fill alpha idle", slider::fillAlpha, 0f, 1f, 0.05f),
-            number("Fill alpha pressed", slider::pressedFillAlpha, 0f, 1f, 0.05f),
+            number("Hole tint alpha", slider::pressedFillAlpha, 0f, 1f, 0.05f),
         ),
         "Line" to listOf(
             toggle("Show line", slider::showLine),
