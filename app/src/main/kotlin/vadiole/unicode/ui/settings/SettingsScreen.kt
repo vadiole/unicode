@@ -7,6 +7,7 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.widget.LinearLayout
 import android.widget.Toast
+import vadiole.unicode.BuildConfig
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.data.config.UserConfig
@@ -27,6 +28,7 @@ import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
+import vadiole.unicode.ui.table.CharRow
 
 class SettingsScreen(
     context: Context,
@@ -39,6 +41,7 @@ class SettingsScreen(
         fun onDockEnabledChanged()
         fun onCharacterScaleChanged(value: Float)
         fun onEnlargeSmallCharsChanged(enabled: Boolean)
+        fun onSmallCharsTuningChanged()
         fun onTableRevealChanged(revealed: Boolean)
         fun onAbout()
     }
@@ -74,12 +77,32 @@ class SettingsScreen(
         userConfig.enlargeSmallChars = checked
         delegate.onEnlargeSmallCharsChanged(checked)
     }
-    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, enlargeSmallCharsCell)).apply {
+    private val tuningCells = if (BuildConfig.DEBUG) {
+        listOf(
+            tuningCell("Small threshold", 0.2f..0.8f, CharRow.smallExtent, "%.2f") { CharRow.smallExtent = it },
+            tuningCell("Max zoom", 1f..3f, CharRow.maxBoost, "×%.2f") { CharRow.maxBoost = it },
+            tuningCell("Zoom curve", 0.2f..1f, CharRow.boostCurve, "%.2f") { CharRow.boostCurve = it },
+        )
+    } else {
+        emptyList()
+    }
+    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, enlargeSmallCharsCell) + tuningCells).apply {
         background = SquircleDrawable(13.dp(context)).apply {
             colors = ColorStateList.valueOf(context.getColor(R.color.layer1))
         }
         characterSizeCell.background = null
+        tuningCells.forEach { it.background = null }
     }
+
+    private fun tuningCell(name: String, range: ClosedFloatingPointRange<Float>, initial: Float, format: String, apply: (Float) -> Unit) =
+        SliderCell(context, name, range, initial, { format.format(it) }).apply {
+            slider.onValueChanged = { value ->
+                setValue(value)
+                apply(value)
+                delegate.onSmallCharsTuningChanged()
+            }
+            slider.onInteractionChanged = ::setAppearanceInteraction
+        }
 
     private val clearRecentsCell = HoldActionCell(context, context.getString(R.string.settings_clear_recents)) {
         recentRepository.clear()

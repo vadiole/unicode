@@ -13,7 +13,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import kotlin.math.floor
-import kotlin.math.sqrt
+import kotlin.math.pow
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
@@ -75,7 +75,7 @@ class CharRow(
     private val measurePaint = Paint(charPaint).apply { textAlign = Paint.Align.LEFT }
     private val inkBounds = Rect()
     private val inkBoxes = FloatArray(count * 4)
-    private val boosts = FloatArray(count) { 1f }
+    private val inkExtents = FloatArray(count)
     private val charRipples: BooleanArray = BooleanArray(count)
     private val charCoordsX: FloatArray = FloatArray(count)
     private var charCoordY: Float = 0f
@@ -267,7 +267,7 @@ class CharRow(
         measurePaint.textSize = charPaint.textSize
         val size = measurePaint.textSize
         codePoints.forEachIndexed { index, codePoint ->
-            boosts[index] = 1f
+            inkExtents[index] = 0f
             if (abbreviations.containsKey(codePoint)) return@forEachIndexed
             val char = codePoint.char
             measurePaint.getTextBounds(char, 0, char.length, inkBounds)
@@ -278,15 +278,15 @@ class CharRow(
             inkBoxes[offset + 1] = inkBounds.top / size
             inkBoxes[offset + 2] = (inkBounds.right - originX) / size
             inkBoxes[offset + 3] = inkBounds.bottom / size
-            val extent = maxOf(inkBounds.width(), inkBounds.height()) / size
-            if (extent < SMALL_EXTENT) boosts[index] = minOf(MAX_BOOST, sqrt(SMALL_EXTENT / extent))
+            inkExtents[index] = maxOf(inkBounds.width(), inkBounds.height()) / size
         }
     }
 
     private fun inkScale(index: Int): Float {
         if (!enlargeSmallChars || index >= codePoints.size) return 1f
-        val boost = boosts[index]
-        if (boost <= 1f) return 1f
+        val extent = inkExtents[index]
+        if (extent <= 0f || extent >= smallExtent) return 1f
+        val boost = minOf(maxBoost, (smallExtent / extent).pow(boostCurve))
         val offset = index * 4
         val inkWidth = (inkBoxes[offset + 2] - inkBoxes[offset]) * charSize
         val inkHeight = (inkBoxes[offset + 3] - inkBoxes[offset + 1]) * charSize
@@ -316,10 +316,11 @@ class CharRow(
         fun onLongClick(codePoint: CodePoint)
     }
 
-    private companion object {
-        val PRESSED_STATE = intArrayOf(android.R.attr.state_enabled, android.R.attr.state_pressed)
-        val EMPTY_STATE = intArrayOf()
-        const val SMALL_EXTENT = 0.45f
-        const val MAX_BOOST = 1.6f
+    companion object {
+        private val PRESSED_STATE = intArrayOf(android.R.attr.state_enabled, android.R.attr.state_pressed)
+        private val EMPTY_STATE = intArrayOf()
+        var smallExtent = 0.45f
+        var maxBoost = 1.6f
+        var boostCurve = 0.5f
     }
 }

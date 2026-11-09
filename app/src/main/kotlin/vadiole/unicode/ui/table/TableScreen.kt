@@ -706,6 +706,12 @@ class TableScreen(
         }
     }
 
+    fun redrawChars() {
+        for (index in 0 until tableView.childCount) {
+            tableView.getChildAt(index).invalidate()
+        }
+    }
+
     fun setEnlargeSmallChars(enabled: Boolean) {
         enlargeSmallChars = enabled
         for (index in 0 until tableView.childCount) {
