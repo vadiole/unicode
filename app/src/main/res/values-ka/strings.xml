@@ -29,6 +29,8 @@
     <string name="settings_dock">შეხებით შეგროვება</string>
     <string name="settings_search_at_top">ძიება ზემოთ</string>
     <string name="settings_show_unsupported">მხარდაუჭერელი სიმბოლოების ჩვენება</string>
+    <string name="settings_character_size_in_table">სიმბოლოების ზომა ცხრილში</string>
+    <string name="settings_enlarge_small_chars">პატარა სიმბოლოების გადიდება</string>
     <string name="settings_crash_reports">შეცდომის ანგარიშები</string>
     <string name="settings_save_recents">ბოლო სიმბოლოების შენახვა</string>
     <string name="settings_clear_recents">ბოლო სიმბოლოების გასუფთავება</string>

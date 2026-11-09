@@ -29,6 +29,8 @@
     <string name="settings_dock">Toca para reunir</string>
     <string name="settings_search_at_top">Búsqueda arriba</string>
     <string name="settings_show_unsupported">Mostrar caracteres no compatibles</string>
+    <string name="settings_character_size_in_table">Tamaño de caracteres en la tabla</string>
+    <string name="settings_enlarge_small_chars">Ampliar caracteres pequeños</string>
     <string name="settings_crash_reports">Informes de errores</string>
     <string name="settings_save_recents">Guardar caracteres recientes</string>
     <string name="settings_clear_recents">Borrar caracteres recientes</string>

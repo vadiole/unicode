@@ -23,6 +23,7 @@ class UserConfig(context: Context) {
         private const val key_tableScrollOffset = "tableScrollOffset"
         private const val key_dockScroll = "dockScroll"
         private const val key_tableCharacterScale = "tableCharacterScale"
+        private const val key_enlargeSmallChars = "enlargeSmallChars"
     }
 
     private val sharedPreferences = context.getSharedPreferences("unicode", Context.MODE_PRIVATE)
@@ -124,6 +125,12 @@ class UserConfig(context: Context) {
         get() = sharedPreferences.getFloat(key_tableCharacterScale, 1f)
         set(value) {
             editor.putFloat(key_tableCharacterScale, value).apply()
+        }
+
+    var enlargeSmallChars: Boolean
+        get() = sharedPreferences.getBoolean(key_enlargeSmallChars, false)
+        set(value) {
+            editor.putBoolean(key_enlargeSmallChars, value).apply()
         }
 
     var dockEnabled: Boolean

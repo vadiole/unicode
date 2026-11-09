@@ -29,6 +29,8 @@
     <string name="settings_dock">Zum Sammeln tippen</string>
     <string name="settings_search_at_top">Suchleiste oben</string>
     <string name="settings_show_unsupported">Nicht unterstützte Zeichen anzeigen</string>
+    <string name="settings_character_size_in_table">Zeichengröße in der Tabelle</string>
+    <string name="settings_enlarge_small_chars">Kleine Zeichen vergrößern</string>
     <string name="settings_crash_reports">Absturzberichte</string>
     <string name="settings_save_recents">Zuletzt verwendete Zeichen speichern</string>
     <string name="settings_clear_recents">Zuletzt verwendete Zeichen löschen</string>

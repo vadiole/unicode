@@ -29,6 +29,8 @@
     <string name="settings_dock">Toplamak için dokunun</string>
     <string name="settings_search_at_top">Arama çubuğu üstte</string>
     <string name="settings_show_unsupported">Desteklenmeyen karakterleri göster</string>
+    <string name="settings_character_size_in_table">Tablodaki karakter boyutu</string>
+    <string name="settings_enlarge_small_chars">Küçük karakterleri büyüt</string>
     <string name="settings_crash_reports">Çökme raporları</string>
     <string name="settings_save_recents">Son karakterleri kaydet</string>
     <string name="settings_clear_recents">Son karakterleri temizle</string>

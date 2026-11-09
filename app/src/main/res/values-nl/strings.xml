@@ -29,6 +29,8 @@
     <string name="settings_dock">Tik om te verzamelen</string>
     <string name="settings_search_at_top">Zoeken bovenaan</string>
     <string name="settings_show_unsupported">Niet-ondersteunde tekens tonen</string>
+    <string name="settings_character_size_in_table">Tekengrootte in tabel</string>
+    <string name="settings_enlarge_small_chars">Kleine tekens vergroten</string>
     <string name="settings_crash_reports">Crashrapporten</string>
     <string name="settings_save_recents">Recente tekens opslaan</string>
     <string name="settings_clear_recents">Recente tekens wissen</string>

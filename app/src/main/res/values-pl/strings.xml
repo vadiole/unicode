@@ -29,6 +29,8 @@
     <string name="settings_dock">Zbieranie dotknięciem</string>
     <string name="settings_search_at_top">Pasek wyszukiwania u góry</string>
     <string name="settings_show_unsupported">Pokazuj nieobsługiwane znaki</string>
+    <string name="settings_character_size_in_table">Rozmiar znaków w tabeli</string>
+    <string name="settings_enlarge_small_chars">Powiększaj małe znaki</string>
     <string name="settings_crash_reports">Raporty o awariach</string>
     <string name="settings_save_recents">Zapisuj ostatnie znaki</string>
     <string name="settings_clear_recents">Wyczyść ostatnie znaki</string>

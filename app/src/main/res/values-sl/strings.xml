@@ -29,6 +29,8 @@
     <string name="settings_dock">Tapnite za zbiranje</string>
     <string name="settings_search_at_top">Iskanje na vrhu</string>
     <string name="settings_show_unsupported">Prikaži nepodprte znake</string>
+    <string name="settings_character_size_in_table">Velikost znakov v tabeli</string>
+    <string name="settings_enlarge_small_chars">Povečaj majhne znake</string>
     <string name="settings_crash_reports">Poročila o napakah</string>
     <string name="settings_save_recents">Shranjuj nedavne znake</string>
     <string name="settings_clear_recents">Počisti nedavne znake</string>

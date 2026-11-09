@@ -38,6 +38,7 @@ class SettingsScreen(
         fun onShowUnsupportedCharsChanged()
         fun onDockEnabledChanged()
         fun onCharacterScaleChanged(value: Float)
+        fun onEnlargeSmallCharsChanged(enabled: Boolean)
         fun onTableRevealChanged(revealed: Boolean)
         fun onAbout()
     }
@@ -65,24 +66,19 @@ class SettingsScreen(
             setAppearanceInteraction(active)
         }
     }
-    private val backgroundTintCell = SliderCell(
+    private val enlargeSmallCharsCell = ToggleCell(
         context,
-        context.getString(R.string.settings_background_tint),
-        0f..1f,
-        revealLayout.backgroundTintOpacity,
-    ).apply {
-        slider.onValueChanged = { value ->
-            setValue(value)
-            revealLayout.backgroundTintOpacity = value
-        }
-        slider.onInteractionChanged = ::setAppearanceInteraction
+        context.getString(R.string.settings_enlarge_small_chars),
+        userConfig.enlargeSmallChars,
+    ) { checked ->
+        userConfig.enlargeSmallChars = checked
+        delegate.onEnlargeSmallCharsChanged(checked)
     }
-    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, backgroundTintCell)).apply {
+    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, enlargeSmallCharsCell)).apply {
         background = SquircleDrawable(13.dp(context)).apply {
             colors = ColorStateList.valueOf(context.getColor(R.color.layer1))
         }
         characterSizeCell.background = null
-        backgroundTintCell.background = null
     }
 
     private val clearRecentsCell = HoldActionCell(context, context.getString(R.string.settings_clear_recents)) {

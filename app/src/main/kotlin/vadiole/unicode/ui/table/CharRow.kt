@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
@@ -12,6 +13,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import kotlin.math.floor
+import kotlin.math.sqrt
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
@@ -63,6 +65,17 @@ class CharRow(
             updateBaselines(height)
             invalidate()
         }
+    var enlargeSmallChars = false
+        set(value) {
+            if (field == value) return
+            field = value
+            if (value) measureInk()
+            invalidate()
+        }
+    private val measurePaint = Paint(charPaint).apply { textAlign = Paint.Align.LEFT }
+    private val inkBounds = Rect()
+    private val inkBoxes = FloatArray(count * 4)
+    private val boosts = FloatArray(count) { 1f }
     private val charRipples: BooleanArray = BooleanArray(count)
     private val charCoordsX: FloatArray = FloatArray(count)
     private var charCoordY: Float = 0f
@@ -90,6 +103,7 @@ class CharRow(
     fun bind(codePoints: CodePointArray, abbreviations: Map<CodePoint, String>) {
         this.codePoints = codePoints
         this.abbreviations = abbreviations
+        if (enlargeSmallChars) measureInk()
         removeCallbacks(clearHighlightRunnable)
         clearHighlight()
         charRipples.fill(false)
@@ -125,7 +139,7 @@ class CharRow(
                 if (actionDownIndex >= 0) {
                     if (actionDownIndex == index) {
                         val codePoint = codePoints[index]
-                        delegate.onClick(codePoint, this, charCoordsX[index], charPivotY, charSize)
+                        delegate.onClick(codePoint, this, charCoordsX[index], charPivotY, charSize * inkScale(index))
                     }
                     releaseClick(actionDownIndex)
                 }
@@ -226,8 +240,64 @@ class CharRow(
             if (charRipples[index]) {
                 canvas.drawCircle(charPivotX, charPivotY, rippleRadius, ripplePaint)
             }
-            drawChar(canvas, codePoint, charCoordX, charCoordY)
+            val scale = inkScale(index)
+            if (scale > 1f) {
+                val offset = index * 4
+                val left = charCoordX + inkBoxes[offset] * charSize
+                val top = charCoordY + inkBoxes[offset + 1] * charSize
+                val right = charCoordX + inkBoxes[offset + 2] * charSize
+                val bottom = charCoordY + inkBoxes[offset + 3] * charSize
+                val halfCell = width / count / 2f
+                val save = canvas.save()
+                canvas.scale(
+                    scale,
+                    scale,
+                    inkPivot(left, right, charCoordX - halfCell, charCoordX + halfCell),
+                    inkPivot(top, bottom, 0f, height.toFloat()),
+                )
+                drawChar(canvas, codePoint, charCoordX, charCoordY)
+                canvas.restoreToCount(save)
+            } else {
+                drawChar(canvas, codePoint, charCoordX, charCoordY)
+            }
         }
+    }
+
+    private fun measureInk() {
+        measurePaint.textSize = charPaint.textSize
+        val size = measurePaint.textSize
+        codePoints.forEachIndexed { index, codePoint ->
+            boosts[index] = 1f
+            if (abbreviations.containsKey(codePoint)) return@forEachIndexed
+            val char = codePoint.char
+            measurePaint.getTextBounds(char, 0, char.length, inkBounds)
+            if (inkBounds.isEmpty) return@forEachIndexed
+            val originX = measurePaint.measureText(char) / 2f
+            val offset = index * 4
+            inkBoxes[offset] = (inkBounds.left - originX) / size
+            inkBoxes[offset + 1] = inkBounds.top / size
+            inkBoxes[offset + 2] = (inkBounds.right - originX) / size
+            inkBoxes[offset + 3] = inkBounds.bottom / size
+            val extent = maxOf(inkBounds.width(), inkBounds.height()) / size
+            if (extent < SMALL_EXTENT) boosts[index] = minOf(MAX_BOOST, sqrt(SMALL_EXTENT / extent))
+        }
+    }
+
+    private fun inkScale(index: Int): Float {
+        if (!enlargeSmallChars || index >= codePoints.size) return 1f
+        val boost = boosts[index]
+        if (boost <= 1f) return 1f
+        val offset = index * 4
+        val inkWidth = (inkBoxes[offset + 2] - inkBoxes[offset]) * charSize
+        val inkHeight = (inkBoxes[offset + 3] - inkBoxes[offset + 1]) * charSize
+        return maxOf(1f, minOf(boost, width.toFloat() / count / inkWidth, height / inkHeight))
+    }
+
+    private fun inkPivot(start: Float, end: Float, areaStart: Float, areaEnd: Float): Float {
+        val before = maxOf(0f, start - areaStart)
+        val after = maxOf(0f, areaEnd - end)
+        val space = before + after
+        return if (space > 0f) start + (end - start) * before / space else (start + end) / 2f
     }
 
     private fun drawChar(canvas: Canvas, codePoint: CodePoint, charCoordX: Float, charCoordY: Float) {
@@ -249,5 +319,7 @@ class CharRow(
     private companion object {
         val PRESSED_STATE = intArrayOf(android.R.attr.state_enabled, android.R.attr.state_pressed)
         val EMPTY_STATE = intArrayOf()
+        const val SMALL_EXTENT = 0.45f
+        const val MAX_BOOST = 1.6f
     }
 }

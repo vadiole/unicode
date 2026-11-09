@@ -68,6 +68,7 @@ class TableScreen(
 ) : Screen(context) {
     private var spanCount = 8
     private var characterScale = userConfig.tableCharacterScale
+    private var enlargeSmallChars = userConfig.enlargeSmallChars
     private var topInset = 0
     private var navigationInset = 0
     private var imeInset = 0
@@ -107,6 +108,7 @@ class TableScreen(
             val codePoints = tableController.getChars(position, spanCount)
             val abbreviations = tableController.abbreviations
             cell.characterScale = characterScale
+            cell.enlargeSmallChars = enlargeSmallChars
             cell.bind(codePoints, abbreviations)
         }
     }
@@ -281,6 +283,7 @@ class TableScreen(
         addOnChildAttachStateChangeListener(object : RecyclerView.OnChildAttachStateChangeListener {
             override fun onChildViewAttachedToWindow(view: View) {
                 (view as CharRow).characterScale = characterScale
+                view.enlargeSmallChars = enlargeSmallChars
             }
 
             override fun onChildViewDetachedFromWindow(view: View) = Unit
@@ -700,6 +703,13 @@ class TableScreen(
         characterScale = value
         for (index in 0 until tableView.childCount) {
             (tableView.getChildAt(index) as CharRow).characterScale = value
+        }
+    }
+
+    fun setEnlargeSmallChars(enabled: Boolean) {
+        enlargeSmallChars = enabled
+        for (index in 0 until tableView.childCount) {
+            (tableView.getChildAt(index) as CharRow).enlargeSmallChars = enabled
         }
     }
 

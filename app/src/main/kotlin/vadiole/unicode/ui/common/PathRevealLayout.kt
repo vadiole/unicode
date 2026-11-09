@@ -21,12 +21,6 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
     private var animator: ValueAnimator? = null
     private var revealing = false
 
-    var backgroundTintOpacity = 0.08f
-        set(value) {
-            field = value.coerceIn(0f, 1f)
-            invalidate()
-        }
-
     fun reveal(path: Path) {
         retainedPath.set(path)
         outsidePath.set(path)
@@ -84,7 +78,7 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
             super.draw(canvas)
             return
         }
-        tintPaint.alpha = (backgroundTintOpacity * progress * 255).toInt()
+        tintPaint.alpha = (TINT_OPACITY * progress * 255).toInt()
         canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), tintPaint)
         if (progress < 1f) {
             val outside = canvas.save()
@@ -107,5 +101,9 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
     override fun onDetachedFromWindow() {
         reset()
         super.onDetachedFromWindow()
+    }
+
+    private companion object {
+        const val TINT_OPACITY = 0.15f
     }
 }

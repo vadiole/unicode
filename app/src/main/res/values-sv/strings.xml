@@ -29,6 +29,8 @@
     <string name="settings_dock">Tryck för att samla</string>
     <string name="settings_search_at_top">Sök överst</string>
     <string name="settings_show_unsupported">Visa tecken som inte stöds</string>
+    <string name="settings_character_size_in_table">Teckenstorlek i tabell</string>
+    <string name="settings_enlarge_small_chars">Förstora små tecken</string>
     <string name="settings_crash_reports">Felrapporter</string>
     <string name="settings_save_recents">Spara senaste tecken</string>
     <string name="settings_clear_recents">Rensa senaste tecken</string>

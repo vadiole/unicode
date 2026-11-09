@@ -29,8 +29,8 @@
     <string name="settings_dock">Tap to collect</string>
     <string name="settings_search_at_top">Search at the top</string>
     <string name="settings_show_unsupported">Show unsupported characters</string>
-    <string name="settings_character_size_in_table" xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">Character size in table</string>
-    <string name="settings_background_tint" xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">Background tint</string>
+    <string name="settings_character_size_in_table">Character size in table</string>
+    <string name="settings_enlarge_small_chars">Enlarge small characters</string>
     <string name="settings_crash_reports">Crash reports</string>
     <string name="settings_save_recents">Save recent characters</string>
     <string name="settings_clear_recents">Clear recent characters</string>

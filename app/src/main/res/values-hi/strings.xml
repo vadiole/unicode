@@ -29,6 +29,8 @@
     <string name="settings_dock">टैप करके इकट्ठा करें</string>
     <string name="settings_search_at_top">खोज बार सबसे ऊपर</string>
     <string name="settings_show_unsupported">असमर्थित वर्ण दिखाएँ</string>
+    <string name="settings_character_size_in_table">तालिका में वर्णों का आकार</string>
+    <string name="settings_enlarge_small_chars">छोटे वर्ण बड़े करें</string>
     <string name="settings_crash_reports">क्रैश रिपोर्ट</string>
     <string name="settings_save_recents">हाल के वर्ण सहेजें</string>
     <string name="settings_clear_recents">हाल के वर्ण मिटाएँ</string>

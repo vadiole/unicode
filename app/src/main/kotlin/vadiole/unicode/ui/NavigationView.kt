@@ -94,6 +94,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         override fun onShowUnsupportedCharsChanged() = tableScreen.reloadChars()
         override fun onDockEnabledChanged() = applyDockEnabled()
         override fun onCharacterScaleChanged(value: Float) = tableScreen.setCharacterScale(value)
+        override fun onEnlargeSmallCharsChanged(enabled: Boolean) = tableScreen.setEnlargeSmallChars(enabled)
         override fun onTableRevealChanged(revealed: Boolean) = nav.setPreviousRevealed(revealed)
         override fun onAbout() {
             val screen = AboutScreen(context) { hideSettings() }

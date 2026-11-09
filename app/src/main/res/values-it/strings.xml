@@ -29,6 +29,8 @@
     <string name="settings_dock">Tocca per raccogliere</string>
     <string name="settings_search_at_top">Ricerca in alto</string>
     <string name="settings_show_unsupported">Mostra caratteri non supportati</string>
+    <string name="settings_character_size_in_table">Dimensione caratteri nella tabella</string>
+    <string name="settings_enlarge_small_chars">Ingrandisci caratteri piccoli</string>
     <string name="settings_crash_reports">Segnalazioni di arresto anomalo</string>
     <string name="settings_save_recents">Salva caratteri recenti</string>
     <string name="settings_clear_recents">Cancella caratteri recenti</string>
