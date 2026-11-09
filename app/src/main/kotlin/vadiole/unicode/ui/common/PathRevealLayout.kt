@@ -16,7 +16,7 @@ class PathRevealLayout(context: Context) : FrameLayout(context) {
     private val retainedPath = Path()
     private val outsidePath = Path()
     private val tintPaint = Paint().apply { color = context.getColor(R.color.layer0) }
-    private val shadow = PathShadow(context)
+    private val shadow = PathShadow(context, onReady = ::invalidate)
     private var progress = 0f
     private var animator: ValueAnimator? = null
     private var revealing = false
