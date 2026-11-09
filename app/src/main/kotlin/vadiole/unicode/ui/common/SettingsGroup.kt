@@ -19,6 +19,7 @@ class SettingsGroup(context: Context, items: List<View>) : LinearLayout(context)
             when (item) {
                 is ActionCell -> item.setCorners(top, bottom)
                 is ToggleCell -> item.cell.setCorners(top, bottom)
+                is SliderCell -> item.setCorners(top, bottom)
             }
             addView(item, linearParams(matchParent, wrapContent))
         }

@@ -39,6 +39,7 @@ class Nav(private val container: FrameLayout) {
 
     private var cachedCornerRadius = -1f
     private var revealedScreen: Screen? = null
+    private var peekCancel: (() -> Unit)? = null
     private var revealedTranslationX = 0f
     private var revealedVisibility = View.INVISIBLE
     private var revealedAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_AUTO
@@ -78,7 +79,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun push(screen: Screen) {
-        setPreviousRevealed(false)
+        cancelPeek()
         clearBackState()
         val exiting = leaving
         if (exiting != null) {
@@ -166,7 +167,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun pop(): Boolean {
-        setPreviousRevealed(false)
+        cancelPeek()
         if (stack.size <= 1) return false
         if (backProgress >= 0f) {
             commitBack()
@@ -205,7 +206,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun startBack(fromLeft: Boolean = true, touchY: Float = 0f) {
-        setPreviousRevealed(false)
+        cancelPeek()
         if (stack.size <= 1) return
         transition?.end()
         clearBackState()
@@ -373,17 +374,10 @@ class Nav(private val container: FrameLayout) {
         return radius
     }
 
-    fun setPreviousRevealed(revealed: Boolean) {
-        if (!revealed) {
-            val screen = revealedScreen ?: return
-            screen.translationX = revealedTranslationX
-            screen.visibility = revealedVisibility
-            screen.importantForAccessibility = revealedAccessibility
-            revealedScreen = null
-            return
-        }
+    fun peekPrevious(onCancel: () -> Unit) {
         if (revealedScreen != null || stack.size < 2 || backProgress >= 0f) return
         transition?.end()
+        peekCancel = onCancel
         val screen = stack[stack.lastIndex - 1]
         revealedTranslationX = screen.translationX
         revealedVisibility = screen.visibility
@@ -392,6 +386,21 @@ class Nav(private val container: FrameLayout) {
         screen.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
         screen.translationX = 0f
         screen.visibility = View.VISIBLE
+    }
+
+    fun endPeek() {
+        val screen = revealedScreen ?: return
+        screen.translationX = revealedTranslationX
+        screen.visibility = revealedVisibility
+        screen.importantForAccessibility = revealedAccessibility
+        revealedScreen = null
+        peekCancel = null
+    }
+
+    private fun cancelPeek() {
+        val cancel = peekCancel
+        endPeek()
+        cancel?.invoke()
     }
 
     fun current(): Screen? = stack.lastOrNull()

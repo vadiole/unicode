@@ -1,20 +1,17 @@
 package vadiole.unicode.ui.settings
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.RectF
 import android.widget.LinearLayout
 import android.widget.Toast
-import vadiole.unicode.BuildConfig
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.common.ActionCell
 import vadiole.unicode.ui.common.PathRevealLayout
 import vadiole.unicode.ui.common.SliderCell
-import vadiole.unicode.ui.common.SquircleDrawable
 import vadiole.unicode.ui.common.addSquircle
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.Screen
@@ -28,7 +25,6 @@ import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.wrapContent
 import vadiole.unicode.ui.extension.onClick
-import vadiole.unicode.ui.table.CharRow
 
 class SettingsScreen(
     context: Context,
@@ -41,14 +37,16 @@ class SettingsScreen(
         fun onDockEnabledChanged()
         fun onCharacterScaleChanged(value: Float)
         fun onEnlargeSmallCharsChanged(enabled: Boolean)
-        fun onSmallCharsTuningChanged()
-        fun onTableRevealChanged(revealed: Boolean)
+        fun onTableRevealStarted(onCancel: () -> Unit)
+        fun onTableRevealEnded()
         fun onAbout()
     }
 
     private val revealLayout = PathRevealLayout(context).apply {
         setBackgroundColor(context.getColor(R.color.layer0))
-        onRevealChanged = delegate::onTableRevealChanged
+        onRevealChanged = { revealed ->
+            if (revealed) delegate.onTableRevealStarted(::reset) else delegate.onTableRevealEnded()
+        }
     }
     private var adjustingSize = false
     private val characterSizeCell = SliderCell(
@@ -66,7 +64,7 @@ class SettingsScreen(
         slider.onInteractionChanged = { active ->
             adjustingSize = active
             if (!active) userConfig.tableCharacterScale = slider.value
-            setAppearanceInteraction(active)
+            if (active) revealAppearance() else revealLayout.restore()
         }
     }
     private val enlargeSmallCharsCell = ToggleCell(
@@ -77,32 +75,7 @@ class SettingsScreen(
         userConfig.enlargeSmallChars = checked
         delegate.onEnlargeSmallCharsChanged(checked)
     }
-    private val tuningCells = if (BuildConfig.DEBUG) {
-        listOf(
-            tuningCell("Small threshold", 0.2f..0.8f, CharRow.smallExtent, "%.2f") { CharRow.smallExtent = it },
-            tuningCell("Max zoom", 1f..3f, CharRow.maxBoost, "×%.2f") { CharRow.maxBoost = it },
-            tuningCell("Zoom curve", 0.2f..1f, CharRow.boostCurve, "%.2f") { CharRow.boostCurve = it },
-        )
-    } else {
-        emptyList()
-    }
-    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, enlargeSmallCharsCell) + tuningCells).apply {
-        background = SquircleDrawable(13.dp(context)).apply {
-            colors = ColorStateList.valueOf(context.getColor(R.color.layer1))
-        }
-        characterSizeCell.background = null
-        tuningCells.forEach { it.background = null }
-    }
-
-    private fun tuningCell(name: String, range: ClosedFloatingPointRange<Float>, initial: Float, format: String, apply: (Float) -> Unit) =
-        SliderCell(context, name, range, initial, { format.format(it) }).apply {
-            slider.onValueChanged = { value ->
-                setValue(value)
-                apply(value)
-                delegate.onSmallCharsTuningChanged()
-            }
-            slider.onInteractionChanged = ::setAppearanceInteraction
-        }
+    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, enlargeSmallCharsCell))
 
     private val clearRecentsCell = HoldActionCell(context, context.getString(R.string.settings_clear_recents)) {
         recentRepository.clear()
@@ -155,27 +128,17 @@ class SettingsScreen(
         }, frameParams(matchParent, matchParent))
     }
 
-    private fun setAppearanceInteraction(active: Boolean) {
-        if (active) {
-            val bounds = Rect(0, 0, appearanceGroup.width, appearanceGroup.height)
-            revealLayout.offsetDescendantRectToMyCoords(appearanceGroup, bounds)
-            val radius = 13f.dp(context)
-            val path = Path().apply {
-                addSquircle(RectF(bounds), radius)
-            }
-            revealLayout.reveal(path)
-        } else {
-            revealLayout.restore()
+    private fun revealAppearance() {
+        val bounds = Rect(0, 0, appearanceGroup.width, appearanceGroup.height)
+        revealLayout.offsetDescendantRectToMyCoords(appearanceGroup, bounds)
+        val path = Path().apply {
+            addSquircle(RectF(bounds), 13f.dp(context))
         }
-    }
-
-    fun stopTableReveal() {
-        userConfig.tableCharacterScale = characterSizeCell.slider.value
-        revealLayout.reset()
+        revealLayout.reveal(path)
     }
 
     override fun onDetachedFromWindow() {
-        stopTableReveal()
+        if (adjustingSize) userConfig.tableCharacterScale = characterSizeCell.slider.value
         super.onDetachedFromWindow()
     }
 }

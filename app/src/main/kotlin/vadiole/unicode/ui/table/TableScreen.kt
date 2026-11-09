@@ -107,8 +107,6 @@ class TableScreen(
             val cell = holder.itemView as CharRow
             val codePoints = tableController.getChars(position, spanCount)
             val abbreviations = tableController.abbreviations
-            cell.characterScale = characterScale
-            cell.enlargeSmallChars = enlargeSmallChars
             cell.bind(codePoints, abbreviations)
         }
     }
@@ -134,7 +132,7 @@ class TableScreen(
     private var searchJob: Job? = null
     private var isShowingRecents = false
     private val areRecentsDisplayed: Boolean
-        get() = isShowingRecents && userConfig.recentsEnabled && searchController.recentResult.isNotEmpty()
+        get() = isShowingRecents && searchController.recentResult.isNotEmpty()
     private val searchAdapter = object : CollectionView.Adapter() {
         private val items
             get() = if (isShowingRecents) searchController.recentResult else searchController.searchResult
@@ -701,21 +699,17 @@ class TableScreen(
 
     fun setCharacterScale(value: Float) {
         characterScale = value
-        for (index in 0 until tableView.childCount) {
-            (tableView.getChildAt(index) as CharRow).characterScale = value
-        }
-    }
-
-    fun redrawChars() {
-        for (index in 0 until tableView.childCount) {
-            tableView.getChildAt(index).invalidate()
-        }
+        forEachRow { it.characterScale = value }
     }
 
     fun setEnlargeSmallChars(enabled: Boolean) {
         enlargeSmallChars = enabled
+        forEachRow { it.enlargeSmallChars = enabled }
+    }
+
+    private inline fun forEachRow(action: (CharRow) -> Unit) {
         for (index in 0 until tableView.childCount) {
-            (tableView.getChildAt(index) as CharRow).enlargeSmallChars = enabled
+            action(tableView.getChildAt(index) as CharRow)
         }
     }
 
