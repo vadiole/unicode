@@ -26,6 +26,12 @@ android {
     }
 
     signingConfigs {
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
         val storeFile = providers.gradleProperty("unicode.signing.storeFile").orNull
         if (storeFile != null) {
             create("release") {
@@ -41,6 +47,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
             isShrinkResources = false
             proguardFiles("proguard-rules.pro")
