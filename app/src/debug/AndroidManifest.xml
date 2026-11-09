@@ -3,21 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application>
-        <activity
-            android:name="vadiole.unicode.PrototypeActivity"
-            android:exported="true"
-            android:label="Prototype"
-            android:screenOrientation="portrait"
-            android:taskAffinity="vadiole.unicode.prototype"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
         <provider
             android:name="vadiole.unicode.DebugConfig"
             android:authorities="${applicationId}.debugconfig"
