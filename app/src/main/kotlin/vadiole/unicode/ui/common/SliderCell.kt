@@ -19,8 +19,8 @@ class SliderCell(
 ) : LinearLayout(context) {
     val slider = Slider(context, range)
     var labelPressedScale = 1.15f
-    var labelStiffness = 600f
-    var labelDamping = 0.6f
+    var labelStiffness = 500f
+    var labelDamping = 1f
     var labelColorChange = true
 
     private val label = ActionCell(context, name).apply {
