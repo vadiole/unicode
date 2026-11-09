@@ -572,10 +572,11 @@ class TableScreen(
     }
 
     private fun showBlockSelector() {
-        if (tableController.blocks.isEmpty()) return
+        val blockList = tableController.blockList
+        if (blockList.blocks.isEmpty()) return
 
         val popup = popup ?: kotlin.run {
-            val blockSelectorView = BlockSelectorView(context, tableController.blocks, blockSelectorDelegate)
+            val blockSelectorView = BlockSelectorView(context, blockList, blockSelectorDelegate)
             BlockSelectorPopup(blockSelectorView, wrapContent, wrapContent).also {
                 it.setOnDismissListener { setMainScrollerHidden(false) }
                 popup = it
