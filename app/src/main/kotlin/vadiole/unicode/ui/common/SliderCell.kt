@@ -18,10 +18,6 @@ class SliderCell(
     private val formatValue: (Float) -> String = { "${(it * 100).roundToInt()}%" },
 ) : LinearLayout(context) {
     val slider = Slider(context, range)
-    var labelPressedScale = 1.15f
-    var labelStiffness = 500f
-    var labelDamping = 1f
-    var labelColorChange = true
 
     private val label = ActionCell(context, name).apply {
         background = null
@@ -33,7 +29,7 @@ class SliderCell(
     private val labelProgress = FloatValueHolder(0f)
     private val labelSpring = SpringAnimation(labelProgress).apply {
         setMinimumVisibleChange(0.002f)
-        spring = SpringForce(0f)
+        spring = SpringForce(0f).setStiffness(LABEL_STIFFNESS).setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
         addUpdateListener { _, progress, _ -> applyLabelProgress(progress) }
     }
 
@@ -72,17 +68,12 @@ class SliderCell(
             applyLabelProgress(target)
             return
         }
-        labelSpring.spring.setStiffness(labelStiffness).setDampingRatio(labelDamping)
         labelSpring.animateToFinalPosition(target)
     }
 
     private fun applyLabelProgress(progress: Float) {
-        label.valueScale = 1f + (labelPressedScale - 1f) * progress
-        label.valueColor = if (labelColorChange) {
-            ColorUtils.blendARGB(labelColor, labelPressedColor, progress.coerceIn(0f, 1f))
-        } else {
-            labelColor
-        }
+        label.valueScale = 1f + (LABEL_PRESSED_SCALE - 1f) * progress
+        label.valueColor = ColorUtils.blendARGB(labelColor, labelPressedColor, progress.coerceIn(0f, 1f))
     }
 
     override fun onDetachedFromWindow() {
@@ -90,5 +81,10 @@ class SliderCell(
         labelSpring.cancel()
         labelProgress.value = 0f
         applyLabelProgress(0f)
+    }
+
+    private companion object {
+        const val LABEL_PRESSED_SCALE = 1.15f
+        const val LABEL_STIFFNESS = 500f
     }
 }

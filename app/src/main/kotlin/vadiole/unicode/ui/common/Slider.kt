@@ -3,7 +3,6 @@ package vadiole.unicode.ui.common
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.Rect
@@ -32,7 +31,6 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.abs
 import kotlin.math.max
-import kotlin.math.pow
 import kotlin.math.roundToInt
 import vadiole.unicode.R
 
@@ -52,188 +50,40 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         }
     private var current = range.start
 
-    var activeColor = context.getColor(R.color.primaryControl)
-        set(value) {
-            if (field == value) return
-            previousActiveColor = displayedActiveColor
-            field = value
-            activeColorFade.replay()
-        }
-    var trackHeight = 8f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var trackInnerRadius = 0f
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var gap = 2f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var pressedCutoutOutside = 0f
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var pressedCutoutInside = 0f
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var endGap = 2f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var slidingEdges = false
-        set(value) {
-            field = value
-            slidingFade.animateTo(value)
-        }
-    var insideOneColor = false
-        set(value) {
-            field = value
-            insideFade.animateTo(value)
-        }
-    var insideActiveColor = false
-        set(value) {
-            field = value
-            insideColorFade.animateTo(value)
-        }
-    var capsuleWidth = 16f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var capsuleHeight = 24f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var pressedScale = 1.5f
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var borderWidth = 12f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var borderWidthPressed = 2f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var pressedFillAlpha = 0.1f
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var showLine = true
-        set(value) {
-            field = value
-            lineFade.animateTo(value)
-        }
-    var lineWhenPressed = false
-        set(value) {
-            field = value
-            linePressedFade.animateTo(value)
-        }
-    var lineWidth = 2f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var lineWidthPressed = 0f
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var lineHeight = 10f.dp(context)
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var linePressedInset = 0f
-        set(value) {
-            field = value
-            invalidateShapes()
-        }
-    var lineColorChange = true
-        set(value) {
-            field = value
-            lineColorFade.animateTo(value)
-        }
-
-    var pressStiffness = 600f
-    var pressDamping = 0.6f
-    var tapStiffness = 600f
-    var tapToJump = true
-    var jumpOnTrackDrag = true
-    var slopMultiplier = 1f
-    var detentBand = 0.02f
-    var endClicks = true
-    var detentClick = true
-    var hum = true
-    var humPerStep = true
-    var humStepPercent = 1
-    var humQuietAfterClickMs = 80L
-    var humIntervalMs = 50L
-    var humMinAmplitude = 0.1f
-        set(value) {
-            field = value
-            humEffects.fill(null)
-        }
-    var humMaxAmplitude = 0.5f
-        set(value) {
-            field = value
-            humEffects.fill(null)
-        }
-    var humFullSpeed = 1500f.dp(context)
-    var humSpeedCurve = 1f
-    var humStep = 0.004f
-    var humForceFallback = false
-
     private val span = range.endInclusive - range.start
-    private val lineIdleColor = context.getColor(R.color.layer0)
+    private val trackHeight = 8f.dp(context)
+    private val gap = 2f.dp(context)
+    private val pressedGap = 1f.dp(context)
+    private val capsuleWidth = 16f.dp(context)
+    private val capsuleHeight = 24f.dp(context)
+    private val pressedBorder = 2f.dp(context)
+    private val lineWidth = 2f.dp(context)
+    private val lineHeight = 10f.dp(context)
+    private val humFullSpeed = 1500f.dp(context)
+
+    private val activeColor = context.getColor(R.color.primaryControl)
     private val inactiveColor = context.getColor(R.color.windowDivider)
-    private val trackPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val ringPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val holePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val lineColor = context.getColor(R.color.layer0)
+    private val activePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = activeColor }
+    private val inactivePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = inactiveColor }
+    private val ringPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = activeColor }
+    private val holePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = ColorUtils.setAlphaComponent(activeColor, HOLE_ALPHA) }
     private val linePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeCap = Paint.Cap.ROUND
     }
     private val activePath = Path()
-    private val insideActivePath = Path()
-    private val insideInactivePath = Path()
-    private val holePath = Path()
     private val inactivePath = Path()
     private val ringPath = Path().apply { fillType = Path.FillType.EVEN_ODD }
+    private val holePath = Path()
     private val shapeRect = RectF()
     private val segmentRect = RectF()
     private val radii = FloatArray(8)
     private var shapesDirty = true
-    private var lineX = 0f
-    private var lineHalf = 0f
-    private var displayedActiveColor = activeColor
-    private var previousActiveColor = activeColor
-    private var insideActiveColorValue = 0
-    private var insideInactiveColorValue = 0
     private var drawHole = false
     private var drawLine = false
-    private val activeColorFade = Fade(true)
-    private val slidingFade = Fade(slidingEdges)
-    private val insideFade = Fade(insideOneColor)
-    private val insideColorFade = Fade(insideActiveColor)
-    private val lineFade = Fade(showLine)
-    private val linePressedFade = Fade(lineWhenPressed)
-    private val lineColorFade = Fade(lineColorChange)
+    private var lineX = 0f
+    private var lineHalf = 0f
 
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val thumbTouchHalf = 22f.dp(context)
@@ -254,7 +104,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val clickIntervalMs = if (Build.VERSION.SDK_INT >= 34) 17L else 30L
     private var lastClickTime = 0L
     private var lastHumTime = 0L
-    private var lastHumValue = 0f
     private var lastHumStep = 0
     private val vibrator: Vibrator? by lazy {
         if (Build.VERSION.SDK_INT >= 33) context.getSystemService(VibratorManager::class.java)?.defaultVibrator else null
@@ -273,7 +122,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val pressProgress = FloatValueHolder(0f)
     private val pressSpring = SpringAnimation(pressProgress).apply {
         setMinimumVisibleChange(0.002f)
-        spring = SpringForce(0f)
+        spring = SpringForce(0f).setStiffness(SPRING_STIFFNESS).setDampingRatio(PRESS_DAMPING)
         addUpdateListener { _, value, _ ->
             press = value
             invalidateShapes()
@@ -281,7 +130,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     }
     private val valueSpring = SpringAnimation(FloatValueHolder(0f)).apply {
         setMinimumVisibleChange(0.0005f)
-        spring = SpringForce(0f).setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
+        spring = SpringForce(0f).setStiffness(SPRING_STIFFNESS).setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
         addUpdateListener { _, fraction, _ -> applyUserValue(range.start + fraction * span, haptics = false) }
         addEndListener { _, _, _, _ ->
             if (state != DRAGGING) {
@@ -302,15 +151,15 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         invalidate()
     }
 
-    private val minX get() = paddingLeft + capsuleWidth / 2f + endGap
-    private val maxX get() = width - paddingRight - capsuleWidth / 2f - endGap
+    private val minX get() = paddingLeft + capsuleWidth / 2f
+    private val maxX get() = width - paddingRight - capsuleWidth / 2f
 
     private fun valueX() = minX + (value - range.start) / span * (maxX - minX)
 
     private fun valueAt(x: Float): Float {
         val fraction = ((x - minX) / (maxX - minX)).coerceIn(0f, 1f)
         val raw = range.start + fraction * span
-        return if (!detent.isNaN() && abs(raw - detent) <= detentBand * span / 2f) detent else raw
+        return if (!detent.isNaN() && abs(raw - detent) <= DETENT_BAND * span / 2f) detent else raw
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
@@ -330,49 +179,28 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private fun layoutShapes() {
         shapesDirty = false
         val p = press.coerceIn(0f, 1f)
-        val scale = 1f + (pressedScale - 1f) * press
-        val w = capsuleWidth * scale
+        val scale = 1f + (PRESSED_SCALE - 1f) * press
+        val half = capsuleWidth * scale / 2f
         val h = capsuleHeight * scale
-        val half = w / 2f
+        val radius = minOf(half, h / 2f)
         val left = paddingLeft.toFloat()
         val right = (width - paddingRight).toFloat()
         val x0 = valueX()
-        val falloff = capsuleWidth * max(1f, pressedScale - 1f)
+        val falloff = capsuleWidth * max(1f, PRESSED_SCALE - 1f)
         val nearStart = proximity(x0 - minX, falloff)
         val nearEnd = proximity(maxX - x0, falloff)
         val cx = x0 + (half - capsuleWidth / 2f) * (nearStart - nearEnd)
         val cy = height / 2f
-        val radius = minOf(w, h) / 2f
-        val idleBorder = minOf(borderWidth, radius)
-        val border = (idleBorder + (borderWidthPressed - idleBorder) * p).coerceIn(0f, radius)
+        val border = radius + (pressedBorder - radius) * p
+        val cut = gap + (pressedGap - gap) * p
+        val edge = x0 + (left - x0) * nearStart + (right - x0) * nearEnd
 
-        val cut = gap + (pressedCutoutOutside - gap) * p
-        val stub = max(0f, endGap - cut)
-        val stubStart = stub * nearStart
-        val stubEnd = stub * nearEnd
-        val inset = (border + pressedCutoutInside * p).coerceIn(0f, half)
-        val sliding = slidingFade.value
-        val slideStart = half + gap + stubStart + (pressedCutoutOutside - half - gap - stubStart) * p
-        val slideEnd = half + gap + stubEnd + (pressedCutoutOutside - half - gap - stubEnd) * p
-        val maskStart = lerp(cx - half - cut - stubStart, cx - slideStart, sliding)
-        val maskEnd = lerp(cx + half + cut + stubEnd, cx + slideEnd, sliding)
-        val revealStart = lerp(cx - half + inset, cx, sliding)
-        val revealEnd = lerp(cx + half - inset, cx, sliding)
-        val fixedEdge = x0 + (left - x0) * nearStart + (right - x0) * nearEnd
-        val edge = lerp(fixedEdge, cx, sliding)
-
-        displayedActiveColor = ColorUtils.blendARGB(previousActiveColor, activeColor, activeColorFade.value)
-        val insideColor = ColorUtils.blendARGB(inactiveColor, displayedActiveColor, insideColorFade.value)
-        insideActiveColorValue = ColorUtils.blendARGB(displayedActiveColor, insideColor, insideFade.value)
-        insideInactiveColorValue = ColorUtils.blendARGB(inactiveColor, insideColor, insideFade.value)
         activePath.rewind()
         inactivePath.rewind()
-        insideActivePath.rewind()
-        insideInactivePath.rewind()
         val outer = trackHeight / 2f
-        piece(activePath, inactivePath, left, minOf(maskStart, right), edge, cy, outer, trackInnerRadius)
-        piece(insideActivePath, insideInactivePath, max(revealStart, left), minOf(revealEnd, right), edge, cy, 0f, 0f)
-        piece(activePath, inactivePath, max(maskEnd, left), right, edge, cy, trackInnerRadius, outer)
+        piece(left, minOf(cx - half - cut, right), edge, cy, outer, 0f)
+        piece(max(cx - half + border, left), minOf(cx + half - border, right), edge, cy, 0f, 0f)
+        piece(max(cx + half + cut, left), right, edge, cy, 0f, outer)
 
         shapeRect.set(cx - half, cy - h / 2f, cx + half, cy + h / 2f)
         ringPath.rewind()
@@ -384,30 +212,24 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             holePath.addSquircle(shapeRect, radius - border)
             ringPath.addPath(holePath)
         }
-        ringPaint.color = displayedActiveColor
-        holePaint.color = withAlpha(displayedActiveColor, pressedFillAlpha)
 
-        val lineW = lineWidth + (lineWidthPressed - lineWidth) * p
-        val lineH = lineHeight + (h - 2f * linePressedInset - lineHeight) * p
-        val lineColor = ColorUtils.blendARGB(lineIdleColor, displayedActiveColor, p * lineColorFade.value)
+        val lineW = lineWidth * (1f - p)
         linePaint.strokeWidth = lineW
-        linePaint.color = withAlpha(lineColor, lineFade.value * lerp(1f, linePressedFade.value, p))
+        linePaint.color = ColorUtils.setAlphaComponent(ColorUtils.blendARGB(lineColor, activeColor, p), ((1f - p) * 255).toInt())
         drawLine = lineW > MIN_LINE_WIDTH && linePaint.alpha > 0
         lineX = cx
-        lineHalf = max(0f, (lineH - lineW) / 2f)
+        lineHalf = max(0f, (lineHeight + (h - lineHeight) * p - lineW) / 2f)
     }
-
-    private fun lerp(from: Float, to: Float, fraction: Float) = from + (to - from) * fraction
 
     private fun proximity(distance: Float, falloff: Float): Float {
         val t = 1f - (distance / falloff).coerceIn(0f, 1f)
         return t * t
     }
 
-    private fun piece(active: Path, inactive: Path, left: Float, right: Float, edge: Float, cy: Float, leftRadius: Float, rightRadius: Float) {
+    private fun piece(left: Float, right: Float, edge: Float, cy: Float, leftRadius: Float, rightRadius: Float) {
         if (right <= left) return
-        if (edge > left) addSegment(active, left, minOf(edge, right), cy, leftRadius, if (edge >= right) rightRadius else 0f)
-        if (edge < right) addSegment(inactive, max(edge, left), right, cy, if (edge <= left) leftRadius else 0f, rightRadius)
+        if (edge > left) addSegment(activePath, left, minOf(edge, right), cy, leftRadius, if (edge >= right) rightRadius else 0f)
+        if (edge < right) addSegment(inactivePath, max(edge, left), right, cy, if (edge <= left) leftRadius else 0f, rightRadius)
     }
 
     private fun addSegment(path: Path, left: Float, right: Float, cy: Float, leftRadius: Float, rightRadius: Float) {
@@ -423,20 +245,11 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         path.addRoundRect(segmentRect, radii, Path.Direction.CW)
     }
 
-    private fun withAlpha(color: Int, alpha: Float) =
-        ColorUtils.setAlphaComponent(color, (Color.alpha(color) * alpha.coerceIn(0f, 1f)).toInt())
-
     override fun onDraw(canvas: Canvas) {
         if (shapesDirty) layoutShapes()
-        trackPaint.color = displayedActiveColor
-        canvas.drawPath(activePath, trackPaint)
-        trackPaint.color = inactiveColor
-        canvas.drawPath(inactivePath, trackPaint)
-        trackPaint.color = insideActiveColorValue
-        canvas.drawPath(insideActivePath, trackPaint)
-        trackPaint.color = insideInactiveColorValue
-        canvas.drawPath(insideInactivePath, trackPaint)
-        if (drawHole && holePaint.alpha > 0) canvas.drawPath(holePath, holePaint)
+        canvas.drawPath(activePath, activePaint)
+        canvas.drawPath(inactivePath, inactivePaint)
+        if (drawHole) canvas.drawPath(holePath, holePaint)
         canvas.drawPath(ringPath, ringPaint)
         if (drawLine) {
             val cy = height / 2f
@@ -453,14 +266,11 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
                 downX = event.x
                 downY = event.y
                 val x = valueX()
-                if (abs(downX - x) <= max(capsuleWidth / 2f, thumbTouchHalf)) {
-                    state = DRAGGING
-                    valueSpring.cancel()
+                state = if (abs(downX - x) <= max(capsuleWidth / 2f, thumbTouchHalf)) DRAGGING else PENDING
+                valueSpring.cancel()
+                if (state == DRAGGING) {
                     grabOffset = x - downX
                     startDrag(downX, event.eventTime)
-                } else {
-                    state = PENDING
-                    valueSpring.cancel()
                 }
             }
             MotionEvent.ACTION_MOVE -> {
@@ -473,9 +283,9 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
                         val dy = abs(event.getY(index) - downY)
                         if (dy > touchSlop && dy >= dx) {
                             state = IDLE
-                        } else if (dx > touchSlop * slopMultiplier && dx > dy) {
+                        } else if (dx > touchSlop && dx > dy) {
                             state = DRAGGING
-                            grabOffset = if (jumpOnTrackDrag) 0f else valueX() - x
+                            grabOffset = 0f
                             startDrag(x, event.eventTime)
                             drag(x, event.eventTime)
                         }
@@ -497,7 +307,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
                 }
             }
             MotionEvent.ACTION_UP -> {
-                if (state == PENDING && tapToJump) {
+                if (state == PENDING) {
                     performClick()
                     animateTo(valueAt(event.x))
                 } else if (state == DRAGGING) {
@@ -520,7 +330,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         lastMoveX = x
         lastMoveTime = time
         speed = 0f
-        lastHumValue = value
         lastHumStep = humStepOf(value)
         animatePress(1f)
         onPressedChanged?.invoke(true)
@@ -546,15 +355,14 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     }
 
     private fun animatePress(target: Float) {
-        if (!animatorsEnabled) {
-            pressSpring.cancel()
-            pressProgress.value = target
-            press = target
-            invalidateShapes()
+        if (animatorsEnabled) {
+            pressSpring.animateToFinalPosition(target)
             return
         }
-        pressSpring.spring.setStiffness(pressStiffness).setDampingRatio(pressDamping)
-        pressSpring.animateToFinalPosition(target)
+        pressSpring.cancel()
+        pressProgress.value = target
+        press = target
+        invalidateShapes()
     }
 
     private fun animateTo(target: Float) {
@@ -566,7 +374,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             updateExclusionRects()
             return
         }
-        valueSpring.spring.setStiffness(tapStiffness)
         valueSpring.setStartValue((value - range.start) / span)
         valueSpring.animateToFinalPosition((target - range.start) / span)
     }
@@ -589,41 +396,32 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
 
     private fun feedback(old: Float, new: Float) {
         val now = SystemClock.uptimeMillis()
-        val enteredEnd = endClicks &&
-            (new == range.start && old != range.start || new == range.endInclusive && old != range.endInclusive)
-        val enteredDetent = detentClick && new == detent
-        if (enteredEnd || enteredDetent) {
+        val enteredEnd = new == range.start && old != range.start || new == range.endInclusive && old != range.endInclusive
+        if (enteredEnd || new == detent) {
             if (now - lastClickTime >= clickIntervalMs) {
                 lastClickTime = now
                 click.perform()
             }
-            lastHumValue = new
             lastHumStep = humStepOf(new)
             return
         }
-        if (hum && new != detent && now - lastClickTime >= humQuietAfterClickMs) humTick(new, now)
+        if (now - lastClickTime >= HUM_QUIET_AFTER_CLICK_MS) humTick(new, now)
     }
 
-    private fun humStepOf(value: Float) = Math.floorDiv((value * 100).roundToInt(), humStepPercent.coerceAtLeast(1))
+    private fun humStepOf(value: Float) = (value * 100).roundToInt()
 
     private fun humTick(new: Float, now: Long) {
         val vibrator = vibrator
-        val fallbackAvailable = Build.VERSION.SDK_INT >= 34
-        val usePrimitive = humPrimitiveSupported && vibrator != null && !(humForceFallback && fallbackAvailable)
-        if (!usePrimitive && !fallbackAvailable) return
-        if (now - lastHumTime < humIntervalMs) return
-        if (humPerStep) {
-            val step = humStepOf(new)
-            if (step == lastHumStep) return
-            lastHumStep = step
-        } else {
-            if (abs(new - lastHumValue) < humStep * span) return
-            lastHumValue = new
-        }
-        lastHumTime = now
         val attributes = touchAttributes
-        if (Build.VERSION.SDK_INT >= 33 && usePrimitive && attributes != null) {
-            val t = (speed / humFullSpeed).coerceIn(0f, 1f).pow(humSpeedCurve)
+        val usePrimitive = humPrimitiveSupported && vibrator != null && attributes != null
+        if (!usePrimitive && Build.VERSION.SDK_INT < 34) return
+        if (now - lastHumTime < HUM_INTERVAL_MS) return
+        val step = humStepOf(new)
+        if (step == lastHumStep) return
+        lastHumStep = step
+        lastHumTime = now
+        if (Build.VERSION.SDK_INT >= 33 && usePrimitive) {
+            val t = (speed / humFullSpeed).coerceIn(0f, 1f)
             vibrator.vibrate(humEffect((t * (HUM_BUCKETS - 1)).roundToInt()), attributes)
         } else if (Build.VERSION.SDK_INT >= 34) {
             performHapticFeedback(HapticFeedbackConstants.SEGMENT_FREQUENT_TICK)
@@ -633,7 +431,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     @RequiresApi(33)
     private fun humEffect(bucket: Int): VibrationEffect {
         humEffects[bucket]?.let { return it as VibrationEffect }
-        val amplitude = (humMinAmplitude + (humMaxAmplitude - humMinAmplitude) * bucket / (HUM_BUCKETS - 1)).coerceIn(0f, 1f)
+        val amplitude = HUM_MIN_AMPLITUDE + (HUM_MAX_AMPLITUDE - HUM_MIN_AMPLITUDE) * bucket / (HUM_BUCKETS - 1)
         val effect = VibrationEffect.startComposition()
             .addPrimitive(VibrationEffect.Composition.PRIMITIVE_LOW_TICK, amplitude)
             .compose()
@@ -708,48 +506,21 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         shapesDirty = true
     }
 
-    private inner class Fade(on: Boolean) {
-        var value = if (on) 1f else 0f
-            private set
-        private val holder = FloatValueHolder(value)
-        private val spring = SpringAnimation(holder).apply {
-            setMinimumVisibleChange(0.002f)
-            spring = SpringForce(value).setStiffness(FADE_STIFFNESS).setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
-            addUpdateListener { _, progress, _ ->
-                value = progress
-                invalidateShapes()
-            }
-        }
-
-        fun animateTo(on: Boolean) {
-            val target = if (on) 1f else 0f
-            if (isAttachedToWindow && animatorsEnabled) {
-                spring.animateToFinalPosition(target)
-            } else {
-                snap(target)
-            }
-        }
-
-        fun replay() {
-            snap(0f)
-            animateTo(true)
-        }
-
-        fun snap(target: Float) {
-            spring.cancel()
-            holder.value = target
-            value = target
-            invalidateShapes()
-        }
-    }
-
     private companion object {
         const val IDLE = 0
         const val PENDING = 1
         const val DRAGGING = 2
         const val STEP = 0.05f
-        const val HUM_BUCKETS = 8
-        const val FADE_STIFFNESS = 500f
+        const val DETENT_BAND = 0.02f
+        const val PRESSED_SCALE = 1.5f
+        const val HOLE_ALPHA = 38
         const val MIN_LINE_WIDTH = 0.01f
+        const val SPRING_STIFFNESS = 600f
+        const val PRESS_DAMPING = 0.6f
+        const val HUM_BUCKETS = 8
+        const val HUM_INTERVAL_MS = 50L
+        const val HUM_QUIET_AFTER_CLICK_MS = 80L
+        const val HUM_MIN_AMPLITUDE = 0.1f
+        const val HUM_MAX_AMPLITUDE = 0.5f
     }
 }
