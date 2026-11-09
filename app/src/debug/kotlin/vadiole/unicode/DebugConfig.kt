@@ -50,6 +50,7 @@ class DebugConfig : ContentProvider() {
             when (val value = extras.get(key)) {
                 is Boolean -> editor.putBoolean(name, value)
                 is Int -> editor.putInt(name, value)
+                is Float -> editor.putFloat(name, value)
                 is String -> editor.putString(name, value)
             }
         }
@@ -98,6 +99,7 @@ class DebugConfig : ContentProvider() {
                 val flag = when (getter?.returnType) {
                     Boolean::class.javaPrimitiveType -> "--ez"
                     Int::class.javaPrimitiveType -> "--ei"
+                    Float::class.javaPrimitiveType -> "--ef"
                     else -> "--es"
                 }
                 name to flag
