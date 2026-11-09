@@ -378,18 +378,25 @@ class UnicodeStorage(private val context: Context) {
             return input.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
         }
 
+        // https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt Prepended_Concatenation_Mark: visible Cf glyphs
+        private val prependedConcatenationMarks = intArrayOf(
+            0x0600, 0x0601, 0x0602, 0x0603, 0x0604, 0x0605, 0x06DD, 0x070F, 0x0890, 0x0891, 0x08E2, 0x110BD, 0x110CD,
+        )
+
         private fun isShown(codePoint: CodePoint, category: String?, acceptGlyph: (String) -> Boolean): Boolean {
-            if (category == "Cc" || category == "Cf" || category == "Zl" || category == "Zp") return true
             val cp = codePoint.value
+            if (cp in prependedConcatenationMarks) return acceptGlyph(codePoint.char)
+            if (category == "Cc" || category == "Cf" || category == "Zl" || category == "Zp") return true
             if (cp in VS_BMP_FIRST..VS_BMP_LAST || cp in VS_SUPP_FIRST..VS_SUPP_LAST) return true
             return acceptGlyph(codePoint.char)
         }
 
         private val queryGetAbbreviations = "SELECT code_point, c.name AS char_name " +
                 "FROM char c " +
-                "WHERE category IN ('Cc', 'Cf', 'Zl', 'Zp') " +
+                "WHERE (category IN ('Cc', 'Cf', 'Zl', 'Zp') " +
                 "OR (code_point BETWEEN $VS_BMP_FIRST AND $VS_BMP_LAST) " +
-                "OR (code_point BETWEEN $VS_SUPP_FIRST AND $VS_SUPP_LAST)"
+                "OR (code_point BETWEEN $VS_SUPP_FIRST AND $VS_SUPP_LAST)) " +
+                "AND code_point NOT IN (${prependedConcatenationMarks.joinToString()})"
 
         private val ccOverrides: Map<Int, String> = mapOf(
             0x00 to "NUL", 0x01 to "SOH", 0x02 to "STX", 0x03 to "ETX",
