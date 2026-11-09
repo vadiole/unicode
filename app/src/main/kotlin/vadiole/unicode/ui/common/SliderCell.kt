@@ -23,6 +23,7 @@ class SliderCell(
         background = null
         isClickable = false
         isFocusable = false
+        valueMaxScale = LABEL_PRESSED_SCALE
     }
     private val labelColor = context.getColor(R.color.windowTextSecondary)
     private val labelPressedColor = context.getColor(R.color.primaryControl)
@@ -73,7 +74,7 @@ class SliderCell(
 
     private fun applyLabelProgress(progress: Float) {
         label.valueScale = 1f + (LABEL_PRESSED_SCALE - 1f) * progress
-        label.valueColor = ColorUtils.blendARGB(labelColor, labelPressedColor, progress.coerceIn(0f, 1f))
+        label.setValueColor(ColorUtils.blendARGB(labelColor, labelPressedColor, progress.coerceIn(0f, 1f)))
     }
 
     override fun onDetachedFromWindow() {

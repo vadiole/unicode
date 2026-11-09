@@ -11,6 +11,7 @@ import android.text.TextPaint
 import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import kotlin.math.ceil
 import vadiole.unicode.R
 
 open class ActionCell(
@@ -41,17 +42,16 @@ open class ActionCell(
             invalidate()
         }
 
-    var valueColor: Int
-        get() = valuePaint.color
-        set(value) {
-            valuePaint.color = value
-            invalidate()
-        }
-
     var valueScale = 1f
         set(value) {
             field = value
             invalidate()
+        }
+
+    var valueMaxScale = 1f
+        set(value) {
+            field = value
+            requestLayout()
         }
 
     init {
@@ -90,6 +90,11 @@ open class ActionCell(
         updateShapePath()
     }
 
+    fun setValueColor(color: Int) {
+        valuePaint.color = color
+        invalidate()
+    }
+
     fun setIcon(@DrawableRes iconId: Int) {
         setCompoundDrawablesWithIntrinsicBounds(0, 0, iconId, 0)
         iconWidth = context.getDrawable(iconId)?.intrinsicWidth ?: 0
@@ -101,7 +106,7 @@ open class ActionCell(
     }
 
     override fun getCompoundPaddingRight(): Int {
-        val extra = if (valueWidth > 0) valueWidth + valueGap + if (iconWidth > 0) iconGap else 0 else 0
+        val extra = if (valueWidth > 0) ceil(valueWidth * valueMaxScale).toInt() + valueGap + if (iconWidth > 0) iconGap else 0 else 0
         return super.getCompoundPaddingRight() + extra
     }
 

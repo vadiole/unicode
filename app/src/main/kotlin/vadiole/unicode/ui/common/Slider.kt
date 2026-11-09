@@ -66,7 +66,11 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val lineColor = context.getColor(R.color.layer0)
     private val activePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = activeColor }
     private val inactivePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = inactiveColor }
-    private val ringPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = activeColor }
+    private val focusPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.STROKE
+        strokeWidth = 2f.dp(context)
+        color = ColorUtils.setAlphaComponent(activeColor, FOCUS_ALPHA)
+    }
     private val holePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = ColorUtils.setAlphaComponent(activeColor, HOLE_ALPHA) }
     private val linePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
@@ -76,6 +80,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val inactivePath = Path()
     private val ringPath = Path().apply { fillType = Path.FillType.EVEN_ODD }
     private val holePath = Path()
+    private val focusPath = Path()
+    private val focusOffset = 3f.dp(context)
     private val shapeRect = RectF()
     private val segmentRect = RectF()
     private val radii = FloatArray(8)
@@ -133,7 +139,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         spring = SpringForce(0f).setStiffness(SPRING_STIFFNESS).setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
         addUpdateListener { _, fraction, _ -> applyUserValue(range.start + fraction * span, haptics = false) }
         addEndListener { _, _, _, _ ->
-            if (state != DRAGGING) {
+            if (state == IDLE) {
                 setInteracting(false)
                 updateExclusionRects()
             }
@@ -203,6 +209,12 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         piece(max(cx + half + cut, left), right, edge, cy, 0f, outer)
 
         shapeRect.set(cx - half, cy - h / 2f, cx + half, cy + h / 2f)
+        focusPath.rewind()
+        if (isFocused) {
+            shapeRect.inset(-focusOffset, -focusOffset)
+            focusPath.addSquircle(shapeRect, radius + focusOffset)
+            shapeRect.inset(focusOffset, focusOffset)
+        }
         ringPath.rewind()
         ringPath.addSquircle(shapeRect, radius)
         holePath.rewind()
@@ -250,7 +262,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         canvas.drawPath(activePath, activePaint)
         canvas.drawPath(inactivePath, inactivePaint)
         if (drawHole) canvas.drawPath(holePath, holePaint)
-        canvas.drawPath(ringPath, ringPaint)
+        canvas.drawPath(ringPath, activePaint)
+        if (isFocused) canvas.drawPath(focusPath, focusPaint)
         if (drawLine) {
             val cy = height / 2f
             canvas.drawLine(lineX, cy - lineHalf, lineX, cy + lineHalf, linePaint)
@@ -283,6 +296,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
                         val dy = abs(event.getY(index) - downY)
                         if (dy > touchSlop && dy >= dx) {
                             state = IDLE
+                            setInteracting(false)
                         } else if (dx > touchSlop && dx > dy) {
                             state = DRAGGING
                             grabOffset = 0f
@@ -308,21 +322,37 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             }
             MotionEvent.ACTION_UP -> {
                 if (state == PENDING) {
+                    state = IDLE
+                    activePointerId = MotionEvent.INVALID_POINTER_ID
                     performClick()
                     animateTo(valueAt(event.x))
-                } else if (state == DRAGGING) {
-                    endDrag()
+                    if (!valueSpring.isRunning) setInteracting(false)
+                } else {
+                    endGesture()
                 }
-                state = IDLE
-                activePointerId = MotionEvent.INVALID_POINTER_ID
             }
-            MotionEvent.ACTION_CANCEL -> {
-                if (state == DRAGGING) endDrag()
-                state = IDLE
-                activePointerId = MotionEvent.INVALID_POINTER_ID
-            }
+            MotionEvent.ACTION_CANCEL -> endGesture()
         }
         return true
+    }
+
+    private fun endGesture() {
+        val dragging = state == DRAGGING
+        state = IDLE
+        activePointerId = MotionEvent.INVALID_POINTER_ID
+        if (dragging) endDrag() else setInteracting(false)
+    }
+
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        if (enabled || state == IDLE && !interacting) return
+        endGesture()
+        valueSpring.cancel()
+    }
+
+    override fun onFocusChanged(gainFocus: Boolean, direction: Int, previouslyFocusedRect: Rect?) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect)
+        invalidateShapes()
     }
 
     private fun startDrag(x: Float, time: Long) {
@@ -497,8 +527,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        if (state == DRAGGING) endDrag()
-        state = IDLE
+        endGesture()
         valueSpring.cancel()
         pressSpring.cancel()
         pressProgress.value = 0f
@@ -514,6 +543,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         const val DETENT_BAND = 0.02f
         const val PRESSED_SCALE = 1.5f
         const val HOLE_ALPHA = 38
+        const val FOCUS_ALPHA = 77
         const val MIN_LINE_WIDTH = 0.01f
         const val SPRING_STIFFNESS = 600f
         const val PRESS_DAMPING = 0.6f
