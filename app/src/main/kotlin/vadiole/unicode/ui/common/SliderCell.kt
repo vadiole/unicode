@@ -3,6 +3,10 @@ package vadiole.unicode.ui.common
 import android.content.Context
 import android.content.res.ColorStateList
 import android.widget.LinearLayout
+import androidx.core.graphics.ColorUtils
+import androidx.dynamicanimation.animation.FloatValueHolder
+import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.roundToInt
 import vadiole.unicode.R
 
@@ -14,18 +18,35 @@ class SliderCell(
     private val formatValue: (Float) -> String = { "${(it * 100).roundToInt()}%" },
 ) : LinearLayout(context) {
     val slider = Slider(context, range)
+    var labelPressedScale = 1.15f
+    var labelStiffness = 600f
+    var labelDamping = 0.6f
+    var labelColorChange = true
+
     private val label = ActionCell(context, name).apply {
         background = null
         isClickable = false
         isFocusable = false
+    }
+    private val labelColor = context.getColor(R.color.windowTextSecondary)
+    private val labelPressedColor = context.getColor(R.color.primaryControl)
+    private val labelProgress = FloatValueHolder(0f)
+    private val labelSpring = SpringAnimation(labelProgress).apply {
+        setMinimumVisibleChange(0.002f)
+        spring = SpringForce(0f)
+        addUpdateListener { _, progress, _ -> applyLabelProgress(progress) }
     }
 
     init {
         orientation = VERTICAL
         setCorners(top = true, bottom = true)
         addView(label, linearParams(matchParent, wrapContent))
-        addView(slider, linearParams(matchParent, 48.dp(context), marginLeft = 16.dp(context), marginRight = 16.dp(context), marginBottom = 8.dp(context)))
+        val padding = 16.dp(context)
+        slider.setPadding(padding, 0, padding, 0)
+        addView(slider, linearParams(matchParent, 48.dp(context), marginBottom = 8.dp(context)))
         slider.contentDescription = name
+        slider.formatValue = formatValue
+        slider.onPressedChanged = ::animateLabel
         slider.value = initialValue
         setValue(initialValue)
     }
@@ -41,5 +62,33 @@ class SliderCell(
 
     fun setValue(value: Float) {
         label.value = formatValue(value)
+    }
+
+    private fun animateLabel(pressed: Boolean) {
+        val target = if (pressed) 1f else 0f
+        if (!animatorsEnabled) {
+            labelSpring.cancel()
+            labelProgress.value = target
+            applyLabelProgress(target)
+            return
+        }
+        labelSpring.spring.setStiffness(labelStiffness).setDampingRatio(labelDamping)
+        labelSpring.animateToFinalPosition(target)
+    }
+
+    private fun applyLabelProgress(progress: Float) {
+        label.valueScale = 1f + (labelPressedScale - 1f) * progress
+        label.valueColor = if (labelColorChange) {
+            ColorUtils.blendARGB(labelColor, labelPressedColor, progress.coerceIn(0f, 1f))
+        } else {
+            labelColor
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        labelSpring.cancel()
+        labelProgress.value = 0f
+        applyLabelProgress(0f)
     }
 }

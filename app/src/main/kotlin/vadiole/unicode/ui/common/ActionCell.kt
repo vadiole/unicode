@@ -33,8 +33,24 @@ open class ActionCell(
     var value: String? = null
         set(value) {
             field = value
-            valueWidth = value?.let { valuePaint.measureText(it).toInt() } ?: 0
-            requestLayout()
+            val width = value?.let { valuePaint.measureText(it).toInt() } ?: 0
+            if (width != valueWidth) {
+                valueWidth = width
+                requestLayout()
+            }
+            invalidate()
+        }
+
+    var valueColor: Int
+        get() = valuePaint.color
+        set(value) {
+            valuePaint.color = value
+            invalidate()
+        }
+
+    var valueScale = 1f
+        set(value) {
+            field = value
             invalidate()
         }
 
@@ -99,7 +115,14 @@ open class ActionCell(
         val value = value ?: return
         val right = width - paddingRight - if (iconWidth > 0) iconWidth + iconGap else 0
         val y = (height - valuePaint.descent() - valuePaint.ascent()) / 2f
+        if (valueScale == 1f) {
+            canvas.drawText(value, (right - valueWidth).toFloat(), y, valuePaint)
+            return
+        }
+        val save = canvas.save()
+        canvas.scale(valueScale, valueScale, right.toFloat(), height / 2f)
         canvas.drawText(value, (right - valueWidth).toFloat(), y, valuePaint)
+        canvas.restoreToCount(save)
     }
 
     private fun updateShapePath() {
