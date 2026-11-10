@@ -1,8 +1,9 @@
 #!/bin/sh
 # Usage: build.sh
-# Writes app/src/main/assets/u18.bin and res/raw-<locale>/annotations.txt from the files in input/. A missing input is
+# Writes app/src/main/assets/u18.bin, assets/block_icons.txt and res/raw-<locale>/annotations.txt from the files in input/. A missing input is
 # downloaded from the versioned URLs below and checked for its end marker. names.txt and unihan.txt are filtered extracts
-# of NamesList.txt and Unihan.zip. input/annotations/ holds the CLDR file of every res/values-<locale> and is not tracked.
+# of NamesList.txt and Unihan.zip. block_icons.txt is hand-written: a block start, then its icon characters, best first, or a
+# [label] for a block with nothing visible; the run fails on a character that is unassigned, invisible or outside its block. input/annotations/ holds the CLDR file of every res/values-<locale> and is not tracked.
 set -e
 ucd=https://www.unicode.org/Public/18.0.0/ucd
 cldr=https://raw.githubusercontent.com/unicode-org/cldr/release-49/common
@@ -28,6 +29,10 @@ plain block.txt "$ucd/Blocks.txt" '# EOF'
 plain version.txt "$ucd/DerivedAge.txt" '# EOF'
 plain aliases.txt "$ucd/NameAliases.txt" '# EOF'
 plain annotations.xml "$cldr/annotations/en.xml" '</ldml>'
+if [ ! -f "$root/input/ignorable.txt" ]; then
+    fetch DerivedCoreProperties.txt "$ucd/DerivedCoreProperties.txt" '# EOF'
+    grep '; Default_Ignorable_Code_Point' "$tmp/DerivedCoreProperties.txt" > "$root/input/ignorable.txt"
+fi
 if [ ! -f "$root/input/names.txt" ]; then
     fetch NamesList.txt "$ucd/NamesList.txt" '^10FFFF'
     awk '/^@@\t/ || /^@\t\t/ || /^\t= / { print; next } /^[0-9A-F]+\t/ { print substr($0, 1, index($0, "\t") - 1) }' "$tmp/NamesList.txt" > "$root/input/names.txt"
@@ -63,3 +68,5 @@ done
 
 kotlinc "$root/generator.kt" "$root/../unicode/data/UnicodeData.kt" "$root/../unicode/data/Annotations.kt" "$root/../unicode/search/SearchTokens.kt" -include-runtime -d "$tmp/generator.jar" 2>/dev/null
 java -jar "$tmp/generator.jar"
+kotlinc "$root/icons.kt" -include-runtime -d "$tmp/icons.jar" 2>/dev/null
+java -cp "$tmp/icons.jar" BlockIconsGenerator

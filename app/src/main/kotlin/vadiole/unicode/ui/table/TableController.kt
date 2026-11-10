@@ -6,9 +6,11 @@ import android.util.Log
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 import vadiole.unicode.data.Block
+import vadiole.unicode.data.BlockIconSource
 import vadiole.unicode.data.BlockList
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
+import vadiole.unicode.data.UnicodeData
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
 import vadiole.unicode.ui.extension.binarySearch
@@ -84,41 +86,62 @@ class TableController(
         val filteredBlocks = allBlocks.filterMaybe { block ->
             getPosition(block) != 0 || block.start == 0
         }.toTypedArray()
-        val candidates = unicodeStorage.getBlockIcons()
-        val icons = IntArray(filteredBlocks.size * BlockList.ICON_SIZE)
+        val sources = unicodeStorage.getBlockIcons()
+        val icons = IntArray(filteredBlocks.size * BlockList.ICON_SLOTS)
+        val iconFlags = ByteArray(icons.size)
+        val types = ByteArray(filteredBlocks.size)
+        val labels = arrayOfNulls<String>(filteredBlocks.size)
         val showAll = userConfig.showUnsupportedChars
-        var key = 0
+        val data = unicodeStorage.data()
         filteredBlocks.forEachIndexed { index, block ->
-            while (key < candidates.size() && candidates.keyAt(key) < block.start) key++
-            val curated = if (key < candidates.size() && candidates.keyAt(key) <= block.end) candidates.valueAt(key) else null
-            fillBlockIcons(block, curated, icons, index * BlockList.ICON_SIZE, showAll)
+            val source = sources.get(block.start)
+            types[index] = (source?.type ?: BlockList.TYPE_SYMBOL).toByte()
+            labels[index] = source?.label
+            fillBlockIcons(block, source, data, icons, iconFlags, index * BlockList.ICON_SLOTS, showAll)
         }
-        val scale = ScrollScale.create(tableChars.storage, filteredBlocks, unicodeStorage.data())
+        val scale = ScrollScale.create(tableChars.storage, filteredBlocks, data)
         synchronized(blocksLock) {
             if (generation != blocksGeneration) return@worker
             lastBlock = null
             lastBlockIndex = -1
-            blockList = BlockList(filteredBlocks, icons)
+            blockList = BlockList(filteredBlocks, icons, iconFlags, types, labels)
             scrollScale = scale
         }
     }
 
-    private fun fillBlockIcons(block: Block, curated: IntArray?, out: IntArray, offset: Int, showAll: Boolean) {
+    private fun fillBlockIcons(block: Block, source: BlockIconSource?, data: UnicodeData, out: IntArray, outFlags: ByteArray, offset: Int, showAll: Boolean) {
         var size = 0
-        if (curated != null) {
-            for (codePoint in curated) {
-                if (size == BlockList.ICON_SIZE) return
-                if (isIconGlyph(codePoint) && (showAll || hasIconGlyph(codePoint))) {
-                    out[offset + size++] = codePoint
+        if (source != null) {
+            val codePoints = source.codePoints
+            val rendered = BooleanArray(codePoints.size)
+            for (index in codePoints.indices) {
+                val flags = source.flags[index].toInt()
+                rendered[index] = hasIconGlyph(codePoints[index], flags and BlockList.FLAG_MARK != 0)
+                if (rendered[index] && size < BlockList.ICON_SLOTS) {
+                    out[offset + size] = codePoints[index]
+                    outFlags[offset + size++] = flags.toByte()
                 }
             }
+            if (showAll) {
+                for (index in codePoints.indices) {
+                    if (size == BlockList.ICON_SLOTS) break
+                    if (rendered[index]) continue
+                    out[offset + size] = codePoints[index]
+                    outFlags[offset + size++] = source.flags[index]
+                }
+            }
+            if (source.type == BlockList.TYPE_NOTHING) return
         }
+        val markFlag = if (source?.type == BlockList.TYPE_MARKS) BlockList.FLAG_MARK.toByte() else 0
         val chars = tableChars.storage
         var index = chars.binarySearch(block.start).let { if (it < 0) -it - 1 else it }
-        while (size < BlockList.ICON_SIZE && index < chars.size && chars[index] <= block.end) {
+        while (size < BlockList.ICON_SLOTS && index < chars.size && chars[index] <= block.end) {
             val codePoint = chars[index++]
-            if (isIconGlyph(codePoint) && !out.contains(codePoint, offset, offset + size)) {
-                out[offset + size++] = codePoint
+            val dataIndex = data.indexOf(codePoint)
+            if (dataIndex < 0 || data.kindAt(dataIndex) == UnicodeData.KIND_ABBREVIATION) continue
+            if (!out.contains(codePoint, offset, offset + size)) {
+                out[offset + size] = codePoint
+                outFlags[offset + size++] = markFlag
             }
         }
     }
@@ -128,16 +151,9 @@ class TableController(
         return false
     }
 
-    private fun hasIconGlyph(codePoint: Int): Boolean {
+    private fun hasIconGlyph(codePoint: Int, mark: Boolean): Boolean {
         val char = CodePoint(codePoint).char
-        return glyphPaint.hasGlyph(if (BlockList.isMark(codePoint)) BlockList.MARK_BASE + char else char)
-    }
-
-    private fun isIconGlyph(codePoint: Int) = when (Character.getType(codePoint).toByte()) {
-        Character.UNASSIGNED, Character.CONTROL, Character.FORMAT, Character.SPACE_SEPARATOR,
-        Character.LINE_SEPARATOR, Character.PARAGRAPH_SEPARATOR, Character.PRIVATE_USE, Character.SURROGATE -> false
-
-        else -> true
+        return glyphPaint.hasGlyph(char) || (mark && glyphPaint.hasGlyph(BlockList.MARK_BASE + char))
     }
 
     fun getBlock(position: Int): Block? {

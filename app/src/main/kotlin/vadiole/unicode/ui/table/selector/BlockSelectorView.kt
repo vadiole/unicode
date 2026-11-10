@@ -25,7 +25,7 @@ class BlockSelectorView(
     }
 
     private val blocks = blockList.blocks
-    private val icons = blockList.icons
+    private val iconList = blockList
     private val floatingInset = BlockSelectorGeometry.FLOATING_INSET_DP.dp(context)
     private val topMargin = (
         BlockSelectorGeometry.ARROW_HEIGHT_DP.dp(context) -
@@ -43,7 +43,7 @@ class BlockSelectorView(
         override fun onBindViewHolder(holder: Cell, position: Int) {
             val block = blocks[position]
             val cell = holder.itemView as BlockSelectorCell
-            cell.bind(block.name, icons, position * BlockList.ICON_SIZE)
+            cell.bind(block.name, iconList, position)
             cell.setOnClickListener {
                 delegate.onBlockSelected(block)
             }

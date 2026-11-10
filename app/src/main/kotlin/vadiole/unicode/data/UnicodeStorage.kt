@@ -28,7 +28,7 @@ class UnicodeStorage(private val context: Context) {
     @Volatile
     private var loadedData: UnicodeData? = null
     private var loadedMeanings: TaggedTexts? = null
-    private var blockIcons: SparseArray<IntArray>? = null
+    private var blockIcons: SparseArray<BlockIconSource>? = null
     val cacheDir: File get() = File(context.filesDir, cacheDirName)
     val buildKey: String
         get() = if (BuildConfig.DEBUG) context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toString() else BuildConfig.VERSION_CODE.toString()
@@ -192,21 +192,28 @@ class UnicodeStorage(private val context: Context) {
         Array(data.blockStart.size) { Block(it, data.blockStart[it], data.blockEnd[it], data.blockNames[it]) }
     }
 
-    suspend fun getBlockIcons(): SparseArray<IntArray> = withContext(dispatcher) {
+    suspend fun getBlockIcons(): SparseArray<BlockIconSource> = withContext(dispatcher) {
         blockIcons?.let { return@withContext it }
-        val result = SparseArray<IntArray>(400)
+        val result = SparseArray<BlockIconSource>(400)
         context.assets.open(blockIconsName).bufferedReader().useLines { lines ->
             lines.forEach { line ->
-                val tokens = line.trim().split(whitespace)
-                val start = tokens[0].toIntOrNull(16) ?: return@forEach
-                val icons = IntArray(tokens.size - 1)
-                var size = 0
-                for (index in 1 until tokens.size) {
-                    val token = tokens[index]
-                    val codePoint = token.codePointAt(0)
-                    if (token.length == Character.charCount(codePoint)) icons[size++] = codePoint
+                val tokens = line.split(' ')
+                if (tokens.size < 3) return@forEach
+                val type = when (tokens[1]) {
+                    "s" -> BlockList.TYPE_SCRIPT
+                    "k" -> BlockList.TYPE_MARKS
+                    "n" -> BlockList.TYPE_NOTHING
+                    else -> BlockList.TYPE_SYMBOL
                 }
-                if (size > 0) result.append(start, icons.copyOf(size))
+                val codePoints = IntArray(tokens.size - 3)
+                val flags = ByteArray(codePoints.size)
+                for (index in codePoints.indices) {
+                    val token = tokens[index + 3]
+                    val mark = token.endsWith('m')
+                    codePoints[index] = (if (mark) token.dropLast(1) else token).toInt(16)
+                    flags[index] = if (mark) BlockList.FLAG_MARK.toByte() else 0
+                }
+                result.append(tokens[0].toInt(16), BlockIconSource(type, tokens[2].takeIf { it != "-" }, codePoints, flags))
             }
         }
         blockIcons = result
@@ -266,6 +273,5 @@ class UnicodeStorage(private val context: Context) {
         private const val blockIconsName = "block_icons.txt"
         private const val GLYPH_SAMPLES = 16
         private const val GLYPH_UNANIMOUS_SAMPLES = 256
-        private val whitespace = Regex("\\s+")
     }
 }

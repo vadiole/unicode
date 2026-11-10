@@ -1,0 +1,350 @@
+types: n nothing visible 5, s script 248, k marks 8, y symbols 86, * set in the source
+fewer than 4 visible characters: FFF0 Specials (2), 11DF0 Bengali Supplement (2), 11FB0 Lisu Supplement (1)
+
+00000 s  Basic Latin                                      L 55% M  0% of    94  A a & @
+00080 s  Latin-1 Supplement                               L 69% M  0% of    94  ß ñ © ¿
+00100 s  Latin Extended-A                                 L100% M  0% of   128  Ł ő č Ş
+00180 s  Latin Extended-B                                 L100% M  0% of   208  ƒ ƛ Ʃ ǂ
+00250 s  IPA Extensions                                   L100% M  0% of    96  ə ʃ ʒ ɛ
+002B0 y  Spacing Modifier Letters                         L 46% M  0% of    80  ʰ ˆ ˥ ˜
+00300 k  Combining Diacritical Marks                      L  0% M100% of   111  ◌́ ◌̈ ◌̊ ◌̃
+00370 s  Greek and Coptic                                 L 95% M  0% of   135  Ω λ π Σ
+00400 s  Cyrillic                                         L 96% M  2% of   256  Ж д Я ё
+00500 s  Cyrillic Supplement                              L100% M  0% of    48  Ԙ Ԑ Ԯ Ԁ
+00530 s  Armenian                                         L 88% M  0% of    94  Ա Ծ Ֆ Ջ
+00590 s  Hebrew                                           L 34% M 58% of    90  א ש ב ל
+00600 s  Arabic                                           L 61% M 20% of   248  ع ب ش ك
+00700 s  Syriac                                           L 44% M 36% of    76  ܐ ܒ ܓ ܫ
+00750 s  Arabic Supplement                                L100% M  0% of    48  ݜ ݢ ݨ ݞ
+00780 s  Thaana                                           L 78% M 22% of    50  ހ ށ ނ ރ
+007C0 s  NKo                                              L 58% M 16% of    62  ߊ ߞ ߡ ߛ
+00800 s  Samaritan                                        L 40% M 34% of    61  ࠀ ࠁ ࠌ ࠔ
+00840 s  Mandaic                                          L 86% M 10% of    29  ࡀ ࡁ ࡌ ࡔ
+00860 s  Syriac Supplement                                L100% M  0% of    11  ࡠ ࡡ ࡢ ࡤ
+00870 s  Arabic Extended-B                                L 75% M 21% of    41  ࢉ ࢊ ࢎ ࡰ
+008A0 s  Arabic Extended-A                                L 44% M 55% of    95  ࢻ ࢼ ࢽ ࢢ
+00900 s  Devanagari                                       L 63% M 26% of   128  ॐ अ क श
+00980 s  Bengali                                          L 57% M 20% of    96  অ ক শ হ
+00A00 s  Gurmukhi                                         L 63% M 22% of    80  ੴ ਅ ਕ ਸ
+00A80 s  Gujarati                                         L 58% M 28% of    91  ૐ અ ક શ
+00B00 s  Oriya                                            L 56% M 24% of    93  ଅ କ ଶ ହ
+00B80 s  Tamil                                            L 51% M 19% of    72  ௐ அ க ழ
+00C00 s  Telugu                                           L 57% M 23% of   101  అ క శ హ
+00C80 s  Kannada                                          L 63% M 25% of    92  ಅ ಕ ಶ ಹ
+00D00 s  Malayalam                                        L 56% M 19% of   118  അ ക ശ ഹ
+00D80 s  Sinhala                                          L 64% M 23% of    91  අ ක ශ හ
+00E00 s  Thai                                             L 65% M 18% of    87  ก ฮ ส อ
+00E80 s  Lao                                              L 67% M 20% of    83  ກ ຂ ສ ອ
+00F00 s  Tibetan                                          L 23% M 36% of   211  ༀ ཀ ཨ ༄
+01000 s  Myanmar                                          L 46% M 36% of   160  က မ ဿ ဝ
+010A0 s  Georgian                                         L 98% M  0% of    88  ა ბ ქ ჯ
+01100 s  Hangul Jamo                                      L100% M  0% of   254  ᄀ ᄂ ᄆ ᄒ
+01200 s  Ethiopic                                         L 91% M  0% of   358  ሀ ለ መ አ
+01380 s  Ethiopic Supplement                              L 61% M  0% of    26  ᎀ ᎈ ᎌ ᎐
+013A0 s  Cherokee                                         L100% M  0% of    92  Ꭰ Ꮳ Ꮬ Ꮿ
+01400 s  Unified Canadian Aboriginal Syllabics            L 99% M  0% of   640  ᐃ ᐅ ᐊ ᐁ
+01680 s  Ogham                                            L 92% M  0% of    28  ᚁ ᚆ ᚋ ᚐ
+016A0 s  Runic                                            L 93% M  0% of    89  ᚠ ᚱ ᛟ ᚦ
+01700 s  Tagalog                                          L 82% M 17% of    23  ᜀ ᜃ ᜋ ᜐ
+01720 s  Hanunoo                                          L 78% M 13% of    23  ᜠ ᜣ ᜫ ᜰ
+01740 s  Buhid                                            L 90% M 10% of    20  ᝀ ᝃ ᝋ ᝐ
+01760 s  Tagbanwa                                         L 88% M 11% of    18  ᝠ ᝣ ᝫ ᝰ
+01780 s  Khmer                                            L 48% M 27% of   112  ក អ ស ខ
+01800 s  Mongolian                                        L 84% M  1% of   153  ᠠ ᠮ ᠰ ᠪ
+018B0 s  Unified Canadian Aboriginal Syllabics Extended   L100% M  0% of    70  ᢰ ᢸ ᣁ ᣊ
+01900 s  Limbu                                            L 45% M 35% of    68  ᤁ ᤔ ᤛ ᤋ
+01950 s  Tai Le                                           L100% M  0% of    35  ᥣ ᥐ ᥛ ᥔ
+01980 s  New Tai Lue                                      L 84% M  0% of    83  ᦀ ᦈ ᦑ ᦚ
+019E0 y  Khmer Symbols                                    L  0% M  0% of    32  ᧠ ᧤ ᧨ ᧬
+01A00 s  Buginese                                         L 76% M 16% of    30  ᨕ ᨀ ᨆ ᨔ
+01A20 s  Tai Tham                                         L 42% M 31% of   127  ᩋ ᨾ ᨶ ᩁ
+01AB0 k  Combining Diacritical Marks Extended             L  0% M100% of    65  ◌᪰ ◌᪱ ◌᪲ ◌᪳
+01B00 s  Balinese                                         L 43% M 24% of   127  ᬓ ᬫ ᬲ ᬢ
+01B80 s  Sundanese                                        L 59% M 25% of    64  ᮃ ᮊ ᮙ ᮞ
+01BC0 s  Batak                                            L 67% M 25% of    56  ᯀ ᯔ ᯘ ᯉ
+01C00 s  Lepcha                                           L 52% M 27% of    74  ᰣ ᰀ ᰕ ᰠ
+01C50 s  Ol Chiki                                         L 75% M  0% of    48  ᱚ ᱛ ᱵ ᱨ
+01C80 s  Cyrillic Extended-C                              L100% M  0% of    11  ᲀ ᲁ ᲂ ᲄ
+01C90 s  Georgian Extended                                L100% M  0% of    46  Ა Ბ Ქ Ჯ
+01CC0 y  Sundanese Supplement                             L  0% M  0% of     8  ᳀ ᳁ ᳂ ᳃
+01CD0 s  Vedic Extensions                                 L 30% M 67% of    43  ᳩ ᳪ ᳬ ᳮ
+01D00 s  Phonetic Extensions                              L100% M  0% of   128  ᴀ ᴥ ᴓ ᴁ
+01D80 s  Phonetic Extensions Supplement                   L100% M  0% of    64  ᶀ ᶃ ᶊ ᶑ
+01DC0 k  Combining Diacritical Marks Supplement           L  0% M100% of    64  ◌᷀ ◌᷄ ◌᷊ ◌ᷓ
+01E00 s  Latin Extended Additional                        L100% M  0% of   256  Ẁ ṁ ỹ ẞ
+01F00 s  Greek Extended                                   L 93% M  0% of   233  ἀ ὦ ᾧ ἔ
+02000 y  General Punctuation                              L  0% M  0% of    71  † ‰ • ‽
+02070 y  Superscripts and Subscripts                      L 41% M  0% of    46  ⁿ ⁰ ₂ ⁺
+020A0 y  Currency Symbols                                 L  0% M  0% of    37  € ₹ ₩ ₪
+020D0 k  Combining Diacritical Marks for Symbols          L  0% M100% of    33  ◌⃗ ◌⃝ ◌⃞ ◌⃠
+02100 y* Letterlike Symbols                               L 57% M  0% of    80  ™ ℵ № ℃
+02150 y  Number Forms                                     L  3% M  0% of    60  ⅓ Ⅻ ⅞ Ⅳ
+02190 y  Arrows                                           L  0% M  0% of   112  → ⇄ ↻ ↯
+02200 y  Mathematical Operators                           L  0% M  0% of   256  ∑ √ ∞ ≈
+02300 y  Miscellaneous Technical                          L  0% M  0% of   256  ⌘ ⌥ ⌫ ⏏
+02400 y  Control Pictures                                 L  0% M  0% of    42  ␛ ␀ ␡ ␣
+02440 y  Optical Character Recognition                    L  0% M  0% of    11  ⑆ ⑇ ⑈ ⑉
+02460 y  Enclosed Alphanumerics                           L  0% M  0% of   160  ① Ⓐ ⑳ ⓩ
+02500 y  Box Drawing                                      L  0% M  0% of   128  ╬ ┼ ╭ ╳
+02580 y  Block Elements                                   L  0% M  0% of    32  ▓ ▒ ░ █
+025A0 y  Geometric Shapes                                 L  0% M  0% of    96  ◆ ▲ ● ■
+02600 y  Miscellaneous Symbols                            L  0% M  0% of   256  ☀ ☯ ♞ ☂
+02700 y  Dingbats                                         L  0% M  0% of   192  ✂ ✈ ✎ ✓
+027C0 y  Miscellaneous Mathematical Symbols-A             L  0% M  0% of    48  ⟂ ⟨ ⟦ ⟃
+027F0 y  Supplemental Arrows-A                            L  0% M  0% of    16  ⟳ ⟲ ⟰ ⟴
+02800 y  Braille Patterns                                 L  0% M  0% of   256  ⠿ ⠃ ⠉ ⠛
+02900 y  Supplemental Arrows-B                            L  0% M  0% of   128  ⤴ ⤵ ⤨ ⤡
+02980 y  Miscellaneous Mathematical Symbols-B             L  0% M  0% of   128  ⦿ ⧉ ⦻ ⧖
+02A00 y  Supplemental Mathematical Operators              L  0% M  0% of   256  ⨁ ⨌ ⩾ ⨝
+02B00 y  Miscellaneous Symbols and Arrows                 L  0% M  0% of   254  ⬢ ⬡ ⮌ ⬅
+02C00 s  Glagolitic                                       L100% M  0% of    96  Ⰰ ⱎ ⱚ Ⰱ
+02C60 s  Latin Extended-C                                 L100% M  0% of    32  Ɑ Ɱ Ⱡ Ɫ
+02C80 s  Coptic                                           L 86% M  2% of   123  ⳨ Ⳅ Ⳉ Ⲫ
+02D00 s  Georgian Supplement                              L100% M  0% of    40  ⴀ ⴁ ⴃ ⴄ
+02D30 s  Tifinagh                                         L 96% M  1% of    59  ⵣ ⴰ ⵎ ⵙ
+02D80 s  Ethiopic Extended                                L100% M  0% of    79  ⶀ ⶉ ⶓ ⶦ
+02DE0 k  Cyrillic Extended-A                              L  0% M100% of    32  ◌ⷠ ◌ⷦ ◌ⷮ ◌ⷵ
+02E00 y  Supplemental Punctuation                         L  1% M  0% of    98  ⸮ ⸘ ⸙ ⸎
+02E80 s* CJK Radicals Supplement                          L  0% M  0% of   115  ⺮ ⺌ ⻌ ⺗
+02F00 s* Kangxi Radicals                                  L  0% M  0% of   214  ⼈ ⼭ ⽇ ⽉
+02FF0 y  Ideographic Description Characters               L  0% M  0% of    16  ⿰ ⿱ ⿴ ⿻
+03000 y  CJK Symbols and Punctuation                      L 14% M  9% of    63  〒 々 〆 「
+03040 s  Hiragana                                         L 95% M  2% of    93  あ の ひ を
+030A0 s  Katakana                                         L 97% M  0% of    96  ア カ ヲ ン
+03100 s  Bopomofo                                         L100% M  0% of    43  ㄅ ㄆ ㄇ ㄈ
+03130 s  Hangul Compatibility Jamo                        L100% M  0% of    93  ㄱ ㄴ ㅎ ㅏ
+03190 y  Kanbun                                           L  0% M  0% of    16  ㆑ ㆒ ㆓ ㆖
+031A0 s  Bopomofo Extended                                L100% M  0% of    32  ㆠ ㆤ ㆨ ㆬ
+031C0 s* CJK Strokes                                      L  0% M  0% of    39  ㇀ ㇆ ㇉ ㇄
+031F0 s  Katakana Phonetic Extensions                     L100% M  0% of    16  ㇰ ㇱ ㇲ ㇳ
+03200 y  Enclosed CJK Letters and Months                  L  0% M  0% of   255  ㊗ ㊙ ㉿ ㋐
+03300 y  CJK Compatibility                                L  0% M  0% of   256  ㍿ ㎏ ㎡ ㌔
+03400 s  CJK Unified Ideographs Extension A               L100% M  0% of  6592  㐀 䶮 㗊 㸚
+04DC0 y  Yijing Hexagram Symbols                          L  0% M  0% of    64  ䷀ ䷁ ䷊ ䷋
+04E00 s  CJK Unified Ideographs                           L100% M  0% of 20992  字 中 日 永
+0A000 s  Yi Syllables                                     L100% M  0% of  1165  ꀀ ꆈ ꌠ ꂵ
+0A490 s* Yi Radicals                                      L  0% M  0% of    55  ꒐ ꒖ ꒝ ꒤
+0A4D0 s  Lisu                                             L 95% M  0% of    48  ꓕ ꓤ ꓶ ꓷ
+0A500 s  Vai                                              L 95% M  0% of   300  ꕉ ꕪ ꕮ ꕢ
+0A640 s  Cyrillic Extended-B                              L 81% M 16% of    96  ꙮ Ꙋ Ꙁ Ꙗ
+0A6A0 s  Bamum                                            L 79% M  2% of    88  ꚠ ꚡ ꛣ ꛛ
+0A700 y  Modifier Tone Letters                            L 28% M  0% of    32  ꜀ ꜂ ꜅ ꜈
+0A720 s  Latin Extended-D                                 L 98% M  0% of   206  Ꝏ Ꜩ Ꝝ ꝸ
+0A800 s  Syloti Nagri                                     L 71% M 20% of    45  ꠀ ꠁ ꠃ ꠅ
+0A830 y  Common Indic Number Forms                        L  0% M  0% of    10  ꠰ ꠳ ꠶ ꠸
+0A840 s  Phags-pa                                         L 92% M  0% of    56  ꡝ ꡀ ꡏ ꡛ
+0A880 s  Saurashtra                                       L 60% M 24% of    82  ꢂ ꢒ ꢪ ꢱ
+0A8E0 s  Devanagari Extended                              L 28% M 59% of    32  ꣽ ꣲ ꣸ ꣼
+0A900 s  Kayah Li                                         L 58% M 16% of    48  ꤢ ꤊ ꤗ ꤎ
+0A930 s  Rejang                                           L 62% M 35% of    37  ꥆ ꤰ ꤸ ꤼ
+0A960 s  Hangul Jamo Extended-A                           L100% M  0% of    29  ꥠ ꥣ ꥧ ꥪ
+0A980 s  Javanese                                         L 52% M 19% of    91  ꦄ ꦏ ꦩ ꦱ
+0A9E0 s  Myanmar Extended-B                               L 64% M  3% of    31  ꧠ ꧢ ꧤ ꧩ
+0AA00 s  Cham                                             L 62% M 20% of    83  ꨀ ꨆ ꨠ ꨧ
+0AA60 s  Myanmar Extended-A                               L 81% M  9% of    32  ꩠ ꩣ ꩦ ꩩ
+0AA80 s  Tai Viet                                         L 84% M 12% of    72  ꪀ ꪇ ꪏ ꪖ
+0AAE0 s  Meetei Mayek Extensions                          L 60% M 30% of    23  ꫡ ꫠ ꫢ ꫣ
+0AB00 s  Ethiopic Extended-A                              L100% M  0% of    32  ꬁ ꬅ ꬋ ꬑ
+0AB30 s  Latin Extended-E                                 L 95% M  0% of    62  ꬰ ꭓ ꭥ ꬷ
+0AB70 s  Cherokee Supplement                              L100% M  0% of    80  ꭰ ꮳ ꮜ ꮿ
+0ABC0 s  Meetei Mayek                                     L 62% M 17% of    56  ꯅ ꯄ ꯕ ꯏ
+0AC00 s  Hangul Syllables                                 L100% M  0% of 11172  한 글 가 힣
+0D7B0 s  Hangul Jamo Extended-B                           L100% M  0% of    72  ힰ ힹ ퟂ ퟏ
+0F900 s  CJK Compatibility Ideographs                     L100% M  0% of   472  﨑 﨎 﨏 﨓
+0FB00 s  Alphabetic Presentation Forms                    L 96% M  1% of    58  ﬁ ﬆ שׁ ﬓ
+0FB50 s  Arabic Presentation Forms-A                      L 90% M  0% of   656  ﷲ ﷼ ﭖ ﮊ
+0FE00 n  Variation Selectors                              L  0% M  0% of     0  
+0FE10 y  Vertical Forms                                   L  0% M  0% of    10  ︙ ︖ ︕ ︐
+0FE20 k  Combining Half Marks                             L  0% M100% of    16  ◌︠ ◌︡ ◌︢ ◌︣
+0FE30 y  CJK Compatibility Forms                          L  0% M  0% of    32  ︵ ﹁ ﹇ ︱
+0FE50 y  Small Form Variants                              L  0% M  0% of    26  ﹫ ﹩ ﹠ ﹪
+0FE70 s  Arabic Presentation Forms-B                      L100% M  0% of   140  ﻻ ﺑ ﻊ ﺵ
+0FF00 s  Halfwidth and Fullwidth Forms                    L 71% M  0% of   224  Ａ ｶ ﾡ ￥
+0FFF0 y  Specials                                         L  0% M  0% of     2  � ￼
+10000 s  Linear B Syllabary                               L100% M  0% of    88  𐀀 𐀋 𐀗 𐀢
+10080 s  Linear B Ideograms                               L100% M  0% of   123  𐂀 𐂏 𐂞 𐂮
+10100 y  Aegean Numbers                                   L  0% M  0% of    57  𐄋 𐄒 𐄙 𐄠
+10140 y  Ancient Greek Numbers                            L  0% M  0% of    79  𐅀 𐅉 𐅓 𐅝
+10190 y  Ancient Symbols                                  L  0% M  0% of    14  𐆐 𐆑 𐆓 𐆕
+101D0 y  Phaistos Disc                                    L  0% M  2% of    46  𐇑 𐇐 𐇵 𐇨
+10280 s  Lycian                                           L100% M  0% of    29  𐊀 𐊆 𐊒 𐊁
+102A0 s  Carian                                           L100% M  0% of    49  𐊠 𐊹 𐊲 𐊫
+102E0 y  Coptic Epact Numbers                             L  0% M  3% of    28  𐋡 𐋤 𐋧 𐋫
+10300 s  Old Italic                                       L 89% M  0% of    39  𐌀 𐌊 𐌉 𐌖
+10330 s  Gothic                                           L 92% M  0% of    27  𐌰 𐌸 𐍈 𐍆
+10350 s  Old Permic                                       L 88% M 11% of    43  𐍬 𐍴 𐍙 𐍣
+10380 s  Ugaritic                                         L 96% M  0% of    31  𐎎 𐎌 𐎛 𐎜
+103A0 s  Old Persian                                      L 88% M  0% of    50  𐎠 𐎥 𐎫 𐎰
+10400 s  Deseret                                          L100% M  0% of    80  𐐒 𐐔 𐐘 𐐙
+10450 s  Shavian                                          L100% M  0% of    48  𐑐 𐑑 𐑒 𐑕
+10480 s  Osmanya                                          L 75% M  0% of    40  𐒖 𐒈 𐒂 𐒇
+104B0 s  Osage                                            L100% M  0% of    72  𐒰 𐒼 𐓀 𐓆
+10500 s  Elbasan                                          L100% M  0% of    40  𐔀 𐔔 𐔍 𐔟
+10530 s  Caucasian Albanian                               L 98% M  0% of    53  𐔱 𐔰 𐔸 𐔿
+10570 s  Vithkuqi                                         L100% M  0% of    70  𐕰 𐖁 𐖂 𐕼
+105C0 s  Todhri                                           L100% M  0% of    52  𐗀 𐗔 𐗗 𐗟
+10600 s  Linear A                                         L100% M  0% of   341  𐘀 𐘪 𐙕 𐙿
+10780 s  Latin Extended-F                                 L100% M  0% of    62  𐞀 𐞈 𐞐 𐞘
+10800 s  Cypriot Syllabary                                L100% M  0% of    55  𐠀 𐠊 𐠔 𐠨
+10840 s  Imperial Aramaic                                 L 70% M  0% of    31  𐡀 𐡁 𐡌 𐡔
+10860 s  Palmyrene                                        L 71% M  0% of    32  𐡠 𐡡 𐡬 𐡵
+10880 s  Nabataean                                        L 77% M  0% of    40  𐢁 𐢃 𐢓 𐢝
+108E0 s  Hatran                                           L 80% M  0% of    26  𐣠 𐣡 𐣬 𐣴
+10900 s  Phoenician                                       L 75% M  0% of    29  𐤀 𐤁 𐤌 𐤔
+10920 s  Lydian                                           L 96% M  0% of    27  𐤠 𐤦 𐤰 𐤬
+10940 s  Sidetic                                          L100% M  0% of    26  𐥀 𐥃 𐥆 𐥉
+10980 s  Meroitic Hieroglyphs                             L100% M  0% of    32  𐦀 𐦖 𐦉 𐦓
+109A0 s* Meroitic Cursive                                 L 28% M  0% of    90  𐦠 𐦲 𐦨 𐦯
+10A00 s  Kharoshthi                                       L 54% M 19% of    68  𐨀 𐨐 𐨨 𐨯
+10A60 s  Old South Arabian                                L 90% M  0% of    32  𐩨 𐩣 𐩦 𐩩
+10A80 s  Old North Arabian                                L 90% M  0% of    32  𐪀 𐪃 𐪇 𐪊
+10AC0 s  Manichaean                                       L 70% M  3% of    51  𐫀 𐫁 𐫖 𐫢
+10B00 s  Avestan                                          L 88% M  0% of    61  𐬀 𐬌 𐬎 𐬊
+10B40 s  Inscriptional Parthian                           L 73% M  0% of    30  𐭀 𐭁 𐭌 𐭔
+10B60 s  Inscriptional Pahlavi                            L 70% M  0% of    27  𐭠 𐭡 𐭱 𐭲
+10B80 s  Psalter Pahlavi                                  L 62% M  0% of    29  𐮀 𐮁 𐮐 𐮑
+10C00 s  Old Turkic                                       L100% M  0% of    73  𐰀 𐰉 𐰒 𐰛
+10C80 s  Old Hungarian                                    L 94% M  0% of   108  𐲀 𐲐 𐲪 𐲛
+10D00 s  Hanifi Rohingya                                  L 72% M  8% of    50  𐴀 𐴑 𐴔 𐴏
+10D40 s  Garay                                            L 73% M  7% of    69  𐵐 𐵓 𐵒 𐵖
+10E60 y  Rumi Numeral Symbols                             L  0% M  0% of    31  𐹠 𐹣 𐹧 𐹫
+10E80 s  Yezidi                                           L 93% M  4% of    47  𐺒 𐺕 𐺍 𐺐
+10EC0 s  Arabic Extended-C                                L 46% M 35% of    60  𐻂 𐻆 𐻚 𐻞
+10F00 s  Old Sogdian                                      L 75% M  0% of    40  𐼀 𐼂 𐼍 𐼙
+10F30 s  Sogdian                                          L 52% M 26% of    42  𐼰 𐼱 𐼺 𐽁
+10F70 s  Old Uyghur                                       L 69% M 15% of    26  𐽰 𐽱 𐽹 𐽿
+10FB0 s  Chorasmian                                       L 75% M  0% of    28  𐾰 𐾲 𐾽 𐿃
+10FE0 s  Elymaic                                          L100% M  0% of    23  𐿠 𐿡 𐿬 𐿴
+11000 s  Brahmi                                           L 48% M 19% of   115  𑀅 𑀓 𑀫 𑀲
+11080 s  Kaithi                                           L 68% M 22% of    66  𑂃 𑂍 𑂧 𑂮
+110D0 s  Sora Sompeng                                     L 71% M  0% of    35  𑃐 𑃓 𑃖 𑃙
+11100 s  Chakma                                           L 53% M 26% of    71  𑄄 𑄅 𑄆 𑄃
+11150 s  Mahajani                                         L 92% M  2% of    39  𑅐 𑅕 𑅬 𑅰
+11180 s  Sharada                                          L 56% M 23% of    96  𑆃 𑆑 𑆩 𑆱
+111E0 y  Sinhala Archaic Numbers                          L  0% M  0% of    20  𑇡 𑇣 𑇦 𑇨
+11200 s  Khojki                                           L 69% M 21% of    65  𑈀 𑈈 𑈤 𑈩
+11280 s  Multani                                          L 97% M  0% of    38  𑊀 𑊄 𑊠 𑊥
+112B0 s  Khudawadi                                        L 68% M 17% of    69  𑊰 𑊺 𑋗 𑋝
+11300 s  Grantha                                          L 61% M 38% of    86  𑌅 𑌕 𑌮 𑌸
+11380 s  Tulu-Tigalari                                    L 66% M 28% of    80  𑎀 𑎒 𑎪 𑎱
+11400 s  Newa                                             L 61% M 19% of    97  𑐀 𑐎 𑐩 𑐳
+11480 s  Tirhuta                                          L 62% M 24% of    82  𑒁 𑒏 𑒧 𑒮
+11580 s  Siddham                                          L 55% M 19% of    92  𑖀 𑖎 𑖦 𑖭
+11600 s  Modi                                             L 62% M 21% of    79  𑘀 𑘎 𑘦 𑘭
+11660 y  Mongolian Supplement                             L  0% M  0% of    13  𑙠 𑙡 𑙣 𑙤
+11680 s  Takri                                            L 64% M 19% of    68  𑚀 𑚊 𑚢 𑚨
+116D0 y  Myanmar Extended-C                               L  0% M  0% of    20  𑛐 𑛒 𑛕 𑛗
+11700 s  Ahom                                             L 52% M 23% of    65  𑜒 𑜀 𑜉 𑜏
+11800 s  Dogra                                            L 73% M 25% of    60  𑠀 𑠊 𑠢 𑠩
+118A0 s  Warang Citi                                      L 77% M  0% of    84  𑢡 𑢫 𑢴 𑢤
+11900 s  Dives Akuru                                      L 61% M 20% of    72  𑤀 𑤌 𑤤 𑤬
+119A0 s  Nandinagari                                      L 75% M 23% of    65  𑦠 𑦮 𑧆 𑧍
+11A00 s  Zanabazar Square                                 L 58% M 30% of    72  𑨀 𑨋 𑨢 𑨰
+11A50 s  Soyombo                                          L 57% M 32% of    83  𑩐 𑩜 𑩴 𑪁
+11AB0 s  Unified Canadian Aboriginal Syllabics Extended-A L100% M  0% of    16  𑪰 𑪲 𑪴 𑪶
+11AC0 s  Pau Cin Hau                                      L100% M  0% of    57  𑫕 𑫁 𑫃 𑫋
+11B00 y  Devanagari Extended-A                            L  9% M  0% of    11  𑬊 𑬀 𑬁 𑬃
+11B60 k  Sharada Supplement                               L  0% M100% of     8  ◌𑭠 ◌𑭡 ◌𑭢 ◌𑭣
+11BC0 s  Sunuwar                                          L 75% M  0% of    44  𑯇 𑯀 𑯄 𑯊
+11C00 s  Bhaiksuki                                        L 48% M 16% of    97  𑰀 𑰎 𑰦 𑰭
+11C70 s  Marchen                                          L 44% M 52% of    68  𑲏 𑱲 𑲁 𑲍
+11D00 s  Masaram Gondi                                    L 64% M 22% of    75  𑴀 𑴌 𑴤 𑴫
+11D60 s  Gunjala Gondi                                    L 65% M 19% of    63  𑵠 𑵱 𑵰 𑶉
+11DB0 s  Tolong Siki                                      L 81% M  0% of    54  𑶴 𑶰 𑶲 𑶳
+11DF0 s  Bengali Supplement                               L 50% M 50% of     2  𑷱 ◌𑷰
+11EE0 s  Makasar                                          L 76% M 16% of    25  𑻱 𑻠 𑻥 𑻰
+11F00 s  Kawi                                             L 55% M 18% of    87  𑼄 𑼒 𑼪 𑼱
+11FB0 s  Lisu Supplement                                  L100% M  0% of     1  𑾰
+11FC0 y  Tamil Supplement                                 L  0% M  0% of    51  𑿀 𑿆 𑿌 𑿓
+12000 s  Cuneiform                                        L100% M  0% of   922  𒀭 𒀀 𒅗 𒈗
+12400 y  Cuneiform Numbers and Punctuation                L  0% M  0% of   128  𒐀 𒐐 𒐠 𒐰
+12480 s  Early Dynastic Cuneiform                         L100% M  0% of   196  𒒀 𒒘 𒒱 𒓉
+12550 y  Archaic Cuneiform Numerals                       L  0% M  0% of   311  𒕐 𒕶 𒖝 𒗄
+12F90 s  Cypro-Minoan                                     L 97% M  0% of    99  𒾐 𒾜 𒾨 𒾴
+13000 s  Egyptian Hieroglyphs                             L100% M  0% of  1072  𓂀 𓋹 𓆣 𓅓
+13430 n  Egyptian Hieroglyph Format Controls              L 27% M 72% of    22  
+13460 s  Egyptian Hieroglyphs Extended-A                  L100% M  0% of  3995  𓑠 𓙓 𓡆 𓨺
+14400 s  Anatolian Hieroglyphs                            L100% M  0% of   583  𔐀 𔑈 𔒑 𔓚
+16100 s  Gurung Khema                                     L 51% M 31% of    58  𖄀 𖄁 𖄙 𖄝
+16800 s  Bamum Supplement                                 L100% M  0% of   569  𖠀 𖡇 𖢎 𖣕
+16A40 s  Mro                                              L 72% M  0% of    43  𖩆 𖩀 𖩛 𖩐
+16A70 s  Tangsa                                           L 88% M  0% of    89  𖪠 𖪫 𖪤 𖪰
+16AD0 s  Bassa Vah                                        L 83% M 13% of    36  𖫧 𖫑 𖫥 𖫢
+16B00 s  Pahawh Hmong                                     L 72% M  5% of   127  𖬀 𖬋 𖬖 𖬡
+16D40 s  Kirat Rai                                        L 77% M  0% of    58  𖵃 𖵄 𖵛 𖵠
+16E40 s  Medefaidrin                                      L 70% M  0% of    91  𖹍 𖹋 𖹒 𖹝
+16EA0 s  Beria Erfe                                       L100% M  0% of    50  𖺧 𖺠 𖺣 𖺦
+16F00 s  Miao                                             L 59% M 40% of   149  𖼞 𖼄 𖼺 𖼊
+16FE0 y* Ideographic Symbols and Punctuation              L 41% M 25% of    12  𖿢 𖿠 𖿡 𖿣
+17000 s  Tangut                                           L100% M  0% of  6144  𗀀 𗀁 𗄀 𗌀
+18800 s  Tangut Components                                L100% M  0% of   768  𘠀 𘡠 𘣀 𘤠
+18B00 s  Khitan Small Script                              L100% M  0% of   476  𘬀 𘬻 𘭷 𘮲
+18D00 s  Tangut Supplement                                L100% M  0% of    33  𘴀 𘴁 𘴂 𘴃
+18D80 s  Tangut Components Supplement                     L100% M  0% of   115  𘶀 𘶎 𘶜 𘶫
+18E00 s  Jurchen                                          L100% M  0% of   914  𘸀 𘸁 𘸐 𘹀
+191A0 s  Jurchen Radicals                                 L100% M  0% of    51  𙆠 𙆦 𙆬 𙆳
+1AFF0 s  Kana Extended-B                                  L100% M  0% of    13  𚿰 𚿱 𚿳 𚿵
+1B000 s  Kana Supplement                                  L100% M  0% of   256  𛀀 𛀠 𛁀 𛁠
+1B100 s  Kana Extended-A                                  L100% M  0% of    41  𛄀 𛄅 𛄊 𛄏
+1B130 s  Small Kana Extension                             L100% M  0% of    10  𛄲 𛅐 𛅑 𛅒
+1B170 s  Nushu                                            L100% M  0% of   396  𛅰 𛆡 𛇓 𛈄
+1BC00 s  Duployan                                         L 97% M  1% of   143  𛱁 𛱆 𛱑 𛱄
+1BCA0 n  Shorthand Format Controls                        L  0% M  0% of     0  
+1CC00 y  Symbols for Legacy Computing Supplement          L  0% M  0% of   695  𜰀 𜱖 𜲭 𜴇
+1CEC0 y  Miscellaneous Symbols Supplement                 L  0% M  0% of    53  𜻀 𜻆 𜻍 𜻔
+1CF00 y  Znamenny Musical Notation                        L  0% M 37% of   185  𜽐 𜽞 𜽭 𜽻
+1D000 y  Byzantine Musical Symbols                        L  0% M  0% of   246  𝀀 𝀞 𝀽 𝁜
+1D100 y  Musical Symbols                                  L  0% M 12% of   248  𝄞 𝄢 𝅘𝅥𝅮 𝄐
+1D200 y  Ancient Greek Musical Notation                   L  0% M  4% of    70  𝈀 𝈈 𝈐 𝈙
+1D250 y  Musical Symbols Supplement                       L  0% M 16% of    50  𝉓 𝉘 𝉠 𝉥
+1D2C0 y  Kaktovik Numerals                                L  0% M  0% of    20  𝋀 𝋂 𝋅 𝋇
+1D2E0 y  Mayan Numerals                                   L  0% M  0% of    20  𝋠 𝋢 𝋥 𝋧
+1D300 y  Tai Xuan Jing Symbols                            L  0% M  0% of    87  𝌀 𝌊 𝌕 𝌠
+1D360 y  Counting Rod Numerals                            L  0% M  0% of    25  𝍠 𝍣 𝍦 𝍩
+1D400 y* Mathematical Alphanumeric Symbols                L 93% M  0% of   997  𝒜 𝔸 𝔄 𝓩
+1D800 y  Sutton SignWriting                               L  0% M 18% of   672  𝠀 𝡄 𝢈 𝣌
+1DB00 y  Miscellaneous Symbols and Arrows Extended        L  0% M  0% of    29  𝬀 𝬃 𝬇 𝬊
+1DF00 s  Latin Extended-G                                 L100% M  0% of   188  𝽀 𝽊 𝽑 𝽪
+1E000 k  Glagolitic Supplement                            L  0% M100% of    38  ◌𞀀 ◌𞀅 ◌𞀊 ◌𞀛
+1E030 s  Cyrillic Extended-D                              L 98% M  1% of    63  𞀰 𞀷 𞀿 𞁇
+1E100 s  Nyiakeng Puachue Hmong                           L 74% M  9% of    71  𞄤 𞄎 𞄀 𞄊
+1E290 s  Toto                                             L 96% M  3% of    31  𞊭 𞊔 𞊖 𞊙
+1E2C0 s  Wancho                                           L 74% M  6% of    59  𞋁 𞋔 𞋘 𞋎
+1E4D0 s  Nag Mundari                                      L 66% M  9% of    42  𞓕 𞓚 𞓟 𞓐
+1E5D0 s  Ol Onal                                          L 70% M  4% of    44  𞗖 𞗜 𞗢 𞗐
+1E6C0 s  Tai Yo                                           L 90% M  9% of    55  𞛡 𞛤 𞛧 𞛨
+1E7E0 s  Ethiopic Extended-B                              L100% M  0% of    28  𞟠 𞟣 𞟨 𞟫
+1E800 s  Mende Kikakui                                    L 92% M  3% of   213  𞠀 𞠘 𞠱 𞡉
+1E900 s  Adlam                                            L 78% M  7% of    88  𞤈 𞤖 𞤄 𞤘
+1EC70 y  Indic Siyaq Numbers                              L  0% M  0% of    68  𞱱 𞱹 𞲂 𞲊
+1ED00 y  Ottoman Siyaq Numbers                            L  0% M  0% of    61  𞴁 𞴈 𞴐 𞴗
+1EE00 y* Arabic Mathematical Alphabetic Symbols           L 98% M  0% of   143  𞸀 𞸒 𞸩 𞹇
+1F000 y  Mahjong Tiles                                    L  0% M  0% of    44  🀄 🀇 🀐 🀙
+1F030 y  Domino Tiles                                     L  0% M  0% of   100  🁣 🀱 🁆 🂓
+1F0A0 y  Playing Cards                                    L  0% M  0% of    82  🂡 🃏 🂾 🃁
+1F100 y  Enclosed Alphanumeric Supplement                 L  0% M  0% of   201  🆗 🆎 🆕 🆘
+1F200 y  Enclosed Ideographic Supplement                  L  0% M  0% of    64  🉐 🈯 🈚 🈁
+1F300 y  Miscellaneous Symbols and Pictographs            L  0% M  0% of   768  🌍 🍕 🎉 🐶
+1F600 y  Emoticons                                        L  0% M  0% of    80  😀 😂 😍 😎
+1F650 y  Ornamental Dingbats                              L  0% M  0% of    48  🙞 🙠 🙰 🙵
+1F680 y  Transport and Map Symbols                        L  0% M  0% of   120  🚀 🚗 🚲 🚦
+1F700 y  Alchemical Symbols                               L  0% M  0% of   128  🜂 🜍 🜔 🜛
+1F780 y  Geometric Shapes Extended                        L  0% M  0% of   120  🟆 🞋 🞐 🞯
+1F800 y  Supplemental Arrows-C                            L  0% M  0% of   171  🠀 🠜 🠶 🡆
+1F900 y  Supplemental Symbols and Pictographs             L  0% M  0% of   256  🤔 🦄 🥑 🧠
+1FA00 y  Chess Symbols                                    L  0% M  0% of   102  🨄 🨀 🨁 🨂
+1FA70 y  Symbols and Pictographs Extended-A               L  0% M  0% of   128  🪐 🪁 🩰 🪕
+1FB00 y  Symbols for Legacy Computing                     L  0% M  0% of   250  🬗 🭨 🮕 🮲
+20000 s  CJK Unified Ideographs Extension B               L100% M  0% of 42720  𠮷 𩸽 𪚥 𠀀
+2A700 s  CJK Unified Ideographs Extension C               L100% M  0% of  4160  𪜀 𪜁 𪞝 𪠀
+2B740 s  CJK Unified Ideographs Extension D               L100% M  0% of   223  𫝀 𫝁 𫝐 𫝠
+2B820 s  CJK Unified Ideographs Extension E               L100% M  0% of  5774  𫠠 𫠡 𫨀 𫰀
+2CEB0 s  CJK Unified Ideographs Extension F               L100% M  0% of  7473  𬺰 𬺱 𭀀 𭐀
+2EBF0 s  CJK Unified Ideographs Extension I               L100% M  0% of   622  𮯰 𮯱 𮰀 𮲀
+2F800 s  CJK Compatibility Ideographs Supplement          L100% M  0% of   542  丽 啓 幩 旣
+30000 s  CJK Unified Ideographs Extension G               L100% M  0% of  4939  𰻝 𰀀 𰄀 𰔀
+31350 s  CJK Unified Ideographs Extension H               L100% M  0% of  4192  𱍐 𱍑 𱐀 𱘀
+323B0 s  CJK Unified Ideographs Extension J               L100% M  0% of  4298  𲎰 𲎱 𲐀 𲠀
+3D000 s  Seal                                             L100% M  0% of 11328  𽀀 𽀁 𽐀 𽠀
+E0000 n  Tags                                             L  0% M  0% of     0  
+E0100 n  Variation Selectors Supplement                   L  0% M  0% of     0  

@@ -8,15 +8,23 @@ class Block(val id: Int, val start: Int, val end: Int, val name: String) {
     }
 }
 
-class BlockList(val blocks: Array<Block>, val icons: IntArray) {
-    companion object {
-        const val ICON_SIZE = 4
-        const val MARK_BASE = '\u25CC'
-        val EMPTY = BlockList(emptyArray(), IntArray(0))
+class BlockIconSource(val type: Int, val label: String?, val codePoints: IntArray, val flags: ByteArray)
 
-        fun isMark(codePoint: Int) = when (Character.getType(codePoint).toByte()) {
-            Character.NON_SPACING_MARK, Character.ENCLOSING_MARK, Character.COMBINING_SPACING_MARK -> true
-            else -> false
-        }
+class BlockList(
+    val blocks: Array<Block>,
+    val icons: IntArray,
+    val iconFlags: ByteArray,
+    val types: ByteArray,
+    val labels: Array<String?>,
+) {
+    companion object {
+        const val ICON_SLOTS = 4
+        const val MARK_BASE = '◌'
+        const val FLAG_MARK = 1
+        const val TYPE_SCRIPT = 0
+        const val TYPE_SYMBOL = 1
+        const val TYPE_MARKS = 2
+        const val TYPE_NOTHING = 3
+        val EMPTY = BlockList(emptyArray(), IntArray(0), ByteArray(0), ByteArray(0), emptyArray())
     }
 }
