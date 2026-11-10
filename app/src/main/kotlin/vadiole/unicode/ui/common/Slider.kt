@@ -236,12 +236,11 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             ringPath.addPath(holePath)
         }
 
-        val lineW = lineWidth * (1f - p)
-        linePaint.strokeWidth = lineW
+        linePaint.strokeWidth = lineWidth
         linePaint.color = ColorUtils.setAlphaComponent(lineColor, ((1f - p) * 255).toInt())
-        drawLine = lineW > MIN_LINE_WIDTH && linePaint.alpha > 0
+        drawLine = linePaint.alpha > 0
         lineX = cx
-        lineHalf = max(0f, (lineHeight + (h - lineHeight) * p - lineW) / 2f)
+        lineHalf = (lineHeight - lineWidth) / 2f
     }
 
     private fun proximity(distance: Float, falloff: Float): Float {
@@ -589,7 +588,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         const val FLING_MAX_DISTANCE = 0.12f
         const val FLING_STIFFNESS = 900f
         const val FLING_DAMPING = 0.85f
-        const val MIN_LINE_WIDTH = 0.01f
         const val SPRING_STIFFNESS = 600f
         const val PRESS_DAMPING = 0.6f
         const val HUM_BUCKETS = 8
