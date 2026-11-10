@@ -62,7 +62,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
     private val tableController = TableController(unicodeStorage, userConfig)
-    private val searchController = SearchController(unicodeStorage, recentRepository, userConfig)
+    private val searchController = SearchController(unicodeStorage, recentRepository)
     private val dockController = DockController(userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onShowDetails(codePoint: CodePoint) {

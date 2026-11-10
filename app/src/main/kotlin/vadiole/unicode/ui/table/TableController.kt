@@ -35,10 +35,13 @@ class TableController(
         abbreviations = unicodeStorage.getAbbreviations()
     }
 
+    fun prepareSearch() = unicodeStorage.search.prepare()
+
     suspend fun loadCachedChars(): Boolean {
         val cached = unicodeStorage.readCache(CACHE_NAME, cacheKey(userConfig.showUnsupportedChars)) ?: return false
         tableChars = CodePointArray(cached)
         totalChars = cached.size
+        updateShown()
         return true
     }
 
@@ -49,8 +52,13 @@ class TableController(
         val isChanged = !codePoints.storage.contentEquals(tableChars.storage)
         if (!fast && isChanged) unicodeStorage.writeCache(CACHE_NAME, cacheKey(showAll), codePoints.storage)
         tableChars = codePoints
-        totalChars = if (fast) UnicodeStorage.totalCharacters else codePoints.size
+        totalChars = if (fast) unicodeStorage.getTotalCharacters() else codePoints.size
+        if (!fast) updateShown()
         return isChanged
+    }
+
+    private fun updateShown() {
+        unicodeStorage.search.setShown(if (userConfig.showUnsupportedChars) null else tableChars.storage)
     }
 
     private fun cacheKey(showAll: Boolean) = "$showAll;${Build.FINGERPRINT}"
