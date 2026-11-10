@@ -34,3 +34,14 @@ adb shell am start -S -n $A -a android.intent.action.VIEW -d "https://unicode.va
 ```
 
 The settings and search buttons have content descriptions, so `uiautomator dump` gives their bounds for `adb shell input tap`. Character cells have none.
+
+## Search goldens
+
+```sh
+./gradlew testDebugUnitTest
+tools/search-golden.sh verify <serial>
+adb shell content call --uri content://vadiole.unicode.debug.searchgolden --method time
+adb shell content call --uri content://vadiole.unicode.debug.searchgolden --method memory
+```
+
+The first runs the suite on the JVM and writes `app/build/reports/search/verify.txt`. `verify` installs the debug build and runs the same suite on the device, with every character shown. `time` reports the median and the slowest query of the suite, `memory` the Java heap held by the data, the index and the CJK meanings. `docs/search.md` describes the files and what to do after an intended change.
