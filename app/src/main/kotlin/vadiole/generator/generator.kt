@@ -3,6 +3,8 @@ import java.io.DataOutputStream
 import java.io.File
 import java.util.zip.CRC32
 import java.util.zip.Deflater
+import vadiole.unicode.search.SearchTokens
+import vadiole.unicode.data.Annotations
 import vadiole.unicode.data.UnicodeData
 import vadiole.unicode.data.UnicodeData.Companion.HAN_CORE
 import vadiole.unicode.data.UnicodeData.Companion.HAN_OTHER
@@ -79,6 +81,7 @@ private val hanSchoolFields = setOf("kGradeLevel", "kJoyoKanji", "kKoreanEducati
 fun main() {
     val root = "app/src/main/kotlin/vadiole/generator"
     val data = readSources(File("$root/input"))
+    val annotations = writeAnnotations(File("$root/input/annotations"), File("app/src/main/res"), data.codePoints.toHashSet())
     val sections = encodeSections(data)
     val bytes = encodeFile(sections)
     File("app/src/main/assets/u18.bin").writeBytes(bytes)
@@ -110,6 +113,9 @@ fun main() {
             out.println("${sectionLabels[index]} ${section.size} ${deflatedSize(section)}")
         }
         out.println("file ${bytes.size} ${deflatedSize(bytes)}")
+        out.println()
+        out.println("annotations characters keywords displayed raw deflated")
+        annotations.forEach { out.println(it) }
     }
     print(File("$root/output/summary.txt").readText())
 }
@@ -236,20 +242,7 @@ private fun readSources(input: File): GeneratorData {
 
     val shortNames = HashMap<Int, String>()
     val rawKeywords = LinkedHashMap<Int, List<String>>()
-    val annotation = Regex("<annotation cp=\"([^\"]+)\"( type=\"tts\")?>([^<]*)</annotation>")
-    File(input, "annotations.xml").forEachLine { line ->
-        val match = annotation.find(line) ?: return@forEachLine
-        val cp = unescapeXml(match.groupValues[1]).replace("️", "")
-        if (cp.isEmpty() || cp.codePointCount(0, cp.length) != 1) return@forEachLine
-        val codePoint = cp.codePointAt(0)
-        if (codePoint !in assigned) return@forEachLine
-        val text = unescapeXml(match.groupValues[3])
-        if (match.groupValues[2].isNotEmpty()) {
-            shortNames[codePoint] = text.trim()
-        } else {
-            rawKeywords[codePoint] = text.split('|').map { it.trim() }.filter { it.isNotEmpty() }.distinct()
-        }
-    }
+    readAnnotations(File(input, "annotations.xml"), assigned, shortNames, rawKeywords)
     for ((codePoint, shortName) in shortNames) addSecond(codePoint, SECOND_SHORT_NAME, shortName)
     val byName = formal.entries.associate { it.value to it.key }
     val inherited = ArrayList<Int>()
@@ -298,6 +291,95 @@ private fun readSources(input: File): GeneratorData {
         meanings = meanings,
         inherited = inherited.sorted(),
     )
+}
+
+private val annotationLine = Regex("<annotation cp=\"([^\"]+)\"( type=\"tts\")?>([^<]*)</annotation>")
+
+private const val INHERITED = "↑↑↑"
+
+private fun readAnnotations(file: File, assigned: Set<Int>, shortNames: MutableMap<Int, String>, keywords: MutableMap<Int, List<String>>) {
+    file.forEachLine { line ->
+        val match = annotationLine.find(line) ?: return@forEachLine
+        val cp = unescapeXml(match.groupValues[1]).replace("\uFE0F", "")
+        if (cp.isEmpty() || cp.codePointCount(0, cp.length) != 1) return@forEachLine
+        val codePoint = cp.codePointAt(0)
+        if (codePoint !in assigned) return@forEachLine
+        val text = unescapeXml(match.groupValues[3]).trim()
+        if (text == INHERITED) return@forEachLine
+        if (match.groupValues[2].isNotEmpty()) {
+            shortNames[codePoint] = text
+        } else {
+            keywords[codePoint] = text.split('|').map { it.trim() }.filter { it.isNotEmpty() }.distinct()
+        }
+    }
+}
+
+fun annotationQualifiers(res: File, prefix: String): List<String> {
+    return res.listFiles().orEmpty().filter { it.name.startsWith("$prefix-") && it.list().orEmpty().any { name -> name == "strings.xml" || name.startsWith("annotations") } }
+        .map { it.name.removePrefix("$prefix-") }.sorted()
+}
+
+fun languageTag(qualifier: String) = qualifier.replace("-r", "-")
+
+private fun foldedWords(text: String): List<String> {
+    val tokens = SearchTokens(Int.MAX_VALUE, distinct = false)
+    tokens.set(text)
+    return List(tokens.count) { tokens.token(it) }
+}
+
+fun orderLocalizedKeywords(keywords: List<String>, shortName: String): Pair<List<String>, List<String>> {
+    val name = foldedWords(shortName)
+    val worded = ArrayList<String>()
+    val symbolic = ArrayList<String>()
+    val hidden = ArrayList<String>()
+    for (keyword in keywords) {
+        val hasLetter = keyword.any { it.isLetter() }
+        val hasDigit = keyword.any { it.isDigit() }
+        when {
+            (hasLetter || hasDigit) && foldedWords(keyword) == name -> Unit
+            keyword.all { it.isDigit() } -> hidden.add(keyword)
+            !hasLetter && !hasDigit && keyword.codePointCount(0, keyword.length) == 1 -> hidden.add(keyword)
+            hasLetter -> worded.add(keyword)
+            else -> symbolic.add(keyword)
+        }
+    }
+    return (worded + symbolic) to hidden
+}
+
+fun encodeAnnotations(tag: String, shortNames: Map<Int, String>, keywords: Map<Int, List<String>>): ByteArray {
+    val body = StringBuilder()
+    for (codePoint in (shortNames.keys + keywords.keys).sorted()) {
+        val name = shortNames[codePoint].orEmpty()
+        val (displayed, hidden) = orderLocalizedKeywords(keywords[codePoint].orEmpty(), name)
+        val fields = listOf(name, displayed.joinToString("|"), hidden.joinToString("|"))
+        require(fields.none { '\t' in it || '\n' in it })
+        body.append(codePoint.toString(16).uppercase()).append('\t').append(fields.joinToString("\t")).append('\n')
+    }
+    val bytes = body.toString().toByteArray()
+    val checksum = CRC32().also { it.update(bytes) }
+    return (Annotations.header(tag, "%08x".format(checksum.value)) + "\n").toByteArray() + bytes
+}
+
+private fun writeAnnotations(input: File, res: File, assigned: Set<Int>): List<String> {
+    val summary = ArrayList<String>()
+    File(res, "raw/annotations.txt").writeText(Annotations.header(Annotations.NONE, "0") + "\n")
+    for (qualifier in annotationQualifiers(res, "values")) {
+        val shortNames = HashMap<Int, String>()
+        val keywords = HashMap<Int, List<String>>()
+        val parent = File(input, "$qualifier.parent.xml")
+        if (parent.exists()) readAnnotations(parent, assigned, shortNames, keywords)
+        readAnnotations(File(input, "$qualifier.xml"), assigned, shortNames, keywords)
+        check(shortNames.size > 1000) { "annotations for $qualifier look incomplete: ${shortNames.size} names" }
+        val bytes = encodeAnnotations(languageTag(qualifier), shortNames, keywords)
+        File(res, "raw-$qualifier").mkdirs()
+        File(res, "raw-$qualifier/annotations.txt").writeBytes(bytes)
+        val displayed = keywords.entries.sumOf { orderLocalizedKeywords(it.value, shortNames[it.key].orEmpty()).first.size }
+        summary.add("$qualifier ${(shortNames.keys + keywords.keys).size} ${keywords.values.sumOf { it.size }} $displayed ${bytes.size} ${deflatedSize(bytes)}")
+    }
+    val values = annotationQualifiers(res, "values")
+    val raw = annotationQualifiers(res, "raw")
+    check(values == raw) { "locale folders differ: values-* $values, raw-* $raw" }
+    return summary
 }
 
 private fun rangeName(ranges: List<GeneratorRange>, codePoint: Int): String {

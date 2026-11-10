@@ -80,7 +80,7 @@ class SearchIndex(
         const val SPAN = 1 shl 7
         const val MAX_DOCS = 1 shl 19
         const val MAX_WORDS = 31
-        const val FORMAT = 2
+        const val FORMAT = 3
         const val POSITION_BITS = 2
         const val POSITION_MASK = 3
         const val FIRST_WORD = 1
@@ -96,11 +96,22 @@ class SearchIndex(
         private const val INT_ARRAYS = 7
         private const val BLOBS = 4
 
-        fun hasKey(input: InputStream, key: String): Boolean {
-            val keyBytes = key.toByteArray(Charsets.UTF_8)
+        fun sourcesKey(sources: Array<SearchSource>) = sources.joinToString(",") { it.key }
+
+        fun build(sources: Array<SearchSource>): SearchIndex {
+            val builder = SearchIndexBuilder()
+            for (source in sources) {
+                builder.beginSource()
+                source.emit(builder)
+            }
+            return builder.build()
+        }
+
+        fun hasKeyPrefix(input: InputStream, prefix: String): Boolean {
+            val prefixBytes = prefix.toByteArray(Charsets.UTF_8)
             val data = DataInputStream(input)
-            if (data.readInt() != MAGIC || data.readInt() != keyBytes.size) return false
-            return ByteArray(keyBytes.size).also(data::readFully).contentEquals(keyBytes)
+            if (data.readInt() != MAGIC || data.readInt() < prefixBytes.size) return false
+            return ByteArray(prefixBytes.size).also(data::readFully).contentEquals(prefixBytes)
         }
 
         fun load(bytes: ByteArray, key: String): SearchIndex? {

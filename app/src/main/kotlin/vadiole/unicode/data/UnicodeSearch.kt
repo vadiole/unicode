@@ -7,37 +7,93 @@ import android.os.Process
 import android.os.SystemClock
 import android.util.Log
 import java.io.File
+import java.io.InputStream
 import vadiole.unicode.BuildConfig
+import vadiole.unicode.search.AnnotationSource
 import vadiole.unicode.search.CharSearch
 import vadiole.unicode.search.SearchIndex
-import vadiole.unicode.search.SearchIndexBuilder
-import vadiole.unicode.search.SearchMatch
 import vadiole.unicode.search.SearchResults
 import vadiole.unicode.search.SearchSource
 import vadiole.unicode.search.UnicodeDataSource
 
 class UnicodeSearch(private val storage: UnicodeStorage) {
     private val lock = Object()
+    private val buildLock = Any()
     private val mainHandler = Handler(Looper.getMainLooper())
-    private val sources by lazy { arrayOf<SearchSource>(UnicodeDataSource(storage.data(), storage::meanings)) }
     private var thread: Thread? = null
     private var pendingQuery: String? = null
     private var pendingLimit = 0
     private var pendingCallback: ((SearchResults) -> Unit)? = null
+    private var activeQuery: String? = null
+    private var activeLimit = 0
+    private var activeCallback: ((SearchResults) -> Unit)? = null
     private var generation = 0
     private var shownChanged = false
     private var unsaved: (() -> Unit)? = null
     private var readyCallbacks: ArrayList<() -> Unit>? = ArrayList()
+    private var request = 0
+    private var requestedKey: String? = null
     @Volatile
     private var shown: IntArray? = null
     @Volatile
     private var engine: CharSearch? = null
+    @Volatile
+    var annotations: Annotations? = null
+        private set
 
     fun prepare() = synchronized(lock) {
         if (thread != null) return
         thread = Thread(::run, "search").apply {
             isDaemon = true
             start()
+        }
+    }
+
+    fun ensure(stream: InputStream) {
+        val key = try {
+            Annotations.readKey(stream) ?: Annotations.NONE
+        } catch (e: Exception) {
+            Annotations.NONE
+        }
+        val id = synchronized(lock) {
+            if (key == requestedKey) {
+                0
+            } else {
+                requestedKey = key
+                ++request
+            }
+        }
+        if (id == 0) {
+            stream.close()
+            return
+        }
+        Thread({ build(id, key, stream) }, "search-index").start()
+    }
+
+    private fun build(id: Int, key: String, stream: InputStream) {
+        val annotations = try {
+            stream.use { if (key == Annotations.NONE) null else Annotations.read(key, it) }
+        } catch (e: Exception) {
+            null
+        }
+        synchronized(buildLock) {
+            if (synchronized(lock) { id != request }) return
+            unsaved = null
+            val engine = createEngine(annotations, cached = true)
+            val ready = synchronized(lock) {
+                if (id != request) return
+                this.annotations = annotations
+                this.engine = engine
+                if (activeQuery != null) {
+                    pendingQuery = activeQuery
+                    pendingLimit = activeLimit
+                    pendingCallback = activeCallback
+                }
+                lock.notifyAll()
+                readyCallbacks.also { readyCallbacks = null }
+            }
+            ready?.forEach { mainHandler.post(it) }
+            unsaved?.invoke()
         }
     }
 
@@ -68,6 +124,9 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             pendingQuery = query
             pendingLimit = limit
             pendingCallback = callback
+            activeQuery = query
+            activeLimit = limit
+            activeCallback = callback
             lock.notifyAll()
         }
     }
@@ -76,47 +135,42 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
         generation++
         pendingQuery = null
         pendingCallback = null
+        activeQuery = null
+        activeCallback = null
     }
-
-    fun match(results: SearchResults, position: Int): SearchMatch? = engine?.match(results, position)
 
     fun hasIndex(data: UnicodeData): Boolean {
         val file = File(storage.cacheDir, INDEX_NAME)
         return try {
-            file.exists() && file.inputStream().use { SearchIndex.hasKey(it, indexKey(data)) }
+            file.exists() && file.inputStream().use { SearchIndex.hasKeyPrefix(it, indexKey(data, "")) }
         } catch (e: Exception) {
             false
         }
     }
 
-    private fun indexKey(data: UnicodeData) = "${SearchIndex.FORMAT};${data.checksum};${storage.buildKey};${sources.joinToString(",") { it.key }}"
+    private fun indexKey(data: UnicodeData, sources: String) = "${SearchIndex.FORMAT};${data.checksum};${storage.buildKey};$sources"
 
-    internal fun createEngine(): CharSearch {
+    internal fun createEngine(annotations: Annotations?, cached: Boolean): CharSearch {
         val start = SystemClock.elapsedRealtime()
         val data = storage.data()
-        val key = indexKey(data)
+        val english = UnicodeDataSource(data, storage::meanings)
+        val sources = if (annotations == null) arrayOf<SearchSource>(english) else arrayOf(english, AnnotationSource(data, annotations))
+        val key = indexKey(data, SearchIndex.sourcesKey(sources))
         val file = File(storage.cacheDir, INDEX_NAME)
         var index = try {
-            if (file.exists()) SearchIndex.load(file.readBytes(), key) else null
+            if (cached && file.exists()) SearchIndex.load(file.readBytes(), key) else null
         } catch (e: Exception) {
             null
         }
-        val cached = index != null
-        if (index == null) {
-            val builder = SearchIndexBuilder()
-            for (source in sources) {
-                builder.beginSource()
-                source.emit(builder)
-            }
-            index = builder.build()
-        }
+        val loaded = index != null
+        if (index == null) index = SearchIndex.build(sources)
         storage.releaseMeanings()
         val engine = CharSearch(data, index, sources)
         if (BuildConfig.DEBUG) {
-            val source = if (cached) "cache" else "build"
-            Log.d(TAG, "index ready from $source in ${SystemClock.elapsedRealtime() - start}ms, ${SystemClock.uptimeMillis() - processStart()}ms after process start, ${index.bytes} bytes")
+            val source = if (loaded) "cache" else "build"
+            Log.d(TAG, "index ${SearchIndex.sourcesKey(sources)} ready from $source in ${SystemClock.elapsedRealtime() - start}ms, ${SystemClock.uptimeMillis() - processStart()}ms after process start, ${index.bytes} bytes")
         }
-        if (!cached) unsaved = { save(index, key) }
+        if (cached && !loaded) unsaved = { save(index, key) }
         return engine
     }
 
@@ -133,13 +187,9 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private fun processStart() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Process.getStartUptimeMillis() else 0L
 
     private fun run() {
-        val engine = createEngine()
-        this.engine = engine
-        val ready = synchronized(lock) { readyCallbacks.also { readyCallbacks = null } }
-        ready?.forEach { mainHandler.post(it) }
-        unsaved?.invoke()
-        unsaved = null
         val data = storage.data()
+        var engine: CharSearch? = null
+        var bits: LongArray? = null
         var warmUp = 0
         while (true) {
             var query: String? = null
@@ -148,8 +198,8 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             var current = 0
             var codePoints: IntArray? = null
             var update = false
-            synchronized(lock) {
-                while (pendingQuery == null && warmUp == WARM_UP.size) lock.wait()
+            val search = synchronized(lock) {
+                while (this.engine == null || (pendingQuery == null && warmUp == WARM_UP.size && this.engine === engine)) lock.wait()
                 if (pendingQuery != null) {
                     query = pendingQuery
                     limit = pendingLimit
@@ -161,14 +211,19 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
                     shownChanged = false
                     codePoints = shown
                 }
+                requireNotNull(this.engine)
+            }
+            if (search !== engine) {
+                engine = search
+                warmUp = 0
             }
             val text = query
             if (text == null) {
-                engine.search(WARM_UP[warmUp++], PAGE_SIZE)
+                search.search(WARM_UP[warmUp++], PAGE_SIZE)
                 continue
             }
             if (update) {
-                engine.shown = codePoints?.let { shown ->
+                bits = codePoints?.let { shown ->
                     val bits = LongArray((data.size + 63) ushr 6)
                     for (codePoint in shown) {
                         val char = data.indexOf(codePoint)
@@ -177,8 +232,9 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
                     bits
                 }
             }
+            search.shown = bits
             val start = SystemClock.elapsedRealtimeNanos()
-            val results = engine.search(text, limit)
+            val results = search.search(text, limit)
             if (BuildConfig.DEBUG) {
                 Log.d(TAG, "search \"$text\" limit $limit: ${(SystemClock.elapsedRealtimeNanos() - start) / 1000}us, ${results.total} results")
             }

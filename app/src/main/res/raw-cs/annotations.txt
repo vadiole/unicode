@@ -1,0 +1,1778 @@
+annotations 1 cs 2df9e586
+21	vykřičník		
+23	mřížka	hash|hashtag|křížek	
+24	dolar	peníze|peso|USD	
+25	procento	procenta	
+26	ampersand	a|et|plus	
+27	apostrof	jednoduchá uvozovka|rovná uvozovka	
+29	pravá závorka	kulatá závorka|kulaté závorky|pravá kulatá závorka|závorka|závorky	
+2A	hvězdička	maskovací znak|zástupný znak|žolíkový znak	
+2B	znaménko plus	plus|sčítání|součet	
+2C	čárka		
+2D	spojovník-minus	minus|pomlčka|spojovník	
+2E	tečka	bod	
+2F	lomítko	lomeno|zlomek	
+3A	dvojtečka		
+3B	středník		
+3C	je menší než	menší než|tag|začátek tagu|začátek značky|značka	
+3D	rovná se	je rovno|rovnítko|rovnost	
+3E	je větší než	konec tagu|konec značky|tag|větší než|značka	
+3F	otazník		
+40	zavináč	at|et	@
+5B	levá hranatá závorka	hranatá závorka|hranaté závorky|závorka|závorky	
+5C	zpětné lomítko	obrácené lomítko	
+5D	pravá hranatá závorka	hranatá závorka|hranaté závorky|závorka|závorky	
+5E	stříška	circumflex|cirkumflex|háček|vokáň	
+5F	podtržení	dlouhá čára|podtrhávací čára|podtržítko	
+60	obrácená diakritická čárka	akcent|čárka|gravis|obrácená|přízvuk|těžký akcent|tupý akcent	
+7B	levá složená závorka	složená závorka|složené závorky|závorka|závorky	
+7C	svislá čára	absolutní hodnota|čára|negace logického součinu|pruh|Shefferova funkce|svislý pruh	
+7D	pravá složená závorka	složená závorka|složené závorky|závorka|závorky	
+7E	vlnovka	tilda	
+A1	obrácený vykřičník	obrácený|vykřičník	
+A2	cent		
+A3	libra	EGP|GBP|měna	
+A5	jen	CNY|JPY|juan|jüan|měna	
+A7	paragraf	část|oddíl|odstavec|sekce	
+A8	trema	diereze|dvojtečka|přehláska|rozlučník|umlaut	
+A9	znak ochrany autorského práva	autorská práva|c|copyright|značka ochrany autorských práv	
+AB	boční uvozovky mířící doleva	boční uvozovky|lomené uvozovky|uvozovky	
+AC	negace	ne|neplatí	
+AE	znak registrované ochranné známky	ochranná známka|r|R v kroužku|registrovaná ochranná známka|registrováno	
+B0	stupeň	stupňovitost	
+B1	plus minus		
+B2	číslice dvě jako horní index	čtvereční|dvě|dvojka|exponent|horní index|na druhou	
+B3	číslice tři jako horní index	exponent|horní index|krychlový|na třetí|tři|trojka	
+B4	diakritická čárka	akcent|akut|čárka|ostrý|přízvuk	
+B5	znak mikro	mikro|míra	
+B6	značka odstavce	alinea|odstavec|paraf|parafa	
+B7	střední puntík	odrážka|puntík|střední|tečka	
+B9	číslice jedna jako horní index	exponent|horní index|jedna|jednička|na první	
+BB	boční uvozovky mířící doprava	boční uvozovky|lomené uvozovky|uvozovky	
+BF	obrácený otazník	obrácený|otazník	
+D7	symbol násobení	krát|násobení|násobit	
+F7	symbol dělení	dělení|děleno|dělit	
+60C	arabská čárka	arabská|čárka	
+61B	arabský středník	arabský|středník	
+61F	arabský otazník	arabský|otazník	
+2010	spojovník	pomlčka	
+2013	krátká pomlčka	en-pomlčka|krátká|pomlčka|půlčtverčíková pomlčka	
+2014	dlouhá pomlčka	čtverčíková pomlčka|dlouhá|em-pomlčka|pomlčka	
+2015	vodorovná čára	čára|pomlčka|pruh|vodorovný pruh	
+2018	jednoduchá uvozovka nahoře	jednoduchá uvozovka|poloviční uvozovky nahoře|pravá jednoduchá uvozovka|uvozovka|uvozovka nahoře|uzavírací jednoduchá uvozovka|uzavírací uvozovka	
+2019	obrácená jednoduchá uvozovka nahoře	apostrof|obrácená jednoduchá uvozovka|obrácená pravá uvozovka|obrácená uvozovka|obrácená uvozovka nahoře|obrácená uzavírací uvozovka|obrácené poloviční uvozovky nahoře|uvozovka	
+201A	jednoduchá uvozovka dole	jednoduchá uvozovka|levá jednoduchá uvozovka|otevírací jednoduchá uvozovka|otevírací uvozovka|poloviční uvozovky dole|uvozovka	
+201C	uvozovky nahoře	dvojitá uvozovka nahoře|pravá dvojitá uvozovka|pravé uvozovky|uvozovky|uzavírací dvojitá uvozovka|uzavírací uvozovky	
+201D	obrácené uvozovky nahoře	obrácená dvojitá uvozovka|obrácená dvojitá uvozovka nahoře|obrácené pravé uvozovky|obrácené uvozovky|obrácené uzavírací uvozovky|uvozovky	
+201E	uvozovky dole	dvojitá uvozovka dole|levá dvojitá uvozovka|levé uvozovky|otevírací dvojitá uvozovka|otevírací uvozovky|uvozovky	
+2020	znak křížku	dýka|kříž|křížek|obelisk|obelus	
+2021	znak dvojitého křížku	dvojitá|dvojitý|dýka|kříž|křížek|obelisk|obelus	
+2022	puntík	bod|odrážka	
+2026	výpustka	elipsa|tři tečky	
+2027	spojovací tečka	bod|pomlčka|spojovník|tečka	
+2030	promile		
+2032	jednoduchá čárka	čárka|derivace|jedna čárka|jednočárkované|s čárkou	
+2033	dvojitá čárka	čárka|druhá derivace|dvě čárky|dvojčárkované|dvoučárkované|se dvěma čárkami	
+2034	trojitá čárka	čárka|se třemi čárkami|třetí derivace|tři čárky|tříčárkované|trojčárkované	
+2038	stříška (nediakritický znak)		
+203B	odkazovací znaménko	komedžiruši|označení poznámky|symbol odkazu	
+203C	dvojitý vykřičník	důraz|interpunkční znaménka|rozkaz|vykřičník|značka|!!	!
+203D	překvapník	interrobang|otazník|otazník a vykřičník|vykřičník	
+203E	pruh		
+2042	asterismus	hvězdy|seskupení hvězd	
+2044	zlomkové lomítko	lomítko|šikmá čára|zlomek|zlomková čára	
+2049	vykřičník a otazník	interpunkční znaménka|otázka|otazník|vykřičník|značka|zvolání|!?	!|?
+207B	minus jako horní index	horní index|minus	
+20A2	cruzeiro	BRB|měna	
+20A3	francouzský frank	frank|měna	
+20A4	lira	měna	
+20A5	mill	mil	
+20A8	rupie	měna	
+20A9	won	KPW|KRW	
+20AC	euro	EUR|měna	
+20B0	německý fenik	fenik|měna	
+20B1	peso		
+20B3	austral	ARA|měna	
+20B6	tourská libra	měna	
+20B7	spesmilo	měna	
+20B9	indická rupie	měna|rupie|rupie indická	
+20BD	rubl	měna|ruský rubl	
+20BF	bitcoin	BTC|kryptoměna|měna	
+2117	znak práv ke zvukovému záznamu	copyright|nahrávka|zvuková	
+2122	znak ochranné známky	ochranná známka|tm|TM|trademark|značka|značka ochranné známky	
+2139	informace	i|značka informace	
+2190	šipka ukazující doleva	doleva|šipka|šipka ukazující vlevo|vlevo	
+2191	šipka ukazující nahoru	nahoru|šipka|šipka ukazující vzhůru|vzhůru	
+2192	šipka ukazující doprava	doprava|šipka|šipka ukazující vpravo|vpravo	
+2193	šipka ukazující dolů	dolů|šipka	
+2194	šipka doleva a doprava	šipka|šipka vlevo a vpravo	
+2195	šipka nahoru a dolů	dolů|nahoru|šipka	
+2196	šipka doleva nahoru	severozápad|šikmo|šipka|šipka vlevo nahoru|směr|strany|světové|vedlejší	
+2197	šipka doprava nahoru	severovýchod|šikmo|šipka|šipka vpravo nahoru|směr|strany|světové|vedlejší	
+2198	šipka doprava dolů	jihovýchod|šikmo|šipka|šipka vpravo dolů|směr|strany|světové|vedlejší	
+2199	šipka doleva dolů	jihozápad|šikmo|šipka|šipka vlevo dolů|směr|strany|světové|vedlejší	
+219A	přeškrtnutá šipka doleva		
+219B	přeškrtnutá šipka doprava		
+219C	vlnitá šipka doleva		
+219D	vlnitá šipka doprava		
+219E	dvojitá šipka doleva		
+219F	dvojitá šipka nahoru		
+21A0	dvojitá šipka doprava		
+21A1	dvojitá šipka dolů		
+21A2	šipka doleva s chvostem		
+21A3	šipka doprava s chvostem		
+21A4	šipka vlevo od zarážky		
+21A5	šipka nahoru od zarážky		
+21A6	šipka vpravo od zarážky		
+21A7	šipka dolů od zarážky		
+21A8	šipka nahoru a dolů se základnou		
+21A9	šipka doprava stáčející se doleva	obrat o 180 stupňů|otočka|šipka|šipka vpravo zatáčející doleva	
+21AA	šipka doleva stáčející se doprava	obrat o 180 stupňů|otočka|šipka|šipka vlevo zatáčející doprava	
+21AB	šipka doleva se smyčkou		
+21AC	šipka doprava se smyčkou		
+21AD	vlnitá šipka doleva a doprava		
+21AE	přeškrtnutá šipka doleva a doprava		
+21AF	klikatá šipka dolů	cik cak|klikatá	
+21B0	šipka směrem nahoru a doleva		
+21B1	šipka směrem nahoru a doprava		
+21B2	šipka směrem dolů a doleva		
+21B3	šipka směrem dolů a doprava		
+21B4	šipka doprava a dolů		
+21B5	šipka dolů a doleva		
+21B6	polokruhová šipka horní proti směru ručiček		
+21B7	polokruhová šipka horní po směru ručiček		
+21B8	šipka na severozápad s horní zarážkou		
+21B9	šipka doleva se zarážkou nad šipkou doprava se zarážkou	doleva|doprava|šipka|zarážka	
+21BA	otevřená kruhová šipka proti směru ručiček		
+21BB	otevřená kruhová šipka po směru ručiček		
+21BC	praporek nahoře směrem doleva	praporek	
+21BD	praporek dole směrem doleva	praporek	
+21BE	praporek vpravo směrem nahoru	praporek	
+21BF	praporek vlevo směrem nahoru	praporek	
+21C0	praporek nahoře směrem doprava	praporek	
+21C1	praporek dole směrem doprava	praporek	
+21C2	praporek vpravo směrem dolů	praporek	
+21C3	praporek vlevo směrem dolů	praporek	
+21C4	šipka doprava nad šipkou doleva		
+21C5	šipky nahoru a dolů	dolů|nahoru|šipky	
+21C6	šipka doleva nad šipkou doprava	doleva|doprava|šipka	
+21C7	dvě šipky doleva		
+21C8	dvě šipky nahoru		
+21C9	dvě šipky doprava		
+21CA	dvě šipky dolů		
+21CB	praporek nahoře směrem doleva nad praporkem dole směrem doprava		
+21CC	praporek nahoře směrem doprava nad praporkem dole směrem doleva		
+21CD	přeškrtnutá zdvojená šipka doleva		
+21CE	přeškrtnutá obousměrná zdvojená šipka		
+21CF	přeškrtnutá zdvojená šipka doprava		
+21D0	zdvojená šipka doleva		
+21D1	zdvojená šipka nahoru		
+21D2	zdvojená šipka doprava		
+21D3	zdvojená šipka dolů		
+21D4	obousměrná zdvojená šipka		
+21D6	zdvojená šipka na severozápad		
+21D7	zdvojená šipka na severovýchod		
+21D8	zdvojená šipka na jihovýchod		
+21D9	zdvojená šipka na jihozápad		
+21DA	ztrojená šipka doleva		
+21DB	ztrojená šipka doprava		
+21DC	klikatá šipka doleva		
+21DD	klikatá šipka doprava		
+21DE	dvojitě přeškrtnutá šipka nahoru		
+21DF	dvojitě přeškrtnutá šipka dolů		
+21E0	přerušovaná šipka doleva		
+21E1	přerušovaná šipka nahoru		
+21E2	přerušovaná šipka doprava		
+21E3	přerušovaná šipka dolů		
+21E4	šipka doleva k zarážce		
+21E5	šipka doprava k zarážce		
+21E6	bílá šipka doleva		
+21E7	bílá šipka nahoru		
+21E8	bílá šipka doprava		
+21E9	bílá šipka dolů		
+21EA	bílá šipka nahoru se základnou		
+21F5	šipka dolů vedle šipky nahoru		
+2200	pro každé	každé|obecný kvantifikátor|pro všechny|univerzální kvantifikátor|velký kvantifikátor|všechny	
+2202	parciální derivace	derivace|diferenciál|parciální diferenciál	
+2203	existuje	existenční kvantifikátor|malý kvantifikátor	
+2205	prázdná množina	matematika|množinový operátor	
+2206	delta	přírůstek|trojúhelník	
+2207	nabla	trojúhelník	
+2208	prvek množiny	členství|je prvkem|množina|obsahuje|prvek	
+2209	není prvkem	není prvek|prvek	
+220B	obsahuje člen	člen|obsahuje prvek|prvek	
+220E	konec důkazu	čtvereček|Q. E. D.|QED	
+220F	součin řady	matematika|součin|součin posloupnosti|velké pí	
+2211	suma	matematika|součet|součet posloupnosti|součet řady|sumace|velká sigma	
+2212	znaménko minus	minus|odčítání|rozdíl	
+2213	minus nebo plus	minus plus|minus-plus|minus/plus|plus minus	
+2215	dělicí lomítko	dělení|lomítko|šikmá čára	
+2217	operátor hvězdička	hvězda|hvězdička|znak hvězdičky	
+2218	operátor kroužek	kruhový operátor|operátor|skládání funkcí	
+2219	operátor plné kolečko	operátor|operátor kolečko|operátor odrážka	
+221A	druhá odmocnina	kořen|odmocnina|odmocnítko|značka odmocniny	
+221D	je úměrné	je úměrné k|úměrně k|úměrnost	
+221E	znak nekonečna	nekonečno	
+221F	pravý úhel	matematika	
+2220	úhel	ostrý úhel	
+2223	je dělitelem	dělí|dělitelnost|je dělitel|znak dělitelnosti	
+2225	je rovnoběžné s	je rovnoběžné|je rovnoběžné k|rovnoběžnost|znak rovnoběžnosti	
+2227	logický součin	konjunkce|logické a	
+2229	průnik	množina	
+222A	sjednocení	množina	
+222B	integrál	infinitezimální počet|kalkulus|matematická analýza	
+222C	dvojný integrál	infinitezimální počet|kalkulus|matematická analýza	
+222E	křivkový integrál	infinitezimální počet|kalkulus|matematická analýza	
+2234	proto	a proto|logika|odtud|tudíž|z toho plyne	
+2235	protože	logika|neboť|plyne z	
+2236	poměr	dělení|ku	
+2237	vzájemný poměr	poměr|úměrnost	
+223C	operátor vlnovka	ekvivalence|operátor|operátor úměrnosti|řádková ekvivalence|řádkově ekvivalentní|vlnovka	
+223D	obrácená vlnovka	vlnovka	
+223E	obrácené ležaté s		
+2243	je asymptoticky ekvivalentní	asymptota|asymptotická ekvivalence|asymptotická rovnost|ekvivalence|je asymptoticky rovno|matematika	
+2245	je shodné s	izometrické zobrazení|izometrie|kongruence|matematika|přibližně rovno|rovnost|shodnost	
+2248	rovná se přibližně	aproximace|přiblížení	
+224C	vše se rovná	matematika|rovnost|rovnost vektorů|vektorová rovnost|všechny složky se rovnají	
+2252	je přibližně rovno nebo je obrazem	přibližná rovnost nebo obraz	
+2256	kroužek v rovnítku	kruh ve znaku rovnosti|matematika|rovnítko s kroužkem uvnitř|rovnost	
+2260	nerovná se	není rovno|nerovnítko|nerovnost	
+2261	shoduje se	identita|kongruence|kongruentní|shodný|stejný|trojitý	
+2263	je striktně ekvivalentní	ekvivalence|matematika|přísná ekvivalence|rovnost|striktně ekvivalentní|striktní ekvivalence	
+2264	je menší nebo rovno	menší nebo rovno|menší než|menší než nebo rovno|nerovnost|rovná se|rovno	
+2265	je větší nebo rovno	nerovnost|rovná se|rovno|větší nebo rovno|větší než|větší než nebo rovno	
+2266	je menší než nad rovná se	je menší nebo rovno|matematika|méně než nad rovná se|menší nebo rovno|menší než nebo rovno|nerovnost	
+2267	je větší než nad rovná se	je větší nebo rovno|matematika|nerovnost|větší nebo rovno|větší než nebo rovno|více než nad rovná se	
+226A	je mnohem menší než	matematika|mnohem méně než|mnohem menší než|nerovnost	
+226B	je mnohem větší než	matematika|mnohem větší než|mnohem více než|nerovnost	
+226C	má neprázdný průnik s	je mezi|má společný prvek s|mezi	
+226E	ne méně než	matematika|není menší než|nerovnost	
+226F	ne více než	matematika|není větší než|nerovnost	
+2273	je větší než nebo ekvivalentní	je větší než nebo přibližně rovno|matematika|nerovnost|větší nebo ekvivalentní	
+227A	předchází	matematika|množinový operátor	
+227B	následuje	matematika|množinový operátor	
+2281	nenásleduje	matematika|množinový operátor	
+2282	podmnožina	je podmnožinou|množina	
+2283	je nadmnožinou	matematika|množinový operátor|nadmnožina	
+2286	je podmnožinou nebo se rovná	matematika|množinový operátor|podmnožina	
+2287	je nadmnožinou nebo se rovná	matematika|množinový operátor|nadmnožina	
+2295	plus v kroužku	dilatace|plus	
+2296	minus v kroužku	eroze|Minkowského rozdíl|minus|symetrická diference|symetrický rozdíl	
+2297	krát v kroužku	Kroneckerův součin|součin|tenzorový součin	
+2298	lomeno v kroužku	dělení|matematika	
+2299	operátor tečka v kroužku	operátor|XNOR	
+229A	operátor kroužek v kroužku		
+229B	operátor hvězdička v kroužku	hvězdička|operátor	
+229E	plus ve čtverečku	matematika|sčítání	
+229F	minus ve čtverečku	matematika|odčítání	
+22A5	je kolmé k	je kolmé na|je ortogonální k|kolmice|nepravda|ortogonalita	
+22AE	nevynucuje		
+22B0	předchází v relaci	matematika|množinový operátor	
+22B1	následuje v relaci	matematika|množinový operátor	
+22B6	je originálem	je originál|originál	
+22B9	hermitovsky sdružená matice	čtvercová matice|hermitovská matice|hermitovsky souměrná matice|matematika|samosdružená matice	
+22BF	pravoúhlý trojúhelník	matematika	
+22C1	n-ární logický součet	disjunkce|logické operace|sjednocení	
+22C2	n-ární průnik	matematika|množinový operátor|průnik|průnik n množin	
+22C3	n-ární sjednocení	matematika|množinový operátor|sjednocení|sjednocení n množin	
+22C5	operátor tečka	operátor	
+22C6	operátor hvězda	operátor|operátor hvězdička	
+22C8	přirozené spojení relací	binární operátor|motýlek|přirozené spojení|přirozený join	
+22D2	dvojitý průnik	matematika|množinový operátor|průnik	
+22D8	mnohem mnohem menší než	matematika|nerovnost|nesrovnatelně menší než	
+22D9	mnohem mnohem větší než	matematika|nerovnost|nesrovnatelně větší než	
+22ED	neobsahuje jako normální podgrupu a není rovno	matematika|teorie grup	
+22EE	svislá výpustka	matematika|výpustka	
+22EF	středová vodorovná výpustka	výpustka	
+22F0	diagonální výpustka doprava nahoru	matematika|výpustka	
+22F1	diagonální výpustka doprava dolů	matematika|výpustka	
+231A	hodinky	čas|hodiny|náramkové	
+231B	přesýpací hodiny	čas|časomíra|časovač|minutka|písek|počítadlo	
+2328	klávesnice	počítač	
+23CF	tlačítko vysunutí	vysunout	
+23E9	tlačítko převíjení vpřed	dvojitý|přetočit|převinout|rychle|rychloposuv|šipka|vpřed	
+23EA	tlačítko převíjení vzad	dvojitý|přetočit|převinout|rychle|rychloposuv|šipka|vzad|zpět	
+23EB	tlačítko rychle nahoru	dvojitý|nahoru|šipka	
+23EC	tlačítko rychle dolů	dolů|dvojitý|šipka	
+23ED	tlačítko další stopy	další|následující|přeskočit|scéna|šipka|skladba|stopa|trojúhelník	
+23EE	tlačítko předchozí stopy	poslední|předcházející|předchozí|scéna|šipka|skladba|stopa|trojúhelník|zpět	
+23EF	tlačítko přehrávání nebo pozastavení	doprava|pozastavit|přehrát|šipka|trojúhelník|vpravo	
+23F0	budík	budíček|buzení|čas|čekání|hodiny|pozdě|vstávání|zaspat|zpoždění	
+23F1	stopky	čas|časomíra|časovač|hodiny|sport	
+23F2	minutka	budík|čas|časomíra|časovač|hodiny|kuchyňské|kuchyňský budík|měření času|stopky	
+23F3	běžící přesýpací hodiny	čas|časomíra|časovač|čekat|hodiny|minutka|písek|přesýpací hodiny|přesýpací hodiny s pískem	
+23F8	tlačítko pozastavení	dvojitý|pauza|pozastavit|pruh|pruhy|sloupce|sloupec|svislé|svislý|vertikální	
+23F9	tlačítko zastavení	čtverec|stop|zastavit	
+23FA	tlačítko nahrávání	kolečko|kroužek|kruh|nahrát|nahrávka|záznam|zaznamenat	
+24C2	M v kroužku	doprava|kroužek|kruh|m|metro|písmeno M v kruhu	
+25A0	plný čtverec		
+25A1	prázdný čtverec		
+25A2	prázdný čtverec se zaoblenými rohy		
+25A3	plný čtvereček v prázdném čtverci		
+25A4	čtverec s vodorovnou výplní		
+25A5	čtverec se svislou výplní		
+25A6	čtverec s kostičkovanou výplní		
+25A7	čtverec s diagonální výplní klesající zleva doprava		
+25A8	čtverec s diagonální výplní klesající zprava doleva		
+25A9	čtverec s diagonální kostičkovanou výplní		
+25AA	černý čtvereček	černá|čtverec|geometrie|malý černý čtverec|tvar	
+25AB	bílý čtvereček	bílá|čtverec|geometrie|malý bílý čtverec|tvar	
+25AC	plný obdélník		
+25AD	prázdný obdélník		
+25AE	plný svislý obdélník		
+25B0	plný rovnoběžník		
+25B2	vyplněný trojúhelník směřující nahoru	nahoru|plný|šipka|trojúhelník	
+25B3	prázdný trojúhelník vrcholem nahoru		
+25B4	plný trojúhelníček vrcholem nahoru		
+25B5	prázdný trojúhelníček vrcholem nahoru		
+25B6	tlačítko přehrávání	přehrát|šipka|trojúhelník|vpravo	
+25B7	prázdný trojúhelník vrcholem doprava		
+25B8	plný trojúhelníček vrcholem doprava		
+25B9	prázdný trojúhelníček vrcholem doprava		
+25BA	plný ukazatel doprava		
+25BB	prázdný ukazatel doprava		
+25BC	vyplněný trojúhelník směřující dolů	dolů|plný|šipka|trojúhelník	
+25BD	prázdný trojúhelník vrcholem dolů		
+25BE	plný trojúhelníček vrcholem dolů		
+25BF	prázdný trojúhelníček vrcholem dolů		
+25C0	tlačítko přehrávání pozpátku	doleva|opačně|opačného|pozpátku|šipka|tlačítko opačného přehrávání|trojúhelník|vlevo|zpět	
+25C1	prázdný trojúhelník vrcholem doleva		
+25C2	plný trojúhelníček vrcholem doleva		
+25C3	prázdný trojúhelníček vrcholem doleva		
+25C4	plný ukazatel doleva		
+25C5	prázdný ukazatel doleva		
+25C6	plný kosočtverec		
+25C7	prázdný kosočtverec		
+25C8	plný kosočtvereček v prázdném kosočtverci		
+25C9	plný kroužek v prázdném kruhu	kolečko v kroužku|rybí oko|soustředné kruhy s výplní|tečka v kroužku	
+25CA	kosočtverec	diamant|káry	
+25CB	prázdný kroužek	kroužek|kruh|kružnice|prázdný kruh|prstenec	
+25CC	tečkovaný kruh		
+25CD	kruh se svislou výplní		
+25CE	soustředné kružnice	dvojitá kružnice|terč	
+25CF	plný kroužek	kroužek|kruh|plný kruh|vyplněná kružnice|vyplněný kroužek|vyplněný kruh	
+25D0	kruh s vyplněnou levou polovinou		
+25D1	kruh s vyplněnou pravou polovinou		
+25D2	kruh s vyplněnou dolní polovinou	kruh s vyplněnou spodní polovinou	
+25D3	kruh s vyplněnou horní polovinou		
+25D4	kruh s vyplněnou pravou horní čtvrtinou		
+25D5	kruh s prázdnou levou horní čtvrtinou		
+25D6	plný levý půlkruh		
+25D7	plný pravý půlkruh		
+25D8	negativní kolečko	inverzní kolečko|inverzní odrážka|negativní odrážka	
+25D9	bílá kružnice v plném čtverci	inverzní prázdný kruh|negativní prázdný kruh	
+25DC	levá horní čtvrtina kruhového oblouku		
+25DD	pravá horní čtvrtina kruhového oblouku		
+25DE	pravá dolní čtvrtina kruhového oblouku		
+25DF	levá dolní čtvrtina kruhového oblouku		
+25E0	horní polovina kruhového oblouku		
+25E1	dolní polovina kruhového oblouku	spodní polovina kruhového oblouku	
+25E2	plný trojúhelník s pravým úhlem vpravo dole		
+25E3	plný trojúhelník s pravým úhlem vlevo dole		
+25E4	plný trojúhelník s pravým úhlem vlevo nahoře		
+25E5	plný trojúhelník s pravým úhlem vpravo nahoře		
+25E6	prázdné kolečko	prázdná odrážka	
+25EF	prázdný kruh	kroužek|kruh|kružnice|prstenec|velká kružnice|velký prázdný kruh	
+25F3	prázdný čtverec s pravou horní čtvrtinou		
+25F7	prázdný kruh s pravou horní čtvrtinou		
+25FB	střední bílý čtverec	bílá|čtverec|geometrie|tvar	
+25FC	střední černý čtverec	černá|čtverec|geometrie|tvar	
+25FD	větší bílý čtvereček	bílá|čtverec|geometrie|střední bílý čtverec|tvar	
+25FE	větší černý čtvereček	černá|čtverec|geometrie|střední černý čtverec|tvar	
+25FF	prázdný trojúhelník s pravým úhlem vpravo dole		
+2600	slunce	hvězda|jasno|jasný|paprsky|počasí|slunečno|sluníčko|slunný|vesmír	
+2601	mrak	mráček|mračna|oblak|počasí|zamračeno	
+2602	deštník	déšť|fialová|oblečení|otevřený deštník|paraple|počasí|pršet|prší	
+2603	sněhulák	chladno|mrznout|počasí|sníh|zima	
+2604	kometa	kosmické těleso|kosmos|vesmír|vlasatice	
+260E	telefon	červená|číselník|sluchátko|telefonovat|volat	
+2611	zaškrtnuté políčko	fajfka|hlasování|hotovo|krabice|okénko|políčko|volby|zaškrtnutí	✓
+2614	deštník s kapkami deště	déšť|deštník|dešťové kapky|kapka|oblečení|paraple|počasí|pršet|prší	
+2615	teplý nápoj	čaj|horký|kafčo|kafe|kafíčko|káva|kavárna|kofein|kouřící|nápoj|pára|pití|ráno|Starbucks	
+2618	trojlístek	Irsko|irský|jetel|rostlina|štěstí|zelený	
+261D	ruka ukazující nahoru	nahoru|prst|ruka|tělo|ukazováček|ukazovat	
+2620	lebka a zkřížené hnáty	kosti|kostra|lebka|lebka se zkříženými hnáty|mrtvý|obličej|příšera|smajlík|smrt|tělo|tvář|výraz|zkřížené hnáty	
+2622	radioaktivita	radioaktivity|radioaktivní|značka	
+2623	biohazard	biologické|nebezpečí|riziko|značka	
+2626	pravoslavný kříž	křesťan|křesťanský|křesťanství|kříž|náboženství	
+262A	hvězda a půlměsíc	islám|islámský|muslim|muslimský|náboženství|ramadán	
+262E	symbol míru	hipík|hippies|mír	
+262F	jin a jang	celek|jang|jin|náboženství|tao|taoismus	
+2638	kolo dharmy	buddhismus|buddhista|dharma|kolo|kormidlo|náboženství	
+2639	zamračený obličej	mračit se|obličej|smajlík|smutek|smutný|tvář|výraz|zamračení|zamračený výraz	
+263A	usmívající se obličej	obličej|obrys|pohoda|potěšený|silueta|smajlík|šťastný|tvář|úsměv|usměvavý|uvolněný|výraz|výraz úsměvu	
+2640	symbol ženského pohlaví	žena	
+2642	symbol mužského pohlaví	muž	
+2648	skopec	beran|Beran|horoskop|znamení Berana|zvěrokruh	
+2649	býk	horoskop|tur|vůl|znamení Býka|zvěrokruh	
+264A	blíženci	blíženec|dvojčata|horoskop|znamení Blíženců|zvěrokruh	
+264B	rak	horoskop|znamení Raka|zvěrokruh	
+264C	lev	horoskop|znamení Lva|zvěrokruh	
+264D	panna	horoskop|znamení Panny|zvěrokruh	
+264E	váhy	horoskop|rovnováha|spravedlnost|váha|znamení Vah|zvěrokruh	
+264F	štír	škorpion|znamení Štíra|zvěrokruh	
+2650	střelec	horoskop|znamení Střelce|zvěrokruh	
+2651	kozoroh	horoskop|koza|znamení Kozoroha|zvěrokruh	
+2652	vodnář	horoskop|nosič|voda|vodonoš|znamení Vodnáře|zvěrokruh	
+2653	ryby	horoskop|ryba|znamení Ryb|zvěrokruh	
+265F	pěšec	figurka|pěšák|pión|šachy	
+2660	piky	barva|barva karty|hra|karta	
+2663	kříže	barva|barva karty|hra|karta|kříž	
+2665	srdce	barva|barva karty|červený|city|emoce|hra|karta|láska|srdíčko	
+2666	káry	barva|barva karty|hra|kára|karta	
+2668	horké prameny	horko|horký pramen|lázeň|pára|pramen|termální prameny|vřídlo	
+266A	osminová nota	hudba|nota|noty|osmina	
+266D	bé	béčko|hudba|noty|posuvka|snížený tón	
+266F	křížek (posuvka)	hudba|křížek|noty|posuvka|zvýšený tón	
+267B	symbol recyklace	recyklace	
+267E	nekonečno	bez hranic|nekonečnost|neomezenost|věčnost	
+267F	symbol invalidního vozíku	bezbariérový|hendikep|invalidní vozík|invalidy|kolečkové křeslo|přístup|vozík|zpřístupnění	
+2692	kladivo a špičák	hornictví|horník|kladivo|mlátek a želízko|nářadí|nástroj|práce|špičák|težba|zaměstnání	
+2693	kotva	cestování|loď|moře|nástroj|oceán|plavba|přístav|zakotvit|zařízení	
+2694	zkřížené meče	boj|kordy|legenda|meče|pohádka|rytíř|šavle|zbraň|zkřížené	
+2695	znak medicíny	aesculap|aesculapova|aeskulap|aeskulapova|Asklépios|doktor|eskulap|Eskulap|eskulapova|farmacie|hůl|lékař|lékárna|lékárník|lékařství|medicína|nemocnice	
+2696	miskové váhy	hmotnost|nářadí|nástroj|rovnováha|spravedlnost|váha|Váhy|vyvažovací váhy|znamení zvěrokruhu|zvěrokruh	
+2697	křivule	alembik|chemie|destilace|destilační|destilační přístroj|laboratoř|náčiní|nádobí|nástroj	
+2699	ozubené kolo	mechanika|nářadí|nástroj|převod|přístroj	
+269B	symbol atomu	ateismus|ateista|atom	
+269C	heraldická lilie	erb|fleur de lis|junák|lilie|rytíř|skaut|symbol|znak	
+26A0	varování	pozor|upozornění|varovný|výkřičník|výstraha	!
+26A1	vysoké napětí	blesk|bouře|bzz|elektrický|elektřina|hrom|jiskra|Messenger|napětí|nebezpečí|příroda|výboj|záblesk	
+26A7	symbol pro transgender osoby	transgender	
+26AA	bílý kroužek	bílá|bílý kruh|geometrie|kruh|tvar	
+26AB	černý kroužek	černá|černý kruh|geometrie|kruh|tvar	
+26B0	rakev	mrtvý|pohřeb|smrt|truhla|upír|vampýr|zesnulý	
+26B1	pohřební urna	ostatky|pohřeb|popel|smrt|smuteční obřad|urna|zesnulý|zpopelnit	
+26BD	fotbalový míč	balón|fotbal|kopaná|Messi|míč|Ronaldo|sport	
+26BE	baseballový míček	baseball|míč|softball|sport	
+26C4	sněhulák bez sněhu	chladno|počasí|sněhulák|sníh|studený|zima	
+26C5	slunce za mrakem	mrak|oblačno|oblak|počasí|polooblačno|slunce|zamračeno	
+26C8	mrak s bleskem a deštěm	blesk|bouřka|déšť|hrom|mrak|oblak|počasí|prší|průtrž mračen	
+26CE	hadonoš	had|horoskop|nosič|plaz|zvěrokruh	
+26CF	krumpáč	bušit|dolování|důl|hornictví|horník|nářadí|nástroj|práce|těžba	
+26D1	záchranářská helma	čepice|helma|helma s křížem|helma záchranáře|kříž|pomoc|přilba|smajlík|tvář|výraz|záchrana|záchranář|záchranná služba	
+26D3	řetězy	řetěz|řetězec|řetízek|spojit|železný	
+26D4	zákaz vjezdu v jednom směru	doprava|dopravní|ne|nevstupovat|vjezd|vjezdu|vozidel|vstupu|zákaz|zakázáno|značka	
+26E9	šintoistická svatyně	brána|japonský|náboženství|posvátný|šintoismus|svatyně|torii	
+26EA	kostel	budova|kaple|křesťanství|kříž|modlitebna|náboženství|požehnat	
+26F0	hora	horský|hory|kopec|pohoří|příroda|štít|vrch	
+26F1	slunečník	déšť|deštník|deštník na zemi|léto|pláž|počasí|slunce|slunečník na zemi	
+26F2	fontána	kašna|lázně|pramen|voda|vodotrysk	
+26F3	jamka s vlajkou	červená vlajka|golf|golfová|golfové hřiště|jamka|sport	
+26F4	trajekt	člun|doprava|loď|moře|oceán|osobní|pasažér|plavidlo|plavit|přívoz|řeka	
+26F5	plachetnice	doprava|dovolená|jachta|jachting|loď|moře|oceán|plachtění|plavba|plavidlo	
+26F7	lyžař	aktivita|člověk|lyžařka|lyže|lyžovat|sníh|sport|zima|zimní	
+26F8	brusle	bruslení|bruslit|krasobruslení|led|sport|zimní	
+26F9	osoba driblující s míčem	basketbal|člověk|driblovat|driblující muž|hráč basketbalu|míč|muž|muž s míčem|sport	
+26FA	stan	cestování|dovolená|kemp|kempink|kempování|léto|příroda|stanování|stanovat|tábor|táboření	
+26FD	benzínová pumpa	benzin|benzín|benzínka|čerpací|diesel|nafta|palivo|plyn|pohonné hmoty|pumpa|stanice	
+2702	nůžky	nástroj|papír|šmik|střih|stříhání|stříhat	
+2705	tlačítko se značkou zaškrtnutí	bílá značka zaškrtnutí|fajfka|hotovo|opraveno|ověřeno|správně|tlačítko|zaškrtnutí|zelené tlačítko|značka	✓
+2708	letadlo	cestování|doprava|let|létat|letiště|letoun|tryskáč|tryskové letadlo	
+2709	obálka	dopis|e-mail|email|list|pošta|psaní|psaníčko|zásilka	
+270A	zvednutá pěst	držet palce|držím pěsti|pěst|ruka|síla|solidarita|tělo|úder|zaťatá	
+270B	zvednutá ruka	high five|pět|plácneme si|plácnutí|pozdrav|ruka|stop|tělo	5
+270C	gesto vítězství	mír|prsty|ruka|tělo|v|vítězství|znamení míru|znamení vítězství	
+270D	píšící ruka	písmo|psací|psaní|psát|ruka|tělo	
+270F	tužka	kreslit|obyčejná tužka|psát|skica	
+2712	hrot černého pera	atrament|černé pero|hrot|inkoust|inkoustové pero|pero|plnicí pero|tuš	
+2714	značka zaškrtnutí	fajfka|hotovo|opraveno|ověřeno|správně|velká značka zaškrtnutí|zaškrtnutí|značka	✓
+2716	znak násobení	krát|křížek|násobení|násobit|součin|x|znak|zrušení|zrušit	×
+271D	latinský kříž	katolický kříž|křesťan|křesťanský|křesťanství|Kristus|kříž|latinský kířž|náboženství|římský kříž	
+2721	Davidova hvězda	david|David|hexagram|hvězda|judaizmus|náboženství|víra|žid|židovská hvězda|židovský	
+2728	jiskry	čarovat|hvězda|hvězdičky|jiskra|jiskřit|kouzlo|magie|noc|třpytit se|zářit	*
+2733	osmicípá hvězdička	hvězda|hvězdička|zelená	*
+2734	osmicípá hvězda	hvězda|hvězdička|oranžová	*
+2744	sněhová vločka	chladno|počasí|sněžit|sníh|vločka|zima	
+2747	jiskra	hvězdička|jiskérka|jiskřička|jiskřit|třpyt	*
+274C	křížek	červený křížek|krát|násobení|násobit|součin|x|zaškrtnutí|značka|znak křížek|zrušení	×
+274E	tlačítko s křížkem	čtverec|čtvereček|krát|křížek|násobení|násobit|tlačítko|x|zelený čtverec s bílým křížkem|značka|značka s bílým křížkem|znak	×
+2753	červený otazník	dotaz|interpunkční znaménka|otázka|otazník|ptát se|značka	?
+2754	bílý otazník	interpunkční znaménka|obrys|otazník|značka	?
+2755	bílý vykřičník	interpunkce|interpunkční znaménka|obrys|vykřičník|značka	!
+2757	červený vykřičník	interpunkční znaménka|pozor|rozkaz|vykřičník|výstraha|značka	!
+2763	srdce jako vykřičník	interpunkce|interpunkční znaménka|srdce|vykřičník|značka|znaménko	!
+2764	rudé srdce	červený|city|emoce|láska|srdce|zamilovaný	
+2795	znak plus	kladný|matematika|plus|přičíst|přičítat|připočítat|sčítání|sčítat|sečíst|součet|velké znaménko plus	+
+2796	znak minus	matematika|minus|mínus|odčítání|odečíst|odečítat|počítat|rozdíl|velké znaménko minus|záporný	-|−
+2797	znak dělení	dělení|děleno|matematika|podíl|velké znaménko dělení	÷
+27A1	šipka doprava	doprava|hlavní|šipka|šipka vpravo|směr|strany|světové|východ	
+27B0	smyčka	kadeř|kudrna|lokna|spirálka|zatočený	
+27BF	dvojitá smyčka	dvojitá|dvojitý|kadeř|kudrlinka|kudrna|smyčka|spirálka	
+2934	šipka doprava stáčející se nahoru	nahoru|šipka|šipka vpravo zatáčející nahoru	
+2935	šipka doprava stáčející se dolů	dolů|šipka|šipka vpravo zatáčející dolů	
+2A27	plus s dolním indexem dva		
+2A2F	kartézský součin	direktní součin|vektorový součin	
+2A3C	vnitřní součin		
+2A63	dvojitě podtržený logický součet		
+2A7D	je menší nebo rovno se šikmým rovnítkem		
+2A8D	je menší než nad přibližně rovno	menší než nebo ekvivalentní	
+2A9A	rovná se nad je větší než	matematika|nerovnost	
+2ABA	následuje nad není přibližně rovno		
+2B05	šipka doleva	doleva|hlavní|klávesa|šipka|šipka vlevo|směr|strany|světové|ukazatel|západ	
+2B06	šipka nahoru	hlavní|klávesa|nahoru|sever|šipka|směr|strany|světové|ukazatel	
+2B07	šipka dolů	dolů|hlavní|jih|klávesa|šipka|směr|strany|světové|ukazatel	
+2B1B	velký černý čtverec	černá|čtverec|geometrie|tvar	
+2B1C	velký bílý čtverec	bílá|čtverec|geometrie|tvar	
+2B50	bílá hvězda střední velikosti	astronomie|bílá střední hvězda|hvězda|hvězdička|hvězdy|střední hvězda	
+2B55	červený kruh bez výplně	červený kruh|kolečko|kroužek|kruh|o|velký	
+3001	ideografická čárka	čárka|ideografická	
+3002	ideografická tečka	bod|ideografická|tečka	
+3008	levá lomená závorka	levá ostrá závorka|lomená závorka|lomené závorky|ostrá závorka|ostré závorky|úhlová závorka|úhlové závorky	
+3009	pravá lomená závorka	lomená závorka|lomené závorky|ostrá závorka|ostré závorky|pravá ostrá závorka|úhlová závorka|úhlové závorky	
+300A	dvojitá levá lomená závorka	dvojitá lomená závorka|dvojitá ostrá závorka|dvojitá špičatá závorka|dvojitá úhlová závorka|dvojité lomené závorky|dvojité ostré závorky|dvojité úhlové závorky|levá dvojitá ostrá závorka	
+300B	dvojitá pravá lomená závorka	dvojitá lomená závorka|dvojitá ostrá závorka|dvojitá špičatá závorka|dvojitá úhlová závorka|dvojité lomené závorky|dvojité ostré závorky|dvojité úhlové závorky|pravá dvojitá ostrá závorka	
+300C	levá rohová závorka	asijské uvozovky|horní celá část|levá horní rohová závorka|levá jednoduchá asijská uvozovka|rohová závorka|rohové závorky	
+300D	pravá rohová závorka	asijské uvozovky|dolní celá část|pravá dolní rohová závorka|pravá jednoduchá asijská uvozovka|rohová závorka|rohové závorky	
+300E	dvojitá levá rohová závorka	asijské uvozovky|dutá rohová závorka|duté rohové závorky|dvojitá rohová závorka|dvojité rohové závorky|levá dvojitá asijská uvozovka|levá horní rohová závorka|rohová závorka|rohové závorky	
+300F	dvojitá pravá rohová závorka	asijské uvozovky|dutá rohová závorka|duté rohové závorky|dvojitá rohová závorka|dvojité rohové závorky|pravá dolní rohová závorka|pravá dvojitá asijská uvozovka|rohová závorka|rohové závorky	
+3010	levá plná lentikulární závorka	černá lentikulární závorka|černé lentikulární závorky|plná lentikulární závorka|plné lentikulární závorky|závorka|závorky	
+3011	pravá plná lentikulární závorka	černá lentikulární závorka|černé lentikulární závorky|plná lentikulární závorka|plné lentikulární závorky|závorka|závorky	
+3014	levá asijská komentářová závorka	šestiúhelníková závorka|šestiúhelníkové závorky|závorka|závorky|želví závorka|želví závorky	
+3015	pravá asijská komentářová závorka	šestiúhelníková závorka|šestiúhelníkové závorky|závorka|závorky|želví závorka|želví závorky	
+3016	levá dutá lentikulární závorka	bílá lentikulární závorka|bílé lentikulární závorky|dutá lentikulární závorka|duté lentikulární závorky|závorka|závorky	
+3017	pravá dutá lentikulární závorka	bílá lentikulární závorka|bílé lentikulární závorky|dutá lentikulární závorka|duté lentikulární závorky|závorka|závorky	
+3030	dlouhá vlnovka	čára|interpunkce|interpunkční|pomlčka|vlnitá|vlnovka|vlny|znaménka	
+303D	značka přechodu mezi částmi skladby	část|part|symbol|začátek|značka|značka pro začátek zpěvu v karaoke|znak|zpěv|zpěvák	
+30FB	japonská středová tečka	interpunkce|katakana|střed|tečka|tečky	
+3297	štítek s japonským znakem „blahopřání“	blahopřání|blahopřejeme|gratulace|gratulovat|ideogram|japonský|japonský kruhový ideogram gratulace|japonština|štěstí	
+3299	štítek s japonským znakem „tajné“	ideogram|japonský|japonský kruhový ideogram tajemství|japonština|tajemství|utajení	
+FDFC	rijál	měna	
+1F004	červený drak v mahjongu	červená|hra|madžong|mah-jong|mahjong	
+1F0CF	žolík	divoká|hra|hraní|joker|karta|karty	
+1F170	štítek A (krevní skupina)	a|červené a|krev|krevní skupina|písmeno A|skupina|značka	
+1F171	štítek B (krevní skupina)	b|krev|krevní skupina|krevní skupina B|skupina|značka	
+1F17E	štítek 0 (krevní skupina)	krev|krevní skupina|krevní skupina 0|o|skupina|značka	0
+1F17F	štítek P	p|parking|parkování|parkoviště|tlačítko|značka P|značka parkování	
+1F18E	štítek AB (krevní skupina)	ab|krev|krevní skupina|skupina|značka	
+1F191	štítek CL	cl|clear|tlačítko CL|vymazat|značka	
+1F192	štítek COOL	boží|cool|hustý|super|značka	
+1F193	štítek FREE	bezplatný|free|tlačítko zdarma|volný|zadarmo|zdarma|značka	
+1F194	štítek ID	id|identita|totožnost|značka	
+1F195	štítek NEW	new|nový|značka	
+1F196	štítek NG	ng|no good|značka	
+1F197	štítek OK	ok|OK|oukej|značka	
+1F198	štítek SOS	Morseova abeceda|Morseovka|pomoc|sos|SOS|tlačítko SOS|značka SOS	
+1F199	štítek UP!	nahoru|up|značka|značka UP!	
+1F19A	štítek VS	proti|tlačítko vs|versus|vs|značka versus	
+1F201	štítek s japonským znakem „zde“	japonská značka katakana koko|japonský|japonština|katakana|tady|zde	
+1F202	štítek – japonský znak „pozornost podniku“	bezplatně|japonská značka katakana sa|japonský|japonština|katakana|manipulační poplatek|poplatek|poplatek za službu|služba|zdarma	
+1F21A	štítek s japonským znakem „zdarma“	bezplatně|ideogram|japonský|japonský čtvercový ideogram bezplatnosti|japonština|negace|zadarmo|zdarma	
+1F22F	štítek s japonským znakem „rezervováno“	ideogram|japonský|japonský čtvercový ideogram rezervace|japonština|obsazeno|prst|rezervováno|směr	
+1F232	štítek s japonským znakem „zákaz“	ideogram|japonský|japonský čtvercový ideogram zákazu|japonština|zákaz|zakázáno	
+1F233	štítek s japonským znakem „volno“	ideogram|japonský|japonský čtvercový ideogram neobsazenosti|japonština|neobsazenost|neobsazený|prázdný|volno|volný	
+1F234	štítek s japonským znakem „prospěl“	dohoda|hodnocení|ideogram|japonský|japonský čtvercový ideogram jednoty|japonština|prospěl|vyhověl|vyhovující|známka	
+1F235	štítek s japonským znakem „obsazeno“	ideogram|japonský|japonský čtvercový ideogram obsazenosti|japonština|obsazeno|plno|plnost|žádná volná|žádné volné	
+1F236	štítek s japonským znakem „není zdarma“	ideogram|japonský|japonský čtvercový ideogram existence|japonština|majetek|není zdarma|poplatek|vlastnictví	
+1F237	štítek s japonským znakem „měsíc“	ideogram|japonský|japonský čtvercový ideogram měsíce|japonština|měsíc|měsíčně|měsíční	
+1F238	štítek s japonským znakem „žádost”	dotazy|ideogram|japonský|japonský čtvercový ideogram žádosti|japonština|kontakt|přihláška|žádost	
+1F239	štítek s japonským znakem „sleva“	akce|ideogram|japonský|japonský čtvercový ideogram slev|japonština|sleva|výprodej	
+1F23A	štítek s japonským znakem „otevřeno“	ideogram|japonský|japonský čtvercový ideogram otevřenosti|japonština|otevřeno|provozní doba|v provozu	
+1F250	štítek – japonský znak „výhodná koupě“	ideogram|japonský|japonský kruhový ideogram výhodnosti|japonský kruhový ideogram vyjednávání|japonština|koupě|výhodná|výhodnost	
+1F251	štítek s japonským znakem „přijatelné“	ideogram|japonský|japonský kruhový ideogram přijetí|japonština|přijatelný|příjem|přijetí	
+1F300	cyklóna	cyklón|hurikán|počasí|spirála|tajfun|tornádo|twister|závrať	
+1F301	mlha	mlhavo|most|počasí	
+1F302	zavřený deštník	déšť|deštník|fialový|oblečení|paraple|počasí	
+1F303	hvězdná noc	hvězda|měsíc|mrakodrap|noc|noční panorama|obrázek|počasí|velkoměsto	
+1F304	svítání nad horami	hora|počasí|ráno|rozbřesk|slunce|svítání|východ slunce	
+1F305	východ slunce	počasí|příroda|ráno|rozbřesk|slunce|svítání|úsvit	
+1F306	město za soumraku	budova|krajina|město|městská|mrakodrap|panelák|počasí|silueta|slunce|soumrak|večer|vyhlídka|západ	
+1F307	západ slunce	budova|město|mrakodrapy|obrázek|počasí|slunce|soumrak|stmívání|večer|velkoměsto|západ	
+1F308	duha	asexuál|barevná duha|barevný|bisexuálové|déšť|duhový|gayové|genderqueer|intersexuál|lesby|LGBT|počasí|pride|příroda|queer|transgender|transsexuálové	
+1F309	most v noci	cestování|most|noc|obrázek|počasí	
+1F30A	vodní vlna	Kanagawa|moře|oceán|počasí|příroda|surfař|surfařka|surfing|surfovat|tsunami|vlna|vlnobití|voda	
+1F30B	sopka	erupce|hora|láva|příroda|vulkán|výbuch	
+1F30C	mléčná dráha	galaxie|noc|obloha|vesmír	
+1F30D	glóbus s Evropou a Afrikou	afrika|Afrika|evropa|Evropa|glóbus|planeta|svět|země|zeměkoule	
+1F30E	glóbus se Severní a Jižní Amerikou	amerika|Amerika|planeta|svět|země|zeměkoule	
+1F30F	glóbus s Asií a Austrálií	asie|Asie|austrálie|Austrálie|planeta|svět|země|zeměkoule	
+1F310	glóbus s poledníky a rovnoběžkami	glóbus s poledníky|internet|poledníky|rovnoběžky|svět|web|země|zeměkoule|zeměpisná síť	
+1F311	měsíc v novu	fáze měsíce|měsíc|noc|nov|novoluní|nový|počasí|tma|vesmír	
+1F312	dorůstající měsíc po novoluní	dorůstá|dorůstající|dorůstající srpek měsíce|fáze měsíce|měsíc|noc|počasí|půlměsíc|sny|srpek|vesmír	
+1F313	měsíc v první čtvrti	čtvrť|dorůstá|dorůstající|fáze měsíce|měsíc|noc|počasí|první čtvrť|půlměsíc|vesmír	
+1F314	dorůstající měsíc před úplňkem	dorůstá|dorůstající|fáze měsíce|měsíc|noc|počasí|vesmír	
+1F315	měsíc v úplňku	fáze měsíce|jasný|měsíc|noc|počasí|úplněk|vesmír	
+1F316	ubývající měsíc po úplňku	couvá|couvající|fáze měsíce|měsíc|noc|počasí|ubývá|ubývající|vesmír|vypouklý	
+1F317	měsíc v poslední čtvrti	couvá|couvající|čtvrť|fáze měsíce|měsíc|počasí|půlměsíc|ubývá|ubývající|vesmír	
+1F318	ubývající měsíc před novoluním	couvá|couvající|couvající srpek měsíce|fáze měsíce|měsíc|noc|počasí|půlměsíc|srpek|srpek měsíce|ubývá|ubývající|vesmír	
+1F319	srpek měsíce	couvá|dorůstá|měsíc|noc|počasí|přibývá|půlměsíc|Ramadán|srpek|ubývá|vesmír	
+1F31A	měsíc v novu s obličejem	fáze měsíce|měsíc|noc|nov|novoluní|nový|obličej|počasí|smajlík|tma|tvář|vesmír|výraz	
+1F31B	měsíc v první čtvrti s obličejem	čtvrť|dorůstá|dorůstající|fáze měsíce|měsíc|obličej|počasí|půlměsíc|smajlík|tvář|vesmír|výraz	
+1F31C	měsíc v poslední čtvrti s obličejem	couvá|couvající|čtvrť|fáze měsíce|měsíc|měsíček|noc|obličej|počasí|půlměsíc|smajlík|snít|sny|tvář|ubývá|ubývající|vesmír|výraz	
+1F31D	měsíc v úplňku s obličejem	fáze měsíce|jasný|měsíc|noc|obličej|počasí|smajlík|tvář|úplněk|úplněk s obličejem|vesmír|výraz	
+1F31E	slunce s obličejem	den|horko|jasno|jasný|pláž|počasí|slunce|slunečný|sluníčko|slunný|smajlík|světlo|svítit|teplo|tvář|vedro|vesmír|výraz	
+1F31F	zářící hvězda	hvězda|hvězdička|jas|jiskra|noc|třpytit se|třpytivý|vyhrát|záře|zářící	
+1F320	padající hvězda	hvězda|kometa|kosmos|noc|padající|vesmír	
+1F321	teploměr	horečka|počasí|teplé|teplo|teplota	
+1F324	slunce za malým mrakem	mráček|mrak|obláček|oblačno|oblak|počasí|polojasno|slunce|slunečno	
+1F325	slunce za velkým mrakem	mrak|oblačno|oblak|počasí|pod mrakem|slunce	
+1F326	slunce za dešťovým mrakem	déšť|mrak|oblačno s dešťovými přeháňkami|oblak|počasí|přeháňky|prší|slunce	
+1F327	mrak s deštěm	déšť|mrak|oblačno|oblak|počasí|pršet|prší|zataženo	
+1F328	mrak se sněhem	chladno|mračna|mrak|mráz|mrznout|oblak|počasí|sněžit|sněžný|sníh|studený|zima	
+1F329	mrak s bleskem	blesk|bouře|bouřka|hromy a blesky|mračna|mrak|oblak|počasí	
+1F32A	tornádo	cyklon|mrak|oblak|orkán|počasí|pohroma|smršť|vichřice|vír|vzdušný vír	
+1F32B	mlhavé počasí	mlha|mrak|oblak|počasí|pošmourno|zataženo	
+1F32C	větrný obličej	fouká|foukající|foukat|mrak|oblak|obličej|smajlík|tvář|vane|vánek|vanoucí|vát|větřík|větrný|vichr|vichřice|vítr|výraz|zima	
+1F32D	párek v rohlíku	hořčice|hot dog|hotdog|jídlo|kečup|klobása|párek	
+1F32E	taco	jídlo|mexická kuchyně|mexické|placka|tacos	
+1F32F	burrito	burito|burritos|jídlo|mexická|mexická kuchyně|mexické|rolka|tortilla|wrap	
+1F330	kaštan	jídlo|kaštanový|rostlina	
+1F331	výhonek	klíček|klíčící|klíčit|mladý|pučet|rašit|ratolest|rostlina|sazenice|semenáček	
+1F332	jehličnatý strom	borovice|jedle|jedlička|jehličnan|les|neopadavý|příroda|rostlina|smrček|smrk|stálezelený|strom|vánoční stromeček	
+1F333	listnatý strom	les|opadavý|příroda|rostlina|strom|zelený	
+1F334	palma	moře|palmový|pláž|rostlina|strom|tropický	
+1F335	kaktus	poušť|příroda|rostlina|sucho	
+1F336	feferonka	chilli|čili|jídlo|kořeněný|koření|ostrý|pálivý|paprička|paprika|pikantní|rostlina	
+1F337	tulipán	kvést|květ|květina|kytička|kytka|rostlina|růst	
+1F338	třešňový květ	jaro|květ|květ třešně|květina|rostlina|rozkvetlá třešeň|sakura|třešeň	
+1F339	růže	červená|elegantní|krása|květ|květina|rostlina|rudý|růže z lásky|Valentýn	
+1F33A	ibišek	ibiškový květ|květ|květina|kytička|kytka|rostlina|rozkvetlá	
+1F33B	slunečnice	květ|květina|příroda|rostlina|slunce|zasadit	
+1F33C	květ	květina|kytka|louka|pampeliška|podběl|pryskyřičník|pryskyřník|rostlina|žlutá květina	
+1F33D	kukuřičný klas	farma|jídlo|klas|kukuřice|obilí|plodiny|rostlina|sklizeň|úroda|zrno	
+1F33E	rýžové klasy	klas|klásek|obilí|obilniny|otep|rostlina|rýže|rýžový klas|snop|snopek|zrní|zrno	
+1F33F	bylina	bylinka|list|lísteček|lístek|listí|listoví|příroda|rostlina|snítka	
+1F340	čtyřlístek	čtyři|Irsko|irský|jetel|list|rostlina|štěstí	4
+1F341	javorový list	javor|Kanada|list|opadané listí|padající|podzim|podzimní|rostlina	
+1F342	spadlý list	list|opadavý|padající|podzim|rostlina	
+1F343	padající list ve větru	foukat|list|lístek|listí|padající třepotající se list|příroda|rostlina|třepetající|třepetat|třepotající|třepotat|vánek|větřík|vítr	
+1F344	houba	hřib|hříbek|jedovatá|jedovatý|muchomůrka	
+1F345	rajče	červená|jídlo|kečup|ovoce|rajské jablíčko|rostlina|zelenina	
+1F346	lilek	baklažán|jídlo|rostlina|záhrada|zelenina	
+1F347	hrozny	červené hrozny|Dionýsos|hrozen|hroznové víno|jídlo|ovoce|rostlina|víno	
+1F348	cukrový meloun	ananasový meloun|jídlo|meloun|ovoce|rostlina|žlutý meloun	
+1F349	meloun	červený|jídlo|ovoce|rostlina|vodní	
+1F34A	mandarinka	citrus|jídlo|oranžová|ovoce|pomeranč|rostlina|vitamin C|vitamín C	
+1F34B	citron	citrus|jídlo|kyselý|ovoce|rostlina|žlutý citron	
+1F34C	banán	draslík|jídlo|ovoce|rostlina	
+1F34D	ananas	jídlo|ovoce|Piña Colada|rostlina|tropický	
+1F34E	červené jablko	červená|jablko|jídlo|ovoce|rostlina|strava|zdravá strava|zdraví|zdravý|životospráva|zralý	
+1F34F	zelené jablko	jablíčko|jablko|jídlo|ovoce|rostlina|zelená	
+1F350	hruška	jídlo|ovoce|rostlina|sad|zahrada	
+1F351	broskev	jídlo|meruňka|ovoce|rostlina	
+1F352	třešně	červená|jídlo|ovoce|rostlina|třešeň|třešinky|višně	
+1F353	jahoda	jídlo|ovoce|rostlina|zahrada	
+1F354	hamburger	burger|burgr|cheeseburger|fast food|fastfood|hamburgr|hladový|jídlo|jíst|rychlé občerstvení	
+1F355	pizza	díl|dílek|hladový|jídlo|klínek|kousek|pepperoni|salám|salámová|sýr|sýrová	
+1F356	maso na kosti	hlad|jídlo|kost|kýta|maso	
+1F357	kuřecí stehýnko	drůbež|hladový|husa|jídlo|kachna|kost|krocan|kuře|kýta|noha|stehno	
+1F358	rýžová sušenka	japonská směs|jídlo|keks|krekr|křupka|mořská řasa|rýže|suchar|sušenka	
+1F359	rýžová koule	japonská|japonský|jídlo|kulička|onigiri|rýže|rýžová|trojúhelník	
+1F35A	vařená rýže	hlad|jídlo|miska ryže|rýže|uvařená|vařený	
+1F35B	kari rýže	curry|jídlo|kari|karí|kari s rýží|rýže	
+1F35C	miska nudlí	jídelní hůlky|jídlo|kouřící|miska|nudle|pára|pho|polévka|ramen	
+1F35D	špagety	boloňské špagety|italská kuchyně|italský|jídlo|masové kuličky|rajská omáčka|restaurace|těstoviny	
+1F35E	chleba	bochník|chléb|jídlo|karbohydráty|moučný|obilí|obilniny|obiloviny|pecen|pšenice|restaurace|sacharidy|toast|toastový chleba	
+1F35F	hranolky	bramborové|brambory|fastfood|jídlo|pomfritky|pomfrity|rychlé občerstvení	
+1F360	opékaný batát	batát|brambora|jam|jídlo|opékaný|sladká brambora|sladký	
+1F361	dango	dezert|japonský|jídlo|knedlíček|rýžový knedlík|sladkost|sladký|špejle|tyčka|zákusek	
+1F362	oden	japonský|jídlo|kebab|mořské plody|plody moře|restaurace|špejle|špíz|tyčka	
+1F363	suši	hlad|japonský|jídlo|losos|nigiri|rýže|sushi|tuňák	
+1F364	smažená kreveta	garnát|jídlo|kreveta|smažené|smažený|tempura	
+1F365	rybí koláček se spirálkou	dort|jídlo|koláček|restaurace|ryba|rybí karbanátek|rybí koláček|rýžový|spirála|surimi	
+1F366	točená zmrzlina	cukrovinka|dezert|jemný|jídlo|kornout|kornoutek|krémová zmrzlina|sladkost|sladký|zákusek|zmrzlina|zmrzlina v kornoutku	
+1F367	ledová tříšť	cukrovinka|dezert|dřeň|jídlo|led|osvěžující|restaurace|sladkost|sladký|tříšť|zákusek|zmrzlina|zmrzlinový pohár	
+1F368	kopečková zmrzlina	cukrovinka|dezert|jídlo|kopeček zmrzliny|pohár|restaurace|sladkost|sladký|zákusek|zmrzlina|zmrzlinový	
+1F369	donut	americká|cukrovinka|dezert|jídlo|kobliha|koblížek|pečivo|sladkost|sladký|zákusek	
+1F36A	koláček	cookie|cukrovinka|dezert|jídlo|moučník|sladkost|sladký|sušenka|sušenka s čokoládou|zákusek	
+1F36B	tabulka čokolády	čokoláda|cukrovinka|dobrota|jídlo|mlsat|sladkost|sladký|tabulka	
+1F36C	bonbon	cukrátko|cukrovinka|jídlo|mlsat|mlsný|obal|sladkost|sladký|zubní kaz	
+1F36D	lízátko	cukrovinka|dezert|dobrota|jídlo|mlsat|sladkost|sladký|špejle	
+1F36E	pudink	dezert|jídlo|karamelový pudink|puding|sladkost|sladký|vanilkový pudink|zákusek	
+1F36F	sklenice medu	džbán|džbán medu|jídlo|med|medvěd|medvídek Pú|mlsný|sklenice|sladkost|sladký|včela	
+1F370	dortový řez	cukrovinka|dezert|dílek dortu|dort|jahodový|jídlo|kousek|kousek dortu|moučník|piškot|sladké pečivo|sladkost|sladký|zákusek	
+1F371	krabička bentó	bento|japonský|jídlo|krabička|rýže|sashimi|sushi	
+1F372	hrnec jídla	dušené jídlo|guláš|hrnec|jídlo|kouřící|polévka|vývar	
+1F373	vejce na pánvi	jídlo|pánev|restaurace|smažení|smažit|snídaně|vajíčko|vaření|vejce|volské oko	
+1F374	vidlička a nůž	hladový|jídlo|jíst|krmit|mňam|nádobí|nůž|oběd|pokrm|příbor|restaurace|snídaně|vaření|večeře|vidlička	
+1F375	šálek bez ouška	čaj|čajový šálek|nápoj|oolong|pít|pití|šálek|zelený čaj	
+1F376	saké	bar|džbánek|japonský|karafa|lahev|láhev|nápoj|pití|restaurace|šálek	
+1F377	sklenička vína	alkohol|bar|chlast|klub|nápoj|pití|restaurace|sklenice|sklípek|sklo|vinárna|vinný sklípek|víno	
+1F378	koktejlová sklenička	alkohol|bar|drink|klub|koktejl|martini|nápoj|oliva|pití|sklenice|sklo	
+1F379	tropický koktejl	alkohol|bar|drink|koktejl|Mai Tai|nápoj|opilý|párty|pití|tropický|večírek	
+1F37A	půllitr piva	alkohol|bar|krýgl|nápoj|Oktoberfest|pinta|pití|pivní půllitr|pivo|půllitr|sklenice|světlé pivo	
+1F37B	cinkající půllitry piva	alkohol|bar|chlast|cinkání|do dna|na zdraví|nápoj|pití|pivo|přípitek|přiťuknutí|přiťuknutí pivem|půllitr|sklenice	
+1F37C	kojenecká láhev	dítě|kojenec|lahev|láhev|miminko|mimino|mléko|nápoj|narození|nemluvně|novorozeně|nutrilon|pití|porod|sunar	
+1F37D	talíř s vidličkou a nožem	jíst|nádobí|nůž|oběd|příbor|prostřený|talíř|talíř a příbor|vaření|večeře|vidlička	
+1F37E	láhev sektu	alkohol|bar|bouchnout šampaňské|korek|lahev|láhev|nápoj|pití|přípitek|šampaňské|šáňo|sekt|špunt|zátka	
+1F37F	popcorn	fastfood|film|jídlo|kino|popkorn|pražená kukuřice|pukance|pukánky	
+1F380	mašle	mašlička|oslava|pentle|růžová|slavnost|stužka	
+1F381	zabalený dárek	balíček|dar|dárek|krabice|mašle|narozeniny|oslava|překvapení|překvápko|stuha|Vánoce|zabalený	
+1F382	narozeninový dort	cukrovinka|dezert|dort|jídlo|moučník|narozeniny|oslava|sladké pečivo|sladkost|sladký|svíčky|zákusek	
+1F383	dýňová lucerna	dýně|halloween|Halloween|halloweenská dýně|lucerna|oslava|svátek|vydlabaná dýně|vyřezávaná dýně	
+1F384	vánoční stromeček	dárky|oslava|ozdoby|strom|svátek|svátky|vánoce|Vánoce	
+1F385	Santa Claus	člověk|Děda Mráz|fantasy|Mikuláš|oslava|otec|pohádka|santa|vánoce|Vánoce	
+1F386	ohňostroj	bum|oslava|výbuch|zábava	
+1F387	prskavka	bum|jiskra|jiskřit|ohňostroj|oslava|práskat|silvestr|třpytit se	
+1F388	balónek	červený|nafukovací|narozeniny|oslava|párty|slavit	
+1F389	vystřelovací konfety	hurá|jupí|konfetovač|narozeniny|oslava|paráda|párty|radost|slavit|super|tadá|trubka	
+1F38A	konfetová koule	balónek s konfetami|jupí|konfety|míč|oslava|párty|slavit	
+1F38B	strom přání	festival Tanabata|Japonsko|japonský|lístek|oslava|strom|tanabata|zástava	
+1F38C	zkřížené vlajky	japonský|kříž|oslava|zkřížené|zkřížený	
+1F38D	bambusové dekorace	bambus|borovice|dekorace z borovice a bambusu|japonský|kadomacu|kadomatsu|oslava|ozdoba|pinie|rostlina|výzdoba	
+1F38E	japonské panenky	festival|japonský|oslava|panenka|svátek	
+1F38F	koinobori	den dětí|Japonsko|japonský|kapr|kapří|oslava|praporek|ryba|rybí|větrný rukáv|vlajka	
+1F390	větrný zvonek	cinkat|foukat|furin|japonský|oslava|vánek|větrná zvonkohra|vítr|zvon|zvoneček|zvonek|zvonit|zvonkohra	
+1F391	slavnosti měsíce	cukimi|japonský|měsíc|obřad|oslava|svátek|tsukimi	
+1F392	školní batoh	aktovka|batoh|batůžek|ruksak|škola|taška|učebnice|učení|vzdělání|zavazadlo	
+1F393	promoční čepice	absolvent|akademik|čapka|čapka se střapcem|klobouk|oblečení|oslava|pokrývka hlavy|promoce|promoční čepička|student|studium|univerzita|univerzitní čapka|vědec|vzdělání	
+1F396	vojenská medaile	armáda|medaile|ocenění|odznak|oslava|řád|vyznamenání	
+1F397	symbolická stužka	angažovanost|kauza|mašle|oslava|památka|pamětní stuha|pentle|podpora|připomínka|stuha|stužka|symbol	
+1F399	studiový mikrofon	hudba|mikrofon|podcast|studio|zvuk	
+1F39A	posuvný ovladač hlasitosti	fader|hlasitost|hudba|intenzita|jezdec|posuvník|potenciometr|úroveň	
+1F39B	ovládací knoflíky	hudba|knoflíky|otočný|ovládání|potenciometr|zvuk	
+1F39E	filmová okénka	biograf|film|filmová páska|filmový pás|kinematografie|kino|okénka|okénka filmu|políčka|surovina	
+1F39F	vstupenky	jízdenka|lístek|vstup|vstupenka	
+1F3A0	kolotočový kůň	kolotoč|kůň|kůň na kolotoči|pouť|zábava	
+1F3A1	ruské kolo	kolotoč|lunapark|pouť|zábavní park	
+1F3A2	horská dráha	dráha|housenková dráha|kolotoče|lunapark|pouť|zábavní park	
+1F3A3	rybářský prut	chytat ryby|prut|ryba|rybář|rybařit|sport|udice|úlovek|zábava	
+1F3A4	mikrofon	hudba|karaoke|zpěvačka|zpěvák|zpívat|zvuk	
+1F3A5	filmová kamera	Bollywood|film|filmová|Hollywood|kamera|kino|natáčení|natočit|záznam	
+1F3A6	kino	film|kamera|kinosál|natáčení|opona|plátno|promítačka|tlačítko kamera	
+1F3A7	sluchátka	hudba|poslouchat|zvuk	
+1F3A8	malířská paleta	barevný|barvy|kreativní|malíř|malířka|malířství|malování|muzeum|paleta|pestrý|tvořivý|umělecký|umění|zábava	
+1F3A9	cylindr	Abraham Lincoln|buřinka|formální|klobouk|kouzelnický klobouk|kouzelník|oblečení|oděv|Pan Tau|pokrývka hlavy	
+1F3AA	cirkusový stan	cirkus|manéž|šapitó|stan	
+1F3AB	lístek	stvrzenka|ústřižek|útržek|vstup|vstupenka|vstupné	
+1F3AC	filmová klapka	akce|film|klapka|natáčení	
+1F3AD	múzická umění	divadelní|divadlo|herec|herečka|herectví|hra|komedie|maska|povolání|práce|představení|scénická umění|Shakespeare|tragédie|umění|zábava	
+1F3AE	videohra	gamepad|hra|hrát|konzole|ovladač|pařit|PlayStation|počítač|Xbox|zábava	
+1F3AF	přesný zásah do terče	cíl|hra|přímo do černého|přímý zásah do terče|šipka|sport|střed|střed terče|středu|terč|trefa|úspěch|zábava|zásah	
+1F3B0	výherní automat	automat|gambling|hazardní hra|hra|hrací automat|kasino	
+1F3B1	kulečníková koule 8	biliár|billiard|černá|černý|číslo|hra|koule|koule na kulečník|kulečník|osm|pool|sport	8
+1F3B2	hrací kostka	deskové hry|hra|kostka|kostky|zábava	
+1F3B3	bowling	bowlingová|hra|koule|koule na bowling|kuželka|kuželky|sport|strike	
+1F3B4	hrací karty s květinami	herní karty s květinami|hra|hraní|japonský|karta|květina	
+1F3B5	nota	hudba|notový zápis|noty|osminové noty|zvuk	
+1F3B6	noty	hudba|nota|notový zápis|osminové noty|tón|zvuk	
+1F3B7	saxofon	dechový|hudba|hudební nástroj|nástroj|tón|žestě|žesťový	
+1F3B8	kytara	elektrická kytara|Fender|hudba|hudební nástroj|nástroj|Stratocaster	
+1F3B9	klávesy	hrát|hudba|hudební nástroj|klaviatura|klavír|nástroj|piano|zvuk	
+1F3BA	trubka	dechový|hudba|hudební nástroj|nástroj|trumpeta|žestě|žesťový	
+1F3BB	housle	hudba|hudební nástroj|nástroj|skřipky|smyčec|stradivárky	
+1F3BC	notová osnova	houslový klíč|hudba|notový|noty|partitura|zápis	
+1F3BD	běžecké tričko	atletika|běh|běžecký úbor|šerpa|sport|tričko|tričko na běh|triko|trikot	
+1F3BE	tenis	míček|raketa|sport|tenisák|tenisový	
+1F3BF	lyže	lyžáky|lyžování|lyžovat|skialp|sníh|sport|zimní	
+1F3C0	basketbalový míč	basketbal|koš|košíková|košíkovou|míč|obruč|sport	
+1F3C1	šachovnicová vlajka	cíl|finiš|kostkovaná|kostkovaný|NASCAR|praporek|šachovnice|signální|sport|vlajka|vyhrát|závod|závodit|zvítězit	
+1F3C2	snowboardista	člověk|jízda na snowboardu|lyže|prkno|sníh|snowboard|snowboardistka|sport|zimní	
+1F3C3	běžící osoba	běh|běžec|běžící člověk|chvátat|honem|maraton|rychlost|spěchat|tempo|závod	
+1F3C4	osoba na surfu	člověk|moře|oceán|prkno|sport|surf|surfař|surfing|surfovací prkno|surfování|surfující člověk|vlny	
+1F3C5	medaile	cena|hvězda|nejlepší|ocenění|sport|sportovní medaile|vítěz|výhra|výhra v soutěži|zlatá medaile|zlato	
+1F3C6	trofejní pohár	cena|mistrovství|odměna|pohár|šampion|sport|titul|trofej|vítěz|vítězství|výhra|vyhrát	
+1F3C7	žokej na koni	člověk|dostihový kůň|dostihový závod|dostihy|klasická trojkoruna|kůň|sport|Trojkoruna|závod|žokej	
+1F3C8	míč na americký fotbal	americký|fotbal|fotbalová|fotbalový|míč|šiška|sport|Super Bowl	
+1F3C9	míč na rugby	americký fotbal|míč|míč na ragby|ragby|rugby|rugbyová|rugbyový|šiška|sport	
+1F3CA	plavající osoba	bazén|člověk|muž|plavající muž|plavání|plavat|plavec|plavecký závod|sport	
+1F3CB	osoba vzpírající činku	činka|dřep|kulturista|muž zvedající činky|posilování|posilovna|powerlifting|silák|tíha|váha|vzpěrač|vzpírání|závaží	
+1F3CC	osoba hrající golf	cvičné odpaliště|golf|golfista|golfové hřiště|golfový míček|míček|muž hrající golf|odpálit|sport	
+1F3CD	motorka	cestování|doprava|dopravní prostředek|motocykl|vozidlo|závod	
+1F3CE	formule	auto|červená|doprava|F1|svištět|závod|závodit|závodní auto|závodnička	
+1F3CF	kriket	hra|kriketová pálka|míč|míček|pálka|sport	
+1F3D0	volejbalový míč	balón|hra|míč|míč na volejbal|odbíjená|sport|volejbal|volejbalový	
+1F3D1	pozemní hokej	florbal|hokej|hokejka|hra|míč|míček|sport	
+1F3D2	lední hokej	hokej|hokejka|hokejka a puk|hra|led|puk|sport	
+1F3D3	stolní tenis	hra|míč|míček|pálka|ping pong|ping-pong|pingpong|sport	
+1F3D4	zasněžená hora	chladno|hora|sníh|studený|zima	
+1F3D5	tábor	cestování|dovolená|kemp|kempování|prázdniny|příroda|stan|stanování|táboření|tábořiště	
+1F3D6	pláž se slunečníkem	cestování|deštník|dovolená|léto|moře|písek|pláž|prázdniny|slunečník|teplo	
+1F3D7	staveniště	budova|jeřáb|stavba|stavba budovy	
+1F3D8	domky	budova|bydlet|domeček|domy|dům|rodinné domky|ulice|vesnice	
+1F3D9	městská zástavba	budova|krajina|město|městská|mrakodrapy|panoráma města|silueta|velkoměsto|vyhlídka|výšková budova	
+1F3DA	opuštěný dům	budova|dům|opuštěná budova|opuštěný|polorozpadlý|zchátralý|zpustlý	
+1F3DB	antická budova	antický|antika|budova|klasicismus|klasicistický|klasicistní|klasická|panteon|řecko|sloupoví	
+1F3DC	poušť	cestování|horko|hory|kaktus|písek|pustina|sucho	
+1F3DD	pustý ostrov	cestování|dovolená|moře|oceán|opuštěný|ostrov|palma|písek|pláž|poušť|tropický|tropy|trosečník|ztroskotat	
+1F3DE	národní park	cestování|hory|park|příroda|rezervace	
+1F3DF	stadion	aréna|budova|hřište|sport	
+1F3E0	domek	budova|chata|domeček|domov|dům|předměstí|ranč|rodinný dům|usadit se	
+1F3E1	domek se zahradou	budova|chata|domeček|domov|dům|předměstí|ranč|usadit se|venkov|zahrada	
+1F3E2	kancelářská budova	budova|dům|kancelář|kanceláře|město|práce|věžák|zaměstnání	
+1F3E3	japonská pošta	budova|japonský|pošta	
+1F3E4	pošta	budova|evropský|město|poštovní úřad	
+1F3E5	nemocnice	budova|doktor|léčení|lék|lékař|ošetřovna|pohotovost|špitál	
+1F3E6	banka	budova|spořitelna	
+1F3E7	značka bankomatu	atm|automat|banka|bankomat|hotovost|karta|peníze|vybrat|značka ATM	
+1F3E8	hotel	budova|cestování	
+1F3E9	hodinový hotel	budova|hotel|Japonsko|láska|love hotel	
+1F3EA	obchod	budova|maloobchod|non-stop|nonstop|potraviny|prodej|prodejna|samoobsluha|smíšené|večerka|zboží	
+1F3EB	škola	budova|edukace|studovat|učit se|výuka|vzdělání	
+1F3EC	obchodní dům	budova|centrum|nákupní|nákupy|obchod|prodej	
+1F3ED	továrna	budova|fabrika|průmysl	
+1F3EE	červený lampion	červená|červená papírová lucerna|japonská|japonský|lampion|lucerna|restaurace|světlo|svítilna|svítit	
+1F3EF	japonský hrad	budova|hrad|japonský	
+1F3F0	hrad	budova|evropský|historie|hradby|palác|pohádka|tvrz|věž|zámek	
+1F3F3	bílá vlajka	bílý prapor|mír|prapor|praporek|příměří|vlající|vlajka|vzdát se	
+1F3F4	černá vlajka	černý prapor|prapor|praporek|smuteční prapor|smutek|vlající|vlajka	
+1F3F5	rozeta	květ|květina|rostlina|růžice	
+1F3F7	visačka	cedulka|cenovka|jmenovka|štítek	
+1F3F8	badminton	badmintonový míček|hra|košíček|košík|míček|opeřený míček|péřový míček|raketa|sport	
+1F3F9	luk a šíp	horoskop|lučištník|luk|lukostřelba|lukostřelec|nástroj|šíp|sport|střelec|Střelec|výzbroj|zbraň|znamení Střelce|zvěrokruh	
+1F3FA	amfora	džbán|horoskop|nádoba|nádobí|nápoj|nástroj|vaření|váza|vodnář|Vodnář|znamení Vodnáře|zvěrokruh	
+1F3FB	světlý odstín pleti	barva|kůže|pleť|typ 1–2	
+1F3FC	středně světlý odstín pleti	barva|kůže|pleť|typ 3	
+1F3FD	střední odstín pleti	barva|kůže|pleť|typ 4	
+1F3FE	středně tmavý odstín pleti	barva|kůže|pleť|typ 5	
+1F3FF	tmavý odstín pleti	barva|kůže|pleť|typ 6	
+1F400	krysa	hlodavec|kanál|potkan|zvíře	
+1F401	myš	bílá myš|hlodavec|laboratorní myš|myšička|myška|zvíře	
+1F402	vůl	býk|Býk|farma|horoskop|skot|znamení Býka|zvěrokruh|zvíře	
+1F403	buvol domácí	bizon|buvol|voda|vodní buvol|ZOO|zvíře	
+1F404	kráva	bůů|farma|mléko|příroda|statek|zvíře	
+1F405	tygr	predátor|pruhovaný|šelma|velká kočka|ZOO|zvíře	
+1F406	leopard	kočkovitá šelma|levhart|panter|pardál|predátor|šelma|velká kočka|ZOO|zvíře	
+1F407	králík	domácí|králíček|mazlíček|ušák|zajíc|zajíček|zvíře	
+1F408	kočka	domácí|kočička|koťátko|kotě|mazlíček|příroda|zvíře	
+1F409	drak	čínský|fantasy|pohádka|rytíři|zelený drak|zvíře	
+1F40A	krokodýl	aligátor|kajman|příroda|ZOO|zvíře	
+1F40B	velryba	kytovec|moře|oceán|pláž|plejtvák|příroda|savec|zvíře	
+1F40C	hlemýžď	příroda|slimák|šneček|šnek|ulita|zahrada|zvíře	
+1F40D	had	hadonoš|Hadonoš|horoskop|plaz|zvěrokruh|zvíře	
+1F40E	kůň	derby|dostih|dostihový kůň|dostihy|farma|jezdec|jezdecký|jezdectví|jízda|koník|koňské dostihy|Triple Crown|Velká pardubická|závod|zvíře	
+1F40F	beran	horoskop|ovce|rohy|samec|znamení Berana|ZOO|zvěrokruh|zvíře	
+1F410	koza	farma|horoskop|kozoroh|Kozoroh|mléko|znamení Kozoroha|zvěrokruh|zvíře	
+1F411	ovce	bahnice|béé|chundelatý|farma|jehňátko|jehně|ovečka|salaš|samice|vlna|zvíře	
+1F412	opice	banán|džungle|opička|zvíře	
+1F413	kohout	farma|kokrhat|pták|zvíře	
+1F414	slepice	kuře|pták|zvíře	
+1F415	pes	domácí|fena|fenka|mazlíček|pejsek|psík|zvíře	
+1F416	prase	čuně|čuník|farma|pašík|prasátko|prasnice|sádlo|slanina|špek|svině|vepřové|zvíře	
+1F417	kanec	divočák|divoké prase|kňour|prase|vepř|zvíře	
+1F418	slon	příroda|slůně|ZOO|zvíře	
+1F419	chobotnice	chapadlo|chobotnička|Cthulhu|hlavonožec|krakatice|Kraken|měkkýš|moře|oceán|stvoření|zvíře	
+1F41A	ulita	lastura|měkkýš|moře|mušle|mušlička|pláž|škeble|spirála|zvíře	
+1F41B	housenka	brouk|hmyz|příroda|stonožka|zahrada|zvíře	
+1F41C	mravenec	brouk|hmyz|zahrada|zvíře	
+1F41D	včela	čmelák|hmyz|jaro|med|příroda|včelička|včelka|zvíře	
+1F41E	beruška	brouček|brouk|hmyz|příroda|sedmitečné|slunéčko|zahrada|zvíře	
+1F41F	ryba	horoskop|moře|rybaření|rybařit|rybička|rybka|rybolov|ryby|Ryby|večeře|znamení Ryb|zvěrokruh|zvíře	
+1F420	tropická ryba	akvarijní|ryba|rybička|rybka|tropický|zvíře	
+1F421	ježík	čtverzubec|fugu|příroda|ryba|zvíře	
+1F422	želva	obojživelník|pancíř|sladkovodní želva|suchozemská želva|zvíře	
+1F423	líhnoucí se kuře	klubající|klubání|kuřátko|kuře|líhnutí|ptáčátko|pták|skořápka|skořepina|vajíčko|vejce|vylíhnout se|vylíhnuté kuře|zvíře	
+1F424	kuřátko	kuře|ptáčátko|ptáček|pták|zvíře	
+1F425	kuřátko zepředu	kuřátko|kuře|ptáčátko|ptáček|pták|Velikonoce|zvíře	
+1F426	pták	holub|ornitologie|ptáček|zvíře	
+1F427	tučňák	Antarktida|příroda|pták|zvíře	
+1F428	koala	Austrálie|medvěd|medvídek|protinožci|zvíře	
+1F429	pudl	chundelatý|domácí|mazlíček|načechraný|pes|pudlík|zvíře	
+1F42A	velbloud jednohrbý	dromedár|hrb|jednohrbý velbloud|poušť|příroda|velbloud|zvíře	
+1F42B	velbloud dvouhrbý	drabař|dromedár|dvouhrbý velbloud|hrb|poušť|velbloud|zvíře	
+1F42C	delfín	delfínek|moře|oceán|pláž|ploutev|skákající|zvíře	
+1F42D	hlava myši	hlodavec|myš|myšák|myšička|myška|obličej|smajlík|tvář|výraz|zvíře	
+1F42E	hlava krávy	bůů|farma|kráva|kraví|mléko|obličej|smajlík|tvář|výraz|zvíře	
+1F42F	hlava tygra	obličej|predátor|šelma|smajlík|tvář|tygr|tygřík|velká kočka|výraz|zvíře	
+1F430	hlava králíka	domácí|králíček|králík|mazlíček|obličej|příroda|smajlík|tvář|ušák|výraz|zajíc|zajíček|zvíře	
+1F431	hlava kočky	domácí|hladit|kočička|kočka|koťátko|kotě|mazlíček|obličej|smajlík|tvář|výraz|zvíře	
+1F432	hlava draka	dračí tvář|drak|obličej|pohádka|saň|smajlík|tvář|výraz|zvíře	
+1F433	velryba stříkající vodu	moře|obličej|oceán|odfukující|pláž|smajlík|stříkající|tvář|velryba|vodotrysk|výraz|zvíře	
+1F434	hlava koně	drezura|drezúra|farma|hříva|koník|kůň|příroda|smajlík|tvář|výraz|zvíře	
+1F435	hlava opice	banán|obličej|opice|opička|smajlík|tvář|výraz|ZOO|zvědavá opice|zvědavý george|zvíře	
+1F436	hlava psa	domácí|mazlíček|obličej|pejsek|pes|rozkošný|roztomilý|smajlík|štěňátko|štěně|tvář|výraz|zvíře	
+1F437	hlava prasete	čuně|čuník|farma|pašík|prasátko|prase|sádlo|slanina|smajlík|špek|tvář|vepřové|výraz|zvíře	
+1F438	hlava žáby	obličej|princezna|smajlík|tvář|výraz|žába|žabák|žabí princ|zvíře	
+1F439	hlava křečka	domácí|hlodavec|křeček|mazlíček|obličej|smajlík|tvář|výraz|zvíře	
+1F43A	hlava vlka	obličej|smajlík|tvář|vlčí hlava|vlčice|vlk|výraz|zvíře	
+1F43B	hlava medvěda	bručet|brum|grizzly|med|medvěd|medvědí|medvídě|medvídek|obličej|smajlík|tvář|výraz|zvíře	
+1F43C	hlava pandy	bambus|obličej|panda|smajlík|tvář|výraz|zvíře	
+1F43D	prasečí rypák	čenich|čenichat|čich|čmuchat|čumák|farma|obličej|prase|rypáček|rypák|smajlík|tvář|výraz|zvíře	
+1F43E	otisky tlap	nohy|otisk|stopa|stopy|ťapky|tlapa|tlapky	
+1F43F	veverka	burunduk|čipmank|les|příroda|žalud|zvíře	
+1F440	oči	bulvy|koukat|nakouknout|obličej|oko|omg|pokukovat|tělo|tvář|vidět|vykulený|výraz|vytřeštěné oči|vyvalený	
+1F441	oko	1 oko|hnědé|jedno oko|tělo	
+1F442	ucho	naslouchat|poslouchat|slyšet|tělo|uši|zvuk	
+1F443	nos	aroma|čenichat|čich|čichat|cítit|čmuchat|nozdry|odér|pach|strkat nos|tělo|vlezlý|vonět|vůně|zápach	
+1F444	ústa	krása|polibek|pusa|rtěnka|rty|tělo|zuby	
+1F445	jazyk	lízat|olíznout|srkat|tělo|vypláznout|vypláznutý	
+1F446	ruka s prstem ukazujícím nahoru	hřbet ruky|hřbet ruky ukazující nahoru|nahoře|nahoru|prst|ruka|tělo|ukazováček|ukazovat	
+1F447	ruka s prstem ukazujícím dolů	dole|dolů|hřbet ruky|hřbet ruky ukazující dolů|prst|ruka|tělo|ukazováček|ukazovat	
+1F448	ruka s prstem ukazujícím vlevo	hřbet ruky|hřbet ruky ukazující vlevo|prst|ruka|tělo|ukazováček|ukazovat	
+1F449	ruka s prstem ukazujícím vpravo	hřbet ruky|hřbet ruky ukazující vpravo|prst|ruka|tělo|ukazováček|ukazovat	
+1F44A	namířená pěst	dohoda|kámo|klouby prstů|pěst|rána pěstí|rozhodně|ruka|souhlas|tělo|ťuknout pěstí|úder|určitě|zaťatá|zatnutá	
+1F44B	mávající ruka	ahoj|čau|gesto|haló|jsi tam|letím|mávání|mávat|musím běžet|nashledanou|nazdárek|pa|pá pá|ruka|tělo|zatím	
+1F44C	gesto OK	chápu|dokonalý|jasně|ok|OK|paráda|peckovní|perfektní|prvotřídní|rozumím|ruka|špetka|super|tělo|top	
+1F44D	palec nahoru	ano|chápu|dobře|jasně|jo|lajk|lajkovat|like|nádhera|nahoru|ok|palec|paráda|rozumím|ruka|skvělý|souhlas|super|tělo|+1	
+1F44E	palec dolů	dolů|ne|nelíbí se mi|palec|ruka|špatný|tělo|-1	
+1F44F	tleskající ruce	aplaus|dobrá práce|gratulace|ovace|paráda|potlesk|ruka|skvělý|souhlas|super|tělo|tleskám|tleskat|uznání	
+1F450	rozevřené dlaně	dlaně|obejmout|objetí|otevřený|ruka|tělo|třepotat rukama	
+1F451	koruna	korunka|král|královna|královský|oblečení|oděv|panovnice|panovník|šlechta|středověk|vyhrát|zvítězit	
+1F452	dámský klobouk	derby|doplněk|dostihy|klobouk|léto|móda|oblečení|slamák|zahradní párty|žena	
+1F453	brýle	dioptrie|oblečení|obroučky|oči|oko|skla	
+1F454	kravata	košile|oblečení|oděv|seriózní|zaměstnaný	
+1F455	tričko	košile|ležérní|límeček|modrá|nákupy|oblečení|oblečený|triko|víkend|volný čas	
+1F456	džíny	gatě|kalhoty|modrá|nákupy|oblečení|oděv|rifle|víkend|volný čas	
+1F457	šaty	nákupy|oblečení|oděv|plesové|slavnostní|společenské šaty|taneční|večerní	
+1F458	kimono	Japonsko|oblečení|pohodlný|yukata	
+1F459	bikiny	bazén|koupání|moře|oblečení|oceán|oděv|plavání|plavat|plavky|pláž	
+1F45A	dámská blůza	blůza|dámské oblečení|halenka|límeček|nákupy|oblečení|růžová|tričko|triko|žena|ženské šaty	
+1F45B	peněženka	kabelka|mince|móda|nákupy|oblečení|peněženka na drobné|peníze	
+1F45C	kabelka	doplňky|nakupovat|nákupy|oblečení|oděv|outfit|taška|zavazadlo	
+1F45D	kosmetická taška	doplněk|kabelka|oblečení|oděv|taška|vak|zavazadlo	
+1F45E	pánská bota	bota|hnědá|kopat|muž|mužský|nákupy|noha|nohy|oblečení|obuv|oděv|polobotka	
+1F45F	běžecká bota	atletika|bota|botaska|kopat|nákupy|oblečení|obuv|rychle|sport|teniska|tretra	
+1F460	bota na podpatku	bota|dámský|jehlový podpatek|lodička|móda|nákupy|oblečení|obuv|oděv|podpatek|vysoké podpatky|žena	
+1F461	dámský sandál	bota|oblečení|podpatky|sandál|střevíc|střevíček|žena	
+1F462	dámská kozačka	bota|kozačka|nákupy|oblečení|obuv|oděv|žena	
+1F463	stopy	bosky|bosý|chodidlo|chůze|jít|naboso|neobutý|oblečení|otisk|procházka|šlápota|šlépěj|stopa|tělo	
+1F464	silueta busty	busta|bysta|obrys|osoba|silueta|silueta bysty|stín|tajemný|záhada	
+1F465	silueta dvojice bust	busta|bysta|hlavy|kamarád|lidé|nejlepší kamarádi|obrysy lidí|osoby|přátelé|silueta|siluety byst	
+1F466	chlapec	chlapeček|člověk|dítě|hoch|kluk|malý	
+1F467	dívka	člověk|copatá|copy|culíky|dcera|děvče|holčička|holka|malá|panna|zvěrokruh	
+1F468	muž	brácha|bratr|chlap|chlapec|člověk|kamarád|kluk|přítel	
+1F469	žena	blond|blonďatá|blondýna|člověk|dívka|paní|plavovlasá|sestřih|účes	
+1F46A	rodina	chlapec|chlapeček|člověk|dítě|kluk|máma|matka|otec|rodiče|syn|táta	
+1F46B	muž a žena držící se za ruce	člověk|držet|dvojice|flirt|kamarád|láska|muž|muž a žena se drží za ruce|pár|rande|ruka|zamilovaní|žena	
+1F46C	dva muži držící se za ruce	blíženci|Blíženci|člověk|držet|dva muži se drží za ruce|dvojčata|dvojice|gayové|homosexuál|kamarádi|LGBTQIA|LGTB|muž|pár|queer|randění|ruka|zamilovaní|zvěrokruh	
+1F46D	dvě ženy držící se za ruce	bestie|bff|držící|dvě|dvojčata|dvojice|holky|kamarádka|kamarádky|kámošky|lesby|nejlepší|pár|přátelství|rande|ruce|ruka|sestry|za|ženy	
+1F46E	strážník	důstojník|polda|policajt|policie|policista|povolání|zákon|zatknout|zločin	
+1F46F	osoby se zaječími oušky	dvojčata|holky na párty|kostým|králíček|králičí uši|párty|playboy|tanec|tanečnice|tanečník|uši|zajíček	
+1F470	osoba se závojem	člověk|nevěsta|nevěsta se závojem|osoba|svatba|svatební|vdavky|závoj	
+1F471	člověk s blond vlasy	blond|blond vlasy|blonďák|blondýn|člověk|muž|muž s blond vlasy|plavovlasý|světlé vlasy	
+1F472	muž s čínskou čepicí	čepice|člověk|gua pi mao|kua pchi mao|muž	
+1F473	člověk s turbanem	člověk|muž|muž v turbanu|pokrývka hlavy|turban	
+1F474	starý muž	člověk|děda|dědeček|důchodce|moudrý|muž|pán|plešatět|plešatý|senior|stařec|starý|vševěd	
+1F475	stará žena	babička|blond|blondýna|člověk|moudrá|paní|seniorka|špatný účes|stará|stařena|stařenka|staromódní|starý|žena	
+1F476	nemluvně	batole|člověk|dítě|kojenec|malé dítě|malý|miminko|mimino|novorozeně|těhotenství|těhotná|žvatlat	
+1F477	dělník na stavbě	bezpečnostní přilba|dělník|helma|muž|ochranná přilba|povolání|rekonstrukce|stavba|stavební dělník	
+1F478	princezna	člověk|fantasy|koruna|královna|pohádka|vládkyně	
+1F479	zlobr	bytost|ďábel|fantasy|japonský|lidožrout|maska|monstrum|obličej|obr|pohádka|příšera|smajlík|strašák|strašidlo|tvář|výraz	
+1F47A	šotek	bytost|fantasy|japonský|maska|obličej|pohádka|příšera|rozzlobený|skřet|skřítek|smajlík|strašák|strašidlo|tvář|výraz|zlý|zuřivý	
+1F47B	duch	bubák|bububu|bytost|fantasy|Halloween|obličej|pohádka|příšera|smajlík|strašidelný|strašidlo|tvář|výraz	
+1F47C	andílek	anděl|člověk|dítě|fantasy|kostel|miminko|obličej|pohádka|smajlík|tvář|víra|výraz	
+1F47D	mimozemšťan	bytost|fantasy|obličej|pohádka|příšera|sci-fi|smajlík|tvář|ufo|UFO|ufon|ufoun|vesmír|výraz	
+1F47E	mimozemská příšera	bytost|fantasy|hra|marťan|mimozemšťan|obličej|pixely|pohádka|příšera|smajlík|space invaders|tvář|ufo|UFO|vesmír|vetřelec|výraz	
+1F47F	rozzlobený obličej s rohy	čert|ďábel|démon|fantasy|naštvaný|navztekaný|obličej|pohádka|rohy|rozzlobený|škodolibý|skřet|smajlík|tvář|výraz|vztek|zákeřný|zlomyslný|zlý	
+1F480	lebka	kostlivec|kostra|mrtvý|obličej|pohádka|příšera|smajlík|smrt|tělo|tvář|výraz	
+1F481	osoba s dlaní vzhůru	diva|dlaň|drby|drzost|drzý|ironie|muž|oprsklý|pomoc|přidrzlý|primadona|přinést|ruka|sarkasmus|sarkastický|skrčená|vážně|vzhůru|zapomeň|žena	
+1F482	gardista	Buckinghamský palác|člověk|garda|hlídač|hlídka|Londýn|povolání|práce|přilba|stráž|strážce	
+1F483	tanečnice	člověk|elegantní|flamenco|ples|salsa|slavnostní|smím prosit|tančící žena|tancovat|tanec|tango|žena	
+1F484	rtěnka	kosmetika|líčení|make-up|makeup|mejkap|rande|růž|šminky	
+1F485	lak na nehty	kosmetika|lak|lakovat|leštit|manikúra|nalakované nehty|nalakovat nehty|nehet|péče|tělo	
+1F486	osoba na masáži obličeje	bolest hlavy|masáž|masáž hlavy a obličeje|napětí|obličej|relaxační|salon|salón|spa|tvář|ukliňující|wellness|žena	
+1F487	osoba u kadeřníka	holič|kadeřnictví|kadeřník|krása|nový účes|nůžky|ostříhat|salon|salón|sestřih|stříhání|stříhání vlasů|účes|vlasy|žena u kadeřnice	
+1F488	značka holičství	holič|holička|holičský sloupek s pruhy|kadeřník|lazebník|sestřih|střih|stříhání|tyč|účes|znak holičství	
+1F489	injekční stříkačka	dávka|doktor|injekce|jehla|lék|lékař|nástroj|nemoc|nemocný|očkování|očkování proti chřipce|očkovat|prevence|stříkačka|vakcína	
+1F48A	pilulka	antibiotikum|doktor|léčivo|lék|lékař|medicína|nemoc|nemocný|prášek|tableta|tabletka|vitamin|vitamín	
+1F48B	otisk rtů	city|láska|polibek|pusa|pusinka|rande|romance|romantika|rty|sexy|srdce	
+1F48C	milostný dopis	dopis|láska|pošta|romance|romantika|srdce|srdíčko|Valentýn|zamilovaný|zásilka	
+1F48D	prsten	briliant|diamant|požádat o ruku|prstýnek|romantika|svatba|třpytivý|vdavky|zářivý|zasnoubit se|zásnubní prsten|zásnuby	
+1F48E	drahokam	briliant|diamant|drahý kámen|klenot|peníze|romantika|šperk|svatba|zasnoubení|zásnuby	
+1F48F	polibek	člověk|dvojice|láska|líbající se pár se srdcem|líbání|miláček|pár|pusa|pusinka|romance|romantika|srdce|výročí	
+1F490	kytice	květina|kytička|kytka|láska|narozeniny|pugét|rande|romance|romantika|rostlina|růže|výročí	
+1F491	pár se srdcem	člověk|dvojice|láska|miláček|pár|polibek|pusa|pusinka|romance|romantika|srdce|výročí	
+1F492	svatba	kaple|kostel|láska|obřad|romance|romantika|sezdaní|svatební	
+1F493	bušící srdce	bušení|city|ily|láska|miluji tě|miluju tě|puls|srdce|srdíčko|tep|tlukot srdce	
+1F494	zlomené srdce	city|emoce|nešťastný|osamělý|sklíčený|smutný|srdce|zarmoucený|zdrcený|zlomený|zlomit|zničený	
+1F495	dvě srdce	city|ily|láska|miluji tě|rande|růžová|srdce|srdíčka|výročí	
+1F496	jiskřící srdce	city|dobrou noc|ily|jiskra|láska|miluji tě|miluju tě|polibek|pusa|srdce|srdíčko|třpytivé srdce|vzrušení|zářící srdce	
+1F497	rostoucí srdce	city|ily|láska|miluji tě|miluju tě|nervozita|puls|rostoucí|srdce|srdíčko|tep|tlukot srdce|tlukoucí srdce|vzrušení	
+1F498	srdce se šípem	amor|amorek|city|ily|láska|miluji tě|miluju tě|romance|romantika|šíp|srdce|srdce prostřelené šípem|srdíčko|střela|Valentýn	
+1F499	modré srdce	city|ily|láska|miluji tě|miluju tě|modrá|romantika|srdce|srdíčko	
+1F49A	zelené srdce	city|ily|láska|miluji tě|miluju tě|romantika|srdce|srdíčko|zelená	
+1F49B	žluté srdce	city|ily|láska|miluji tě|miluju tě|srdce|srdeční|srdíčko|žlutá	
+1F49C	fialové srdce	city|fialová|ily|láska|miluji tě|miluju tě|nejlepší|srdce|srdíčko	
+1F49D	srdce s mašlí	city|ily|láska|mašle|miluji tě|miluju tě|srdce|srdíčko|stuha|stužka|valentýn|Valentýn|výročí	
+1F49E	srdce vířící v kole	city|ily|kolo|láska|miluju tě|otáčející se srdce|otáčení|rozkošný|roztomilý|srdce|srdíčka|víření|výročí	
+1F49F	srdce jako ozdoba	bílé srdce|city|fialové srdce|ily|láska|miluji tě|miluju tě|srdce|srdíčko	
+1F4A0	kosočtverec s tečkou	geometrie|kosočtverec|obrázek|tvar|uvnitř	
+1F4A1	žárovka	baňka|elektrická|elektrický|elektřina|komiks|nápad|rozsvítit|světlo	
+1F4A2	japonský symbol hněvu	hněv|komiks|komiksový|manga|naštvaný|rozzlobený|úder|vztek|žíly|zloba|zlost	
+1F4A3	bomba	bum|exploze|komiks|komiksový|nebezpečný|obrázek|výbuch|výbušný	
+1F4A4	zzz	chrnět|chrr|dobrou noc|komiks|ospalý|pochrupovat|šlofík|spánek|spát|spinkat|unavený|usínat|utahaný|zdřímnout si	
+1F4A5	srážka	bomba|bum|exploze|komiks|náraz|obrázek|rána|třesk|vybouchnout|výbuch	
+1F4A6	kapky potu	cákání|cákat|cvičení|kapat|kapičky|kapky|komiks|obrázek|odkapávat|pot|šplouchat|stříkající|trénink|voda	
+1F4A7	kapka	chladno|kapička|komiks|obrázek|počasí|pot|příroda|slza|slzička|smutný|studený|voda|zima	
+1F4A8	spěch	běh|komiks|kouř|letím|musím běžet|nadýmání|oblak kouře|obrázek|prdět|pšouknout|větry	
+1F4A9	hovínko	ble|exkrement|fekálie|fuj|hnůj|hovňousek|hromádka|lejno|obličej|příšera|smajlík|smradlavý|smrdí|trus|tvář|výkal|výraz|zápach	
+1F4AA	zatnutý biceps	bicák|biceps|činky|kulturista|kulturistika|nabouchaný biceps|nabušený|obrázek|paže|posilovat|posilovna|síla|silný|sval|svalovec|svaly|tělo	
+1F4AB	závrať	hvězda|hvězdička|hvězdičky|kometa|komiks|padající hvězda|zářivý	
+1F4AC	řečová bublina	bublina|bublina řeči|dialog|komiks|komiksová bublina|obrázek|odmlka|píše|psaní|řeč|rozhovor|SMS|text|textová bublina|zpráva	
+1F4AD	myšlenková bublina	balónek|bublina|komiks|komiksová bublina|myšlenka|nápad|obrázek|snění|sny|vymyslet	
+1F4AE	bílá květina	bílý|květ|květina	
+1F4AF	sto bodů	ano|na jedničku|opravdu|pecka|plný|plný počet|rozhodně|skóre|souhlas|sto|stoprocentní|že váháš	100
+1F4B0	pytel peněz	banka|boháč|bohatý|cash|cena|dolary|hotovost|měšec|milion|peněz|peníze|platit|poklad|pytel|sázka|skrblík|váček|vak|vyhrát|zlato	
+1F4B1	směna peněz	banka|dolar|jen|měna|peníze|směna|směnárna|výměna|yen	$
+1F4B2	znak dolaru	dolar|hotovost|měna|miliarda|milion|peníze|platit|velký znak dolaru	
+1F4B3	platební karta	banka|hotovost|karta|kredit|kreditka|kreditní|peníze|platit|účet|uhradit|úvěrová karta|zaplatit	
+1F4B4	jenová bankovka	banka|bankovka|čína|hotovost|jen|měna|peníze|yen	
+1F4B5	dolarová bankovka	banka|bankovka|dolar|měna|peníze	
+1F4B6	eurobankovka	banka|bankovka|bohatý|EU|euro|eurová|Evropa|hotovost|měna|peníze	100
+1F4B7	librová bankovka	banka|bankovka|hotovost|libra|měna|peníze	
+1F4B8	okřídlené peníze	banka|bankovka|cash|dolar|hotovost|keš|křídla|létající|letět|milion|milión|peníze|platit	
+1F4B9	rostoucí graf se znakem jenu	banka|graf|japonský jen|jen|měna|nahoru|peníze|rostoucí trend|růst|trend|trh|vzestup|vzestupný|vzestupný graf se znakem jenu	
+1F4BA	sedadlo	cestování|křeslo|místo|sedět|sezení	
+1F4BB	notebook	kancelář|laptop|osobní|pc|PC|počítač	
+1F4BC	kufřík	aktovka|kancelář|práce	
+1F4BD	minidisk	CD|cédéčko|disk|hudba|optické|optický|počítač	
+1F4BE	disketa	disk|počítač|pružný disk|retro	
+1F4BF	optický disk	bd|blu-ray|blue-ray|cd|CD|cédéčko|disk|dvd|DVD|holo|holografický|optické|optický|počítač	
+1F4C0	dvd	bd|blu-ray|blue-ray|cd|CD|cédéčko|disk|holo|holografický|optické|optický|počítač	
+1F4C1	složka	dokumenty	
+1F4C2	otevřená složka	desky|dokumenty|otevřený|složka|založit	
+1F4C3	zkroucená stránka	číst|dokument|dopis|list papíru|ohnutá|srolovaný|srolovaný papír|stočená|stránka|svinutá|svitek	
+1F4C4	stránka lícem nahoru	dokument|list|papír|strana|stránka	
+1F4C5	kalendář	čas|červenec|datum	17
+1F4C6	trhací kalendář	červenec|datum|kalendář	17
+1F4C7	vizitkovník	index|karta|kartotéka|osobní karta|otočný|registr|rejstřík|retro|vizitka	
+1F4C8	rostoucí graf	data|graf|nahoru|růst|trend|vývoj|vzestupný	
+1F4C9	klesající graf	data|dolů|graf|klesající|negativní|pokles|sestupný|trend|vývoj	
+1F4CA	sloupcový graf	data|diagram|graf|sloupec|údaje	
+1F4CB	psací podložka	deska|dokumenty|klip|podložka|poznámky|seznam úkolů	
+1F4CC	připínáček	koláž|napínáček|pin|připíchnout|připnout|přišpendlit|špendlík	
+1F4CD	kulatý připínáček	lokace|mapa|místo|napínáček|pin|poloha|připínáček|připnout|špendlík	
+1F4CE	kancelářská sponka	papír|sponka|sponka na papír|svorka	
+1F4CF	rovné pravítko	délka|dlouhé|geometrie|matematika|měřit|pravítko|úhel	
+1F4D0	trojúhelníkové pravítko	logaritmické pravítko|matematika|pravítko|pravouhlý|pravý|sada|trojúhelník|úhel	
+1F4D1	stránky se záložkami	ouška|ouško|papíry|papíry s poznámkami|poznámky|záložka|značka	
+1F4D2	účetní kniha	blok|poznámky|psát|sešit|skicák|zápisník|zapsat	
+1F4D3	sešit	deníček|deník|diář|notes|poznámkový blok|psát|zápisník	
+1F4D4	zápisník v ozdobných deskách	blok|desky|kniha|notes|notýsek|obal|obálka|ozdobné|ozdobný zápisník|poznámkový|přebal|psát|sešit|škola|učení|výuka|vzdělání|zápisník|zdobené	
+1F4D5	zavřená kniha	červená kniha|kniha|škola|učebnice|učení|výuka|vzdělání|zavřený	
+1F4D6	otevřená kniha	číst|čtení|fantasy|kniha|knížka|otevřený|učení|vědomosti|vzdělání	
+1F4D7	zelená kniha	číst|čtení|fantasy|kniha|knihovna|knížka|učení|vzdělání|zelená	
+1F4D8	modrá kniha	čtení|fantasy|kniha|knihovna|modrá|učení|vzdělání	
+1F4D9	oranžová kniha	číst|čtení|fantasy|kniha|knihovna|knížka|oranžová|učení|vzdělání	
+1F4DA	knihy	beletrie|čtení|fantasy|kniha|knihovna|pohádka|romány|škola|učení|vědomosti|vzdělání	
+1F4DB	jmenovka	cedulka|jméno|odznáček|odznak	
+1F4DC	svitek	listina|papír|papyrus|pergamen	
+1F4DD	lístek se vzkazem	komunikace|média|poznámka|tužka|vzkaz|zápis	
+1F4DE	telefonní sluchátko	komunikace|mikrotelefon|sluchátko|sluchátko telefonu|telefon|telefonát	
+1F4DF	pager	komunikace|pejdžr	
+1F4E0	fax	faxovat|komunikace|telefax	
+1F4E1	satelitní anténa	anténa|družice|kontakt|parabolická anténa|satelit|talíř|věda	
+1F4E2	tlampač	amplion|hlášení|hlasitý|komunikace|reproduktor|rozhlas|sdělení|veřejné|veřejný|zvuk	
+1F4E3	megafon	fandění|fandit|povzbuzování|povzbuzovat|proslov|řečnění|řečník|tlampač|volání|zvuk	
+1F4E4	přihrádka na odchozí poštu	dopis|e-mail|email|krabice|odchozí|odeslaná pošta|pošta|poštovní|přihrádka|přihrádka s odchozí poštou|schránka	
+1F4E5	přihrádka na příchozí poštu	dopis|doručená|dostat|e-mail|email|inbox|krabice|obálka|obdržet|pošta|poštu|prázdný|příchozí|přihrádka|přijmout|schránka|zero|zpráva	
+1F4E6	balíček	balík|balné|doručení|komunikace|krabice|poštovné|zásilka	
+1F4E7	e-mail	dopis|elektronická pošta|email|odeslat|poslat|pošta|zásilka|zpráva	
+1F4E8	příchozí obálka	dopis|doručená|doručený|dostat|e-mail|elektronická pošta|email|obálka|odeslaný|pošta|příchozí|přijmout|psaní|schránka|zpráva	
+1F4E9	obálka se šipkou	dolů|dopis|e-mail|email|k odeslání|komunikace|obálka|obálka s šipkou|odchozí|odeslaná|odesláno|pošta|šipka|zpráva	
+1F4EA	zavřená schránka s praporkem dole	pošta|poštovní schránka|schránka|sklopený|spuštěný|svěšený|zavřená stránka se svěšenou vlajkou|zavřený	
+1F4EB	zavřená schránka s praporkem nahoře	doručená pošta|komunikace|pošta|poštovní schránka|schránka|zavřená schránka se vztyčenou vlajkou|zavřený	
+1F4EC	otevřená schránka s praporkem nahoře	doručená pošta|otevřená schránka se vztyčenou vlajkou|otevřený|pošta|poštovní schránka|schránka	
+1F4ED	otevřená schránka s praporkem dole	otevřená schránka se svěšenou vlajkou|otevřený|pošta|poštovní schránka|prázdný|schránka|sklopený|spuštěný|svěšený	
+1F4EE	poštovní schránka	pošta|schránka	
+1F4EF	poštovní roh	hudba|polnice|pošta|postiliónský|poštovní|roh|trubka	
+1F4F0	noviny	číst|deník|informace|komunikace|novinky|papír|tisk|zpravodajství|zprávy	
+1F4F1	mobil	komunikace|mobilní|smartphone|telefon	
+1F4F2	mobil se šipkou	hovor|komunikace|mobil|mobilní|příjem|přijmout|šipka|telefon|volání	
+1F4F3	vibrační režim	komunikace|mobil|mobilní|režim|režim vibrací|telefon|vibrace|vibrování	
+1F4F4	vypnutý mobilní telefon	mobil|mobilní|telefon|vypnuto	
+1F4F5	zákaz používání mobilních telefonů	mobil|mobilní|ne|telefon|telefonování|zákaz|zákaz mobilních telefonů|zakázáno	
+1F4F6	indikátor síly signálu	anténa|čárky|komunikace|mobil|mobilní|proužky|signál|síla|síla signálu|telefon|ukazatel	
+1F4F7	fotoaparát	aparát|foťák|fotit|fotka|fotografický|Instagram|kamera|momentka|retro|selfíčko|selfie|snímek|video|výlet	
+1F4F8	fotoaparát s bleskem	aparát|blesk|foťák|fotografický|video	
+1F4F9	videokamera	kamera|retro|video	
+1F4FA	televizor	obrazovka|přijímač|retro|televize|televizní|telka|tv|TV|video	
+1F4FB	rádio	hudba|muzika|radiopřijímač|retro|rozhlas|tranzistor|tranzistorové|zábava|zvuk	
+1F4FC	videokazeta	kazeta|pásek|páska|retro|vhs|VHS|video	
+1F4FD	filmový projektor	film|filmová promítačka|kino|kinoprojektor|projektor|promítací stroj|promítačka|video	
+1F4FF	růženec	doplněk|korálky|modlitba|modlitební|náboženství|náhrdelník|oblečení|oděv	
+1F500	tlačítko náhodného přehrávání	náhodně|shuffle|šipka|šipky|tlačítko zamíchání|zamíchat|zkřížené|zkřížení	
+1F501	tlačítko opakování	dokola|opakovat|po směru hodinových ručiček|šipka|ve směru hodinových ručiček	
+1F502	tlačítko opakování jedné stopy	jedna|jednou|šipka|skladba|směru hodin|směru hodinových ručiček|stopa|tlačítko jednoho opakování|ve směru hodinových ručiček|zopakovat jednou	
+1F503	svislé šipky ve směru hodinových ručiček	aktualizovat|doprava|hodin|načíst|načtení|nové|obnovit|opětovné|ručiček|šipka|směr|směru|ve směru hodinových ručiček|vertikální šipky ve směru hodinových ručiček|znovu	
+1F504	šipky proti směru hodinových ručiček	deja vu|dejavu|doleva|hodin|obnovit|proti|proti směru hodinových ručiček|ručiček|šipka|směr|směru|tlačítko šipek proti směru hodinových ručiček|znova|znovu	
+1F505	tlačítko ztlumení jasu	jas|nízký|slunce|sluníčko|tlumený|ztlumit|ztmavení|ztmavit	
+1F506	tlačítko zvýšení jasu	jas|jasný|světlo|zesvětlení|zesvětlit|zjasnění|zjasnit	
+1F507	vypnutý reproduktor	hlasitost|potichu|reproduktor|tichý|ztlumený|zvuk	
+1F508	tiše hrající reproduktor	hlasitost|mírný|nízká hlasitost|potichu|reproduktor|reproduktor s nízkou hlasitostí|tichý|tlumený|zvuk	
+1F509	středně hlasitý reproduktor	hlasitost|hlasitý|reproduktor|středně|střední|tlampač|zvuk	
+1F50A	hlasitý reproduktor	hlasitost|hlasitý|hudba|nahlas|reproduktor|zvuk	
+1F50B	baterie	akumulátor|baterka|nabíjet|zelená	
+1F50C	zástrčka	elektrická zástrčka|elektrický|elektřina|přípojka|síťová|vidlice	
+1F50D	lupa nakloněná doleva	hledání|laboratoř|lupa směřující vlevo|nářadí|nástroj|sklo|věda|zvětšení|zvětšovací|zvětšování	
+1F50E	lupa nakloněná doprava	čočka|hledání|laboratoř|lupa směřující vpravo|nářadí|nástroj|sklo|věda|zkoumat|zvětšení|zvětšovací|zvětšování	
+1F50F	zamknutý zámek s plnicím perem	hrot|inkoust|listové tajemství|pero|soukromí|soukromý|tajné|utajení|zámek|zámek a pero	
+1F510	zamknutý zámek s klíčem	bezpečný|klíč|visací zámek|zabezpečení|zamčený|zámeček|zámek|zámek na kolo|zavřený	
+1F511	klíč	heslo|odemknout|zámek|zamknout	
+1F512	zamknutý zámek	soukromý|visací|zamčeno|zamčený|zámek|zamknuto|zavřeno|zavřený	
+1F513	odemknutý zámek	odemčeno|odemčený|odemknout|odemknuto|otevřeno|otevřený|otevřít|visací|zámek	
+1F514	zvonek	cinkat|kostel|pauza|přestávka|zvon|zvonit|zvuk	
+1F515	přeškrtnutý zvonek	ne|tichý|vypnout zvuk|zákaz|zakázáno|zltumení|ztlumení|ztlumit|zvon|zvuk	
+1F516	záložka	karta|označení|poznačit|značka	
+1F517	články řetězu	článek|článek řetězu|odkaz|propojit|řetěz|spojení|spojený|spojovat	
+1F518	přepínač	geometrický|geometrie|knoflík|kruh|kulaté|obrys|přepínací|rádio|tlačítko	
+1F519	šipka zpět	back|nazpátek|nazpět|šipka|zpátky|zpět	
+1F51A	šipka s nápisem END	end|konec|šipka	
+1F51B	šipky s nápisem ON!	kupředu|šipka|vpřed|značka	
+1F51C	šipka s nápisem SOON	brb|brzy|hned jsem zpátky|jsem na cestě|šipka|šipka soon|už běžím	
+1F51D	šipka s nápisem TOP	nahoru|nejlepší|neklopit|šipka|top|vzhůru|začátek	
+1F51E	zákaz vstupu osobám mladším 18 let	ne|nedostatečný věk|nezletilost|nezletilý|nezletilým|omezení|osmnáct|věk|věková hranice|věkové omezení|zákaz|zákaz pro mladší osmnácti let|zakázáno	18
+1F520	zadávání v latince, velká písmena	ABCD|abeceda|kapitálky|klávesnice|latinka|písmena|psaní|velká písmena|velká tiskací písmena|vstup|zadávání|zadávání v latince	
+1F521	zadávání v latince, malá písmena	abcd|abeceda|klávesnice|latinka|malá písmena|písmena|psaní|vstup|zadávání|zadávání v latince	
+1F522	zadávání čísel	čísla|číslo|numerická klávesnice|zadávání	1234
+1F523	zadávání symbolů	klávesnice|psaní|symboly|vstup|zadávání|znaky|zvláštní znaky|〒♪&%	&|%
+1F524	zadávání písmen v latince	abc|abcd|abeceda|klávesnice|latinka|písmena|psaní|vstup|zadávání	
+1F525	oheň	hořet|horký|hranice|nástroj|ohniště|pálit|plamen|plameny|plamínek|požár|vzplanout|zapálit	
+1F526	baterka	elektrický|nářadí|nástroj|světlo|svítilna	
+1F527	maticový klíč	DIY|francouzský klíč|hasák|klíč|kutil|kutit|montážní|nářadí|nástroj|udělej si sám	
+1F528	kladivo	domácí kutil|kladívko|kutil|kutit|nářadí|nástroj|opravit	
+1F529	šroub a matice	domácí kutil|kutil|kutit|matice|nářadí|nástroj|šroub	
+1F52A	kuchyňský nůž	krájet|kuchař|nádobí|nástroj|nůž|řezat|šéfkuchař|sekat|vaření|zbraň	
+1F52B	vodní pistole	hračka|nářadí|nástroj|pistole|revolver|ruční zbraň|voda|vodní|vodní pistolka|zbraň	
+1F52C	mikroskop	experiment|laboratoř|nástroj|pokus|věda|vědecký|výzkum|zvětšení	
+1F52D	teleskop	astronomie|dalekohled|E. T.|hvězdářský|kontakt|nástroj|refraktor|věda|vědecký	
+1F52E	křišťálová koule	budoucnost|fantasy|koule|kouzlo|křišťál|magie|nástroj|osud|pohádka|předpověď|předpovídání budoucnosti|skleněný|sklo|věštec|věštění|věštkyně	
+1F52F	šesticípá hvězda s tečkou uprostřed	Davidova hvězda|hexagram|hvězda|judaismus|šesticípá hvězda s bodem uprostřed|šťastná|štěstěna|štěstí|židovská hvězda|židovský	
+1F530	japonský symbol pro začátečníka	japonský|krokev|list|nástroj|pomůcka|začátečník|zelená|žlutá	
+1F531	emblém trojzubce	emblém|kotva|loď|nástroj|Poseidon|Poseidón|trojzubec|zbraň|znak trojzubce	
+1F532	černé čtvercové tlačítko	čtvercové|čtverec|geometrie|obrys|tlačítko|tvar	
+1F533	bílé čtvercové tlačítko	čtvercové|čtverec|geometrie|obrys|tlačítko|tvar	
+1F534	červený kroužek	červená|červený kruh|geometrie|kruh|tvar	
+1F535	modrý kroužek	geometrie|kruh|modrá|modrý kruh|tvar	
+1F536	velký oranžový kosočtverec	geometrie|kosočtverec|oranžová|tvar	
+1F537	velký modrý kosočtverec	geometrie|kosočtverec|modrá|tvar	
+1F538	malý oranžový kosočtverec	geometrie|kosočtverec|oranžová|tvar	
+1F539	malý modrý kosočtverec	geometrie|kosočtverec|modrá|tvar	
+1F53A	červený trojúhelník mířící nahoru	červená|červený trojúhelník směřující nahoru|geometrie|tvar	
+1F53B	červený trojúhelník mířící dolů	červená|červený trojúhelník směřující dolů|dolů|geometrie|tvar	
+1F53C	tlačítko nahoru	nahoru|šipka|tlačítko|trojúhelník	
+1F53D	tlačítko dolů	dolů|šipka|tlačítko|trojúhelník	
+1F549	óm	hindu|hinduismus|náboženství|víra	
+1F54A	holubice	bílá holubice|holubice míru|let|létat|letící|mír|pták|zvíře	
+1F54B	Kába	hadždž|islám|Ka’ba|kaaba|Kaaba|muslim|náboženství|umra	
+1F54C	mešita	islám|muslim|náboženství|víra|vyznání	
+1F54D	synagoga	budova|chrám|judaismus|náboženství|víra|žid|židovský|židovství	
+1F54E	sedmiramenný svícen	chanuka|judaismus|menora|náboženství|svátek světel|svícen|židovský	
+1F550	jedna hodina	čas|hodiny|jedna|1:00|13:00	00|1|13
+1F551	dvě hodiny	čas|dva|dvě|hodiny|14:00|2:00	00|14|2
+1F552	tři hodiny	čas|hodiny|tři|15:00|3:00	00|15|3
+1F553	čtyři hodiny	čas|čtyři|hodiny|16:00|4:00	00|16|4
+1F554	pět hodin	čas|hodiny|pět|17:00|5:00	00|17|5
+1F555	šest hodin	čas|hodiny|šest|18:00|6:00	00|18|6
+1F556	sedm hodin	čas|hodiny|sedm|19:00|7:00	00|19|7
+1F557	osm hodin	čas|hodiny|osm|20:00|8:00	00|20|8
+1F558	devět hodin	čas|devět|hodiny|21:00|9:00	00|21|9
+1F559	deset hodin	čas|deset|hodiny|10:00|22:00	00|10|22
+1F55A	jedenáct hodin	čas|hodiny|jedenáct|11:00|23:00	00|11|23
+1F55B	dvanáct hodin	čas|dvanáct|hodiny|nula|poledne|půlnoc|0:00|12:00	0|00|12
+1F55C	půl druhé	čas|hodiny|jedna|třicet|1:30|13:30	1|13|30
+1F55D	půl třetí	čas|dva|hodiny|třicet|14:30|2:30	2|30
+1F55E	půl čtvrté	čas|hodiny|tři|třicet|15:30|3:30	3|30
+1F55F	půl páté	čas|čtyři|hodiny|třicet|16:30|4:30	30|4
+1F560	půl šesté	čas|hodiny|pět|třicet|17:30|5:30	17|30|5
+1F561	půl sedmé	čas|hodiny|šest|třicet|18:30|6:30	18|30|6
+1F562	půl osmé	čas|hodiny|sedm|třicet|19:30|7:30	30|7
+1F563	půl deváté	čas|hodiny|osm|třicet|20:30|8:30	30|8
+1F564	půl desáté	čas|devět|hodiny|třicet|21:30|9:30	30|9
+1F565	půl jedenácté	čas|deset|hodiny|třicet|10:30|22:30	10|22|30
+1F566	půl dvanácté	čas|hodiny|jedenáct|třicet|11:30|23:30	11|30
+1F567	půl jedné	čas|dvanáct|hodiny|nula|třicet|0:30|00:30|12:30	0|12|30
+1F56F	svíčka	oheň|plamen|plamínek|romantika|světlo|svícen	
+1F570	krbové hodiny	čas|hodiny|starožitné hodiny|stolní hodiny	
+1F573	díra	jáma|jamka|kanál|otvor	
+1F574	levitující byznysmen	business|byznys|manažer|muž|oblek|podnikání|povolání|práce	
+1F575	detektiv	agent|člověk|čmuchal|inspektor|muž|očko|povolání|práce|slídit|špeh|špión|špionáž|utajení|vyšetřovatel	
+1F576	sluneční brýle	brýle|obroučky|oči|oko|skla|tma|tmavé	
+1F577	pavouk	hmyz|zvíře	
+1F578	pavučina	pavoučí|pavouk|síť	
+1F579	joystick	hra|ovladač|pákový ovladač|počítač|videohra|zábava	
+1F57A	tanečník	člověk|elegantní|flamenco|muž|salsa|slavnostní|smím prosit|talent|tančící muž|tancovat|tanec|tanečnice|tango|žena	
+1F587	spojené kancelářské sponky	článek|kancelářská svorka|kancelářské sponky|papír|propojené sponky|řetěz|spojení|sponky|sponky na papír|svorka	
+1F58A	propiska	kuličkové|pero|psaní|psát	
+1F58B	plnicí pero	atrament|hrot|inkoust|pero|plnicí	
+1F58C	štětec	malba|malířství|malování|umění	
+1F58D	pastelka	barevná tužka|červená barva|fix|fixa|kreslit|křída|omalovánky|voskovka|vybarvovat	
+1F590	ruka s roztaženými prsty	nech toho|přestaň|prst|roztažené|roztažené prsty|ruka|stop|tělo|zvednutá ruka s roztaženými prsty	
+1F595	prostředníček	fakáč|prostředník|prst|ruka|tělo|urážka|urážlivé gesto|vulgární	
+1F596	vulkánský pozdrav	prst|ruce|ruka|spock|Spock|Star Trek|tělo|vulkán|Vulkán|Vulkánec	
+1F5A4	černé srdce	černá|černé|smutek|srdce|srdíčko|zkaženost|zlo|zlý	
+1F5A5	počítač	desktop|monitor|osobní|PC|stolní	
+1F5A8	tiskárna	počítač|tisknout|vytisknout	
+1F5B1	počítačová myš	myš|počítač	
+1F5B2	trackball	kulový ovladač|počítač|trekbol	
+1F5BC	obraz v rámu	malba|malířství|malování|muzeum|obraz|obraz s rámem|rám|umění|zarámovaný obraz	
+1F5C2	kartotéka	index|jmenovka|karta|katalog|oddělovač|oddělovače|oddíl|rejstřík|složka	
+1F5C3	krabice s kartotékou	karta|krabice|složka|spis	
+1F5C4	skříň na spisy	archiv|archivace|kartotéka|pořadač|šanon|skříň|spis|šuplík	
+1F5D1	odpadkový koš	koš|koš na papír|odpad|odpadky|smetí	
+1F5D2	kroužkový zápisník	blok|kroužková vazba|kroužky|poznámka|poznámkový blok|poznámky|psaní|spirálový|zápisky	
+1F5D3	kroužkový kalendář	blok|čas|datum|kalendář|kroužky|spirálový	
+1F5DC	svěrka	komprese|nářadí|nástroj|sevřít|slisovat|svěrák|svorka|tlak	
+1F5DD	starý klíč	dózický|indicie|klíč|nápověda|starodávný klíč|starý|stopa|vodítko|zámek	
+1F5DE	srolované noviny	čtení|noviny|papír|srolované|stočené|tisk|zprávy	
+1F5E1	dýka	meč|nůž|rytíř|zbraň	
+1F5E3	mluvící hlava	hlava|mluvit|obličej|obrys|povídat|přednáška|proslov|řeč|řečník|silueta|smajlík|tvář|vyprávět|výraz	
+1F5E8	levá řečová bublina	bublina řeči vlevo|dialog|mluvit|řeč|textová bublina	
+1F5EF	pravá rozzlobená bublina	balónek|bublina|bublina naštvané řeči vpravo|hněv|naštvaný|rozzlobený|textová bublina|vztek|zloba|zlost	
+1F5F3	urna s volebním lístkem	hlasování|krabice|lístek|schránka|urna|volby|volební|volební urna s volebním lístkem|volit	
+1F5FA	mapa světa	cestování|mapa|svět	
+1F5FB	hora Fudži	fudži|Fudži|fuji|hora|Japonsko|příroda|sopka	
+1F5FC	Tokijská věž	Japonsko|tokio|Tokio|tokyo tower|věž	
+1F5FD	socha Svobody	amerika|cestování|město|New York|NYC|socha|svoboda|usa|velkoměsto	
+1F5FE	mapa Japonska	japonsko|Japonsko|mapa	
+1F5FF	socha moai	cestování|kámen|kamenná tvář|kamenný výraz|moai|moyai|obličej|smajlík|socha|tvář|velikonoční ostrovy|výraz	
+1F600	zubící se obličej	obličej|radostný|smajlík|smát se|smích|spokojený|šťastný|tvář|úšklebek|úsměv|veselý|výraz|výraz se širokým úsměvem|vysmátý|zuby	
+1F601	rozzářený obličej s usměvavýma očima	křenit se|obličej|oči|oko|řehtat se|smajlík|smát se|tvář|úšklebek|úsměv|výraz|výraz se širokým úsměvem s rozzářenýma očima|zuby	
+1F602	obličej slzící smíchy	brečet|haha|hehe|lol|obličej|řehtat|rozesmátý|se|slza|slzet|slzící|smajlík|smích|smíchy|sranda|šťastný|tvář|válet|veselý|výraz	
+1F603	zubící se obličej s velkýma očima	hlasitý smích|jupí|obličej|otevřený|paráda|smajlík|spokojený|šťastný|super|tvář|úsměv|ústa|výraz|výraz s úsměvem s otevřenou pusou|zuby	
+1F604	zubící se obličej s usměvavýma očima	hlasitý smích|křenit se|lol|obličej|oko|otevřený|řehtat se|smajlík|smát se|tvář|úsměv|ústa|výraz|výraz s úsměvem s otevřenou pusou a rozzářenýma očima	
+1F605	zubící se obličej s kapkou potu	nervózní|nervózní smích|obličej|otevřený|pot|rozrušený|smajlík|stres|studený|tvář|úsměv|výraz|výraz s úsměvem s otevřenou pusou a studeným potem	
+1F606	zubící se obličej s mžourajícíma očima	chacha|haha|hehe|hlasitý|křenit|lol|mžourající|obličej|otevřený|řehtat|rofl|smajlík|smích|spokojený|tlemit|tvář|úsměv|ústa|výraz|zubící	
+1F607	usmívající se obličej se svatozáří	anděl|andílek|duše|dušička|fantasy|halo|mírumilovný|nevinný|obličej|pohádka|smajlík|spokojený|šťastný|svatoušek|svatozář|svatý|tvář|úsměv|výraz	
+1F608	usmívající se obličej s rohy	čert|ďábel|ďáblík|démon|fantasy|fialový čert|obličej|pohádka|rohatý|rohy|škodolibý|smajlík|tvář|úsměv|úsměv s rohy|výraz	
+1F609	mrkající obličej	flirt|flirtovat|mrk mrk|mrkající smajlík|mrknout|mrknutí|obličej|škádlení|smajlík|tvář|výraz|zamrkat	
+1F60A	smějící se obličej s usměvavýma očima	červenání|červenat se|milý|obličej|oko|radost|ruměnec|smajlík|spokojený|tvář|úsměv|usměvavý|výraz|výraz s úsměvem se smějícíma se očima|zardění|zářit štěstím|zrudnutí	
+1F60B	olizující se obličej	chutný|hladový|jídlo|jíst|lahodný|mňam|ňam|obličej|olizující se tvář|rozpustilý|smajlík|sytý|tvář|úsměv|výborný|vychutnávat|vynikající|vypláznutý jazyk|výraz	
+1F60C	obličej s výrazem úlevy	klid|klidný|obličej|smajlík|tvář|úleva|výraz|výraz úlevy|vyrovnaný|zen	
+1F60D	usmívající se obličej se srdíčky místo očí	láska|miluji tě|miluju tě|nádhera|obličej|oči|oko|polibek|pusa|romantika|smajlík|srdce|srdíčka|tvář|úsměv|úsmívající se tvář s očima ve tvaru srdíček|výraz|zamilovaný	
+1F60E	usmívající se obličej s brýlemi	brýle|cool|fešák|fešanda|frajer|jasno|naparovat|obličej|oči|oko|paráda|pláž|rebel|sluneční|smajlík|stylový|úsměv|uvolněný|vítěz|výraz	
+1F60F	ušklíbající se obličej	drzost|drzý|flirt|floutek|lstivý|mazaný|mrkat|obličej|poťouchlý|přidrzlý|prohnaný|samolibý|smajlík|tvář|úlisný|úšklebek|úsměv|vilný|vychytralý|výraz	
+1F610	obličej s neutrálním výrazem	bez výrazu|kamenná tvář|kamenný výraz|neutrální|nezábavný|nezájem|nezajímavý|nudný|obličej|prázdný výraz|smajlík|trapné|tvář|výraz|závist	
+1F611	obličej bez výrazu	bez výrazu|kamenný výraz|mrtvý|obličej|omg|prázdný výraz|smajlík|tvář|tvář bez výrazu|výraz|wtf|závist	
+1F612	obličej se znuděným výrazem	divný|dobře|fajn|naštvaný|nešťastný|nevěřícný|nuda|obličej|smajlík|to je fuk|tvář|výraz|wtf|závist|znuděný	
+1F613	sklíčený obličej se studeným potem	bolest hlavy|chladno|nervózní|obličej|pot|smajlík|smutný|studený|to bylo o chlup|tvář|tvář zalitá studeným potem|vyděšený|výraz	
+1F614	obličej se skleslým výrazem	deprimovaný|hrozný|obličej|skleslý|sklíčený|smajlík|smutný|trudnomyslný|trudomyslný|tvář|výraz|zadumaný|zádumčivý|zahloubaný|zamyšlený|zklamaný|znuděný|ztracený	
+1F615	zmatený obličej	hm|matoucí|meh|nejistý|nevím|obličej|popletený|promiň|smajlík|smutný|tvář|výraz|zmatený	
+1F616	obličej s pláčem na krajíčku	frustrovaný|mrzutý|naštvaný|obličej|otrávený|pocit|podrážděný|překvapený|rozpačitý|rozrušený|škleb|smajlík|smutný|tvář|výraz|výraz rozpaků|zatraceně|zmatený|znechucený	
+1F617	líbající obličej	flirtovat|láska|miluji tě|miluju tě|muck|obličej|polibek|pusa|pusinka|rande|smajlík|tvář|výraz|výraz polibku	
+1F618	obličej posílající polibek	chybíš|flirt|láska|mi|miluji|miluju|muck|obličej|polibek|posílající|pusa|pusinka|pusu|ráno|romantika|rozkošný|smajlík|srdce|tvář|výraz	
+1F619	líbající obličej s usměvavýma očima	dobrou noc|flirt|ily|láska|miluji tě|miluju tě|obličej|oko|polibek|pusa|pusinka|rande|smajlík|tvář|úsměv|výraz|výraz polibku s úsměvem|zavřené oči	
+1F61A	líbající obličej se zavřenýma očima	červenat se|flirt|láska|miluji tě|miluju tě|obličej|oči|oko|polibek|pusa|pusinka|ruměnec|smajlík|tvář|výraz|výraz polibku se zavřenýma očima|zardění|zavřený|zrudnutí	
+1F61B	obličej s vyplazeným jazykem	jazyk|obličej|paráda|párty|smajlík|super|tvář|tvář s vyplazeným jazykem|vypláznutý jazyk|výraz	
+1F61C	mrkající obličej s vypláznutým jazykem	bláznivý|jazyk|legrace|mrknout|mrknutí|obličej|oko|potrhlý|praštěný|smajlík|sranda|tvář|tvář s vyplazeným jazykem a mrkajícím okem|ujetý|vtip|výraz|ztřeštěný	
+1F61D	mžourající obličej s vypláznutým jazykem	ble|chuť|děs|fuj|jazyk|nechutné|obličej|oko|omg|smajlík|tvář|tvář s vyplazeným jazykem a zavřenýma očima|vypláznutý jazyk|výraz|zavřené oči	
+1F61E	zklamaný obličej	deprimovaný|hrůza|nešťastný|obličej|prohrát|provinilý|selhání|skleslý|sklíčený|smajlík|tvář|vina|výraz|zklamání|zklamaný|zkroušený|ztráta	
+1F61F	ustaraný obličej	bát se|nervozita|nervózní|obavy|obličej|překvapený|smajlík|smutný|starost|starosti|strachovat se|stres|tvář|úzkostlivý|výraz|výraz obav	
+1F620	rozzlobený obličej	frustrovaný|hněv|hněvivý|naštvaný|nešťastný|obličej|rozčilený|rozhněvaný|rozrušený|rozzlobený|rozzuřený|smajlík|tvář|výraz|vztek|vzteklý|zloba|zlost|zuřivost|zuřivý	
+1F621	obličej s podrážděným výrazem	běsnit|červená|červený|hněv|naštvaný|nazlobený|obličej|podrážděný|rozhněvaný|rozzuřený|rudý|smajlík|tvář|výraz|vztek|zloba|zlost|zuřivost|zuřivý	
+1F622	plačící obličej	brečet|chybět|hrozný|nešťastný|obličej|pláč|plačící výraz|plakat|ronit slzy|slza|slzička|smajlík|smutek|stýská se mi|tvář|výraz|zkroušený	
+1F623	obličej s umíněným výrazem	bolest hlavy|koncentrace|migréna|obličej|šklebit se|smajlík|soustředit se|tvář|umíněnost|výraz|vytrvalost|vytrvalý výraz	
+1F624	obličej pouštějící páru nosem	funět|hněv|naštvaný|navztekaný|obličej|odfouknutí|pára|rozčilený|rozhněvaný|rozhořčení|rozlícený|rozzuřený|triumf|vítězství|vyfouknutí|výraz|vztek|zloba|zlost|zuřit	
+1F625	smutný obličej s výrazem úlevy	o chlup|obličej|smajlík|smutný|tvář|údiv|uf|úleva|úzkost|výraz|výraz zklamání a úlevy|zklamání	
+1F626	zamračený obličej s otevřenou pusou	co|cože|obličej|otevřený|polekat se|překvapení|smajlík|tvář|úlek|ústa|vyděšený|vylekaný|výraz|výraz zamračení s otevřenou pusou|vystrašený|zamračení|zamračený|zaražený|zděšený	
+1F627	obličej s úzkostným výrazem	cože|nepříjemný|nešťastný|obličej|páni|překvapení|šok|strašidelný|stres|tvář|utrápený|úzkost|vyděšený|výraz|wow|zmučený|ztrápený	
+1F628	ustrašený obličej	bát se|děs|obavy|obličej|smajlík|strach|tvář|ustrašený|úzkost|úzkostlivý|vyděšený|výraz|výraz strachu|znepokojený|ztrápený	
+1F629	vyčerpaný obličej	brečet|hladový|naštvaný|ne|neštastný|obličej|ospalý|plakat|selhání|smajlík|smutný|tvář|únava|unavený|utahaný|vyčerpání|výraz|zkroušený	
+1F62A	ospalý obličej	brečet|nachlazený|obličej|ospalý výraz|plakat|rozespalý|smajlík|smutný|spánek|tvář|unavený|uplakaný|výraz	
+1F62B	unavený obličej	kýchat|kýchnutí|obličej|smajlík|smutný|tvář|únava|unavený výraz|výraz|zdřímnutí	
+1F62C	grimasa s vyceněnými zuby	grimasa|křenit se|nepříjemný|obličej|prekérní|šklebit se|smajlík|trapný|tvář|tvář s krokodýlím úsměvem|úsměv|výraz|zubař|zuby	
+1F62D	zoufale plačící obličej	brečet|nářek|naříkat|nešťastný|obličej|pláč|plakat|potoky slz|řvát|slza|smajlík|smutek|tvář|výraz|vzlykat|zoufale plačící výraz	
+1F62E	obličej s otevřenou pusou	dokořán|kecáš|nekecej|neuvěřitelné|nevěřím|obličej|omg|otevřená|páni|překvapený|pusa|smajlík|šok|soucit|tvář|tyjo|ústa|vážně|výraz|wow	
+1F62F	obličej se zaraženým výrazem	obličej|ohromený|omg|páni|překvapený|smajlík|šokovaný|tichý|tvář|tyjo|výraz|výraz tváře beze slov|wow|zaražený	
+1F630	úzkostný obličej se studeným potem	chladno|jejda|modrá|nervózní|obličej|otevřený|pot|smajlík|spěchat|studený|tvář|tvář s otevřenou pusou zalitá studeným potem|uspěchaný|ústa|uštvaný|vyděšený|vylekaný|výraz	
+1F631	obličej křičící hrůzou	bát se|děs|Edvard Munch|hrůza|křičet strachy|munch|obličej|překvapený|smajlík|šok|šokovaný|strach|tvář|vyděšený|výkřik|výraz|výraz strachu|vystrašený|zděšený	
+1F632	užaslý obličej	naprosto|nekecej|nemožné|není možné|nevěřícný|obličej|ohromený|omg|smajlík|šok|to snad ne|tvář|udivený|úplně|úžas|užaslý|výraz|výraz ohromení|wtf|zaskočený	
+1F633	červenající se obličej	bože|červenat|cože|ohromený|páni|překvapení|překvapený|provinilý|rozpaky|šílené|stydět|stydlivý|trapas|trapné|údiv|udivený|výraz|wow|zrudnout	
+1F634	spící obličej	chrnět|chrr|dobrou|noc|obličej|ospalý|pochrupovat|postel|šlofík|spánek|spát|spící|tvář|unavený|usínat|utahaný|výraz|zdřímnout|zívat|zzz	
+1F635	obličej s výrazem závrati	mrtvý|nevolnost|obličej|smajlík|tvář|unavený|výraz|výraz závrati|závrať	
+1F636	obličej bez úst	bez výrazu|beze slov|nemám slov|němý|nepříjemné|obličej|oněmělý|prázdný výraz|prekérní situace|smajlík|tajemství|tajný|ticho|tichý|trapné|tvář|tvář bez úst|ústa|výraz	
+1F637	obličej s lékařskou rouškou	bacily|bakterie|dermatolog|doktor|lék|lékař|maska|nachlazený|nemocný|obličej|prevence|rouška|rýma|smajlík|tvář|tvář s doktorskou rouškou|výraz|zubař	
+1F638	šklebící se kočka s usměvavýma očima	kočičí široký úsměv s rozzářenýma očima|kočka|křenit se|obličej|oko|řehtat se|smajlík|smát se|tvář|úšklebek|úsměv|výraz|zvíře	
+1F639	kočičí obličej slzící smíchy	brečet smíchy|hlasitý smích|kočka|kočka se slzami radosti|lol|obličej|radost|slza|slzy|slzy smíchu|smajlík|smích|tvář|výraz|zvíře	
+1F63A	šklebící se kočičí obličej	hlasitý smích|kočičí úsměv s otevřenou pusou|kočka|obličej|otevřený|pusa|smajlík|tvář|úšklebek|úsměv|ústa|výraz|zvíře	
+1F63B	usmívající se kočka se srdíčky místo očí	kočičí úsměv s očima ve tvaru srdíček|kočka|láska|obličej|oči|oko|smajlík|srdce|srdíčka|tvář|úsměv|výraz|zamilovaná kočka|zamilovaný|zvíře	
+1F63C	kočičí obličej s jízlivým úsměvem	ironický|ironie|jízlivý|kočičí jízlivý úsměv|kočka|obličej|sarkastický|smajlík|tvář|úsměv|výraz|zvíře	
+1F63D	líbající kočičí obličej	kočičí polibek se zavřenýma očima|kočka|obličej|oči|oko|polibek|pusa|pusinka|smajlík|tvář|výraz|zvíře	
+1F63E	kočičí obličej s podrážděným výrazem	hněv|kočka|naštvaný|nazlobený|obličej|podrážděná kočka|podráždění|podrážděný|rozzlobený|smajlík|trucující|tvář|výraz|vztek|zloba|zlost|zuřivý|zvíře	
+1F63F	plačící kočičí obličej	kočka|obličej|pláč|plačící kočka|plakat|ronit slzy|slza|slzička|smajlík|smutek|smutný|tvář|uplakaný|výraz|zvíře	
+1F640	vyčerpaný kočičí obličej	jej|kočičí|kočka|obličej|páni|překvapení|smajlík|tvář|uf|únava|unavená kočka|vyčerpání|vyčerpaný|výraz|wow|zívat|zvíře	
+1F641	mírně zamračený obličej	obličej|smajlík|smutek|smutný|tvář|výraz|výraz mírného zamračení|zamračení	
+1F642	obličej s mírným úsměvem	obličej|pousmát se|smajlík|spokojený|šťastný|tvář|úsměv|veselý|výraz|výraz mírného úsměvu	
+1F643	převrácený obličej	haha|hehe|hlavou dolů|obličej|obrácený|převrácený|smajlík|tvář|tvář vzhůru nohama|úsměv|usmívat se|výraz|vzhůru nohama	
+1F644	obličej s očima v sloup	ježišmarja|koulející|koulet očima|koulí očima|obracet oči|oči|oči v sloup|smajlík|to je fuk|tvář|tvář s očima v sloup|v sloup|výraz	
+1F645	gesto nesouhlasu	a dost|gesto|gesto odmítnutí|ne|nech toho|přestaň|ruka|stop|zákaz|zakázáno|žena se zkříženýma rukama	
+1F646	gesto souhlasu	baletka|cvičení|gesto|ok|omg|pirueta|protahování|ruce nad hlavou|ruka|souhlas|strečink|žena souhlasí	
+1F647	uklánějící se osoba	gesto|lítost|meditovat|modlitba|muž se klaní|omluva|omluvné gesto|pardon|poklona|promiň|prosba|úcta|úklona	
+1F648	opička „nic nevidím“	dívat|gesto|ne|nemůžu|nevidět|nevidím|nic|oči|omg|opice|ruce|schovat|stydět|tajemství|vyděšený|výraz|zákaz|zakryté|zlo|zvíře	
+1F649	opička „nic neslyším“	gesto|ne|neposlouchat|neslyšet|neslyším|nic|obličej|opice|pšt|ruce|ššš|tvář|uši|výraz|zacpané|zákaz|zakázáno|zakryté|zlo|zvíře	
+1F64A	opička „nic nepovím“	gesto|jejda|mlčet|ne|nemluvím|nepovím|nic|obličej|opice|psst|ruce|tajemství|ticho|ups|ústa|výraz|zákaz|zakrytá|zlo|zvíře	
+1F64B	osoba se zvednutou rukou	ano prosím|gesto|haló|já vím|mám otázku|mávat|přihlásit se|ruka|šťastný|zde|žena se hlásí|žena zvedá ruku|zvednutá	
+1F64C	zvednuté ruce	dlaně|gesto|hurá|oslava|oslavovat|ruka|sláva|tělo|velebit|zdvižená|zvednutá	
+1F64D	zamračená osoba	mračit se|naštvaný|nespokojená|rozčilený|rozladěná|rozrušená|výraz|zamračená žena|zamračení|zamračený|zklamaná|znepokojená	
+1F64E	podrážděná osoba	člověk|naštvaná|nespokojená|nespokojenost|nespokojený výraz|podrážděná žena|podráždění|trucovat|trucující žena|výraz|žena	
+1F64F	sepjaté ruce	děkuji|díky|five|gesto|high|modlit|modlitba|plácnout|plácnutí|poklona|požehnaný|prosím|prosit|ruce|se|sepjaté|složené|úpěnlivě|žádat	
+1F680	raketa	astronautika|cestování|doprava|kosmonautika|kosmos|vesmír|vypustit	
+1F681	vrtulník	cestování|doprava|dopravní prostředek|helikoptéra|letoun	
+1F682	lokomotiva	cestování|doprava|pára|parní lokomotiva|vlak|vozidlo|železnice	
+1F683	vagón	cestování|doprava|električka|elektrický|šalina|tramvaj|trolejbus|vlak|vozidlo|železnice	
+1F684	pendolino	cestování|doprava|dopravní prostředek|rychlost|rychlovlak|rychlý|šinkansen|TGV|vlak|vozidlo|železnice	
+1F685	japonský rychlovlak	cestování|doprava|pendolino|rychlost|rychlovlak|šinkansen|špička|TGV|vlak|vozidlo|železnice	
+1F686	vlak	doprava|húú|lokomotiva|mašinka|příjezd|vláček|vozidlo|železnice	
+1F687	metro	cestování|doprava|dráha|podzemní|tunel|vozidlo	
+1F688	rychlodrážní tramvaj	doprava|jednokolejka|příjezd|příměstský vlak|tramvaj|vozidlo|železnice	
+1F689	stanice	doprava|elektrický|lokomotiva|mašinka|nástupiště|peron|příměstský vlak|vláček|vlak|vozidlo|zastávka|železnice	
+1F68A	tramvaj	doprava|příměstský vlak|vozidlo	
+1F68B	vagón tramvaje	doprava|električka|šalina|tramvaj|trolej|trolejbus|vagon|vagón|vozidlo	
+1F68C	autobus	doprava|školní autobus|vozidlo|žlutý	
+1F68D	přijíždějící autobus	autobus|doprava|příjezd|přijíždějící|vozidlo	
+1F68E	trolejbus	doprava|trolej|vozidlo	
+1F68F	zastávka autobusu	autobus|autobusová zastávka|doprava|zastávka	
+1F690	minibus	autobus|bus|cestování|dodávka|doprava|dopravní prostředek|jet|jízda|mikrobus|vozidlo	
+1F691	sanitka	ambulance|doprava|pohotovost|první pomoc|rychlá záchranná služba|vozidlo|záchranka	
+1F692	hasičské auto	doprava|hasiči|hoří|oheň|požár|požárníci|truck|vozidlo	
+1F693	policejní auto	auto|doprava|hlídka|policie|vozidlo	
+1F694	přijíždějící policejní auto	auto|doprava|policie|příjezd|přijíždějící|vozidlo|vůz	
+1F695	taxík	cestování|doprava|jet|jízda|řidič|řídit taxík|taxi|taxikář|Uber|vozidlo|žlutý taxík	
+1F696	přijíždějící taxík	cestování|doprava|jet|jízda|lyft|příjezd|přijíždějící|taxi|taxikář|Uber|vozidlo|zastavit taxík|žlutý taxík	
+1F697	auto	autíčko|automobil|červené|doprava|jet|jízda|osobní|vozidlo|vůz	
+1F698	přijíždějící auto	auto|automobil|červená|doprava|jet|jízda|osobní|příjezd|přijíždějící|vozidlo|vůz	
+1F699	SUV	auto|automobil|cestování|doprava|džíp|jeep|jet|jízda|rekreace|rekreační|řídit|sport|sportovní užitkové vozidlo|vozidlo|vůz	
+1F69A	dodávka	auto|doprava|dovoz|jet|jízda|kamion|náklaďák|nákladní auto|rozvážka|rozvoz|truck|vozidlo|zásobování	
+1F69B	kamion	auto|autodoprava|doprava|jet|jízda|náklaďák|nákladní|řídit|stěhování|tahač s návěsem|tir|tirák|truck|vozidlo	
+1F69C	traktor	doprava|farma|vesnice|vozidlo	
+1F69D	jednokolejka	doprava|jednokolejná|visutá dráha|vozidlo	
+1F69E	horská železnice	doprava|hora|horský vlak|hory|ozubnicová dráha|vagon|vagón|vozidlo|výlet|železnice	
+1F69F	lanovka	cestování|doprava|tramvaj|visutá lanová dráha|visutý|vozidlo|závěsná|železnice|železniční	
+1F6A0	horská lanovka	cestování|doprava|gondola|hora|hory|kabel|kabina|lanová dráha|lyžařský vlek|vozidlo	
+1F6A1	kabinová lanovka	doprava|gondola|kabina|kabinka|kabinková|lano|lanová dráha|lanovka|vozidlo	
+1F6A2	loď	cestování|doprava|osobní|pasažér|plavidlo|Titanic|výletní loď	
+1F6A3	veslující osoba	člun|kanoe|loď|loďka|plavidlo|pramice|řeka|rybařit|veslař|veslice|veslování|veslovat	
+1F6A4	motorový člun	cestování|člun|doprava|jezero|léto|loď|luxus|miliardář|milionář|plavidlo|rychlý motorový člun|závodní člun	
+1F6A5	vodorovný semafor	doprava|jízda|křižovatka|provoz|semafor|signál|signalizace|světelná|světlo	
+1F6A6	svislý semafor	doprava|jet|jízda|křižovatka|provoz|semafor|signál|signalizace|světelná|světlo	
+1F6A7	stavební zábrana	bariéra|blokovat|cedule|práce na silnici|překážka|stavba|staveniště|uzávěra|zábrana|zátaras|značka	
+1F6A8	policejní maják	auto|majáček|maják|otáčecí|otáčení|otočný|policie|poplach|siréna|světlo|vozidlo	
+1F6A9	trojúhelníková vlajka	červená vlajka|golf|pošta|praporek|sloupek|tyč|vlajka	
+1F6AA	dveře	dvířka|skříň|vchodové dveře|zadní dveře|zadní vrátka	
+1F6AB	zákaz	ne|vstup|zákaz vstupu|zakázán|zakázáno	
+1F6AC	cigareta	cigáro|dým|kouř|kouření|kouřit|tabák|zapálit si	
+1F6AD	zákaz kouření	kouření|ne|nekouřit|zákaz|zakázáno	
+1F6AE	značka odpadkového koše	koš|odpad|odpadkový koš|odpadky|smetí	
+1F6AF	zákaz odhazování odpadků	ne|neodhazujte odpadky|odpad|odpadky|smetí|zákaz|zakázáno	
+1F6B0	pitná voda	kohoutek|nápoj|pití|pitná|voda|vodovod|značka pitné vody	
+1F6B1	nepitná voda	kohoutek|nápoj|nevhodná|pití|sucho|voda|voda není pitná|zákaz|zakázáno	
+1F6B2	jízdní kolo	bicykl|cyklista|cyklistika|doprava|dopravní prostředek|jet na kole|jízda na kole|kolo|spinning|vozidlo	
+1F6B3	zákaz vjezdu cyklistů	doprava|jízdní kolo|kolo|ne|vozidlo|zákaz|zákaz jízdních kol|zákaz kol|zakázáno	
+1F6B4	osoba na kole	člověk|cyklista|cyklistika|horské kolo|jízda na kole|kolo|muž na kole|silniční kolo|sport	
+1F6B5	osoba na horském kole	člověk|cyklista|cyklistika|hora|horská cyklistika|horské kolo|jízda|kolo|muž na horském kole|sport	
+1F6B6	kráčející osoba	chodec|chodit|chůze|jdoucí muž|kráčet|krok|pěší|pěšky|procházka|túra|vykračovat si	
+1F6B7	zákaz vstupu chodců	chodci|chodec|ne|pěší|průchod|vstup zakázán|zákaz|zakázán|zakázáno	
+1F6B8	pozor, děti	chodci|chodec|děti|dítě|doprava|dopravní|pěší|pozor|přechod|přechod pro děti|provoz|značka	
+1F6B9	pánské toalety	muž|pánská toaleta|toaleta|wc|WC|záchod	
+1F6BA	dámské toalety	dámská toaleta|dámy|toaleta|wc|WC|záchod|žena	
+1F6BB	toalety	toaleta|unisex|wc|WC|záchod	
+1F6BC	symbol dítěte	dítě|miminko|přebalení|přebalit|přebalovací|přebalovací místnost|přebalovat|značka dítěte	
+1F6BD	toaletní mísa	klozet|mísa|toaleta|WC|záchod|záchodové prkénko	
+1F6BE	záchod	toaleta|voda|wc|WC	
+1F6BF	sprcha	čistota|čistý|koupelna|sprchovat se|umýt se|voda	
+1F6C0	osoba ve vaně	člověk ve vaně|domácnost|koupat se|koupel|koupelna|sprcha|vana	
+1F6C1	vana	bublinky|koupel|koupelna|lázeň|sprcha|voda	
+1F6C2	pasová kontrola	kontrola|pas	
+1F6C3	celnice	balení|celní kontrola|clo|deklarovat|kufr|proclít|zákon|zavazadla|zboží	
+1F6C4	výdej zavazadel	balit|cesta|cestování|kufr|letadlo|odbavení|příjezd|přílet|sbaleno|výdej|výlet|zavazadlo	
+1F6C5	úschovna zavazadel	kufr|odložení|skříňka|skříňky|úschova|úschovna|zámek|zavazadla|zavazadlo	
+1F6CB	gauč a lampa	divan|domov|gauč|hotel|lampa|pohodlí|pohovka	
+1F6CC	osoba v posteli	chrnět|člověk v posteli|deka|dobrou noc|hotel|peřina|pochrupovat|polštář|postel|přikrývka|šlofík|spánek|spát|spící osoba|unavený|zachumlaný|zdřímnout si|zzz	
+1F6CD	nákupní tašky	dárková taška|hotel|nakupování|nakupovat|nákupy|taška|zavazadlo	
+1F6CE	portýrský zvonek	hotel|portýr|poslíček|recepce|zvon|zvonek|zvonek na recepci|zvonek v hotelu	
+1F6CF	postel	doma|hotel|peřina|polštář|spánek	
+1F6D0	modlitebna	modlit se|modlitba|náboženství|svatostánek|víra	
+1F6D1	značka stop	jednosměrka|osmiúhelník|stop|stopka|zákaz|zastavit|značka	
+1F6D2	nákupní vozík	košík|nákupní|nakupování|nakupovat|nákupy|vozík	
+1F6D5	hinduistický chrám	budova|chrám|hinduismus|posvátné místo|svatyně	
+1F6D6	chýše	chajda|chaloupka|chatka|chatrč|domeček|dům|jurta|obydlí|přístřešek|stavení	
+1F6D7	výtah	přístup|stroj|usnadnění|vyjet|zdvihat|zdviž	
+1F6D8	sesuv půdy	hora|kamení|katastrofa|lavina|nebezpečí|padající kamení|pohroma|zemětřesení	
+1F6D9	maják	moře|naděje|námořní|navigace|osvětlení|signál|světelný signál|světlo|vedení	
+1F6DC	bezdrátové připojení	internet|počítač|síť|wi-fi|wifi	
+1F6DD	dětská skluzavka	hra|hřiště|klouzačka|klouzat se|sklouznout|zábavní park	
+1F6DE	kolo	auto|koleso|kruh|kulatý|otáčení|pneumatika|rezerva|točit|volant|vozidlo	
+1F6DF	záchranný kruh	bezpečí|plavací|plavání|plavčík|plovák|záchrana	
+1F6E0	kladivo a maticový klíč	francouzský klíč|hasák|kladivo|kladivo a hasák|klíč|montážní|nářadí|nástroj|opravář|povolání|práce|řemeslo	
+1F6E1	štít	brnění|erb|rytíř|zbraň|zbroj	
+1F6E2	barel	barel ropy|nafta|ropa|sud	
+1F6E3	dálnice	cesta|motorová|silnice|vozovka	
+1F6E4	železniční trať	doprava|koleje|pražce|vlak|železnice	
+1F6E5	motorová jachta	člun|doprava|loď|moře|motorová loď|motorový člun|oceán|plavidlo	
+1F6E9	malé letadlo	cestování|doprava|dopravní prostředek|let|letadlo|létat|letoun	
+1F6EB	vzlétající letadlo	aeroplán|check-in|doprava|letadlo|letoun|odbavení|odlet|odlet letadla|odlety|vzlet	
+1F6EC	přistávající letadlo	cestování|doprava|letadlo|létat|letoun|přílet|přilétá|přílety|přistání|přistání letadla	
+1F6F0	satelit	družice|komunikace|kosmos|věda|vesmír|výzkum	
+1F6F3	zaoceánská loď	cestování|doprava|dovolená|loď|osobní|parník|pasažér|plavidlo|trajekt|výletní loď	
+1F6F4	koloběžka	doprava|sport	
+1F6F5	skútr	doprava|moped|scooter|vozidlo	
+1F6F6	kánoe	člun|doprava|loď	
+1F6F7	sáňky	saně|sáně|sáňkovat|sníh|sport|zima|zimní	
+1F6F8	létající talíř	doprava|mimozemský|mimozemšťani|neidentifikovatelný létající předmět|UFO|ufon	
+1F6F9	skateboard	jezdit na skateboardu|kolečka|prkno|skateboarding|skateboardista|skejt|skejťák|skejtovat	
+1F6FA	autorikša	doprava|dopravní prostředek|provoz|rikša|tuk-tuk|vozidlo	
+1F6FB	pickup	autíčko|auto s korbou|automobil|doprava|dopravní prostředek|kamion|malá dodávka|náklaďák|nákladní|pick-up|polododávka|přeprava|valník|vůz	
+1F6FC	kolečková brusle	bruslení|bruslit|inlajny|inline|jízda na bruslích|kolečkové|quad|roller derby|sport|trekové brusle	
+1F7E0	oranžový kroužek	kolečko|kolo|kroužek|kruh|oranžová|oranžové kolečko|oranžový kruh	
+1F7E1	žlutý kroužek	kolečko|kolo|kroužek|kruh|žlutá|žluté kolečko|žlutý kruh	
+1F7E2	zelený kroužek	kolečko|kolo|kroužek|kruh|zelená|zelené kolečko|zelený kruh	
+1F7E3	fialový kroužek	fialová|fialové kolečko|fialový kruh|kolečko|kolo|kroužek|kruh	
+1F7E4	hnědý kroužek	hnědá|hnědé kolečko|hnědý kruh|kolečko|kroužek|kruh	
+1F7E5	červený čtvereček	červená|červený čtverec|čtverec|čtvereček|zaoblený	
+1F7E6	modrý čtvereček	čtverec|čtvereček|modrá|modrý čtverec|zaoblený	
+1F7E7	oranžový čtvereček	čtverec|čtvereček|oranžová|oranžový čtverec|zaoblený	
+1F7E8	žlutý čtvereček	čtverec|čtvereček|zaoblený|žlutá|žlutý čtverec	
+1F7E9	zelený čtvereček	čtverec|čtvereček|zaoblený|zelená|zelený čtverec	
+1F7EA	fialový čtvereček	čtverec|čtvereček|fialová|fialový čtverec|zaoblený	
+1F7EB	hnědý čtvereček	čtverec|čtvereček|hnědá|hnědý čtverec|zaoblený	
+1F7F0	tučný znak rovnosti	dvojná vazba|matematika|porovnat|rovná se|rovnítko|rovnost|znamená	
+1F90C	špetka z pěti prstů	dobrota|fakt dobrý|gesto rukou|ironie|italské gesto|italské sarkastické gesto|já ti to říkal|otázka|prsty|rozčilení|ruka|sarkasmus|sevřené|to je jasný|top|vysvětlovat|zdůraznění	
+1F90D	bílé srdce	bílá|bílé srdíčko|láska|srdce|srdíčko	
+1F90E	hnědé srdce	hnědá|hnědé srdíčko|láska|srdce|srdíčko	
+1F90F	gesto „málo“	gesto|jenom trochu|krapet|malé množství|maličko|málo|prsty|ruka|špetka|tak trochu|troška	
+1F910	obličej s pusou na zip	ani muk|držet jazyk za zuby|jako ryba|mlčet|mlčím|nepovím|neřeknu|obličej|pst|pšt|smajlík|tajemství|tvář|tvář s pusou na zip|ústa|výraz|zip	
+1F911	obličej s penězi na jazyku	boháč|bohatství|dolar|obličej|peníze|prachy|pusa|smajlík|tvář|tvář s penězi na jazyku|ústa|výplata|výraz	
+1F912	obličej s teploměrem	angína|chřipka|horečka|nemocný|obličej|smajlík|teploměr|teplota|tvář|tvář s teploměrem v puse|výraz	
+1F913	obličej šprta	brýle|chytrý|geek|inteligentní|nerd|nešika|obličej|smajlík|šplhoun|šprt|tvář|výraz	
+1F914	zamyšlený obličej	hloubat|hmm|obličej|přemítat|přemýšlet|smajlík|tvář|uvažovat|výraz|zadumaný|zamyšlení|zvažovat	
+1F915	obličej s ovázanou hlavou	au|bolest|bolí|boule|obličej|obvaz|ofačovaná hlava|smajlík|tvář|výraz|zafačovaný|zranění|zraněný	
+1F916	obličej robota	automat|obličej|příšera|robot|smajlík|tvář|výraz	
+1F917	obličej s otevřenou náručí	gesto objetí|obejmout|objetí|obličej|ruce|ruka|smajlík|tvář|výraz	
+1F918	gesto parohů	gesto|gesto rohů|hudba|metal|paroháč|parohy|prst|rock|rohy|ruka|tělo	
+1F919	gesto „zavolej mi“	ruka|ruka s gestem zavolej mi|zatelefonovat|zavolat|zavolej	
+1F91A	hřbet zvednuté ruky	dlaň|hřbet|ruka|stop|zastavit|zdvižená|zvednutá|zvednutá ruka v gestu stop	
+1F91B	pěst mířící doleva	doleva|pěst|zaťatá pěst|zaťatá pěst směřující doleva	
+1F91C	pěst mířící doprava	doprava|pěst|pozdrav|ruka|tělo|ťuknout pěstí|zaťatá pěst|zaťatá pěst směřující doprava	
+1F91D	stisk rukou	dohoda|dohodnuto|domluva|domluveno|podání|potřást|potřást si rukama|potřesení|potřesení rukama|ruka|rukou|ruku na to|ruky|schůzka|seznámení|souhlas|stisk	
+1F91E	zkřížené prsty	držím palce|prsty|ruka|štěstí|zkřížené prsty pro štěstí|zkřížit	
+1F91F	gesto „miluji tě“	gesto|ily|láska|miluji tě|miluju|miluju tě|rock|rocker|rockerské gesto|ruka|tři prsty	
+1F920	obličej s kovbojským kloboukem	klobouk|kovboj|kovbojka|obličej|smajlík|tvář|tvář s kovbojským kloboukem|výraz	
+1F921	klaunský obličej	kašpar|klaun|obličej|šašek|smajlík|tvář|tvář klauna|výraz	
+1F922	obličej se znechuceným výrazem	ble|blinkat|fuj|nechutný|nevolno|obličej|smajlík|tvář|výraz|znechucení|znechucený výraz|zvracet	
+1F923	obličej válející se smíchy	brečet|haha|hehe|lol|obličej|popukání|řehtat|rozesmátý|se|slza|slzet|smajlík|smích|smíchy|sranda|šťastný|tvář|válet|veselý|výraz	
+1F924	slintající obličej	bryndat|chutné|cintat|hlad|obličej|slina|slinit|slintající tvář|slintání|slintat|slintat blahem|sliny|smajlík|tvář|vynikající|výraz	
+1F925	obličej lháře	lež|lhář|lhát|lži|lživá tvář s dlouhým nosem|obličej|pinocchio|Pinocchio|podvodník|prolhaný|smajlík|tvář|výraz	
+1F926	osoba chytající se za hlavu	čelo|chycení|cože|dlaň|facepalm|hlava|jen to ne|nevíra|proč já|rozhořčení|smajlík|to snad ne|tvář|už zase|vážně|výraz|zoufalství	
+1F927	kýchající obličej	chřipka|horečka|kapesník|kýchat|na zdraví|nachlazený|nemocný|obličej|rýma|smajlík|smrkat|tvář|výraz|zdravíčko	
+1F928	obličej se zvednutým obočím	co|cože|hmm|mírné překvapení|nedůvěra|nedůvěřivý|nesouhlas|nevěřícný|nevěřit|obličej|překvapení|skepse|skeptický|smajlík|tvář|výraz	
+1F929	obličej s hvězdami v očích	hvězda|nadšený|obličej|oči|páni|paráda|šklebící|smajlík|tvář|tyjo|úsměv|výraz|wow	
+1F92A	šílený obličej	blázen|jedno oko větší než druhé|malé|obličej|oči|oko|šílenec|šílený výraz|smajlík|tvář|velké|výraz|zbláznit se	
+1F92B	obličej s prstem na puse	buď potichu|obličej|obličej s prsem na ústech|pst|pšt|ruka|smajlík|ššš|ticho|tiše|tišit|tvář|utišit|výraz|zticha	
+1F92C	obličej se symboly na puse	cenzura|klení|klít|lát|láteřit|nadávající|nadávat|nadávka|naštvaný|neslušný|obličej|obličej se symboly přes ústa|rozzlobený|smajlík|spílat|tvář|vulgarismy|vulgární|výraz	
+1F92D	obličej s dlaní před pusou	aha|ajaj|chichotání|hihňat se|jejda|jéje|obličej|obličej s rukou na ústech|oj|oops|ouha|překvapení|ruka|smajlík|šok|tajemství|tvář|ups|výraz	
+1F92E	zvracející obličej	ble|blít|fuj|nechutný|nemocný|nevolnost|obličej|smajlík|špatně|tvář|výraz|žaludek|zvracet|zvratky	
+1F92F	explodující hlava	nemožné|není možné|neuvěřitelné|obličej|smajlík|šok|tvář|výbuch|vybuchující hlava|výraz	
+1F930	těhotná žena	člověk|gravidní|těhotenství|těhotná|žena	
+1F931	kojení	člověk|dítě|kojenec|kojit|krmení|maminka|mamka|matka|miminko|mimino|nemluvně|novorozeně|prsa|prso	
+1F932	zdvižené dlaně vedle sebe	modlit se|modlitba|přání|prosba|rozevřené dlaně|ruce dlaněmi vzhůru	
+1F933	selfie	foťák|fotoaparát|selfíčko|telefon	
+1F934	princ	člověk|fantasy|koruna|král|královský|panovník|pohádka|vládce|vznešený	
+1F935	osoba ve smokingu	člověk|formální|motýlek|muž|muž ve smokingu|oblek|osoba|sako|smoking|smokink|společenský oděv|ženich	
+1F936	Santa Clausová	babička|člověk|fantasy|matka|oslava|pohádka|santa|stará|stařenka|vánoce|Vánoce|žena	
+1F937	osoba krčící rameny	co já vím|je mi to jedno|možná|nejistota|nerozhodnost|nevědomost|nevím|nezájem|pochybnost|pochyby|pokrčení|pokrčit|ramena|to je fuk	
+1F938	osoba dělající přemet stranou	akrobacie|člověk|gymnastika|hvězda|radost|sport	
+1F939	žonglující osoba	balancovat|cirkus|multitasking|rovnováha|šikovnost|žonglování|žonglovat	
+1F93A	šermíř	člověk|kord|meč|rapír|šerm|šermířka|šermovat|sport|sportovní	
+1F93C	zápasící dvojice	bojový sport|boxerský ring|člověk|duel|sport|wrestling|zápas|zápasník	
+1F93D	osoba hrající vodní pólo	člověk|plavání|plavat|pólo|sport|voda|vodní pólo|vodní sport	
+1F93E	osoba hrající házenou	chytit|člověk|házená|házenkář|hodit|míč|nadhazovat|sport|zápas	
+1F93F	potápěčská maska	brýle|potápěčská výbava|potápěčské brýle|potápění|šnorchl|šnorchlování|sport	
+1F940	zvadlá květina	hynoucí|květ|květina|růže|uvadlá|uvadlý|uvadnutá|vadnoucí|zvadnutá	
+1F941	buben	bubenické|bubnovat|hudba|hudební nástroj|paličky	
+1F942	cinkající sklenice	cinkání|nápoj|oslava|oslavovat|pití|přípitek|přiťuknutí|šampáňo|šampaňské|sekt|sklenice	
+1F943	sklenice whisky	alkohol|brandy|koňak|panák|sklenice|sklenice na whisky|sklenička|skotská|tumbler|whiskey|whisky	
+1F944	lžíce	jídlo|jíst|lžička|příbor|stolování	
+1F945	sportovní branka	brána|branka|fotbal|gól|hokej|síť|sport	
+1F947	medaile za 1. místo	medaile|místo|první|trikolóra|vítězství|vyhrát|zlatá medaile|zlato	
+1F948	medaile za 2. místo	druhé|medaile|místo|stříbrná medaile|stříbro|trikolóra	
+1F949	medaile za 3. místo	bronz|bronzová medaile|medaile|místo|třetí|trikolóra	
+1F94A	boxerská rukavice	box|boxerský|červená|rukavice|sport	
+1F94B	sportovní kimono	bojové umění|černý pás|džudo|judo|karate|kimono|kimono na bojové umění|pásek|sport|taekwon-do|taekwondo	
+1F94C	curlingový kámen	curling|hra|kámen|kanadský|led|sport|zimní	
+1F94D	lakros	branka|gól|lakroska|lakrosová hůl|míč|sport	
+1F94E	softballový míček	míč|míček|nadhoz|rukavice|softball|sport	
+1F94F	frisbee	chytat|disk|frisbíčko|házecí disk|házecí talíř|házet|létající talíř|sport|ultimate	
+1F950	croissant	francouzské|francouzský|jídlo|kroasant|loupáček|loupák|pečivo|rohlík	
+1F951	avokádo	guacamole|jídlo|ovoce	
+1F952	okurka	jídlo|kvašáky|kyselá|nakládačka|nakládaná|nakládané okurky|okurek|zelenina	
+1F953	slanina	bůček|jídlo|maso|sádlo|smažený|tučný	
+1F954	brambor	brambora|hlad|jídlo|lilek brambor|zahrada|zelenina	
+1F955	mrkev	jídlo|karotka|kořenová zelenina|mrkvička|zahrada|zelenina	
+1F956	bageta	francouzské|jídlo|pečivo|veka	
+1F957	salát	jídlo|listová zelenina|okurek|rajče|zdraví|zdravý|zelený	
+1F958	mělký rendlík s jídlem	jídlo|kastrol|mělká pánev|mělký|paella|pánev|pánev s jídlem|plody moře|zapečené jídlo	
+1F959	plněná pita	chlebová placka|falafel|gyros|jídlo|kebab|plněný|sendvič	
+1F95A	vejce	jídlo|vajíčko	
+1F95B	sklenice mléka	mléko|nápoj|pití|sklenice	
+1F95C	arašídy	arašíd|burák|burský|burský oříšek|jídlo|lusk|olejná|ořech|podzemnice	
+1F95D	kiwi	jídlo|kivi|ovoce	
+1F95E	palačinky	javorový sirup|jídlo|lívance|lívanec|máslo|sirup|snídaně	
+1F95F	piroh	čínský knedlíček|dim sum|džiaozi|empanada|gjózu|gyoza|jiaozi|jídlo|knedlíček|knedlík|pelmeň|pelmeně|pirohy|pirožky|plněný knedlík|taštička|tortellini|wonton	
+1F960	čínský koláček štěstí	budoucnost|čínský koláček|jídlo|koláček štěstí|předpověď|proroctví|sušenka štěstí|věštba|věštění budoucnosti	
+1F961	krabice na jídlo	dovážka jídla|jídelní hůlky|jídlo|jídlo do domu|krabice s jídlem|krabička|krabička na jídlo|papírová krabička|rozvoz jídla|rýže	
+1F962	jídelní hůlky	čína|hashi|haši|hůlky|japonsko|jídelní|sushi|tyčinky	
+1F963	miska se lžící	cereálie|cornflakes|jídlo|kaše|kornflejks|kornflejky|krupičná|kukuřičné|lupínky|muesli|musli|müsli|ovesná|polévka|snídaně	
+1F964	pohárek s brčkem	džus|kelímek s brčkem|limonáda|nealko|nealkoholický nápoj|pití|sladký|soda|sodovka|voda	
+1F965	kokos	jídlo|kokosová palma|kokosový ořech|ořech|palma|piňa colada|Piña Colada|piňakoláda	
+1F966	brokolice	brukev|brukev zelná|jídlo|kapusta|rostlina|zahrada|zelenina	
+1F967	koláč	dýňový koláč|jablečný koláč|jídlo|kus koláče|maso|náplň|ovoce|páj|pečivo|pie|plněný koláč	
+1F968	preclík	jídlo|kroucené|pečivo|zakroucený|zamotaný	
+1F969	plátek masa	červené maso|flákota|hovězí|jehněčí|jídlo|kotleta|krvavý|kus masa|maso|řízek|steak|vepřová kotleta|vepřové|žebírko	
+1F96A	sendvič	chleba|jídlo|sandwich|svačina|toast|toust	
+1F96B	jídlo v plechovce	jídlo|konzerva|konzervované potraviny|plechovka	
+1F96C	salátové listy	bok čoj|čínské|jídlo|kadeřávek|kapusta|listová zelenina|pak čoj|salát|zelenina|zelený|zelí	
+1F96D	mango	jídlo|mangovník|mangový|ovoce|tropické|tropický	
+1F96E	měsíční koláč	čínský|pečivo|podzim|podzimní slavnosti|svátek|yuèbǐng	
+1F96F	bagel	bejgl|chléb|chleba|houska|namazat|pečivo|pekárna|pomazánka|snídaně	
+1F970	usmívající se obličej se třemi srdíčky	láska|mám tě rád|mám tě ráda|milovat|miluji tě|mít rád|obličej|romantika|smajlík|srdce|srdíčka|úsměv|zakoukaný|zaláskovaný|zamilovanost|zamilovaný|zbožňování|zbožňovat	
+1F971	zívající obličej	dobrou noc|nuda|ospalý|smajlík|unavený|utahaný|výraz|zdřímnout si|zívající|zívat|znuděný|zzz	
+1F972	usmívající se obličej se slzou	dojatý|dojetí|hrdý|slza|slzy radosti|slzy štěstí|smajlík|tvář|úleva|úsměv|usmívající|vděčný|výraz	
+1F973	oslavující obličej	čepička|frkačka|gratulace|hurá|jupí|konfety|nadšení|narozeniny|narozky|nejlepší|obličej|oslava|pařit|párty|radost|sláva|slavit|smajlík|všechno|zábava	
+1F974	zpitomělý obličej	dezorientovaný|líznutý|malátný|mít závrať|motá se mi hlava|omámený|opilost|opilý|pod vlivem|přiopilý|různě velké oči|šilhající|závrať|zvlněná pusa	
+1F975	rozpálený obličej	červený obličej|horečka|horečnatý|horko|obličej|pocení|přehřátý|rudý obličej|smajlík|umírat|úpal|uřícený|úžeh|vedro|vypláznutý jazyk|zadýchaný|zpocený|ztěžka oddechovat	
+1F976	zmrzlý obličej	chladný|drkotat zuby|modrý|mráz|mrzne|námraza|obličej|omrzliny|pod nulou|promodralý|promrzlý|rampouchy|smajlík|sníh|studený|zamrzlý|zasněžený|zima|zledovatělý|zmrzlý	
+1F977	nindža	bojovník|člověk|kradmý|kukla|nájemný vrah|nenápadný|ninja|osoba|plížit se|přikrást se|špion|tajný	
+1F978	obličej v přestrojení	brýle|incognito|inkognito|knír|maskovaný|obočí|přestrojení|převlek|smajlík|špehovat|špion|tvář|výraz	
+1F979	obličej se slzami na krajíčku	aww|dojetí|emoce|hněv|hrdost|obdiv|pěkně prosím|pláč|pocity|prosík|psí oči|rozpaky|sebeovládání|slzičky|slzy na krajíčku|slzy štěstí|smutek|vděčnost	
+1F97A	prosebný obličej	milost|obličej|pěkně prosím|proč ne|prosba|prosící|prosit|psí oči|škemrat|slitování|smajlík|smutné oči|smutný|žadonění|žadonit	
+1F97B	sárí	dlouhé šaty|oblečení|oděv|šaty	
+1F97C	laboratorní plášť	bílý plášť|doktor|doktorka|experiment|lékař|lékařka|oblečení|oděv|plášť|pokus|vědec|vědkyně	
+1F97D	ochranné brýle	akvalung|ochrana očí|plavání|plavecké|plavecké brýle|potápěč|potápěčské brýle|potápění|svářečské|svářečské brýle|svařování|svařovat	
+1F97E	pohorka	bota|hnědá bota|kanada|kempování|obuv|pěší túra|příroda|stanování|táboření|trampovat|túra|turistika|výlet|výšlap	
+1F97F	střevíček bez podpatku	balerinka|balerínky|baleríny|baletní bota|bez podpatků|bota na balet|bota s rovnou podrážkou|nazouvací|nízká bota|piškotka|plochá bota|plochá obuv|pohodlí|pohodlné|střevíc|střevíček	
+1F980	krab	horoskop|rak|Rak|znamení Raka|zvěrokruh|zvíře	
+1F981	hlava lva	horoskop|hříva|král zvířat|lev|Lev|obličej|Řád Bílého lva|řád lva|řev|řvaní|safari|silný|smajlík|tvář|výraz|znamení Lva|zvěrokruh|zvíře	
+1F982	škorpion	horoskop|štír|Štír|znamení Štíra|zvěrokruh|zvíře	
+1F983	krocan	den díkůvzdání|Díkůvzdání|hudrovat|krůta|pták|zvíře	
+1F984	hlava jednorožce	duhový|hlava|jednorožec|mytologie|obličej|roh|smajlík|tvář|výraz|zvíře	
+1F985	orel	dravec|dravý|pták|zvíře	
+1F986	kachna	kačenka|kačer|kachnička|pták|zvíře	
+1F987	netopýr	letoun|upír|vampýr|zvíře	
+1F988	žralok	ryba|zvíře	
+1F989	sova	dravec|les|moudrost|moudrý|pták|sýček|výr|zvíře	
+1F98A	hlava lišky	hlava|liščí|liška|obličej|tvář|zvíře	
+1F98B	motýl	hmyz|krásný|modrásek|modrý motýl|zvíře	
+1F98C	jelen	kolouch|laň|vysoká zvěř|zvíře	
+1F98D	gorila	hlava|opice|prales|primát|příroda|zvíře	
+1F98E	ještěrka	čolek|gekon|ještěr|plaz|salamandr|zvíře	
+1F98F	nosorožec	afrika|roh|zoo|zvíře	
+1F990	kreveta	garnát|jídlo|korýš|malý|moře|mořský|oceán|plody moře|zvíře	
+1F991	oliheň	chobotnice|hlavonožec|jídlo|kalamár|kalmar|krakatice|měkkýš|mořské plody|plody moře|sépie|zvíře	
+1F992	žirafa	Afrika|fleky|rohy|růžky|skvrny|ZOO|zvíře	
+1F993	zebra	černobílý|kůň|pruhovaný|pruhy|zvíře	
+1F994	ježek	bodliny|ostny|pichlavý|schoulený|zvíře	
+1F995	brontosaurus	brachiosaurus|Brachiosaurus|dinosaurus|diplodocus|Diplodocus|sauropod|Sauropod|vyhynulý|zvíře	
+1F996	tyranosaurus rex	dinosaurus|t-rex|T-rex|Tyrannosaurus rex|zvíře	
+1F997	cvrček	brouk|hmyz|kobylka|koník|luční|Orthoptera|rovnokřídlí|saranče|zvíře	
+1F998	klokan	Austrálie|australský|hopsat|kapsa|klokánek|savec|skákat|skákavý|vačnatec|zvíře	
+1F999	lama	alpaka|chundelatý|guanako|huňatý|načechraný|vikuňa|vlna|zvíře	
+1F99A	páv	barevný|honosný|krásný pták|náfuka|okázalý|ostentativní|paví pero|pávice|peří|pompézní|pták|pyšný|zvíře	
+1F99B	hroch	hroší|hrošík|tlustokožec|zvíře	
+1F99C	papoušek	ara|mluvící|mluvit|papouškovat|pirát|pták|zvíře	
+1F99D	mýval	čistotný|medvídek|zvědavý|zvíře	
+1F99E	humr	humří polévka|klepeta|korýš|langusta|plody moře|rak|zvíře	
+1F99F	komár	bodnutí|dengue|hmyz|horečka|kousnutí|malárie|moskyt|štípanec|štípnutí|tropická nemoc|virus	
+1F9A0	mikrob	améba|bacil|bakterie|biologie|měňavka|mikrobiologie|mikroby|mikroorganismus|věda|virus	
+1F9A1	jezevec	medojed|nora|škodná|zvíře	
+1F9A2	labuť	bílý|labutí mládě|opeřenec|ošklivé káčátko|peří|pírko|pták|vznešený|zvíře	
+1F9A3	mamut	chlupatý|huňatý|kel|kly|obří|pravěk|srstnatý|velký|vyhynulý|zvíře	
+1F9A4	dodo	blboun|dronte|mauricijský|Mauricius|nejapný|pták|velký|vyhynulý|vymřelý|živočich|zvíře	
+1F9A5	lenochod	lenivý|lenošit|lenost|líný|pomalý|zvíře	
+1F9A6	vydra	hravé|hravý|lovec ryb|loví ryby|rybařící|rybolov|vodní živočich|zvíře	
+1F9A7	orangutan	lidoop|opice|primát|zvíře	
+1F9A8	skunk	pach|páchne|páchnoucí|smrad|smradlavé|smradlavý|smrdět|smrdí|tchoř|zvíře	
+1F9A9	plameňák	nápadný|okázalý|růžový pták|tropický|tropy|zvíře	
+1F9AA	ústřice	jídlo|perla|perleť|potápění	
+1F9AB	bobr	hlodáky|hlodavec|hráz|Kanada|živočich|zuby|zvíře	
+1F9AC	bizon	buvol|býk|stádo|živočich|zubr|zvíře	
+1F9AD	tuleň	lachtan|lvoun|moře|mořský lev|mrož|oceán|živočich|zvíře	
+1F9AE	vodicí pes	asistence|asistenční pes|labrador|nevidomý|postižení|průvodce|slabozraký|slepecký pes|vůdce|zvíře	
+1F9AF	slepecká hůl	handicap|hendikep|nevidomý|pomůcka|postižení|slabozraký|slepec|slepota|slepý|usnadnění|zpřístupnění	
+1F9B0	zrzavé vlasy	rudé vlasy|rusé vlasy|ryšavé vlasy|zrzek|zrzka	
+1F9B1	kudrnaté vlasy	afro|kudrny|prstýnky|vlnité vlasy	
+1F9B2	bez vlasů	chemoterapie|pleš|skin|skinhead|vyholená hlava	
+1F9B3	bílé vlasy	šedé vlasy|šediny|stáří	
+1F9B4	kost	kosti|kostička|kostlivec|kostra|kůstka|pes|skelet	
+1F9B5	noha	chodidlo|koleno|končetina|kopanec|kopat|kopnout|kopnutí|lidské tělo|nakopnout|noha ohnutá v koleni	
+1F9B6	chodidlo	chodidla|dupat|kopanec|kopat|kopnout|kopnutí|kotník|nakopnout|noha|nohy|pata|šlapka|šlápnutí	
+1F9B7	zub	běloskvoucí|dentista|perlička|stomatolog|zubař|zubařka|zubní|zuby	
+1F9B8	superhrdinská postava	Batwoman|dobro|dobrý člověk|hrdina|hrdinka|klaďas|kladná postava|superhrdina|superhrdinka|superschopnost|superschopnosti|superžena|Wonderwoman	
+1F9B9	superzločinec	darebák|lotr|lump|muž|padouch|superpadouch|superschopnost|superzloduch|záporák|záporná postava|záporný hrdina|zločinec|zloduch|zlý	
+1F9BA	bezpečnostní vesta	bezpečí|bezpečnost|nouze|nouzová situace|reflexní|vesta|viditelný|výstražná	
+1F9BB	ucho s naslouchátkem	handicap|hendikep|naslouchadlo|naslouchátko|nedoslýchavost|neslyšící|pomůcka|postižení|usnadnění	
+1F9BC	elektrický invalidní vozík	bezbariérový|handicap|hendikep|invalidita|invalidní|invalidní vozík|kolečkové křeslo|motorizovaný invalidní vozík|pomůcka|postižení|snížená mobilita|usnadnění|zpřístupnění	
+1F9BD	mechanický invalidní vozík	bezbariérový|handicap|hendikep|invalidita|invalidní|invalidní vozík|manuální invalidní vozík|pomůcka|postižení|ručně poháněné kolečkové křeslo|snížená mobilita|usnadnění|zpřístupnění	
+1F9BE	mechanická paže	handicap|hendikep|invalidní|pomůcka|postižení|prostetická paže|protetická paže|protetika|protéza|usnadnění	
+1F9BF	mechanická noha	handicap|hendikep|invalidní|pomůcka|postižení|prostetická noha|protetická noha|protetika|protéza|usnadnění	
+1F9C0	klínek sýra	ementál|jídlo|kousek sýra|sýr|sýrový	
+1F9C1	košíček	cukr|cukroví|cupcake|dezert|dobrota|dortík|moučník|muffin|pečivo|pekárna|pochoutka|poleva|sladkost|sladký|zákusek	
+1F9C2	sůl	chuť|dochucovadlo|jídlo|koření|kořenit|ochutit|posolit|přísada|slánka|slaný|solnička	
+1F9C3	nápoj v krabičce	brčko|džusík|fruko|krabičkové pití|krabicový džus|nápojová krabice|pití v krabičce|pitíčko|sladký|slámka	
+1F9C4	česnek	aromatický|dochutit|jídlo|koření|ochucování|příchuť|zelenina	
+1F9C5	cibule	aromatický|cibulka|jídlo|koření|ochucování|příchuť|zelenina	
+1F9C6	falafel	boby|cizrna|cizrnový karbanátek|jídlo|karbanátky|koule|kuličky|luštěninová koule	
+1F9C7	vafle	forma|jídlo|moučník|mřížka|sendvičovač|snídaně|vaflovač	
+1F9C8	máslo	jídlo|máselnička|mléčné|mléčné výrobky|mlékárenské|mlékárna|mlékařské|mlékařství	
+1F9C9	maté	čaj|kalabasa|nápoj|pít|pití	
+1F9CA	kostka ledu	chlad|led|ledová kostka|ledovec|ledový|studený|zmrzlý	
+1F9CB	bublinkový čaj	boba|brčko|bubble tea|bublinkový|čaj|jídlo|mléčný|nápoj|perličkový|perličky|perlivý|pití|tapioka	
+1F9CC	troll	fantasy|monstrum|nestvůra|obluda|obr|pohádka|příšera|trol|trollovat|zlobr	
+1F9CD	stojící osoba	člověk|postoj|stát|stoj|stojící	
+1F9CE	klečící osoba	klečet|klečící|klečící člověk|klek|kolena|na kolenou|poklek	
+1F9CF	hluchá osoba	handicap|hendikep|hluchota|nedoslýchavost|neslyšící|pomůcka|postižení|sluch|slyšet|ucho|usnadnění	
+1F9D0	obličej s brýlovým monoklem	boháč|bohatý|fajnový|konvenční|luxusní|monokl|nóbl|obličej s monoklem|prudérní|smajlík|staromódní|tvář|výraz|zámožný	
+1F9D1	dospělý člověk	člověk|dospělák|dospělý|neutrální|osoba	
+1F9D2	dítě	člověk|děcko|genderově neutrální|malé|mladý|neutrální|ratolest	
+1F9D3	starší dospělý člověk	člověk|důchodce|neutrální|osoba|postarší|šedovlasý|stará|starší člověk|starý	
+1F9D4	osoba s plnovousem	brada|člověk|člověk s vousy|plnovous|vous|vousáč|vousatý|vousy	
+1F9D5	žena v šátku	bandana|člověk|hidžáb|mantila|šátek|tichel|závoj|žena s šátkem na hlavě	
+1F9D6	osoba v sauně	člověk v sauně|lázeň|lázně|pára|parní|relaxace|sauna|spa|wellness|žena v sauně	
+1F9D7	lezec	člověk|člověk lezoucí po skalní stěně|hora|horolezec|horolezkyně|lezení|lezkyně|stěna	
+1F9D8	osoba v lotosovém sedu	člověk|člověk v pozici lotosového květu|jóga|jogínka|klid|lotos|lotosová|lotosový květ|meditace|pozice|relaxace|turecký sed|zen	
+1F9D9	mág	čaroděj|čarodějník|čarovat|černokněžník|člověk|kouzelník|kouzlo|magie|RPG|zaklínadlo	
+1F9DA	víla	duch|fantasy|křídla|oberon|puk|skřítek|titánie|víla s křídly|vílák	
+1F9DB	obličej upíra	drákula|Drákula|krev|nemrtvý|Nosferatu|sát|špičáky|tesáky|upír|vampýr	
+1F9DC	mořská bytost	ariel|moře|mořská|mořská víla|mořská žena|mořský|muž|nymfa|panic|panna|postava|siréna|trojzubec	
+1F9DD	obličej elfa	elf|fantasy|kouzelná|Legolas|les|LOTR|magie|Pán prstenů|postava|RPG	
+1F9DE	duch z lahve	aladin|duch|džin|džin z lampy|kouzelná lampa|lahev|lampa|přání	
+1F9DF	zombie	apokalypsa|chodící|děsivý|ghúl|Halloween|mrtvá|mrtvola|mrtvý|nemrtvá|nemrtvý|strašidelný|zombík	
+1F9E0	mozek	chytrý|inteligence|inteligentní|IQ|mícha|mozeček|šedá kůra mozková	
+1F9E1	oranžové srdce	láska|oranžová|srdce|srdíčko	
+1F9E2	kšiltovka	baseball|baseballová čepice|čepice|čepice s kšiltem|flexa|oblečení	
+1F9E3	šála	chladno|krk|šátek|teplé oblečení|zachumlat se|zelený|zima	
+1F9E4	rukavice	modrá rukavice|ruka	
+1F9E5	kabát	brr|bunda|chladno|péřovka|teplé oblečení|zima|zimní bunda	
+1F9E6	ponožky	oblečení|pár ponožek|punčochy	
+1F9E7	červená obálka	čínský nový rok|dar|dárek|hongbao|lai see|obálka s penězi|peníze|pro štěstí|štěstí	
+1F9E8	petarda	bomba|bouchnout|dynamit|jiskra|oheň|ohňostroj|prásknout|rachejtle|rozbuška|světlo|světýlko|vybuchnout|výbušnina	
+1F9E9	puzzle	díl|dílek|dílky|kousek|patřit k sobě|skládačka|zapadat	
+1F9EA	zkumavka	chemička|chemie|chemik|experiment|kapalina|kyselina|laboratoř|pokus|věda|žíravina	
+1F9EB	Petriho miska	bakterie|biolog|biologie|bioložka|buněčná kultura|chemie|experiment|kapátko|kultivovat|laboratoř|pokusy|věda	
+1F9EC	DNA	biolog|biologie|biologie člověka|bioložka|deoxyribonukleová kyselina|evoluce|gen|genetická informace|genetika|šroubovice|život	
+1F9ED	kompas	buzola|jih|magnetický|navigace|orientace|orientační běh|sever|směr|východ|západ	
+1F9EE	počitadlo	abakus|barevný|kalkulačka|korálky|počítání|počítat|počty|prvňák|první třída	
+1F9EF	hasicí přístroj	hašení|hasit|oheň|požár|uhasit	
+1F9F0	box na nářadí	bedna|bedna na nářadí|bedýnka|francouzský klíč|hasák|kleště|krabice|mechanik|nářadí|nástroje|opravář|opravit|souprava nářadí|štípačky	
+1F9F1	cihly	cihla|cihlová zeď|cihlový|hlína|malta|zděný|zdít|zeď	
+1F9F2	magnet	kladný|magnetické pole|magnetický|odpuzovat|podkova|přitahovat|přitažlivost|ve tvaru písmene U|záporný	
+1F9F3	cestovní kufr	balení|balit se|cestování|cestovat|cestovatel|cestovní zavazadlo|kufr|kufr na kolečkách|zahraničí|zavazadlo	
+1F9F4	láhev na kosmetiku	gel|hydratační krém|kondicionér|krém|lahvička|opalovací|pleťová voda|pleťový|šampon|sprchový gel	
+1F9F5	cívka nití	bavlnka|cívka|jehla|motouz|nit|příze|provázek|šít|šití|šitíčko|šňůrka|špulka|vlákno	
+1F9F6	klubíčko	háčkování|háčkovat|klubko|plést|pletení|příze|vlna	
+1F9F7	spínací špendlík	pankáč|plenky|pleny|připnout|přišpendlit|punk|sichrhajcka|šitíčko|zavírací špendlík	
+1F9F8	medvídek	hračka|hrát si|medvěd|plyš|plyšák|plyšový	
+1F9F9	koště	čarodějka|čarodějnice|ježibaba|kouzelnice|pometlo|smeták|smýčit|úklid|uklízení|uklízet|zametání|zametat	
+1F9FA	koš	koš na prádlo|košík|nůše|piknik|prádlo|proutěný|proutí	
+1F9FB	role papíru	papírové ručníky|papírové utěrky|role|rolička|toaleťák|toaletní papír	
+1F9FC	mýdlo	čistit|čistý|kostka|koupat se|koupel|miska na mýdlo|mydlení|mydliny|mydlit|mýt se|mytí|namydlit|pěnit|sprchovat se|umývat se	
+1F9FD	mycí houba	čistit|houba|houbička|koupelová|mýt|mytí|namočit|nasáknout|porézní|savá|savý|umývat	
+1F9FE	účtenka	doklad|důkaz|faktura|potvrzení|stvrzenka|účet|účetní|účetnictví|účty	
+1F9FF	amulet nazar	amulet|boncuk|korálek|modré oko|modrobílé oko|modrý|nazar|ozdoba|přívěsek|talisman|uhranutí|zlý pohled	
+1FA70	baletní piškoty	balerína|balet|baletka|baletní špičky|baletní střevíce|tančit|tanec|taneční střevíce	
+1FA71	jednodílné plavky	dámské plavky|oblečení|oděv|růžové plavky|vínově červená	
+1FA72	pánské plavky	jednodílné|kalhotky|oblečení|oděv|plavky|slipy|spodky|spodní prádlo	
+1FA73	šortky	jednodílné|kraťasy|krátké kalhoty|oblečení|oděv|plavky|spodky|trenýrky|zelený	
+1FA74	žabka	bota|flipflop|letní|obuv|pláž|sandál|sandále|sandály|vietnamky|žabky	
+1FA75	světlemodré srdce	azurová|láska|líbí|modrozelená|petrolejová|šedozelená|srdce|srdíčko|světle modrá|světlemodrá|světlemodré srdíčko	
+1FA76	šedé srdce	břidlice|břidlicová|láska|líbí|šedá|šedé srdíčko|šedivá|srdce|srdíčko|stříbrná	
+1FA77	růžové srdce	láska|líbí|roztomilý|růžová|růžové srdíčko|srdce|srdíčko	
+1FA78	kapka krve	dárcovství|dárcovství krve|darování|darování krve|darovat krev|krev|krvácet|lékařství|medicína|menstruace|teče krev|zranění	
+1FA79	náplast	bandáž|leukoplast|obvaz|ošetření|poranění|ranka|zranění	
+1FA7A	stetoskop	doktor|fonendoskop|lékař|lékařství|medicína|srdce|tlukot srdce|vyšetření	
+1FA7B	rentgen	doktor|hrudní koš|kosti|kostlivec|kostra|lékař|medicína|skelet|sternum|vyšetření|zdravotnictví|žebra	
+1FA7C	berle	berla|berlička|hůl|invalidní|opora|podpora mobility|postižení|zdravotní pomůcka|zranění	
+1FA80	jojo	cívka|hračka|jo jo|jo-jo|kolísání	
+1FA81	papírový drak	let|létání|plachtit|podzim|pouštění|pouštět draka|stoupání|vzlétnutí	
+1FA82	padák	paragliding|parašutismus|plachtění|rogalo|seskok s padákem|sport|závěsné létání	
+1FA83	bumerang	austrálie|domorodec|lov|náčiní|návrat|odraz|zbraň	
+1FA84	kouzelná hůlka	čaroděj|čarodějka|čarodějnice|čarovat|iluzionista|kouzelnice|kouzelník|kouzlení|kouzlit|kouzlo|magie	
+1FA85	piñata	bonbony|cinco de mayo|cukrovinka|fiesta|mexická|oslava|party|párty|pátého května|sladkosti|slavit|svátek	
+1FA86	matrjoška	bábulka|babuška|bábuška|hračka|panenka|ruská|rusko|skládací	
+1FA87	rumbakoule	chrastítko|hudba|maracas|nástroj|perkuse	
+1FA88	flétna	dechový nástroj|hudba|pikola|píšťala|zobcová flétna	
+1FA89	harfa	amor|hudba|láska|nástroj|orchestr	
+1FA8A	pozoun	hudba|jazz|nástroj|posouvání|smutná|žesťové|žesťový	
+1FA8B	meteorit	apokalypsa|gravitace|hvězda|kámen|ohnivá koule|pád|vesmír	
+1FA8C	guma	chyba|dřít|gumovat|kreslení|odstranit|omyl|oprava|přepis|psaní|smazat|vrátit zpět|vygumovat	
+1FA8D	podběrák	chytit|past|sebrat|síť|síťka|ulovit	
+1FA8E	truhla s pokladem	bohatství|cena|cennosti|drahokam|klenoty|lup|odměna|peníze|šperky|stříbro|zlato	
+1FA8F	lopata	jáma|kopat|rostlina|rýč|sníh|zahrabat|zahrada	
+1FA90	planeta s prstencem	planeta|prstenec|saturn|vesmír	
+1FA91	židle	dřevěný|posadit se|posezení|sedačka|sedadlo|sedátko|sedět|sednout|sezení|stolička	
+1FA92	břitva	depilace|holení|holicí|holicí strojek|holit|oholit|ostrý|žiletka	
+1FA93	sekera	dřevo|dříví|polena|sekání|sekat|sekerka|sekyra|sekyrka|štípání|štípat|tít	
+1FA94	indická olejová lampa	diya|Indie|lampa|olej|olejová lampa|orientální lampa	
+1FA95	banjo	bendžo|brnkat|hudba|hudební|nástroj|strunný	
+1FA96	vojenská přilba	armáda|bojovník|helma|přilba|válka|voják|vojenská	
+1FA97	akordeon	dršťky|harmonika|hudba|hudební|klávesy|koncertina|muzika|nástroj|tahací|zednické piano	
+1FA98	protáhlý buben	buben|bubínek|bubnování|conga|congo|hudba|hudební|konga|kongo|nástroj|perkuse|rytmus	
+1FA99	mince	bohatý|dolar|euro|kov|peníze|poklad|prachy|stříbro|zlato	
+1FA9A	ruční pila	dřevo|nářadí|nástroj|ocaska|pila|pilka|řezat|ruční|truhlář|uříznout	
+1FA9B	šroubovák	náčiní|nářadí|nástroj|šroub|šroubovat	
+1FA9C	žebřík	lezení|nářadí|příčka|schod|schůdky|šplhat|šprušel	
+1FA9D	hák	chytit|háček|lovit|nářadí|polapit|zahnutý	
+1FA9E	zrcadlo	kosmetické|líčení|makeup|malovat se|nábytek|obraz|odlesk|odraz|zrcátko	
+1FA9F	okno	čerstvý vzduch|nábytek|otvor|průhled|průhledný|rám|sklo|výhled	
+1FAA0	zvon na WC	instalatér|nářadí|odpad|podtlak|toaleta|ucpaný|záchod|zvon	
+1FAA1	šicí jehla	jehla|krejčí|krejčovina|šít|šití|stehy|švadlena|švy|vyšívání|výšivka|zašívat	
+1FAA2	uzel	lano|provaz|smyčka|šňůra|suk|úvaz|uvázat|zamotaný|zapletený|zauzlovat|zavázat	
+1FAA3	kbelík	domácí potřeby|džber|kýbl|kyblík|náčiní|úklidové potřeby|vědro	
+1FAA4	pastička na myši	chytit|nástraha|návnada|past|pastička|sýr	
+1FAA5	zubní kartáček	čistit|dentální|hygiena|hygienická potřeba|kartáček|kosmetická|koupelna|zubní|zuby	
+1FAA6	náhrobek	hřbitov|hrob|kámen|náhrobní|odpočívej v pokoji|památka|pomník|věčná	
+1FAA7	cedule	demonstrace|oznámení|poutač|protest|transparent|vyhláška|značka	
+1FAA8	kámen	balvan|drsný|neoblomný|pevný|skála|šutr|těžký|tvrdý|útes	
+1FAA9	zrcadlová koule	disco|disko|diskokoule|diskotéka|mirrorball|odraz|party|párty|tanec|třpytky|zrcadlit	
+1FAAA	průkaz	doklad totožnosti|ID|identifikace|kartička|legitimace|licence|občanka|občanský průkaz|osobní doklad|osobní údaje|průkazka|řidičák|řidičský průkaz|totožnost|zabezpečení	
+1FAAB	slabá baterie	baterka|elektrická|elektřina|elektronika|málo energie|vybitá|vybitý|vyčerpaný	
+1FAAC	hamsa	amulet|Fátima|Fátimina|Fátimy|gesto ochrany|Marie|ochrana|ochrana před zlým pohledem|ruka|uhranutí	
+1FAAD	vějíř	dusno|horko|ochladit|ochlazení|ovívat|stydlivý|tanec	
+1FAAE	hřeben na kudrnaté vlasy	afro|česat|hřeben|kudrlinky|kudrny|vlasy	
+1FAAF	khanda	náboženství|sikh|sikhismus	
+1FAB0	moucha	bzučivka rudohlavá|hmyz|hnijící|larva|masařka|mucha|muška|nemoc|otravný|živočich|zvíře	
+1FAB1	červ	dešťovka|kroužkovec|parazit|živočich|žížala|zvíře	
+1FAB2	brouk	brouček|hmyz|živočich|zvíře	
+1FAB3	šváb	brouk|fuj|havěť|hmyz|hnus|rus|škůdce|živočich|zvíře	
+1FAB4	květina v květináči	dekorace|domácí|dům|květina|květináč|kytka|nuda|nudný|péče|pokojová|rostlina|růst|zasadit	
+1FAB5	dřevo	dříví|kláda|kmen|pařez|pařízek|poleno|řezivo|špalek	
+1FAB6	pírko	brko|lehké|lehký|let|opeření|peří|peříčko|péro|ptačí|pták	
+1FAB7	lotos	buddhismus|čistota|hinduismus|Indie|klid|květ|květina|lotosový květ|relax|rozkvetlý|Vietnam|vyrovnanost	
+1FAB8	korál	klimatické změny|korálový útes|moře|oceán|ohrožený druh|útes	
+1FAB9	prázdné hnízdo	hnízdečko|hnízdění|hnízdit|ptačí hnízdo|větvičky	
+1FABA	hnízdo s vejci	hnízdění|ptáček|ptačí hnízdo|pták|snášet vejce|vajíčka|vejce|větvičky	
+1FABB	hyacint	fialová|hledík|květ|květina|levandule|lupina|rostlina|vlčí bob	
+1FABC	medúza	bezobratlí|chapadla|moře|mořská|popálení|požahání|žahavci|žahnutí|zvíře	
+1FABD	křídlo	anděl|andělský|létání|letectví|mytologie|nebeský|pták	
+1FABE	strom bez listí	bez listí|dřevo|holé|kmen|mrtvé|neplodný|strom|sucho|větve|zima	
+1FABF	husa	drůbež|hloupá|kejhání|potrefená|pták|zvíře	
+1FAC0	srdeční orgán	anatomie|aorta|kardiologie|krev|puls|pulz|srdce|tep|tlukot	
+1FAC1	plíce	anatomie|dech|dýchací|dýchání|hrudník|nádech|orgán|průdušky|průdušnice|respirace|výdech	
+1FAC2	objímající se lidé	člověk|díky|loučení|náruč|objetí|osoba|pozdrav|přátelství|sbohem|vděčnost	
+1FAC3	těhotný muž	břicho|člověk|nadmutý|plný|přejezený|těhotenství|těhotný	
+1FAC4	těhotná osoba	břicho|člověk|nadmutá|nadmutý|plná|plný|přejezený|těhotenství|těhotná|těhotný	
+1FAC5	člověk s korunou na hlavě	korunovaný|král|královna|královský|monarcha|panovník|šlechta|veličenstvo|vládce|vznešený	
+1FAC6	otisk prstu	bezpečnost|detektiv|identita|kriminalistika|otisk|otisky prstů|stopa|záhada|zločin	
+1FAC8	chlupatý tvor	bigfoot|chlupatý|divý člověk|kryptid|les|obr|seskveč|tajemný tvor|yetti	
+1FACC	motýl monarcha	hmyz|housenka|křehkost|metamorfóza|migrace|naděje|proměna|transformace	
+1FACD	kosatka	mořský|oceán|velryba	
+1FACE	los	parohy|paroží|savec|sob|wapiti|zvíře	
+1FACF	osel	mezek|mula|savec|tvrdohlavý|umíněný|zvíře	
+1FAD0	borůvky	bobule|borůvkový|jídlo|lesní|modré|modrý|ovoce|plod|potravina	
+1FAD1	paprika	jídlo|kapie|potravina|sladká|zelená|zelenina	
+1FAD2	oliva	jídlo|olej|olivový|ovoce|plod|potravina|snítka|větvička|zelený	
+1FAD3	chlebová placka	arepa|gordita|jídlo|lavaš|naan|nán|pita|potravina|tortilla|wrap	
+1FAD4	tamale	jídlo|mexický|pamonha|placka|potravina|tamales|wrap	
+1FAD5	fondue	čokoládové|fondy|jídlo|lyže|lyžování|potravina|rozteklý|švýcarské|švýcarský|sýr|sýrové|tavený	
+1FAD6	čajová konvice	čaj|čajník|horký|jídlo|konvice|konvička|louhovat|nápoj|pití|potravina|teplý	
+1FAD7	vylévání tekutiny	nalévat|nápoj|pití|převržená sklenice|rozlitý|sklenice|voda|vylít|vylití|vyprázdnění|vyprázdnit	
+1FAD8	fazole	fazol obecný|fazolky|jídlo|ledviny|luskoviny|luštěniny	
+1FAD9	dóza	jídlo|konzervovat|koření|kořenka|nádoba|omáčka|prázdná|prázdný|skladování|skladovat|sklenička|zavařenina|zavařovací sklenice|zavařovačka	
+1FADA	zázvor	čaj|kořen|koření|pivo	
+1FADB	hrachový lusk	edamame|hrách|hrášek|kulička|lusk|luštěniny|sója|zelenina	
+1FADC	kořenová zelenina	jídlo|kořen|ředkvička|řepa|salát|tuřín|vegetariánské|zahrada|zelenina	
+1FADD	nakládačka	dochucovadlo|fermentace|fermentovat|kvašení|kvasit|lák|nakládaná okurka|nálev|okurka|potíže|zeleninová směs	
+1FADF	skvrna	barva|inkoust|kapka|nepořádek|rozlití|tekutina	
+1FAE0	tající obličej	horko|mizení|rozpaky|rozpouštění|rozpuštění|rozpustit se|roztékání|spokojenost|tání	
+1FAE1	salutující obličej	ano|ano pane|ano paní|být v pozoru|pozdrav|pozor|rozkaz|salutování|salutovat|slunečno|vojenský pozdrav|vojsko|vyhlížet|zastíněné oči|zastínit oči před sluncem	
+1FAE2	obličej s otevřenýma očima a dlaní před pusou	mlčet|neuvěřitelné|nevěřícnost|nevíra|omg|pohoršení|překvapení|proboha|šok|šokovaný|trapas|údiv|úlek|úžas	
+1FAE3	obličej vykukující jedním okem	bát se|bojím|koukat|kuk|nakukování|rozpaky|schovávat se|šmírování|špehovat|stud|stydět se|stydlivost|stydlivý|uchvácení|vykouknutí|zaujetí|zírání	
+1FAE4	obličej s pusou našikmo	ech|frustrovaný|meh|na pochybách|nejistý|nerozhodný|nic moc|pf|pochyby|skeptický|zklamání|zmatený	
+1FAE5	obličej s tečkovaným obrysem	deprese|introvert|já tu nejsem|mizící|neviditelný|schovaný|skrytý|stud|zmizet	
+1FAE6	skousnutý ret	flirtování|nejistota|nervozita|obava|okusovat|polibek|rtěnka|rty|sexy|starost|strach|svádění	
+1FAE7	bubliny	čisté|čistota|krknutí|mydliny|mýdlo|mýt|mytí|perleťový|perly|pod vodou|říhnutí|umývání	
+1FAE8	třesoucí se obličej	obličej|panika|překvapení|šok|třas|třesavka|tvář|vibrace|výraz|zemětřesení	
+1FAE9	obličej s kruhy pod očima	kruhy|obličej|oči|ospalost|pozdě|únava|váčky|vyčerpanost|znuděnost	
+1FAEA	pokřivený obličej	nafouklý|obličej|panika|překvapený|smajlík|šokovaný|úzkost|zranitelný	
+1FAEB	praskající obličej	napětí|odhalení|odolnost|praskání|proměna|rozbitý|rozpad|skrývání	
+1FAEF	oblak sršící hádkou	debata|hádka|nesouhlas|povyk|roztržka|spor|zápas	
+1FAF0	ruka se zkříženým palcem a ukazováčkem	drahé|drahota|drahý|gesto lásky|K-pop|láska|lusknutí|nákladný|peníze|srdce|srdíčko	
+1FAF1	ruka otočená doprava	doprava|napřáhnout|podaná ruka|podat ruku|potřást rukou|pravá|ruka|stisk|vpravo	
+1FAF2	ruka otočená doleva	doleva|levá|napřáhnout|podaná ruka|podat ruku|potřást rukou|ruka|stisk|vlevo	
+1FAF3	ruka otočená dlaní dolů	huš|kšá|odehnání|odhánět|puštění|upuštění|upustit|zamítnutí|zvednout|zvednutí	
+1FAF4	ruka otočená dlaní vzhůru	blíž|chycení|dej mi ruku|dlaň vzhůru|nabídka|podat ruku|pojď|pokynutí|zdvihnout	
+1FAF5	ukazováček namířený na diváka	dloubnout|hele|jen ty|obviňovat|píchnout|ruka|šťouchnout|ty|ty tam|ukázat prstem|ukazováček|ukazovat|ukazovat prstem|vy|vy tam	
+1FAF6	ruce spojené do tvaru srdce	gesto lásky|láska|milovat|miluji tě|ruka|srdce|srdíčko	
+1FAF7	ruka tlačící vlevo	high five|odmítnutí|plácnutí|počkej|stop|tlak|vpravo	
+1FAF8	ruka tlačící vpravo	high five|odmítnutí|plácnutí|počkej|stop|tlak|vpravo	
+1FAF9	gesto palcem doleva	doleva|neutrální|pěst|ta|ten|to|ukázat	
+1FAFA	gesto palcem doprava	doprava|neutrální|pěst|ta|ten|to|ukázat	

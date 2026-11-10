@@ -5,7 +5,7 @@ import vadiole.unicode.data.SearchResult
 import vadiole.unicode.data.UnicodeSearch
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.RecentRepository
-import vadiole.unicode.search.SearchMatch
+import vadiole.unicode.search.SearchKind
 import vadiole.unicode.search.SearchResults
 import vadiole.unicode.ui.extension.worker
 
@@ -23,6 +23,7 @@ class SearchController(
     val meaningsStart: Int
         get() = results.meaningsStart
     private var isLoadingMore = false
+    private var matches = arrayOfNulls<String>(0)
 
     suspend fun loadRecents() {
         val codePoints = recentRepository.getRecents()
@@ -39,7 +40,7 @@ class SearchController(
     fun search(query: String, onResults: () -> Unit) {
         search.search(query, UnicodeSearch.PAGE_SIZE) {
             isLoadingMore = false
-            results = it
+            show(it)
             onResults()
         }
     }
@@ -48,7 +49,7 @@ class SearchController(
         if (isLoadingMore || results.codePoints.size == results.total || position < results.codePoints.size - LOAD_MORE_DISTANCE) return
         isLoadingMore = true
         search.search(results.query, 0) {
-            results = it
+            show(it)
             onResults()
         }
     }
@@ -56,6 +57,26 @@ class SearchController(
     fun cancel() {
         search.cancel()
         isLoadingMore = false
+    }
+
+    private fun show(next: SearchResults) {
+        val known = if (next.search === results.search && next.query == results.query) minOf(matches.size, next.codePoints.size) else 0
+        matches = matches.copyOf(known).copyOf(next.codePoints.size)
+        results = next
+    }
+
+    fun hasMatch(position: Int): Boolean = results.kind(position) != SearchKind.NAME
+
+    fun match(position: Int): String? = matches[position]
+
+    suspend fun loadMatch(position: Int): String {
+        val current = results
+        val text = worker {
+            val text = current.match(position)?.text.orEmpty()
+            if (text.equals(unicodeStorage.data().name(current.codePoints[position]), ignoreCase = true)) "" else text
+        }
+        if (current === results) matches[position] = text
+        return text
     }
 
     fun result(position: Int): SearchResult {
@@ -68,7 +89,6 @@ class SearchController(
         }
     }
 
-    fun match(position: Int): SearchMatch? = search.match(results, position)
 
     private companion object {
         const val LOAD_MORE_DISTANCE = 16

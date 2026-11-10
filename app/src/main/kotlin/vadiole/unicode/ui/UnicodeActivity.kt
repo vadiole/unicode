@@ -2,7 +2,10 @@ package vadiole.unicode.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import android.window.BackEvent
@@ -16,6 +19,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
+import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.ui.common.insetsController
 import vadiole.unicode.ui.common.isDarkMode
@@ -24,9 +28,17 @@ class UnicodeActivity : Activity() {
     private var navigationViewNullable: NavigationView? = null
     private val coroutineScope = CoroutineScope(Dispatchers.Main.immediate + SupervisorJob())
     private var isResumed = false
+    private var languageTag = ""
+    private val packageReplacedReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.data?.schemeSpecificPart == packageName) ensureLanguage()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        languageTag = getString(R.string.lang_tag)
+        ensureLanguage()
         setDecorFitsSystemWindows(window, false)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             window.navigationBarColor = getColor(R.color.navigationBarScrim)
@@ -101,6 +113,25 @@ class UnicodeActivity : Activity() {
         insetsController.isAppearanceLightNavigationBars = !isDarkMode
     }
 
+    private fun ensureLanguage() {
+        if (getString(R.string.lang_tag) != languageTag) {
+            recreate()
+        } else {
+            unicodeStorage.search.ensure(resources.openRawResource(R.raw.annotations))
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        ensureLanguage()
+        val filter = IntentFilter(Intent.ACTION_PACKAGE_REPLACED).apply { addDataScheme("package") }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(packageReplacedReceiver, filter, RECEIVER_NOT_EXPORTED)
+        } else {
+            registerReceiver(packageReplacedReceiver, filter)
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         isResumed = true
@@ -113,6 +144,7 @@ class UnicodeActivity : Activity() {
 
     override fun onStop() {
         super.onStop()
+        unregisterReceiver(packageReplacedReceiver)
         navigationViewNullable?.saveState()
     }
 

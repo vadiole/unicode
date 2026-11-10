@@ -1,0 +1,1778 @@
+annotations 1 es d26967ec
+21	exclamación de cierre	exclamación|signo de admiración|sorpresa	
+23	almohadilla	hashtag|numeral|número|sostenido	
+24	dólar	dinero|peso|USD	
+25	porcentaje	por cien|por ciento|tanto por ciento	
+26	ampersand	and|et|y	
+27	comillas rectas	apóstrofo|comillas|comillas simples	
+29	paréntesis de cierre	cerrar paréntesis|paréntesis	
+2A	asterisco	comodín	
+2B	signo más	más|suma|sumar	
+2C	coma		
+2D	guion menos	guion|menos|raya	
+2E	punto		
+2F	barra	barrita|diagonal|inclinada|oblicua	
+3A	dos puntos		
+3B	punto y coma		
+3C	menor que	antilambda|corchete angular|etiqueta|etiqueta de apertura	
+3D	igual	igual a	
+3E	mayor que	antilambda|corchete angular|etiqueta|etiqueta de cierre	
+3F	interrogación de cierre	interrogación|pregunta|signo de interrogación	
+40	arroba	correo|Internet|símbolo	@
+5B	corchete de apertura	abrir corchetes|corchete|paréntesis	
+5C	barra invertida	backlash|barra|contrabarra|diagonal inversa|diagonal invertida|inversa	
+5D	corchete de cierre	cerrar corchetes|corchete|paréntesis	
+5E	acento circunflejo	acento|circunflejo|control|intercalación|potencia	
+5F	guion bajo	guion|línea|raya|subrayado	
+60	acento grave	acento|grave|tono	
+7B	llave de apertura	abrir llaves|llave|paréntesis	
+7C	línea vertical	barra|palo|pleca	
+7D	llave de cierre	cerrar llaves|llave|paréntesis	
+7E	virgulilla	tilde de la eñe	
+A1	exclamación de apertura	exclamación|signo de admiración|sorpresa	
+A2	céntimo	centavo	
+A3	libra esterlina	divisa|EGP|GBP|libra|moneda	
+A5	yen	CNY|divisa|JPY|moneda|yuan	
+A7	signo de sección	párrafo|sección|signo|signo de párrafo	
+A8	diéresis	crema|tréma|umlaut	
+A9	copyright	c|símbolo	
+AB	comillas latinas de apertura	apertura|comillas angulares|comillas de apertura|comillas españolas|comillas francesas	
+AC	negación	no	
+AE	marca registrada	r|símbolo de marca registrada	
+B0	grado	o volada|o voladita	
+B1	signo más/menos	mas|menos|signo	
+B2	dos en superíndice	al cuadrado|dos|superíndice	
+B3	tres en superíndice	al cubo|superíndice|tres	
+B4	acento agudo	acento|agudo|tono	
+B5	símbolo de micro	medida|micro|signo|unidad	
+B6	calderón	marca de párrafo|párrafo|signo de párrafo	
+B7	punto medio	alto|interpunto|medio|punto|punto centrado	
+B9	uno en superíndice	superíndice|uno	
+BB	comillas latinas de cierre	cierre|comillas angulares|comillas de cierre|comillas españolas|comillas francesas	
+BF	interrogación de apertura	interrogación|pregunta|signo de interrogación	
+D7	signo de multiplicación	multiplicación|multiplicar	
+F7	signo de división	dividir|división|lemnisco|óbelo|signo	
+60C	coma árabe	árabe|coma	
+61B	punto y coma árabe	árabe|punto y coma	
+61F	interrogación árabe	árabe|interrogación|pregunta	
+2010	guion	menos|raya	
+2013	guion corto	guion|semimenos	
+2014	raya	guion largo	
+2015	barra horizontal	barra|guion|horizontal|línea|raya	
+2018	apóstrofo izquierdo	apóstrofo|comillas|comillas simples	
+2019	apóstrofo derecho	apóstrofo|comillas|comillas simples	
+201A	apóstrofo derecho bajo	apóstrofo|comillas|comillas bajas	
+201C	comillas dobles izquierdas	comillas|comillas de apertura|comillas dobles	
+201D	comillas dobles derechas	comillas|comillas alemanas|comillas de cierre|comillas dobles	
+201E	comillas dobles derechas bajas	comillas|comillas alemanas|comillas de apertura|comillas dobles	
+2020	signo de cruz	cruz|daga|obelisco	
+2021	signo de cruz doble	cruz|daga|doble|obelisco	
+2022	bolo	boliche|punto|topo|viñeta	
+2026	puntos suspensivos	elipsis|omisión|puntos	
+2027	punto de unión con guion	guion|punto|raya|unión	
+2030	por mil	tanto por mil	
+2032	prima		
+2033	doble prima	prima	
+2034	triple prima	prima	
+2038	intercalación	circunflejo|inserción	
+203B	marca de referencia	asterisco japonés|omejirushi	
+203C	exclamación doble	exclamación|puntuación|sorpresa|!!	
+203D	exclarrogativo		
+203E	línea superpuesta	raya superpuesta|vinculum	
+2042	asterismo	asteriscos	
+2044	barra de fracción	fracción|trazo	
+2049	exclamación e interrogación	exclamación|interrogación|!?	!|?
+207B	menos en superíndice	menos|superíndice	
+20A2	cruceiro	BRB|moneda	
+20A3	franco francés	franco|moneda	
+20A4	lira	moneda	
+20A5	milésimo	milésima	
+20A8	rupia	moneda	
+20A9	won	KPW|KRW	
+20AC	euro	divisa|EUR|moneda	
+20B0	penique alemán	moneda	
+20B1	peso		
+20B3	austral	ARA|moneda	
+20B6	libra tornesa	moneda	
+20B7	spesmilo	moneda	
+20B9	rupia india	divisa|moneda|rupia	
+20BD	rublo	divisa|moneda	
+20BF	bitcóin	BTC	
+2117	copyright de grabación de sonido	copyright|grabación|sonido	
+2122	símbolo de marca comercial	marca comercial	
+2139	información	i	
+2190	flecha apuntando hacia la izquierda	apuntar|flecha|hacia la izquierda|izquierda	
+2191	flecha apuntando hacia arriba	apuntar|arriba|flecha|hacia arriba	
+2192	flecha apuntando hacia la derecha	apuntar|derecha|flecha|hacia la derecha	
+2193	flecha apuntando hacia abajo	abajo|apuntar|flecha|hacia abajo	
+2194	flecha izquierda y derecha	derecha|dirección|flecha|izquierda	
+2195	flecha arriba y abajo	abajo|arriba|dirección|flecha	
+2196	flecha hacia la esquina superior izquierda	arriba|dirección|flecha|izquierda|noroeste	
+2197	flecha hacia la esquina superior derecha	arriba|derecha|dirección|flecha|noreste	
+2198	flecha hacia la esquina inferior derecha	abajo|derecha|dirección|flecha|sudeste	
+2199	flecha hacia la esquina inferior izquierda	abajo|dirección|flecha|izquierda|suroeste	
+219A	flecha hacia la izquierda tachada	flecha|izquierda|tachada	
+219B	flecha hacia la derecha tachada	derecha|flecha|tachada	
+219C	flecha de onda hacia la izquierda	flecha|izquierda|onda	
+219D	flecha de onda hacia la derecha	derecha|flecha|onda	
+219E	flecha de doble punta hacia la izquierda	doble|flecha|izquierda|punta	
+219F	flecha de doble punta hacia arriba	arriba|doble|flecha|punta	
+21A0	flecha de doble punta hacia la derecha	derecha|doble|flecha|punta	
+21A1	flecha de doble punta hacia abajo	abajo|doble|flecha|punta	
+21A2	flecha hacia la izquierda con cola	cola|flecha|izquierda	
+21A3	flecha hacia la derecha con cola	cola|derecha|flecha	
+21A4	flecha hacia la izquierda desde barra	barra|flecha|izquierda	
+21A5	flecha hacia arriba desde barra	arriba|barra|flecha	
+21A6	flecha hacia la derecha desde barra	barra|derecha|flecha	
+21A7	flecha hacia abajo desde barra	abajo|barra|flecha	
+21A8	flecha arriba abajo con base	abajo|arriba|base|flecha	
+21A9	flecha derecha curvándose a la izquierda	curva|dirección|flecha|izquierda	
+21AA	flecha izquierda curvándose a la derecha	curva|derecha|dirección|flecha	
+21AB	flecha hacia la izquierda con bucle	bucle|flecha|izquierda	
+21AC	flecha hacia la derecha con bucle	bucle|derecha|flecha	
+21AD	flecha de onda hacia la izquierda y la derecha	derecha|flecha|izquierda|onda	
+21AE	flecha hacia la izquierda y la derecha tachada	derecha|flecha|izquierda|tachada	
+21AF	flecha en zigzag hacia abajo	abajo|flecha|zigzag	
+21B0	flecha hacia arriba con punta hacia la izquierda	arriba|flecha|izquierda|punta	
+21B1	flecha hacia arriba con punta hacia la derecha	arriba|derecha|flecha|punta	
+21B2	flecha hacia abajo con punta hacia la izquierda	abajo|flecha|izquierda|punta	
+21B3	flecha hacia abajo con punta hacia la derecha	abajo|derecha|flecha|punta	
+21B4	flecha hacia la derecha con ángulo hacia abajo	abajo|ángulo|derecha|flecha	
+21B5	flecha hacia abajo con ángulo hacia la izquierda	abajo|ángulo|flecha|izquierda	
+21B6	flecha en semicírculo superior hacia la izquierda	flecha|izquierda|semicírculo|superior	
+21B7	flecha en semicírculo superior hacia la derecha	derecha|flecha|semicírculo|superior	
+21B8	flecha hacia el noroeste con barra larga	barra|flecha|larga|noroeste	
+21B9	flecha hacia la izquierda con barra sobre flecha hacia la derecha con barra	barra|derecha|flecha|izquierda|sobre	
+21BA	círculo abierto con flecha en sentido antihorario	abierto|antihorario|círculo|flecha|sentido	
+21BB	círculo abierto con flecha en sentido horario	abierto|círculo|flecha|horario|sentido	
+21BC	arpón hacia la izquierda con la punta hacia arriba	arpón|arriba|izquierda|punta	
+21BD	arpón hacia la izquierda con la punta hacia abajo	abajo|arpón|izquierda|punta	
+21BE	arpón hacia arriba con la punta hacia la derecha	arpón|arriba|derecha|punta	
+21BF	arpón hacia arriba con la punta hacia la izquierda	arpón|arriba|izquierda|punta	
+21C0	arpón hacia la derecha con la punta hacia arriba	arpón|arriba|derecha|punta	
+21C1	arpón hacia la derecha con la punta hacia abajo	abajo|arpón|derecha|punta	
+21C2	arpón hacia abajo con la punta hacia la derecha	abajo|arpón|derecha|punta	
+21C3	arpón hacia abajo con la punta hacia la izquierda	abajo|arpón|izquierda|punta	
+21C4	flecha hacia la derecha sobre flecha hacia la izquierda	derecha|flecha|izquierda|sobre	
+21C5	flechas apuntando arriba y abajo	abajo|apuntar|arriba|flecha|hacia abajo|hacia arriba	
+21C6	flechas apuntando izquierda sobre derecha	apuntar|derecha|flecha|hacia la derecha|hacia la izquierda|izquierda	
+21C7	pareja de flechas hacia la izquierda	flechas|izquierda|pareja	
+21C8	pareja de flechas hacia arriba	arriba|flechas|pareja	
+21C9	pareja de flechas hacia la derecha	derecha|flechas|pareja	
+21CA	pareja de flechas hacia abajo	abajo|flechas|pareja	
+21CB	arpón hacia la izquierda sobre arpón hacia la derecha	arpón|derecha|izquierda|sobre	
+21CC	arpón hacia la derecha sobre arpón hacia la izquierda	arpón|derecha|izquierda|sobre	
+21CD	flecha doble hacia la izquierda tachada	doble|flecha|izquierda|tachada	
+21CE	flecha doble hacia la izquierda y la derecha tachada	derecha|doble|flecha|izquierda|tachada	
+21CF	flecha doble hacia la derecha tachada	derecha|doble|flecha|tachada	
+21D0	flecha doble hacia la izquierda	doble|flecha|izquierda	
+21D1	flecha doble hacia arriba	arriba|doble|flecha	
+21D2	flecha doble hacia la derecha	derecha|doble|flecha	
+21D3	flecha doble hacia abajo	abajo|doble|flecha	
+21D4	flecha doble hacia la izquierda y la derecha	derecha|doble|flecha|izquierda	
+21D6	flecha doble hacia el noroeste	doble|flecha|noroeste	
+21D7	flecha doble hacia el nordeste	doble|flecha|nordeste	
+21D8	flecha doble hacia sudeste	doble|flecha|sudeste	
+21D9	flecha doble hacia el sudoeste	doble|flecha|sudoeste	
+21DA	flecha triple hacia la izquierda	flecha|izquierda|triple	
+21DB	flecha triple hacia la derecha	derecha|flecha|triple	
+21DC	flecha ondulada hacia la izquierda	flecha|izquierda|ondulada	
+21DD	flecha ondulada hacia la derecha	derecha|flecha|ondulada	
+21DE	flecha hacia arriba con doble tachado	arriba|doble|flecha|tachado	
+21DF	flecha hacia abajo con doble tachado	abajo|doble|flecha|tachado	
+21E0	flecha discontinua hacia la izquierda	discontinua|flecha|izquierda	
+21E1	flecha discontinua hacia arriba	arriba|discontinua|flecha	
+21E2	flecha discontinua hacia la derecha	derecha|discontinua|flecha	
+21E3	flecha discontinua hacia abajo	abajo|discontinua|flecha	
+21E4	flecha hacia la izquierda con barra	barra|flecha|izquierda	
+21E5	flecha hacia la derecha con barra	barra|derecha|flecha	
+21E6	flecha hueca hacia la izquierda	flecha|hueca|izquierda	
+21E7	flecha hueca hacia arriba	arriba|flecha|hueca	
+21E8	flecha hueca hacia la derecha	derecha|flecha|hueca	
+21E9	flecha hueca hacia abajo	abajo|flecha|hueca	
+21EA	flecha hueca hacia arriba desde barra	arriba|barra|flecha|hueca	
+21F5	flecha hacia abajo a la izquierda de flecha hacia arriba	abajo|arriba|flecha|izquierda	
+2200	para todo	cualquiera|todo|universal	
+2202	derivada parcial	diferencial	
+2203	existe		
+2205	conjunto vacío	matemáticas	
+2206	incremento	triángulo	
+2207	nabla	triángulo	
+2208	elemento de	conjunto|contiene|elemento|miembro	
+2209	no es elemento	elemento	
+220B	contiene como miembro	elemento	
+220E	fin de la prueba	c. q. d.|LQQD|QED	
+220F	producto n-ario	lógica|producto	
+2211	sumativa n-aria	matemáticas|sumativa	
+2212	signo menos	menos|resta|restar	
+2213	menos o más	más menos	
+2215	barra de división	barra|trazo	
+2217	operador de asterisco	asterisco	
+2218	operador de anillo	grado|o volada	
+2219	operador de bolo	bolo	
+221A	raíz cuadrada	base|cuadrada|radical|raíz|sordo	
+221D	proporcional	proporcionalidad	
+221E	signo de infinito	infinito	
+221F	ángulo recto	matemáticas	
+2220	ángulo	agudo	
+2223	divide	divisor	
+2225	paralelo		
+2227	y lógica	circunflejo|cuña	
+2229	intersección	conjunto	
+222A	unión	colección|conjunto	
+222B	integral	cálculo	
+222C	doble integral	cálculo	
+222E	integral de contorno		
+2234	conclusión	lógica|por tanto	
+2235	porque	lógica	
+2236	ratio		
+2237	proporción	proporcionalidad	
+223C	operador de virgulilla	operador|tilde	
+223D	virgulilla inversa	tilde inversa	
+223E	s invertida horizontal		
+2243	asintóticamente igual a	asíntota|matemáticas	
+2245	aproximadamente igual a	congruencia|igualdad|isomorfismo|matemáticas	
+2248	casi igual	aproximación|aproximado|casi igual a	
+224C	todo igual	igualdad|matemáticas	
+2252	aproximadamente igual o la imagen de	aproximadamente|igual|imagen	
+2256	anillo en igual a	igualdad|matemáticas	
+2260	no igual	inecuación|inecualidad|no igual a	
+2261	equivalente a	equivalente|exacto|idéntico|menú de hamburguesa|triple	
+2263	estrictamente equivalente	igualdad|matemáticas	
+2264	menor que o igual	igual|igual a|inecualidad|menor que	
+2265	mayor que o igual	igual|igual a|inecualidad|mayor que	
+2266	menor que sobre igual	desigualdad|matemáticas	
+2267	mayor que sobre igual	desigualdad|matemáticas	
+226A	mucho menor que	desigualdad|matemáticas	
+226B	mucho mayor que	desigualdad|matemáticas|mayor que|mucho	
+226C	entre		
+226E	no menor que	desigualdad|matemáticas	
+226F	no mayor que	desigualdad|matemáticas	
+2273	equivalente mayor que	desigualdad|matemáticas	
+227A	precede	matemáticas	
+227B	sucede	matemáticas	
+2281	no sucede	matemáticas	
+2282	subconjunto de	conjunto|subconjunto	
+2283	superconjunto de	matemáticas	
+2286	subconjunto igual a	igual|subconjunto	
+2287	superconjunto igual a	igual|igualdad|matemáticas|superconjunto	
+2295	más dentro de círculo	más	
+2296	menos dentro de círculo	diferencia simétrica|erosión	
+2297	por dentro de círculo	producto|tensor	
+2298	barra de división dentro de círculo	matemáticas	
+2299	operador de punto dentro de círculo	operador|XNOR	
+229A	operador de anillo dentro de círculo	anillo|círculo|operador	
+229B	operador de asterisco dentro de círculo	asterisco|operador	
+229E	más dentro de cuadrado	matemáticas	
+229F	menos dentro de cuadrado	matemáticas	
+22A5	tachuela hacia arriba	contradicción|falsum	
+22AE	no fuerza	fuerza|no	
+22B0	precede en relación	precede	
+22B1	sucede en relación	matemáticas	
+22B6	original		
+22B9	matriz conjugada hermitiana	matemáticas|matriz autoadjunta|matriz cuadrada|matriz hermítica	
+22BF	triángulo rectángulo	matemáticas	
+22C1	o lógica n-aria	disyunción|lógica	
+22C2	intersección n-aria	intersección|matemáticas	
+22C3	unión n-aria	matemáticas|unión	
+22C5	operador de punto	operador	
+22C6	operador de estrella	operador	
+22C8	unión natural	operador binario|pajarita	
+22D2	doble intersección	intersección|matemáticas	
+22D8	mucho mucho menor que	desigualdad|matemáticas	
+22D9	mucho mucho mayor que	desigualdad|matemáticas	
+22ED	no contiene como subgrupo normal o igual a	matemáticas|teoría de grupos	
+22EE	puntos suspensivos verticales	elipsis|elipsis vertical|matemáticas	
+22EF	puntos suspensivos horizontales	elipsis	
+22F0	puntos suspensivos diagonales hacia arriba a la derecha	elipsis|matemáticas	
+22F1	puntos suspensivos diagonales hacia abajo a la derecha	elipsis|matemáticas	
+231A	reloj		
+231B	reloj de arena sin tiempo	arena|reloj|temporizador	
+2328	teclado	ordenador	
+23CF	expulsar	botón	
+23E9	avance rápido	avanzar|doble|flecha	
+23EA	retroceso rápido	flecha|flecha doble a la izquierda|izquierda|rebobinado|rebobinar	
+23EB	triángulo doble hacia arriba	arriba|flecha	
+23EC	triángulo doble hacia abajo	triángulo|triángulo doble abajo	
+23ED	pista siguiente	raya vertical|siguiente|triángulos	
+23EE	pista anterior	atrás|escena anterior|triángulo	
+23EF	reproducir o pausa	pausa|reproducir|triángulo	
+23F0	reloj despertador	alarma|despertador|reloj	
+23F1	cronómetro	reloj	
+23F2	temporizador	reloj	
+23F3	reloj de arena con tiempo	reloj con arena cayendo|temporizador	
+23F8	pausa	barras|botón|vertical	
+23F9	detener	botón|cuadrado|parar	
+23FA	grabar	botón|círculo	
+24C2	m en círculo	círculo|m	
+25A0	cuadrado relleno	cuadrado|relleno	
+25A1	cuadrado hueco	cuadrado|hueco	
+25A2	cuadrado hueco con esquinas redondeadas	cuadrado|esquinas|hueco|redondeadas	
+25A3	cuadrado hueco con cuadrado relleno dentro	cuadrado|dentro|hueco|relleno	
+25A4	cuadrado con relleno de rayas horizontales	cuadrado|horizontales|rayas|relleno	
+25A5	cuadrado con relleno de rayas verticales	cuadrado|rayas|relleno|verticales	
+25A6	cuadrado con relleno de cuadrícula ortogonal	cuadrado|cuadrícula|ortogonal|relleno	
+25A7	cuadrado con relleno de rayas desde arriba a la izquierda hasta abajo a la derecha	abajo|arriba|cuadrado|derecha|izquierda|rayas|relleno	
+25A8	cuadrado con relleno de rayas desde arriba a la derecha hasta abajo a la izquierda	abajo|arriba|cuadrado|derecha|izquierda|rayas|relleno	
+25A9	cuadrado con relleno de cuadrícula en diagonal	cuadrado|cuadrícula|diagonal|relleno	
+25AA	cuadrado negro pequeño	cuadrado|geometría|negro	
+25AB	cuadrado blanco pequeño	blanco|cuadrado|geometría	
+25AC	rectángulo relleno	rectángulo|relleno	
+25AD	rectángulo hueco	hueco|rectángulo	
+25AE	rectángulo vertical relleno	rectángulo|relleno|vertical	
+25B0	paralelogramo relleno	paralelogramo|relleno	
+25B2	triángulo relleno apuntando hacia arriba	arriba|flecha|hacia arriba|relleno|triángulo	
+25B3	triángulo hueco que apunta hacia arriba	apunta|arriba|hueco|triángulo	
+25B4	triángulo pequeño relleno que apunta hacia arriba	apunta|arriba|pequeño|relleno|triángulo	
+25B5	triángulo pequeño hueco que apunta hacia arriba	apunta|arriba|hueco|pequeño|triángulo	
+25B6	reproducir	botón de reproducción|flecha|triángulo	
+25B7	triángulo hueco que apunta hacia la derecha	apunta|derecha|hueco|triángulo	
+25B8	triángulo pequeño relleno que apunta hacia la derecha	apunta|derecha|pequeño|relleno|triángulo	
+25B9	triángulo pequeño hueco que apunta hacia la derecha	apunta|derecha|hueco|pequeño|triángulo	
+25BA	puntero relleno que apunta hacia la derecha	apunta|derecha|puntero|relleno	
+25BB	puntero hueco que apunta hacia la derecha	apunta|derecha|hueco|puntero	
+25BC	triángulo relleno apuntando hacia abajo	abajo|flecha|hacia abajo|relleno|triángulo	
+25BD	triángulo hueco que apunta hacia abajo	abajo|apunta|hueco|triángulo	
+25BE	triángulo relleno pequeño que apunta hacia abajo	abajo|apunta|pequeño|relleno|triángulo	
+25BF	triángulo hueco pequeño que apunta hacia abajo	abajo|apunta|hueco|pequeño|triángulo	
+25C0	retroceso	izquierda|triángulo	
+25C1	triángulo hueco que apunta hacia la izquierda	apunta|hueco|izquierda|triángulo	
+25C2	triángulo relleno pequeño que apunta hacia la izquierda	apunta|izquierda|pequeño|relleno|triángulo	
+25C3	triángulo hueco pequeño que apunta hacia la izquierda	apunta|hueco|izquierda|pequeño|triángulo	
+25C4	puntero relleno que apunta hacia la izquierda	apunta|izquierda|puntero|relleno	
+25C5	puntero hueco que apunta hacia la izquierda	apunta|hueco|izquierda|puntero	
+25C6	rombo relleno	relleno|rombo	
+25C7	rombo hueco	hueco|rombo	
+25C8	rombo hueco con rombo relleno dentro	dentro|hueco|relleno|rombo	
+25C9	círculo hueco con círculo relleno dentro	círculo|círculos|concéntricos|dentro|hueco|ojo de pez|punto|relleno	
+25CA	rombo	diamante	
+25CB	círculo hueco	anillo|círculo|hueco	
+25CC	círculo punteado	círculo|punteado	
+25CD	círculo con relleno vertical	círculo|relleno|vertical	
+25CE	círculos concéntricos	círculo|círculos|concéntricos|diana|doble	
+25CF	círculo relleno	círculo	
+25D0	círculo con la mitad izquierda rellena	círculo|izquierda|mitad|rellena	
+25D1	círculo con la mitad derecha rellena	círculo|derecha|mitad|rellena	
+25D2	círculo con la mitad inferior rellena	círculo|inferior|mitad|rellena	
+25D3	círculo con la mitad superior rellena	círculo|mitad|rellena|superior	
+25D4	círculo con el cuadrante superior derecho relleno	círculo|cuadrante|derecho|relleno|superior	
+25D5	círculo relleno excepto el cuadrante superior izquierdo	círculo|cuadrante|excepto|izquierdo|relleno|superior	
+25D6	semicírculo izquierdo relleno	izquierdo|relleno|semicírculo	
+25D7	semicírculo derecho relleno	derecho|relleno|semicírculo	
+25D8	bolo inverso	bolo|inverso	
+25D9	cuadrado relleno con círculo hueco dentro	círculo|cuadrado|dentro|hueco|inverso|relleno	
+25DC	arco de cuadrante superior izquierdo de círculo	arco|círculo|cuadrante|izquierdo|superior	
+25DD	arco de cuadrante superior derecho de círculo	arco|círculo|cuadrante|derecho|superior	
+25DE	arco de cuadrante inferior derecho de círculo	arco|círculo|cuadrante|derecho|inferior	
+25DF	arco de cuadrante inferior izquierdo de círculo	arco|círculo|cuadrante|inferior|izquierdo	
+25E0	semicírculo superior	semicírculo|superior	
+25E1	semicírculo inferior	inferior|semicírculo	
+25E2	triángulo inferior derecho relleno	derecho|inferior|relleno|triángulo	
+25E3	triángulo inferior izquierdo relleno	inferior|izquierdo|relleno|triángulo	
+25E4	triángulo superior izquierdo relleno	izquierdo|relleno|superior|triángulo	
+25E5	triángulo superior derecho relleno	derecho|relleno|superior|triángulo	
+25E6	bolo hueco	bolo|hueco	
+25EF	círculo hueco grande	anillo|círculo|hueco	
+25F3	cuadrante superior derecho en cuadrado hueco	cuadrado|cuadrante|derecho|hueco|superior	
+25F7	cuadrante superior derecho en círculo hueco	círculo|cuadrante|derecho|hueco|superior	
+25FB	cuadrado blanco mediano	blanco|cuadrado|geometría	
+25FC	cuadrado negro mediano	cuadrado|geometría|negro	
+25FD	cuadrado blanco mediano-pequeño	blanco|cuadrado|geometría	
+25FE	cuadrado negro mediano-pequeño	cuadrado|geometría|negro	
+25FF	triángulo inferior derecho	derecho|inferior|triángulo	
+2600	sol	espacio|rayos|soleado	
+2601	nube	tiempo	
+2602	paraguas	lluvia|paraguas abierto	
+2603	muñeco de nieve con nieve	nieve	
+2604	cometa espacial	cometa|espacio|meteorito	
+260E	teléfono		
+2611	casilla con marca de verificación	casilla|marca|selección|verificación	✓
+2614	paraguas con gotas de lluvia	gotas|lluvia|paraguas	
+2615	bebida caliente	bebida|café|caliente|té	
+2618	trébol	planta	
+261D	dedo índice hacia arriba	apuntar|arriba|dedo|mano	
+2620	calavera y huesos cruzados	calavera|cara|huesos|muerte	
+2622	radiactivo	radiactividad|radioactividad|radioactivo|señal	
+2623	riesgo biológico	peligro|señal	
+2626	cruz ortodoxa	cruz|religión	
+262A	media luna y estrella	estrella|islam|luna|religión	
+262E	símbolo de la paz	paz	
+262F	yin yang	religión|taoísmo|yang|yin	
+2638	rueda del dharma	budismo|dharma|religión|rueda	
+2639	cara con el ceño fruncido	cara|ceño|fruncido	
+263A	cara sonriente	cara|contorno|relajado|sonrisa	
+2640	signo femenino	mujer|signo|símbolo	
+2642	signo masculino	hombre|signo|símbolo	
+2648	Aries	carnero|horóscopo|zodiaco	
+2649	Tauro	buey|horóscopo|toro|zodiaco	
+264A	Géminis	gemelos|horóscopo|zodiaco	
+264B	Cáncer	cangrejo|horóscopo|zodiaco	
+264C	Leo	horóscopo|león|zodiaco	
+264D	Virgo	horóscopo|zodiaco	
+264E	Libra	balanza|escala|horóscopo|justicia|zodiaco	
+264F	Escorpio	escorpión|horóscopo|zodiaco	
+2650	Sagitario	arquero|horóscopo|zodiaco	
+2651	Capricornio	cabra|horóscopo|zodiaco	
+2652	Acuario	agua|horóscopo|zodiaco	
+2653	Piscis	horóscopo|pescado|pez|zodiaco	
+265F	peón de ajedrez	ajedrez|peón	
+2660	palo de picas	carta|juego|palo|picas	
+2663	palo de tréboles	carta|juego|palo|tréboles	
+2665	palo de corazones	carta|corazones|juego|palo	
+2666	palo de diamantes	carta|diamantes|juego|palo	
+2668	aguas termales	termas|vapor	
+266A	corchea	música|nota	
+266D	bemol	música|nota	
+266F	sostenido	diesis|música|nota	
+267B	símbolo de reciclaje	reciclaje|reciclar|señal|símbolo universal de reciclaje sólido|universal	
+267E	infinito	ilimitado|siempre|universal	
+267F	símbolo de silla de ruedas	acceso|señal|silla|silla de ruedas|símbolo	
+2692	martillo y pico	herramienta|martillo|pico	
+2693	ancla	barco|gancho	
+2694	espadas cruzadas	arma|cruzadas|espadas	
+2695	símbolo de medicina	asclepio|esculapio|medicina|serpiente	
+2696	balanza	justicia|libra|peso|zodiaco	
+2697	alambique	herramienta|química	
+2699	engranaje	herramienta	
+269B	símbolo de átomo	átomo|símbolo	
+269C	flor de lis	flor|lis	
+26A0	advertencia	cuidado|señal	
+26A1	alto voltaje	electricidad|peligro|peligro de alto voltaje|señal de alto voltaje|voltaje	
+26A7	símbolo de transgénero	transgénero	
+26AA	círculo blanco	círculo|geometría	
+26AB	círculo negro	círculo|geometría	
+26B0	ataúd	muerte	
+26B1	urna funeraria	funeraria|muerte|urna	
+26BD	balón de fútbol	balón|fútbol	
+26BE	béisbol	balón|baseball|pelota	
+26C4	muñeco de nieve	muñeco de nieve sin nieve|nieve	
+26C5	sol detrás de una nube	nube|sol|sol con nubes	
+26C8	nube con rayo y lluvia	lluvia|nube|trueno	
+26CE	Ofiuco	horóscopo|portador|serpiente|zodiaco	
+26CF	pico	herramienta|mina	
+26D1	casco con una cruz blanca	ayuda|cara|casco|cruz	
+26D3	cadenas	cadena	
+26D4	dirección prohibida	no|prohibido|señal|señal de dirección prohibida	
+26E9	santuario sintoísta	japón|religión|santuario|sintoísmo	
+26EA	iglesia	cristianismo|cruz|edificio|religión	
+26F0	montaña	monte	
+26F1	sombrilla en la arena	arena|sol|sombrilla	
+26F2	fuente		
+26F3	banderín en hoyo	banderín|golf|hoyo	
+26F4	ferri	barco|ferry	
+26F5	velero	barco|barco de vela|yate	
+26F7	persona esquiando	esquí|esquiador|nieve	
+26F8	patín de hielo	hielo|patín	
+26F9	persona botando un balón	balón|botar|pelota	
+26FA	tienda de campaña	campaña|camping|tienda|vacaciones	
+26FD	surtidor de gasolina	bomba de gasolina|combustible|gasolina|surtidor	
+2702	tijeras	cortar|herramienta	
+2705	botón de marca de verificación	botón|marca|selección|verificación	✓
+2708	avión	aeroplano	
+2709	sobre	carta|correo	
+270A	puño en alto	cerrado|mano|puñetazo|puño	
+270B	mano levantada	choca esos cinco|levantada|mano	
+270C	mano con señal de victoria	mano|señal de victoria|victoria	
+270D	mano escribiendo	escribir|lápiz|mano	
+270F	lápiz	escolar|escribir|lapicero	
+2712	pluma negra	bolígrafo|escribir|pluma|tinta	
+2714	marca de verificación	marca|selección|verificación	✓
+2716	multiplicación	cancelar|marca|prohibido|signo de multiplicación|x	×
+271D	cruz latina	cristianismo|cruz|religión	
+2721	estrella de David	David|estrella|judaísmo|judío|religión	
+2728	chispas	bengala|estrellas	*
+2733	asterisco de ocho puntas	asterisco	*
+2734	estrella de ocho puntas	estrella	*
+2744	copo de nieve	frío|nieve	
+2747	chispa		*
+274C	marca de cruz	cancelar|cruz|marca de tachado|tachar|x	×
+274E	botón con marca de cruz	casilla|cruz|marca|x	×
+2753	interrogación roja	interrogación|pregunta|puntuación|signo de interrogación	?
+2754	interrogación blanca	interrogación|pregunta|puntuación	?
+2755	exclamación blanca	exclamación|puntuación	!
+2757	exclamación roja	exclamación|puntuación|signo de exclamación	!
+2763	exclamación de corazón	corazón|exclamación|puntuación	
+2764	corazón rojo	corazón|emoción|rojo	
+2795	más	signo|suma	+
+2796	menos	resta|signo	-|−
+2797	división	signo|signo de división	÷
+27A1	flecha hacia la derecha	derecha|dirección|este|flecha	
+27B0	bucle	giro|tirabuzón	
+27BF	bucle doble	bucle|doble	
+2934	flecha derecha curvándose hacia arriba	arriba|curva|dirección|flecha	
+2935	flecha derecha curvándose hacia abajo	abajo|curva|dirección|flecha	
+2A27	más subíndice dos	dos|más|subíndice	
+2A2F	vector o producto cruzado	cruzado|producto|vector	
+2A3C	producto interior	interior|producto	
+2A63	lógica o doble barra inferior	barra|doble|inferior|lógica|o	
+2A7D	menor que o igual con barra inclinada	barra|igual|inclinada|menor que	
+2A8D	menor que sobre igual o similar	igual|menor que|similar|sobre	
+2A9A	doble línea sobre mayor que	desigualdad|matemáticas	
+2ABA	sucede sobre signo de no casi igual	casi|igual|no|signo|sobre|sucede	
+2B05	flecha hacia la izquierda	flecha|izquierda|oeste	
+2B06	flecha hacia arriba	dirección|flecha|flecha arriba|norte	
+2B07	flecha hacia abajo	abajo|dirección|flecha|sur	
+2B1B	cuadrado negro grande	cuadrado|geometría|negro	
+2B1C	cuadrado blanco grande	blanco|cuadrado|geometría	
+2B50	estrella	estelar	
+2B55	círculo rojo hueco	aro|círculo|o|rojo	
+3001	coma ideográfica	coma|ideográfica	
+3002	punto ideográfico	ideográfico|punto	
+3008	corchete angular de apertura	abrir corches|antilambda|chevrón|corchete|corchete de apertura|tuple	
+3009	corchete angular de cierre	antilambda|cerrar corchetes|chevrón|corchete|corchete de cierre|tuple	
+300A	corchete angular doble de apertura	abrir corchetes|antilambda|chevrón|comillas latinas|corchete|corchete de apertura	
+300B	corchete angular doble de cierre	antilambda|cerrar corchetes|chevrón|comillas latinas|corchete|corchete de cierre	
+300C	corchete esquinado de apertura	abrir corchetes|comillas chinas|comillas japonesas|corchete|corchete de apertura	
+300D	corchete esquinado de cierre	cerrar corchetes|comillas chinas|comillas japonesas|corchete|corchete de cierre	
+300E	corchete esquinado de apertura hueco	abrir corchetes|comillas chinas|comillas japonesas|corchete|corchete de apertura	
+300F	corchete esquinado de cierre hueco	cerrar corchetes|comillas chinas|comillas japonesas|corchete|corchete de cierre	
+3010	corchete lenticular de apertura	abrir corchetes|corchete|corchete de apertura|lenticular	
+3011	corchete lenticular de cierre	cerrar corchetes|corchete|corchete de cierre|lenticular	
+3014	corchete caparazón tortuga de apertura	abrir corchetes|corchete|corchete de apertura|corchete tortuga	
+3015	corchete caparazón tortuga de cierre	cerrar corchetes|corchete|corchete de cierre|corchete tortuga	
+3016	corchete lenticular de apertura hueco	abrir corchetes|corchete|corchete de apertura|lenticular	
+3017	corchete lenticular de cierre hueco	cerrar corchetes|corchete|corchete de cierre|lenticular	
+3030	guion ondulado	guion|marca de sonido largo|ondulado	
+303D	marca de alternancia	alternancia|marca	
+30FB	punto medio katakana	katakana|punto|punto volado|puntos	
+3297	ideograma japonés para "enhorabuena"	enhorabuena|ideograma|japonés|kanji	
+3299	ideograma japonés para "secreto"	ideograma|japonés|kanji|secreto	
+FDFC	rial	moneda	
+1F004	dragón rojo de mahjong	dragón rojo|juego|mahjong	
+1F0CF	comodín	joker	
+1F170	grupo sanguíneo A	A|grupo|sanguíneo|tipo A	
+1F171	grupo sanguíneo B	B|grupo|sanguíneo|tipo B	
+1F17E	grupo sanguíneo tipo O	grupo sanguíneo|o	
+1F17F	aparcamiento	p|parking	
+1F18E	grupo sanguíneo AB	AB|grupo|sanguíneo|tipo AB	
+1F191	borrar	símbolo	
+1F192	botón COOL	botón|cool|mola	
+1F193	botón FREE	gratis|símbolo gratis	
+1F194	símbolo de identificación	ID|identidad|símbolo identidad	
+1F195	botón NEW	botón|NEW|nuevo	
+1F196	botón NG	botón|ng|nuevo	
+1F197	botón OK	botón|ok	
+1F198	símbolo de socorro	ayuda|símbolo|socorro|sos	
+1F199	botón UP!	arriba|información|novedad|símbolo|up	
+1F19A	botón VS	contra|frente a|símbolo|versus|vs	
+1F201	ideograma japonés para "aquí"	“aquí”|japonés|katakana	
+1F202	ideograma japonés para "de cortesía"	cortesía|japonés|katakana	
+1F21A	ideograma japonés para "gratis"	gratis|ideograma|japonés|kanji	
+1F22F	ideograma japonés para "reservado"	ideograma|japonés|kanji|reservado	
+1F232	ideograma japonés para "prohibido"	ideograma|japonés|kanji|prohibido	
+1F233	ideograma japonés para "vacante"	ideograma|japonés|kanji|vacante	
+1F234	ideograma japonés para "aprobado"	aprobado|ideograma|japonés|kanji	
+1F235	ideograma japonés para "completo"	completo|ideograma|japonés|kanji|lleno	
+1F236	ideograma japonés para "de pago"	“de pago”|ideograma|japonés|kanji	
+1F237	ideograma japonés para "cantidad mensual"	“cantidad mensual”|ideograma|japonés|kanji	
+1F238	ideograma japonés para "aplicación"	aplicación|ideograma|japonés|kanji	
+1F239	ideograma japonés para "descuento"	descuento|ideograma|japonés|kanji	
+1F23A	ideograma japonés para "abierto"	abierto|ideograma|japonés|kanji	
+1F250	ideograma japonés para "ganga"	ganga|ideograma|japonés|kanji	
+1F251	ideograma japonés para "aceptable"	aceptable|ideograma|japonés|kanji	
+1F300	ciclón	mareo|tifón|tornado	
+1F301	bruma	niebla	
+1F302	paraguas cerrado	accesorios|lluvia|paraguas	
+1F303	noche estrellada	estrellas|noche	
+1F304	amanecer sobre montañas	amanecer|montaña|salida|sol	
+1F305	amanecer	salida del sol	
+1F306	ciudad al atardecer	atardecer|ciudad|edificios|paisaje	
+1F307	puesta del sol	edificios	
+1F308	arcoíris	colores|lluvia	
+1F309	puente de noche	noche|puente	
+1F30A	ola de mar	mar|océano|ola	
+1F30B	volcán	erupción|erupción volcánica	
+1F30C	Vía Láctea	espacio|galaxia|láctea|vía	
+1F30D	globo terráqueo mostrando Europa y África	África|Europa|mundo|planeta|Tierra	
+1F30E	globo terráqueo mostrando América	América|globo|mundo|planeta|Tierra	
+1F30F	globo terráqueo mostrando Asia y Australia	Asia|Australia|mundo|planeta|Tierra	
+1F310	globo terráqueo con meridianos	globo|meridianos|mundo|Tierra	
+1F311	luna nueva	luna|oscuridad	
+1F312	luna creciente	creciente|cuarto|espacio|luna	
+1F313	luna en cuarto creciente	creciente|cuarto|espacio|luna	
+1F314	luna gibosa creciente	creciente|gibosa|luna	
+1F315	luna llena	llena|luna|plenilunio	
+1F316	luna gibosa menguante	gibosa|luna|menguante	
+1F317	luna en cuarto menguante	cuarto|luna|menguante	
+1F318	luna menguante	luna|menguante	
+1F319	luna	creciente|espacio	
+1F31A	luna nueva con cara	cara|espacio|luna	
+1F31B	luna de cuarto creciente con cara	cara|creciente|cuarto|espacio|luna	
+1F31C	luna de cuarto menguante con cara	cara|creciente|cuarto|espacio|luna	
+1F31D	luna llena con cara	cara|llena|luna	
+1F31E	sol con cara	brillante|cara|sol	
+1F31F	estrella brillante	brillante|estrella|resplandeciente	
+1F320	estrella fugaz	estrella|lluvia	
+1F321	termómetro	temperatura	
+1F324	sol detrás de una nube pequeña	nube|sol	
+1F325	sol detrás de una nube grande	nube|sol	
+1F326	sol detrás de una nube con lluvia	lluvia|nube|sol	
+1F327	nube con lluvia	lluvia|nube	
+1F328	nube con nieve	frío|nieve|nube	
+1F329	nube con rayo	nube|rayo	
+1F32A	tornado	nube|torbellino	
+1F32B	niebla	nube	
+1F32C	cara de viento	cara|nube|soplar|viento	
+1F32D	perrito caliente	perrito|salchicha	
+1F32E	taco	comida|mexicano	
+1F32F	burrito	comida|mexicano|tex mex|wrap	
+1F330	castaña	castaño|fruto seco	
+1F331	planta joven	plantón	
+1F332	árbol de hoja perenne	árbol|hoja perenne|perenne	
+1F333	árbol de hoja caduca	árbol|caducifolio|hoja caduca	
+1F334	palmera	árbol|árbol de palma	
+1F335	cactus	planta	
+1F336	chile picante	chile|picante|planta	
+1F337	tulipán	flor	
+1F338	flor de cerezo	cerezo|flor	
+1F339	rosa	flor	
+1F33A	flor de hibisco	flor|hibisco	
+1F33B	girasol	flor|sol	
+1F33C	flor		
+1F33D	espiga de maíz	espiga|maíz|mazorca|mijo	
+1F33E	espiga de arroz	arroz|espiga|planta	
+1F33F	hierba	hoja|verde	
+1F340	trébol de cuatro hojas	suerte|trébol	
+1F341	hoja de arce	arce|hoja	
+1F342	hojas caídas	caída|hojas	
+1F343	hojas revoloteando al viento	hoja|revolotear|soplar|viento	
+1F344	champiñón	hongo|seta	
+1F345	tomate	ensalada|fruta|verdura	
+1F346	berenjena	fruto|verdura	
+1F347	uvas	agracejo|fruta|racimo|uva	
+1F348	melón	fruta	
+1F349	sandía	fruta	
+1F34A	mandarina	fruta|naranja	
+1F34B	limón	cítrico|citrón|fruta	
+1F34C	plátano	banana|fruta	
+1F34D	piña	ananás|fruta	
+1F34E	manzana roja	fruta|manzana|poma|roja	
+1F34F	manzana verde	fruta|manzana|poma|verde	
+1F350	pera	fruta|perilla	
+1F351	melocotón	durazno|fruta	
+1F352	cerezas	cereza|fruta|guindas	
+1F353	fresa	fresón|fruta	
+1F354	hamburguesa	burger	
+1F355	pizza	porción|restaurante	
+1F356	carne con hueso	carne|hueso|restaurante	
+1F357	muslo de pollo	muslo|pollo|restaurante	
+1F358	galleta de arroz	arroz|galleta	
+1F359	bola de arroz	arroz|japonés|onigiri|restaurante	
+1F35A	arroz cocido	arroz|restaurante	
+1F35B	arroz con curry	arroz|curry|restaurante	
+1F35C	tazón de fideos	fideos calientes|fideos chinos|fideos ramen|ramen	
+1F35D	espagueti	pasta|restaurante	
+1F35E	pan de molde	pan|rebanada|tostada	
+1F35F	patatas fritas	papas fritas|patatas|restaurante	
+1F360	patata asada	asada|papa asada|patata|restaurante	
+1F361	dango	japonés|pincho|postre|restaurante	
+1F362	brocheta	japonés|marisco|oden|pincho	
+1F363	sushi	restaurante	
+1F364	gamba frita	frito|gamba|restaurante	
+1F365	pastel de pescado japonés	comida japonesa|pastel|pescado	
+1F366	cucurucho de helado	cucurucho|dulce|helado|helado de cucurucho|restaurante	
+1F367	granizado hawaiano	helado|hielo|postre|raspado	
+1F368	helado	postre|sorbete	
+1F369	dónut	berlina|pastel|rosquilla	
+1F36A	galleta	dulce|pasta|postre	
+1F36B	tableta de chocolate	barra|chocolate|restaurante|tableta	
+1F36C	caramelo	chuche|chuchería|dulce|golosina	
+1F36D	piruleta	chuche|chuchería|dulce|golosina	
+1F36E	flan	dulce|postre|pudding	
+1F36F	tarro de miel	dulce|miel|tarro	
+1F370	trozo de tarta	pedazo de tarta|restaurante|tarta	
+1F371	caja de bento	bento|caja|comida|restaurante	
+1F372	olla de comida	comida de olla|puchero|restaurante	
+1F373	cocinar	freír|huevo|sartén	
+1F374	tenedor y cuchillo	cuchillo|restaurante|tenedor	
+1F375	tazón de té	bebida|taza|té	
+1F376	sake	bar|bebida|botella|restaurante|tazón	
+1F377	copa de vino	bar|bebida|copa|vaso|vino	
+1F378	copa de cóctel	bar|cóctel|copa|restaurante	
+1F379	bebida tropical	bar|bebida|restaurante|tropical	
+1F37A	jarra de cerveza	bar|cerveza|jarra|restaurante	
+1F37B	jarras de cerveza brindando	bar|cerveza|jarra|jarras|restaurante	
+1F37C	biberón	bebé|bibe|bibi|botella|leche	
+1F37D	cuchillo y tenedor con un plato	cuchillo|plato|restaurante|tenedor	
+1F37E	botella descorchada	bar|beber|botella|cava|corcho	
+1F37F	palomitas	maíz	
+1F380	lazo	celebración	
+1F381	regalo	celebración|envoltorio|presente|regalo envuelto	
+1F382	tarta de cumpleaños	celebración|cumpleaños|tarta	
+1F383	calabaza de Halloween	calabaza|celebración|Halloween|linterna	
+1F384	árbol de Navidad	abeto de Navidad|árbol|celebración|Navidad	
+1F385	Papá Noel	celebración|claus|cuento|fantasía|feliz|fiestas|Navidad|padre|santa	
+1F386	fuegos artificiales	celebración	
+1F387	bengala	celebración|fuegos artificiales	
+1F388	globo	celebración	
+1F389	cañón de confeti	celebración|confeti|fiesta	
+1F38A	bola de confeti	celebración|confeti	
+1F38B	árbol de tanabata	árbol|celebración|festividad|tanabata	
+1F38C	banderas cruzadas	banderas|celebración|japón	
+1F38D	decoración de pino	año nuevo japonés|bambú|celebración|decoración|kadomatsu	
+1F38E	muñecas japonesas	celebración|festival|hinamatsuri|muñecas	
+1F38F	banderín de carpas	banderín|carpa|celebración|koinobori	
+1F390	campanilla de viento	campanilla|furin|viento	
+1F391	ceremonia de contemplación de la luna	celebración|contemplación|luna|tsukimi	
+1F392	mochila escolar	colegio|mochila	
+1F393	birrete	celebración|gorro|graduación	
+1F396	medalla militar	celebración|medalla|militar	
+1F397	lazo conmemorativo	conmemorativo|lazo	
+1F399	micrófono de estudio	estudio|micrófono|música	
+1F39A	control de volumen	control|fader|volumen	
+1F39B	ruedas de control	control|diales|música|potenciómetros|ruedas	
+1F39E	fotograma de película	cine|fotograma|película	
+1F39F	entradas	acceso|admisión|entrada|evento	
+1F3A0	caballo de tiovivo	caballo|entretenimiento|tiovivo	
+1F3A1	noria de feria	atracciones|entretenimiento|feria|noria	
+1F3A2	montaña rusa	atracciones|entretenimiento|feria|parque	
+1F3A3	caña de pescar	caña|entretenimiento|esparcimiento|pesca|pez	
+1F3A4	micrófono	entretenimiento|karaoke|micro	
+1F3A5	cámara de cine	cámara|cine|entretenimiento|película	
+1F3A6	cine	entretenimiento|película	
+1F3A7	auricular	cascos	
+1F3A8	paleta de pintor	arte|artista|paleta|pintura	
+1F3A9	sombrero de copa	chistera|copa|ropa|sombrero	
+1F3AA	carpa de circo	carpa|circo|entretenimiento	
+1F3AB	tique	acceso|admisión	
+1F3AC	claqueta	cine|claqueta de cine|entretenimiento|película	
+1F3AD	máscaras de teatro	actuación|arte|artes escénicas|entretenimiento	
+1F3AE	mando de videoconsola	juego|mando|videojuego	
+1F3AF	diana	blanco|en el blanco|juego	
+1F3B0	máquina tragaperras	juego|máquina	
+1F3B1	bola negra de billar	billar|bola ocho|juego	8
+1F3B2	dado	juego	
+1F3B3	bolos	bola|bola de bolos|juego	
+1F3B4	cartas de flores	carta|flor|hanafuda|naipe japonés	
+1F3B5	nota musical	música|nota	
+1F3B6	notas musicales	música|notas	
+1F3B7	saxofón	instrumento|instrumento musical|música|saxo	
+1F3B8	guitarra	instrumento|instrumento musical|música	
+1F3B9	teclado musical	instrumento|instrumento musical|música|piano|teclado	
+1F3BA	trompeta	instrumento|instrumento musical|música	
+1F3BB	violín	instrumento|instrumento musical|música	
+1F3BC	pentagrama	música|partitura	
+1F3BD	camiseta sin mangas	banda|camiseta con banda|camiseta de correr|deporte	
+1F3BE	pelota de tenis	deporte|pelota|tenis	
+1F3BF	esquís	esquí|esquíes|nieve	
+1F3C0	balón de baloncesto	balón|canasta|deporte	
+1F3C1	bandera de cuadros	bandera|carreras|cuadros|deporte|motor	
+1F3C2	practicante de snowboard	nieve|snowboard	
+1F3C3	persona corriendo	carrera|deporte|maratón	
+1F3C4	persona haciendo surf	surf|surfear	
+1F3C5	medalla deportiva	medalla|premio	
+1F3C6	trofeo	premio	
+1F3C7	carrera de caballos	caballo|caballo de carreras|carreras|jinete	
+1F3C8	balón de fútbol americano	balón|deporte|fútbol americano	
+1F3C9	balón de rugby	balón|deporte|rugby	
+1F3CA	persona nadando	nadar|natación	
+1F3CB	persona levantando pesas	halterofilia|levantador|pesas|peso	
+1F3CC	persona jugando al golf	golf|golfista|pelota	
+1F3CD	moto	carreras|motocicleta|vehículo	
+1F3CE	coche de carreras	carreras|coche	
+1F3CF	críquet	juego|pelota	
+1F3D0	pelota de voleibol	balón|juego|pelota|voleibol	
+1F3D1	hockey sobre hierba	hierba|hockey|juego|palo|pelota	
+1F3D2	hockey sobre hielo	disco|hielo|hockey|palo	
+1F3D3	tenis de mesa	juego|mesa|pelota|ping pong	
+1F3D4	montaña con nieve	frío|montaña|nieve	
+1F3D5	camping	acampada|campamento|vacaciones	
+1F3D6	playa y sombrilla	playa|sombrilla	
+1F3D7	construcción	edificio|obra	
+1F3D8	casas	edificio|urbanización	
+1F3D9	paisaje urbano	ciudad|edificio|paisaje	
+1F3DA	casa abandonada	abandonada|casa|deshabitada|inhabitada|vacía	
+1F3DB	edificio clásico	clásico|edificio	
+1F3DC	desierto	arena	
+1F3DD	isla desierta	desierta|isla	
+1F3DE	parque nacional	nacional|parque	
+1F3DF	estadio		
+1F3E0	casa	vivienda	
+1F3E1	casa con jardín	casa|construcción|jardín|vivienda	
+1F3E2	edificio de oficinas	construcción|edificio|oficinas	
+1F3E3	oficina de correos japonesa	correos|edificio|japón|oficina de correos	
+1F3E4	oficina de correos europea	correos|edificio|europa|oficina de correos	
+1F3E5	hospital	doctor|edificio|medicina|médico	
+1F3E6	banco	banca|edificio	
+1F3E7	señal de cajero automático	atm|banco|cajero	
+1F3E8	hotel	alojamiento|edificio|turismo	
+1F3E9	hotel del amor	amor|edificio|hotel	
+1F3EA	tienda 24 horas	edificio|establecimiento|tienda de comestibles	
+1F3EB	colegio	edificio|escuela	
+1F3EC	grandes almacenes	comercio	
+1F3ED	fábrica	edificio|industria	
+1F3EE	lámpara japonesa	izakaya|lámpara roja|linterna izakaya|linterna japonesa|restaurante	
+1F3EF	castillo japonés	castillo|construcción	
+1F3F0	castillo europeo	castillo|construcción	
+1F3F3	bandera blanca	bandera|blanca|ondear	
+1F3F4	bandera negra	bandera|negra|ondear	
+1F3F5	roseta	flor|planta	
+1F3F7	etiqueta		
+1F3F8	bádminton	pluma|raqueta|volante	
+1F3F9	arco y flecha	arco|arquero|flecha|sagitario|zodiaco	
+1F3FA	ánfora	acuario|beber|jarra|zodiaco	
+1F3FB	tono de piel claro	piel|tipo 1|tipo 2|tono|tono de piel	
+1F3FC	tono de piel claro medio	piel|tipo 3|tono|tono de piel	
+1F3FD	tono de piel medio	piel|tipo 4|tono|tono de piel	
+1F3FE	tono de piel oscuro medio	piel|tipo 5|tono|tono de piel	
+1F3FF	tono de piel oscuro	piel|tipo 6|tono|tono de piel	
+1F400	rata	roedor	
+1F401	ratón	roedor	
+1F402	buey	cabestro|tauro|zodiaco	
+1F403	búfalo de agua	agua|búfalo	
+1F404	vaca	bovino|res	
+1F405	tigre	felino	
+1F406	leopardo	felino	
+1F407	conejo	conejito|gazapo	
+1F408	gato	gatete|minino	
+1F409	dragón	cuento|fantasía	
+1F40A	cocodrilo	caimán	
+1F40B	ballena	cachalote|cetáceo	
+1F40C	caracol	caracola|molusco	
+1F40D	serpiente	culebra|reptil|víbora	
+1F40E	caballo	caballo de carreras|carreras de caballos|ecuestre	
+1F40F	carnero	aries|morueco|zodiaco	
+1F410	cabra	capricornio|caprino|chivo|zodiaco	
+1F411	oveja	borrego|cordero|ovino	
+1F412	mono	macaco|simio	
+1F413	gallo	ave|gallina|gallinácea|pollo	
+1F414	gallina	ave|gallinácea|pollo	
+1F415	perro	cachorro|perrete|perrito	
+1F416	cerdo	cochino|gorrino|puerco	
+1F417	jabalí	cerdo salvaje	
+1F418	elefante	paquidermo	
+1F419	pulpo	cefalópodo|octópodo	
+1F41A	caracola	concha|espiral	
+1F41B	bicho	gusano|insecto	
+1F41C	hormiga	antenas|insecto	
+1F41D	abeja	insecto|miel	
+1F41E	mariquita	cochinilla|insecto	
+1F41F	pez	pececillo|pescado|piscis|zodiaco	
+1F420	pez tropical	pez|tropical	
+1F421	pez globo	globo|pez	
+1F422	tortuga	galápago	
+1F423	pollito rompiendo el cascarón	ave|huevo|pollito|pollo	
+1F424	pollito	ave|pollo|polluelo	
+1F425	pollito de frente	ave|pollito|pollo	
+1F426	pájaro	ave|pajarillo	
+1F427	pingüino	ave	
+1F428	koala	cara|marsupial	
+1F429	caniche	perrito|perro	
+1F42A	dromedario	camello|desierto|joroba	
+1F42B	camello	bactriano|desierto|dromedario|jorobas	
+1F42C	delfín	cetáceo	
+1F42D	cara de ratón	cara|ratón	
+1F42E	cara de vaca	cara|vaca	
+1F42F	cara de tigre	cara|tigre	
+1F430	cara de conejo	cara|conejo|mascota	
+1F431	cara de gato	cara|gato|mascota	
+1F432	cara de dragón	cara|cuento|dragón|fantasía	
+1F433	ballena soltando un chorro	ballena|chorro de agua	
+1F434	cara de caballo	caballo|cara	
+1F435	cara de mono	cara|mono	
+1F436	cara de perro	cara|mascota|perro	
+1F437	cara de cerdo	cara|cerdo|gorrino	
+1F438	rana	cara	
+1F439	hámster	cara|mascota	
+1F43A	lobo	cara	
+1F43B	oso	cara	
+1F43C	panda	cara|oso panda	
+1F43D	nariz de cerdo	cara|cerdo|morro|nariz	
+1F43E	huellas de pezuñas	huellas|pezuñas	
+1F43F	ardilla		
+1F440	ojos	cara	
+1F441	ojo	cuerpo	
+1F442	oreja	cuerpo	
+1F443	nariz	cuerpo	
+1F444	boca	labios	
+1F445	lengua	cuerpo	
+1F446	dorso de mano con índice hacia arriba	apuntar|arriba|dedo|mano	
+1F447	dorso de mano con índice hacia abajo	abajo|apuntar|dedo|mano	
+1F448	dorso de mano con índice a la izquierda	dedo|índice|izquierda|mano	
+1F449	dorso de mano con índice a la derecha	dedo|derecha|índice|mano	
+1F44A	puño cerrado	puñetazo|puño	
+1F44B	mano saludando	agitar|mano|saludar|saludo	
+1F44C	señal de aprobación con la mano	aprobación|mano|ok	
+1F44D	pulgar hacia arriba	arriba|mano|pulgar|señal	
+1F44E	pulgar hacia abajo	abajo|mano|pulgar|señal	
+1F44F	manos aplaudiendo	aplaudir|manos|palmas|señal	
+1F450	manos abiertas	abiertas|manos	
+1F451	corona	accesorios|complementos|reina|rey	
+1F452	sombrero de mujer	accesorio|mujer|ropa|sombrero	
+1F453	gafas	accesorios|ojo|ropa	
+1F454	corbata	accesorio|ropa	
+1F455	camiseta	ropa	
+1F456	vaqueros	pantalones|ropa	
+1F457	vestido	mujer|ropa	
+1F458	kimono	japonés|ropa	
+1F459	bikini	baño|playa|ropa	
+1F45A	ropa de mujer	blusa|camisa|femenina|ropa	
+1F45B	monedero	accesorios|cartera|complementos	
+1F45C	bolso	accesorios|complementos	
+1F45D	bolso de mano	accesorios|bolso|cartera|complementos	
+1F45E	zapato de hombre	calzado|hombre|ropa|zapato	
+1F45F	zapatilla deportiva	calzado|correr|ropa|tenis	
+1F460	zapato de tacón	mujer|tacón|zapato	
+1F461	sandalia de mujer	calzado|mujer|ropa|sandalia	
+1F462	bota de mujer	bota|calzado|mujer|ropa	
+1F463	huellas de pies	huellas|pies	
+1F464	silueta de busto	busto|silueta	
+1F465	dos siluetas de bustos	bustos|siluetas	
+1F466	niño	joven	
+1F467	niña	chica|joven	
+1F468	hombre	adulto	
+1F469	mujer	adulta	
+1F46A	familia		
+1F46B	mujer y hombre de la mano	hombre|hombre y mujer de la mano|mujer|novios|pareja	
+1F46C	hombres de la mano	gays|hombres|novios|pareja	
+1F46D	mujeres de la mano	lesbianas|mujeres|novias|pareja	
+1F46E	agente de policía	agente|personas|policía	
+1F46F	personas con orejas de conejo	bailar|fiesta|orejas de conejo|personas	
+1F470	persona con velo	boda|novia|persona|velo	
+1F471	persona adulta rubia	rubia|rubias|rubio|rubios	
+1F472	persona con gorro chino	gorro|gua|gua pi mao|mao|persona	
+1F473	persona con turbante	turbante	
+1F474	anciano	hombre|mayor	
+1F475	anciana	mayor|mujer	
+1F476	bebé	joven|niño	
+1F477	profesional de la construcción	casco|construcción|obrero|trabajador	
+1F478	princesa	cuento|fantasía|hadas	
+1F479	demonio japonés oni	cara|cuento|cuernos|sonrisa	
+1F47A	demonio japonés tengu	cara|cuento|fantasía|monstruo|tengu	
+1F47B	fantasma	cara|criatura|cuento|monstruo	
+1F47C	bebé ángel	ángel|bebé|cara|cuento	
+1F47D	alienígena	alien|cara|criatura|extraterrestre|ovni	
+1F47E	monstruo alienígena	alien|cara|criatura|extraterrestre|ovni	
+1F47F	cara enfadada con cuernos	cara|cuernos|demonio|diablo	
+1F480	calavera	cara|cuento|monstruo|muerte	
+1F481	persona de mostrador de información	información|mano|mostrador|persona	
+1F482	guardia	guardia real británica	
+1F483	mujer bailando	bailar|mujer	
+1F484	pintalabios	barra|cosmética|labios|maquillaje	
+1F485	pintarse las uñas	cosmética|esmalte|manicura|uñas	
+1F486	persona recibiendo masaje	cara|facial|masaje|salón	
+1F487	persona cortándose el pelo	belleza|corte|pelo|peluquero	
+1F488	poste de barbero	barbería|barbero|peluquero|poste	
+1F489	jeringuilla	aguja|jeringa|medicina|médico	
+1F48A	píldora	comprimido|medicina|médico|pastilla	
+1F48B	marca de beso	beso|labios|romance	
+1F48C	carta de amor	amor|carta|corazón|correo	
+1F48D	anillo	diamante	
+1F48E	piedra preciosa	diamante|gema|joya|piedra|preciosa	
+1F48F	beso	personas|romance	
+1F490	ramo de flores	bouquet|flores|ramo	
+1F491	pareja enamorada	amor|pareja|personas enamoradas	
+1F492	iglesia celebrando boda	boda|iglesia|romance	
+1F493	corazón latiendo	amor|corazón|emoción|latido	
+1F494	corazón roto	corazón|emoción|partido|roto	
+1F495	dos corazones	amantes|amor|corazón	
+1F496	corazón brillante	amor|brillante|emoción	
+1F497	corazón creciente	corazón|creciente|emocionado|latido|nervioso	
+1F498	corazón con flecha	amor|corazón|emoción|flecha	
+1F499	corazón azul	azul|corazón|emoción	
+1F49A	corazón verde	corazón|emoción|verde	
+1F49B	corazón amarillo	amarillo|corazón|emoción	
+1F49C	corazón morado	corazón|emoción|morado	
+1F49D	corazón con lazo	corazón|emoción|lazo|san valentín	
+1F49E	corazones giratorios	corazón|giratorio	
+1F49F	adorno de corazón	corazón	
+1F4A0	rombo con pétalo	flor|geometría|rombo	
+1F4A1	bombilla	cómic|electricidad|idea|luz	
+1F4A2	símbolo de enfado	cómic|enfadado|enfado	
+1F4A3	bomba	cómic|emoción	
+1F4A4	símbolo de sueño	cómic|dormir|sueño|zzz	
+1F4A5	colisión	cómic	
+1F4A6	gotas de sudor	cómic|emoción|sudor	
+1F4A7	gota	agua|cómic|sudor	
+1F4A8	salir corriendo	carrera|cómic|correr|humo	
+1F4A9	caca con ojos	caca|cómic|mierda|mojón	
+1F4AA	bíceps flexionado	bíceps|cómic|flexionado|fuerte|músculo	
+1F4AB	símbolo de mareo	cómic|emoción|estrella|mareo	
+1F4AC	bocadillo de diálogo	bocadillo|cómic|conversación|diálogo	
+1F4AD	bocadillo de pensamiento	bocadillo|burbuja|cómic|pensamiento	
+1F4AE	flor blanca	blanca|flor	
+1F4AF	cien puntos	pleno|puntos	100
+1F4B0	bolsa de dinero	bolsa|bolsa de dólares|dinero	
+1F4B1	cambio de divisas	cambio|dinero|divisa|moneda	
+1F4B2	símbolo de dólar	dinero|dólar|símbolo	
+1F4B3	tarjeta de crédito	crédito|tarjeta	
+1F4B4	billete de yen	billete|billete de banco|dinero|yen	
+1F4B5	billete de dólar	billete|billete de banco|dinero|dólar	
+1F4B6	billete de euro	billete|billete de banco|dinero|euro	
+1F4B7	billete de libra	billete de banco|dinero|libra	
+1F4B8	billete con alas	billete|billete de banco|dinero|dinero con alas	
+1F4B9	mercado al alza	alza|mercado|mercado alcista|tabla	
+1F4BA	asiento de transporte	asiento|plaza|silla	
+1F4BB	ordenador portátil	ordenador|pc|personal	
+1F4BC	maletín	cartera|documentos	
+1F4BD	minidisc	disco|md	
+1F4BE	disquete	disco|disco de 3 1/2	
+1F4BF	disco óptico	cd|disco	
+1F4C0	disco DVD	disco|dvd	
+1F4C1	carpeta de archivos	archivo|carpeta	
+1F4C2	carpeta de archivos abierta	abierta|archivo|carpeta	
+1F4C3	página doblada	documento|página	
+1F4C4	página hacia arriba	anverso|documento|página	
+1F4C5	calendario	fecha	
+1F4C6	calendario recortable	calendario|fecha	
+1F4C7	organizador de fichas	cartera|ficha|organizador|tarjetas	
+1F4C8	gráfica de evolución ascendente	ascendente|gráfica|gráfico|tendencia ascendente	
+1F4C9	gráfica de evolución descendente	descendente|gráfica|gráfico|tendencia descendente	
+1F4CA	gráfico de barras	barras|gráfico	
+1F4CB	portapapeles	papeles|pinza|tabla	
+1F4CC	chincheta	tachuela	
+1F4CD	chincheta redonda	chincheta	
+1F4CE	clip		
+1F4CF	regla		
+1F4D0	escuadra	regla|regla triangular|triángulo	
+1F4D1	marcadores	pestañas	
+1F4D2	libro de contabilidad	cuaderno	
+1F4D3	cuaderno	libreta	
+1F4D4	cuaderno con tapa decorativa	cuaderno|decoración|tapa	
+1F4D5	libro cerrado	cerrado|libro	
+1F4D6	libro abierto	abierto|libro	
+1F4D7	libro verde	libro|verde	
+1F4D8	libro azul	azul|libro	
+1F4D9	libro naranja	libro|naranja	
+1F4DA	libros	libro	
+1F4DB	etiqueta identificativa	etiqueta|nombre	
+1F4DC	pergamino	pergamino de papel	
+1F4DD	cuaderno de notas	comunicación	
+1F4DE	auricular de teléfono	comunicación|teléfono	
+1F4DF	busca	comunicación|localizador	
+1F4E0	máquina de fax	comunicación|fax	
+1F4E1	antena de satélite	antena|comunicación|satélite	
+1F4E2	altavoz de mano	altavoz|comunicación	
+1F4E3	megáfono	comunicación	
+1F4E4	bandeja de salida	bandeja|comunicación|correo|enviado|salida	
+1F4E5	bandeja de entrada	bandeja|comunicación|correo|entrada|recibido	
+1F4E6	paquete	caja	
+1F4E7	correo electrónico	comunicación|correo|sobre	
+1F4E8	sobre entrante	carta|comunicación|correo|correo electrónico|sobre	
+1F4E9	sobre con flecha	carta|comunicación|correo|correo electrónico|sobre	
+1F4EA	buzón cerrado con la bandera bajada	bandera|buzón|buzón cerrado|vacío	
+1F4EB	buzón cerrado con la bandera levantada	bandera|buzón|buzón cerrado|con contenido	
+1F4EC	buzón abierto con la bandera levantada	bandera|buzón|buzón abierto|con contenido	
+1F4ED	buzón abierto con la bandera bajada	bandera|buzón|buzón abierto|vacío	
+1F4EE	buzón	cartas|correo	
+1F4EF	corneta de posta	corneta|posta	
+1F4F0	periódico	diario	
+1F4F1	teléfono móvil	celular|móvil|teléfono	
+1F4F2	móvil con una flecha	flecha|llamada|móvil|recibir|teléfono	
+1F4F3	modo vibración	móvil|teléfono|teléfono celular|vibración	
+1F4F4	teléfono móvil apagado	apagado|móvil|teléfono|teléfono celular	
+1F4F5	prohibido el uso de móviles	móvil|no hacer llamadas|prohibido|teléfono	
+1F4F6	barras de cobertura	antena|celular|móvil|señal|teléfono	
+1F4F7	cámara de fotos	cámara	
+1F4F8	cámara con flash	cámara|flash	
+1F4F9	videocámara	cámara|vídeo	
+1F4FA	televisión	tv	
+1F4FB	radio		
+1F4FC	cinta de vídeo	cinta	
+1F4FD	proyector de cine	cine|película|proyector	
+1F4FF	rosario	collar|cuentas|religión	
+1F500	reproducción aleatoria	cruzado|flechas|flechas entrecruzadas	
+1F501	repetir	flechas|repetición	
+1F502	repetir una vez	flechas|repetición|uno	
+1F503	flechas verticales en sentido horario	flechas|flechas verticales sentido horario|horario|señal de recarga	
+1F504	flechas en sentido antihorario	dirección|flechas|señal de recarga|sentido antihorario	
+1F505	brillo bajo	bajo|brillo|señal de brillo bajo|tenue	
+1F506	brillo alto	alto|brillante|brillo|señal de brillo alto	
+1F507	altavoz silenciado	altavoz|altavoz con marca de cancelación|mute|silencio	
+1F508	altavoz a volumen bajo	volumen bajo	
+1F509	altavoz a volumen medio	altavoz con volumen medio|medio|volumen medio	
+1F50A	altavoz a volumen alto	altavoz|alto|volumen alto	
+1F50B	pila	batería	
+1F50C	enchufe eléctrico	corriente|electricidad|eléctrico|enchufe	
+1F50D	lupa orientada hacia la izquierda	buscar|lupa	
+1F50E	lupa orientada hacia la derecha	buscar|lupa	
+1F50F	candado con pluma estilográfica	candado|cerrado|estilográfica|pluma|privacidad	
+1F510	candado cerrado y llave	candado|cerrado|llave|seguro	
+1F511	llave	contraseña	
+1F512	candado cerrado	candado|cerrado|cerrar	
+1F513	candado abierto	abierto|abrir|candado	
+1F514	campana		
+1F515	campana con signo de cancelación	campana|cancelación|ruido	
+1F516	marcapáginas	marcador	
+1F517	eslabón		
+1F518	botón de opción	botón|opción	
+1F519	flecha BACK	atrás|atrás con flecha izquierda|back|flecha|flecha a la izquierda	
+1F51A	flecha END	final|final con flecha izquierda|flecha|flecha a la izquierda	
+1F51B	flecha ON!	flecha|flecha de doble punta con la palabra "on" encima|on|señal	
+1F51C	flecha SOON	flecha|soon|soon con flecha a la derecha	
+1F51D	flecha TOP	arriba|flecha hacia arriba|top|top con flecha hacia arriba	
+1F51E	prohibido para menos de 18 años	no apto para menores|prohibido|prohibido para menores de 18 años	18
+1F520	letras latinas mayúsculas	abcd|letras|mayúsculas	
+1F521	letras latinas minúsculas	abcd|letras|minúsculas	
+1F522	números	dígitos	1234
+1F523	símbolos	〒♪&%	
+1F524	alfabeto latino	ABC|latino	
+1F525	fuego	llama	
+1F526	linterna	luz	
+1F527	llave inglesa	herramienta	
+1F528	martillo	herramienta	
+1F529	tornillo y tuerca	herramienta|tornillo|tuerca	
+1F52A	cuchillo de cocina	arma|cocinar|cuchillo	
+1F52B	pistola de agua	agua|juguete|pistola|verano	
+1F52C	microscopio	instrumento|laboratorio	
+1F52D	telescopio	astronomía|instrumento	
+1F52E	bola de cristal	adivinación|bola|buena fortuna|cristal	
+1F52F	estrella de seis puntas	adivinación|buena fortuna|estrella|seis puntas	
+1F530	símbolo japonés para principiante	amarillo|japonés|principiante|verde	
+1F531	emblema de tridente	ancla|emblema|tridente	
+1F532	botón cuadrado con borde negro	botón|cuadrado	
+1F533	botón cuadrado con borde blanco	botón|cuadrado	
+1F534	círculo rojo	círculo|geometría|rojo	
+1F535	círculo azul	azul|círculo|geometría	
+1F536	rombo naranja grande	geometría|naranja|rombo	
+1F537	rombo azul grande	azul|geometría|rombo	
+1F538	rombo naranja pequeño	geometría|naranja|rombo	
+1F539	rombo azul pequeño	azul|geometría|rombo	
+1F53A	triángulo rojo hacia arriba	geometría|rojo|triángulo|triángulo hacia arriba rojo	
+1F53B	triángulo rojo hacia abajo	geometría|rojo|triángulo|triángulo hacia abajo rojo	
+1F53C	triángulo hacia arriba	arriba|botón|botón triángulo hacia arriba|triángulo	
+1F53D	triángulo hacia abajo	abajo|botón|botón triángulo hacia abajo|triángulo	
+1F549	om	hindú|religión	
+1F54A	paloma	ave|pájaro|paz	
+1F54B	Kaaba	hach|islam|musulmán|religión|umrah	
+1F54C	mezquita	islam|religión	
+1F54D	sinagoga	judaísmo|religión	
+1F54E	menorá	candelabro|religión	
+1F550	1 en punto	reloj|una|1:00	
+1F551	2 en punto	dos|reloj|2:00	
+1F552	3 en punto	reloj|tres|3:00	
+1F553	4 en punto	cuatro|reloj|4:00	
+1F554	5 en punto	cinco|reloj|5:00	
+1F555	6 en punto	reloj|seis|6:00	
+1F556	7 en punto	reloj|siete|7:00	
+1F557	8 en punto	ocho|reloj|8:00	
+1F558	9 en punto	nueve|reloj|9:00	
+1F559	10 en punto	diez|reloj|10:00	
+1F55A	11 en punto	once|reloj|11:00	
+1F55B	12 en punto	doce|reloj|12:00	
+1F55C	una y media	reloj|1:30	
+1F55D	dos y media	reloj|2:30	
+1F55E	tres y media	reloj|3:30	
+1F55F	cuatro y media	reloj|4:30	
+1F560	cinco y media	reloj|5:30	
+1F561	seis y media	reloj|6:30	
+1F562	siete y media	reloj|7:30	
+1F563	ocho y media	reloj|8:30	
+1F564	nueve y media	reloj|9:30	
+1F565	diez y media	reloj|10:30	
+1F566	once y media	reloj|11:30	
+1F567	doce y media	reloj|12:30	
+1F56F	vela	luz	
+1F570	reloj de sobremesa	reloj|sobremesa	
+1F573	agujero	orificio	
+1F574	persona trajeada levitando	levitar|negocios|persona|traje	
+1F575	detective	cara|espía	
+1F576	gafas de sol	gafas|ojo|oscuras|sol	
+1F577	araña	insecto	
+1F578	tela de araña	araña|tela|telaraña	
+1F579	joystick	juego|mando|palanca|videojuego	
+1F57A	hombre bailando	bailar|hombre	
+1F587	clips unidos	clips|unidos|unión	
+1F58A	bolígrafo	boli|escribir	
+1F58B	estilográfica	bolígrafo|escribir|pluma|tinta	
+1F58C	pincel	pintar	
+1F58D	lápiz de cera	cera|lápiz	
+1F590	mano abierta	abierta|dedo|mano	
+1F595	dedo corazón hacia arriba	corazón|dedo|mano|peineta	
+1F596	saludo vulcano	mano|saludo|spock|vulcano	
+1F5A4	corazón negro	corazón|negro	
+1F5A5	ordenador de sobremesa	ordenador|sobremesa	
+1F5A8	impresora	ordenador	
+1F5B1	ratón de ordenador	ordenador|ratón	
+1F5B2	bola de desplazamiento	ordenador|trackball	
+1F5BC	cuadro enmarcado	marco|museo	
+1F5C2	separador de fichas	fichas|fichero|separador	
+1F5C3	archivador de tarjetas	archivador|archivo|caja	
+1F5C4	archivador	archivos|oficina|organizador	
+1F5D1	papelera	basura|cubo	
+1F5D2	bloc de notas de espiral	bloc|cuaderno|espiral|notas	
+1F5D3	calendario de espiral	calendario|espiral	
+1F5DC	tornillo de banco	herramienta|tornillo	
+1F5DD	llave antigua	antigua|llave	
+1F5DE	periódico enrollado	noticias|papel|periódico	
+1F5E1	puñal	arma|cuchillo|daga	
+1F5E3	cabeza parlante	cabeza|cara|hablar|silueta	
+1F5E8	bocadillo de diálogo por la izquierda	bocadillo|burbuja|conversación|diálogo	
+1F5EF	bocadillo de enfado por la derecha	bocadillo|cabreo|enfado|rabia	
+1F5F3	urna con papeleta	papeleta|urna|voto	
+1F5FA	mapa mundial	mapa|mapamundi|mundo	
+1F5FB	monte Fuji	Fuji|montaña|monte|naturaleza	
+1F5FC	Torre de Tokio	Tokio|torre	
+1F5FD	Estatua de la Libertad	estatua|libertad|nueva|ny|nyc|york	
+1F5FE	mapa de Japón	Japón|mapa	
+1F5FF	estatua moái	estatua|moái|Pascua	
+1F600	cara sonriendo	cara|divertido|feliz|sonrisa	
+1F601	cara radiante con ojos sonrientes	cara|ojo|risa|sonrisa	
+1F602	cara llorando de risa	cara|felicidad|lágrima|risa	
+1F603	cara sonriendo con ojos grandes	cara|divertido|risa|sonriendo	
+1F604	cara sonriendo con ojos sonrientes	abierta|cara|ojo|sonrisa	
+1F605	cara sonriendo con sudor frío	cara|frío|risa|sudor	
+1F606	cara sonriendo con los ojos cerrados	abierta|boca|cara|risa	
+1F607	cara sonriendo con aureola	ángel|cara|halo|sonrisa	
+1F608	cara sonriendo con cuernos	cara|cuernos|demonio|sonrisa	
+1F609	cara guiñando el ojo	cara|guiño	
+1F60A	cara feliz con ojos sonrientes	cara|ojo|rubor|sonrisa	
+1F60B	cara saboreando comida	cara|delicioso|hambre|rico	
+1F60C	cara de alivio	aliviado|cara	
+1F60D	cara sonriendo con ojos de corazón	amor|cara|corazón|sonrisa	
+1F60E	cara sonriendo con gafas de sol	cara|gafas|guay|sol	
+1F60F	cara sonriendo con superioridad	cara|listillo|superioridad	
+1F610	cara neutral	cara|inexpresivo|neutral	
+1F611	cara sin expresión	cara|inexpresión|inexpresiva|inexpresivo	
+1F612	cara de desaprobación	cara|insatisfacción|rechazo	
+1F613	cara con sudor frío	cara|frío|sudor	
+1F614	cara desanimada	alicaído|cara|desanimado|pensativo	
+1F615	cara de confusión	cara|confuso	
+1F616	cara de frustración	cara|frustrado	
+1F617	cara besando	beso|cara	
+1F618	cara lanzando un beso	beso|cara	
+1F619	cara besando con ojos sonrientes	beso|cara|ojo|sonrisa	
+1F61A	cara besando con los ojos cerrados	beso|cara|cerrado|ojo	
+1F61B	cara sacando la lengua	cara|lengua	
+1F61C	cara sacando la lengua y guiñando un ojo	cara|guiño|lengua|ojo	
+1F61D	cara con ojos cerrados y lengua fuera	cara|lengua|ojo|sabor	
+1F61E	cara decepcionada	cara|decepción|decepcionado	
+1F61F	cara preocupada	cara|preocupación|preocupado	
+1F620	cara enfadada	cara|enfadado|histérico	
+1F621	cara cabreada	cabreo|cara|enfadado|furia	
+1F622	cara llorando	cara|lágrima|llorar|triste	
+1F623	cara desesperada	cara|desesperación|frustración	
+1F624	cara resoplando	cabreo|cara|enfado	
+1F625	cara triste pero aliviada	aliviado|cara|decepcionado|menos mal	
+1F626	cara con el ceño fruncido y la boca abierta	boca abierta|cara|ceño fruncido con boca abierta	
+1F627	cara angustiada	angustia|angustiado|cara	
+1F628	cara asustada	asustado|cara|miedo|miedoso	
+1F629	cara agotada	agotado|cansado|cara	
+1F62A	cara de sueño	cara|dormir|sueño	
+1F62B	cara cansada	cansado|cara	
+1F62C	cara haciendo una mueca	cara|mueca	
+1F62D	cara llorando fuerte	cara|lágrima|llorar|triste	
+1F62E	cara con la boca abierta	boca|cara	
+1F62F	cara estupefacta	alucinado|cara|estupefacto|sorprendido	
+1F630	cara con ansiedad y sudor	ansiedad|cara|frío|sudor	
+1F631	cara gritando de miedo	asustado|cara|miedo|pánico	
+1F632	cara asombrada	alucinado|asombrado|cara|pasmado	
+1F633	cara sonrojada	cara|colorado|sonrojado	
+1F634	cara durmiendo	cara|dormido|sueño|zzz	
+1F635	cara mareada	cara|mareo	
+1F636	cara sin boca	boca|callado|cara|silencio	
+1F637	cara con mascarilla médica	cara|enfermo|malo|máscara	
+1F638	gato sonriendo con ojos sonrientes	cara|gato|ojos|sonriente|sonrisa	
+1F639	gato llorando de risa	cara|gato|lágrima|risa	
+1F63A	gato sonriendo	cara|feliz|gato alegre|gato feliz|sonrisa	
+1F63B	gato sonriendo con ojos de corazón	cara|corazón|enamorado|gato	
+1F63C	gato haciendo una mueca	cara|gato|irónico|sonrisa	
+1F63D	gato besando	beso|cara|cariñoso|gato	
+1F63E	gato enfadado	cara|enfadado|gato	
+1F63F	gato llorando	cara|gato|lágrima|pena|triste	
+1F640	gato asustado	cara|gato|pánico|preocupación|sorpresa	
+1F641	cara con el ceño ligeramente fruncido	cara|ceño|fruncido	
+1F642	cara sonriendo ligeramente	cara|sonrisa	
+1F643	cara al revés	cara|revés	
+1F644	cara con ojos en blanco	cara|frustración|ojos|vueltos	
+1F645	persona haciendo el gesto de "no"	gesto|mano|no|prohibido	
+1F646	persona haciendo el gesto de "de acuerdo"	gesto|mano|OK|vale	
+1F647	persona haciendo una reverencia	disculpa|gesto|perdón|reverencia	
+1F648	mono con los ojos tapados	cara|mal|mono|prohibido	
+1F649	mono con los oídos tapados	cara|mal|mono|prohibido	
+1F64A	mono con la boca tapada	cara|mal|mono|prohibido	
+1F64B	persona con la mano levantada	feliz|gesto|levantar|mano	
+1F64C	manos levantadas celebrando	celebración|gesto|hurra|mano	
+1F64D	persona frunciendo el ceño	ceño|fruncido|gesto|persona	
+1F64E	persona haciendo pucheros	gesto|persona|pucheros	
+1F64F	manos en oración	gracias|mano|oración|orar|por favor|rezar	
+1F680	cohete	espacio|vehículo	
+1F681	helicóptero	aspas|rotores|vehículo|volar	
+1F682	locomotora de vapor	locomotora|tren|vehículo	
+1F683	vagón	ferrocarril|tranvía|tren eléctrico|vehículo	
+1F684	tren de alta velocidad	AVE|ferrocarril|rápido|tren|velocidad	
+1F685	tren bala	bala|shinkansen|tren|vehículo|velocidad	
+1F686	tren	ferrocarril|vehículo	
+1F687	metro	subterráneo|suburbano|transporte	
+1F688	tren ligero	ferrocarril|transporte|tren	
+1F689	estación de tren	estación|tren	
+1F68A	tranvía	transporte|trolebús	
+1F68B	vagón de tranvía	tranvía|vagón|vehículo	
+1F68C	autobús	bus|transporte	
+1F68D	autobús próximo	autobús|próximo|vehículo	
+1F68E	trolebús	transporte|tranvía	
+1F68F	parada de autobús	autobús|parada	
+1F690	minibús	autobús|bus|transporte	
+1F691	ambulancia	asistencia médica|transporte|vehículo	
+1F692	coche de bomberos	camión|camión de bomberos|fuego|vehículo	
+1F693	coche de policía	coche patrulla|policía|vehículo	
+1F694	coche de policía próximo	coche patrulla|policía|próximo|vehículo	
+1F695	taxi	coche|vehículo	
+1F696	taxi próximo	taxi|vehículo	
+1F697	coche	automóvil|vehículo	
+1F698	coche próximo	automóvil|coche|próximo|vehículo	
+1F699	vehículo deportivo utilitario	camping|caravana|furgoneta|vacaciones|vehículo	
+1F69A	camión de reparto	mercancías|reparto|transporte|vehículo	
+1F69B	camión articulado	camión|tráiler|vehículo	
+1F69C	tractor	agricultura|vehículo	
+1F69D	monorraíl	ferrocarril|monocarril|transporte|tren	
+1F69E	ferrocarril de montaña	ferrocarril|montaña|vehículo	
+1F69F	ferrocarril de suspensión	ferrocarril|suspensión|vehículo	
+1F6A0	teleférico de montaña	cable|funicular|montaña|teleférico|vehículo	
+1F6A1	teleférico	aéreo|tranvía|vehículo	
+1F6A2	barco	vehículo	
+1F6A3	persona remando en un bote	barca|bote|remo	
+1F6A4	lancha motora	barco|vehículo	
+1F6A5	semáforo horizontal	luz|señales de tráfico|tráfico	
+1F6A6	semáforo	luz|semáforo vertical|señales de tráfico|tráfico	
+1F6A7	obras	construcción|señal|señal de obras	
+1F6A8	luces de policía	coche de policía|luces|policía	
+1F6A9	bandera triangular	bandera|bandera de localización triangular|bandera informativa de localización|localización	
+1F6AA	puerta		
+1F6AB	prohibido	entrar|no|pasar|prohibición	
+1F6AC	cigarrillo	cigarro|fumar	
+1F6AD	prohibido fumar	fumar|no|prohibido|señal	
+1F6AE	señal de usar papelera	basura|papelera|señal|tirar la basura en la papelera	
+1F6AF	prohibido tirar basura	basura|prohibido|señal|señal de no tirar basura	
+1F6B0	agua potable	agua|potable	
+1F6B1	agua no potable	agua|no potable	
+1F6B2	bicicleta	bici|vehículo	
+1F6B3	bicicletas prohibidas	bicicleta|prohibido|vehículo	
+1F6B4	persona en bicicleta	bicicleta|ciclismo|ciclista	
+1F6B5	persona en bicicleta de montaña	bicicleta|ciclista|montaña|mountain bike	
+1F6B6	persona caminando	andar|caminando|caminar	
+1F6B7	prohibido el paso de peatones	peatón|peatones|prohibido|señal	
+1F6B8	niños cruzando	cruzando|niños|señal	
+1F6B9	aseo para hombres	aseo de caballeros|baño|señal|señal con un hombre|servicio	
+1F6BA	señal de aseo para mujeres	aseo de señoras|baño|señal|señal con una mujer|servicio	
+1F6BB	señal de aseos	aseos|servicios|wc	
+1F6BC	señal de bebé	bebé|cambiar|lactancia	
+1F6BD	inodoro	baño|váter|wc	
+1F6BE	aseos	lavabo|servicios|WC	
+1F6BF	ducha	agua|baño	
+1F6C0	persona en la bañera	bañera|baño|persona	
+1F6C1	bañera	baño	
+1F6C2	control de pasaportes	control|pasaportes	
+1F6C3	aduana		
+1F6C4	recogida de equipajes	equipaje|maleta	
+1F6C5	consigna	depósito|equipaje|servicio de equipaje en depósito	
+1F6CB	sofá y lámpara	hotel|lámpara|sofá	
+1F6CC	persona en la cama	dormir|hotel	
+1F6CD	bolsas de compras	bolsa|compra	
+1F6CE	timbre de hotel	botones|campanilla|hotel|timbre	
+1F6CF	cama	dormir|hotel	
+1F6D0	lugar de culto	culto|religión	
+1F6D1	señal de stop	octágono|parada|señal|stop	
+1F6D2	carrito de la compra	carrito|carro|compra|supermercado	
+1F6D5	templo hindú	hindú|templo	
+1F6D6	cabaña	casa|yurta	
+1F6D7	ascensor	accesibilidad|elevador|montacargas	
+1F6D8	desprendimiento	alud|avalancha|desastre|montaña|peligro|rocas|terremoto	
+1F6D9	faro	baliza|esperanza|guía|iluminación|luz|mar|marítimo|navegación|señal	
+1F6DC	wifi	conexión|inalámbrica|internet|red|wi-fi	
+1F6DD	tobogán	jugar|parque|parque de atracciones	
+1F6DE	rueda	círculo|girar|neumático|rodar	
+1F6DF	salvavidas	flotador|rescate|seguridad|socorrista	
+1F6E0	martillo y llave inglesa	herramienta|llave inglesa|martillo	
+1F6E1	escudo	defensa	
+1F6E2	barril de petróleo	barril|bidón|petróleo	
+1F6E3	autopista	carretera	
+1F6E4	vía de tren	tren|vía	
+1F6E5	barco a motor	barco|motor|vehículo	
+1F6E9	avioneta	avión	
+1F6EB	avión despegando	aeroplano|avión|salida	
+1F6EC	avión aterrizando	aeroplano|avión|llegada	
+1F6F0	satélite	espacio|vehículo	
+1F6F3	barco de pasajeros	barco|pasajeros|vehículo	
+1F6F4	patinete		
+1F6F5	scooter	escúter|moto	
+1F6F6	canoa	barca|barco|piragua	
+1F6F7	trineo		
+1F6F8	platillo volante	ovni	
+1F6F9	monopatín	skateboard|tabla	
+1F6FA	mototaxi	rickshaw|tuk tuk	
+1F6FB	camioneta	pickup|ranchera	
+1F6FC	patines	patín|patín de 4 ruedas|patín de cuatro ruedas	
+1F7E0	círculo naranja	círculo|naranja	
+1F7E1	círculo amarillo	amarillo|círculo	
+1F7E2	círculo verde	círculo|verde	
+1F7E3	círculo morado	círculo|lila|morado|púrpura	
+1F7E4	círculo marrón	círculo|marrón	
+1F7E5	cuadrado rojo	cuadrado|rojo	
+1F7E6	cuadrado azul	azul|cuadrado	
+1F7E7	cuadrado naranja	cuadrado|naranja	
+1F7E8	cuadrado amarillo	amarillo|cuadrado	
+1F7E9	cuadrado verde	cuadrado|verde	
+1F7EA	cuadrado morado	cuadrado|lila|morado|púrpura	
+1F7EB	cuadrado marrón	cuadrado|marrón	
+1F7F0	signo igual grueso	equivalencia|igualdad|matemáticas|mates	
+1F90C	dedos juntos apuntando hacia arriba	dedos|gesto|italia|italiano|mano|sarcasmo	
+1F90D	corazón blanco	blanco|corazón|emoción	
+1F90E	corazón marrón	corazón|emoción|marrón	
+1F90F	mano pellizcando	pellizco|poco|poquito	
+1F910	cara con la boca cerrada con cremallera	boca|cara|cremallera	
+1F911	cara con lengua de dinero	boca|cara|dinero	
+1F912	cara con termómetro	cara|enfermo|malo|termómetro	
+1F913	cara de empollón	cara|empollón|friki|friqui	
+1F914	cara pensativa	cara|duda|pensando	
+1F915	cara con la cabeza vendada	cara|dolor|herida|venda	
+1F916	robot	cara|monstruo	
+1F917	cara con manos abrazando	abrazo|cara|sonrisa	
+1F918	mano haciendo el signo de cuernos	cuernos|dedo|mano|rock	
+1F919	mano haciendo el gesto de llamar	llamar|mano|meñique|pulgar	
+1F91A	dorso de la mano	dorso|levantado|mano	
+1F91B	puño hacia la izquierda	izquierda|puño	
+1F91C	puño hacia la derecha	derecha|puño	
+1F91D	apretón de manos	acuerdo|apretón|manos	
+1F91E	dedos cruzados	cruzar|dedos|mano|suerte	
+1F91F	gesto de te quiero	mano|quiero	
+1F920	cara con sombrero de vaquero	cara|sombrero|vaquera|vaquero	
+1F921	cara de payaso	cara|payaso	
+1F922	cara de náuseas	cara|náuseas|vomitar	
+1F923	cara revolviéndose de la risa	cara|carcajada|ojos cerrados|risa	
+1F924	cara babeando	baba|babeando|cara	
+1F925	cara de mentiroso	cara|mentiroso|nariz|pinocho	
+1F926	persona con la mano en la frente	facepalm|frente|incredulidad|mano	
+1F927	cara estornudando	cara|estornudar|estornudo|pañuelo	
+1F928	cara con ceja alzada	desconfiado|escéptico	
+1F929	cara sonriendo con estrellas	cara|estrellas|sonrisa	
+1F92A	cara de loco	grande|ojo|pequeño	
+1F92B	cara pidiendo silencio	callado|silencio	
+1F92C	cara con símbolos en la boca	maldecir|palabrota|símbolo	
+1F92D	cara con mano sobre la boca	ostras|uy|vaya	
+1F92E	cara vomitando	enfermo|malo|vomitar	
+1F92F	cabeza explotando	cabeza|explosión	
+1F930	mujer embarazada	embarazada|mujer	
+1F931	lactancia materna	amamantar|bebé|dar pecho|pecho	
+1F932	palmas hacia arriba juntas	oración	
+1F933	selfi	autofoto|cámara|selfie|teléfono	
+1F934	príncipe	corona	
+1F935	persona con esmoquin	esmoquin|novio|persona	
+1F936	Mamá Noel	celebración|claus|cuento|fantasía|feliz|fiestas|madre|Navidad|santa	
+1F937	persona encogida de hombros	duda|encogerse|hombros|indiferencia	
+1F938	persona haciendo voltereta lateral	acrobacia|gimnasia|pirueta|rueda|voltereta	
+1F939	persona haciendo malabares	equilibrio|malabares|malabarismo|malabarista	
+1F93A	persona haciendo esgrima	esgrima|esgrimista|espada	
+1F93C	personas luchando	lucha|luchador	
+1F93D	persona jugando al waterpolo	waterpolista|waterpolo	
+1F93E	persona jugando al balonmano	balonmanista|balonmano	
+1F93F	máscara de buceo	bucear|buzo|esnórquel|máscara|tubo	
+1F940	flor marchita	flor|marchita|marchitada|marchitarse	
+1F941	tambor	baquetas|música	
+1F942	copas brindando	bebida|brindar|brindis|celebración|copa	
+1F943	vaso de whisky	chupito|copa|licor|vaso|whisky	
+1F944	cuchara	cubiertos|cucharilla	
+1F945	portería	deporte|red	
+1F947	medalla de oro	medalla|oro|primero	
+1F948	medalla de plata	medalla|plata|segundo	
+1F949	medalla de bronce	bronce|medalla|tercero	
+1F94A	guante de boxeo	boxeo|deporte|guante	
+1F94B	uniforme de artes marciales	artes marciales|judo|kárate|taekwondo	
+1F94C	piedra de curling	juego|roca	
+1F94D	lacrosse	bola|palo|pelota|raqueta	
+1F94E	pelota de softball	bola|pelota|softball	
+1F94F	disco volador	disco|frisbee	
+1F950	cruasán	bollo|comida|croissant|francés	
+1F951	aguacate	comida|fruta	
+1F952	pepino	comida|pepinillo|verdura	
+1F953	beicon	bacon|carne|comida|panceta	
+1F954	patata	comida|papa|verdura	
+1F955	zanahoria	comida|verdura	
+1F956	baguete	baguette|barra|comida|francés|pan	
+1F957	ensalada	bol|comida|verde	
+1F958	paella	arroz|comida	
+1F959	pan relleno	comida|durum|falafel|kebab|pan de pita	
+1F95A	huevo	comida	
+1F95B	vaso de leche	bebida|leche|vaso	
+1F95C	cacahuetes	cacahuete|comida|fruto seco|verdura	
+1F95D	kiwi	comida|fruta	
+1F95E	tortitas	comida|dulce|pancakes|postre|tortita	
+1F95F	dumpling	comida|gyōza|jiaozi|masa	
+1F960	galleta de la fortuna	adivinación|profecía|superstición	
+1F961	caja para llevar	recipiente para llevar|restaurante	
+1F962	palillos	cubiertos|hashi	
+1F963	cuenco con cuchara	cereal|desayuno	
+1F964	vaso con pajita	refresco|zumo	
+1F965	coco	palmera|piña colada	
+1F966	brócoli	col|repollo	
+1F967	pastel	masa|relleno	
+1F968	bretzel	galleta salada|pretzel	
+1F969	corte de carne	carne|chuleta|filete	
+1F96A	sándwich	bocadillo|bocata|emparedado	
+1F96B	comida enlatada	conserva|lata	
+1F96C	verdura de hoja verde	bok choy|col|kale|lechuga|pak choi	
+1F96D	mango	fruta|tropical	
+1F96E	pastel de luna	festival|luna|otoño|yuebing	
+1F96F	bagel	bocadillo|pan|panadería	
+1F970	cara sonriendo con corazones	adorar|amor|corazones|enamorada|enamorado	
+1F971	cara de bostezo	aburrido|bostezo|cansado|dormido|sueño	
+1F972	cara sonriente con lágrima	agradecido|aliviado|emocionado|lágrima|orgulloso|sonrisa	
+1F973	cara de fiesta	capirote|celebración|fiesta|gorro|matasuegras	
+1F974	cara de grogui	atontado|entonado|grogui|intoxicado|mareado	
+1F975	cara con calor	calor|cara roja|fiebre|golpe de calor|sudor	
+1F976	cara con frío	cara congelada|congelado|frío|helado	
+1F977	ninja	furtivo|guerrero|luchador|oculto|sigilo	
+1F978	cara disfrazada	careta|disfraz|disimulo|gafas|incógnito|nariz	
+1F979	cara aguantándose las lágrimas	emoción|emocionado|llorar|orgulloso|resistir|triste	
+1F97A	cara suplicante	implorar|ojos adorables|piedad|por favor	
+1F97B	sari	prenda|ropa|vestido	
+1F97C	bata de laboratorio	científico|doctor|experimento|médico	
+1F97D	gafas de protección	gafas|nadar|protección ocular|soldar	
+1F97E	bota de senderismo	bota|camping|mochilero|senderismo	
+1F97F	bailarina	calzado|zapato	
+1F980	cangrejo	animal|cáncer|zodiaco	
+1F981	león	cara|leo|zodiaco	
+1F982	escorpión	escorpio|zodiaco	
+1F983	pavo	ave	
+1F984	unicornio	cara	
+1F985	águila	ave	
+1F986	pato	ave	
+1F987	murciélago	vampiro	
+1F988	tiburón	pez	
+1F989	búho	ave|lechuza|pájaro	
+1F98A	zorro	cara	
+1F98B	mariposa	bonito|insecto	
+1F98C	ciervo	bambi|cervatillo	
+1F98D	gorila	primate|simio	
+1F98E	lagarto	lagartija|reptil	
+1F98F	rinoceronte	paquidermo	
+1F990	gamba	camarón|comida|langostino|marisco	
+1F991	calamar	comida|molusco	
+1F992	jirafa	manchas	
+1F993	cebra	raya	
+1F994	erizo	espinas|púas	
+1F995	saurópodo	braquiosaurio|brontosaurio|diplodocus	
+1F996	t-rex	tiranosaurio|tiranosaurio rex	
+1F997	grillo	saltamontes	
+1F998	canguro	marsupial|saltar|salto	
+1F999	llama	alpaca|guanaco|lana|vicuña	
+1F99A	pavo real	ave|orgulloso|pavo|plumas	
+1F99B	hipopótamo	paquidermo	
+1F99C	loro	ave|hablar|papagayo|pirata	
+1F99D	mapache	astuto|curioso|ladino|maquillaje|ojeras	
+1F99E	bogavante	langosta|marisco|pinzas	
+1F99F	mosquito	fiebre|insecto|malaria|virus	
+1F9A0	microbio	ameba|bacteria|germen|virus	
+1F9A1	tejón	ratel|tejón de la miel|tejón melero	
+1F9A2	cisne	ave|patito feo	
+1F9A3	mamut	colmillo|extinguido|lanudo	
+1F9A4	dodo	ave|dronte|extinguido|Mauricio|pájaro	
+1F9A5	perezoso	gandul|lento|vago	
+1F9A6	nutria	bromista|juguetón|pesca	
+1F9A7	orangután	mono|primate|simio	
+1F9A8	mofeta	apestar|hedor|mal olor|peste|tufo	
+1F9A9	flamenco	extravangante|ostentoso|tropical	
+1F9AA	ostra	buceo|perla	
+1F9AB	castor	roedor	
+1F9AC	bisonte	búfalo|cíbolo	
+1F9AD	foca	león marino	
+1F9AE	perro guía	accesibilidad|ciego|guía|invidente|lazarillo	
+1F9AF	bastón	accesibilidad|ceguera|ciega|ciego|invidente	
+1F9B0	pelo pelirrojo	pelirrojo|pelo|rojizo|rojo	
+1F9B1	pelo rizado	afro|bucle|rizado|rizo|tirabuzón	
+1F9B2	sin pelo	afeitado|bola de billar|calvo|quimioterapia	
+1F9B3	pelo blanco	blanco|cana|gris|pelo|viejo	
+1F9B4	hueso	esqueleto	
+1F9B5	pierna	extremidad|patada	
+1F9B6	pie	patada|pisotón	
+1F9B7	diente	dentista|molar|muela	
+1F9B8	personaje de superhéroe	bien|héroe|heroína|superhéroe|superheroína|superpoder	
+1F9B9	personaje de supervillano	mal|superpoder|supervillana|supervillano|villana|villano	
+1F9BA	chaleco de seguridad	chaleco|emergencia|seguridad	
+1F9BB	oreja con audífono	accesibilidad|audífono|prótesis auditiva|sordo	
+1F9BC	silla de ruedas eléctrica	accesibilidad	
+1F9BD	silla de ruedas manual	accesibilidad	
+1F9BE	brazo mecánico	accesibilidad|ortopedia|prótesis	
+1F9BF	pierna mecánica	accesibilidad|ortopedia|prótesis	
+1F9C0	cuña de queso	cuña|queso|trozo	
+1F9C1	magdalena	cupcake|dulce|repostería	
+1F9C2	sal	condimento|salero	
+1F9C3	tetrabrik	brick|cartón|envase|zumo	
+1F9C4	ajo	condimento|vampiro	
+1F9C5	cebolla	condimento|llorar	
+1F9C6	falafel	albóndiga|garbanzo	
+1F9C7	gofre	waffle	
+1F9C8	mantequilla	lácteo	
+1F9C9	mate	bebida|infusión	
+1F9CA	cubito de hielo	frío|iceberg	
+1F9CB	té de burbujas	boba|bubble tea|burbuja|leche|perla|té	
+1F9CC	trol	cuento de hadas|fantasía|monstruo	
+1F9CD	persona de pie	de pie|levantada|levantado|levantarse	
+1F9CE	persona de rodillas	arrodillada|arrodillado|arrodillarse|de rodillas	
+1F9CF	persona sorda	accesibilidad|escuchar|oído|oír|sordera	
+1F9D0	cara con monóculo	aristocrático|estirado	
+1F9D1	persona adulta	género|neutro	
+1F9D2	infante	crío|género|joven|neutro	
+1F9D3	persona mayor	adulto|género neutro|género no especificado|maduro|mayor	
+1F9D4	persona con barba	barbas|barbudo|persona	
+1F9D5	mujer con hiyab	hiyab|pañuelo	
+1F9D6	persona en una sauna	sauna|vapor	
+1F9D7	persona escalando	alpinista|escalador	
+1F9D8	persona en posición de loto	meditación|yoga	
+1F9D9	persona maga	bruja|brujo|hechicera|hechicero	
+1F9DA	hada	campanilla|oberón|puck|titania	
+1F9DB	vampiro	drácula|muerto viviente|no muerto	
+1F9DC	persona sirena	sirena|tritón	
+1F9DD	elfo	mágico	
+1F9DE	genio	lámpara	
+1F9DF	zombi	muerto viviente|no muerto	
+1F9E0	cerebro	inteligente	
+1F9E1	corazón naranja	corazón|emoción|naranja	
+1F9E2	gorra con visera	béisbol|gorra|visera	
+1F9E3	bufanda	abrigo|cuello	
+1F9E4	guantes	mano	
+1F9E5	abrigo	chaquetón	
+1F9E6	calcetines	pies|ropa	
+1F9E7	sobre rojo	buena suerte|hóngbāo|lai see|regalo	
+1F9E8	petardo	dinamita|explosivo|fuegos artificiales	
+1F9E9	pieza de puzle	conectar|pieza|pista|puzle|rompecabezas	
+1F9EA	tubo de ensayo	ciencia|experimento|laboratorio|química|químico	
+1F9EB	placa de petri	bacterias|biología|biólogo|cultivo|laboratorio	
+1F9EC	adn	biólogo|evolución|gen|genética|vida	
+1F9ED	brújula	compás|magnético|navegación|orientación	
+1F9EE	ábaco	cálculo|contar|matemáticas	
+1F9EF	extintor	apagar|extinguir|incendio	
+1F9F0	caja de herramientas	armario|herramienta|mecánico	
+1F9F1	ladrillo	arcilla|cemento|muro|pared	
+1F9F2	imán	atracción|herradura|magnético	
+1F9F3	equipaje	maleta|viajar	
+1F9F4	bote de crema	champú|crema|hidratante|protector solar	
+1F9F5	hilo	aguja|carrete|coser|costura	
+1F9F6	ovillo	bola|croché|punto|tejer	
+1F9F7	imperdible	pañal|punk rock	
+1F9F8	osito de peluche	juguete|oso|peluche	
+1F9F9	escoba	barrer|bruja|fregar	
+1F9FA	cesta	colada|cosecha|pícnic	
+1F9FB	rollo de papel	papel absorbente|papel higiénico	
+1F9FC	jabón	bañarse|enjabonarse|jabonera|lavarse|pastilla	
+1F9FD	esponja	absorbente|limpiar|poroso	
+1F9FE	recibo	contabilidad|prueba|teneduría de libros|testimonio	
+1F9FF	ojo turco	amuleto|mal de ojo|nazar|talismán	
+1FA70	zapatillas de ballet	bailar|balé|ballet|danza	
+1FA71	traje de baño de una pieza	bañador	
+1FA72	ropa interior	bañador|bragas|braguitas|calzoncillos|slip	
+1FA73	pantalones cortos	bañador|bermudas|calzoncillos|ropa interior|shorts	
+1FA74	chancla	chancla de dedo|chancleta|chinela|sandalia	
+1FA75	corazón azul claro	azul|celeste|cián|claro|corazón	
+1FA76	corazón gris	corazón|gris|pizarra|plata	
+1FA77	corazón rosa	amor|bonito|corazón|gustar|rosa	
+1FA78	gota de sangre	donación de sangre|donar sangre|herida|medicina|sangre	
+1FA79	tirita	apósito	
+1FA7A	estetoscopio	corazón|doctor|fonendoscopio|latido|medicina|médico	
+1FA7B	radiografía	doctor|doctora|esqueleto|huesos|médico|rayos	
+1FA7C	muleta	ayuda para la movilidad|bastón|discapacidad|lesión|palo	
+1FA80	yoyó	dieta|efecto|fluctuar|juguete	
+1FA81	cometa	juguete|planear|viento|volar	
+1FA82	paracaídas	ala delta|paracaidismo|paravela|volar	
+1FA83	bumerán	boomerang|rebotar	
+1FA84	varita mágica	bruja|hechicero|magia|mago|prestidigitación|varita	
+1FA85	piñata	caballito|celebración|fiesta	
+1FA86	muñeca rusa	babushka|mamushka|matrioska|rusia	
+1FA87	maracas	agitar|brasil|instrumento|movimiento|música|percusión	
+1FA88	flauta	flautín|instrumento|instrumento de viento madera|música	
+1FA89	arpa	amor|cupido|harpa|instrumento|música|orquesta	
+1FA8A	trombón	instrumento|jazz|metal|música|triste|viento	
+1FA8B	meteorito	apocalipsis|bola de fuego|caída|espacio|estrella|gravedad|roca	
+1FA8C	goma de borrar	borrar|corrección|deshacer|dibujar|eliminar|equivocación|error|escribir|goma|quitar	
+1FA8D	red con mango	atrapar|capturar|cazamariposas|cazar|malla|pescar|red	
+1FA8E	cofre de tesoro	botín|dinero|joyas|objetos de valor|oro|piedras preciosas|plata|premio|riqueza	
+1FA8F	pala	agujero|cavar|enterrar|excavar|hoyo|huerto|nieve|planta	
+1FA90	planeta con anillos	saturnino|saturno	
+1FA91	silla	asiento|sentarse	
+1FA92	cuchilla de afeitar	afeitado|afeitar|afilado|barbero|navaja	
+1FA93	hacha	cortar|dividir|hachuela|madera|talar	
+1FA94	lámpara de aceite	aceite|diya|lámpara	
+1FA95	banjo	banyo|cuerda|instrumento|música	
+1FA96	casco militar	casco|ejército|guerra|guerrero|soldado	
+1FA97	acordeón	concertina	
+1FA98	tamboril	conga|ritmo|tambor	
+1FA99	moneda	dinero|metal|oro|plata|tesoro	
+1FA9A	sierra de carpintería	carpintería|carpintero|herramienta|sierra|talar	
+1FA9B	destornillador	atornillador|herramienta|tornillo	
+1FA9C	escalera	escalar|escalerilla|escalón|peldaño	
+1FA9D	gancho	agarrar|anzuelo|atrapar|garfio	
+1FA9E	espejo	espéculo|reflector|reflejo	
+1FA9F	ventana	abertura|apertura|cristal|marco|transparente|vista	
+1FAA0	desatascador	fontanero|retrete|servicio|succión	
+1FAA1	aguja de coser	aguja|bordado|coser|hilar|punto|tejer	
+1FAA2	nudo	anudar|atar|enredar|trenzar	
+1FAA3	cubo	balde|barreño|cuba|cubeta	
+1FAA4	trampa de ratones	cebo|cepo|engañar|ratón|ratonera|trampa	
+1FAA5	cepillo de dientes	cepillo|dental|higiene|limpio|servicio	
+1FAA6	lápida	cementario|estela|sepulcro|tumba	
+1FAA7	letrero	anuncio|aviso|cartel|pancarta|poste	
+1FAA8	piedra	pedrusco|peña|peñasco|roca	
+1FAA9	bola de espejos	bailar|brillar|disco|discoteca|fiesta	
+1FAAA	carné de identidad	carné de conducir|credenciales|identificación|permiso|seguridad	
+1FAAB	batería baja	batería|carga baja|electrónico|energía baja|pila	
+1FAAC	hamsa	amuleto|Fátima|jamsa|mano|María|Miriam	
+1FAAD	abanico abierto	abanico|airear|bailar|calor|feria|flamenco	
+1FAAE	peineta	afro|peine|pelo	
+1FAAF	khanda	religión|sij|sijismo|sikh	
+1FAB0	mosca	basura|bicho|mal olor|podrido	
+1FAB1	gusano	lombriz|oruga|parásito	
+1FAB2	escarabajo	bicho|insecto	
+1FAB3	cucaracha	alimaña|bicho|insecto|plaga	
+1FAB4	planta de maceta	crecer|maceta|planta|tiesto	
+1FAB5	madera	hoguera|leña|madero|palos|tronco	
+1FAB6	pluma	ave|ligero|pájaro|plumaje	
+1FAB7	loto	budismo|flor|hinduismo|pureza	
+1FAB8	coral	arrecife|océano	
+1FAB9	nido vacío	anidación|anidamiento|anidar	
+1FABA	nido con huevos	anidación|anidamiento|anidar	
+1FABB	campanilla	boca de dragón|flor|jacinto|lavanda|lila|lupino	
+1FABC	medusa	invertebrado|marino|picadura|picar	
+1FABD	ala	ángel|angelical|ave|mitología|pájaro|volar	
+1FABE	árbol sin hojas	árbol|deshojado|estéril|invierno|madera|muerto|ramas|sequía|sin hojas|tronco	
+1FABF	oca	ave|ganso|graznar|pájaro	
+1FAC0	corazón humano	anatomía|cardiología|corazón|latido|órgano|pulso	
+1FAC1	pulmones	exhalar|inhalar|órgano|respiración|respirar	
+1FAC2	personas abrazándose	abrazo|adiós|despedida|gracias|saludo	
+1FAC3	hombre embarazado	barriga|embarazado|hinchado|hinchazón|inflado|lleno	
+1FAC4	persona embarazada	barriga|embarazo|gestación|hinchazón	
+1FAC5	persona con corona	majestad|monarca|monarquía|noble|real|realeza	
+1FAC6	huella dactilar	delito|detective|forense|huella|huella digital|identidad|misterio|rastro|seguridad	
+1FAC8	criatura peluda	bigfoot|bosque|críptido|gigante|monstruo|peludo|sasquatch|yeti	
+1FACC	mariposa monarca	cambio|esperanza|frágil|insecto|metamorfosis|migración|oruga|transformación	
+1FACD	orca	ballena|mar|marino|océano	
+1FACE	alce	animal|asta|ciervo canadiense|cuernos|mamífero|uapití	
+1FACF	burro	animal|asno|borrico|mamífero|mula|terco	
+1FAD0	arándanos	arándano|azul|baya|frutos del bosque|mirtilo	
+1FAD1	pimiento	ají|chile|morrón|rojo|verdura	
+1FAD2	aceituna	aperitivo|comida|oliva	
+1FAD3	pan sin levadura	arepa|naan|pita|tortilla	
+1FAD4	tamal	mejicano|mexicano|wrap	
+1FAD5	fondue	chocolate|olla|queso|suizo	
+1FAD6	tetera	bebida|infusión|té	
+1FAD7	líquido derramándose	bebida|derramar|vacío|vaso|verter	
+1FAD8	alubias	comida|habichuela roja|habichuelas|judía roja|judías|legumbre	
+1FAD9	tarro	almacenar|condimento|frasco|recipiente|salsa|vacío	
+1FADA	raíz de jengibre	cerveza|especia|garganta|raíz	
+1FADB	vaina	edamame|guisante|judías|legumbre|soja|verdura	
+1FADC	túberculo comestible	chirivía|comida|ensalada|huerto|nabo|rábano|raíz|remolacha|vegetariano|verdura	
+1FADD	pepinillo	aperitivo|condimento|encurtido|fermentar|pepino|salmuera	
+1FADF	salpicadura	gotear|líquido|mancha|manchar|pintura|salpicar|tinta	
+1FAE0	cara derritiéndose	calor|derretido|derretirse|desaparecer|fundirse|líquido	
+1FAE1	cara saludando	ejército|orden|saludo|sí|sol|vale	
+1FAE2	cara con ojos abiertos y boca tapada	alucinar|asombro|increíble|sorpresa|vergüenza	
+1FAE3	cara tapada con ojo espiando	espiar|fascinado|mirar|vistazo	
+1FAE4	cara con boca diagonal	decepción|decepcionado|escéptico|inseguro|jo|vaya	
+1FAE5	cara con línea de puntos	depresivo|deprimido|desaparecer|esconderse|introvertido|invisible	
+1FAE6	labio mordido	ansioso|incómodo|ligar|miedo|nervioso|preocupado	
+1FAE7	burbujas	bajo el agua|eructar|jabón|limpiar	
+1FAE8	cara temblorosa	shock|temblar|terremoto|vibrar	
+1FAE9	cara con ojeras	agotado|agotamiento|cansado|cansancio|cara|extenuación|extenuado|ojeras|ojos|sueño	
+1FAEA	cara deformada	ansiedad|conmocionado|hinchado|pánico|sorprendido|vulnerable	
+1FAEB	cara resquebrajándose	desmoronar|enmascarar|resiliencia|revelar|romper|tensión|transformación	
+1FAEF	nube de pelea	alboroto|altercado|bronca|desacuerdo|discusión|lucha|pelea	
+1FAF0	mano con dedo índice y pulgar cruzados	amor|caro|chasquido|corazón|dinero	
+1FAF1	mano hacia la derecha	a la derecha|derecha|mano	
+1FAF2	mano hacia la izquierda	a la izquierda|izquierda|mano	
+1FAF3	mano con la palma hacia abajo	bajar|descartar|fuera|no|quita|rechazar	
+1FAF4	mano con la palma hacia arriba	acércate|dame|ofrecer|trae|ven	
+1FAF5	dedo índice apuntándote a ti	apuntar|ti|tú	
+1FAF6	manos formando un corazón	amor	
+1FAF7	mano empujando hacia la izquierda	a la izquierda|choca esos cinco|detener|empujar|rechazar|stop	
+1FAF8	mano empujando hacia la derecha	a la derecha|choca esos cinco|detener|empujar|rechazar|stop	
+1FAF9	pulgar hacia la izquierda	agarrar|eso|esto|izquierda|neutral|señalar	
+1FAFA	pulgar hacia la derecha	agarrar|derecha|eso|esto|neutral|señalar	

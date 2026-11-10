@@ -1,8 +1,10 @@
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
+import java.io.File
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import vadiole.unicode.data.UnicodeData
 import vadiole.unicode.data.UnicodeData.Companion.HAN_SCHOOL
@@ -14,8 +16,8 @@ import vadiole.unicode.data.UnicodeData.Companion.SECOND_ALIAS
 import vadiole.unicode.data.UnicodeDataReader
 import vadiole.unicode.search.CharSearch
 import vadiole.unicode.search.SearchIndex
-import vadiole.unicode.search.SearchIndexBuilder
 import vadiole.unicode.search.SearchSource
+import vadiole.unicode.search.TestData
 import vadiole.unicode.search.UnicodeDataSource
 
 class GeneratorTest {
@@ -92,18 +94,15 @@ class GeneratorTest {
         val data = reader.data()
         val meanings = reader.meanings()
         val sources = arrayOf<SearchSource>(UnicodeDataSource(data) { meanings })
-        val builder = SearchIndexBuilder()
-        builder.beginSource()
-        sources[0].emit(builder)
-        val saved = ByteArrayOutputStream().also { builder.build().save(it, "key") }.toByteArray()
+        val saved = ByteArrayOutputStream().also { SearchIndex.build(sources).save(it, "key") }.toByteArray()
         val index = requireNotNull(SearchIndex.load(saved, "key"))
         val search = CharSearch(data, index, sources)
         assertArrayEquals(intArrayOf(0xAD), search.search("shy", 0).codePoints)
         assertArrayEquals(intArrayOf(0x4E00), search.search("alone", 0).codePoints)
         assertArrayEquals(intArrayOf(0x4E01), search.search("cjk 4e01", 0).codePoints)
         assertNull(SearchIndex.load(saved, "other"))
-        assertEquals(true, SearchIndex.hasKey(ByteArrayInputStream(saved), "key"))
-        assertEquals(false, SearchIndex.hasKey(ByteArrayInputStream(saved), "other"))
+        assertEquals(true, SearchIndex.hasKeyPrefix(ByteArrayInputStream(saved), "ke"))
+        assertEquals(false, SearchIndex.hasKeyPrefix(ByteArrayInputStream(saved), "other"))
         for (position in intArrayOf(8, 20, saved.size / 2, saved.size - 1)) {
             val corrupt = saved.copyOf()
             corrupt[position] = (corrupt[position] + 1).toByte()
@@ -111,5 +110,36 @@ class GeneratorTest {
         }
         val truncated = SearchIndex.load(saved.copyOf(saved.size / 2), "key")
         assertNull(truncated)
+    }
+
+    @Test
+    fun annotationFilesMatchTheLocaleFolders() {
+        val res = File("src/main/res")
+        val values = annotationQualifiers(res, "values")
+        assertEquals(values, annotationQualifiers(res, "raw"))
+        assertEquals(21, values.size)
+        for (qualifier in values) {
+            val file = File(res, "raw-$qualifier/annotations.txt")
+            val tag = languageTag(qualifier)
+            val annotations = TestData.annotations(qualifier)
+            val body = file.readBytes().let { it.copyOfRange(it.indexOf('\n'.code.toByte()) + 1, it.size) }
+            val checksum = java.util.zip.CRC32().also { it.update(body) }
+            assertEquals(qualifier, "$tag@%08x".format(checksum.value), annotations.key)
+            assertTrue(qualifier, annotations.size > 1500)
+            assertTrue(qualifier, File(res, "values-$qualifier/lang.xml").readText().contains("<string name=\"lang_tag\">$tag</string>"))
+        }
+        assertTrue(File(res, "values/lang.xml").readText().contains(">en</string>"))
+        assertEquals("cara sorridente", TestData.annotations("pt").name(0x1F600))
+        assertEquals("rosto risonho", TestData.annotations("pt-rBR").name(0x1F600))
+        assertEquals("rødt hjerte", TestData.annotations("nb").name(0x2764))
+        assertEquals("红心", TestData.annotations("zh-rCN").name(0x2764))
+    }
+
+    @Test
+    fun keywordsOfALocalizedFileAreOrdered() {
+        val (displayed, hidden) = orderLocalizedKeywords(listOf("<3", "Herz", "rotes herz", "143", "♥", "Liebe"), "rotes Herz")
+        assertEquals(listOf("Herz", "Liebe", "<3"), displayed)
+        assertEquals(listOf("143", "♥"), hidden)
+        assertEquals(listOf("Herz", "Liebe"), TestData.annotations("de").displayKeywords(0x1F9E1).take(2))
     }
 }

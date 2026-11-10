@@ -16,6 +16,8 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
     var sequenceCount = 0
         private set
     private var size = 0
+    private var last = 0
+    private var lastAt = 0
 
     fun set(text: String) {
         val utf8 = text.toByteArray(Charsets.UTF_8)
@@ -40,6 +42,7 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
                         inWord = true
                     }
                     if (size == bytes.size) bytes = bytes.copyOf(size * 2)
+                    last = b
                     bytes[size++] = (if (letter) b else b + 32).toByte()
                 } else if (inWord) {
                     end()
@@ -51,13 +54,21 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
             index += byteCount(b)
             val type = typeOf(cp)
             if (type == WORD) {
+                if (cp == HALF_VOICED || cp == HALF_SEMI_VOICED) {
+                    if (inWord) voice(cp - HALF_VOICED)
+                    continue
+                }
                 if (!inWord) {
                     if (count == maxCount) return
                     begin()
                     inWord = true
                 }
-                append(fold(cp))
-            } else if (type != MARK && inWord) {
+                val folded = fold(cp)
+                append(folded and FIRST_MASK)
+                if (folded ushr SECOND_SHIFT != 0) append(folded ushr SECOND_SHIFT)
+            } else if (type == MARK) {
+                if (inWord) mark(cp)
+            } else if (inWord) {
                 end()
                 inWord = false
             }
@@ -162,8 +173,40 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
         return true
     }
 
+    private fun mark(cp: Int) {
+        val base = last
+        if (base < 0x80) return
+        when (cp) {
+            VOICED, SEMI_VOICED -> voice(cp - VOICED)
+            in ACCENT_FIRST..ACCENT_LAST -> {
+                val composed = Normalizer.normalize(String(Character.toChars(base)) + cp.toChar(), Normalizer.Form.NFC)
+                if (composed.codePointCount(0, composed.length) == 1) replaceLast(composed.codePointAt(0))
+            }
+            in SCRIPT_MARK_FIRST..SCRIPT_MARK_LAST -> append(cp)
+        }
+    }
+
+    private fun voice(semi: Int) {
+        val base = last
+        val voiced = when {
+            semi == 0 && base == 0x3046 -> 0x3094
+            semi == 0 && base == 0x309D -> 0x309E
+            semi == 0 && (base in 0x304B..0x3061 && base and 1 == 1 || base in 0x3064..0x3068 && base and 1 == 0) -> base + 1
+            base in 0x306F..0x307B && (base - 0x306F) % 3 == 0 -> base + 1 + semi
+            else -> return
+        }
+        replaceLast(voiced)
+    }
+
+    private fun replaceLast(cp: Int) {
+        size = lastAt
+        append(cp)
+    }
+
     private fun append(cp: Int) {
         if (size + 4 > bytes.size) bytes = bytes.copyOf(bytes.size * 2)
+        last = cp
+        lastAt = size
         if (cp < 0x80) {
             bytes[size++] = cp.toByte()
         } else if (cp < 0x800) {
@@ -186,12 +229,34 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
         const val SPACE = 1
         const val SYMBOL = 2
         const val MARK = 3
+        const val SECOND_SHIFT = 21
+        const val FIRST_MASK = (1 shl SECOND_SHIFT) - 1
+        private const val VOICED = 0x3099
+        private const val SEMI_VOICED = 0x309A
+        private const val HALF_VOICED = 0xFF9E
+        private const val HALF_SEMI_VOICED = 0xFF9F
+        private const val ACCENT_FIRST = 0x300
+        private const val ACCENT_LAST = 0x36F
+        private const val SCRIPT_MARK_FIRST = 0x900
+        private const val SCRIPT_MARK_LAST = 0x109F
+        private const val KANA_SHIFT = 0x60
+        private const val FULL_WIDTH_SHIFT = 0xFEE0
+        private const val HALF_KANA_FIRST = 0xFF66
+        private const val HALF_KANA_LAST = 0xFF9D
+        private const val SHARP_S = 's'.code or ('s'.code shl SECOND_SHIFT)
+        private const val AE = 'a'.code or ('e'.code shl SECOND_SHIFT)
+        private const val OE = 'o'.code or ('e'.code shl SECOND_SHIFT)
+        private const val UNDECOMPOSED = "øođdħhıiłl"
         private const val LATIN_FIRST = 0xC0
         private const val LATIN_LAST = 0x24F
         private const val LATIN_ADDITIONAL_FIRST = 0x1E00
         private const val LATIN_ADDITIONAL_LAST = 0x1EFF
         private val latin = baseLetters(LATIN_FIRST, LATIN_LAST)
         private val latinAdditional = baseLetters(LATIN_ADDITIONAL_FIRST, LATIN_ADDITIONAL_LAST)
+        private val halfKana = CharArray(HALF_KANA_LAST - HALF_KANA_FIRST + 1) { offset ->
+            val full = Normalizer.normalize((HALF_KANA_FIRST + offset).toChar().toString(), Normalizer.Form.NFKC)[0]
+            if (full.code in 0x30A1..0x30F6) full - KANA_SHIFT else full
+        }
 
         fun byteCount(lead: Int): Int {
             val b = lead and 0xFF
@@ -222,7 +287,7 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
                 Character.OTHER_LETTER, Character.DECIMAL_DIGIT_NUMBER, Character.LETTER_NUMBER, Character.OTHER_NUMBER -> WORD
 
                 Character.SPACE_SEPARATOR, Character.LINE_SEPARATOR, Character.PARAGRAPH_SEPARATOR, Character.CONTROL -> SPACE
-                Character.NON_SPACING_MARK, Character.ENCLOSING_MARK, Character.FORMAT -> MARK
+                Character.NON_SPACING_MARK, Character.ENCLOSING_MARK, Character.COMBINING_SPACING_MARK, Character.FORMAT -> MARK
                 else -> SYMBOL
             }
         }
@@ -231,8 +296,15 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
             if (cp < 0x80) return if (cp >= 'A'.code && cp <= 'Z'.code) cp + 32 else cp
             val lower = Character.toLowerCase(cp)
             return when (lower) {
+                0xDF -> SHARP_S
+                0xE6 -> AE
+                0x153 -> OE
                 in LATIN_FIRST..LATIN_LAST -> latin[lower - LATIN_FIRST].code
                 in LATIN_ADDITIONAL_FIRST..LATIN_ADDITIONAL_LAST -> latinAdditional[lower - LATIN_ADDITIONAL_FIRST].code
+                0x3C2 -> 0x3C3
+                in 0x30A1..0x30F6, 0x30FD, 0x30FE -> lower - KANA_SHIFT
+                in HALF_KANA_FIRST..HALF_KANA_LAST -> halfKana[lower - HALF_KANA_FIRST].code
+                in 0xFF10..0xFF19, in 0xFF41..0xFF5A -> lower - FULL_WIDTH_SHIFT
                 else -> lower
             }
         }
@@ -240,7 +312,8 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
         private fun baseLetters(first: Int, last: Int) = CharArray(last - first + 1) { offset ->
             val char = Character.toLowerCase((first + offset).toChar())
             val base = Normalizer.normalize(char.toString(), Normalizer.Form.NFD)[0]
-            if (base.code < 0x80 && base.isLetter()) base else char
+            val plain = UNDECOMPOSED.indexOf(char)
+            if (plain >= 0 && plain % 2 == 0) UNDECOMPOSED[plain + 1] else if (base.code < 0x80 && base.isLetter()) base else char
         }
     }
 }

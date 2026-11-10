@@ -21,6 +21,20 @@ adb shell cmd locale set-app-locales vadiole.unicode.debug --locales ""
 
 The tag is BCP 47 (`pt-BR`, `zh-CN`), not the resource qualifier (`pt-rBR`). The first launch after an install or a locale change can still render the previous language, so check the visible text with `adb shell uiautomator dump` before taking a screenshot.
 
+## Languages
+
+The index key and where it came from are logged in debug builds:
+
+```sh
+adb logcat -s UnicodeSearch | grep "index "
+```
+
+`index en,de@<crc> ready from build` after a language change, `from cache` on the next launches, `index en` for English and for a language whose split is not installed. To test a missing split, build `./gradlew bundleDebug`, then `bundletool build-apks --connected-device` with a device spec that lists only some locales and `bundletool install-apks`.
+
+## Search row variants
+
+Debug builds show an `A`/`B` button over the search results: `A` puts the matched text after the name, `B` on a second line. Tap it to switch, or launch with `--ez debug.searchMatchInline true`. Release builds always use `B`.
+
 ## Screenshots
 
 ```sh
@@ -44,4 +58,4 @@ adb shell content call --uri content://vadiole.unicode.debug.searchgolden --meth
 adb shell content call --uri content://vadiole.unicode.debug.searchgolden --method memory
 ```
 
-The first runs the suite on the JVM and writes `app/build/reports/search/verify.txt`. `verify` installs the debug build and runs the same suite on the device, with every character shown. `time` reports the median and the slowest query of the suite, `memory` the Java heap held by the data, the index and the CJK meanings. `docs/search.md` describes the files and what to do after an intended change.
+The first runs the suite on the JVM and writes `app/build/reports/search/verify.txt`. `verify` installs the debug build and runs the same suite on the device, with every character shown and English only. `time` and `memory` include the language the running app has loaded, so open the app first. `time` reports the median and the slowest query of the suite, `memory` the Java heap held by the data, the index and the CJK meanings. `docs/search.md` describes the files and what to do after an intended change.

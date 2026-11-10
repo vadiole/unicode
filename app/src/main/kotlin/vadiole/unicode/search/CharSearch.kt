@@ -14,9 +14,14 @@ class SearchResults(
     val codeCount: Int,
     val codeLength: Int,
     val codeExact: Int,
+    val search: CharSearch?,
 ) {
+    fun match(position: Int): SearchMatch? = search?.match(this, position)
+
+    fun kind(position: Int): Int = search?.kind(this, position) ?: SearchKind.NAME
+
     companion object {
-        val EMPTY = SearchResults("", emptyArray(), IntArray(0), IntArray(0), 0, 0, 0, 0, -1)
+        val EMPTY = SearchResults("", emptyArray(), IntArray(0), IntArray(0), 0, 0, 0, 0, -1, null)
     }
 }
 
@@ -132,6 +137,11 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         val doc = results.docs[position]
         if (doc < 0) return null
         return SearchMatch(index.kind(doc), sources[index.sourceOf(doc)].text(index, doc, results.codePoints[position]))
+    }
+
+    fun kind(results: SearchResults, position: Int): Int {
+        val doc = results.docs[position]
+        return if (doc < 0) SearchKind.NAME else index.kind(doc)
     }
 
     private fun trim(text: String): String {
@@ -346,7 +356,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         }
         val words = if (names) Array(queryTokens.count) { queryTokens.token(it).uppercase(Locale.ROOT) } else emptyArray()
         val exact = if (codeExact >= 0) data.codePointAt(codeExact) else -1
-        return SearchResults(query, words, codePoints, docs, total, total - meanings, codeCount, codeLength, exact)
+        return SearchResults(query, words, codePoints, docs, total, total - meanings, codeCount, codeLength, exact, this)
     }
 
     private fun put(codePoints: IntArray, docs: IntArray, position: Int, char: Int, doc: Int) {
@@ -580,7 +590,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                 postings(word, if (wordOff[word + 1] - 1 - wordOff[word] == length) WHOLE else PREFIX)
             }
             if (!wholeOnly) {
-                if (charCount(start, length) >= MIN_INFIX) {
+                if (charCount(start, length) >= minInfix(start)) {
                     val firstByte = bytes[start]
                     val last = wordBytes.size - length
                     var i = 0
@@ -638,6 +648,11 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         var count = 0
         for (i in start until start + length) if (tokens.bytes[i].toInt() and 0xC0 != 0x80) count++
         return count
+    }
+
+    private fun minInfix(start: Int): Int {
+        val cp = SearchTokens.codePointAt(tokens.bytes, start)
+        return if (cp in KANA_FIRST..KANA_LAST || Character.isIdeographic(cp)) MIN_INFIX_CJK else MIN_INFIX
     }
 
     private fun lowerBound(start: Int, length: Int): Int {
@@ -939,6 +954,9 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         val SURROGATES = 0xD800..0xDFFF
         const val MAX_LITERALS = 16
         const val MIN_INFIX = 3
+        const val MIN_INFIX_CJK = 1
+        const val KANA_FIRST = 0x3040
+        const val KANA_LAST = 0x30FF
         const val MIN_SPLIT_FIRST = 3
         const val MIN_SPLIT_SECOND = 2
         const val MAX_SPLIT_LENGTH = 64

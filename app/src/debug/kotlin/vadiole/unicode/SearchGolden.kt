@@ -48,7 +48,8 @@ class SearchGolden : ContentProvider() {
     }
 
     private fun time(context: Context): String {
-        val search = UnicodeApp.unicodeStorage.search.createEngine()
+        val storage = UnicodeApp.unicodeStorage
+        val search = storage.search.createEngine(storage.search.annotations, cached = false)
         val queries = SearchSuite.parseQueries(asset(context, "queries.txt")).distinctBy { it.text }
         val times = LongArray(queries.size)
         var slowest = 0
@@ -71,7 +72,7 @@ class SearchGolden : ContentProvider() {
         val base = usedHeap()
         storage.data()
         val data = usedHeap()
-        val search = storage.search.createEngine()
+        val search = storage.search.createEngine(storage.search.annotations, cached = false)
         search.search("a", SearchSuite.FIRST_LIMIT)
         val index = usedHeap()
         val start = System.nanoTime()
@@ -91,7 +92,7 @@ class SearchGolden : ContentProvider() {
     }
 
     private fun liveEngine(): SearchEngine {
-        val search = UnicodeApp.unicodeStorage.search.createEngine()
+        val search = UnicodeApp.unicodeStorage.search.createEngine(null, cached = false)
         return SearchEngine { query, limit ->
             val results = search.search(query, limit)
             SearchHits(results.codePoints, results.total)
