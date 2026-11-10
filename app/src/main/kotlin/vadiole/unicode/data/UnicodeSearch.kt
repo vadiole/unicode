@@ -150,6 +150,6 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
         const val PAGE_SIZE = 64
         private const val TAG = "UnicodeSearch"
         private const val INDEX_NAME = "search"
-        private const val WARM_UP_QUERY = "warm up"
+        private const val WARM_UP_QUERY = "a e"
     }
 }

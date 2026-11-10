@@ -856,17 +856,3 @@ ar\\row	punctuation separates words -669; new source: alias +5; new source: keyw
 [a]	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
 NULL	new source: alias +1
 a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
-zwnj	new source: abbreviation +1
-zwsp	new source: abbreviation +1; new source: alias +2
-lrm	new source: abbreviation +1
-new line	new source: formal alias +1
-full stop	new source: alias +1; ranking
-line feed	new source: alias +1
--1	new source: keyword +1; punctuation separates words -5538
-<3	new source: keyword +2
-laugh	new source: keyword +5; new source: alias +1; new source: CJK meaning +57
-thumb	new source: sub-block heading +17; new source: CJK meaning +12; ranking
-heart suit	ranking
-100	new source: keyword +2; new source: alias +2; new source: sub-block heading +268; new source: CJK meaning +7; fixed: first page is capped at 64
-\x{6C34}	range characters are now present +1
-\x{1F468}\x{200D}\x{1F469}\x{200D}\x{1F467}	fixed: pasted or padded characters are recognised +4

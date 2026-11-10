@@ -25,7 +25,9 @@ class SearchGolden : ContentProvider() {
         val result = when (method) {
             "capture" -> capture(context)
             "verify" -> verify(context)
-            else -> throw IllegalArgumentException("Unknown method $method, expected capture or verify")
+            "time" -> time(context)
+            "memory" -> memory()
+            else -> throw IllegalArgumentException("Unknown method $method, expected capture, verify, time or memory")
         }
         return Bundle().apply { putString("result", result) }
     }
@@ -45,6 +47,49 @@ class SearchGolden : ContentProvider() {
         return report.summary
     }
 
+    private fun time(context: Context): String {
+        val search = UnicodeApp.unicodeStorage.search.createEngine()
+        val queries = SearchSuite.parseQueries(asset(context, "queries.txt")).distinctBy { it.text }
+        val times = LongArray(queries.size)
+        var slowest = 0
+        repeat(TIME_ROUNDS) {
+            queries.forEachIndexed { index, query ->
+                val start = System.nanoTime()
+                search.search(query.text, SearchSuite.FIRST_LIMIT)
+                val elapsed = System.nanoTime() - start
+                if (it == 0 || elapsed < times[index]) times[index] = elapsed
+            }
+        }
+        for (index in times.indices) if (times[index] > times[slowest]) slowest = index
+        val sorted = times.sortedArray()
+        return "queries ${times.size}, best of $TIME_ROUNDS: median ${sorted[sorted.size / 2] / 1000}us, p99 ${sorted[sorted.size * 99 / 100] / 1000}us, " +
+                "worst ${times[slowest] / 1000}us for ${SearchSuite.escape(queries[slowest].text).take(40)}"
+    }
+
+    private fun memory(): String {
+        val storage = UnicodeApp.unicodeStorage
+        val base = usedHeap()
+        storage.data()
+        val data = usedHeap()
+        val search = storage.search.createEngine()
+        search.search("a", SearchSuite.FIRST_LIMIT)
+        val index = usedHeap()
+        val start = System.nanoTime()
+        val meanings = storage.meanings()
+        val loaded = (System.nanoTime() - start) / 1000000
+        val all = usedHeap()
+        return "java heap: data ${data - base}, index and working arrays ${index - data}, meanings ${all - index} (${meanings.size} loaded in ${loaded}ms)"
+    }
+
+    private fun usedHeap(): Long {
+        val runtime = Runtime.getRuntime()
+        repeat(3) {
+            runtime.gc()
+            Thread.sleep(100)
+        }
+        return runtime.totalMemory() - runtime.freeMemory()
+    }
+
     private fun liveEngine(): SearchEngine {
         val search = UnicodeApp.unicodeStorage.search.createEngine()
         return SearchEngine { query, limit ->
@@ -56,6 +101,10 @@ class SearchGolden : ContentProvider() {
     private fun asset(context: Context, name: String) = context.assets.open("search/$name").bufferedReader().use { it.readText() }
 
     private fun output(context: Context, name: String) = File(File(context.filesDir, "search").also { it.mkdirs() }, name)
+
+    private companion object {
+        const val TIME_ROUNDS = 5
+    }
 
     override fun query(uri: Uri, projection: Array<String>?, selection: String?, selectionArgs: Array<String>?, sortOrder: String?) = null
     override fun getType(uri: Uri) = null
