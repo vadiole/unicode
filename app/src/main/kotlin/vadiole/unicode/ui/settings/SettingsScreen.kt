@@ -36,6 +36,7 @@ class SettingsScreen(
         fun onShowUnsupportedCharsChanged()
         fun onDockEnabledChanged()
         fun onCharacterScaleChanged(value: Float)
+        fun onCharacterScaleAdjusting(adjusting: Boolean)
         fun onEnlargeSmallCharsChanged(enabled: Boolean)
         fun onTableRevealStarted(onCancel: () -> Unit)
         fun onTableRevealEnded()
@@ -63,6 +64,7 @@ class SettingsScreen(
         }
         slider.onInteractionChanged = { active ->
             adjustingSize = active
+            delegate.onCharacterScaleAdjusting(active)
             if (!active) userConfig.tableCharacterScale = slider.value
             if (active) revealAppearance() else revealLayout.restore()
         }

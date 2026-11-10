@@ -16,6 +16,7 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
 import kotlin.math.abs
+import kotlin.math.round
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.Screen
 
@@ -104,7 +105,7 @@ class Nav(private val container: FrameLayout) {
                 val t = (f * DURATION).toLong()
                 screen.translationX = offset * (1f - f)
                 screen.alpha = fadeGate(t)
-                previous?.translationX = -offset * f
+                previous?.translationX = round(-offset * f)
             },
             onEnd = {
                 screen.translationX = 0f
@@ -192,7 +193,7 @@ class Nav(private val container: FrameLayout) {
             onUpdate = { f ->
                 top.translationX = offset * f
                 top.alpha = 1f - f
-                previous.translationX = -offset * (1f - f)
+                previous.translationX = round(-offset * (1f - f))
             },
             onEnd = {
                 previous.translationX = 0f

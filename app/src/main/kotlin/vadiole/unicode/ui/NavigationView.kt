@@ -94,6 +94,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         override fun onShowUnsupportedCharsChanged() = tableScreen.reloadChars()
         override fun onDockEnabledChanged() = applyDockEnabled()
         override fun onCharacterScaleChanged(value: Float) = tableScreen.setCharacterScale(value)
+        override fun onCharacterScaleAdjusting(adjusting: Boolean) = tableScreen.setCharacterScaleAdjusting(adjusting)
         override fun onEnlargeSmallCharsChanged(enabled: Boolean) = tableScreen.setEnlargeSmallChars(enabled)
         override fun onTableRevealStarted(onCancel: () -> Unit) = nav.peekPrevious(onCancel)
         override fun onTableRevealEnded() = nav.endPeek()

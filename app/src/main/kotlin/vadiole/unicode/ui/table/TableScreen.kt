@@ -109,7 +109,13 @@ class TableScreen(
             val cell = holder.itemView as CharRow
             val codePoints = tableController.getChars(position, spanCount)
             val abbreviations = tableController.abbreviations
+            cell.characterScale = characterScale
+            cell.enlargeSmallChars = enlargeSmallChars
             cell.bind(codePoints, abbreviations)
+        }
+
+        override fun onViewRecycled(holder: CollectionView.Cell) {
+            (holder.itemView as CharRow).releaseSprites()
         }
     }
     private val searchResultCellDelegate = object : SearchResultCell.Delegate {
@@ -301,7 +307,7 @@ class TableScreen(
             fastScrollView.setScrollProgress(tableController.scrollScale?.toThumb(progress) ?: progress)
         }
     }
-    private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate).apply {
+    private val tableView: TableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate).apply {
         addOnChildAttachStateChangeListener(object : RecyclerView.OnChildAttachStateChangeListener {
             override fun onChildViewAttachedToWindow(view: View) {
                 (view as CharRow).characterScale = characterScale
@@ -738,6 +744,11 @@ class TableScreen(
     fun setCharacterScale(value: Float) {
         characterScale = value
         forEachRow { it.characterScale = value }
+        tableView.onCharacterScaleChanged()
+    }
+
+    fun setCharacterScaleAdjusting(adjusting: Boolean) {
+        tableView.setScaleAdjusting(adjusting)
     }
 
     fun setEnlargeSmallChars(enabled: Boolean) {

@@ -2,8 +2,11 @@ package vadiole.unicode.ui.table
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
+import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
@@ -50,7 +53,7 @@ class CharRow(
     private val longClickDuration: Long = ViewConfiguration.getLongPressTimeout().toLong()
     private val ripplePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val baseCharSize = 144f.dp(context) / count
-    private val charSize: Float
+    val charSize: Float
         get() = baseCharSize * characterScale
     private val abbreviationSize: Float
         get() = charSize * 0.5f
@@ -77,6 +80,22 @@ class CharRow(
     private val inkPivotsX = FloatArray(count)
     private val inkPivotsY = FloatArray(count)
     private val charRipples: BooleanArray = BooleanArray(count)
+    private val spritePaint = Paint(Paint.FILTER_BITMAP_FLAG)
+    private val spriteSource = Rect()
+    private val spriteTarget = RectF()
+    private val isSprite = BooleanArray(count)
+    private val spriteInk = IntArray(count * 4)
+    private var hasEmojiCandidates = false
+    private var spriteGeneration = 0
+    private var sprites: Bitmap? = null
+    var spriteTextSize = 0f
+        private set
+    var isSpritePreview = false
+        private set
+    private val previewTintPaint = Paint().apply { color = PREVIEW_TINT }
+    private val stretchedTintPaint = Paint().apply { color = STRETCHED_TINT }
+    val hasEmojiSprites: Boolean
+        get() = spriteTextSize > 0f
     private val charCoordsX: FloatArray = FloatArray(count)
     private var charCoordY: Float = 0f
     private var abbreviationCoordY: Float = 0f
@@ -105,11 +124,111 @@ class CharRow(
         this.abbreviations = abbreviations
         if (enlargeSmallChars) loadInk()
         updateInkTransforms()
+        hasEmojiCandidates = false
+        for (value in codePoints.storage) {
+            if (EmojiGlyphs.isCandidate(value)) {
+                hasEmojiCandidates = true
+                break
+            }
+        }
+        if (hasEmojiCandidates) loadSprites(charSize * PREVIEW_SCALE) else releaseSprites()
         removeCallbacks(clearHighlightRunnable)
         clearHighlight()
         charRipples.fill(false)
         clearRipple()
         invalidate()
+    }
+
+    fun sharpenEmoji(textSize: Float, sharpener: EmojiSharpener, onDone: Runnable) {
+        val generation = spriteGeneration
+        val chars = arrayOfNulls<String>(count)
+        val storage = codePoints.storage
+        for (index in storage.indices) {
+            if (isSprite[index]) chars[index] = CodePoint(storage[index]).char
+        }
+        sharpener.render(chars, textSize) { strip, ink ->
+            if (generation == spriteGeneration) {
+                sprites?.let(EmojiGlyphs::releaseStrip)
+                sprites = strip
+                ink.copyInto(spriteInk)
+                spriteTextSize = textSize
+                isSpritePreview = false
+                invalidate()
+            }
+            onDone.run()
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        restoreSprites()
+    }
+
+    fun releaseSprites() {
+        spriteGeneration++
+        spriteTextSize = 0f
+        sprites?.let(EmojiGlyphs::releaseStrip)
+        sprites = null
+    }
+
+    fun restoreSprites() {
+        if (hasEmojiCandidates && spriteTextSize == 0f) {
+            loadSprites(charSize * PREVIEW_SCALE)
+            invalidate()
+        }
+    }
+
+    private fun loadSprites(textSize: Float) {
+        spriteGeneration++
+        spriteTextSize = 0f
+        var strip: Bitmap? = null
+        val storage = codePoints.storage
+        for (index in storage.indices) {
+            isSprite[index] = false
+            val codePoint = CodePoint(storage[index])
+            if (!EmojiGlyphs.mayBeColored(codePoint.value) || abbreviations.containsKey(codePoint)) continue
+            val target = strip ?: obtainSprites(EmojiGlyphs.cellSize(textSize)).also {
+                EmojiGlyphs.painter.begin(it, textSize)
+                strip = it
+            }
+            if (EmojiGlyphs.draw(target, codePoint.value, codePoint.char, index, spriteInk)) {
+                GlyphInk.load(codePoint, inkBoxes, index * 4)
+                isSprite[index] = true
+                spriteTextSize = textSize
+                isSpritePreview = true
+            }
+        }
+        if (strip != null) EmojiGlyphs.painter.end()
+        if (spriteTextSize == 0f) releaseSprites()
+    }
+
+    private fun obtainSprites(cell: Int): Bitmap {
+        val current = sprites
+        if (current != null && current.height == cell) return current
+        current?.let(EmojiGlyphs::releaseStrip)
+        return EmojiGlyphs.obtainStrip(cell * count, cell).also { sprites = it }
+    }
+
+    private fun drawSprite(canvas: Canvas, index: Int, bitmap: Bitmap): Boolean {
+        val offset = index * 4
+        val centerX = charCoordsX[index]
+        val size = charSize
+        if (spriteInk[offset + 2] <= spriteInk[offset] || spriteInk[offset + 3] <= spriteInk[offset + 1]) return false
+        spriteSource.set(spriteInk[offset], spriteInk[offset + 1], spriteInk[offset + 2], spriteInk[offset + 3])
+        spriteTarget.set(
+            centerX + inkBoxes[offset] * size,
+            charCoordY + inkBoxes[offset + 1] * size,
+            centerX + inkBoxes[offset + 2] * size,
+            charCoordY + inkBoxes[offset + 3] * size,
+        )
+        canvas.drawBitmap(bitmap, spriteSource, spriteTarget, spritePaint)
+        if (EmojiGlyphs.showIndicators) {
+            when {
+                isSpritePreview -> canvas.drawRect(spriteTarget, previewTintPaint)
+                spriteTextSize != size -> canvas.drawRect(spriteTarget, stretchedTintPaint)
+            }
+        }
+        return true
     }
 
     fun highlightChar(index: Int) {
@@ -207,6 +326,7 @@ class CharRow(
     }
 
     override fun onDetachedFromWindow() {
+        releaseSprites()
         clearRipple()
         removeCallbacks(clearHighlightRunnable)
         clearHighlight()
@@ -246,6 +366,8 @@ class CharRow(
                 canvas.drawCircle(charPivotX, charPivotY, rippleRadius, ripplePaint)
             }
             val scale = inkScales[index]
+            val bitmap = sprites
+            if (spriteTextSize > 0f && isSprite[index] && bitmap != null && drawSprite(canvas, index, bitmap)) return@forEachIndexed
             if (scale > 1f) {
                 val save = canvas.save()
                 canvas.scale(scale, scale, inkPivotsX[index], inkPivotsY[index])
@@ -325,5 +447,8 @@ class CharRow(
         val EMPTY_STATE = intArrayOf()
         const val SMALL_EXTENT = 0.6f
         const val MAX_BOOST = 2f
+        const val PREVIEW_SCALE = 0.5f
+        const val PREVIEW_TINT = 0x66FF3B30
+        const val STRETCHED_TINT = 0x66007AFF
     }
 }
