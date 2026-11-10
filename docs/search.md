@@ -97,6 +97,7 @@ Rules the table follows:
 - `ensure` compares the key of the header with the last one asked for. A new key builds an index for English plus that file while the old index keeps answering, replaces it at once, runs the active query again and drops a build that is no longer the latest. The stub has no key of its own, so English shown for a missing language split is cached as `en` and never under a language.
 - A localized short name is an exact alias (row 2), a localized keyword a keyword (rows 3, 10, 15), exactly as the English ones. English queries can gain results from Latin words in a localized file (`smiley` in German).
 - Details and search rows show the localized short name and keywords when the file has the character, the English ones otherwise.
+- A search row shows the text a result matched by on a second line when it is not the formal name. `SearchHighlighter` marks the query words in the name and in that line: it folds the text as the index does and maps the offsets back, so `strasse` marks `Straße` and hiragana marks katakana. The second line is highlighted off the main thread and cached with the match.
 
 ## Regression suite
 

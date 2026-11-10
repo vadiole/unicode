@@ -23,7 +23,7 @@ class SearchController(
     val meaningsStart: Int
         get() = results.meaningsStart
     private var isLoadingMore = false
-    private var matches = arrayOfNulls<String>(0)
+    private var matches = arrayOfNulls<CharSequence>(0)
 
     suspend fun loadRecents() {
         val codePoints = recentRepository.getRecents()
@@ -67,13 +67,16 @@ class SearchController(
 
     fun hasMatch(position: Int): Boolean = results.kind(position) != SearchKind.NAME
 
-    fun match(position: Int): String? = matches[position]
+    fun match(position: Int): CharSequence? = matches[position]
 
-    suspend fun loadMatch(position: Int): String {
+    suspend fun loadMatch(position: Int, highlighter: SearchHighlighter): CharSequence {
         val current = results
         val text = worker {
             val text = current.match(position)?.text.orEmpty()
-            if (text.equals(unicodeStorage.data().name(current.codePoints[position]), ignoreCase = true)) "" else text
+            when {
+                text.equals(unicodeStorage.data().name(current.codePoints[position]), ignoreCase = true) -> ""
+                else -> synchronized(highlighter) { highlighter.highlight(text, current.tokens) }
+            }
         }
         if (current === results) matches[position] = text
         return text

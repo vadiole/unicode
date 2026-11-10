@@ -237,8 +237,8 @@ class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
         private const val HALF_SEMI_VOICED = 0xFF9F
         private const val ACCENT_FIRST = 0x300
         private const val ACCENT_LAST = 0x36F
-        private const val SCRIPT_MARK_FIRST = 0x900
-        private const val SCRIPT_MARK_LAST = 0x109F
+        const val SCRIPT_MARK_FIRST = 0x900
+        const val SCRIPT_MARK_LAST = 0x109F
         private const val KANA_SHIFT = 0x60
         private const val FULL_WIDTH_SHIFT = 0xFEE0
         private const val HALF_KANA_FIRST = 0xFF66

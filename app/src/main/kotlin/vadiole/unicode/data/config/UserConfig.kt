@@ -25,7 +25,6 @@ class UserConfig(context: Context) {
         private const val key_dockScroll = "dockScroll"
         private const val key_tableCharacterScale = "tableCharacterScale"
         private const val key_enlargeSmallChars = "enlargeSmallChars"
-        private const val key_searchMatchInline = "searchMatchInline"
     }
 
     private val sharedPreferences = context.getSharedPreferences("unicode", Context.MODE_PRIVATE)
@@ -133,12 +132,6 @@ class UserConfig(context: Context) {
         get() = sharedPreferences.getBoolean(key_enlargeSmallChars, false)
         set(value) {
             editor.putBoolean(key_enlargeSmallChars, value).apply()
-        }
-
-    var searchMatchInline: Boolean
-        get() = BuildConfig.DEBUG && sharedPreferences.getBoolean(key_searchMatchInline, false)
-        set(value) {
-            editor.putBoolean(key_searchMatchInline, value).apply()
         }
 
     var dockEnabled: Boolean

@@ -31,10 +31,6 @@ adb logcat -s UnicodeSearch | grep "index "
 
 `index en,de@<crc> ready from build` after a language change, `from cache` on the next launches, `index en` for English and for a language whose split is not installed. To test a missing split, build `./gradlew bundleDebug`, then `bundletool build-apks --connected-device` with a device spec that lists only some locales and `bundletool install-apks`.
 
-## Search row variants
-
-Debug builds show an `A`/`B` button over the search results: `A` puts the matched text after the name, `B` on a second line. Tap it to switch, or launch with `--ez debug.searchMatchInline true`. Release builds always use `B`.
-
 ## Screenshots
 
 ```sh

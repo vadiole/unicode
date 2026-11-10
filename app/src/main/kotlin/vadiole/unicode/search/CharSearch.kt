@@ -365,7 +365,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             val key = top[k++]
             put(codePoints, docs, n++, ((key ushr DOC_BITS) and CHAR_MASK).toInt(), (key and DOC_MASK.toLong()).toInt())
         }
-        val words = if (names) Array(queryTokens.count) { queryTokens.token(it).uppercase(Locale.ROOT) } else emptyArray()
+        val words = if (names) Array(queryTokens.count) { queryTokens.token(it) } else emptyArray()
         val exact = if (codeExact >= 0) data.codePointAt(codeExact) else -1
         return SearchResults(query, words, codePoints, docs, total, total - meanings, codeCount, codeLength, exact, this)
     }
