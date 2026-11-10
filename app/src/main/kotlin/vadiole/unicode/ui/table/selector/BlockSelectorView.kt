@@ -61,6 +61,19 @@ class BlockSelectorView(
     private var rowWidth = 0
     private var viewportHeight = 0
     private var maxScrollPosition = 0f
+    private var currentPosition = -1
+    private var pressedCell: BlockSelectorCell? = null
+    private val pressCurrent = Runnable {
+        val cell = blockSelectorLayoutManager.findViewByPosition(currentPosition) as? BlockSelectorCell ?: return@Runnable
+        cell.background.setHotspot(cell.width / 2f, cell.height / 2f)
+        cell.isPressed = true
+        pressedCell = cell
+        post(releaseCurrent)
+    }
+    private val releaseCurrent = Runnable {
+        pressedCell?.isPressed = false
+        pressedCell = null
+    }
 
     init {
         recycledViewPool.setMaxRecycledViews(0, 32)
@@ -165,6 +178,32 @@ class BlockSelectorView(
         blockSelectorLayoutManager.scrollToPositionWithOffset(position, -offset)
     }
 
+    fun showCurrent(position: Int) {
+        removeCallbacks(pressCurrent)
+        removeCallbacks(releaseCurrent)
+        if (position < 0) return
+        if (rowWidth == 0) rowWidth = calculateWidth() - paddingLeft - paddingRight
+        val viewport = (if (height > 0) height else calculateHeight()) - paddingTop - paddingBottom
+        if (!isRowVisible(position, viewport)) {
+            blockSelectorLayoutManager.scrollToPositionWithOffset(position, (viewport - rowHeight(position)) / 2)
+        }
+        currentPosition = position
+        postDelayed(pressCurrent, CURRENT_RIPPLE_DELAY)
+    }
+
+    private fun isRowVisible(position: Int, viewport: Int): Boolean {
+        if (height > 0) {
+            val view = blockSelectorLayoutManager.findViewByPosition(position) ?: return false
+            return view.top >= paddingTop && view.bottom <= paddingTop + viewport
+        }
+        var bottom = 0
+        for (row in 0..position) {
+            bottom += rowHeight(row)
+            if (bottom > viewport) return false
+        }
+        return true
+    }
+
     fun calculateWidth(): Int {
         val displayWidth = context.resources.displayMetrics.widthPixels
         return 500.dp(context).coerceAtMost((displayWidth * .95f).toInt())
@@ -176,6 +215,7 @@ class BlockSelectorView(
     }
 
     companion object {
+        private const val CURRENT_RIPPLE_DELAY = 200L
         private val showInterpolator = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     }
 }

@@ -628,6 +628,7 @@ class TableScreen(
             popup.reopen()
             return
         }
+        popup.view.showCurrent(blockList.blocks.indexOf(tableView.currentBlock()))
         val xOffset = (topBar.width - popup.view.calculateWidth()) / 2
         val yOffset = (-8).dp(context)
         popup.setAnchorX(if (topBar.centerTitle) Float.NaN else 0f)
