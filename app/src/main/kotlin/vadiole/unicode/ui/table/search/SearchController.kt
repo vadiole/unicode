@@ -67,19 +67,23 @@ class SearchController(
 
     fun hasMatch(position: Int): Boolean = results.kind(position) != SearchKind.NAME
 
-    fun match(position: Int): CharSequence? = matches[position]
+    fun match(position: Int, highlighter: SearchHighlighter): CharSequence? {
+        val cached = matches[position]
+        if (cached != null || results.kind(position) == SearchKind.MEANING) return cached
+        return resolveMatch(results, position, highlighter).also { matches[position] = it }
+    }
 
     suspend fun loadMatch(position: Int, highlighter: SearchHighlighter): CharSequence {
         val current = results
-        val text = worker {
-            val text = current.match(position)?.text.orEmpty()
-            when {
-                text.equals(unicodeStorage.data().name(current.codePoints[position]), ignoreCase = true) -> ""
-                else -> synchronized(highlighter) { highlighter.highlight(text, current.tokens) }
-            }
-        }
+        val text = worker { resolveMatch(current, position, highlighter) }
         if (current === results) matches[position] = text
         return text
+    }
+
+    private fun resolveMatch(current: SearchResults, position: Int, highlighter: SearchHighlighter): CharSequence {
+        val text = current.match(position)?.text.orEmpty()
+        if (text.equals(unicodeStorage.data().name(current.codePoints[position]), ignoreCase = true)) return ""
+        return synchronized(highlighter) { highlighter.highlight(text, current.tokens) }
     }
 
     fun result(position: Int): SearchResult {
@@ -91,7 +95,6 @@ class SearchController(
             SearchResult(CodePoint(codePoint), name)
         }
     }
-
 
     private companion object {
         const val LOAD_MORE_DISTANCE = 16

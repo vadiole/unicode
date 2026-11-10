@@ -25,7 +25,7 @@ class SearchHighlighter(private val color: Int) {
         for (token in tokens) {
             val len = token.length
             if (len == 0) continue
-            var bestPriority = 7
+            var bestPriority = if (len >= MIN_INSIDE || token[0].code >= 0x80) 8 else 7
             var bestStart = -1
             var pos = folded.indexOf(token)
             while (pos >= 0) {
@@ -105,12 +105,22 @@ class SearchHighlighter(private val color: Int) {
         val atStart = pos == 0
         val atEnd = end == folded.length
         if (atStart && atEnd) return 1
-        val beforeIsSpace = !atStart && folded[pos - 1] == ' '
-        val afterIsSpace = !atEnd && folded[end] == ' '
-        if (atEnd && beforeIsSpace) return 2
-        if (atStart && afterIsSpace) return 3
+        val wordStart = atStart || !isWord(folded[pos - 1])
+        val wordEnd = atEnd || !isWord(folded[end])
+        if (!wordStart) return 7
+        if (atEnd) return 2
+        if (atStart && wordEnd) return 3
         if (atStart) return 4
-        if (beforeIsSpace && afterIsSpace) return 5
+        if (wordEnd) return 5
         return 6
+    }
+
+    private fun isWord(char: Char): Boolean {
+        val type = SearchTokens.typeOf(char.code)
+        return type == SearchTokens.WORD || type == SearchTokens.MARK
+    }
+
+    private companion object {
+        const val MIN_INSIDE = 3
     }
 }

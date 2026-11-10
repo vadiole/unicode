@@ -174,7 +174,7 @@ class TableScreen(
 
     private fun bindMatch(view: SearchResultCell, result: SearchResult, index: Int) {
         if (!searchController.hasMatch(index)) return
-        val match = searchController.match(index)
+        val match = searchController.match(index, matchHighlighter)
         if (match != null) {
             view.bindMatch(match.ifEmpty { null })
             return
