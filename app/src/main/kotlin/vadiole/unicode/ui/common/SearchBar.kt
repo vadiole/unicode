@@ -11,9 +11,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.dynamicanimation.animation.FloatValueHolder
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.R
 import vadiole.unicode.ui.extension.onClick
 import kotlin.math.PI
@@ -94,15 +91,11 @@ class SearchBar(
         addView(actionButton)
     }
 
-    private val progressHolder = FloatValueHolder(0f)
-    private val progressSpring = SpringAnimation(progressHolder).apply {
-        spring = SpringForce(0f).apply {
-            dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-            stiffness = 500f
-        }
-        setMinimumVisibleChange(0.001f)
-        addUpdateListener { _, value, _ -> applyProgress(value.coerceIn(0f, 1f)) }
-    }
+    private val progressSpring = SpringAnimator(
+        stiffness = 500f,
+        minVisibleChange = 0.001f,
+        onUpdate = { applyProgress(it.coerceIn(0f, 1f)) },
+    )
 
     init {
         clipChildren = false
@@ -144,7 +137,7 @@ class SearchBar(
     }
 
     fun scrub(p: Float) {
-        progressHolder.value = p
+        progressSpring.value = p
         applyProgress(p)
     }
 
@@ -153,7 +146,7 @@ class SearchBar(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
-        val fieldWidth = (fieldRight(width, progressHolder.value.coerceIn(0f, 1f)) - edgePadding).coerceAtLeast(0)
+        val fieldWidth = (fieldRight(width, progressSpring.value.coerceIn(0f, 1f)) - edgePadding).coerceAtLeast(0)
         surfaceView.measure(exactly(width), exactly(height))
         searchField.measure(exactly(fieldWidth), exactly(buttonHeight))
         actionContainer.measure(exactly(buttonWidth), exactly(buttonHeight))
@@ -164,7 +157,7 @@ class SearchBar(
         val width = right - left
         val rowTop = fieldTop - touchExtension
         surfaceView.layout(0, 0, width, bottom - top)
-        layoutField(progressHolder.value.coerceIn(0f, 1f))
+        layoutField(progressSpring.value.coerceIn(0f, 1f))
         val buttonRight = if (atTop) width - edgePadding else width
         val buttonLeft = buttonRight - buttonWidth
         actionContainer.layout(buttonLeft, rowTop, buttonRight, rowTop + buttonHeight)
@@ -204,11 +197,11 @@ class SearchBar(
     private fun animateProgress(target: Float) {
         if (!animatorsEnabled) {
             progressSpring.cancel()
-            progressHolder.value = target
+            progressSpring.value = target
             applyProgress(target)
             return
         }
-        progressSpring.animateToFinalPosition(target)
+        progressSpring.animateTo(target)
     }
 
     private fun applyProgress(p: Float, notify: Boolean = true) {

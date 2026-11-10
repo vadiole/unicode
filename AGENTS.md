@@ -11,14 +11,14 @@
 - Screens extend `Screen : FrameLayout, CoroutineScope` and cancel their scope in `onDetachedFromWindow`.
 - UI is views in kotlin, navigation via custom `NavigationView : FrameLayout`.
 - `Nav` manages the screen stack and screen transitions, including predictive back; `NavigationView` coordinates screens and the character details sheet.
-- Motion uses spring animations (`androidx.dynamicanimation`), rounded surfaces use Squircle.
+- Motion uses our own springs (`ui/common/Spring.kt` core, `SpringAnimator` frame driver), rounded surfaces use Squircle.
 - A plain `Controller` class owns data for a screen; a `Delegate` interface forwards events up.
 - Performance is high: no heavy operations in often called methods like drawing or touch.
 - Memory usage: no boxing for large data, object reuse if possible.
 - `ui/common/`: UI component library, e.g. `Dp.kt`, `Typeface.kt`, `Screen.kt`, `Squircle.kt`, `TopBar.kt` etc.
 - colors in `colors.xml`
 - no xml layouts, no compose, no ContextCompat
-- Tests are only the search regression suite (`docs/search.md`): JVM tests in `app/src/testDebug` run with `./gradlew testDebugUnitTest`, JUnit is the only test dependency. Do not add other tests without asking.
+- Tests are the search regression suite (`docs/search.md`) and the spring contract (`SpringTest`): JVM tests in `app/src/testDebug` run with `./gradlew testDebugUnitTest`, JUnit is the only test dependency. Do not add other tests without asking.
 - After changing search or its data run `tools/search-golden.sh verify <serial>`.
 - After completing a task or fix, build and launch the app: `./gradlew installDebug && adb shell am start -n vadiole.unicode.debug/vadiole.unicode.ui.UnicodeActivity` 
 - Device testing (debug config presets, per-app language, screenshots, search goldens): `docs/testing.md`.

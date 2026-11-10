@@ -27,9 +27,6 @@ import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction
 import android.widget.SeekBar
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.ColorUtils
-import androidx.dynamicanimation.animation.FloatValueHolder
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -131,20 +128,20 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private var announced: String? = null
 
     private var press = 0f
-    private val pressProgress = FloatValueHolder(0f)
-    private val pressSpring = SpringAnimation(pressProgress).apply {
-        setMinimumVisibleChange(0.002f)
-        spring = SpringForce(0f).setStiffness(SPRING_STIFFNESS).setDampingRatio(PRESS_DAMPING)
-        addUpdateListener { _, value, _ ->
-            press = value
+    private val pressSpring = SpringAnimator(
+        SPRING_STIFFNESS,
+        PRESS_DAMPING,
+        minVisibleChange = 0.002f,
+        onUpdate = {
+            press = it
             invalidateShapes()
-        }
-    }
-    private val valueSpring = SpringAnimation(FloatValueHolder(0f)).apply {
-        setMinimumVisibleChange(0.0005f)
-        spring = SpringForce(0f).setStiffness(SPRING_STIFFNESS).setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
-        addUpdateListener { _, fraction, _ -> applyUserValue((range.start + fraction * span).coerceIn(range), haptics = false) }
-        addEndListener { _, canceled, _, _ ->
+        },
+    )
+    private val valueSpring = SpringAnimator(
+        SPRING_STIFFNESS,
+        minVisibleChange = 0.0005f,
+        onUpdate = { applyUserValue((range.start + it * span).coerceIn(range), haptics = false) },
+        onEnd = { canceled ->
             if (!canceled) {
                 applyUserValue(springTarget, haptics = false)
                 if (flingingToDetent) click.perform()
@@ -154,8 +151,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
                 setInteracting(false)
                 updateExclusionRects()
             }
-        }
-    }
+        },
+    )
 
     init {
         require(range.endInclusive > range.start)
@@ -418,11 +415,11 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
 
     private fun animatePress(target: Float) {
         if (animatorsEnabled) {
-            pressSpring.animateToFinalPosition(target)
+            pressSpring.animateTo(target)
             return
         }
         pressSpring.cancel()
-        pressProgress.value = target
+        pressSpring.value = target
         press = target
         invalidateShapes()
     }
@@ -436,14 +433,15 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             updateExclusionRects()
             return
         }
-        springTo(target, SPRING_STIFFNESS, SpringForce.DAMPING_RATIO_NO_BOUNCY)
+        springTo(target, SPRING_STIFFNESS, 1f)
     }
 
     private fun springTo(target: Float, stiffness: Float, dampingRatio: Float) {
         springTarget = target
-        valueSpring.spring.setStiffness(stiffness).setDampingRatio(dampingRatio)
-        valueSpring.setStartValue((value - range.start) / span)
-        valueSpring.animateToFinalPosition((target - range.start) / span)
+        valueSpring.stiffness = stiffness
+        valueSpring.dampingRatio = dampingRatio
+        valueSpring.value = (value - range.start) / span
+        valueSpring.animateTo((target - range.start) / span)
     }
 
     private fun setInteracting(active: Boolean) {
@@ -570,7 +568,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         velocityTracker?.recycle()
         velocityTracker = null
         pressSpring.cancel()
-        pressProgress.value = 0f
+        pressSpring.value = 0f
         press = 0f
         shapesDirty = true
     }

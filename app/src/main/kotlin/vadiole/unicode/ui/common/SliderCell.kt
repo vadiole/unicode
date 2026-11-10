@@ -4,9 +4,6 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.widget.LinearLayout
 import androidx.core.graphics.ColorUtils
-import androidx.dynamicanimation.animation.FloatValueHolder
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.roundToInt
 import vadiole.unicode.R
 
@@ -27,12 +24,7 @@ class SliderCell(
     }
     private val labelColor = context.getColor(R.color.windowTextSecondary)
     private val labelPressedColor = context.getColor(R.color.primaryControl)
-    private val labelProgress = FloatValueHolder(0f)
-    private val labelSpring = SpringAnimation(labelProgress).apply {
-        setMinimumVisibleChange(0.002f)
-        spring = SpringForce(0f).setStiffness(LABEL_STIFFNESS).setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
-        addUpdateListener { _, progress, _ -> applyLabelProgress(progress) }
-    }
+    private val labelSpring = SpringAnimator(LABEL_STIFFNESS, minVisibleChange = 0.002f, onUpdate = ::applyLabelProgress)
 
     init {
         orientation = VERTICAL
@@ -65,11 +57,11 @@ class SliderCell(
         val target = if (pressed) 1f else 0f
         if (!animatorsEnabled) {
             labelSpring.cancel()
-            labelProgress.value = target
+            labelSpring.value = target
             applyLabelProgress(target)
             return
         }
-        labelSpring.animateToFinalPosition(target)
+        labelSpring.animateTo(target)
     }
 
     private fun applyLabelProgress(progress: Float) {
@@ -80,7 +72,7 @@ class SliderCell(
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         labelSpring.cancel()
-        labelProgress.value = 0f
+        labelSpring.value = 0f
         applyLabelProgress(0f)
     }
 

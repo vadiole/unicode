@@ -22,13 +22,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.ViewCompat.replaceAccessibilityAction
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat
-import androidx.dynamicanimation.animation.FloatValueHolder
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.abs
 import kotlin.math.ceil
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.IconButton
+import vadiole.unicode.ui.common.SpringAnimator
 import vadiole.unicode.ui.common.TEXT_CAPTION
 import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.animatorsEnabled
@@ -355,19 +353,17 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         private var charBaseline = 0f
         private var popProgress = 1f
         private var isBounce = false
-        private val bounceHolder = FloatValueHolder(1f)
-        private val bounceSpring = SpringAnimation(bounceHolder).apply {
-            spring = SpringForce(1f).apply {
-                stiffness = 700f
-                dampingRatio = 0.35f
-            }
-            setMinimumVisibleChange(0.001f)
-            addUpdateListener { _, _, _ -> invalidate() }
-            addEndListener { _, _, _, _ ->
+        private val bounceSpring = SpringAnimator(
+            stiffness = 700f,
+            dampingRatio = 0.35f,
+            minVisibleChange = 0.001f,
+            value = 1f,
+            onUpdate = { invalidate() },
+            onEnd = {
                 isBounce = false
                 invalidate()
-            }
-        }
+            },
+        )
         private val popAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
             duration = 120
             interpolator = PathInterpolator(0.23f, 1f, 0.32f, 1f)
@@ -420,9 +416,9 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
                 isBounce = bounce
                 if (bounce) {
                     popProgress = 1f
-                    bounceHolder.value = 1f
-                    bounceSpring.setStartVelocity(BOUNCE_VELOCITY)
-                    bounceSpring.start()
+                    bounceSpring.value = 1f
+                    bounceSpring.velocity = BOUNCE_VELOCITY
+                    bounceSpring.animateTo(1f)
                 } else {
                     popProgress = 0f
                     popAnimator.start()
@@ -455,7 +451,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             }
             if (popStart > 0) canvas.drawText(text, 0, popStart, x, charBaseline, charPaint)
             val popX = x + popStartWidth
-            val scale = if (isBounce) bounceHolder.value else 0.9f + 0.1f * popProgress
+            val scale = if (isBounce) bounceSpring.value else 0.9f + 0.1f * popProgress
             val count = canvas.save()
             canvas.scale(scale, scale, popX + (popEndWidth - popStartWidth) / 2f, height / 2f)
             charPaint.alpha = (255 * popProgress).toInt()

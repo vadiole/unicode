@@ -111,7 +111,6 @@ tasks.matching { it.name == "minifyReleaseWithR8" }.configureEach {
 dependencies {
     implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
-    implementation("androidx.dynamicanimation:dynamicanimation:1.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
     testImplementation("junit:junit:4.13.2")
 }
