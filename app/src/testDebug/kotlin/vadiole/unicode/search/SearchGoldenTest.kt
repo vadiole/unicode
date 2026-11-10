@@ -1,12 +1,17 @@
 package vadiole.unicode.search
 
+import java.io.File
 import org.junit.Assert.assertTrue
-import org.junit.Assume.assumeTrue
 import org.junit.Test
 
 class SearchGoldenTest {
     private val files = SuiteFiles.load { name -> requireNotNull(javaClass.getResource("/search/$name")) { "Missing $name" }.readText() }
-    private val engine: SearchEngine? = null
+    private val engine: SearchEngine = TestData.search.let { search ->
+        SearchEngine { query, limit ->
+            val results = search.search(query, limit)
+            SearchHits(results.codePoints, results.total)
+        }
+    }
 
     @Test
     fun suiteFilesAreConsistent() {
@@ -16,7 +21,8 @@ class SearchGoldenTest {
 
     @Test
     fun replayedGoldensPassTheSuite() {
-        val report = SearchSuite.verify(SearchSuite.replay(files.goldens), files)
+        val pinned = files.expectations.filter { it.query !in files.allowed && files.queries.none { query -> query.text == it.query && query.mayImprove } }
+        val report = SearchSuite.verify(SearchSuite.replay(files.goldens), SuiteFiles(files.queries, files.goldens, pinned, files.weaknesses, emptyMap()))
         assertTrue(report.text, report.passed)
     }
 
@@ -33,9 +39,10 @@ class SearchGoldenTest {
 
     @Test
     fun engineMatchesGoldens() {
-        assumeTrue("SKIPPED: no search engine runs on the JVM yet, the SQLite search is checked on a device with tools/search-golden.sh verify", engine != null)
-        val report = SearchSuite.verify(requireNotNull(engine), files)
-        println(report.text)
+        val report = SearchSuite.verify(engine, files)
+        File("build/reports/search").mkdirs()
+        File("build/reports/search/verify.txt").writeText(report.text)
+        println(report.summary)
         assertTrue(report.text, report.passed)
     }
 }

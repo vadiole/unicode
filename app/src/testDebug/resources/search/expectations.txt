@@ -106,3 +106,102 @@ top:1 0301 \x{0301}
 top:1 200D \x{200D}
 top:1 00A0 \x{00A0}
 top:1 00DF \x{00DF}
+# ranking traps: short aliases earn no whole-text bonus, common characters beat obscure exact words
+top:2 0041,0061 a
+top:2 0041,0061 A
+top:1 00A9 copy
+above 00A9>32A2 copy
+top:10 263A smile
+above 1F603>1DA3E smile
+above 2605>066D star
+above 2190>02FF arrow
+top:1 00A9 copyright
+top:1 003F question
+top:3 003C less-than
+# aliases, abbreviations and control names
+top:1 200D zwj
+top:1 00A0 nbsp
+top:1 FEFF bom
+top:1 2122 tm
+top:1 0009 tab
+top:1 000A lf
+top:1 000D cr
+top:1 001B esc
+top:1 200C zwnj
+top:1 200B zwsp
+top:1 000A new line
+top:1 000A newline
+top:1 000A line feed
+top:1 0009 horizontal tabulation
+top:1 0023 octothorpe
+top:1 002E full stop
+top:1 002E decimal point
+top:1 2011 non-breaking hyphen
+top:1 00AE registered trade mark
+top:1 FEFF byte order mark
+top:3 002F slash
+top:3 005C backslash
+top:3 002E dot
+top:3 03BB lambda
+top:1 00DF eszett
+# CLDR keywords and short names
+top:1 1F44D +1
+top:1 1F44E -1
+top:1 1F44D thumbsup
+top:1 2192 rightarrow
+top:1 2713 checkmark
+top:1 1F355 pizza
+top:1 2764 red heart
+top:1 2665 heart suit
+top:1 2191 up arrow
+top:3 2212 subtract
+top:10 1F602 laugh
+top:5 1F4A9 poop
+# block names and sub-block headings
+top:64 0020,0030 basic latin
+top:30 2190..2193 arrows
+top:3 00BC..00BE vulgar fractions
+top:10 0030..0039 ascii digits
+top:26 0041..005A uppercase latin alphabet
+top:11 1F004 mahjong
+top:10 1F600..1F607 emoticons
+top:16 20AC,20BD currency symbols
+# CJK meanings rank after every other match
+above 1F30A>6C34 water
+above 6C34>6CB3 water
+top:1 7011 waterfall
+above 1F6A3>6CB3 river
+above 26F0>5C71 mountain
+above 1F409>9F8D dragon
+# generated names
+top:1 4E00 cjk 4e00
+top:1 4E00 cjk unified ideograph-4e00
+top:1 6C34 ideograph-6c34
+top:16 6C00..6C0F cjk 6c
+top:1 17000 tangut ideograph-17000
+top:1 17000 tangut 17000
+top:1 18E00 jurchen character-18e00
+top:1 3D000 small seal character-3d000
+top:1 AC00 hangul syllable ga
+top:4 D55C,D55D,D55E,D56D hangul syllable han
+top:1 D55C hangul han
+top:3 AC01..AC03 syllable gag
+# code points and pasted characters of the ranges
+top:1 6C34 U+6C34
+top:1 6C34 0x6c34
+top:1 6C34 \\u6c34
+top:1 6C34 6c34
+top:1 AC00 U+AC00
+top:1 17000 U+17000
+top:1 3D000 U+3D000
+top:1 6C34 \x{6C34}
+top:1 AC00 \x{AC00}
+top:1 4E2D \x{4E2D}
+top:1 4E2D U+4E2D
+top:2 6C34,706B \x{6C34}\x{706B}
+top:3 1F468,200D,1F469 \x{1F468}\x{200D}\x{1F469}\x{200D}\x{1F467}
+# fixed query handling
+top:1 2192 \x{2192}\s
+top:1 0061 \sa
+top:2 0065,0301 e\x{0301}
+top:2 1F44D,1F3FB \x{1F44D}\x{1F3FB}

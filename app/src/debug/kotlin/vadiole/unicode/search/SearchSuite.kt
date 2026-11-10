@@ -274,7 +274,7 @@ object SearchSuite {
             val golden = files.goldens[expectation.query]
             if (golden == null) {
                 problems.add("expectation without a query: ${expectation.source}")
-            } else {
+            } else if (expectation.query !in files.allowed && queries[expectation.query]?.mayImprove != true) {
                 check(expectation, golden)?.let { problems.add("expectation fails on the golden: ${expectation.source}: $it") }
             }
         }

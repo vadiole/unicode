@@ -1358,3 +1358,66 @@ edge 10000000
 # queries of expectations.txt and weaknesses.txt not listed above
 weak+improve minus
 weak+improve plus
+
+# aliases, abbreviations and control names
+alias lf
+alias cr
+alias esc
+alias rlm
+alias horizontal tabulation
+alias octothorpe
+alias decimal point
+alias registered trade mark
+
+# CLDR keywords and short names
+keyword love
+keyword lol
+keyword pizza
+keyword subtract
+keyword red heart
+keyword up arrow
+
+# block names and sub-block headings
+block basic latin
+block arrows
+block dingbats
+block currency symbols
+block emoticons
+block vulgar fractions
+block mahjong
+block ascii digits
+block uppercase latin alphabet
+block arrows up
+
+# CJK meanings
+meaning water
+meaning river
+meaning mountain
+meaning dragon
+meaning to eat
+meaning waterfall
+
+# generated names of ranges
+generated cjk 4e00
+generated cjk unified ideograph-4e00
+generated ideograph-6c34
+generated cjk 6c
+generated tangut ideograph-17000
+generated tangut 17000
+generated jurchen character-18e00
+generated small seal character-3d000
+generated hangul syllable ga
+generated hangul syllable han
+generated hangul han
+generated hangul syllable g
+generated syllable gag
+
+# code points of range characters, as in share links
+range U+6C34
+range 0x6c34
+range \\u6c34
+range 6c34
+range U+17000
+range U+3D000
+range \x{AC00}
+range \x{6C34}\x{706B}

@@ -1,1 +1,872 @@
 # Intentional differences from goldens.txt: <query as written in goldens.txt><TAB><reason>
+a	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
+ar	new source: alias +34; new source: keyword +17; new source: formal alias +1; new source: block name +422; new source: sub-block heading +456; new source: CJK meaning +532; one and two character words match word starts only -6268; ranking
+arr	new source: alias +11; new source: keyword +27; new source: block name +202; new source: sub-block heading +49; new source: formal alias +1; new source: CJK meaning +525; ranking
+h	new source: alias +59; new source: CLDR short name +4; new source: keyword +88; range characters are now present +11170; new source: block name +4192; new source: sub-block heading +263; new source: CJK meaning +3606; one and two character words match word starts only -14007; ranking
+he	new source: alias +20; new source: keyword +30; range characters are now present +84; new source: formal alias +1; new source: sub-block heading +462; new source: CJK meaning +899; one and two character words match word starts only -2817; ranking
+hea	new source: alias +7; new source: keyword +28; new source: sub-block heading +382; new source: CLDR short name +1; new source: CJK meaning +626; ranking
+hear	new source: keyword +12; new source: sub-block heading +12; new source: CJK meaning +82; ranking
+s	new source: alias +263; new source: CLDR short name +15; new source: keyword +190; range characters are now present +22496; new source: block name +3084; new source: sub-block heading +3031; new source: CJK meaning +10250; one and two character words match word starts only -3054; ranking
+sm	new source: alias +5; new source: CLDR short name +1; new source: keyword +28; range characters are now present +11328; new source: sub-block heading +59; new source: CJK meaning +582; one and two character words match word starts only -114; ranking
+smi	new source: CLDR short name +1; new source: alias +4; new source: keyword +6; new source: sub-block heading +1; new source: CJK meaning +36; ranking
+smil	new source: CLDR short name +1; new source: keyword +5; new source: alias +1; new source: sub-block heading +1; new source: CJK meaning +22; ranking
+l	new source: formal alias +2; new source: alias +35; new source: CLDR short name +3; new source: keyword +83; new source: block name +191; new source: sub-block heading +218; new source: CJK meaning +3282; one and two character words match word starts only -17640; placeholder rows are removed -16; ranking
+la	new source: alias +26; new source: CLDR short name +2; new source: keyword +33; new source: block name +254; new source: sub-block heading +389; new source: CJK meaning +767; one and two character words match word starts only -5124; ranking
+lat	new source: keyword +14; new source: alias +14; new source: block name +265; new source: sub-block heading +646; new source: CJK meaning +392; ranking
+lati	new source: block name +271; new source: sub-block heading +578; new source: alias +9; new source: keyword +4; new source: CJK meaning +101
+latin	new source: block name +276; new source: sub-block heading +211; new source: alias +1; new source: CJK meaning +11
+latin\s	new source: block name +276; new source: sub-block heading +211; new source: alias +1; new source: CJK meaning +11
+latin s	new source: alias +9; new source: block name +290; new source: sub-block heading +238; new source: CJK meaning +6; one and two character words match word starts only -52; ranking
+latin sm	new source: block name +108; new source: sub-block heading +36
+latin sma	new source: block name +108; new source: sub-block heading +36
+latin smal	new source: block name +108; new source: sub-block heading +36
+latin small	new source: block name +108; new source: sub-block heading +36
+latin small\s	new source: block name +108; new source: sub-block heading +36
+latin small l	new source: block name +108; new source: sub-block heading +36; ranking
+latin small le	new source: block name +108; new source: sub-block heading +36; ranking
+latin small let	new source: block name +108; new source: sub-block heading +36; ranking
+latin small lett	new source: block name +108; new source: sub-block heading +36; ranking
+latin small lette	new source: block name +108; new source: sub-block heading +36; ranking
+latin small letter	new source: block name +108; new source: sub-block heading +36
+latin small letter\s	new source: block name +108; new source: sub-block heading +36
+latin small letter a	new source: block name +9; new source: sub-block heading +7; one and two character words match word starts only -405; ranking
+g	new source: abbreviation +1; new source: formal alias +2; new source: alias +31; new source: CLDR short name +3; new source: keyword +93; range characters are now present +1176; new source: block name +5212; new source: sub-block heading +1129; new source: CJK meaning +3035; one and two character words match word starts only -18797; ranking
+gr	new source: formal alias +1; new source: alias +17; new source: CLDR short name +5; new source: keyword +37; new source: block name +2; new source: sub-block heading +917; new source: CJK meaning +1236; one and two character words match word starts only -1895; ranking
+gre	new source: alias +11; new source: keyword +10; new source: block name +1; new source: sub-block heading +385; new source: CJK meaning +327; ranking
+gree	new source: alias +10; new source: keyword +8; new source: block name +1; new source: sub-block heading +324; new source: CJK meaning +141; ranking
+greek	new source: alias +10; new source: block name +1; new source: sub-block heading +306
+c	new source: alias +115; new source: CLDR short name +8; new source: keyword +202; range characters are now present +114789; new source: block name +793; new source: sub-block heading +4770; one and two character words match word starts only -6703; ranking
+ch	new source: alias +30; new source: CLDR short name +3; new source: keyword +46; range characters are now present +12242; new source: block name +20; new source: sub-block heading +1957; new source: CJK meaning +1014; one and two character words match word starts only -880; ranking
+che	new source: alias +41; new source: keyword +36; new source: block name +26; new source: sub-block heading +128; range characters are now present +914; new source: CJK meaning +451; ranking
+chec	new source: keyword +3; new source: sub-block heading +4; new source: CJK meaning +7; ranking
+check	new source: keyword +3; new source: sub-block heading +4; new source: CJK meaning +7; ranking
+check\s	new source: keyword +3; new source: sub-block heading +4; new source: CJK meaning +7; ranking
+check m	new source: keyword +1; new source: block name +4; new source: sub-block heading +6; new source: CJK meaning +1; one and two character words match word starts only -2; ranking
+check ma	new source: block name +2; new source: sub-block heading +2; one and two character words match word starts only -1
+co	new source: alias +50; new source: CLDR short name +8; new source: keyword +98; range characters are now present +56; new source: block name +1507; new source: sub-block heading +4446; new source: CJK meaning +2606; one and two character words match word starts only -72; ranking
+cop	new source: alias +2; new source: keyword +14; range characters are now present +1; new source: block name +121; new source: sub-block heading +5; new source: CJK meaning +39; ranking
+copy	new source: CJK meaning +16; ranking
+e	new source: formal alias +1; new source: alias +13; new source: keyword +33; range characters are now present +84; new source: block name +81151; new source: sub-block heading +6; new source: CJK meaning +1701; one and two character words match word starts only -25796; ranking
+eu	new source: keyword +1; range characters are now present +28; new source: alias +2; new source: sub-block heading +196; new source: CJK meaning +26; one and two character words match word starts only -670; ranking
+eur	new source: keyword +1; new source: sub-block heading +226; new source: CJK meaning +8; ranking
+euro	new source: keyword +1; new source: sub-block heading +226; new source: CJK meaning +6; ranking
+d	new source: formal alias +1; new source: alias +86; new source: CLDR short name +6; new source: keyword +152; range characters are now present +1176; new source: block name +751; new source: sub-block heading +1256; new source: CJK meaning +3821; one and two character words match word starts only -9500; ranking
+de	new source: alias +32; new source: CLDR short name +2; new source: keyword +55; range characters are now present +84; new source: sub-block heading +726; new source: CJK meaning +1112; one and two character words match word starts only -2566; ranking
+deg	new source: keyword +1; range characters are now present +3; new source: sub-block heading +18; new source: CJK meaning +20; ranking
+degr	new source: sub-block heading +18; new source: CJK meaning +17; ranking
+degre	new source: sub-block heading +18; new source: CJK meaning +16; ranking
+degree	new source: sub-block heading +18; new source: CJK meaning +16; ranking
+b	new source: alias +113; new source: CLDR short name +42; new source: keyword +222; range characters are now present +1176; new source: block name +43282; new source: sub-block heading +1499; new source: CJK meaning +5303; one and two character words match word starts only -9793; ranking
+bu	new source: CLDR short name +55; new source: alias +14; new source: keyword +39; range characters are now present +28; new source: sub-block heading +253; new source: CJK meaning +472; one and two character words match word starts only -139; ranking
+bul	new source: alias +2; new source: CLDR short name +1; new source: keyword +2; range characters are now present +8; new source: sub-block heading +5; new source: CJK meaning +80; ranking
+bull	new source: alias +2; new source: CLDR short name +1; new source: keyword +2; new source: sub-block heading +5; new source: CJK meaning +26; ranking
+bulle	new source: alias +2; new source: CJK meaning +4; ranking
+bullet	new source: alias +2; new source: CJK meaning +4; ranking
+em	new source: abbreviation +1; new source: alias +8; new source: keyword +40; range characters are now present +1; new source: block name +78; new source: sub-block heading +192; new source: CJK meaning +253; one and two character words match word starts only -2052; ranking
+em\s	new source: abbreviation +1; new source: alias +8; new source: keyword +40; range characters are now present +1; new source: block name +78; new source: sub-block heading +192; new source: CJK meaning +253; one and two character words match word starts only -2052; ranking
+em d	new source: alias +1; new source: keyword +11; new source: block name +24; new source: sub-block heading +9; new source: CJK meaning +62; one and two character words match word starts only -1089; ranking
+em da	new source: CLDR short name +2; new source: keyword +4; new source: block name +4; new source: sub-block heading +1; new source: CJK meaning +11; one and two character words match word starts only -33; ranking
+em das	one and two character words match word starts only -1; ranking
+em dash	one and two character words match word starts only -1; ranking
+n	new source: alias +36; new source: CLDR short name +2; new source: keyword +29; range characters are now present +588; new source: block name +18; new source: sub-block heading +78; new source: CJK meaning +2314; one and two character words match word starts only -24877; ranking
+no	new source: alias +55; new source: CLDR short name +4; new source: keyword +24; range characters are now present +56; new source: block name +177; new source: sub-block heading +218; new source: CJK meaning +756; one and two character words match word starts only -443; ranking
+non	new source: alias +6; range characters are now present +4; new source: sub-block heading +69; new source: CJK meaning +347; ranking
+non-	punctuation separates words -16; new source: alias +6; range characters are now present +4; new source: sub-block heading +69; new source: CJK meaning +347; ranking
+non-b	punctuation separates words -48; new source: alias +4; new source: sub-block heading +67; new source: CJK meaning +113; ranking
+non-br	new source: alias +3; punctuation separates words -6; new source: CJK meaning +17; ranking
+non-bre	punctuation separates words -4; new source: alias +2; new source: CJK meaning +14; ranking
+non-brea	new source: alias +2; new source: CJK meaning +3; ranking
+non-break	new source: CJK meaning +2; ranking
+non-breaki	ranking
+non-breakin	ranking
+non-breaking	ranking
+non-breaking\s	ranking
+z	new source: formal alias +1; new source: alias +59; new source: CLDR short name +2; new source: keyword +39; new source: sub-block heading +35; new source: CJK meaning +57; one and two character words match word starts only -1121; ranking
+ze	new source: formal alias +1; new source: keyword +3; new source: sub-block heading +14; new source: CJK meaning +16; one and two character words match word starts only -262; ranking
+zer	new source: formal alias +1; new source: keyword +3; new source: sub-block heading +21; new source: alias +1; new source: CJK meaning +11; ranking
+zero	new source: formal alias +1; new source: keyword +2; new source: sub-block heading +14; new source: CJK meaning +2; ranking
+zero\s	new source: formal alias +1; new source: keyword +2; new source: sub-block heading +14; new source: CJK meaning +2; ranking
+zero w	new source: sub-block heading +3; one and two character words match word starts only -9; ranking
+zero wi	new source: sub-block heading +2; one and two character words match word starts only -2; ranking
+zero width j	ranking
+zero width jo	ranking
+zero width joi	ranking
+zero width join	ranking
+zero width joine	ranking
+i	new source: alias +16; new source: keyword +55; range characters are now present +108164; new source: formal alias +1; new source: block name +6; new source: sub-block heading +153; one and two character words match word starts only -28718; ranking
+in	new source: alias +61; new source: CLDR short name +3; new source: keyword +62; range characters are now present +4; new source: sub-block heading +1217; new source: CJK meaning +2935; one and two character words match word starts only -6421; ranking
+inf	new source: alias +8; new source: CLDR short name +1; new source: keyword +2; new source: CJK meaning +126; ranking
+infi	new source: alias +1; new source: CLDR short name +1; new source: CJK meaning +5; ranking
+infin	new source: CLDR short name +1; new source: CJK meaning +2; ranking
+infini	new source: CLDR short name +1; new source: CJK meaning +2; ranking
+infinit	new source: CLDR short name +1; new source: CJK meaning +2; ranking
+infinity	new source: CLDR short name +1; ranking
+st	new source: alias +46; new source: CLDR short name +1; new source: keyword +57; new source: block name +1; new source: sub-block heading +1969; new source: CJK meaning +2361; one and two character words match word starts only -911; ranking
+sta	new source: alias +27; new source: keyword +22; new source: sub-block heading +416; new source: block name +6; new source: CJK meaning +822; ranking
+m	new source: formal alias +2; new source: alias +116; new source: CLDR short name +4; new source: keyword +167; range characters are now present +588; new source: block name +1662; new source: sub-block heading +1989; new source: CJK meaning +3432; one and two character words match word starts only -10599; ranking
+mu	new source: alias +29; new source: CLDR short name +1; new source: keyword +33; range characters are now present +28; new source: block name +251; new source: sub-block heading +80; new source: CJK meaning +346; one and two character words match word starts only -794; ranking
+mus	new source: alias +13; new source: keyword +26; range characters are now present +2; new source: block name +251; new source: sub-block heading +57; new source: CJK meaning +154; ranking
+musi	new source: alias +1; new source: keyword +17; new source: block name +251; new source: sub-block heading +45; new source: CJK meaning +80; ranking
+music	new source: alias +1; new source: keyword +17; new source: block name +251; new source: sub-block heading +45; new source: CJK meaning +80; ranking
+ches	new source: alias +2; new source: keyword +7; new source: block name +14; new source: sub-block heading +32; new source: CJK meaning +114; ranking
+chess	new source: alias +1; new source: block name +14; new source: sub-block heading +12; new source: CJK meaning +13; ranking
+bo	new source: alias +23; new source: CLDR short name +1; new source: keyword +40; range characters are now present +56; new source: abbreviation +1; new source: sub-block heading +461; new source: CJK meaning +919; one and two character words match word starts only -1931; ranking
+box	new source: alias +2; new source: keyword +3; new source: CJK meaning +45; ranking
+box\s	new source: alias +2; new source: keyword +3; new source: CJK meaning +45; ranking
+box d	new source: keyword +3; new source: CJK meaning +1; one and two character words match word starts only -16; ranking
+box dr	new source: CJK meaning +1
+box dra	new source: CJK meaning +1
+box draw	ranking
+box drawi	ranking
+box drawin	ranking
+box drawing	ranking
+su	new source: alias +50; new source: keyword +41; range characters are now present +28; new source: block name +5048; new source: sub-block heading +310; new source: CJK meaning +1044; one and two character words match word starts only -299; ranking
+sup	new source: keyword +3; range characters are now present +1; new source: alias +4; new source: block name +4495; new source: sub-block heading +162; new source: CJK meaning +156; ranking
+supe	new source: keyword +2; new source: alias +4; new source: block name +32; new source: sub-block heading +162; new source: CJK meaning +49; ranking
+super	new source: keyword +2; new source: alias +4; new source: block name +32; new source: sub-block heading +162; new source: CJK meaning +49; ranking
+supers	new source: alias +1; new source: block name +32; new source: sub-block heading +159; ranking
+supersc	new source: alias +1; new source: block name +32; new source: sub-block heading +146; ranking
+superscr	new source: alias +1; new source: block name +32; new source: sub-block heading +146; ranking
+superscri	new source: alias +1; new source: block name +32; new source: sub-block heading +146; ranking
+superscrip	new source: alias +1; new source: block name +32; new source: sub-block heading +146; ranking
+superscript	new source: alias +1; new source: block name +32; new source: sub-block heading +146; ranking
+superscript\s	new source: alias +1; new source: block name +32; new source: sub-block heading +146; ranking
+superscript t	new source: block name +3; new source: sub-block heading +17; one and two character words match word starts only -17; ranking
+superscript tw	new source: block name +1; new source: sub-block heading +6
+superscript two	new source: block name +1; new source: sub-block heading +6
+do	new source: formal alias +1; new source: alias +32; new source: CLDR short name +5; new source: keyword +31; range characters are now present +56; new source: sub-block heading +157; new source: CJK meaning +596; one and two character words match word starts only -107; ranking
+dol	new source: keyword +5; range characters are now present +8; new source: alias +1; new source: CJK meaning +25; ranking
+doll	new source: keyword +3; new source: CJK meaning +7; ranking
+dolla	new source: keyword +3; new source: CJK meaning +5; ranking
+dollar	new source: keyword +3; new source: CJK meaning +5; ranking
+gri	new source: CLDR short name +5; new source: keyword +4; new source: sub-block heading +53; new source: CJK meaning +157; ranking
+grin	new source: CLDR short name +5; new source: keyword +1; new source: CJK meaning +59
+grinn	new source: CLDR short name +5; new source: keyword +1; new source: CJK meaning +1
+grinni	new source: CLDR short name +5; new source: keyword +1; new source: CJK meaning +1
+grinnin	new source: CLDR short name +5; new source: keyword +1; new source: CJK meaning +1
+grinning	new source: CLDR short name +5; new source: keyword +1; new source: CJK meaning +1
+grinning\s	new source: CLDR short name +5; new source: keyword +1; new source: CJK meaning +1
+grinning f	words may match across the names of one character +1; new source: CLDR short name +4; new source: keyword +1; new source: CJK meaning +1
+grinning fa	words may match across the names of one character +1; new source: CLDR short name +4; new source: keyword +1
+grinning fac	words may match across the names of one character +1; new source: CLDR short name +4; new source: keyword +1
+grinning face	words may match across the names of one character +1; new source: CLDR short name +4; new source: keyword +1; ranking
+r	new source: alias +23; new source: keyword +63; range characters are now present +588; new source: sub-block heading +126; new source: CJK meaning +3951; one and two character words match word starts only -29234; ranking
+ri	new source: abbreviation +1; new source: CLDR short name +3; new source: alias +7; new source: keyword +18; range characters are now present +28; new source: sub-block heading +59; new source: CJK meaning +887; one and two character words match word starts only -5249; ranking
+rig	new source: CLDR short name +3; new source: alias +14; new source: keyword +8; range characters are now present +3; new source: sub-block heading +27; new source: block name +725; new source: CJK meaning +325; ranking
+righ	new source: CLDR short name +3; new source: alias +3; new source: keyword +8; new source: sub-block heading +9; new source: CJK meaning +261; ranking
+right	new source: CLDR short name +3; new source: alias +3; new source: keyword +8; new source: sub-block heading +9; new source: CJK meaning +261; ranking
+right\s	new source: CLDR short name +3; new source: alias +3; new source: keyword +8; new source: sub-block heading +9; new source: CJK meaning +261; ranking
+right a	new source: CLDR short name +2; new source: alias +2; new source: block name +9; new source: sub-block heading +14; words may match across the names of one character +3; new source: keyword +7; new source: CJK meaning +123; one and two character words match word starts only -329; ranking
+right ar	new source: CLDR short name +1; new source: alias +2; new source: keyword +2; new source: block name +8; new source: sub-block heading +2; new source: CJK meaning +8; one and two character words match word starts only -141; ranking
+right arr	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +4; ranking
+right arro	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+rightw	new source: keyword +1; ranking
+rightwa	new source: keyword +1; ranking
+rightwar	new source: keyword +1; ranking
+rightward	new source: keyword +1; ranking
+rightwards	new source: keyword +1; ranking
+rightwards\s	new source: keyword +1; ranking
+rightwards a	new source: block name +1; one and two character words match word starts only -2; ranking
+rightwards ar	one and two character words match word starts only -9; ranking
+rightwards arr	new source: block name +22; ranking
+rightwards arro	new source: block name +22; ranking
+rightwards arrow	new source: block name +22; ranking
+q	new source: alias +27; new source: keyword +13; new source: sub-block heading +251; new source: CJK meaning +279; one and two character words match word starts only -1213; ranking
+qu	new source: alias +22; new source: keyword +13; new source: sub-block heading +202; new source: CJK meaning +267; one and two character words match word starts only -874; ranking
+que	new source: alias +18; new source: keyword +10; new source: sub-block heading +55; new source: CJK meaning +139; ranking
+ques	new source: keyword +1; new source: alias +3; new source: CJK meaning +25; ranking
+quest	new source: keyword +1; new source: alias +3; new source: CJK meaning +25; ranking
+questi	new source: keyword +1; new source: alias +2; new source: CJK meaning +13; ranking
+questio	new source: keyword +1; new source: alias +2; new source: CJK meaning +13; ranking
+question\s	new source: keyword +1; new source: alias +2; new source: CJK meaning +13; ranking
+question m	new source: keyword +1; new source: alias +1; new source: block name +2; new source: CJK meaning +2; ranking
+question ma	new source: alias +1; new source: block name +1; new source: CJK meaning +2; ranking
+question mar	new source: alias +1; words may match across the names of one character +1; new source: CJK meaning +2; ranking
+question mark	new source: alias +1; new source: CJK meaning +2; ranking
+t	new source: alias +54; new source: keyword +114; range characters are now present +6761; new source: block name +60; new source: sub-block heading +89; new source: CJK meaning +8502; one and two character words match word starts only -23234; ranking
+tr	new source: alias +19; new source: CLDR short name +1; new source: keyword +38; new source: block name +84; new source: sub-block heading +187; new source: CJK meaning +900; one and two character words match word starts only -1049; ranking
+tra	new source: alias +35; new source: CLDR short name +1; new source: keyword +39; new source: block name +97; new source: sub-block heading +179; new source: formal alias +1; new source: CJK meaning +734; ranking
+trad	new source: alias +2; new source: sub-block heading +22; new source: CJK meaning +35; ranking
+trade	new source: CJK meaning +21; ranking
+trade\s	new source: CJK meaning +21; ranking
+trade m	new source: CJK meaning +9
+trade ma	new source: CJK meaning +2
+trade mar	new source: CJK meaning +2
+trade mark	new source: CJK meaning +2; ranking
+cy	new source: alias +3; new source: keyword +3; range characters are now present +196; new source: block name +1; new source: sub-block heading +9; new source: CJK meaning +42; one and two character words match word starts only -28; ranking
+cyr	new source: alias +1; new source: block name +1; new source: sub-block heading +9; ranking
+cyri	new source: alias +1; new source: block name +1; new source: sub-block heading +9
+cyril	new source: alias +1; new source: block name +1; new source: sub-block heading +9
+cyrill	new source: alias +1; new source: block name +1; new source: sub-block heading +9
+cyrilli	new source: alias +1; new source: block name +1; new source: sub-block heading +9
+cyrillic	new source: alias +1; new source: block name +1; new source: sub-block heading +9
+heb	range characters are now present +2; new source: sub-block heading +4; new source: CJK meaning +30; ranking
+hebr	new source: sub-block heading +4; ranking
+hebre	new source: sub-block heading +4; ranking
+hebrew	new source: sub-block heading +4; ranking
+hebrew\s	new source: sub-block heading +4; ranking
+hebrew a	new source: block name +5; new source: sub-block heading +8; one and two character words match word starts only -20; ranking
+hebrew al	new source: block name +34; new source: sub-block heading +1; one and two character words match word starts only -7; ranking
+hebrew ale	new source: sub-block heading +1; words may match across the names of one character +1; ranking
+hebrew alef	new source: sub-block heading +1; ranking
+bl	new source: alias +6; new source: CLDR short name +1; new source: keyword +31; new source: block name +13; new source: sub-block heading +92; new source: CJK meaning +570; one and two character words match word starts only -2818; ranking
+bla	new source: alias +1; new source: keyword +6; new source: sub-block heading +97; new source: CJK meaning +230; ranking
+blac	new source: alias +1; new source: sub-block heading +91; new source: CJK meaning +146; ranking
+black	new source: alias +1; new source: sub-block heading +92; new source: CJK meaning +146; ranking
+black\s	new source: alias +1; new source: sub-block heading +92; new source: CJK meaning +146; ranking
+black s	new source: alias +5; new source: block name +94; new source: sub-block heading +78; new source: CJK meaning +75; one and two character words match word starts only -15; ranking
+black sq	new source: sub-block heading +32; ranking
+black squ	new source: sub-block heading +32; ranking
+black squa	new source: sub-block heading +32; ranking
+black squar	new source: sub-block heading +32; ranking
+black square	new source: sub-block heading +32; ranking
+dou	new source: alias +9; new source: keyword +4; new source: sub-block heading +54; new source: CJK meaning +48; ranking
+doub	new source: alias +9; new source: keyword +4; new source: sub-block heading +54; new source: CJK meaning +32; ranking
+doubl	new source: alias +9; new source: keyword +2; new source: sub-block heading +54; new source: CJK meaning +14; ranking
+double	new source: alias +9; new source: keyword +2; new source: sub-block heading +54; new source: CJK meaning +14; ranking
+double\s	new source: alias +9; new source: keyword +2; new source: sub-block heading +54; new source: CJK meaning +14; ranking
+double q	words may match across the names of one character +1; new source: alias +1; new source: sub-block heading +3; one and two character words match word starts only -23; ranking
+double qu	words may match across the names of one character +1; new source: alias +1; new source: sub-block heading +3; one and two character words match word starts only -23; ranking
+double quo	words may match across the names of one character +1; ranking
+double quot	words may match across the names of one character +1; ranking
+double quote	new source: alias +1; new source: keyword +5
+th	new source: alias +53; new source: keyword +12; new source: sub-block heading +1075; new source: CJK meaning +2784; one and two character words match word starts only -5665; ranking
+thu	new source: alias +4; new source: sub-block heading +29; new source: CJK meaning +59; ranking
+thum	new source: sub-block heading +17; new source: CJK meaning +23; ranking
+thumb	new source: sub-block heading +17; new source: CJK meaning +12; ranking
+thumbs u	one and two character words match word starts only -2
+mul	new source: keyword +5; range characters are now present +8; new source: alias +4; new source: sub-block heading +15; new source: CJK meaning +90; ranking
+mult	new source: keyword +3; range characters are now present +1; new source: alias +3; new source: sub-block heading +5; new source: CJK meaning +20; ranking
+multi	new source: keyword +3; new source: alias +3; new source: sub-block heading +5; new source: CJK meaning +20; ranking
+multip	new source: keyword +2; new source: alias +2; new source: sub-block heading +5; new source: CJK meaning +5; ranking
+multipl	new source: keyword +2; new source: alias +2; new source: sub-block heading +5; new source: CJK meaning +5; ranking
+multipli	new source: keyword +2; new source: alias +1; new source: sub-block heading +5; ranking
+multiplic	new source: keyword +2; new source: sub-block heading +4; ranking
+multiplica	new source: keyword +2; new source: sub-block heading +4; ranking
+multiplicat	new source: keyword +2; new source: sub-block heading +4; ranking
+multiplicati	new source: keyword +2; new source: sub-block heading +4; ranking
+multiplicatio	new source: keyword +2; new source: sub-block heading +4; ranking
+multiplication	new source: keyword +2; new source: sub-block heading +4; ranking
+not	new source: alias +50; new source: CLDR short name +2; new source: keyword +24; range characters are now present +1; new source: block name +188; new source: sub-block heading +177; new source: CJK meaning +251; ranking
+not\s	new source: alias +50; new source: CLDR short name +2; new source: keyword +24; range characters are now present +1; new source: block name +188; new source: sub-block heading +177; new source: CJK meaning +251; ranking
+not e	new source: alias +2; new source: keyword +9; new source: block name +5; new source: sub-block heading +90; words may match across the names of one character +1; new source: CJK meaning +163; one and two character words match word starts only -193; ranking
+not eq	new source: sub-block heading +2; new source: CJK meaning +1; ranking
+not equ	new source: sub-block heading +2; new source: alias +3; new source: keyword +2; new source: CJK meaning +2; ranking
+not equa	new source: sub-block heading +2; new source: keyword +2; ranking
+not equal	new source: sub-block heading +2; new source: keyword +2; ranking
+not equal\s	new source: sub-block heading +2; new source: keyword +2; ranking
+not equal t	new source: sub-block heading +2; new source: keyword +2; one and two character words match word starts only -2
+not equal to	ranking
+p	new source: formal alias +2; new source: alias +103; new source: CLDR short name +32; new source: keyword +159; range characters are now present +588; new source: block name +1677; new source: sub-block heading +525; new source: CJK meaning +5034; one and two character words match word starts only -12569; ranking
+pi	new source: alias +16; new source: CLDR short name +1; new source: keyword +22; range characters are now present +28; new source: block name +1128; new source: sub-block heading +44; new source: CJK meaning +599; one and two character words match word starts only -2787; ranking
+pil	new source: alias +2; range characters are now present +8; new source: keyword +3; new source: CJK meaning +104; ranking
+hi	new source: alias +11; new source: CLDR short name +1; new source: keyword +14; range characters are now present +28; new source: sub-block heading +255; new source: CJK meaning +433; one and two character words match word starts only -2433; ranking
+hir	new source: alias +10; new source: keyword +3; new source: sub-block heading +15; new source: CJK meaning +89; ranking
+hira	new source: alias +6; ranking
+hirag	ranking
+hiraga	ranking
+hiragan	ranking
+hiragana	ranking
+sn	new source: alias +1; new source: keyword +13; new source: sub-block heading +25; new source: CJK meaning +105; one and two character words match word starts only -1; ranking
+sno	new source: keyword +6; new source: sub-block heading +7; new source: alias +1; new source: CJK meaning +31; ranking
+snow	new source: keyword +4; new source: sub-block heading +7; new source: CJK meaning +12; ranking
+snowm	ranking
+snowma	ranking
+br	new source: alias +25; new source: keyword +43; new source: sub-block heading +101; new source: CJK meaning +998; one and two character words match word starts only -184; ranking
+bra	new source: keyword +43; new source: alias +3; new source: sub-block heading +186; new source: CJK meaning +255; ranking
+brai	new source: keyword +1; new source: CJK meaning +27; ranking
+f	new source: formal alias +1; new source: alias +114; new source: CLDR short name +21; new source: keyword +190; new source: block name +8305; new source: sub-block heading +3431; new source: CJK meaning +5467; one and two character words match word starts only -4135; placeholder rows are removed -15; ranking
+fr	new source: alias +14; new source: CLDR short name +2; new source: keyword +35; new source: sub-block heading +1097; new source: CJK meaning +661; one and two character words match word starts only -8; ranking
+fra	new source: alias +5; new source: keyword +4; new source: sub-block heading +46; new source: CJK meaning +148; ranking
+frac	new source: alias +1; new source: sub-block heading +46; new source: CJK meaning +4; ranking
+fract	new source: alias +1; new source: sub-block heading +46; new source: CJK meaning +4; ranking
+fracti	new source: alias +1; new source: sub-block heading +46; new source: CJK meaning +4; ranking
+fractio	new source: alias +1; new source: sub-block heading +46; new source: CJK meaning +4; ranking
+fraction	new source: alias +1; new source: sub-block heading +46; new source: CJK meaning +4; ranking
+fraction\s	new source: alias +1; new source: sub-block heading +46; new source: CJK meaning +4; ranking
+fraction o	new source: sub-block heading +13; new source: CJK meaning +2; one and two character words match word starts only -35; ranking
+fraction on	new source: sub-block heading +12; one and two character words match word starts only -44; ranking
+fraction one	new source: sub-block heading +12; ranking
+fraction one\s	new source: sub-block heading +12; ranking
+fraction one h	new source: sub-block heading +3; one and two character words match word starts only -31; ranking
+fraction one ha	ranking
+fraction one hal	ranking
+fraction one half	ranking
+com	new source: alias +20; new source: CLDR short name +3; new source: keyword +41; range characters are now present +1; new source: block name +1332; new source: sub-block heading +871; new source: CJK meaning +504; ranking
+comb	new source: keyword +2; new source: sub-block heading +65; new source: CJK meaning +29; ranking
+combi	new source: sub-block heading +65; new source: CJK meaning +13; ranking
+combin	new source: sub-block heading +65; new source: CJK meaning +15; ranking
+combini	new source: sub-block heading +30; ranking
+combinin	new source: sub-block heading +30; ranking
+combining	new source: sub-block heading +30; ranking
+combining\s	new source: sub-block heading +30; ranking
+combining a	new source: block name +23; new source: sub-block heading +33; one and two character words match word starts only -308; ranking
+combining ac	new source: alias +1; one and two character words match word starts only -33; ranking
+combining acu	ranking
+combining acut	ranking
+combining acute	ranking
+le	new source: alias +17; new source: CLDR short name +1; new source: keyword +17; new source: formal alias +1; new source: block name +792; new source: sub-block heading +199; new source: CJK meaning +688; one and two character words match word starts only -4589; ranking
+les	new source: keyword +14; new source: sub-block heading +3449; new source: CLDR short name +1; new source: alias +13; new source: block name +11308; new source: CJK meaning +454; ranking
+less	new source: sub-block heading +16; new source: alias +4; new source: keyword +6; new source: CJK meaning +154; ranking
+less-	punctuation separates words -34; new source: sub-block heading +16; new source: alias +4; new source: keyword +6; new source: CJK meaning +154; ranking
+less-t	punctuation separates words -7; new source: keyword +2; new source: sub-block heading +2; new source: CJK meaning +62; ranking
+less-th	punctuation separates words -1; new source: keyword +1; new source: CJK meaning +20; ranking
+less-tha	punctuation separates words -1; new source: keyword +1; new source: CJK meaning +6; ranking
+so	new source: abbreviation +3; new source: alias +21; new source: keyword +32; range characters are now present +56; new source: sub-block heading +91; new source: CJK meaning +1055; one and two character words match word starts only -418; ranking
+sof	new source: keyword +2; new source: alias +3; new source: CJK meaning +77; ranking
+soft	new source: keyword +2; new source: alias +3; new source: CJK meaning +77; ranking
+soft\s	new source: keyword +2; new source: alias +3; new source: CJK meaning +77; ranking
+soft h	new source: CJK meaning +15; one and two character words match word starts only -2
+u	new source: abbreviation +1; new source: formal alias +2; new source: alias +46; new source: CLDR short name +2; new source: keyword +34; range characters are now present +102013; new source: block name +678; new source: sub-block heading +909; new source: CJK meaning +18; one and two character words match word starts only -13290; ranking
+u+	punctuation separates words -1671; new source: abbreviation +1; new source: formal alias +2; new source: alias +63; new source: CLDR short name +3; new source: keyword +46; range characters are now present +102013; new source: block name +726; new source: sub-block heading +1234; new source: CJK meaning +18
+u+2	range characters are now present +60960
+u+21	range characters are now present +4096
+u+219	range characters are now present +256
+u+2192	range characters are now present +16
+0	new source: alias +6; new source: keyword +2; new source: sub-block heading +309; one and two character words match word starts only -3016; fixed: first page is capped at 64; ranking
+0x1	range characters are now present +7085
+\\u	punctuation separates words -1671; new source: abbreviation +1; new source: formal alias +2; new source: alias +63; new source: CLDR short name +3; new source: keyword +46; range characters are now present +102013; new source: block name +726; new source: sub-block heading +1234; new source: CJK meaning +18
+2	new source: formal alias +2; new source: alias +24; new source: CLDR short name +1; new source: keyword +3; range characters are now present +60972; new source: sub-block heading +86; new source: CJK meaning +63; one and two character words match word starts only -2607; fixed: first page is capped at 64; ranking
+21	range characters are now present +4096; new source: alias +2; new source: CJK meaning +9; one and two character words match word starts only -133; fixed: first page is capped at 64
+219	range characters are now present +256
+2192	range characters are now present +16
+1	new source: formal alias +2; new source: alias +34; new source: CLDR short name +1; new source: keyword +35; range characters are now present +7091; new source: block name +126; new source: sub-block heading +748; new source: CJK meaning +189; one and two character words match word starts only -1282; fixed: first page is capped at 64; ranking
+1f	one and two character words match word starts only -56; fixed: first page is capped at 64
+1f6	fixed: first page is capped at 64
+j	new source: alias +33; new source: CLDR short name +7; new source: keyword +38; range characters are now present +2088; new source: block name +4594; new source: sub-block heading +149; new source: CJK meaning +727; one and two character words match word starts only -1798; placeholder rows are removed -20; ranking
+k	new source: alias +47; new source: CLDR short name +1; new source: keyword +33; range characters are now present +588; new source: formal alias +1; new source: block name +252; new source: sub-block heading +590; new source: CJK meaning +1421; placeholder rows are removed -22; one and two character words match word starts only -5825; ranking
+o	new source: formal alias +1; new source: alias +27; new source: CLDR short name +3; new source: keyword +43; range characters are now present +56; new source: block name +76; new source: sub-block heading +322; new source: CJK meaning +6940; one and two character words match word starts only -22145; ranking
+v	new source: abbreviation +2; new source: formal alias +2; new source: alias +82; new source: CLDR short name +4; new source: keyword +47; new source: block name +25; new source: sub-block heading +2052; new source: CJK meaning +1259; one and two character words match word starts only -2862; ranking
+w	new source: formal alias +1; new source: alias +48; new source: CLDR short name +7; new source: keyword +98; range characters are now present +140; new source: sub-block heading +1167; new source: CJK meaning +4040; one and two character words match word starts only -3865; ranking
+x	new source: alias +19; new source: keyword +14; new source: block name +86; new source: sub-block heading +347; new source: CJK meaning +25; one and two character words match word starts only -1876; ranking
+y	new source: alias +12; new source: keyword +26; range characters are now present +196; new source: formal alias +1; new source: block name +55; new source: sub-block heading +26; new source: CJK meaning +385; one and two character words match word starts only -13762; ranking
+A	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
+Z	new source: formal alias +1; new source: alias +59; new source: CLDR short name +2; new source: keyword +39; new source: sub-block heading +35; new source: CJK meaning +57; one and two character words match word starts only -1121; ranking
+Q	new source: alias +27; new source: keyword +13; new source: sub-block heading +251; new source: CJK meaning +279; one and two character words match word starts only -1213; ranking
+3	new source: formal alias +1; new source: alias +11; new source: CLDR short name +1; new source: keyword +14; range characters are now present +27829; new source: sub-block heading +40; new source: CJK meaning +39; one and two character words match word starts only -4758; fixed: first page is capped at 64; ranking
+4	new source: keyword +3; range characters are now present +4032; new source: alias +7; new source: sub-block heading +9; new source: CJK meaning +32; one and two character words match word starts only -2951; fixed: first page is capped at 64; ranking
+5	new source: keyword +4; range characters are now present +4096; new source: alias +3; new source: sub-block heading +24; new source: CJK meaning +25; one and two character words match word starts only -2078; fixed: first page is capped at 64; ranking
+6	new source: keyword +2; range characters are now present +4096; new source: alias +2; new source: sub-block heading +45; new source: CJK meaning +30; one and two character words match word starts only -1946; fixed: first page is capped at 64; ranking
+7	new source: alias +6; new source: keyword +2; range characters are now present +4096; new source: sub-block heading +21; new source: CJK meaning +31; one and two character words match word starts only -1809; fixed: first page is capped at 64; ranking
+8	new source: alias +3; new source: keyword +2; range characters are now present +4096; new source: sub-block heading +73; new source: CJK meaning +32; one and two character words match word starts only -2436; fixed: first page is capped at 64; ranking
+9	new source: alias +6; new source: keyword +2; range characters are now present +4096; new source: sub-block heading +39; new source: CJK meaning +15; one and two character words match word starts only -1984; fixed: first page is capped at 64; ranking
+an	new source: alias +21; new source: CLDR short name +2; new source: keyword +132; range characters are now present +4; new source: block name +1814; new source: sub-block heading +905; new source: CJK meaning +2244; one and two character words match word starts only -13036; ranking
+as	new source: alias +19; new source: keyword +7; range characters are now present +2; new source: sub-block heading +279; new source: CJK meaning +2077; one and two character words match word starts only -1565; ranking
+at	new source: keyword +5; range characters are now present +1; new source: alias +3; new source: sub-block heading +13; new source: CJK meaning +443; one and two character words match word starts only -7788; ranking
+be	new source: alias +17; new source: CLDR short name +3; new source: keyword +53; range characters are now present +84; new source: sub-block heading +166; new source: CJK meaning +1358; one and two character words match word starts only -929; ranking
+en	new source: formal alias +1; new source: alias +22; new source: CLDR short name +1; new source: keyword +16; range characters are now present +4; new source: block name +482; new source: sub-block heading +154; new source: CJK meaning +488; one and two character words match word starts only -4229; ranking
+is	new source: alias +7; new source: keyword +4; range characters are now present +2; new source: sub-block heading +172; new source: CJK meaning +111; one and two character words match word starts only -1082; ranking
+it	range characters are now present +1; new source: formal alias +1; new source: alias +3; new source: sub-block heading +11; new source: CJK meaning +91; one and two character words match word starts only -8599; ranking
+of	new source: formal alias +1; new source: alias +35; new source: CLDR short name +2; new source: keyword +4; new source: sub-block heading +818; new source: CJK meaning +4545; one and two character words match word starts only -162; ranking
+ok	new source: keyword +2; range characters are now present +1; new source: CJK meaning +1; one and two character words match word starts only -929; ranking
+on	new source: formal alias +2; new source: alias +16; new source: CLDR short name +2; new source: keyword +5; range characters are now present +4; new source: sub-block heading +347; new source: CJK meaning +906; one and two character words match word starts only -4999; ranking
+or	new source: alias +15; new source: CLDR short name +1; new source: keyword +24; new source: block name +20; new source: sub-block heading +696; new source: CJK meaning +1386; one and two character words match word starts only -4453; ranking
+to	new source: alias +38; new source: CLDR short name +5; new source: keyword +47; range characters are now present +56; new source: block name +9; new source: sub-block heading +97; new source: CJK meaning +4968; one and two character words match word starts only -1374; ranking
+zz	new source: CLDR short name +1; new source: keyword +3; one and two character words match word starts only -20; ranking
+AB	new source: alias +8; new source: keyword +4; range characters are now present +2; new source: sub-block heading +147; new source: CJK meaning +348; one and two character words match word starts only -3935; ranking
+Pi	new source: alias +16; new source: CLDR short name +1; new source: keyword +22; range characters are now present +28; new source: block name +1128; new source: sub-block heading +44; new source: CJK meaning +599; one and two character words match word starts only -2787; ranking
+ightwards	new source: keyword +1; ranking
+ollar	new source: keyword +5; new source: sub-block heading +41; new source: CJK meaning +31; ranking
+rrow	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +161; ranking
+eart	new source: keyword +13; new source: alias +2; new source: sub-block heading +99; new source: CJK meaning +181; ranking
+mil	new source: alias +10; new source: keyword +16; range characters are now present +8; new source: sub-block heading +28; new source: CLDR short name +1; new source: CJK meaning +302; ranking
+etter	new source: alias +1; new source: keyword +6; new source: block name +307; new source: sub-block heading +126; new source: CJK meaning +42
+tion	new source: formal alias +2; new source: CLDR short name +1; new source: alias +97; new source: keyword +113; new source: sub-block heading +2144; new source: block name +1628; new source: CJK meaning +677; ranking
+ing	range characters are now present +1; new source: sub-block heading +1269; new source: formal alias +2; new source: alias +81; new source: CLDR short name +44; new source: keyword +161; new source: block name +1149; new source: CJK meaning +2847; ranking
+ward	new source: keyword +10; new source: alias +8; new source: CLDR short name +2; new source: sub-block heading +15; new source: CJK meaning +153; ranking
+-pointing	punctuation separates words -81; new source: CLDR short name +6; new source: alias +3; new source: CJK meaning +2
+-break	punctuation separates words -3; new source: alias +2; new source: keyword +14; new source: CJK meaning +94; ranking
+wards arrow	words may match across the names of one character +45; new source: alias +1; new source: CLDR short name +2; ranking
+mall lett	words may match across the names of one character +15; new source: CJK meaning +1; ranking
+width jo	ranking
+rtl	new source: alias +1; new source: sub-block heading +1; new source: CJK meaning +54; ranking
+shy	new source: abbreviation +1; new source: keyword +2; new source: CJK meaning +14; ranking
+lrm	new source: abbreviation +1
+zwnj	new source: abbreviation +1
+zwsp	new source: abbreviation +1; new source: alias +2
+emoji	new source: keyword +1; new source: alias +1; new source: sub-block heading +1
+trademark	compound word is split +1; new source: CJK meaning +1
+hashtag	new source: alias +1
+cat	new source: keyword +35; range characters are now present +1; new source: alias +12; new source: sub-block heading +911; new source: CJK meaning +359; ranking
+cry	new source: keyword +6; new source: sub-block heading +11; new source: alias +1; new source: CJK meaning +47; ranking
+sun	new source: keyword +4; range characters are now present +4; new source: alias +4; new source: sub-block heading +62; new source: CJK meaning +110; ranking
+ipa	new source: block name +96; new source: sub-block heading +140; new source: alias +2; new source: CJK meaning +8
+dice	new source: keyword +1; new source: sub-block heading +6; new source: CJK meaning +8
+card	new source: keyword +18; new source: alias +1; new source: sub-block heading +4; new source: CJK meaning +23; ranking
+underscore	new source: sub-block heading +4; ranking
+period	new source: CJK meaning +21; ranking
+enter	new source: keyword +10; new source: sub-block heading +12; new source: alias +4; new source: CJK meaning +50; ranking
+laugh	new source: keyword +5; new source: alias +1; new source: CJK meaning +57
+cent	new source: alias +5; new source: sub-block heading +35; new source: CLDR short name +1; new source: keyword +4; new source: CJK meaning +74; ranking
+cross	new source: alias +6; new source: CLDR short name +1; new source: keyword +3; new source: sub-block heading +6; new source: CJK meaning +104; ranking
+fire	new source: keyword +1; new source: alias +1; new source: CJK meaning +109; ranking
+face	new source: CLDR short name +1; new source: keyword +20; new source: sub-block heading +89; new source: alias +1; new source: CJK meaning +81; ranking
+smiley	new source: keyword +1
+space	new source: alias +4; new source: keyword +20; new source: sub-block heading +4; new source: CJK meaning +29; ranking
+down	new source: formal alias +1; new source: CLDR short name +3; new source: alias +6; new source: keyword +2; new source: sub-block heading +9; new source: CJK meaning +192; ranking
+left	new source: CLDR short name +1; new source: alias +6; new source: formal alias +1; new source: sub-block heading +11; new source: CJK meaning +27; ranking
+omega	new source: alias +4; ranking
+alpha	new source: keyword +2; new source: block name +1549; new source: sub-block heading +182; new source: alias +1; new source: CJK meaning +1; ranking
+half	new source: alias +3; new source: block name +105; new source: sub-block heading +8; new source: CJK meaning +25; ranking
+diaeresis	ranking
+warning	new source: sub-block heading +4; new source: CJK meaning +4
+return	new source: CJK meaning +23; ranking
+escape	new source: alias +2; new source: CJK meaning +13
+delete	new source: keyword +1; new source: CJK meaning +2; ranking
+null	new source: alias +1
+bell	new source: keyword +4; new source: sub-block heading +2; new source: CJK meaning +72; ranking
+ellipsis	new source: sub-block heading +2; ranking
+quotation	new source: CJK meaning +1; ranking
+apostrophe	new source: CLDR short name +3; new source: sub-block heading +5; ranking
+hyphen	new source: alias +2; ranking
+dash	new source: alias +2; new source: formal alias +1; new source: keyword +3; new source: sub-block heading +1; new source: CJK meaning +8; ranking
+digit	new source: alias +1; new source: sub-block heading +12; ranking
+letter	new source: alias +1; new source: keyword +6; new source: block name +335; new source: sub-block heading +98; new source: CJK meaning +21; ranking
+sign	new source: alias +29; new source: CLDR short name +5; new source: keyword +7; new source: sub-block heading +466; new source: CJK meaning +63; ranking
+symbol	new source: formal alias +2; new source: alias +33; new source: CLDR short name +2; new source: block name +4493; new source: sub-block heading +337; new source: CJK meaning +21; ranking
+mark	new source: CLDR short name +1; new source: alias +14; new source: keyword +2; new source: formal alias +1; new source: block name +281; new source: sub-block heading +355; new source: CJK meaning +66; ranking
+with	new source: alias +10; new source: CLDR short name +4; new source: sub-block heading +534; new source: CJK meaning +859; ranking
+and	new source: CLDR short name +1; new source: alias +22; new source: block name +2309; new source: sub-block heading +2457; new source: keyword +6; new source: CJK meaning +1824; ranking
+for	new source: alias +57; new source: CLDR short name +1; new source: keyword +32; new source: block name +1464; new source: sub-block heading +1670; new source: CJK meaning +1910; ranking
+the	new source: alias +39; new source: keyword +82; new source: sub-block heading +846; new source: block name +611; new source: CJK meaning +2770; ranking
+arabic	new source: alias +2; new source: block name +5; new source: sub-block heading +17; ranking
+thai	ranking
+cjk	range characters are now present +101963; new source: block name +608; new source: sub-block heading +6; ranking
+hangul	range characters are now present +11172; new source: CJK meaning +1; ranking
+katakana	new source: sub-block heading +88; ranking
+smiling	new source: CLDR short name +1; new source: keyword +3; new source: CJK meaning +4; ranking
+key	new source: sub-block heading +146; new source: alias +1; new source: keyword +4; new source: CJK meaning +40; ranking
+diamond	new source: keyword +5; new source: sub-block heading +4; new source: CJK meaning +5; ranking
+sharp	new source: keyword +1; new source: sub-block heading +2; new source: CJK meaning +82; ranking
+integral	new source: alias +1; new source: sub-block heading +6
+ohm	new source: CJK meaning +2; ranking
+micro	new source: CJK meaning +2; ranking
+per mille	ranking
+permille	new source: alias +1; compound word is split +1
+care of	new source: CJK meaning +14
+rupee	new source: alias +1; ranking
+xor	new source: keyword +1; new source: CJK meaning +7
+wj	new source: abbreviation +1; one and two character words match word starts only -3
+vs16	new source: abbreviation +11
+variation selector	ranking
+replacement	new source: CJK meaning +1
+ligature	new source: alias +4; new source: sub-block heading +26; ranking
+fi	new source: formal alias +1; new source: alias +31; new source: CLDR short name +29; new source: keyword +29; new source: sub-block heading +762; new source: CJK meaning +1168; one and two character words match word starts only -736; ranking
+long s	new source: CLDR short name +1; new source: alias +4; new source: block name +8; new source: keyword +1; new source: sub-block heading +1; new source: CJK meaning +112; one and two character words match word starts only -12; ranking
+ring above	new source: sub-block heading +1; new source: CJK meaning +1; ranking
+circumflex	ranking
+grave	new source: keyword +1; new source: sub-block heading +7; new source: CJK meaning +80; ranking
+acute	new source: keyword +1; new source: CJK meaning +6; ranking
+double acute	ranking
+pipe	new source: alias +1; new source: keyword +1; new source: CJK meaning +17
+non-spacing	ranking
+overscore	new source: sub-block heading +3; ranking
+hamzah	ranking
+mho	new source: CJK meaning +1
+center	new source: alias +4; new source: CJK meaning +13; ranking
+black heart	ranking
+heart suit	ranking
+smiling face	new source: CLDR short name +1; new source: keyword +3; ranking
+latin capital letter a	new source: block name +2; new source: sub-block heading +5; one and two character words match word starts only -129; ranking
+latin small letter e with acute	one and two character words match word starts only -5
+e acute	new source: CJK meaning +3; one and two character words match word starts only -33; ranking
+a with grave	new source: CJK meaning +1; one and two character words match word starts only -12; ranking
+greek small letter alpha	ranking
+right-to-left mark	punctuation separates words -1
+less-than or equal	punctuation separates words -1
+vulgar fraction	ranking
+one half	new source: alias +2; new source: block name +5; new source: sub-block heading +10; new source: CJK meaning +1; ranking
+superscript one	new source: block name +55; new source: sub-block heading +4
+dollar sign	ranking
+euro sign	ranking
+at sign	new source: alias +2; new source: sub-block heading +8; one and two character words match word starts only -325
+trade mark sign	ranking
+quotation mark	ranking
+full stop	new source: alias +1; ranking
+low line	words may match across the names of one character +1; ranking
+reverse solidus	ranking
+black star	new source: alias +1; ranking
+box drawings light horizontal	new source: sub-block heading +16
+white chess king	ranking
+musical symbol g clef	ranking
+music note	new source: keyword +4; new source: sub-block heading +37; new source: CJK meaning +4; ranking
+die face	new source: keyword +2; new source: CJK meaning +1
+combining acute accent	ranking
+tag latin small letter a	one and two character words match word starts only -25
+hiragana letter a	one and two character words match word starts only -88; ranking
+hangul syllable	range characters are now present +11170; new source: sub-block heading +30
+cjk ideograph	range characters are now present +101985; new source: block name +177; new source: sub-block heading +4; ranking
+hebrew letter alef	new source: sub-block heading +1
+small letter a	new source: sub-block heading +4; one and two character words match word starts only -1338; ranking
+letter a	new source: keyword +1; new source: block name +300; new source: sub-block heading +119; new source: CJK meaning +7; one and two character words match word starts only -7296; ranking
+a b	new source: formal alias +1; new source: alias +45; new source: CLDR short name +13; new source: keyword +90; new source: block name +396; new source: sub-block heading +1248; new source: CJK meaning +3287; one and two character words match word starts only -12947; ranking
+a b c	words may match across the names of one character +1; new source: alias +20; new source: CLDR short name +8; new source: keyword +45; new source: block name +276; new source: sub-block heading +782; new source: CJK meaning +3287; one and two character words match word starts only -8607; ranking
+arrow up	new source: alias +1; new source: keyword +2; new source: block name +31; new source: sub-block heading +6; new source: CJK meaning +1; one and two character words match word starts only -6; ranking
+arrow right	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+arrow left right	new source: CLDR short name +2; new source: block name +21; ranking
+upwards arrow	new source: alias +1; new source: block name +11; ranking
+rightwards double arrow	ranking
+sun with face	new source: sub-block heading +4
+peace symbol	new source: block name +4
+warning sign	new source: sub-block heading +4
+middle dot	ranking
+line feed	new source: alias +1
+carriage return	new source: CJK meaning +1
+new line	new source: formal alias +1
+greek small letter pi	one and two character words match word starts only -7
+n-ary summation	ranking
+replacement character	ranking
+shrug	new source: CJK meaning +1
+lat sm	new source: block name +103; new source: sub-block heading +43; new source: alias +2; new source: CJK meaning +8
+lat cap a	new source: block name +2; new source: sub-block heading +6; new source: alias +1; one and two character words match word starts only -129; ranking
+gr alpha	new source: block name +1; new source: sub-block heading +292; ranking
+arr right	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +4; ranking
+box light	new source: sub-block heading +48; ranking
+small a	new source: keyword +1; new source: block name +2; new source: CJK meaning +259; one and two character words match word starts only -1953; ranking
+capital a	new source: alias +1; new source: CJK meaning +7; one and two character words match word starts only -749; ranking
+sm let a gra	new source: alias +1; new source: block name +1; new source: sub-block heading +21; new source: CJK meaning +7; one and two character words match word starts only -54; ranking
+arrow rightwards	new source: block name +22; ranking
+a letter small latin	new source: block name +9; new source: sub-block heading +7; one and two character words match word starts only -405; ranking
+mark check	ranking
+dash em	one and two character words match word starts only -1; ranking
+two superscript	new source: block name +1; new source: sub-block heading +6
+suit heart	ranking
+face smiling	new source: CLDR short name +1; new source: keyword +3; ranking
+sign dollar	ranking
+sign copyright	words may match across the names of one character +1
+alpha letter small greek	ranking
+king chess white	ranking
+horizontal light drawings box	new source: sub-block heading +16
+accent acute combining	ranking
+to equal not	ranking
+mark question	new source: alias +1; new source: CJK meaning +2; ranking
+sign trade mark	ranking
+arrow arrow	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+a a	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
+a a a	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
+heart heart	new source: keyword +9; new source: sub-block heading +12; new source: CJK meaning +36; ranking
+latin latin small	new source: block name +108; new source: sub-block heading +36
+sign sign	new source: alias +29; new source: CLDR short name +5; new source: keyword +7; new source: sub-block heading +466; new source: CJK meaning +63; ranking
+left left arrow	new source: CLDR short name +1; new source: alias +1; new source: keyword +3; new source: block name +46; ranking
+e e	new source: formal alias +1; new source: alias +13; new source: keyword +33; range characters are now present +84; new source: block name +81151; new source: sub-block heading +6; new source: CJK meaning +1701; one and two character words match word starts only -25796; ranking
+right arrow right	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+zero zero	new source: formal alias +1; new source: keyword +2; new source: sub-block heading +14; new source: CJK meaning +2; ranking
+mark mark mark	new source: CLDR short name +1; new source: alias +14; new source: keyword +2; new source: formal alias +1; new source: block name +281; new source: sub-block heading +355; new source: CJK meaning +66; ranking
+to to	new source: alias +38; new source: CLDR short name +5; new source: keyword +47; range characters are now present +56; new source: block name +9; new source: sub-block heading +97; new source: CJK meaning +4968; one and two character words match word starts only -1374; ranking
+a\s	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
+\sa\s	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
+\s\sarrow	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+arrow \s	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+\sarrow\s	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+right \sarrow	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+right \s\sarrow	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+\sright arrow\s	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+right\x{0009}arrow	new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+\x{0009}arrow	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+arrow\x{0009}	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+right\x{00A0}arrow	punctuation separates words -39; new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+right\x{3000}arrow	punctuation separates words -39; new source: CLDR short name +1; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1; ranking
+arrow\x{000A}	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+\s\x{00E9}	fixed: pasted or padded characters are recognised +1; accents fold to base letters +7911; new source: abbreviation +7; new source: formal alias +2; new source: alias +71; new source: CLDR short name +4; new source: keyword +134; range characters are now present +84; new source: block name +84524; new source: sub-block heading +1453; new source: CJK meaning +1736
+\s41	range characters are now present +256; new source: alias +1; new source: CJK meaning +2; one and two character words match word starts only -337; fixed: first page is capped at 64
+41\s	range characters are now present +256; new source: alias +1; new source: CJK meaning +2; one and two character words match word starts only -337; fixed: first page is capped at 64
+41 42	one and two character words match word starts only -2
+\su+41	range characters are now present +256
+u+41\s	range characters are now present +256
+u+ 41	range characters are now present +256; new source: CJK meaning +2
+e9\s	one and two character words match word starts only -38
+\s\x{2192}	fixed: pasted or padded characters are recognised +1
+a\x{200B}b	fixed: pasted or padded characters are recognised +3
+em \sdash\s	one and two character words match word starts only -1; ranking
+latin \ssmall \sletter \sa	new source: block name +9; new source: sub-block heading +7; one and two character words match word starts only -405; ranking
+ARROW	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+Arrow	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+aRrOw	new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122; ranking
+Latin Small Letter A	new source: block name +9; new source: sub-block heading +7; one and two character words match word starts only -405; ranking
+LATIN SMALL LETTER A	new source: block name +9; new source: sub-block heading +7; one and two character words match word starts only -405; ranking
+HEART	new source: keyword +9; new source: sub-block heading +12; new source: CJK meaning +36; ranking
+Heart	new source: keyword +9; new source: sub-block heading +12; new source: CJK meaning +36; ranking
+Greek	new source: alias +10; new source: block name +1; new source: sub-block heading +306
+GREEK	new source: alias +10; new source: block name +1; new source: sub-block heading +306
+Em Dash	one and two character words match word starts only -1; ranking
+COPYRIGHT sign	words may match across the names of one character +1
+Dollar	new source: keyword +3; new source: CJK meaning +5; ranking
+SMILE	new source: keyword +23; new source: alias +1; new source: sub-block heading +1; new source: CJK meaning +16; ranking
+Smile	new source: keyword +23; new source: alias +1; new source: sub-block heading +1; new source: CJK meaning +16; ranking
+Ightwards	new source: keyword +1; ranking
+U+2192	range characters are now present +16
+0X41	range characters are now present +256
+0x41	range characters are now present +256
+FACE	new source: CLDR short name +1; new source: keyword +20; new source: sub-block heading +89; new source: alias +1; new source: CJK meaning +81; ranking
+Face	new source: CLDR short name +1; new source: keyword +20; new source: sub-block heading +89; new source: alias +1; new source: CJK meaning +81; ranking
+\x{00DF}	fixed: uppercase() turned a special letter into ASCII -721; fixed: first page is capped at 64
+\x{0131}	fixed: uppercase() turned a special letter into ASCII -35152
+\x{0130}	accents fold to base letters +3934; new source: formal alias +3; new source: alias +141; new source: CLDR short name +4; new source: keyword +105; range characters are now present +108190; new source: block name +114; new source: sub-block heading +2338
+stra\x{00DF}e	fixed: pasted text without matches lists its characters +6
+\x{00C9}	accents fold to base letters +7911; new source: abbreviation +7; new source: formal alias +2; new source: alias +71; new source: CLDR short name +4; new source: keyword +134; range characters are now present +84; new source: block name +84524; new source: sub-block heading +1453; new source: CJK meaning +1736
+centerline	new source: alias +1
+apostrophe-quote	new source: keyword +3; new source: sub-block heading +3
+plus-or-minus	new source: CLDR short name +1; new source: sub-block heading +2
+spacing	new source: block name +74; new source: sub-block heading +6; ranking
+latin small letter a grave	one and two character words match word starts only -4; ranking
+latin capital letter a acute	ranking
+opening parenthesis	ranking
+closing parenthesis	ranking
+closing curly bracket	ranking
+vertical bar	ranking
+spacing underscore	new source: sub-block heading +4; ranking
+spacing grave	new source: block name +4; ranking
+spacing diaeresis	words may match across the names of one character +1
+paragraph sign	new source: keyword +1; new source: sub-block heading +1
+small letter y diaeresis	one and two character words match word starts only -10
+minus sign	new source: alias +1; new source: sub-block heading +9; ranking
+double comma quotation mark	ranking
+single comma quotation mark	ranking
+black up pointing triangle	ranking
+forms light horizontal	new source: sub-block heading +16
+hiragana letter small a	one and two character words match word starts only -15
+cjk ideographs	new source: block name +103004; new source: sub-block heading +143
+glottal stop	ranking
+barred o	one and two character words match word starts only -13; ranking
+yogh	ranking
+script f	new source: formal alias +1; new source: alias +3; new source: sub-block heading +29; words may match across the names of one character +13; new source: CJK meaning +4; one and two character words match word starts only -54; ranking
+d retroflex hook	new source: block name +1; new source: sub-block heading +2; one and two character words match word starts only -15; ranking
+upper case	new source: CLDR short name +1; new source: sub-block heading +444
+lower case	new source: CLDR short name +1; new source: alias +1; new source: sub-block heading +428
+zero-width	punctuation separates words -5
+cyrillic capital letter ie	one and two character words match word starts only -6; ranking
+hebrew point	new source: sub-block heading +3; ranking
+U+41	range characters are now present +256
+U+1	range characters are now present +7085
+U+2	range characters are now present +60960
+U+20	range characters are now present +4095
+U+21	range characters are now present +4096
+U+219	range characters are now present +256
+U+2190	range characters are now present +16
+U+E000	punctuation separates words -1
+U+E0	ranking
+U+4E	range characters are now present +255
+U+200D	range characters are now present +16
+U+200	range characters are now present +255
+U+A	range characters are now present +1023
+U+F	ranking
+U+	punctuation separates words -1671; new source: abbreviation +1; new source: formal alias +2; new source: alias +63; new source: CLDR short name +3; new source: keyword +46; range characters are now present +102013; new source: block name +726; new source: sub-block heading +1234; new source: CJK meaning +18
+U+G	punctuation separates words -117; new source: alias +5; new source: CLDR short name +1; new source: keyword +11; new source: block name +4996; new source: sub-block heading +446; new source: CJK meaning +3036
+U+-1	punctuation separates words -2; new source: alias +5; new source: keyword +1; new source: block name +11; new source: sub-block heading +230; new source: CJK meaning +207
+U++41	range characters are now present +256; new source: CJK meaning +2
+U+bad	range characters are now present +16
+U+cafe	range characters are now present +1
+U+beef	range characters are now present +1
+U+add	range characters are now present +16
+U	new source: abbreviation +1; new source: formal alias +2; new source: alias +46; new source: CLDR short name +2; new source: keyword +34; range characters are now present +102013; new source: block name +678; new source: sub-block heading +909; new source: CJK meaning +18; one and two character words match word starts only -13290; ranking
+0x2192	range characters are now present +16
+\\u2192	range characters are now present +16
+\\n	punctuation separates words -4727; new source: abbreviation +5; new source: alias +126; new source: CLDR short name +5; new source: keyword +84; range characters are now present +588; new source: formal alias +2; new source: block name +238; new source: sub-block heading +671; new source: CJK meaning +2314
+u2192	range characters are now present +16
+u41	range characters are now present +256
+u+u	punctuation separates words -1671; new source: abbreviation +1; new source: formal alias +2; new source: alias +63; new source: CLDR short name +3; new source: keyword +46; range characters are now present +102013; new source: block name +726; new source: sub-block heading +1234; new source: CJK meaning +18
+uu	new source: alias +12; one and two character words match word starts only -35; ranking
+U2192	range characters are now present +16
+u 2192	range characters are now present +16
+u-2192	range characters are now present +16
+u+2192;	range characters are now present +16
+<U+2192>	range characters are now present +16
+U+2192,	range characters are now present +16
+41	range characters are now present +256; new source: alias +1; new source: CJK meaning +2; one and two character words match word starts only -337; fixed: first page is capped at 64
+e9	one and two character words match word starts only -38
+E9	one and two character words match word starts only -38
+a9	one and two character words match word starts only -57; fixed: first page is capped at 64
+20	range characters are now present +4095; new source: alias +5; new source: sub-block heading +7; new source: CJK meaning +15; one and two character words match word starts only -152; fixed: first page is capped at 64
+00	new source: alias +2; one and two character words match word starts only -424; fixed: first page is capped at 64
+2a	range characters are now present +4062; one and two character words match word starts only -76; fixed: first page is capped at 64
+7f	range characters are now present +256; one and two character words match word starts only -42
+80	range characters are now present +256; new source: alias +1; new source: CJK meaning +4; one and two character words match word starts only -89; fixed: first page is capped at 64
+a0	new source: sub-block heading +190; one and two character words match word starts only -105; fixed: first page is capped at 64
+ff	one and two character words match word starts only -111; ranking
+b0	range characters are now present +256; new source: sub-block heading +112; one and two character words match word starts only -127; fixed: first page is capped at 64
+d8	one and two character words match word starts only -40
+10	new source: keyword +4; new source: alias +3; new source: sub-block heading +275; new source: CJK meaning +26; one and two character words match word starts only -134; fixed: first page is capped at 64
+21a	range characters are now present +256
+e00	fixed: first page is capped at 64; ranking
+100	new source: keyword +2; new source: alias +2; new source: sub-block heading +268; new source: CJK meaning +7; fixed: first page is capped at 64
+263	range characters are now present +256
+263a	range characters are now present +16
+2764	range characters are now present +16
+e000	fixed: code lookup of a hidden code point -1
+4e2d	range characters are now present +1
+200d	range characters are now present +16
+123456	ranking
+2 192	one and two character words match word starts only -6
+21 92	one and two character words match word starts only -3
+cafe	new source: keyword +1
+bad	new source: keyword +2; range characters are now present +1; new source: CJK meaning +60; ranking
+add	new source: alias +2; new source: keyword +6; new source: block name +256; new source: sub-block heading +642; new source: CJK meaning +117; ranking
+dead	new source: keyword +12; new source: sub-block heading +5; new source: CJK meaning +28
+beef	new source: alias +1
+abc	new source: alias +1; new source: keyword +2; new source: CJK meaning +4; ranking
+def	new source: alias +3; new source: keyword +1; new source: CJK meaning +102; ranking
+c0de	range characters are now present +1
+1ce	fixed: first page is capped at 64
+a1	new source: sub-block heading +203; one and two character words match word starts only -69; fixed: first page is capped at 64
+b2	range characters are now present +256; new source: alias +12; new source: sub-block heading +118; one and two character words match word starts only -336; fixed: first page is capped at 64
+c3	range characters are now present +256; new source: sub-block heading +137; one and two character words match word starts only -55
+3d	range characters are now present +4351; one and two character words match word starts only -293; fixed: first page is capped at 64
+0a	one and two character words match word starts only -64; fixed: first page is capped at 64
+0f	one and two character words match word starts only -41; fixed: first page is capped at 64
+5e	range characters are now present +256; one and two character words match word starts only -39
+e2	new source: sub-block heading +116; one and two character words match word starts only -41; ranking
+65	range characters are now present +256; new source: CJK meaning +2; one and two character words match word starts only -73; fixed: first page is capped at 64
+97	range characters are now present +256; new source: CJK meaning +3; one and two character words match word starts only -90; fixed: first page is capped at 64
+8594	range characters are now present +1
+32	range characters are now present +4094; new source: sub-block heading +32; new source: CJK meaning +2; one and two character words match word starts only -102; fixed: first page is capped at 64
+123	new source: keyword +1; new source: CJK meaning +1; fixed: first page is capped at 64
+12345	ranking
+42	range characters are now present +256; new source: CJK meaning +2; one and two character words match word starts only -331; fixed: first page is capped at 64
+-1	new source: keyword +1; punctuation separates words -5538
++1	new source: keyword +1
+&	new source: keyword +1
+*	new source: keyword +4
++	new source: keyword +2
+-	new source: keyword +2; punctuation separates words -11862
+<	new source: keyword +2; placeholder rows are removed -32
+>	placeholder rows are removed -32
+.	new source: keyword +1
+,	placeholder rows are removed -32
+!	new source: keyword +4
+?	new source: keyword +3
+(	punctuation separates words -4
+)	punctuation separates words -4
+\x{00E9}	accents fold to base letters +7911; new source: abbreviation +7; new source: formal alias +2; new source: alias +71; new source: CLDR short name +4; new source: keyword +134; range characters are now present +84; new source: block name +84524; new source: sub-block heading +1453; new source: CJK meaning +1736
+\x{03B1}	new source: CJK meaning +6
+\x{03C0}	new source: CJK meaning +1
+\x{D55C}	range characters are now present +1
+\x{6C34}	range characters are now present +1
+\x{00D7}	new source: keyword +3
+\x{266A}	new source: keyword +1
+\x{2713}	new source: keyword +3
+\x{0000}	fixed: NUL or U+0085 matched every row -199
+\x{0085}	fixed: NUL or U+0085 matched every row -199; fixed: first page is capped at 64
+a\x{0308}	fixed: pasted or padded characters are recognised +2
+\x{1F468}\x{200D}\x{1F469}\x{200D}\x{1F467}	fixed: pasted or padded characters are recognised +4
+\x{1F1FA}\x{1F1F8}	fixed: pasted or padded characters are recognised +2
+\x{2764}\x{FE0F}	fixed: pasted or padded characters are recognised +2
+1\x{FE0F}\x{20E3}	fixed: pasted or padded characters are recognised +3
+\x{1F3F3}\x{FE0F}\x{200D}\x{1F308}	fixed: pasted or padded characters are recognised +4
+\x{2192}\x{2190}	fixed: pasted or padded characters are recognised +2
+\x{1F600}\x{1F600}	fixed: pasted or padded characters are recognised +1
+\x{1F600}\x{1F602}	fixed: pasted or padded characters are recognised +2
+\x{1F600}a	fixed: pasted or padded characters are recognised +2
+a\x{1F600}	fixed: pasted or padded characters are recognised +2
+\x{00E9}1	new source: sub-block heading +62
+\x{4E2D}\x{6587}	range characters are now present +2
+\x{D55C}\x{AE00}	range characters are now present +2
+\x{03B1}\x{03B2}	fixed: pasted text without matches lists its characters +2
+\s\x{1F600}	fixed: pasted or padded characters are recognised +1
+a\x{D83D}	fixed: pasted or padded characters are recognised +1
+\x{D83D}a	fixed: pasted or padded characters are recognised +1
+\x{2192}\x{2192}\x{2192}	fixed: pasted or padded characters are recognised +1
+abc\x{1F600}	fixed: pasted or padded characters are recognised +4
+\x{1F600} face	fixed: pasted or padded characters are recognised +1; fixed: text next to a pasted character is searched -198; new source: CLDR short name +1; new source: keyword +20; new source: sub-block heading +89; new source: alias +1; new source: CJK meaning +81
+\x{2192} arrow	fixed: pasted or padded characters are recognised +1; fixed: text next to a pasted character is searched -647; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+arrow \x{2192}	fixed: pasted or padded characters are recognised +1; fixed: text next to a pasted character is searched -647; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+\x{00E9} acute	accents fold to base letters +6; new source: block name +66; new source: sub-block heading +2; new source: CJK meaning +3
+\x{FB01}	fixed: uppercase() turned a special letter into ASCII -1751
+\x{00C5}	accents fold to base letters +7059; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+K	new source: alias +47; new source: CLDR short name +1; new source: keyword +33; range characters are now present +588; new source: formal alias +1; new source: block name +252; new source: sub-block heading +590; new source: CJK meaning +1421; placeholder rows are removed -22; one and two character words match word starts only -5825; ranking
+\x{03BC}	new source: CJK meaning +2
+\x{017F}	fixed: uppercase() turned a special letter into ASCII -23340
+\x{0130}stanbul	fixed: pasted text without matches lists its characters +8
+na\x{00EF}ve	new source: CJK meaning +2
+caf\x{00E9}	new source: keyword +1
+\x{00FC}ber	accents fold to base letters +1; new source: CJK meaning +28
+S\x{00E3}o	fixed: pasted text without matches lists its characters +3
+\x{65E5}\x{672C}\x{8A9E}	range characters are now present +3
+\x{0441}\x{043C}\x{0430}\x{0439}\x{043B}	fixed: pasted text without matches lists its characters +5
+\x{0441}\x{0442}\x{0440}\x{0435}\x{043B}\x{043A}\x{0430}	fixed: pasted text without matches lists its characters +7
+\x{03BA}\x{03B1}\x{03C1}\x{03B4}\x{03B9}\x{03AC}	fixed: pasted text without matches lists its characters +6
+\x{0633}\x{0647}\x{0645}	fixed: pasted text without matches lists its characters +3
+\x{77E2}\x{5370}	range characters are now present +2
+\x{30CF}\x{30FC}\x{30C8}	fixed: pasted text without matches lists its characters +3
+\x{5FC3}	range characters are now present +1; new source: CJK meaning +1
+\x{2190}\x{2192}	fixed: pasted or padded characters are recognised +2
+...	new source: keyword +1
+(c)	punctuation separates words -12390; new source: abbreviation +2; new source: alias +163; new source: CLDR short name +12; new source: keyword +306; range characters are now present +114815; new source: formal alias +1; new source: block name +1638; new source: sub-block heading +5560
+(r)	punctuation separates words -3474; new source: formal alias +2; new source: abbreviation +6; new source: alias +132; new source: CLDR short name +8; new source: keyword +149; range characters are now present +588; new source: block name +18; new source: sub-block heading +1547; new source: CJK meaning +4010
+(tm)	new source: keyword +2; new source: CJK meaning +2
+<3	new source: keyword +2
+\x{00AF}\\_(\x{30C4})_/\x{00AF}	fixed: pasted or padded characters are recognised +7
+hearts suit black	new source: keyword +1
+foo bar	new source: keyword +2; new source: sub-block heading +2; new source: CJK meaning +2
+zwj joiner	new source: abbreviation +1
+\x{1F600} grin	fixed: pasted or padded characters are recognised +1; fixed: text next to a pasted character is searched -4; new source: CLDR short name +5; new source: keyword +1; new source: CJK meaning +59
+\s-\s	new source: keyword +2; punctuation separates words -11862
+- -	new source: keyword +2; punctuation separates words -11863
+a-b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+a.b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+a/b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+a+b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+type-1	punctuation separates words -2; new source: sub-block heading +137; new source: CJK meaning +2
+face-1	new source: keyword +12; new source: sub-block heading +5; new source: CJK meaning +1
+no-break	punctuation separates words -2; new source: CJK meaning +5
+right-to-left	punctuation separates words -71
+x-ray	punctuation separates words -2
+-a	punctuation separates words -6894; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+a-	punctuation separates words -7126; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15359; new source: sub-block heading +2127; new source: CJK meaning +4507
+<control>	punctuation separates words -12; new source: alias +3; new source: keyword +1; new source: block name +80; new source: sub-block heading +77; new source: CJK meaning +39
+<cjk	punctuation separates words -1219; range characters are now present +101963; new source: block name +608; new source: sub-block heading +6
+ideograph,	punctuation separates words -1287; new source: alias +1; range characters are now present +108158; new source: block name +22; new source: sub-block heading +240
+first>	punctuation separates words -26; new source: alias +3; new source: CJK meaning +25
+private use	new source: sub-block heading +1; new source: CJK meaning +1
+control	new source: alias +3; new source: keyword +1; new source: block name +80; new source: sub-block heading +77; new source: CJK meaning +39
+%	new source: keyword +1
+a%	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+%a	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+a%b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+a_b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+arr%	punctuation separates words -903; new source: alias +11; new source: keyword +27; new source: block name +202; new source: sub-block heading +49; new source: formal alias +1; new source: CJK meaning +525
+%row	punctuation separates words -700; new source: alias +6; new source: keyword +27; new source: block name +202; new source: sub-block heading +214; new source: CJK meaning +434
+arr_w	punctuation separates words -324; new source: alias +6; new source: keyword +13; new source: block name +78; new source: sub-block heading +38; new source: formal alias +1; new source: CJK meaning +137
+a%w	punctuation separates words -1721; new source: alias +54; new source: CLDR short name +2; new source: keyword +75; new source: block name +786; new source: sub-block heading +1468; new source: CJK meaning +2427
+%arrow%	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+_rrow	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +161
+arrow_	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+arrow%	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+per%	punctuation separates words -648; new source: alias +46; new source: CLDR short name +30; new source: keyword +37; new source: sub-block heading +848; new source: block name +474; new source: CJK meaning +723
+percent%sign	punctuation separates words -5
+low_line	punctuation separates words -38
+lat%small	punctuation separates words -996; new source: block name +108; new source: sub-block heading +42; new source: alias +2; new source: CJK meaning +5
+'a'	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+"a"	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+'arrow'	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+"arrow"	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+"right arrow"	punctuation separates words -238; new source: CLDR short name +2; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1
+'right arrow'	punctuation separates words -238; new source: CLDR short name +2; new source: alias +2; new source: keyword +4; new source: block name +49; new source: CJK meaning +1
+arrow'	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+arrow"	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+o'clock	punctuation separates words -25; new source: block name +2; new source: CJK meaning +1
+it's	punctuation separates words -295; new source: CLDR short name +1; range characters are now present +1; new source: alias +4; new source: block name +106; new source: sub-block heading +15; new source: CJK meaning +58
+a'b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+a"b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+a\\	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+a\\b	new source: formal alias +2; punctuation separates words -952; new source: alias +79; new source: CLDR short name +14; new source: keyword +126; new source: block name +1598; new source: sub-block heading +1784; new source: CJK meaning +3295
+\\a	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+\\arrow	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+arrow\\	punctuation separates words -648; new source: alias +6; new source: keyword +11; new source: block name +202; new source: sub-block heading +27; new source: CJK meaning +122
+ar\\row	punctuation separates words -669; new source: alias +5; new source: keyword +12; new source: block name +202; new source: sub-block heading +24; new source: CJK meaning +40
+[a]	punctuation separates words -7060; new source: formal alias +2; new source: abbreviation +2; new source: alias +177; new source: CLDR short name +6; new source: keyword +242; range characters are now present +56; new source: block name +15365; new source: sub-block heading +2131; new source: CJK meaning +4507
+NULL	new source: alias +1
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a	new source: formal alias +1; new source: alias +39; new source: CLDR short name +1; new source: keyword +75; range characters are now present +56; new source: block name +7413; new source: sub-block heading +155; new source: CJK meaning +4467; one and two character words match word starts only -21197; ranking
+zwnj	new source: abbreviation +1
+zwsp	new source: abbreviation +1; new source: alias +2
+lrm	new source: abbreviation +1
+new line	new source: formal alias +1
+full stop	new source: alias +1; ranking
+line feed	new source: alias +1
+-1	new source: keyword +1; punctuation separates words -5538
+<3	new source: keyword +2
+laugh	new source: keyword +5; new source: alias +1; new source: CJK meaning +57
+thumb	new source: sub-block heading +17; new source: CJK meaning +12; ranking
+heart suit	ranking
+100	new source: keyword +2; new source: alias +2; new source: sub-block heading +268; new source: CJK meaning +7; fixed: first page is capped at 64
+\x{6C34}	range characters are now present +1
+\x{1F468}\x{200D}\x{1F469}\x{200D}\x{1F467}	fixed: pasted or padded characters are recognised +4
