@@ -33,6 +33,7 @@ import vadiole.unicode.ui.common.ActionCell
 import vadiole.unicode.ui.common.CharInfoView
 import vadiole.unicode.ui.common.CharTextView
 import vadiole.unicode.ui.common.Screen
+import vadiole.unicode.ui.common.ScrollingLineView
 import vadiole.unicode.ui.common.SpacerDrawable
 import vadiole.unicode.ui.common.SquircleDrawable
 import vadiole.unicode.ui.common.TEXT_SECONDARY
@@ -109,11 +110,19 @@ class DetailsSheet(
         isSingleLine = true
     }
 
+    private val otherNames = ScrollingLineView(context).apply {
+        layoutParams = linearParams(matchParent, wrapContent, marginLeft = -screenPadding, marginRight = -screenPadding)
+        setPadding(screenPadding, 0, screenPadding, 0)
+        minimumHeight = subtitleHeight
+        visibility = GONE
+    }
+
     private val topBlock = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
         layoutParams = linearParams(matchParent, wrapContent)
         setPadding(screenPadding, screenPadding, screenPadding, 0)
         addView(title)
+        addView(otherNames)
         addView(subtitle)
     }
 
@@ -151,6 +160,7 @@ class DetailsSheet(
     private val minSpan = 10.dp(context).toFloat()
 
     private companion object {
+        const val SEPARATOR = " · "
         const val RAD_TO_DEG = (180.0 / Math.PI).toFloat()
         const val TWO_PI = (2.0 * Math.PI).toFloat()
         val PI_F = Math.PI.toFloat()
@@ -335,6 +345,7 @@ class DetailsSheet(
         charView.textColor = this.context.getColor(R.color.windowTextPrimary)
         title.setTextColor(this.context.getColor(R.color.windowTextPrimary))
         subtitle.setTextColor(this.context.getColor(R.color.windowTextSecondary))
+        otherNames.setColors(this.context.getColor(R.color.windowTextSecondary), this.context.getColor(R.color.layer0))
         background = backgroundDrawable
         layoutParams = frameParams(matchParent, wrapContent, gravity = Gravity.BOTTOM)
         clipChildren = false
@@ -471,7 +482,10 @@ class DetailsSheet(
     fun bind(codePoint: CodePoint, abbreviations: Map<CodePoint, String>) = launch {
         val obj: CharObj = unicodeStorage.getCharObj(codePoint) ?: return@launch
         title.text = obj.name
-        subtitle.text = obj.blockName
+        subtitle.text = if (obj.subhead == null) obj.blockName else obj.blockName + SEPARATOR + obj.subhead
+        otherNames.text = obj.otherNames.joinToString(SEPARATOR)
+        otherNames.contentDescription = obj.otherNames.joinToString()
+        otherNames.visibility = if (obj.otherNames.isEmpty()) GONE else VISIBLE
         charView.text = obj.char
         charView.abbreviation = abbreviations[codePoint]
         infoViews.forEachIndexed { index, infoView ->
