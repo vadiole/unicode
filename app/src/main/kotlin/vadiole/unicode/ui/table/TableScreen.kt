@@ -298,7 +298,7 @@ class TableScreen(
         }
 
         override fun onScrollProgressChanged(progress: Float) {
-            fastScrollView.setScrollProgress(progress)
+            fastScrollView.setScrollProgress(tableController.scrollScale?.toThumb(progress) ?: progress)
         }
     }
     private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate).apply {
@@ -315,7 +315,7 @@ class TableScreen(
         override fun onFastScrollStart() = Unit
 
         override fun onFastScroll(progress: Float, precisionLevel: Int) {
-            tableView.scrollToProgress(progress, precisionLevel)
+            tableView.scrollToProgress(linearProgress(progress), precisionLevel)
         }
 
         override fun onFastScrollEnd() = Unit
@@ -323,10 +323,17 @@ class TableScreen(
         override fun getBlockName(progress: Float): String? {
             val itemCount = tableAdapter.itemCount
             if (itemCount <= 0) return null
-            val position = (itemCount * progress).toInt().coerceIn(0, itemCount - 1)
+            val position = (itemCount * linearProgress(progress)).toInt().coerceIn(0, itemCount - 1)
             return tableController.getBlock(position * spanCount)?.name
         }
     }
+    private fun linearProgress(progress: Float) = tableController.scrollScale?.toLinear(progress) ?: progress
+
+    private suspend fun loadBlocks() {
+        tableController.loadBlocks()
+        tableViewDelegate.onScrollProgressChanged(tableView.getScrollProgress())
+    }
+
     private val searchFastScrollDelegate = object : FastScrollView.Delegate {
         override fun onFastScrollStart() {
             searchResultView.stopScroll()
@@ -437,13 +444,13 @@ class TableScreen(
             tableAdapter.notifyDataSetChanged()
             if (isCached) {
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
-                tableController.loadBlocks()
+                loadBlocks()
                 if (tableController.needsRevalidation()) reloadChars(background = true)
             } else {
                 tableController.loadChars(fast = false)
                 tableAdapter.notifyDataSetChanged()
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
-                tableController.loadBlocks()
+                loadBlocks()
             }
         }
     }
@@ -677,7 +684,7 @@ class TableScreen(
             val topOffset = tableView.firstVisibleRowOffset
             tableAdapter.notifyDataSetChanged()
             scrollToCodePoint(topCodePoint, topOffset)
-            tableController.loadBlocks()
+            loadBlocks()
             popup = null
         }
     }

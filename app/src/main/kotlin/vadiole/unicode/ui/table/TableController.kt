@@ -27,6 +27,9 @@ class TableController(
         private set
     val blocks: Array<Block>
         get() = blockList.blocks
+    @Volatile
+    var scrollScale: ScrollScale? = null
+        private set
     private val blocksLock = Any()
     private var blocksGeneration = 0
     private val glyphPaint = Paint()
@@ -90,11 +93,13 @@ class TableController(
             val curated = if (key < candidates.size() && candidates.keyAt(key) <= block.end) candidates.valueAt(key) else null
             fillBlockIcons(block, curated, icons, index * BlockList.ICON_SIZE, showAll)
         }
+        val scale = ScrollScale.create(tableChars.storage, filteredBlocks, unicodeStorage.data())
         synchronized(blocksLock) {
             if (generation != blocksGeneration) return@worker
             lastBlock = null
             lastBlockIndex = -1
             blockList = BlockList(filteredBlocks, icons)
+            scrollScale = scale
         }
     }
 
