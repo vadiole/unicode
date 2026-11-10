@@ -13,8 +13,11 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.view.Gravity
+import android.view.MotionEvent
+import android.view.ViewConfiguration
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Switch
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.exp
 import kotlin.math.sin
@@ -23,6 +26,8 @@ import vadiole.unicode.R
 class ToggleSwitch(context: Context) : Switch(context) {
 
     var onToggle: ((Boolean) -> Unit)? = null
+    var onPreview: ((Boolean) -> Unit)? = null
+    var onInteractionChanged: ((Boolean) -> Unit)? = null
 
     private val evaluator = ArgbEvaluator()
     private val offTrack = context.getColor(R.color.windowDivider)
@@ -36,6 +41,12 @@ class ToggleSwitch(context: Context) : Switch(context) {
     private var progress = 0f
     private var colorAnimator: ValueAnimator? = null
     private var syncing = false
+    private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+    private val previewTick = TickHaptic(this, 0.5f)
+    private var downX = 0f
+    private var interacting = false
+    private var preview = false
+    private val startInteraction = Runnable { setInteracting(true) }
 
     init {
         background = null
@@ -62,6 +73,39 @@ class ToggleSwitch(context: Context) : Switch(context) {
         val current = isChecked
         settle(checked, animate = true)
         if (checked != current) onToggle?.invoke(checked)
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val handled = super.onTouchEvent(event)
+        if (onInteractionChanged == null || !isEnabled) return handled
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                downX = event.x
+                preview = isChecked
+                postDelayed(startInteraction, HOLD_DELAY)
+            }
+            MotionEvent.ACTION_MOVE -> {
+                if (!interacting && abs(event.x - downX) > touchSlop) setInteracting(true)
+                if (interacting) updatePreview()
+            }
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> setInteracting(false)
+        }
+        return handled
+    }
+
+    private fun setInteracting(active: Boolean) {
+        removeCallbacks(startInteraction)
+        if (interacting == active) return
+        interacting = active
+        onInteractionChanged?.invoke(active)
+    }
+
+    private fun updatePreview() {
+        val over = thumbDrawable.bounds.exactCenterX() > trackDrawable.bounds.exactCenterX()
+        if (over == preview) return
+        preview = over
+        previewTick.perform()
+        onPreview?.invoke(over)
     }
 
     private fun settle(checked: Boolean, animate: Boolean) {
@@ -98,6 +142,7 @@ class ToggleSwitch(context: Context) : Switch(context) {
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
+        setInteracting(false)
         colorAnimator?.cancel()
         thumb?.snap(isChecked)
         applyProgress(if (isChecked) 1f else 0f)
@@ -275,6 +320,7 @@ class ToggleSwitch(context: Context) : Switch(context) {
 
     private companion object {
         const val SPRING_DURATION = 350L
+        const val HOLD_DELAY = 150L
 
         // M3 FastSpatial spring constants:
         // https://github.com/androidx/androidx/blob/a0c93ebc1c59237652ad316bf1a1b177e0059e6f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ExpressiveMotionTokens.kt#L26-L27

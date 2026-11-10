@@ -46,10 +46,14 @@ class SettingsScreen(
     private val revealLayout = PathRevealLayout(context).apply {
         setBackgroundColor(context.getColor(R.color.layer0))
         onRevealChanged = { revealed ->
+            isRevealed = revealed
             if (revealed) delegate.onTableRevealStarted(::reset) else delegate.onTableRevealEnded()
         }
     }
     private var adjustingSize = false
+    private var isRevealed = false
+    private var revealHolds = 0
+    private val restoreReveal = Runnable { revealLayout.restore() }
     private val characterSizeCell = SliderCell(
         context,
         context.getString(R.string.settings_character_size_in_table),
@@ -66,7 +70,7 @@ class SettingsScreen(
             adjustingSize = active
             delegate.onCharacterScaleAdjusting(active)
             if (!active) userConfig.tableCharacterScale = slider.value
-            if (active) revealAppearance() else revealLayout.restore()
+            holdReveal(active, linger = false)
         }
     }
     private val enlargeSmallCharsCell = ToggleCell(
@@ -76,6 +80,13 @@ class SettingsScreen(
     ) { checked ->
         userConfig.enlargeSmallChars = checked
         delegate.onEnlargeSmallCharsChanged(checked)
+        if (isRevealed && revealHolds == 0) lingerReveal()
+    }.apply {
+        switch.onPreview = { checked -> delegate.onEnlargeSmallCharsChanged(checked) }
+        switch.onInteractionChanged = { active ->
+            if (!active) delegate.onEnlargeSmallCharsChanged(userConfig.enlargeSmallChars)
+            holdReveal(active, linger = true)
+        }
     }
     private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, enlargeSmallCharsCell))
 
@@ -130,6 +141,23 @@ class SettingsScreen(
         }, frameParams(matchParent, matchParent))
     }
 
+    private fun holdReveal(active: Boolean, linger: Boolean) {
+        removeCallbacks(restoreReveal)
+        if (active) {
+            revealHolds++
+            revealAppearance()
+        } else {
+            revealHolds = maxOf(0, revealHolds - 1)
+            if (revealHolds > 0) return
+            if (linger) lingerReveal() else revealLayout.restore()
+        }
+    }
+
+    private fun lingerReveal() {
+        removeCallbacks(restoreReveal)
+        postDelayed(restoreReveal, REVEAL_LINGER)
+    }
+
     private fun revealAppearance() {
         val bounds = Rect(0, 0, appearanceGroup.width, appearanceGroup.height)
         revealLayout.offsetDescendantRectToMyCoords(appearanceGroup, bounds)
@@ -140,7 +168,12 @@ class SettingsScreen(
     }
 
     override fun onDetachedFromWindow() {
+        removeCallbacks(restoreReveal)
         if (adjustingSize) userConfig.tableCharacterScale = characterSizeCell.slider.value
         super.onDetachedFromWindow()
+    }
+
+    private companion object {
+        const val REVEAL_LINGER = 700L
     }
 }
