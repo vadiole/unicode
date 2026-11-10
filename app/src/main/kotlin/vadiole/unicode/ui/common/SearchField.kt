@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.TypedValue
+import android.view.Choreographer
 import android.view.Gravity
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -13,17 +14,25 @@ import vadiole.unicode.R
 
 class SearchField(context: Context, private val onQueryChanged: (String) -> Unit) : EditText(context) {
     private var lastInput = ""
+    private var isReportScheduled = false
+    private val choreographer = Choreographer.getInstance()
+    private val reportQuery = Choreographer.FrameCallback {
+        isReportScheduled = false
+        val input = text.toString()
+        if (input != lastInput) {
+            lastInput = input
+            onQueryChanged(input)
+        }
+    }
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
 
         override fun afterTextChanged(s: Editable) {
-            val input = s.toString()
-            if (input != lastInput) {
-                lastInput = input
-                onQueryChanged(input)
-            }
+            if (isReportScheduled) return
+            isReportScheduled = true
+            choreographer.postFrameCallback(reportQuery)
         }
     }
 
@@ -42,8 +51,14 @@ class SearchField(context: Context, private val onQueryChanged: (String) -> Unit
         includeFontPadding = false
         isLongClickable = true
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
-        imeOptions = EditorInfo.IME_ACTION_SEARCH or EditorInfo.IME_FLAG_FORCE_ASCII
-        inputType = InputType.TYPE_CLASS_TEXT
+        imeOptions = EditorInfo.IME_ACTION_SEARCH
+        inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        choreographer.removeFrameCallback(reportQuery)
+        isReportScheduled = false
     }
 
     override fun drawableStateChanged() {
