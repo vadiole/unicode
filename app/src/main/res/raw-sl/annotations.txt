@@ -1,4 +1,4 @@
-annotations 1 sl 407efd56
+annotations 1 sl 07d4f37f
 21	klicaj	vzklik	
 23	lojtra	grabljice|ključnik|znak #|znak za številko	
 24	dolar	denar|peso|USD	
@@ -76,12 +76,12 @@ F7	znak za deljenje	deli|deljenje
 2034	znak za linijo		
 2038	spodnja strešica		
 203B	referenčna oznaka		
-203C	dvojni klicaj	dva klicaja|klicaj|ločilo|znak|!!	!
+203C	dvojni klicaj	dva klicaja|klicaj|ločilo|znak|!|!!	
 203D	klicajvprašaj		
 203E	nadčrtano		
 2042	asterizem		
 2044	poševnica ulomka	poševnica	
-2049	klicaj in vprašaj	klicaj|klicaj-vprašaj|ločilo|vprašaj|znak|!?	!|?
+2049	klicaj in vprašaj	klicaj|klicaj-vprašaj|ločilo|vprašaj|znak|!|!?|?	
 207B	nadpisani minus	minus|nadpis	
 20A2	cruzeiro	BRB|valuta	
 20A3	francoski frank	frank|valuta	
@@ -386,7 +386,7 @@ F7	znak za deljenje	deli|deljenje
 2603	snežak	mraz|mrzlo|sneg|vreme	
 2604	komet	vesolje	
 260E	telefon	klicanje	
-2611	potrditveno polje s kljukico	kljukica|končano|opravljeno|polje|potrditveno polje s kjukico	✓
+2611	potrditveno polje s kljukico	kljukica|končano|opravljeno|polje|potrditveno polje s kjukico|✓	
 2614	dežnik z dežnimi kapljami	dež|dežnik|kaplja|oblačila|vreme	
 2615	vroč napitek	čaj|kava|napitek|piti|vrelo|vroče	
 2618	deteljica	irsko|rastlina	
@@ -467,35 +467,35 @@ F7	znak za deljenje	deli|deljenje
 26FA	šotor	kampiranje|taborjenje	
 26FD	črpalka za gorivo	bencin|črpalka|gorivo|servis	
 2702	škarje	orodje|rezanje	
-2705	gumb s kljukico	gumb|kljukica|opravljeno|potrditev	✓
+2705	gumb s kljukico	gumb|kljukica|opravljeno|potrditev|✓	
 2708	letalo	letenje|potovanje|vozilo	
 2709	ovojnica	e-pošta|pismo|pošta	
 270A	dvignjena pest	dlan|pest|pokrčeno|solidarnost|stisnjena pest|telo|udarec	
-270B	dvignjena dlan	dlan|petka|stop	5
+270B	dvignjena dlan	dlan|petka|stop|5	
 270C	dlan s prstoma, ki kažeta znak za zmago	dlan|mir|roka|v|zmaga	
 270D	pišoča dlan	dlan|pisanje|pisati|telo	
 270F	svinčnik	pisalo	
 2712	črna konica peresa	konica|pero	
-2714	kljukica	končano|znak	✓
-2716	množi	množenje|množiti|prekliči|x|znak|znak za množenje	×
+2714	kljukica	končano|znak|✓	
+2716	množi	množenje|množiti|prekliči|x|znak|znak za množenje|×	
 271D	krščanski križ	križ|krščansko|vera	
 2721	davidova zvezda	david|jud|judovsko|vera|zvezda	
-2728	iskrice	iskrenje|lesketanje|zvezda|zvezdice	*
-2733	zvezdica z osmimi špicami	zvezdica	*
-2734	osemkraka zvezda	zvezda	*
+2728	iskrice	iskrenje|lesketanje|zvezda|zvezdice|*	
+2733	zvezdica z osmimi špicami	zvezdica|*	
+2734	osemkraka zvezda	zvezda|*	
 2744	snežinka	mrzlo|sneg|vreme	
-2747	iskra	iskrica	*
-274C	križec	množenje|množiti|oznaka|preklic|x	×
-274E	gumb s križcem	kvadrat|množenje|oznaka|x	×
-2753	rdeč vprašaj	ločilo|vprašaj|znak	?
-2754	bel vprašaj	ločilo|obrobljeno|oznaka|vprašaj|vprašanje	?
-2755	bel klicaj	klicaj|obrobljeno|znak	!
-2757	rdeč klicaj	klicaj|ločilo|znak	!
+2747	iskra	iskrica|*	
+274C	križec	množenje|množiti|oznaka|preklic|x|×	
+274E	gumb s križcem	kvadrat|množenje|oznaka|x|×	
+2753	rdeč vprašaj	ločilo|vprašaj|znak|?	
+2754	bel vprašaj	ločilo|obrobljeno|oznaka|vprašaj|vprašanje|?	
+2755	bel klicaj	klicaj|obrobljeno|znak|!	
+2757	rdeč klicaj	klicaj|ločilo|znak|!	
 2763	klicaj v obliki srca	klicaj|ločilo|srce|znak	
 2764	rdeče srce	čustvo|ljubezen|srce	
-2795	plus	matematika|znak|znak za plus	+
-2796	minus	matematika|odštevanje|znak|znak za minus	-|−
-2797	deli	deljenje|matematika|znak|znak za deljenje	÷
+2795	plus	matematika|znak|znak za plus|+	
+2796	minus	matematika|odštevanje|znak|znak za minus|-|−	
+2797	deli	deljenje|matematika|znak|znak za deljenje|÷	
 27A1	puščica desno	glavno|puščica|smer|vzhod	
 27B0	zavita pentlja	pentlja|spirala|zanka	
 27BF	dvojna zavita pentlja	dvojno|pentlja|spirala|zanka	
@@ -632,7 +632,7 @@ FDFC	rial	valuta
 1F33D	koruzni storž	klas|koruza|rastlina	
 1F33E	snop riža	klas|rastlina|riž	
 1F33F	zelišče	list|rastlina	
-1F340	štiriperesna deteljica	detelja|list|rastlina|štiri	4
+1F340	štiriperesna deteljica	detelja|list|rastlina|štiri|4	
 1F341	javorov list	javor|list|padanje|rastlina	
 1F342	padlo listje	jesen|list|padanje|rastlina	
 1F343	listje, ki se vrtinči v vetru	ki se vrtinči v vetru|list|listje|pihati|rastlina|veter|vrtinčiti se	
@@ -740,7 +740,7 @@ FDFC	rial	valuta
 1F3AE	videoigra	igra|krmilnik|playstation|zabava	
 1F3AF	zadetek v polno	igra|pikado|središče|zadetek	
 1F3B0	igralni avtomat	avtomat|casino|igra|igre na srečo	
-1F3B1	biljard	igra|krogla|osmica	8
+1F3B1	biljard	igra|krogla|osmica|8	
 1F3B2	igralna kocka	igra|kocka|kockanje|zabava	
 1F3B3	kegljanje	igra|krogla|šport	
 1F3B4	rožne igralne karte	igra|igranje|japonsko|karta|roža	
@@ -991,7 +991,7 @@ FDFC	rial	valuta
 1F4AC	oblaček z govorom	balon|dialog|govor|oblaček|strip	
 1F4AD	oblaček z mislimi	balon|ideja|misel|oblaček|strip	
 1F4AE	bela cvetlica	cvetlica|roža	
-1F4AF	sto točk	popolna ocena|sto|zagotovo	100
+1F4AF	sto točk	popolna ocena|sto|zagotovo|100	
 1F4B0	vreča denarja	bogat|denar|dolar|vreča	
 1F4B1	menjava valut	banka|denar|menjava|valuta	
 1F4B2	znak za dolar	denar|dolar|plačilo|valuta	
@@ -1101,10 +1101,10 @@ FDFC	rial	valuta
 1F51B	puščica NAPREJ!	puščica|puščica ON|vklop|znak	
 1F51C	puščica kmalu	kmalu|puščica	
 1F51D	puščica na vrh	navzgor|puščica|zgoraj	
-1F51E	prepovedano za mlajše od 18 let	mladoletno|ne|ni dovoljeno|omejitev starosti|osemnajst|prepovedano	18
+1F51E	prepovedano za mlajše od 18 let	mladoletno|ne|ni dovoljeno|omejitev starosti|osemnajst|prepovedano|18	
 1F520	vnos velikih črk latinice	črke|latinica|velike črke|vnos	
 1F521	vnos malih črk latinice	abcd|črke|latinica|male črke|vnos	
-1F522	vnos številk	številke|vnos	1234
+1F522	vnos številk	številke|vnos|1234	
 1F523	vnos simbolov	simboli|vnos	
 1F524	vnos črk latinice	abc|abeceda|črke|latinica|vnos	
 1F525	ogenj	orodje|plamen|vroče|vročina	
@@ -1138,30 +1138,30 @@ FDFC	rial	valuta
 1F54C	mošeja	islam|muslimansko|vera	
 1F54D	sinagoga	jud|judovsko|tempelj|vera	
 1F54E	menora	namizni svečnik|svečnik|vera	
-1F550	ura je ena	ena|ura|1.00	00|1
-1F551	ura je dve	dve|ura|2.00	00|2
-1F552	ura je tri	tri|ura|3.00	00|3
-1F553	ura je štiri	štiri|ura|4.00	00|4
-1F554	ura je pet	pet|ura|5.00	00|5
-1F555	ura je šest	šest|ura|6.00	00|6
-1F556	ura je sedem	sedem|ura|7.00	00|7
-1F557	ura je osem	osem|ura|8.00	00|8
-1F558	ura je devet	devet|ura|9.00	00|9
-1F559	ura je deset	deset|ura|10.00	00|10
-1F55A	ura je enajst	enajst|ura|11.00	00|11
-1F55B	poldne	dvanajst|opoldan|ura|12.00	00|12
-1F55C	pol dveh	dve|ena|pol|ura|1.30	1|30
-1F55D	pol treh	dve|pol|tri|ura|2.30	2|30
-1F55E	pol štirih	pol|štiri|tri|ura|3.30	3|30
-1F55F	pol petih	čas|pet|pol|štiri|ura|4.30	30|4
-1F560	pol šestih	pet|pol|šest|ura|5.30	30|5
-1F561	pol sedmih	pol|sedem|šest|ura|6.30	30|6
-1F562	pol osmih	osem|pol|sedem|ura|7.30	30|7
-1F563	pol devetih	devet|osem|pol|ura|8.30	30|8
-1F564	pol desetih	deset|devet|pol|ura|9.30	30|9
-1F565	pol enajstih	deset|enajst|pol|ura|10.30	10|30
-1F566	pol dvanajstih	dvanajst|enajst|pol|ura|11.30	11|30
-1F567	pol enih	dvanajst|ena|pol|ura|12.30	12|30
+1F550	ura je ena	ena|ura|00|1|1.00	
+1F551	ura je dve	dve|ura|00|2|2.00	
+1F552	ura je tri	tri|ura|00|3|3.00	
+1F553	ura je štiri	štiri|ura|00|4|4.00	
+1F554	ura je pet	pet|ura|00|5|5.00	
+1F555	ura je šest	šest|ura|00|6|6.00	
+1F556	ura je sedem	sedem|ura|00|7|7.00	
+1F557	ura je osem	osem|ura|00|8|8.00	
+1F558	ura je devet	devet|ura|00|9|9.00	
+1F559	ura je deset	deset|ura|00|10|10.00	
+1F55A	ura je enajst	enajst|ura|00|11|11.00	
+1F55B	poldne	dvanajst|opoldan|ura|00|12|12.00	
+1F55C	pol dveh	dve|ena|pol|ura|1|1.30|30	
+1F55D	pol treh	dve|pol|tri|ura|2|2.30|30	
+1F55E	pol štirih	pol|štiri|tri|ura|3|3.30|30	
+1F55F	pol petih	čas|pet|pol|štiri|ura|30|4|4.30	
+1F560	pol šestih	pet|pol|šest|ura|30|5|5.30	
+1F561	pol sedmih	pol|sedem|šest|ura|30|6|6.30	
+1F562	pol osmih	osem|pol|sedem|ura|30|7|7.30	
+1F563	pol devetih	devet|osem|pol|ura|30|8|8.30	
+1F564	pol desetih	deset|devet|pol|ura|30|9|9.30	
+1F565	pol enajstih	deset|enajst|pol|ura|10|10.30|30	
+1F566	pol dvanajstih	dvanajst|enajst|pol|ura|11|11.30|30	
+1F567	pol enih	dvanajst|ena|pol|ura|12|12.30|30	
 1F56F	sveča	luč	
 1F570	ura za na okvir kamina	čas|ura	
 1F573	luknja	odprtina	

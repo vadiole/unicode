@@ -1,4 +1,4 @@
-annotations 1 fr 9551998b
+annotations 1 fr 65695075
 21	point d’exclamation	exclamation	
 23	symbole dièse	croisillon|dièse|hash|numéro	
 24	dollar	argent|peso|USD	
@@ -35,10 +35,10 @@ A3	livre	devise|EGP|GBP
 A5	yen	CNY|devise|JPY|yuan	
 A7	section	paragraphe|partie|symbole	
 A8	diérèse	tréma|umlaut	
-A9	symbole copyright	c|copyright|droits d’auteur|propriété intellectuelle	©
+A9	symbole copyright	c|copyright|droits d’auteur|propriété intellectuelle|©	
 AB	guillemet gauche	anti-lambda|chevron|citation|crochet oblique|crochets|gauche	
 AC	négation	non	
-AE	marque déposée	marque commerciale|r	®
+AE	marque déposée	marque commerciale|r|®	
 B0	degré	heure|preuve	
 B1	plus-moins		
 B2	exposant deux	au carré|deux|exposant	
@@ -76,12 +76,12 @@ F7	signe de division	diviser|division|obélus
 2034	triple prime	prime	
 2038	caret		
 203B	marque de référence		
-203C	double point d’exclamation	exclamation|point|ponctuation|surprise|!!	!
+203C	double point d’exclamation	exclamation|point|ponctuation|surprise|!|!!	
 203D	point exclarrogatif		
 203E	trait suscrit		
 2042	astérisme		
 2044	barre oblique de fraction		
-2049	points d’exclamation et d’interrogation	exclamation|interrogation|point d’exclamation et d’interrogation|ponctuation|question|surprise|!?	!|?
+2049	points d’exclamation et d’interrogation	exclamation|interrogation|point d’exclamation et d’interrogation|ponctuation|question|surprise|!|!?|?	
 207B	exposant moins	exposant|moins	
 20A2	cruzeiro	devise	
 20A3	franc français	devise|franc	
@@ -386,7 +386,7 @@ F7	signe de division	diviser|division|obélus
 2603	bonhomme de neige	bonhomme de neige avec flocons|flocons|neige	
 2604	comète	espace|météore	
 260E	téléphone	téléphone rouge	
-2611	case cochée	bouton|carré|coche|OK|oui|sélection|terminé|voilà	✓
+2611	case cochée	bouton|carré|coche|OK|oui|sélection|terminé|voilà|✓	
 2614	parapluie avec gouttes de pluie	gouttes|météo|parapluie|parapluie avec gouttes|pluie	
 2615	boisson chaude	boisson|café|caféine|matin|thé	
 2618	trèfle	Irlande|plante	
@@ -467,7 +467,7 @@ F7	signe de division	diviser|division|obélus
 26FA	tente	camping|nature|voyage	
 26FD	pompe à essence	diesel|essence|gazole|station	
 2702	ciseaux	couper|découper|fournitures|papier	
-2705	bouton coché	carré|coche|coche blanche|marque|OK|oui|sélection|terminé|voilà	✓
+2705	bouton coché	carré|coche|coche blanche|marque|OK|oui|sélection|terminé|voilà|✓	
 2708	avion	avion en vol|jet|moyen de transport|véhicule|vol|voyage	
 2709	enveloppe	courrier électronique|e-mail|lettre|message	
 270A	poing levé	main|pierre|poing|poing serré|solidarité	
@@ -476,26 +476,26 @@ F7	signe de division	diviser|division|obélus
 270D	main qui écrit	écrire|main	
 270F	crayon	crayon à papier|gomme|mine	
 2712	stylo plume noir	écrire|stylo	
-2714	coche	coche noire|OK|oui|sélection|terminé|voilà	✓
-2716	signe multiplier	annuler|croix noire|multiplication|multiplier|non|x	*|×
+2714	coche	coche noire|OK|oui|sélection|terminé|voilà|✓	
+2716	signe multiplier	annuler|croix noire|multiplication|multiplier|non|x|*|×	
 271D	croix latine	chrétien|chrétienne|croix|religion	
 2721	étoile de David	David|étoile|judaïsme|juif|Juif|juive|religion	
-2728	étincelles	étoile|étoiles|magie|nuit|nuit étoilée|scintiller	*
-2733	astérisque huit branches	astérique|astérique huit branches|astérisque|étoile|huit	*
-2734	étoile huit branches	astérisque|étoile|huit	*
+2728	étincelles	étoile|étoiles|magie|nuit|nuit étoilée|scintiller|*	
+2733	astérisque huit branches	astérique|astérique huit branches|astérisque|étoile|huit|*	
+2734	étoile huit branches	astérisque|étoile|huit|*	
 2744	flocon	flocon de neige|froid|météo|neige	
-2747	éclat	briller|étinceler|étincelle|scintiller	*
-274C	croix	annuler|croix rouge|multiplication|multiplier|x	×
-274E	bouton croix	croix|multiplier|vert|x	×
-2753	point d’interrogation rouge	interrogation|point d’interrogation|ponctuation|question	?
-2754	point d’interrogation blanc	interrogation|ponctuation|question	?
-2755	point d’exclamation blanc	exclamation|ponctuation|surprise	!
-2757	point d’exclamation rouge	exclamation|point d’exclamation|ponctuation	!
+2747	éclat	briller|étinceler|étincelle|scintiller|*	
+274C	croix	annuler|croix rouge|multiplication|multiplier|x|×	
+274E	bouton croix	croix|multiplier|vert|x|×	
+2753	point d’interrogation rouge	interrogation|point d’interrogation|ponctuation|question|?	
+2754	point d’interrogation blanc	interrogation|ponctuation|question|?	
+2755	point d’exclamation blanc	exclamation|ponctuation|surprise|!	
+2757	point d’exclamation rouge	exclamation|point d’exclamation|ponctuation|!	
 2763	cœur point d’exclamation	amour|cœur|exclamation|ponctuation	
 2764	cœur rouge	amour|cœur|sentiment	
-2795	plus	addition|ajouter|arithmétique|mathématiques|signe plus|signe Plus|somme	+
-2796	moins	arithmétique|mathématiques|signe moins|signe Moins|soustraction|soustraire	-|−
-2797	signe diviser	algèbre|diviser|division|math|mathématique|mathématiques|signe	÷
+2795	plus	addition|ajouter|arithmétique|mathématiques|signe plus|signe Plus|somme|+	
+2796	moins	arithmétique|mathématiques|signe moins|signe Moins|soustraction|soustraire|-|−	
+2797	signe diviser	algèbre|diviser|division|math|mathématique|mathématiques|signe|÷	
 27A1	flèche droite	direction|droite|est|flèche|sens	
 27B0	boucle	bouclette	
 27BF	double boucle	boucle	
@@ -515,7 +515,7 @@ F7	signe de division	diviser|division|obélus
 2B1B	grand carré noir	carré|forme|forme géométrique|géométrie	
 2B1C	grand carré blanc	carré|forme|géométrie	
 2B50	étoile	astronomie|nuit	
-2B55	cercle rouge	anneau|cercle|gros cercle|o|O|rouge	0
+2B55	cercle rouge	anneau|cercle|gros cercle|o|O|rouge|0	
 3001	virgule idéographique	idéographique|virgule	
 3002	point idéographique	idéographique|point|point final	
 3008	chevron angulaire ouvrant	chevron|chevron angulaire|chevron pointu|crochet|crochets obliques|tuple	
@@ -632,7 +632,7 @@ FDFC	rial	devise
 1F33D	épi de maïs	épi|ferme|maïs|nourriture	
 1F33E	plant de riz	grain|plante|riz	
 1F33F	feuille	arbre|feuilles|plante	
-1F340	trèfle à quatre feuilles	chance|feuilles|Irlande|plante|porte-bonheur|quatre|trèfle	4
+1F340	trèfle à quatre feuilles	chance|feuilles|Irlande|plante|porte-bonheur|quatre|trèfle|4	
 1F341	feuille d’érable	automne|érable|feuille|feuille morte|tomber	
 1F342	feuille morte	automne|feuille|feuilles mortes|tomber	
 1F343	feuille virevoltante	bourrasque|feuille|souffle|tourbillon de feuilles|vent|virevolter	
@@ -740,7 +740,7 @@ FDFC	rial	devise
 1F3AE	jeu vidéo	joystick|manette|playstation|xbox	
 1F3AF	dans le mille	cible|fléchettes|jeu	
 1F3B0	machine à sous	casino|jeu	
-1F3B1	boule de billard	billard|boule magique|huit|jeu|pool	8
+1F3B1	boule de billard	billard|boule magique|huit|jeu|pool|8	
 1F3B2	dés	dé|hasard|jeu	
 1F3B3	bowling	boule|jeu|partie|quilles|sport|strike	
 1F3B4	jeu des fleurs	carte|carte à jouer|fleur|fleurs|japonais|jeu	
@@ -991,7 +991,7 @@ FDFC	rial	devise
 1F4AC	bulle de parole	bande dessinée|BD|bulle|dialogue|écrire|message|SMS	
 1F4AD	bulle de pensée	bande dessinée|BD|bulle|idée|imaginer|inventer|invention|pensée|penser|rêve|rêver	
 1F4AE	fleur blanche	fleur	
-1F4AF	cent points	cent|score	100
+1F4AF	cent points	cent|score|100	
 1F4B0	sac plein d’argent	argent|avare|banque|dollar|parier|payer|sac|sac d’argent	
 1F4B1	conversion de devise	argent|banque|change|conversion|devise	
 1F4B2	symbole dollar	argent|devise|dollar|espèces|payer	
@@ -1104,7 +1104,7 @@ FDFC	rial	devise
 1F51E	18 ans et plus	dix-huit|interdiction|interdit|interdit aux mineurs|interdit aux moins de dix-huit ans|limite d’âge|majorité|mineur	
 1F520	majuscules	ABCD|alphabet latin|lettres|lettres latines|saisie|saisie en lettres majuscules	
 1F521	minuscules	abcd|alphabet latin|lettre|lettres|lettres latines|saisie|saisie de lettres minuscules	
-1F522	saisie de chiffres	chiffres|saisie	1234
+1F522	saisie de chiffres	chiffres|saisie|1234	
 1F523	saisie de symboles	saisie|symboles	
 1F524	alphabet latin	abc|alphabet|lettres|saisie|saisie de lettres	
 1F525	feu	allumer|brûler|chaud|flamme|fournaise|incendie	
@@ -1617,7 +1617,7 @@ FDFC	rial	devise
 1F9DE	génie	aladin|djinn|homme génie|lampe magique|magie|personnage|souhait|voeu|vœu	
 1F9DF	zombie	effrayant|flippant|halloween|horreur|mort vivant|mort-vivant|personnage|peur	
 1F9E0	cerveau	intelligent|intelligente	
-1F9E1	cœur orange	coeur orange|orange	
+1F9E1	cœur orange	orange	
 1F9E2	casquette américaine	baseball cap|casquette|casquette de baseball|chapeau|vêtements	
 1F9E3	foulard	cou|écharpe|froid|glagla|vêtements	
 1F9E4	gants	gant|main|vêtements	
@@ -1647,15 +1647,15 @@ FDFC	rial	devise
 1F9FC	savon	bain|bulles|lavage|laver|me lave|me laver|mousse|pain de savon|porte-savon|se lave|se laver	
 1F9FD	éponge	absorbante|absorbe|laver|nettoyage|nettoyer|poreuse|savonner	
 1F9FE	reçu	compta|comptabilité|comptable|facture|faire les comptes|justificatif|preuve|ticket de caisse	
-1F9FF	mauvais œil	amulette|l’oeil bleu|mauvais oeil|nazar|nazar boncuk|nazarboncuk|œil bleu|perle|superstition|talisman|talisman turc	
+1F9FF	mauvais œil	amulette|l’oeil bleu|nazar|nazar boncuk|nazarboncuk|œil bleu|perle|superstition|talisman|talisman turc	
 1FA70	chaussons de danse	ballerines|ballet|chaussures|classique|danse	
 1FA71	maillot de bain une pièce	maillot|maillot de bain|maillot une pièce	
 1FA72	slip	maillot de bain|slip de bain|sous-vêtement|une pièce	
 1FA73	short	baignade|caleçon|maillot de bain|piscine|plage|short de bain|sous-vêtement	
 1FA74	tong	claquettes|été|mer|plage|sandales|sandales de plage|tatanes|tongs	
-1FA75	cœur bleu clair	aimer|amour|bleu ciel|bleu clair|cyan|émotion|jtm|mignon|spécial	143
-1FA76	cœur gris	amour|ardoise|argent|argenté|cœur|émotion|gris|jtm|spécial	143
-1FA77	cœur rose	adorable|aimer|amour|cœur|émotion|jtm|mignon|rose	143
+1FA75	cœur bleu clair	aimer|amour|bleu ciel|bleu clair|cyan|émotion|jtm|mignon|spécial|143	
+1FA76	cœur gris	amour|ardoise|argent|argenté|cœur|émotion|gris|jtm|spécial|143	
+1FA77	cœur rose	adorable|aimer|amour|cœur|émotion|jtm|mignon|rose|143	
 1FA78	goutte de sang	don du sang|médecine|menstruation|menstruations|règles|sang	
 1FA79	sparadrap	bandage|bobo|médecine|pansement|premiers secours	
 1FA7A	stéthoscope	cœur|diagnostic|docteur|médecin|médecine|poumons	

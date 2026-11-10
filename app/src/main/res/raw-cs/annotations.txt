@@ -1,4 +1,4 @@
-annotations 1 cs 2df9e586
+annotations 1 cs 47eb248a
 21	vykřičník		
 23	mřížka	hash|hashtag|křížek	
 24	dolar	peníze|peso|USD	
@@ -18,7 +18,7 @@ annotations 1 cs 2df9e586
 3D	rovná se	je rovno|rovnítko|rovnost	
 3E	je větší než	konec tagu|konec značky|tag|větší než|značka	
 3F	otazník		
-40	zavináč	at|et	@
+40	zavináč	at|et|@	
 5B	levá hranatá závorka	hranatá závorka|hranaté závorky|závorka|závorky	
 5C	zpětné lomítko	obrácené lomítko	
 5D	pravá hranatá závorka	hranatá závorka|hranaté závorky|závorka|závorky	
@@ -76,12 +76,12 @@ F7	symbol dělení	dělení|děleno|dělit
 2034	trojitá čárka	čárka|se třemi čárkami|třetí derivace|tři čárky|tříčárkované|trojčárkované	
 2038	stříška (nediakritický znak)		
 203B	odkazovací znaménko	komedžiruši|označení poznámky|symbol odkazu	
-203C	dvojitý vykřičník	důraz|interpunkční znaménka|rozkaz|vykřičník|značka|!!	!
+203C	dvojitý vykřičník	důraz|interpunkční znaménka|rozkaz|vykřičník|značka|!|!!	
 203D	překvapník	interrobang|otazník|otazník a vykřičník|vykřičník	
 203E	pruh		
 2042	asterismus	hvězdy|seskupení hvězd	
 2044	zlomkové lomítko	lomítko|šikmá čára|zlomek|zlomková čára	
-2049	vykřičník a otazník	interpunkční znaménka|otázka|otazník|vykřičník|značka|zvolání|!?	!|?
+2049	vykřičník a otazník	interpunkční znaménka|otázka|otazník|vykřičník|značka|zvolání|!|!?|?	
 207B	minus jako horní index	horní index|minus	
 20A2	cruzeiro	BRB|měna	
 20A3	francouzský frank	frank|měna	
@@ -386,7 +386,7 @@ F7	symbol dělení	dělení|děleno|dělit
 2603	sněhulák	chladno|mrznout|počasí|sníh|zima	
 2604	kometa	kosmické těleso|kosmos|vesmír|vlasatice	
 260E	telefon	červená|číselník|sluchátko|telefonovat|volat	
-2611	zaškrtnuté políčko	fajfka|hlasování|hotovo|krabice|okénko|políčko|volby|zaškrtnutí	✓
+2611	zaškrtnuté políčko	fajfka|hlasování|hotovo|krabice|okénko|políčko|volby|zaškrtnutí|✓	
 2614	deštník s kapkami deště	déšť|deštník|dešťové kapky|kapka|oblečení|paraple|počasí|pršet|prší	
 2615	teplý nápoj	čaj|horký|kafčo|kafe|kafíčko|káva|kavárna|kofein|kouřící|nápoj|pára|pití|ráno|Starbucks	
 2618	trojlístek	Irsko|irský|jetel|rostlina|štěstí|zelený	
@@ -436,7 +436,7 @@ F7	symbol dělení	dělení|děleno|dělit
 2699	ozubené kolo	mechanika|nářadí|nástroj|převod|přístroj	
 269B	symbol atomu	ateismus|ateista|atom	
 269C	heraldická lilie	erb|fleur de lis|junák|lilie|rytíř|skaut|symbol|znak	
-26A0	varování	pozor|upozornění|varovný|výkřičník|výstraha	!
+26A0	varování	pozor|upozornění|varovný|výkřičník|výstraha|!	
 26A1	vysoké napětí	blesk|bouře|bzz|elektrický|elektřina|hrom|jiskra|Messenger|napětí|nebezpečí|příroda|výboj|záblesk	
 26A7	symbol pro transgender osoby	transgender	
 26AA	bílý kroužek	bílá|bílý kruh|geometrie|kruh|tvar	
@@ -467,35 +467,35 @@ F7	symbol dělení	dělení|děleno|dělit
 26FA	stan	cestování|dovolená|kemp|kempink|kempování|léto|příroda|stanování|stanovat|tábor|táboření	
 26FD	benzínová pumpa	benzin|benzín|benzínka|čerpací|diesel|nafta|palivo|plyn|pohonné hmoty|pumpa|stanice	
 2702	nůžky	nástroj|papír|šmik|střih|stříhání|stříhat	
-2705	tlačítko se značkou zaškrtnutí	bílá značka zaškrtnutí|fajfka|hotovo|opraveno|ověřeno|správně|tlačítko|zaškrtnutí|zelené tlačítko|značka	✓
+2705	tlačítko se značkou zaškrtnutí	bílá značka zaškrtnutí|fajfka|hotovo|opraveno|ověřeno|správně|tlačítko|zaškrtnutí|zelené tlačítko|značka|✓	
 2708	letadlo	cestování|doprava|let|létat|letiště|letoun|tryskáč|tryskové letadlo	
 2709	obálka	dopis|e-mail|email|list|pošta|psaní|psaníčko|zásilka	
 270A	zvednutá pěst	držet palce|držím pěsti|pěst|ruka|síla|solidarita|tělo|úder|zaťatá	
-270B	zvednutá ruka	high five|pět|plácneme si|plácnutí|pozdrav|ruka|stop|tělo	5
+270B	zvednutá ruka	high five|pět|plácneme si|plácnutí|pozdrav|ruka|stop|tělo|5	
 270C	gesto vítězství	mír|prsty|ruka|tělo|v|vítězství|znamení míru|znamení vítězství	
 270D	píšící ruka	písmo|psací|psaní|psát|ruka|tělo	
 270F	tužka	kreslit|obyčejná tužka|psát|skica	
 2712	hrot černého pera	atrament|černé pero|hrot|inkoust|inkoustové pero|pero|plnicí pero|tuš	
-2714	značka zaškrtnutí	fajfka|hotovo|opraveno|ověřeno|správně|velká značka zaškrtnutí|zaškrtnutí|značka	✓
-2716	znak násobení	krát|křížek|násobení|násobit|součin|x|znak|zrušení|zrušit	×
+2714	značka zaškrtnutí	fajfka|hotovo|opraveno|ověřeno|správně|velká značka zaškrtnutí|zaškrtnutí|značka|✓	
+2716	znak násobení	krát|křížek|násobení|násobit|součin|x|znak|zrušení|zrušit|×	
 271D	latinský kříž	katolický kříž|křesťan|křesťanský|křesťanství|Kristus|kříž|latinský kířž|náboženství|římský kříž	
 2721	Davidova hvězda	david|David|hexagram|hvězda|judaizmus|náboženství|víra|žid|židovská hvězda|židovský	
-2728	jiskry	čarovat|hvězda|hvězdičky|jiskra|jiskřit|kouzlo|magie|noc|třpytit se|zářit	*
-2733	osmicípá hvězdička	hvězda|hvězdička|zelená	*
-2734	osmicípá hvězda	hvězda|hvězdička|oranžová	*
+2728	jiskry	čarovat|hvězda|hvězdičky|jiskra|jiskřit|kouzlo|magie|noc|třpytit se|zářit|*	
+2733	osmicípá hvězdička	hvězda|hvězdička|zelená|*	
+2734	osmicípá hvězda	hvězda|hvězdička|oranžová|*	
 2744	sněhová vločka	chladno|počasí|sněžit|sníh|vločka|zima	
-2747	jiskra	hvězdička|jiskérka|jiskřička|jiskřit|třpyt	*
-274C	křížek	červený křížek|krát|násobení|násobit|součin|x|zaškrtnutí|značka|znak křížek|zrušení	×
-274E	tlačítko s křížkem	čtverec|čtvereček|krát|křížek|násobení|násobit|tlačítko|x|zelený čtverec s bílým křížkem|značka|značka s bílým křížkem|znak	×
-2753	červený otazník	dotaz|interpunkční znaménka|otázka|otazník|ptát se|značka	?
-2754	bílý otazník	interpunkční znaménka|obrys|otazník|značka	?
-2755	bílý vykřičník	interpunkce|interpunkční znaménka|obrys|vykřičník|značka	!
-2757	červený vykřičník	interpunkční znaménka|pozor|rozkaz|vykřičník|výstraha|značka	!
-2763	srdce jako vykřičník	interpunkce|interpunkční znaménka|srdce|vykřičník|značka|znaménko	!
+2747	jiskra	hvězdička|jiskérka|jiskřička|jiskřit|třpyt|*	
+274C	křížek	červený křížek|krát|násobení|násobit|součin|x|zaškrtnutí|značka|znak křížek|zrušení|×	
+274E	tlačítko s křížkem	čtverec|čtvereček|krát|křížek|násobení|násobit|tlačítko|x|zelený čtverec s bílým křížkem|značka|značka s bílým křížkem|znak|×	
+2753	červený otazník	dotaz|interpunkční znaménka|otázka|otazník|ptát se|značka|?	
+2754	bílý otazník	interpunkční znaménka|obrys|otazník|značka|?	
+2755	bílý vykřičník	interpunkce|interpunkční znaménka|obrys|vykřičník|značka|!	
+2757	červený vykřičník	interpunkční znaménka|pozor|rozkaz|vykřičník|výstraha|značka|!	
+2763	srdce jako vykřičník	interpunkce|interpunkční znaménka|srdce|vykřičník|značka|znaménko|!	
 2764	rudé srdce	červený|city|emoce|láska|srdce|zamilovaný	
-2795	znak plus	kladný|matematika|plus|přičíst|přičítat|připočítat|sčítání|sčítat|sečíst|součet|velké znaménko plus	+
-2796	znak minus	matematika|minus|mínus|odčítání|odečíst|odečítat|počítat|rozdíl|velké znaménko minus|záporný	-|−
-2797	znak dělení	dělení|děleno|matematika|podíl|velké znaménko dělení	÷
+2795	znak plus	kladný|matematika|plus|přičíst|přičítat|připočítat|sčítání|sčítat|sečíst|součet|velké znaménko plus|+	
+2796	znak minus	matematika|minus|mínus|odčítání|odečíst|odečítat|počítat|rozdíl|velké znaménko minus|záporný|-|−	
+2797	znak dělení	dělení|děleno|matematika|podíl|velké znaménko dělení|÷	
 27A1	šipka doprava	doprava|hlavní|šipka|šipka vpravo|směr|strany|světové|východ	
 27B0	smyčka	kadeř|kudrna|lokna|spirálka|zatočený	
 27BF	dvojitá smyčka	dvojitá|dvojitý|kadeř|kudrlinka|kudrna|smyčka|spirálka	
@@ -542,7 +542,7 @@ FDFC	rijál	měna
 1F0CF	žolík	divoká|hra|hraní|joker|karta|karty	
 1F170	štítek A (krevní skupina)	a|červené a|krev|krevní skupina|písmeno A|skupina|značka	
 1F171	štítek B (krevní skupina)	b|krev|krevní skupina|krevní skupina B|skupina|značka	
-1F17E	štítek 0 (krevní skupina)	krev|krevní skupina|krevní skupina 0|o|skupina|značka	0
+1F17E	štítek 0 (krevní skupina)	krev|krevní skupina|krevní skupina 0|o|skupina|značka|0	
 1F17F	štítek P	p|parking|parkování|parkoviště|tlačítko|značka P|značka parkování	
 1F18E	štítek AB (krevní skupina)	ab|krev|krevní skupina|skupina|značka	
 1F191	štítek CL	cl|clear|tlačítko CL|vymazat|značka	
@@ -632,7 +632,7 @@ FDFC	rijál	měna
 1F33D	kukuřičný klas	farma|jídlo|klas|kukuřice|obilí|plodiny|rostlina|sklizeň|úroda|zrno	
 1F33E	rýžové klasy	klas|klásek|obilí|obilniny|otep|rostlina|rýže|rýžový klas|snop|snopek|zrní|zrno	
 1F33F	bylina	bylinka|list|lísteček|lístek|listí|listoví|příroda|rostlina|snítka	
-1F340	čtyřlístek	čtyři|Irsko|irský|jetel|list|rostlina|štěstí	4
+1F340	čtyřlístek	čtyři|Irsko|irský|jetel|list|rostlina|štěstí|4	
 1F341	javorový list	javor|Kanada|list|opadané listí|padající|podzim|podzimní|rostlina	
 1F342	spadlý list	list|opadavý|padající|podzim|rostlina	
 1F343	padající list ve větru	foukat|list|lístek|listí|padající třepotající se list|příroda|rostlina|třepetající|třepetat|třepotající|třepotat|vánek|větřík|vítr	
@@ -740,7 +740,7 @@ FDFC	rijál	měna
 1F3AE	videohra	gamepad|hra|hrát|konzole|ovladač|pařit|PlayStation|počítač|Xbox|zábava	
 1F3AF	přesný zásah do terče	cíl|hra|přímo do černého|přímý zásah do terče|šipka|sport|střed|střed terče|středu|terč|trefa|úspěch|zábava|zásah	
 1F3B0	výherní automat	automat|gambling|hazardní hra|hra|hrací automat|kasino	
-1F3B1	kulečníková koule 8	biliár|billiard|černá|černý|číslo|hra|koule|koule na kulečník|kulečník|osm|pool|sport	8
+1F3B1	kulečníková koule 8	biliár|billiard|černá|černý|číslo|hra|koule|koule na kulečník|kulečník|osm|pool|sport|8	
 1F3B2	hrací kostka	deskové hry|hra|kostka|kostky|zábava	
 1F3B3	bowling	bowlingová|hra|koule|koule na bowling|kuželka|kuželky|sport|strike	
 1F3B4	hrací karty s květinami	herní karty s květinami|hra|hraní|japonský|karta|květina	
@@ -991,14 +991,14 @@ FDFC	rijál	měna
 1F4AC	řečová bublina	bublina|bublina řeči|dialog|komiks|komiksová bublina|obrázek|odmlka|píše|psaní|řeč|rozhovor|SMS|text|textová bublina|zpráva	
 1F4AD	myšlenková bublina	balónek|bublina|komiks|komiksová bublina|myšlenka|nápad|obrázek|snění|sny|vymyslet	
 1F4AE	bílá květina	bílý|květ|květina	
-1F4AF	sto bodů	ano|na jedničku|opravdu|pecka|plný|plný počet|rozhodně|skóre|souhlas|sto|stoprocentní|že váháš	100
+1F4AF	sto bodů	ano|na jedničku|opravdu|pecka|plný|plný počet|rozhodně|skóre|souhlas|sto|stoprocentní|že váháš|100	
 1F4B0	pytel peněz	banka|boháč|bohatý|cash|cena|dolary|hotovost|měšec|milion|peněz|peníze|platit|poklad|pytel|sázka|skrblík|váček|vak|vyhrát|zlato	
-1F4B1	směna peněz	banka|dolar|jen|měna|peníze|směna|směnárna|výměna|yen	$
+1F4B1	směna peněz	banka|dolar|jen|měna|peníze|směna|směnárna|výměna|yen|$	
 1F4B2	znak dolaru	dolar|hotovost|měna|miliarda|milion|peníze|platit|velký znak dolaru	
 1F4B3	platební karta	banka|hotovost|karta|kredit|kreditka|kreditní|peníze|platit|účet|uhradit|úvěrová karta|zaplatit	
 1F4B4	jenová bankovka	banka|bankovka|čína|hotovost|jen|měna|peníze|yen	
 1F4B5	dolarová bankovka	banka|bankovka|dolar|měna|peníze	
-1F4B6	eurobankovka	banka|bankovka|bohatý|EU|euro|eurová|Evropa|hotovost|měna|peníze	100
+1F4B6	eurobankovka	banka|bankovka|bohatý|EU|euro|eurová|Evropa|hotovost|měna|peníze|100	
 1F4B7	librová bankovka	banka|bankovka|hotovost|libra|měna|peníze	
 1F4B8	okřídlené peníze	banka|bankovka|cash|dolar|hotovost|keš|křídla|létající|letět|milion|milión|peníze|platit	
 1F4B9	rostoucí graf se znakem jenu	banka|graf|japonský jen|jen|měna|nahoru|peníze|rostoucí trend|růst|trend|trh|vzestup|vzestupný|vzestupný graf se znakem jenu	
@@ -1013,8 +1013,8 @@ FDFC	rijál	měna
 1F4C2	otevřená složka	desky|dokumenty|otevřený|složka|založit	
 1F4C3	zkroucená stránka	číst|dokument|dopis|list papíru|ohnutá|srolovaný|srolovaný papír|stočená|stránka|svinutá|svitek	
 1F4C4	stránka lícem nahoru	dokument|list|papír|strana|stránka	
-1F4C5	kalendář	čas|červenec|datum	17
-1F4C6	trhací kalendář	červenec|datum|kalendář	17
+1F4C5	kalendář	čas|červenec|datum|17	
+1F4C6	trhací kalendář	červenec|datum|kalendář|17	
 1F4C7	vizitkovník	index|karta|kartotéka|osobní karta|otočný|registr|rejstřík|retro|vizitka	
 1F4C8	rostoucí graf	data|graf|nahoru|růst|trend|vývoj|vzestupný	
 1F4C9	klesající graf	data|dolů|graf|klesající|negativní|pokles|sestupný|trend|vývoj	
@@ -1101,11 +1101,11 @@ FDFC	rijál	měna
 1F51B	šipky s nápisem ON!	kupředu|šipka|vpřed|značka	
 1F51C	šipka s nápisem SOON	brb|brzy|hned jsem zpátky|jsem na cestě|šipka|šipka soon|už běžím	
 1F51D	šipka s nápisem TOP	nahoru|nejlepší|neklopit|šipka|top|vzhůru|začátek	
-1F51E	zákaz vstupu osobám mladším 18 let	ne|nedostatečný věk|nezletilost|nezletilý|nezletilým|omezení|osmnáct|věk|věková hranice|věkové omezení|zákaz|zákaz pro mladší osmnácti let|zakázáno	18
+1F51E	zákaz vstupu osobám mladším 18 let	ne|nedostatečný věk|nezletilost|nezletilý|nezletilým|omezení|osmnáct|věk|věková hranice|věkové omezení|zákaz|zákaz pro mladší osmnácti let|zakázáno|18	
 1F520	zadávání v latince, velká písmena	ABCD|abeceda|kapitálky|klávesnice|latinka|písmena|psaní|velká písmena|velká tiskací písmena|vstup|zadávání|zadávání v latince	
 1F521	zadávání v latince, malá písmena	abcd|abeceda|klávesnice|latinka|malá písmena|písmena|psaní|vstup|zadávání|zadávání v latince	
-1F522	zadávání čísel	čísla|číslo|numerická klávesnice|zadávání	1234
-1F523	zadávání symbolů	klávesnice|psaní|symboly|vstup|zadávání|znaky|zvláštní znaky|〒♪&%	&|%
+1F522	zadávání čísel	čísla|číslo|numerická klávesnice|zadávání|1234	
+1F523	zadávání symbolů	klávesnice|psaní|symboly|vstup|zadávání|znaky|zvláštní znaky|&|%|〒♪&%	
 1F524	zadávání písmen v latince	abc|abcd|abeceda|klávesnice|latinka|písmena|psaní|vstup|zadávání	
 1F525	oheň	hořet|horký|hranice|nástroj|ohniště|pálit|plamen|plameny|plamínek|požár|vzplanout|zapálit	
 1F526	baterka	elektrický|nářadí|nástroj|světlo|svítilna	
@@ -1138,30 +1138,30 @@ FDFC	rijál	měna
 1F54C	mešita	islám|muslim|náboženství|víra|vyznání	
 1F54D	synagoga	budova|chrám|judaismus|náboženství|víra|žid|židovský|židovství	
 1F54E	sedmiramenný svícen	chanuka|judaismus|menora|náboženství|svátek světel|svícen|židovský	
-1F550	jedna hodina	čas|hodiny|jedna|1:00|13:00	00|1|13
-1F551	dvě hodiny	čas|dva|dvě|hodiny|14:00|2:00	00|14|2
-1F552	tři hodiny	čas|hodiny|tři|15:00|3:00	00|15|3
-1F553	čtyři hodiny	čas|čtyři|hodiny|16:00|4:00	00|16|4
-1F554	pět hodin	čas|hodiny|pět|17:00|5:00	00|17|5
-1F555	šest hodin	čas|hodiny|šest|18:00|6:00	00|18|6
-1F556	sedm hodin	čas|hodiny|sedm|19:00|7:00	00|19|7
-1F557	osm hodin	čas|hodiny|osm|20:00|8:00	00|20|8
-1F558	devět hodin	čas|devět|hodiny|21:00|9:00	00|21|9
-1F559	deset hodin	čas|deset|hodiny|10:00|22:00	00|10|22
-1F55A	jedenáct hodin	čas|hodiny|jedenáct|11:00|23:00	00|11|23
-1F55B	dvanáct hodin	čas|dvanáct|hodiny|nula|poledne|půlnoc|0:00|12:00	0|00|12
-1F55C	půl druhé	čas|hodiny|jedna|třicet|1:30|13:30	1|13|30
-1F55D	půl třetí	čas|dva|hodiny|třicet|14:30|2:30	2|30
-1F55E	půl čtvrté	čas|hodiny|tři|třicet|15:30|3:30	3|30
-1F55F	půl páté	čas|čtyři|hodiny|třicet|16:30|4:30	30|4
-1F560	půl šesté	čas|hodiny|pět|třicet|17:30|5:30	17|30|5
-1F561	půl sedmé	čas|hodiny|šest|třicet|18:30|6:30	18|30|6
-1F562	půl osmé	čas|hodiny|sedm|třicet|19:30|7:30	30|7
-1F563	půl deváté	čas|hodiny|osm|třicet|20:30|8:30	30|8
-1F564	půl desáté	čas|devět|hodiny|třicet|21:30|9:30	30|9
-1F565	půl jedenácté	čas|deset|hodiny|třicet|10:30|22:30	10|22|30
-1F566	půl dvanácté	čas|hodiny|jedenáct|třicet|11:30|23:30	11|30
-1F567	půl jedné	čas|dvanáct|hodiny|nula|třicet|0:30|00:30|12:30	0|12|30
+1F550	jedna hodina	čas|hodiny|jedna|00|1|1:00|13|13:00	
+1F551	dvě hodiny	čas|dva|dvě|hodiny|00|14|14:00|2|2:00	
+1F552	tři hodiny	čas|hodiny|tři|00|15|15:00|3|3:00	
+1F553	čtyři hodiny	čas|čtyři|hodiny|00|16|16:00|4|4:00	
+1F554	pět hodin	čas|hodiny|pět|00|17|17:00|5|5:00	
+1F555	šest hodin	čas|hodiny|šest|00|18|18:00|6|6:00	
+1F556	sedm hodin	čas|hodiny|sedm|00|19|19:00|7|7:00	
+1F557	osm hodin	čas|hodiny|osm|00|20|20:00|8|8:00	
+1F558	devět hodin	čas|devět|hodiny|00|21|21:00|9|9:00	
+1F559	deset hodin	čas|deset|hodiny|00|10|10:00|22|22:00	
+1F55A	jedenáct hodin	čas|hodiny|jedenáct|00|11|11:00|23|23:00	
+1F55B	dvanáct hodin	čas|dvanáct|hodiny|nula|poledne|půlnoc|0|0:00|00|12|12:00	
+1F55C	půl druhé	čas|hodiny|jedna|třicet|1|1:30|13|13:30|30	
+1F55D	půl třetí	čas|dva|hodiny|třicet|14:30|2|2:30|30	
+1F55E	půl čtvrté	čas|hodiny|tři|třicet|15:30|3|3:30|30	
+1F55F	půl páté	čas|čtyři|hodiny|třicet|16:30|30|4|4:30	
+1F560	půl šesté	čas|hodiny|pět|třicet|17|17:30|30|5|5:30	
+1F561	půl sedmé	čas|hodiny|šest|třicet|18|18:30|30|6|6:30	
+1F562	půl osmé	čas|hodiny|sedm|třicet|19:30|30|7|7:30	
+1F563	půl deváté	čas|hodiny|osm|třicet|20:30|30|8|8:30	
+1F564	půl desáté	čas|devět|hodiny|třicet|21:30|30|9|9:30	
+1F565	půl jedenácté	čas|deset|hodiny|třicet|10|10:30|22|22:30|30	
+1F566	půl dvanácté	čas|hodiny|jedenáct|třicet|11|11:30|23:30|30	
+1F567	půl jedné	čas|dvanáct|hodiny|nula|třicet|0|0:30|00:30|12|12:30|30	
 1F56F	svíčka	oheň|plamen|plamínek|romantika|světlo|svícen	
 1F570	krbové hodiny	čas|hodiny|starožitné hodiny|stolní hodiny	
 1F573	díra	jáma|jamka|kanál|otvor	

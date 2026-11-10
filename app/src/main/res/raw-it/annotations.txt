@@ -1,8 +1,8 @@
-annotations 1 it 375208f1
+annotations 1 it 591200d1
 21	punto esclamativo	esclamazione|punto di esclamazione	
 23	segno del cancelletto	cancelletto|hashtag|libbra|numero	
 24	simbolo del dollaro	denaro|dollaro|peso|USD	
-25	simbolo di percentuale	percento|percentuale	%
+25	simbolo di percentuale	percento|percentuale|%	
 26	e commerciale	e	
 27	virgoletta dritta	apostrofo|singola|virgoletta	
 29	parentesi di chiusura	parentesi|tonda	
@@ -70,7 +70,7 @@ F7	segno di divisione	dividere|divisione|obelo|segno della divisione
 2022	punto elenco	elenco|punto	
 2026	puntini di sospensione	omissione|puntini	
 2027	punto di sillabazione	punto|sillabazione	
-2030	per mille	simbolo	‰
+2030	per mille	simbolo|‰	
 2032	virgoletta singola	singola|virgoletta	
 2033	virgoletta doppia	doppia|virgoletta	
 2034	virgoletta tripla	tripla|virgoletta	
@@ -481,21 +481,21 @@ F7	segno di divisione	dividere|divisione|obelo|segno della divisione
 271D	croce latina	cattolicesimo|Cristianesimo|croce|religione	
 2721	stella di David	David|Ebraismo|ebreo|sei punte|simbolo ebraico|stella|stella a sei punte	
 2728	stelline	scintille|spendente|stelle	
-2733	asterisco	otto punte|stella	*
+2733	asterisco	otto punte|stella|*	
 2734	stella stilizzata	asterisco|otto punte|stella	
 2744	fiocco di neve	freddo|ghiaccio|inverno|meteo|neve	
 2747	scintilla stilizzata	scintilla|simbolo	
 274C	croce	croce rossa|moltiplicazione|X	
 274E	croce con quadrato	croce verde|moltiplicazione|X con quadrato	
-2753	punto interrogativo rosso	domanda|punteggiatura|punto di domanda|punto di domanda pieno|punto interrogativo	?
-2754	punto interrogativo bianco	domanda|punteggiatura|punto di domanda|punto di domanda vuoto|punto interrogativo|punto interrogativo grigio	?
-2755	punto esclamativo bianco	esclamazione|punteggiatura|punto esclamativo|punto esclamativo grigio|punto esclamativo vuoto	!
+2753	punto interrogativo rosso	domanda|punteggiatura|punto di domanda|punto di domanda pieno|punto interrogativo|?	
+2754	punto interrogativo bianco	domanda|punteggiatura|punto di domanda|punto di domanda vuoto|punto interrogativo|punto interrogativo grigio|?	
+2755	punto esclamativo bianco	esclamazione|punteggiatura|punto esclamativo|punto esclamativo grigio|punto esclamativo vuoto|!	
 2757	punto esclamativo rosso	esclamazione|punteggiatura|punto esclamativo|punto esclamativo pieno	
 2763	punto esclamativo a cuore	cuore|punteggiatura|punto esclamativo|simbolo	
 2764	cuore rosso	amore|cuore|cuoricino|emozione|rosso	
-2795	addizione	croce|matematica|più|segno|segno di addizione	+
-2796	sottrazione	matematica|meno|segno|segno di sottrazione|trattino	-
-2797	divisione	diviso|matematica|segno|segno di divisione	÷
+2795	addizione	croce|matematica|più|segno|segno di addizione|+	
+2796	sottrazione	matematica|meno|segno|segno di sottrazione|trattino|-	
+2797	divisione	diviso|matematica|segno|segno di divisione|÷	
 27A1	freccia rivolta verso destra	avanti|destra|direzione|est|freccia|freccia a destra|punto cardinale	
 27B0	occhiello	cerchio|nodo	
 27BF	doppio occhiello	doppio|occhiello	
@@ -740,7 +740,7 @@ FDFC	rial	valuta
 1F3AE	gamepad	console|giocare|gioco|joystick|videogioco	
 1F3AF	bersaglio	arciere|arco|colpire|freccette|gioco|sport|target|tiro con l’arco	
 1F3B0	slot machine	azzardo|casinò|gioco|gioco d’azzardo|scommesse|scommettere|slot	
-1F3B1	palla da biliardo	biliardo|giocare|gioco|otto|palla otto|sport	8
+1F3B1	palla da biliardo	biliardo|giocare|gioco|otto|palla otto|sport|8	
 1F3B2	dado	dadi|gioco|gioco dei dadi	
 1F3B3	bowling	birilli|giocare|gioco|palla|palla da bowling|sport	
 1F3B4	carta da gioco Hanafuda	carta|carta da gioco|carta dei fiori|giappone|giapponese|gioco|gioco di carte|Hanafuda	
@@ -991,7 +991,7 @@ FDFC	rial	valuta
 1F4AC	fumetto	dialogo|mmm|nuvoletta|parlare|puntini|sospensione|sta scrivendo|sto scrivendo|testo	
 1F4AD	nuvoletta	fumetto|idea|inventare|nuvola|pensare|realizzare|riflettere|sognare a occhi aperti	
 1F4AE	fiore bianco	fiore|fiorellino|simbolo ben fatto	
-1F4AF	100 punti	cento|d’accordo|massimo|punteggio|punteggio pieno|punti|sicuro|tutto	100
+1F4AF	100 punti	cento|d’accordo|massimo|punteggio|punteggio pieno|punti|sicuro|tutto|100	
 1F4B0	sacco di soldi	banca|borsa|contanti|denaro|dollari|oro|pagare|ricchezza|ricco|sacco per soldi|soldi|tesoro	
 1F4B1	cambio valuta	banca|cambio|cambio di valuta|denaro|finanza|mercati|mercato|soldi|valuta	
 1F4B2	Dollaro	cash|contanti|denaro|pagare|simbolo del dollaro|soldi|valuta	
@@ -1013,7 +1013,7 @@ FDFC	rial	valuta
 1F4C2	cartella aperta	aperta|cartella|file	
 1F4C3	pagina con piega	carta|documento|lettera|pagina|pagina arricciata|ufficio	
 1F4C4	pagina	carta|di fronte|documento|fronte|lettera|pagina di fronte|ufficio	
-1F4C5	calendario	data|diciassette|giorno|ricorrenza|sfortuna|venerdì 17	17
+1F4C5	calendario	data|diciassette|giorno|ricorrenza|sfortuna|venerdì 17|17	
 1F4C6	calendario a strappo	calendario|quando|tempo|venerdì 17	
 1F4C7	schedario	contatti|rolodex|Rolodex|schedario girevole|schedario rotante|ufficio|vintage	
 1F4C8	grafico con andamento positivo	andamento ascendente|ascendente|aumentare|aumento|crescere|crescita|finanza|grafico|linea|trend	
@@ -1101,10 +1101,10 @@ FDFC	rial	valuta
 1F51B	freccia ON	frecce|freccia|ON|ON con freccia e punto esclamativo|punto esclamativo|simbolo	
 1F51C	freccia SOON	brb|freccia|freccia nera|presto|simbolo|soon|soon con freccia verso destra|tra poco|un attimo	
 1F51D	freccia TOP	alto|freccia in alto|freccia verso l’alto|simbolo Top|Top|Top con freccia verso l’alto	
-1F51E	simbolo di divieto ai minorenni	18 sbarrato|divieto|divieto ai minori|minori|proibito|vietato|vietato ai minori|vietato ai minori di 18|vietato ai minori di anni 18	18
+1F51E	simbolo di divieto ai minorenni	18 sbarrato|divieto|divieto ai minori|minori|proibito|vietato|vietato ai minori|vietato ai minori di 18|vietato ai minori di anni 18|18	
 1F520	pulsante con lettere latine maiuscole	abcd|caratteri latini|inserire|lettere|maiuscole|pulsante|tasto	
 1F521	pulsante con lettere latine minuscole	caratteri latini|inserire|lettere|minuscole|pulsante|tasto	
-1F522	pulsante con numeri	inserire|numeri|tastierino numerico	1234
+1F522	pulsante con numeri	inserire|numeri|tastierino numerico|1234	
 1F523	pulsante con simboli	inserire|simboli|tastiera|tastierino simboli	
 1F524	pulsante con lettere latine	ABC|alfabeto|caratteri alfabetici|inglese|inserire|lettere|pulsante|tasto	
 1F525	fuoco	bruciare|caldo|calore|esplosione|falò|fiamma|fiamme|inferno|passione	

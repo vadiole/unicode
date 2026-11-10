@@ -29,13 +29,14 @@ class GeneratorTest {
     fun keywordsCoveredByTheNamesAreSearchOnly() {
         assertEquals("good | hand | like | yes | +1", displayed("+1 | good | hand | like | thumb | up | yes", "THUMBS UP SIGN", "thumbs up"))
         assertEquals("emotion | love", displayed("emotion | heart | love | red", "HEAVY BLACK HEART", "red heart"))
+        assertEquals("emotion | love | <3 | 143 | ♥", displayed("<3 | 143 | emotion | heart | ♥ | love | red", "HEAVY BLACK HEART", "red heart"))
         assertEquals("laugh", displayed("face | faces | grinning | grinned | laugh", "GRINNING FACE", "grinning face"))
         assertEquals("", displayed("smiley | smilng", "WHITE SMILING FACE", "smiling face"))
     }
 
     @Test
-    fun digitsAndSingleSymbolsAreSearchOnly() {
-        assertEquals("ily | <3 | 4:30 | ...", displayed("143 | 3 | ! | ✓ | <3 | ily | 4:30 | ...", "SMILING FACE WITH HEARTS", "smiling face with hearts"))
+    fun keywordsWithoutLettersAreDisplayedLast() {
+        assertEquals("ily | 143 | 3 | ! | ✓ | <3 | 4:30 | ...", displayed("143 | 3 | ! | ✓ | <3 | ily | 4:30 | ...", "SMILING FACE WITH HEARTS", "smiling face with hearts"))
     }
 
     @Test
@@ -137,9 +138,8 @@ class GeneratorTest {
 
     @Test
     fun keywordsOfALocalizedFileAreOrdered() {
-        val (displayed, hidden) = orderLocalizedKeywords(listOf("<3", "Herz", "rotes herz", "143", "♥", "Liebe"), "rotes Herz")
-        assertEquals(listOf("Herz", "Liebe", "<3"), displayed)
-        assertEquals(listOf("143", "♥"), hidden)
+        val displayed = orderLocalizedKeywords(listOf("<3", "Herz", "rotes herz", "143", "♥", "Liebe"), "rotes Herz")
+        assertEquals(listOf("Herz", "Liebe", "<3", "143", "♥"), displayed)
         assertEquals(listOf("Herz", "Liebe"), TestData.annotations("de").displayKeywords(0x1F9E1).take(2))
     }
 }

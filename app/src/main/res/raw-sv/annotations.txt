@@ -1,4 +1,4 @@
-annotations 1 sv 42f33bab
+annotations 1 sv 59947bcd
 21	utropstecken	skiljetecken|utrop	
 23	fyrkant	fyrtagg|hash|hash-tagg|hashtecken|nummer|nummertecken	
 24	dollar	pengar|peso|USD	
@@ -477,7 +477,7 @@ F7	divisionstecken	dela|division|obelus
 270F	blyertspenna		
 2712	stiftpenna	penna|reservoarpenna|stift	
 2714	bockmarkering	avbockad|bock	
-2716	multiplicera	avbryt|multiplikation|multiplikationstecken|tecken|x	×
+2716	multiplicera	avbryt|multiplikation|multiplikationstecken|tecken|x|×	
 271D	latinskt kors	kors|kristendom|religion	
 2721	davidsstjärna	jude|judendom|religion|stjärna	
 2728	gnistrande stjärnor	gnistrar|stjärnor	
@@ -487,15 +487,15 @@ F7	divisionstecken	dela|division|obelus
 2747	glittra	gnistra	
 274C	rött kryss	kryss|X	
 274E	vitt kryss i ruta	kryss|X i ruta	
-2753	rött frågetecken	fråga|frågetecken|interpunktion|tecken	?
+2753	rött frågetecken	fråga|frågetecken|interpunktion|tecken|?	
 2754	vitt frågetecken	fråga|frågetecken	
 2755	vitt utropstecken	kommatering|utropstecken|vitt	
 2757	rött utropstecken	kommatering|rött|utropstecken	
 2763	utropstecken i form av ett hjärta	hjärta|rött|utropstecken	
 2764	rött hjärta	hjärta|känslor|kärlek|rött	
-2795	addera	matte|plus|plustecken|tecken	+
-2796	subtrahera	matte|minus|minustecken|tecken	-|−
-2797	dividera	division|divisionstecken|matte|tecken	÷
+2795	addera	matte|plus|plustecken|tecken|+	
+2796	subtrahera	matte|minus|minustecken|tecken|-|−	
+2797	dividera	division|divisionstecken|matte|tecken|÷	
 27A1	högerpil	öster|pil|riktning|väderstreck	
 27B0	ögla	kurva|slinga	
 27BF	dubbel ögla	öglor	

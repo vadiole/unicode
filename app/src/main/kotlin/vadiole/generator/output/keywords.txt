@@ -75,12 +75,12 @@
 2034 ~ prime ~ triple
 2038 ~ caret
 203B ~ mark ~ reference
-203C | bangbang | punctuation | !! ~ ! ~ double ~ exclamation ~ mark
+203C | bangbang | punctuation | ! | !! ~ double ~ exclamation ~ mark
 203D | interabang ~ interrobang
 203E | overstrike | vinculum ~ overline
 2042 | dinkus | stars ~ asterism
 2044 | stroke | virgule ~ fraction ~ slash
-2049 | interrobang | punctuation | !? ~ ! ~ ? ~ exclamation ~ mark ~ question
+2049 | interrobang | punctuation | ! | !? | ? ~ exclamation ~ mark ~ question
 207B ~ minus ~ superscript
 20A2 | BRB | currency ~ cruzeiro
 20A3 | currency ~ franc ~ french
@@ -388,7 +388,7 @@
 2603 | cold | man | snow ~ snowman
 2604 | space ~ comet
 260E | phone ~ telephone
-2611 | done | off | tick ~ ✓ ~ ballot ~ box ~ check ~ checked
+2611 | done | off | tick | ✓ ~ ballot ~ box ~ check ~ checked
 2614 | clothing | weather ~ drop ~ drops ~ rain ~ umbrella
 2615 | cafe | caffeine | chai | coffee | drink | morning | steaming | tea ~ beverage ~ hot
 2618 | irish | plant ~ shamrock
@@ -471,37 +471,37 @@
 26FA | camping ~ tent
 26FD | diesel | fuelpump | gas | gasoline | station ~ fuel ~ pump
 2702 | cut | cutting | paper | tool ~ scissors
-2705 | checkmark | complete | completed | done | fixed | tick ~ ✓ ~ button ~ check ~ checked ~ mark
+2705 | checkmark | complete | completed | done | fixed | tick | ✓ ~ button ~ check ~ checked ~ mark
 2708 | aeroplane | fly | flying | jet | plane | travel ~ airplane
 2709 | e-mail | email | letter ~ envelope
 270A | clenched | hand | punch | solidarity ~ fist ~ raised
-270B | five | high | stop ~ 5 ~ hand ~ raised
+270B | five | high | stop | 5 ~ hand ~ raised
 270C | peace | v ~ hand ~ victory
 270D ~ hand ~ write ~ writing
 270F ~ pencil
 2712 | pen ~ black ~ nib
-2713 | checkmark | done | tick ~ ✓ ~ check ~ checked ~ mark
-2714 | checkmark | done | tick ~ ✓ ~ check ~ checked ~ heavy ~ mark
-2715 | cancel | multiply | sign ~ × ~ multiplication ~ x
-2716 | cancel | sign ~ × ~ multiplication ~ multiply ~ x
+2713 | checkmark | done | tick | ✓ ~ check ~ checked ~ mark
+2714 | checkmark | done | tick | ✓ ~ check ~ checked ~ heavy ~ mark
+2715 | cancel | multiply | sign | × ~ multiplication ~ x
+2716 | cancel | sign | × ~ multiplication ~ multiply ~ x
 271D | christ | Christian | religion ~ cross ~ latin
 2721 | Jew | Jewish | judaism | religion ~ David ~ star
-2728 | magic | star ~ * ~ sparkle ~ sparkles
-2733 ~ * ~ asterisk ~ eight-spoked
-2734 ~ * ~ eight-pointed ~ star
+2728 | magic | star | * ~ sparkle ~ sparkles
+2733 | * ~ asterisk ~ eight-spoked
+2734 | * ~ eight-pointed ~ star
 2744 | cold | snow | weather ~ snowflake
-2747 ~ * ~ sparkle
-274C | cancel | multiplication | multiply | x ~ × ~ cross ~ mark
-274E | multiplication | multiply | x ~ × ~ button ~ cross ~ mark ~ square
-2753 | punctuation ~ ? ~ mark ~ question ~ red
-2754 | outlined | punctuation ~ ? ~ mark ~ question ~ white
-2755 | bang | outlined | punctuation ~ ! ~ exclamation ~ mark ~ white
-2757 | bang | punctuation ~ ! ~ exclamation ~ mark ~ red
+2747 | * ~ sparkle
+274C | cancel | multiplication | multiply | x | × ~ cross ~ mark
+274E | multiplication | multiply | x | × ~ button ~ cross ~ mark ~ square
+2753 | punctuation | ? ~ mark ~ question ~ red
+2754 | outlined | punctuation | ? ~ mark ~ question ~ white
+2755 | bang | outlined | punctuation | ! ~ exclamation ~ mark ~ white
+2757 | bang | punctuation | ! ~ exclamation ~ mark ~ red
 2763 | bang | punctuation ~ exclamation ~ heart ~ heavy ~ mark
 2764 | emotion | love ~ heart ~ red
-2795 ~ + ~ plus
-2796 | math ~ - ~ − ~ heavy ~ minus ~ sign
-2797 | math ~ ÷ ~ divide ~ division ~ heavy ~ sign
+2795 | + ~ plus
+2796 | math | - | − ~ heavy ~ minus ~ sign
+2797 | math | ÷ ~ divide ~ division ~ heavy ~ sign
 27A1 | cardinal | direction | east ~ arrow ~ right
 27B0 ~ curl ~ curly ~ loop
 27BF ~ curl ~ curly ~ double ~ loop
@@ -638,7 +638,7 @@ FDFC | currency ~ rial
 1F33D | crops | farm | maze ~ corn ~ ear ~ maize
 1F33E | grain | grains | plant ~ ear ~ rice ~ sheaf
 1F33F | leaf | plant ~ herb
-1F340 | irish | lucky | plant ~ 4 ~ clover ~ four ~ four-leaf ~ leaf
+1F340 | irish | lucky | plant | 4 ~ clover ~ four ~ four-leaf ~ leaf
 1F341 | falling ~ leaf ~ maple
 1F342 | autumn | fall | falling ~ fallen ~ leaf
 1F343 | blow ~ flutter ~ fluttering ~ leaf ~ wind
@@ -803,7 +803,7 @@ FDFC | currency ~ rial
 1F3E7 | bank | cash | money ~ ATM ~ automated ~ sign ~ teller
 1F3E8 | building ~ hotel
 1F3E9 | building ~ hotel ~ love
-1F3EA | building | hours ~ 24 ~ convenience ~ store
+1F3EA | building | hours | 24 ~ convenience ~ store
 1F3EB | building ~ school
 1F3EC | building ~ department ~ store
 1F3ED | building ~ factory
@@ -887,7 +887,7 @@ FDFC | currency ~ rial
 1F43E | feet ~ paw ~ paws ~ print ~ prints
 1F43F | animal | squirrel ~ chipmunk
 1F440 | body | face | googly | look | looking | omg | peep | see | seeing ~ eye ~ eyes
-1F441 | body | one ~ 1 ~ eye
+1F441 | body | one | 1 ~ eye
 1F442 | body | hear | hearing | listen | listening | sound ~ ear ~ ears
 1F443 | body | odor | smell | smells ~ nose ~ noses ~ nosey
 1F444 | beauty | body | kiss | kissing | lips | lipstick ~ mouth
@@ -969,19 +969,19 @@ FDFC | currency ~ rial
 1F490 | anniversary | birthday | date | flower | love | plant | romance ~ bouquet
 1F491 | anniversary | babe | bae | dating | kiss | love | person | relationship | romance | together | you ~ couple ~ heart
 1F492 | chapel | hitched | nuptials | romance ~ wedding
-1F493 | cardio | emotion | heartbeat | ily | love | pulsating | pulse ~ 143 ~ beating ~ heart
+1F493 | cardio | emotion | heartbeat | ily | love | pulsating | pulse | 143 ~ beating ~ heart
 1F494 | break | crushed | emotion | heartbroken | lonely | sad ~ broken ~ heart
-1F495 | anniversary | date | dating | emotion | ily | kisses | love | loving | xoxo ~ 143 ~ heart ~ hearts ~ two
-1F496 | emotion | excited | good | ily | kisses | morning | night | xoxo ~ 143 ~ heart ~ sparkle ~ sparkling
-1F497 | emotion | excited | heartpulse | ily | kisses | muah | nervous | pulse | xoxo ~ 143 ~ growing ~ heart
-1F498 | adorbs | cupid | date | emotion | ily | love | romance | valentine ~ 143 ~ arrow ~ heart
-1F499 | emotion | ily | love | romance ~ 143 ~ blue ~ heart
-1F49A | emotion | ily | love | romantic ~ 143 ~ green ~ heart
-1F49B | cardiac | emotion | ily | love ~ 143 ~ heart ~ yellow
-1F49C | bestest | emotion | ily | love ~ 143 ~ heart ~ purple
-1F49D | anniversary | emotion | ily | kisses | valentine | xoxo ~ 143 ~ heart ~ ribbon
-1F49E | adorbs | anniversary | emotion ~ 143 ~ heart ~ hearts ~ revolving
-1F49F | emotion | purple | white ~ 143 ~ decoration ~ heart ~ hearth
+1F495 | anniversary | date | dating | emotion | ily | kisses | love | loving | xoxo | 143 ~ heart ~ hearts ~ two
+1F496 | emotion | excited | good | ily | kisses | morning | night | xoxo | 143 ~ heart ~ sparkle ~ sparkling
+1F497 | emotion | excited | heartpulse | ily | kisses | muah | nervous | pulse | xoxo | 143 ~ growing ~ heart
+1F498 | adorbs | cupid | date | emotion | ily | love | romance | valentine | 143 ~ arrow ~ heart
+1F499 | emotion | ily | love | romance | 143 ~ blue ~ heart
+1F49A | emotion | ily | love | romantic | 143 ~ green ~ heart
+1F49B | cardiac | emotion | ily | love | 143 ~ heart ~ yellow
+1F49C | bestest | emotion | ily | love | 143 ~ heart ~ purple
+1F49D | anniversary | emotion | ily | kisses | valentine | xoxo | 143 ~ heart ~ ribbon
+1F49E | adorbs | anniversary | emotion | 143 ~ heart ~ hearts ~ revolving
+1F49F | emotion | purple | white | 143 ~ decoration ~ heart ~ hearth
 1F4A0 | comic | geometric ~ diamond ~ dot
 1F4A1 | comic | idea ~ bulb ~ electric ~ light
 1F4A2 | angry | comic | mad | upset ~ anger ~ symbol
@@ -997,14 +997,14 @@ FDFC | currency ~ rial
 1F4AC | bubble | comic | dialog | message | sms | talk | text | typing ~ balloon ~ speech
 1F4AD | bubble | cartoon | cloud | comic | daydream | decisions | dream | idea | invent | invention | realize | think | wonder ~ balloon ~ thoughts
 1F4AE ~ flower ~ white
-1F4AF | a+ | agree | clearly | definitely | faithful | fleek | full | keep | perfect | score | TRUE | truth | yup ~ 100 ~ hundred ~ point
+1F4AF | a+ | agree | clearly | definitely | faithful | fleek | full | keep | perfect | score | TRUE | truth | yup | 100 ~ hundred ~ point
 1F4B0 | bank | bet | billion | cash | cost | dollar | gold | million | moneybag | paid | paying | pot | rich | win ~ bag ~ money
 1F4B1 | bank | money ~ currency ~ exchange
 1F4B2 | billion | cash | charge | currency | million | money | pay ~ dollar ~ heavy ~ sign
 1F4B3 | bank | cash | charge | money | pay ~ card ~ credit
 1F4B4 | bank | bill | currency | money | note ~ banknote ~ yen
 1F4B5 | bank | bill | currency | money | note ~ banknote ~ dollar
-1F4B6 | bank | bill | currency | money | note | rich ~ 100 ~ banknote ~ euro
+1F4B6 | bank | bill | currency | money | note | rich | 100 ~ banknote ~ euro
 1F4B7 | bank | bill | billion | cash | currency | money | note ~ banknote ~ pound ~ pounds
 1F4B8 | bank | banknote | bill | billion | cash | dollar | fly | million | note | pay ~ money ~ wings
 1F4B9 | bank | currency | graph | growth | market | money | rise ~ chart ~ increasing ~ trend ~ upward ~ yen
@@ -1107,11 +1107,11 @@ FDFC | currency ~ rial
 1F51B ~ arrow ~ mark ~ ON!
 1F51C | brb | omw ~ arrow ~ SOON
 1F51D | homie | up ~ arrow ~ TOP
-1F51E | age | forbidden | not | prohibited | restriction | underage ~ 18 ~ eighteen ~ no ~ one
+1F51E | age | forbidden | not | prohibited | restriction | underage | 18 ~ eighteen ~ no ~ one
 1F520 | ABCD ~ input ~ latin ~ letters ~ uppercase
 1F521 | abcd ~ input ~ latin ~ letters ~ lowercase
-1F522 ~ 1234 ~ input ~ numbers
-1F523 ~ & ~ % ~ ♪ ~ 〒 ~ input ~ symbols
+1F522 | 1234 ~ input ~ numbers
+1F523 | & | % | ♪ | 〒 ~ input ~ symbols
 1F524 | abc | alphabet ~ input ~ latin ~ letters
 1F525 | af | burn | flame | hot | lit | litaf | tool ~ fire
 1F526 | light | tool ~ electric ~ flashlight ~ torch
@@ -1144,30 +1144,30 @@ FDFC | currency ~ rial
 1F54C | islam | masjid | Muslim | religion ~ mosque
 1F54D | Jew | Jewish | judaism | religion | temple ~ synagogue
 1F54E | candelabrum | candlestick | hanukkah | jewish | judaism | religion ~ menorah
-1F550 | time | 1:00 ~ 1 ~ clock ~ o’clock ~ one
-1F551 | time | 2:00 ~ 2 ~ clock ~ o’clock ~ two
-1F552 | time | 3:00 ~ 3 ~ clock ~ o’clock ~ three
-1F553 | time | 4:00 ~ 4 ~ clock ~ four ~ o’clock
-1F554 | time | 5:00 ~ 5 ~ clock ~ five ~ o’clock
-1F555 | time | 6:00 ~ 6 ~ clock ~ o’clock ~ six
-1F556 | 7:00 ~ 0 ~ 7 ~ clock ~ o’clock ~ seven
-1F557 | time | 8:00 ~ 8 ~ clock ~ eight ~ o’clock
-1F558 | time | 9:00 ~ 9 ~ clock ~ nine ~ o’clock
-1F559 | 10:00 ~ 0 ~ 10 ~ clock ~ o’clock ~ ten
-1F55A | time | 11:00 ~ 11 ~ clock ~ eleven ~ o’clock
-1F55B | time | 12:00 ~ 12 ~ clock ~ o’clock ~ twelve
-1F55C | time | 1:30 ~ 1 ~ 30 ~ clock ~ one ~ one-thirty ~ thirty
-1F55D | time | 2:30 ~ 2 ~ 30 ~ clock ~ thirty ~ two ~ two-thirty
-1F55E | time | 3:30 ~ 3 ~ 30 ~ clock ~ thirty ~ three ~ three-thirty
-1F55F | time | 4:30 ~ 30 ~ 4 ~ clock ~ four ~ four-thirty ~ thirty
-1F560 | time | 5:30 ~ 30 ~ 5 ~ clock ~ five ~ five-thirty ~ thirty
-1F561 | 6:30 ~ 30 ~ 6 ~ clock ~ six ~ six-thirty ~ thirty
-1F562 | 7:30 ~ 30 ~ 7 ~ clock ~ seven ~ seven-thirty ~ thirty
-1F563 | time | 8:30 ~ 30 ~ 8 ~ clock ~ eight ~ eight-thirty ~ thirty
-1F564 | time | 9:30 ~ 30 ~ 9 ~ clock ~ nine ~ nine-thirty ~ thirty
-1F565 | time | 10:30 ~ 10 ~ 30 ~ clock ~ ten ~ ten-thirty ~ thirty
-1F566 | time | 11:30 ~ 11 ~ 30 ~ clock ~ eleven ~ eleven-thirty ~ thirty
-1F567 | time | 12:30 ~ 12 ~ 30 ~ clock ~ thirty ~ twelve ~ twelve-thirty
+1F550 | time | 1 | 1:00 ~ clock ~ o’clock ~ one
+1F551 | time | 2 | 2:00 ~ clock ~ o’clock ~ two
+1F552 | time | 3 | 3:00 ~ clock ~ o’clock ~ three
+1F553 | time | 4 | 4:00 ~ clock ~ four ~ o’clock
+1F554 | time | 5 | 5:00 ~ clock ~ five ~ o’clock
+1F555 | time | 6 | 6:00 ~ clock ~ o’clock ~ six
+1F556 | 0 | 7 | 7:00 ~ clock ~ o’clock ~ seven
+1F557 | time | 8 | 8:00 ~ clock ~ eight ~ o’clock
+1F558 | time | 9 | 9:00 ~ clock ~ nine ~ o’clock
+1F559 | 0 | 10 | 10:00 ~ clock ~ o’clock ~ ten
+1F55A | time | 11 | 11:00 ~ clock ~ eleven ~ o’clock
+1F55B | time | 12 | 12:00 ~ clock ~ o’clock ~ twelve
+1F55C | time | 1 | 1:30 | 30 ~ clock ~ one ~ one-thirty ~ thirty
+1F55D | time | 2 | 2:30 | 30 ~ clock ~ thirty ~ two ~ two-thirty
+1F55E | time | 3 | 3:30 | 30 ~ clock ~ thirty ~ three ~ three-thirty
+1F55F | time | 30 | 4 | 4:30 ~ clock ~ four ~ four-thirty ~ thirty
+1F560 | time | 30 | 5 | 5:30 ~ clock ~ five ~ five-thirty ~ thirty
+1F561 | 30 | 6 | 6:30 ~ clock ~ six ~ six-thirty ~ thirty
+1F562 | 30 | 7 | 7:30 ~ clock ~ seven ~ seven-thirty ~ thirty
+1F563 | time | 30 | 8 | 8:30 ~ clock ~ eight ~ eight-thirty ~ thirty
+1F564 | time | 30 | 9 | 9:30 ~ clock ~ nine ~ nine-thirty ~ thirty
+1F565 | time | 10 | 10:30 | 30 ~ clock ~ ten ~ ten-thirty ~ thirty
+1F566 | time | 11 | 11:30 | 30 ~ clock ~ eleven ~ eleven-thirty ~ thirty
+1F567 | time | 12 | 12:30 | 30 ~ clock ~ thirty ~ twelve ~ twelve-thirty
 1F56F | light ~ candle
 1F570 | time ~ clock ~ mantelpiece
 1F573 ~ hole
@@ -1225,7 +1225,7 @@ FDFC | currency ~ rial
 1F60A | blush | glad | satisfied ~ eye ~ eyes ~ face ~ smile ~ smiling
 1F60B | eat | full | hungry | smile | smiling | tasty | um | yum | yummy ~ delicious ~ face ~ food ~ savor
 1F60C | calm | peace | zen ~ face ~ relief ~ relieved
-1F60D | bae | feels | ily | kisses | love | romance | romantic | xoxo ~ 143 ~ eye ~ face ~ heart-eyes ~ hearts ~ smile
+1F60D | bae | feels | ily | kisses | love | romance | romantic | xoxo | 143 ~ eye ~ face ~ heart-eyes ~ hearts ~ smile
 1F60E | awesome | beach | bright | bro | chilling | cool | rad | relaxed | shades | slay | style | swag | win ~ face ~ smile ~ sunglasses
 1F60F | boss | dapper | flirt | homie | kidding | leer | shade | slick | sly | smug | snicker | suave | suspicious | swag ~ face ~ smirk
 1F610 | awkward | blank | deadpan | expressionless | fine | jealous | meh | oh | shade | straight | unamused | unhappy | unimpressed | whatever ~ face ~ neutral
@@ -1235,10 +1235,10 @@ FDFC | currency ~ rial
 1F614 | awful | bored | dejected | died | disappointed | losing | lost | sad | sucks ~ face ~ pensive
 1F615 | befuddled | dunno | frown | hm | meh | not | sad | sorry | sure ~ confused ~ confusing ~ face
 1F616 | annoyed | confused | cringe | distraught | feels | frustrated | mad | sad ~ confounded ~ face
-1F617 | date | dating | flirt | ily | kiss | love | smooch | smooches | xoxo | you ~ 143 ~ face
+1F617 | date | dating | flirt | ily | kiss | love | smooch | smooches | xoxo | you | 143 ~ face
 1F618 | adorbs | bae | flirt | heart | ily | love | lover | miss | muah | romantic | smooch | xoxo | you ~ blowing ~ face ~ kiss
-1F619 | closed | date | dating | flirt | ily | kiss | love | night ~ 143 ~ eye ~ eyes ~ face ~ kisses ~ kissing ~ smile ~ smiling
-1F61A | bae | blush | date | dating | flirt | ily | smooches | xoxo ~ 143 ~ closed ~ eye ~ eyes ~ face ~ kisses ~ kissing
+1F619 | closed | date | dating | flirt | ily | kiss | love | night | 143 ~ eye ~ eyes ~ face ~ kisses ~ kissing ~ smile ~ smiling
+1F61A | bae | blush | date | dating | flirt | ily | smooches | xoxo | 143 ~ closed ~ eye ~ eyes ~ face ~ kisses ~ kissing
 1F61B | awesome | cool | nice | party | sweet ~ face ~ stuck-out ~ tongue
 1F61C | crazy | epic | funny | joke | loopy | nutty | party | wacky | weirdo | yolo ~ eye ~ face ~ stuck-out ~ tongue ~ wink ~ winking
 1F61D | gross | horrible | omg | taste | whatever | yolo ~ closed ~ eye ~ eyes ~ face ~ squinting ~ stuck-out ~ tongue
@@ -1413,8 +1413,8 @@ FDFC | currency ~ rial
 1F7EB ~ brown ~ square
 1F7F0 | answer | equality | math ~ equal ~ equals ~ heavy ~ sign
 1F90C | gesture | hand | hold | huh | interrogation | patience | relax | sarcastic | ugh | what | zip ~ fingers ~ pinched
-1F90D ~ 143 ~ heart ~ white
-1F90E ~ 143 ~ brown ~ heart
+1F90D | 143 ~ heart ~ white
+1F90E | 143 ~ brown ~ heart
 1F90F | amount | bit | fingers | little | small | sort ~ hand ~ pinching
 1F910 | keep | quiet | secret | shut | zip ~ face ~ mouth ~ zipper ~ zipper-mouth
 1F911 | paid ~ face ~ money ~ money-mouth ~ mouth
@@ -1510,7 +1510,7 @@ FDFC | currency ~ rial
 1F96D | food | fruit | tropical ~ mango
 1F96E | autumn | festival | yuèbǐng ~ cake ~ moon
 1F96F | bakery | bread | breakfast | schmear ~ bagel
-1F970 | adore | crush | ily | love | romance | you ~ 3 ~ face ~ heart ~ hearts ~ smile ~ smiling
+1F970 | adore | crush | ily | love | romance | you | 3 ~ face ~ heart ~ hearts ~ smile ~ smiling
 1F971 | bedtime | bored | goodnight | nap | night | sleep | sleepy | tired | whatever | zzz ~ face ~ yawn ~ yawning
 1F972 | glad | grateful | happy | joy | pain | proud | relieved | touched ~ face ~ smile ~ smiley ~ smiling ~ tear
 1F973 | bday | birthday | celebrate | celebration | excited | happy | hooray ~ face ~ hat ~ horn ~ party ~ partying
@@ -1623,7 +1623,7 @@ FDFC | currency ~ rial
 1F9DE | djinn | fantasy | jinn | lamp | myth | rub | wishes ~ genie
 1F9DF | apocalypse | dead | halloween | horror | scary | undead | walking ~ zombie
 1F9E0 | intelligent | smart ~ brain
-1F9E1 ~ 143 ~ heart ~ orange
+1F9E1 | 143 ~ heart ~ orange
 1F9E2 | baseball | bent | dad | hat ~ billed ~ cap
 1F9E3 | bundle | cold | neck | up ~ scarf
 1F9E4 | hand ~ gloves
@@ -1659,9 +1659,9 @@ FDFC | currency ~ rial
 1FA72 | bathing | one-piece | suit | swimsuit | underwear ~ briefs
 1FA73 | bathing | pants | suit | swimsuit | underwear ~ shorts
 1FA74 | beach | flip | flop | shoe | zōri ~ sandal ~ sandals ~ thong ~ thongs
-1FA75 | cute | cyan | emotion | ily | like | love | sky | special | teal ~ 143 ~ blue ~ heart ~ light
-1FA76 | emotion | gray | ily | love | silver | slate | special ~ 143 ~ grey ~ heart
-1FA77 | adorable | cute | emotion | ily | like | love | special | sweet ~ 143 ~ heart ~ pink
+1FA75 | cute | cyan | emotion | ily | like | love | sky | special | teal | 143 ~ blue ~ heart ~ light
+1FA76 | emotion | gray | ily | love | silver | slate | special | 143 ~ grey ~ heart
+1FA77 | adorable | cute | emotion | ily | like | love | special | sweet | 143 ~ heart ~ pink
 1FA78 | bleed | donation | injury | medicine | menstruation ~ blood ~ drop
 1FA79 ~ adhesive ~ bandage
 1FA7A | doctor | heart | medicine ~ stethoscope

@@ -327,31 +327,27 @@ private fun foldedWords(text: String): List<String> {
     return List(tokens.count) { tokens.token(it) }
 }
 
-fun orderLocalizedKeywords(keywords: List<String>, shortName: String): Pair<List<String>, List<String>> {
+fun orderLocalizedKeywords(keywords: List<String>, shortName: String): List<String> {
     val name = foldedWords(shortName)
     val worded = ArrayList<String>()
     val symbolic = ArrayList<String>()
-    val hidden = ArrayList<String>()
     for (keyword in keywords) {
         val hasLetter = keyword.any { it.isLetter() }
         val hasDigit = keyword.any { it.isDigit() }
         when {
             (hasLetter || hasDigit) && foldedWords(keyword) == name -> Unit
-            keyword.all { it.isDigit() } -> hidden.add(keyword)
-            !hasLetter && !hasDigit && keyword.codePointCount(0, keyword.length) == 1 -> hidden.add(keyword)
             hasLetter -> worded.add(keyword)
             else -> symbolic.add(keyword)
         }
     }
-    return (worded + symbolic) to hidden
+    return worded + symbolic
 }
 
 fun encodeAnnotations(tag: String, shortNames: Map<Int, String>, keywords: Map<Int, List<String>>): ByteArray {
     val body = StringBuilder()
     for (codePoint in (shortNames.keys + keywords.keys).sorted()) {
         val name = shortNames[codePoint].orEmpty()
-        val (displayed, hidden) = orderLocalizedKeywords(keywords[codePoint].orEmpty(), name)
-        val fields = listOf(name, displayed.joinToString("|"), hidden.joinToString("|"))
+        val fields = listOf(name, orderLocalizedKeywords(keywords[codePoint].orEmpty(), name).joinToString("|"), "")
         require(fields.none { '\t' in it || '\n' in it })
         body.append(codePoint.toString(16).uppercase()).append('\t').append(fields.joinToString("\t")).append('\n')
     }
@@ -373,7 +369,7 @@ private fun writeAnnotations(input: File, res: File, assigned: Set<Int>): List<S
         val bytes = encodeAnnotations(languageTag(qualifier), shortNames, keywords)
         File(res, "raw-$qualifier").mkdirs()
         File(res, "raw-$qualifier/annotations.txt").writeBytes(bytes)
-        val displayed = keywords.entries.sumOf { orderLocalizedKeywords(it.value, shortNames[it.key].orEmpty()).first.size }
+        val displayed = keywords.entries.sumOf { orderLocalizedKeywords(it.value, shortNames[it.key].orEmpty()).size }
         summary.add("$qualifier ${(shortNames.keys + keywords.keys).size} ${keywords.values.sumOf { it.size }} $displayed ${bytes.size} ${deflatedSize(bytes)}")
     }
     val values = annotationQualifiers(res, "values")
@@ -467,11 +463,8 @@ fun orderKeywords(keywords: List<String>, formalName: String, shortName: String)
     for (keyword in keywords) {
         val words = keywordWords(keyword)
         val hasLetter = keyword.any { it.isLetter() }
-        val hasDigit = keyword.any { it.isDigit() }
         when {
             words.isNotEmpty() && words.all { word -> pool.any { sameKeywordWord(word, it) } } -> hidden.add(keyword)
-            keyword.all { it.isDigit() } -> hidden.add(keyword)
-            !hasLetter && !hasDigit && keyword.codePointCount(0, keyword.length) == 1 -> hidden.add(keyword)
             hasLetter -> worded.add(keyword)
             else -> symbolic.add(keyword)
         }

@@ -1,4 +1,4 @@
-annotations 1 tr 2cafc0da
+annotations 1 tr aa5ff946
 21	ünlem işareti	ünlem	
 23	sayı işareti	etiket|hashtag|kare|karma|sayı	
 24	dolar	ABD|para|pezo	
@@ -76,12 +76,12 @@ F7	bölme işareti	bölme|bölüm|obelus
 2034	üç üssü	üssü	
 2038	düzeltme işareti		
 203B	referans işareti		
-203C	çift ünlem	işaret|noktalama|ünlem|!!	!
+203C	çift ünlem	işaret|noktalama|ünlem|!|!!	
 203D	soru ve ünlem işareti		
 203E	üst çizgi		
 2042	üç yıldız işareti		
 2044	kesir bölme işareti		
-2049	ünlemli soru işareti	işaret|noktalama|soru|ünlem|!?	!|?
+2049	ünlemli soru işareti	işaret|noktalama|soru|ünlem|!|!?|?	
 207B	üs eksi	eksi|üs|üst eksi simgesi|üst simge	
 20A2	cruzeiro		
 20A3	fransız frangı		
@@ -386,7 +386,7 @@ F7	bölme işareti	bölme|bölüm|obelus
 2603	kardan adam	hava durumu|kar|kış|soğuk	
 2604	kuyruklu yıldız	uzay	
 260E	telefon	kırmızı telefon	
-2611	seçilmiş onay kutusu	kutu|kutulu|kutulu onay işareti|onay|seçili onay işareti	✓
+2611	seçilmiş onay kutusu	kutu|kutulu|kutulu onay işareti|onay|seçili onay işareti|✓	
 2614	yağmur damlalı şemsiye	giyim|hava durumu|ıslak|mor şemsiye|şemsiye|yağmur|yağmurlu	
 2615	sıcak içecek	çay|dumanı tüten|içecek|kahve|sıcak	
 2618	yonca	bitki|yeşil yaprak	
@@ -467,7 +467,7 @@ F7	bölme işareti	bölme|bölüm|obelus
 26FA	çadır	kamp|kamp yeri	
 26FD	akaryakıt istasyonu	benzin|benzin istasyonu|benzinci|gaz|istasyon|pompa|yakıt|yakıt pompası	
 2702	makas	alet	
-2705	onay işareti düğmesi	düğme|işaret|kalın onay işareti|onay|onay işareti	✓
+2705	onay işareti düğmesi	düğme|işaret|kalın onay işareti|onay|onay işareti|✓	
 2708	uçak	jet|seyahat|taşıt|uçmak|yolculuk	
 2709	zarf	e-mail|e-posta|mektup	
 270A	yumruk kaldırma	el|havada yumruk|yumruk	
@@ -476,26 +476,26 @@ F7	bölme işareti	bölme|bölüm|obelus
 270D	yazı yazan el	beden|el|kalem tutma|yazma	
 270F	kurşun kalem		
 2712	siyah uç	dolma kalem|kalem	
-2714	onay işareti	işaret|kalın onay işareti|onay	✓
-2716	çarpım işareti	çarpı|çarpım|çarpma|iptal|işaret|kalın çarpı işareti|x	×
+2714	onay işareti	işaret|kalın onay işareti|onay|✓	
+2716	çarpım işareti	çarpı|çarpım|çarpma|iptal|işaret|kalın çarpı işareti|x|×	
 271D	Latin haçı	din|haç|Hristiyan|isa|İsa	
 2721	Davut yıldızı	davut|Davut|din|yahudi|Yahudi|yıldız	
-2728	parıltılar	mucize|parıldayan yıldızlar|parıltı|pırıldayan yıldızlar|pırıltı|sihir|yıldız|yıldızlar	*
-2733	sekiz uçlu yıldız	asterisk|yıldız	*
-2734	sekiz noktalı yıldız	yıldız	*
+2728	parıltılar	mucize|parıldayan yıldızlar|parıltı|pırıldayan yıldızlar|pırıltı|sihir|yıldız|yıldızlar|*	
+2733	sekiz uçlu yıldız	asterisk|yıldız|*	
+2734	sekiz noktalı yıldız	yıldız|*	
 2744	kar tanesi	buz|hava durumu|kar|kış|soğuk	
-2747	parlama	pırıltı	*
-274C	çarpı işareti	çarpı|çarpma|iptal|işaret|x	×
-274E	çarpı işareti düğmesi	çarpım|çarpma|kare|x|X kare içinde	×
-2753	kırmızı soru işareti	işaret|noktalama|soru|soru işareti	?
-2754	beyaz soru işareti	işaret|noktalama|soru	?
-2755	beyaz ünlem işareti	işaret|noktalama|ünlem	!
-2757	kırmızı ünlem işareti	işaret|noktalama|ünlem|ünlem işareti	!
+2747	parlama	pırıltı|*	
+274C	çarpı işareti	çarpı|çarpma|iptal|işaret|x|×	
+274E	çarpı işareti düğmesi	çarpım|çarpma|kare|x|X kare içinde|×	
+2753	kırmızı soru işareti	işaret|noktalama|soru|soru işareti|?	
+2754	beyaz soru işareti	işaret|noktalama|soru|?	
+2755	beyaz ünlem işareti	işaret|noktalama|ünlem|!	
+2757	kırmızı ünlem işareti	işaret|noktalama|ünlem|ünlem işareti|!	
 2763	kalp şeklinde ünlem işareti	işaret|kalp|noktalama|ünlem işareti	
 2764	kırmızı kalp	aşk|kalp	
-2795	artı	artı işareti|işaret|koyu renk artı işareti|matematik	+
-2796	eksi	eksi işareti|işaret|koyu renk eksi işareti|matematik	-|−
-2797	bölü işareti	bölü|işaret|koyu renk bölü işareti|matematik	÷
+2795	artı	artı işareti|işaret|koyu renk artı işareti|matematik|+	
+2796	eksi	eksi işareti|işaret|koyu renk eksi işareti|matematik|-|−	
+2797	bölü işareti	bölü|işaret|koyu renk bölü işareti|matematik|÷	
 27A1	sağ ok	ana yön|doğu|ok|yön	
 27B0	kıvrık döngü	döngü|dönüş	
 27BF	çift kıvrık döngü	Japonya|kıvrık döngü|ücretsiz numara	
@@ -991,7 +991,7 @@ FDFC	riyal
 1F4AC	konuşma balonu	balon|çizgi roman|iletişim|iletişim balonu	
 1F4AD	düşünce balonu	balon|bulut|çizgi roman|düşünce|fikir	
 1F4AE	beyaz çiçek	çiçek|çiçek damgası|damga|iyi çalışma damgası	
-1F4AF	yüz puan	100 puan|skor|yuz	100
+1F4AF	yüz puan	100 puan|skor|yuz|100	
 1F4B0	para torbası	çanta|dolar çantası|para|para çuvalı|zengin	
 1F4B1	kambiyo	bozdurma|döviz|para	
 1F4B2	dolar işareti	dolar|koyu renk dolar işareti|para	
@@ -1101,10 +1101,10 @@ FDFC	riyal
 1F51B	açık oku	ok|ünlem|ünlem işareti|ünlem işareti ve okla AÇIK	
 1F51C	yakında işareti	ok|sağ okla Yakında|Yakında	
 1F51D	yukarı oku	yukarı|Yukarı|yukarı işareti|yukarı ok|yukarı okla Yukarı	
-1F51E	18 yaş altı yasak	18 yaş altı|18 yaş altı yasaktır|18‘den küçükler giremez	18
+1F51E	18 yaş altı yasak	18 yaş altı|18 yaş altı yasaktır|18‘den küçükler giremez|18	
 1F520	büyük harfler	ABCD|büyük harf|Latin|Latin büyük harfleri|Latin büyük harfleriyle giriş	
 1F521	küçük harfler	abcd|alfabe|küçük harf|Latin|Latin küçük harfleri|Latin küçük harfleriyle giriş	
-1F522	sayılar	sayı girişi	1234
+1F522	sayılar	sayı girişi|1234	
 1F523	işaretler	işaret girişi	
 1F524	Latin alfabesi	ABC|İngilizce|Latin|Latin alfabesiyle giriş|Latin Alfabesiyle giriş	
 1F525	ateş	alev|sıcak|yakmak	

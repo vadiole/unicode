@@ -1,4 +1,4 @@
-annotations 1 pt-BR e33b251b
+annotations 1 pt-BR ec534a69
 21	ponto de exclamação	atenção|exclamação|ponto	
 23	cerquilha	hashtag|número	
 24	dólar	dinheiro|peso|USD	
@@ -76,12 +76,12 @@ F7	sinal de divisão	dividir|divisão|símbolo|sinal
 2034	plica tripla	plica	
 2038	circunflexo		
 203B	marca de referência	marca|referência	
-203C	dupla exclamação	exclamação|exclamação dupla|explosão|ponto de exclamação duplo|pontuação|!!	!
+203C	dupla exclamação	exclamação|exclamação dupla|explosão|ponto de exclamação duplo|pontuação|!|!!	
 203D	interrobangue		
 203E	linha superior	linha|superior	
 2042	asterismo		
 2044	barra de fração	barra|fração	
-2049	exclamação com interrogação	exclamação|interrogação|pergunta|pontuação|sinal|!?	!|?
+2049	exclamação com interrogação	exclamação|interrogação|pergunta|pontuação|sinal|!|!?|?	
 207B	menos sobrescrito	menos|sobrescrito	
 20A2	cruzeiros	BRB|moeda	
 20A3	franco francês	francês|franco|moeda	
@@ -386,7 +386,7 @@ F7	sinal de divisão	dividir|divisão|símbolo|sinal
 2603	boneco de neve	boneco|clima|frio|inverno|neve	
 2604	cometa	espaço|estrela cadente|meteoro|satélite	
 260E	telefone no gancho	gancho|telefone	
-2611	caixa de seleção marcada com tique	caixa|check|feito|marca de verificação|marca de verificação cinza|verificação	✓
+2611	caixa de seleção marcada com tique	caixa|check|feito|marca de verificação|marca de verificação cinza|verificação|✓	
 2614	sombrinha na chuva	acessório|chuva|clima|gotas|guarda-chuva|sombrinha	
 2615	café	cafeína|cafezinho|chá|inverno|quente	
 2618	trevo	Irlanda|irlandês|planta|trevo de três folhas	
@@ -467,35 +467,35 @@ F7	sinal de divisão	dividir|divisão|símbolo|sinal
 26FA	barraca	acampamento|acampar	
 26FD	posto de gasolina	abastecer|álcool|bomba|combustível|gasolina|posto	
 2702	tesoura	aberta|cortar|ferramenta	
-2705	marca de seleção branca	botão|check|completo|feito|marca|marca de verificação|marca de verificação grande|verificação|verificado	✓
+2705	marca de seleção branca	botão|check|completo|feito|marca|marca de verificação|marca de verificação grande|verificação|verificado|✓	
 2708	avião	aéreo|veículo|viajar|voar|voo	
 2709	envelope	carta|correspondência|e-mail|email	
 270A	punho levantado	pedra|punho|punho erguido|solidariedade	
-270B	mão levantada	cinco|erguida|high five|levantada|mão|papel|pare|toca aqui	5
+270B	mão levantada	cinco|erguida|high five|levantada|mão|papel|pare|toca aqui|5	
 270C	mão em V de vitória	beleza|mão|paz|sim|V de vitória|vitória	
 270D	escrevendo à mão	caneta|escrevendo|mão	
 270F	lápis		
 2712	ponta de caneta tinteiro	caneta|ponta|preto|tinta|tinteiro	
-2714	marca de seleção	check|feito|marca|marca de verificação simples|marcar|selecionar|verificação	✓
-2716	sinal de multiplicação	cancelar|multiplicação|multiplicar|X|x de multiplicação|X preto	×
+2714	marca de seleção	check|feito|marca|marca de verificação simples|marcar|selecionar|verificação|✓	
+2716	sinal de multiplicação	cancelar|multiplicação|multiplicar|X|x de multiplicação|X preto|×	
 271D	cruz latina	cristão|cruz|religião	
 2721	estrela de Davi	davi|estrela|judaico|judeu|religião	
-2728	brilhos	brilhantes|estrelas|faíscas|mágica	*
-2733	asterisco de oito pontas	asterisco|estrela	*
-2734	estrela de oito pontas	estrela|oito pontas	*
+2728	brilhos	brilhantes|estrelas|faíscas|mágica|*	
+2733	asterisco de oito pontas	asterisco|estrela|*	
+2734	estrela de oito pontas	estrela|oito pontas|*	
 2744	floco de neve	clima|floco|frio|neve	
-2747	faísca	cruz	*
-274C	xis	cancelar|multiplicação|multiplicar|vermelho|X	×
-274E	botão de xis	botão com x|botão de caixa com X|marcado|multiplicar|quadrado|x|x em um quadrado verde|x verde	×
-2753	ponto de interrogação vermelho	interrogação|pergunta|ponto|ponto de interrogação|pontuação|sinal	?
-2754	ponto de interrogação branco	delineado|interrogação|pergunta|pontuação|sinal	?
-2755	ponto de exclamação branco	delineado|exclamação|mark|ponto|pontuação|sinal	!
-2757	ponto de exclamação vermelho	exclamação|ponto de exclamação|pontuação	!
+2747	faísca	cruz|*	
+274C	xis	cancelar|multiplicação|multiplicar|vermelho|X|×	
+274E	botão de xis	botão com x|botão de caixa com X|marcado|multiplicar|quadrado|x|x em um quadrado verde|x verde|×	
+2753	ponto de interrogação vermelho	interrogação|pergunta|ponto|ponto de interrogação|pontuação|sinal|?	
+2754	ponto de interrogação branco	delineado|interrogação|pergunta|pontuação|sinal|?	
+2755	ponto de exclamação branco	delineado|exclamação|mark|ponto|pontuação|sinal|!	
+2757	ponto de exclamação vermelho	exclamação|ponto de exclamação|pontuação|!	
 2763	exclamação de coração	amor|coração|exclamação|pontuação|s2|sinal	
 2764	coração vermelho	amor|coração|s2	
-2795	símbolo de adição	cruz|mais|matemática|sinal|sinal de maior|sinal de mais|somar	+
-2796	símbolo de subtração	diminuir|matemática|menos|sinal|sinal de menos|travessão	-|−
-2797	símbolo de divisão	dividir|divisão|matemática|sinal|sinal de divisão|sinal de divisão grande	÷
+2795	símbolo de adição	cruz|mais|matemática|sinal|sinal de maior|sinal de mais|somar|+	
+2796	símbolo de subtração	diminuir|matemática|menos|sinal|sinal de menos|travessão|-|−	
+2797	símbolo de divisão	dividir|divisão|matemática|sinal|sinal de divisão|sinal de divisão grande|÷	
 27A1	seta para a direita	direção|direita|flecha|leste|seta	
 27B0	laço encaracolado	loop|onda|ondulado|volta	
 27BF	loop encaracolado duas vezes	duas vezes|duplo|encaradolado|loop|onda|ondulado	
@@ -991,7 +991,7 @@ FDFC	rial	moeda
 1F4AC	balão de diálogo	balão|balão de conversa|diálogo|engraçado	
 1F4AD	balão de pensamento	balão|engraçado|ideia|invenção|inventando|pensamento|pensando	
 1F4AE	flor branca	carimbo|carimbo de flor|carimbo de parabéns|flor	
-1F4AF	cem pontos	cem|certamente|certeza|conte comigo|pontos|sem dúvida|top|total	100
+1F4AF	cem pontos	cem|certamente|certeza|conte comigo|pontos|sem dúvida|top|total|100	
 1F4B0	saco de dinheiro	dinheiro|dólares|saco	
 1F4B1	câmbio de moeda	banco|câmbio|dinheiro|moeda	
 1F4B2	cifrão	dinheiro|dólar|grana|moeda|símbolo do dólar|símbolo do dólar em negrito	
@@ -1101,10 +1101,10 @@ FDFC	rial	moeda
 1F51B	seta "ON!"	flecha|marca|on|ON!|seta	
 1F51C	seta "SOON"	“Soon” com seta para a direita|em breve|flecha|seta|símbolo “Soon”|soon	
 1F51D	seta "TOP"	cima|para cima|seta|seta para cima|símbolo top|top|top com seta para cima	
-1F51E	proibido para menores de 18 anos	anos|dezoito|idade|menor|menores|proibido|restrição	18
+1F51E	proibido para menores de 18 anos	anos|dezoito|idade|menor|menores|proibido|restrição|18	
 1F520	letras latinas maiúsculas	ABCD|caracteres latinos maiúsculos|digitação|inserir caracteres latinos maiúsculos|latinas|letras|maiúsculas|maiúsculos	
 1F521	letras latinas minúsculas	abcd|caracteres latinos minúsculos|digitação|latinas|latino|letras|minúsculas|minúsculos	
-1F522	números	digitação|inserir números	1234
+1F522	números	digitação|inserir números|1234	
 1F523	símbolos	digitação|inserir símbolos|〒♪&%	
 1F524	letras latinas	abc|ABC|alfabeto|digitação|inglês|inserir alfabeto latino|latinas|latino|letras	
 1F525	fogo	chama	
@@ -1177,7 +1177,7 @@ FDFC	rial	moeda
 1F58B	caneta tinteiro	caneta|destro|tinteiro	
 1F58C	pincel	pintando|pintar	
 1F58D	giz de cera	cera|desenho|giz|vermelho	
-1F590	mão aberta com os dedos separados	aberta|cinco|dedos|mão|palma|pare|separados	5
+1F590	mão aberta com os dedos separados	aberta|cinco|dedos|mão|palma|pare|separados|5	
 1F595	dedo do meio	dedo|gesto ofensivo|mão	
 1F596	saudação vulcana	dedos|jornada nas estrelas|mão|saudação|saudação star trek|spock|star trek|startrek	
 1F5A4	coração preto	coração|negro|preto|s2	

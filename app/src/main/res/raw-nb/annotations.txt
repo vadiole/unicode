@@ -1,4 +1,4 @@
-annotations 1 nb e59367a5
+annotations 1 nb 5a2c86d3
 21	utropstegn		
 23	nummertegn	emneknagg|firkant|hashtagg|skigard	
 24	dollar	MXN|peso|USD|valuta	
@@ -76,12 +76,12 @@ F7	deletegn	dele|dividere|divisjon|divisjonstegn|matematisk|tegn
 2034	trippelt primtegn		
 2038	innsettingstegn		
 203B	referansemerke		
-203C	dobbelt utropstegn	bangbang|tegn|tegnsetting|utropstegn|!!	!
+203C	dobbelt utropstegn	bangbang|tegn|tegnsetting|utropstegn|!|!!	
 203D	interrobang		
 203E	overstrek		
 2042	asterisme	stjerner	
 2044	skråstrek for brøk	skråstrek	
-2049	utropstegn og spørsmålstegn	interrobang|spørsmål|spørsmålstegn|tegn|tegnsetting|utrop|utropstegn|!?	!|?|‽
+2049	utropstegn og spørsmålstegn	interrobang|spørsmål|spørsmålstegn|tegn|tegnsetting|utrop|utropstegn|!|!?|?|‽	
 207B	hevet minustegn	hevet|ion|ladning|matematiske|minus|minustegn|negativ|tegn	
 20A2	cruzeiro	BRB|valuta	
 20A3	fransk franc	franc|fransk|valuta	
@@ -386,7 +386,7 @@ F7	deletegn	dele|dividere|divisjon|divisjonstegn|matematisk|tegn
 2603	snømann	kaldt|snø|vær	
 2604	komet	verdensrommet	
 260E	telefon	fasttelefon|ringe	
-2611	boks med hakemerke	avkrysset boks|boks|hakemerke	✓
+2611	boks med hakemerke	avkrysset boks|boks|hakemerke|✓	
 2614	paraply med regndråper	dråpe|klær|paraply|regn|vær	
 2615	varm drikke	drikke|kaffe|kaffekopp|koffein|morgen|rykende|te|tekopp|varm	
 2618	trekløver	kløver|plante	
@@ -467,7 +467,7 @@ F7	deletegn	dele|dividere|divisjon|divisjonstegn|matematisk|tegn
 26FA	telt	camping|telttur	
 26FD	bensinpumpe	bensin|bensinstasjon|diesel|stasjon	
 2702	saks	klippe|verktøy	
-2705	hakemerke i firkant	avkryssing|avmerking|hake|hakemerke|utført	✓
+2705	hakemerke i firkant	avkryssing|avmerking|hake|hakemerke|utført|✓	
 2708	fly	fremkomstmiddel	
 2709	konvolutt	brev|e-post	
 270A	hevet knyttneve	hånd|knyttet neve|neve	
@@ -476,26 +476,26 @@ F7	deletegn	dele|dividere|divisjon|divisjonstegn|matematisk|tegn
 270D	skrivende hånd	hånd|kropp|skrive	
 270F	blyant		
 2712	svart pennesplitt	penn|pennespiss	
-2714	hakemerke	hake|merke	✓
-2716	gange	avbryt|gangetegn|matte|multiplikasjon|multiplisere|x	×
+2714	hakemerke	hake|merke|✓	
+2716	gange	avbryt|gangetegn|matte|multiplikasjon|multiplisere|x|×	
 271D	latinsk kors	kors|kristen|religion	
 2721	Davidstjerne	David|jøde|jødisk|religion|stjerne	
-2728	stjerner	glitrende|skinnende	*
-2733	asterisk med åtte spisser	asterisk|stjerne	*
-2734	åttetagget stjerne	stjerne	*
+2728	stjerner	glitrende|skinnende|*	
+2733	asterisk med åtte spisser	asterisk|stjerne|*	
+2734	åttetagget stjerne	stjerne|*	
 2744	snøfnugg	kaldt|snø|vær	
-2747	gnist		*
-274C	kryss	avbryt|rødt kryss|x|X	×
-274E	kryss i firkant	kryss|kvadrat|x	×
-2753	rødt spørsmålstegn	rød|spørsmål|spørsmålstegn	?
-2754	hvitt spørsmålstegn	hvit|spørsmål|spørsmålstegn	?
-2755	hvitt utropstegn	hvit|utrop|utropstegn	!
-2757	rødt utropstegn	rød|utrop|utropstegn	!
+2747	gnist	*	
+274C	kryss	avbryt|rødt kryss|x|X|×	
+274E	kryss i firkant	kryss|kvadrat|x|×	
+2753	rødt spørsmålstegn	rød|spørsmål|spørsmålstegn|?	
+2754	hvitt spørsmålstegn	hvit|spørsmål|spørsmålstegn|?	
+2755	hvitt utropstegn	hvit|utrop|utropstegn|!	
+2757	rødt utropstegn	rød|utrop|utropstegn|!	
 2763	utropstegn med hjerte	tegn|tegnsetting|utrop|utropstegn	
 2764	rødt hjerte	hjerte	
-2795	pluss	addisjon|fortegn|matte|plusstegn|positivt	+
-2796	minus	fortegn|matte|minustegn|negativt|subtraksjon	-|−
-2797	dele	deletegn|deling|divisjon|divisjonstegn|matte	÷
+2795	pluss	addisjon|fortegn|matte|plusstegn|positivt|+	
+2796	minus	fortegn|matte|minustegn|negativt|subtraksjon|-|−	
+2797	dele	deletegn|deling|divisjon|divisjonstegn|matte|÷	
 27A1	pil høyre	høyrepil|øst|pil|retning	
 27B0	løkke	løkketegn	
 27BF	dobbel løkke	dobbel løkke-tegn	
@@ -632,7 +632,7 @@ FDFC	rial	valuta
 1F33D	maiskolbe	mais	
 1F33E	risplante	aks|plante|ris|siv|strå	
 1F33F	urteblader	blader|plante|urt	
-1F340	firkløver	flaks|hell|kløver|plante	4
+1F340	firkløver	flaks|hell|kløver|plante|4	
 1F341	lønneblad	blad|høstblad|lønn	
 1F342	høstblad	blad|fallende|løv	
 1F343	blader i vind	blåse|blåser|blåst|løv i vind|vind	
@@ -740,7 +740,7 @@ FDFC	rial	valuta
 1F3AE	videospill	konsoll|kontroller|spill|spillkonsoll|spillkontroller|TV-spill	
 1F3AF	blink	dart|mål|midt i blinken|pilspill|treff	
 1F3B0	spilleautomat	spill	
-1F3B1	biljard	åtte|åtterkule|spill	8
+1F3B1	biljard	åtte|åtterkule|spill|8	
 1F3B2	terning	spill|terningkast|terningspill	
 1F3B3	bowling	bowlingkule|kule|spill	
 1F3B4	spillkort	kort|kortspill	
@@ -756,7 +756,7 @@ FDFC	rial	valuta
 1F3BE	tennis	ball|racket|sport|tenninsball	
 1F3BF	ski	ski og staver|snø|staver|vintersport	
 1F3C0	basketball	ball|kurv|sport	
-1F3C1	rutete flagg	flagg|formel|mål|motorsport|racingflagg|rutete	1
+1F3C1	rutete flagg	flagg|formel|mål|motorsport|racingflagg|rutete|1	
 1F3C2	snowboarder	snøbrett|snøbrettkjøring|snowboard|snowboarding|vintersport	
 1F3C3	løper	fart|fort|idrett|jogger|jogging|løp|maraton|person|rask|sport	
 1F3C4	surfer	hav|sport|strand|surfebrett|surfing	
@@ -991,7 +991,7 @@ FDFC	rial	valuta
 1F4AC	snakkeboble	ballong|boble|dialog|dialogboble|tegneserie	
 1F4AD	tankeboble	boble|tanke|tegneserie	
 1F4AE	hvit blomst	blomst|blomsterstempel|stempel	
-1F4AF	hundre poeng	full pott|poeng	100
+1F4AF	hundre poeng	full pott|poeng|100	
 1F4B0	pengesekk	dollar|penger|sekk	
 1F4B1	valutaveksling	bank|penger|valuta|veksling	
 1F4B2	dollartegn	dollar|penger|stort dollartegn	
@@ -1101,10 +1101,10 @@ FDFC	rial	valuta
 1F51B	ON!-pil	ON|PÅ|pil|utrop|utropstegn	
 1F51C	SOON-pil	pil|snart|snart med pil	
 1F51D	TOP-pil	opp|pil opp|TOP|topp|topp med pil	
-1F51E	aldersgrense 18 år	attenårsgrense|ingen under 18|under 18	18
+1F51E	aldersgrense 18 år	attenårsgrense|ingen under 18|under 18|18	
 1F520	store bokstaver	ABCD|bokstaver|inndata	
 1F521	små bokstaver	abcd|bokstaver|inndata	
-1F522	tall	inndata|numeriske data	1234
+1F522	tall	inndata|numeriske data|1234	
 1F523	symboler	inndata|〒♪&%	
 1F524	latinsk alfabet	ABC|bokstaver|inndata|latinsk	
 1F525	ild	flamme	
@@ -1138,17 +1138,17 @@ FDFC	rial	valuta
 1F54C	moské	bygning|islam|muslim|religion	
 1F54D	synagoge	bygning|jøde|jødisk|religion|tempel	
 1F54E	menora	lysestake|religion	
-1F550	klokken ett	ett|klokka|klokken|tretten|1:00|13:00	1
-1F551	klokken to	fjorten|klokka|klokken|to|14:00|2:00	2
-1F552	klokken tre	femten|klokka|klokken|tre|15:00|3:00	3
-1F553	klokken fire	fire|klokka|klokken|seksten|16:00|4:00	4
-1F554	klokken fem	fem|klokka|klokken|sytten|17:00|5:00	5
-1F555	klokken seks	atten|klokka|klokken|seks|18:00|6:00	6
-1F556	klokken sju	klokka|klokken|nitten|sju|syv|19:00|7:00	7
-1F557	klokken åtte	åtte|klokka|klokken|tjue|20:00|8:00	8
-1F558	klokken ni	klokka|klokken|ni|tjueen|tjueett|21:00|9:00	9
-1F559	klokken ti	klokka|klokken|ti|tjueto|10:00|22:00	10
-1F55A	klokken elleve	elleve|klokka|klokken|tjuetre|11:00|23:00	11
+1F550	klokken ett	ett|klokka|klokken|tretten|1|1:00|13:00	
+1F551	klokken to	fjorten|klokka|klokken|to|14:00|2|2:00	
+1F552	klokken tre	femten|klokka|klokken|tre|15:00|3|3:00	
+1F553	klokken fire	fire|klokka|klokken|seksten|16:00|4|4:00	
+1F554	klokken fem	fem|klokka|klokken|sytten|17:00|5|5:00	
+1F555	klokken seks	atten|klokka|klokken|seks|18:00|6|6:00	
+1F556	klokken sju	klokka|klokken|nitten|sju|syv|19:00|7|7:00	
+1F557	klokken åtte	åtte|klokka|klokken|tjue|20:00|8|8:00	
+1F558	klokken ni	klokka|klokken|ni|tjueen|tjueett|21:00|9|9:00	
+1F559	klokken ti	klokka|klokken|ti|tjueto|10|10:00|22:00	
+1F55A	klokken elleve	elleve|klokka|klokken|tjuetre|11|11:00|23:00	
 1F55B	klokken tolv	klokka|tolv|0:00|12:00|24:00	
 1F55C	klokken halv to	halv to|klokka|klokken|1:30|13:30	
 1F55D	klokken halv tre	halv tre|klokka|klokken|14:30|2:30	

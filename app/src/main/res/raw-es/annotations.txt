@@ -1,4 +1,4 @@
-annotations 1 es d26967ec
+annotations 1 es 7f8dba25
 21	exclamación de cierre	exclamación|signo de admiración|sorpresa	
 23	almohadilla	hashtag|numeral|número|sostenido	
 24	dólar	dinero|peso|USD	
@@ -18,7 +18,7 @@ annotations 1 es d26967ec
 3D	igual	igual a	
 3E	mayor que	antilambda|corchete angular|etiqueta|etiqueta de cierre	
 3F	interrogación de cierre	interrogación|pregunta|signo de interrogación	
-40	arroba	correo|Internet|símbolo	@
+40	arroba	correo|Internet|símbolo|@	
 5B	corchete de apertura	abrir corchetes|corchete|paréntesis	
 5C	barra invertida	backlash|barra|contrabarra|diagonal inversa|diagonal invertida|inversa	
 5D	corchete de cierre	cerrar corchetes|corchete|paréntesis	
@@ -81,7 +81,7 @@ F7	signo de división	dividir|división|lemnisco|óbelo|signo
 203E	línea superpuesta	raya superpuesta|vinculum	
 2042	asterismo	asteriscos	
 2044	barra de fracción	fracción|trazo	
-2049	exclamación e interrogación	exclamación|interrogación|!?	!|?
+2049	exclamación e interrogación	exclamación|interrogación|!|!?|?	
 207B	menos en superíndice	menos|superíndice	
 20A2	cruceiro	BRB|moneda	
 20A3	franco francés	franco|moneda	
@@ -386,7 +386,7 @@ F7	signo de división	dividir|división|lemnisco|óbelo|signo
 2603	muñeco de nieve con nieve	nieve	
 2604	cometa espacial	cometa|espacio|meteorito	
 260E	teléfono		
-2611	casilla con marca de verificación	casilla|marca|selección|verificación	✓
+2611	casilla con marca de verificación	casilla|marca|selección|verificación|✓	
 2614	paraguas con gotas de lluvia	gotas|lluvia|paraguas	
 2615	bebida caliente	bebida|café|caliente|té	
 2618	trébol	planta	
@@ -467,7 +467,7 @@ F7	signo de división	dividir|división|lemnisco|óbelo|signo
 26FA	tienda de campaña	campaña|camping|tienda|vacaciones	
 26FD	surtidor de gasolina	bomba de gasolina|combustible|gasolina|surtidor	
 2702	tijeras	cortar|herramienta	
-2705	botón de marca de verificación	botón|marca|selección|verificación	✓
+2705	botón de marca de verificación	botón|marca|selección|verificación|✓	
 2708	avión	aeroplano	
 2709	sobre	carta|correo	
 270A	puño en alto	cerrado|mano|puñetazo|puño	
@@ -476,26 +476,26 @@ F7	signo de división	dividir|división|lemnisco|óbelo|signo
 270D	mano escribiendo	escribir|lápiz|mano	
 270F	lápiz	escolar|escribir|lapicero	
 2712	pluma negra	bolígrafo|escribir|pluma|tinta	
-2714	marca de verificación	marca|selección|verificación	✓
-2716	multiplicación	cancelar|marca|prohibido|signo de multiplicación|x	×
+2714	marca de verificación	marca|selección|verificación|✓	
+2716	multiplicación	cancelar|marca|prohibido|signo de multiplicación|x|×	
 271D	cruz latina	cristianismo|cruz|religión	
 2721	estrella de David	David|estrella|judaísmo|judío|religión	
-2728	chispas	bengala|estrellas	*
-2733	asterisco de ocho puntas	asterisco	*
-2734	estrella de ocho puntas	estrella	*
+2728	chispas	bengala|estrellas|*	
+2733	asterisco de ocho puntas	asterisco|*	
+2734	estrella de ocho puntas	estrella|*	
 2744	copo de nieve	frío|nieve	
-2747	chispa		*
-274C	marca de cruz	cancelar|cruz|marca de tachado|tachar|x	×
-274E	botón con marca de cruz	casilla|cruz|marca|x	×
-2753	interrogación roja	interrogación|pregunta|puntuación|signo de interrogación	?
-2754	interrogación blanca	interrogación|pregunta|puntuación	?
-2755	exclamación blanca	exclamación|puntuación	!
-2757	exclamación roja	exclamación|puntuación|signo de exclamación	!
+2747	chispa	*	
+274C	marca de cruz	cancelar|cruz|marca de tachado|tachar|x|×	
+274E	botón con marca de cruz	casilla|cruz|marca|x|×	
+2753	interrogación roja	interrogación|pregunta|puntuación|signo de interrogación|?	
+2754	interrogación blanca	interrogación|pregunta|puntuación|?	
+2755	exclamación blanca	exclamación|puntuación|!	
+2757	exclamación roja	exclamación|puntuación|signo de exclamación|!	
 2763	exclamación de corazón	corazón|exclamación|puntuación	
 2764	corazón rojo	corazón|emoción|rojo	
-2795	más	signo|suma	+
-2796	menos	resta|signo	-|−
-2797	división	signo|signo de división	÷
+2795	más	signo|suma|+	
+2796	menos	resta|signo|-|−	
+2797	división	signo|signo de división|÷	
 27A1	flecha hacia la derecha	derecha|dirección|este|flecha	
 27B0	bucle	giro|tirabuzón	
 27BF	bucle doble	bucle|doble	
@@ -740,7 +740,7 @@ FDFC	rial	moneda
 1F3AE	mando de videoconsola	juego|mando|videojuego	
 1F3AF	diana	blanco|en el blanco|juego	
 1F3B0	máquina tragaperras	juego|máquina	
-1F3B1	bola negra de billar	billar|bola ocho|juego	8
+1F3B1	bola negra de billar	billar|bola ocho|juego|8	
 1F3B2	dado	juego	
 1F3B3	bolos	bola|bola de bolos|juego	
 1F3B4	cartas de flores	carta|flor|hanafuda|naipe japonés	
@@ -991,7 +991,7 @@ FDFC	rial	moneda
 1F4AC	bocadillo de diálogo	bocadillo|cómic|conversación|diálogo	
 1F4AD	bocadillo de pensamiento	bocadillo|burbuja|cómic|pensamiento	
 1F4AE	flor blanca	blanca|flor	
-1F4AF	cien puntos	pleno|puntos	100
+1F4AF	cien puntos	pleno|puntos|100	
 1F4B0	bolsa de dinero	bolsa|bolsa de dólares|dinero	
 1F4B1	cambio de divisas	cambio|dinero|divisa|moneda	
 1F4B2	símbolo de dólar	dinero|dólar|símbolo	
@@ -1101,10 +1101,10 @@ FDFC	rial	moneda
 1F51B	flecha ON!	flecha|flecha de doble punta con la palabra "on" encima|on|señal	
 1F51C	flecha SOON	flecha|soon|soon con flecha a la derecha	
 1F51D	flecha TOP	arriba|flecha hacia arriba|top|top con flecha hacia arriba	
-1F51E	prohibido para menos de 18 años	no apto para menores|prohibido|prohibido para menores de 18 años	18
+1F51E	prohibido para menos de 18 años	no apto para menores|prohibido|prohibido para menores de 18 años|18	
 1F520	letras latinas mayúsculas	abcd|letras|mayúsculas	
 1F521	letras latinas minúsculas	abcd|letras|minúsculas	
-1F522	números	dígitos	1234
+1F522	números	dígitos|1234	
 1F523	símbolos	〒♪&%	
 1F524	alfabeto latino	ABC|latino	
 1F525	fuego	llama	

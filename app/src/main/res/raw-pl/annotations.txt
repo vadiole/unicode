@@ -1,4 +1,4 @@
-annotations 1 pl f67c6909
+annotations 1 pl c5a0daa0
 21	wykrzyknik	wykrzyknąć|znak|znak wykrzyknika	
 23	kratka	hash|krzyżyk|numer|płotek	
 24	dolar	pieniądze|USD|waluta	
@@ -76,12 +76,12 @@ F7	znak ilorazu	dzielenie|iloraz|podzielić|znak dzielenia
 2034	ter	prim	
 2038	kareta		
 203B	znak odniesienia	odniesienie	
-203C	podwójny wykrzyknik	krzyk|okrzyk|wykrzykniki|!!	!
+203C	podwójny wykrzyknik	krzyk|okrzyk|wykrzykniki|!|!!	
 203D	interrobang	interabang	
 203E	nadkreślenie		
 2042	asteryzm		
 2044	ukośnik ułamkowy		
-2049	wykrzyknik ze znakiem zapytania	nie rozumiem|pytajnik|pytanie|wykrzyknik|zaskoczenie|znak zapytania|!?	!|?
+2049	wykrzyknik ze znakiem zapytania	nie rozumiem|pytajnik|pytanie|wykrzyknik|zaskoczenie|znak zapytania|!|!?|?	
 207B	minus w indeksie górnym	indeks górny|minus	
 20A2	cruzeiro		
 20A3	frank francuski		
@@ -477,25 +477,25 @@ F7	znak ilorazu	dzielenie|iloraz|podzielić|znak dzielenia
 270F	ołówek	pisak|rysować	
 2712	pióro z czarną stalówką	pióro|pisać|stalówka|z czarną stalówką|ze stalówką	
 2714	znacznik wyboru	gruby znacznik wyboru|haczyk|parafka|ptaszek|tak|zaznaczenie	
-2716	znak mnożenia	anuluj|iks|matematyka|mnożenie|x|znak	×
+2716	znak mnożenia	anuluj|iks|matematyka|mnożenie|x|znak|×	
 271D	krzyż łaciński	chrześcijaństwo|krzyż|krzyżyk|religia	
 2721	gwiazda Dawida	Dawid|gwiazda|gwiazda dawidowa|judaizm|religia|żyd|żydowska	
-2728	gwiazdki	błysk|gwiazda|gwiazdy|iskry|noc|świecący|świeci	*
-2733	gwiazdka ośmioramienna	gwiazdka	*
-2734	gwiazda ośmioramienna	gwiazda|gwiazdka	*
+2728	gwiazdki	błysk|gwiazda|gwiazdy|iskry|noc|świecący|świeci|*	
+2733	gwiazdka ośmioramienna	gwiazdka|*	
+2734	gwiazda ośmioramienna	gwiazda|gwiazdka|*	
 2744	płatek śniegu	pogoda|śnieg|śnieżynka|zima|zimno	
-2747	iskra		*
-274C	znak krzyżyka	anuluj|czerwony|krzyżyk|mnożenie|x|znak|znak mnożenia	×
+2747	iskra	*	
+274C	znak krzyżyka	anuluj|czerwony|krzyżyk|mnożenie|x|znak|znak mnożenia|×	
 274E	przycisk z krzyżykiem	anuluj|iks|iks w kwadracie|krzyżyk w kwadracie|mnożenie|x	
-2753	czerwony znak zapytania	co?|o co chodzi|o co chodzi?|pytajnik|pytanie|znak zapytania	?
-2754	biały znak zapytania	co?|o co chodzi?|pytajnik|pytanie|znak zapytania	?
-2755	biały wykrzyknik	krzyk|okrzyk|wykrzyknik	!
-2757	czerwony wykrzyknik	krzyk|okrzyk|wykrzyknik	!
+2753	czerwony znak zapytania	co?|o co chodzi|o co chodzi?|pytajnik|pytanie|znak zapytania|?	
+2754	biały znak zapytania	co?|o co chodzi?|pytajnik|pytanie|znak zapytania|?	
+2755	biały wykrzyknik	krzyk|okrzyk|wykrzyknik|!	
+2757	czerwony wykrzyknik	krzyk|okrzyk|wykrzyknik|!	
 2763	wykrzyknik w kształcie serca	czerwony wykrzyknik|kocham|serce|wykrzyknik|znak interpunkcyjny	
 2764	czerwone serce	czerwone|kocham|miłość|serce	
-2795	znak plus	dodać|dodawać|dodawanie|matematyka|plus|znak	+
-2796	znak minus	matematyka|minus|odejmowanie|odjąć|znak	-|−
-2797	znak dzielenia	dzielenie|matematyka|znak	÷
+2795	znak plus	dodać|dodawać|dodawanie|matematyka|plus|znak|+	
+2796	znak minus	matematyka|minus|odejmowanie|odjąć|znak|-|−	
+2797	znak dzielenia	dzielenie|matematyka|znak|÷	
 27A1	strzałka w prawo	kierunek|strzałka|wschód	
 27B0	pętla	zawijas|znak	
 27BF	podwójna pętla	pętla|podwójna|zawijas	
@@ -542,7 +542,7 @@ FDFC	rial
 1F0CF	dżoker	gra|joker|karta	
 1F170	grupa krwi A	A|grupa A|krew	
 1F171	grupa krwi B	B|grupa B|krew	
-1F17E	grupa krwi 0	grupa 0|krew	0
+1F17E	grupa krwi 0	grupa 0|krew|0	
 1F17F	parking	postój|znak	
 1F18E	grupa krwi AB	AB|grupa AB|krew	
 1F191	przycisk CL	znak CL	
@@ -740,7 +740,7 @@ FDFC	rial
 1F3AE	gra wideo	do gier|gamepad|gra|konsola|kontroler|pad	
 1F3AF	strzał w 10	cel|dziesiątka|gra|lotki|strzał|trafienie|w 10|w dziesiątkę|zabawa	
 1F3B0	automat do gier	automat do gry|gra|hazard|jednoręki bandyta|kasyno	
-1F3B1	bila 8	bila|bilard|gra|kula|kula bilardowa	8
+1F3B1	bila 8	bila|bilard|gra|kula|kula bilardowa|8	
 1F3B2	kostka do gry	gra|hazard|kości|kostka|w kości	
 1F3B3	kręgle	bowling|kula|sport	
 1F3B4	gra karciana hanafuda	gra|hanafuda|japońska|karciana|karta|kwiat	
@@ -991,7 +991,7 @@ FDFC	rial
 1F4AC	dymek	dialog|rozmowa	
 1F4AD	dymek myśli	chmurka|dymek|myśl|myśleć	
 1F4AE	biały kwiat	kontury|kwiatek|pieczątka	
-1F4AF	sto punktów	setka|sto|stówa|stówka	100
+1F4AF	sto punktów	setka|sto|stówa|stówka|100	
 1F4B0	worek z pieniędzmi	bogaty|dolary|kasa|pieniądze|pieniędzy|worek|z pieniędzmi	
 1F4B1	wymiana walut	kantor|waluta|wymiana|wymiana waluty	
 1F4B2	gruby symbol dolara	dolar|dolary|pieniądze|usd|waluta	
@@ -1101,10 +1101,10 @@ FDFC	rial
 1F51B	strzałka z napisem ON!	strzałka|strzałka w obie strony|włączone	
 1F51C	strzałka z napisem SOON	strzałka|wkrótce	
 1F51D	strzałka z napisem TOP	góra|strzałka|w górę	
-1F51E	zakaz poniżej osiemnastego roku życia	niedozwolone|niepełnoletni|od lat|ograniczenie|osiemnastego|osiemnastu|poniżej|roku życia|wiekowe|zabronione|zakaz	18
+1F51E	zakaz poniżej osiemnastego roku życia	niedozwolone|niepełnoletni|od lat|ograniczenie|osiemnastego|osiemnastu|poniżej|roku życia|wiekowe|zabronione|zakaz|18	
 1F520	wielkie litery (alfabet łaciński)	abcd|alfabet łaciński|duże litery|kapitaliki|łacińskie|litery|pisać|wielkie litery|wielkimi literami|wprowadzać	
 1F521	małe litery (alfabet łaciński)	abcd|alfabet łaciński|łacińskie|litery|małe litery|małymi literami|pisać|wprowadzać	
-1F522	cyfry	kalkulator|liczby|wprowadzać	1234
+1F522	cyfry	kalkulator|liczby|wprowadzać|1234	
 1F523	symbole	pisać|wprowadzać|znaki	
 1F524	litery (alfabet łaciński)	abc|abecadło|alfabet|alfabet łaciński|litery|małe litery|pierwsze litery|wprowadzać	
 1F525	ogień	płomień|pożar	
@@ -1138,30 +1138,30 @@ FDFC	rial
 1F54C	meczet	islam|muzułmanin|religia|świątynia	
 1F54D	synagoga	religia|świątynia|żyd|żydowski	
 1F54E	menora	Chanuka|Chanukija|judaizm|kandelabr|religia|świecznik|żydowska	
-1F550	godzina 1:00	czas|godzina|pierwsza|trzynasta|zegar|1:00	00|1
-1F551	godzina 2:00	czas|czternasta|druga|godzina|zegar|2:00	00|2
-1F552	godzina 3:00	czas|godzina|piętnasta|trzecia|zegar|3:00	00|3
-1F553	godzina 4:00	czas|czwarta|godzina|szesnasta|zegar|4:00	00|4
-1F554	godzina 5:00	czas|godzina|piąta|siedemnasta|zegar|5:00	00|5
-1F555	godzina 6:00	czas|godzina|osiemnasta|szósta|zegar|6:00	00|6
-1F556	godzina 7:00	czas|dziewiętnasta|godzina|siódma|zegar|7:00	00|7
-1F557	godzina 8:00	czas|dwudziesta|godzina|ósma|zegar|8:00	00|8
-1F558	godzina 9:00	dwudziesta pierwsza|dziewiąta|godzina|zegar|9:00	00|9
-1F559	godzina 10:00	czas|dwudziesta druga|dziesiąta|godzina|zegar|10:00	00|10
-1F55A	godzina 11:00	czas|dwudziesta trzecia|godzina|jedenasta|zegar|11:00	00|11
-1F55B	godzina 12:00	dwunasta|godzina|północ|południe|zegar|zero|12:00	00|12
-1F55C	godzina 1:30	czas|godzina|pierwsza trzydzieści|trzynasta trzydzieści|zegar|1:30	1|30
-1F55D	godzina 2:30	czas|czternasta trzydzieści|druga trzydzieści|godzina|zegar|2:30	2|30
-1F55E	godzina 3:30	czas|godzina|piętnasta trzydzieści|trzecia trzydzieści|zegar|3:30	3|30
-1F55F	godzina 4:30	czas|czwarta trzydzieści|godzina|szesnasta trzydzieści|zegar|4:30	30|4
-1F560	godzina 5:30	czas|godzina|piąta trzydzieści|siedemnasta trzydzieści|zegar|5:30	30|5
-1F561	godzina 6:30	czas|godzina|osiemnasta trzydzieści|szósta trzydzieści|zegar|6:30	30|6
-1F562	godzina 7:30	czas|dziewiętnasta trzydzieści|godzina|siódma trzydzieści|zegar|7:30	30|7
-1F563	godzina 8:30	czas|dwudziesta trzydzieści|godzina|ósma trzydzieści|zegar|8:30	30|8
-1F564	godzina 9:30	czas|dwudziesta pierwsza trzydzieści|dziewiąta trzydzieści|godzina|zegar|9:30	30|9
-1F565	godzina 10:30	czas|dwudziesta druga trzydzieści|dziesiąta trzydzieści|godzina|zegar|10:30	10|30
-1F566	godzina 11:30	czas|dwudziesta trzecia trzydzieści|godzina|jedenasta trzydzieści|zegar|11:30	11|30
-1F567	godzina 12:30	czas|dwunasta trzydzieści|godzina|zegar|zero trzydzieści|12:30	12|30
+1F550	godzina 1:00	czas|godzina|pierwsza|trzynasta|zegar|00|1|1:00	
+1F551	godzina 2:00	czas|czternasta|druga|godzina|zegar|00|2|2:00	
+1F552	godzina 3:00	czas|godzina|piętnasta|trzecia|zegar|00|3|3:00	
+1F553	godzina 4:00	czas|czwarta|godzina|szesnasta|zegar|00|4|4:00	
+1F554	godzina 5:00	czas|godzina|piąta|siedemnasta|zegar|00|5|5:00	
+1F555	godzina 6:00	czas|godzina|osiemnasta|szósta|zegar|00|6|6:00	
+1F556	godzina 7:00	czas|dziewiętnasta|godzina|siódma|zegar|00|7|7:00	
+1F557	godzina 8:00	czas|dwudziesta|godzina|ósma|zegar|00|8|8:00	
+1F558	godzina 9:00	dwudziesta pierwsza|dziewiąta|godzina|zegar|00|9|9:00	
+1F559	godzina 10:00	czas|dwudziesta druga|dziesiąta|godzina|zegar|00|10|10:00	
+1F55A	godzina 11:00	czas|dwudziesta trzecia|godzina|jedenasta|zegar|00|11|11:00	
+1F55B	godzina 12:00	dwunasta|godzina|północ|południe|zegar|zero|00|12|12:00	
+1F55C	godzina 1:30	czas|godzina|pierwsza trzydzieści|trzynasta trzydzieści|zegar|1|1:30|30	
+1F55D	godzina 2:30	czas|czternasta trzydzieści|druga trzydzieści|godzina|zegar|2|2:30|30	
+1F55E	godzina 3:30	czas|godzina|piętnasta trzydzieści|trzecia trzydzieści|zegar|3|3:30|30	
+1F55F	godzina 4:30	czas|czwarta trzydzieści|godzina|szesnasta trzydzieści|zegar|30|4|4:30	
+1F560	godzina 5:30	czas|godzina|piąta trzydzieści|siedemnasta trzydzieści|zegar|30|5|5:30	
+1F561	godzina 6:30	czas|godzina|osiemnasta trzydzieści|szósta trzydzieści|zegar|30|6|6:30	
+1F562	godzina 7:30	czas|dziewiętnasta trzydzieści|godzina|siódma trzydzieści|zegar|30|7|7:30	
+1F563	godzina 8:30	czas|dwudziesta trzydzieści|godzina|ósma trzydzieści|zegar|30|8|8:30	
+1F564	godzina 9:30	czas|dwudziesta pierwsza trzydzieści|dziewiąta trzydzieści|godzina|zegar|30|9|9:30	
+1F565	godzina 10:30	czas|dwudziesta druga trzydzieści|dziesiąta trzydzieści|godzina|zegar|10|10:30|30	
+1F566	godzina 11:30	czas|dwudziesta trzecia trzydzieści|godzina|jedenasta trzydzieści|zegar|11|11:30|30	
+1F567	godzina 12:30	czas|dwunasta trzydzieści|godzina|zegar|zero trzydzieści|12|12:30|30	
 1F56F	świeca	płomień|światło|świeczka	
 1F570	zegar kominkowy	czas|czasomierz|kominkowy|zegar	
 1F573	otwór	dziura	
@@ -1653,9 +1653,9 @@ FDFC	rial
 1FA72	kąpielówki	bielizna|majtki do kąpieli|slipy|strój do kąpieli	
 1FA73	szorty	bermudy|bielizna|spodenki|strój do kąpieli	
 1FA74	japonka	buty|japonki|klapek|klapki|na basen|na lato|na plażę|obuwie|plaża|sandał|sandały|z jednym paskiem	
-1FA75	jasnoniebieskie serce	błękitne|jasnoniebieskie|kocham cię|lubić|miłość|serce|sympatia|turkusowe|urocze|zielononiebieskie	143
-1FA76	szare serce	ciemnoszare|kocham cię|miłość|serce|specjalne|srebrne|szare	143
-1FA77	różowe serce	emocje|kocham cię|lubić|miłość|różowe|serce|słodkie|sympatia|urocze	143
+1FA75	jasnoniebieskie serce	błękitne|jasnoniebieskie|kocham cię|lubić|miłość|serce|sympatia|turkusowe|urocze|zielononiebieskie|143	
+1FA76	szare serce	ciemnoszare|kocham cię|miłość|serce|specjalne|srebrne|szare|143	
+1FA77	różowe serce	emocje|kocham cię|lubić|miłość|różowe|serce|słodkie|sympatia|urocze|143	
 1FA78	kropla krwi	krew|krwawienie|krwiodawstwo|medycyna|menstruacja|oddawanie krwi|rana	
 1FA79	plaster	opatrunek	
 1FA7A	stetoskop	lekarz|medycyna|praca|serce	

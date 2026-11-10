@@ -1,4 +1,4 @@
-annotations 1 nl 98229707
+annotations 1 nl 939bac7f
 21	uitroepteken	uitroep|uitroeppunt	
 23	hekje	aantal|hashtag|lb|pound	
 24	dollar	geld|peso|USD	
@@ -76,12 +76,12 @@ F7	deelteken	delen|deling|obelus
 2034	drievoudige prime	accent	
 2038	inlasteken		
 203B	referentieteken		
-203C	dubbel uitroepteken	dubbel|interpunctie|teken|uitroep|!!	!
+203C	dubbel uitroepteken	dubbel|interpunctie|teken|uitroep|!|!!	
 203D	interrobang	vraagteken-uitroepteken	
 203E	bovenlijn		
 2042	asterisme	dinkus|sterren	
 2044	breukstreep	schuine streep|streep	
-2049	uitroepteken en vraagteken	interpunctie|teken|uitroep|vraag|vraagteken-uitroepteken|!?	!|?
+2049	uitroepteken en vraagteken	interpunctie|teken|uitroep|vraag|vraagteken-uitroepteken|!|!?|?	
 207B	superscript min	min|superscript	
 20A2	cruzeiro	BRB|valuta	
 20A3	Franse franc	franc|valuta	
@@ -386,7 +386,7 @@ F7	deelteken	delen|deling|obelus
 2603	sneeuwpop	koud|sneeuw|weer	
 2604	komeet	ruimte|vuurbal	
 260E	telefoon	rode telefoon met hoorn|vaste telefoon	
-2611	vinkje in vak	check|klaar|stem|uit|vak|vink|vinkje	✓
+2611	vinkje in vak	check|klaar|stem|uit|vak|vink|vinkje|✓	
 2614	paraplu met regendruppels	druppels|kleding|paraplu|regen|weer	
 2615	warme drank	café|cafeïne|chai|drank|drinken|koffie|ochtend|stomen|thee|warm	
 2618	klavertjedrie	Iers|plant	
@@ -467,35 +467,35 @@ F7	deelteken	delen|deling|obelus
 26FA	tent	kamperen	
 26FD	benzinestation	benzine|benzinepomp|brandstof|pomp|station	
 2702	schaar	gereedschap|knippen	
-2705	knop voor vinkje	afgevinkt|check|gedaan|klaar|knop|markeren|vink|vinkje|voltooid	✓
+2705	knop voor vinkje	afgevinkt|check|gedaan|klaar|knop|markeren|vink|vinkje|voltooid|✓	
 2708	vliegtuig	luchtvaartuig|reizen|vervoermiddel|vliegen|vliegmachine	
 2709	envelop	brief|e-mail|mail	
 270A	opgeheven vuist	gebald|hand|opgeheven|solidariteit|stoot|vuist	
-270B	opgeheven hand	hand|hoog|opgeheven|stop|vijf	5
+270B	opgeheven hand	hand|hoog|opgeheven|stop|vijf|5	
 270C	winnende hand	hand|peace|twee vingers|v|vredesteken	
 270D	schrijvende hand	hand|schrijf|schrijven	
 270F	potlood		
 2712	kroontjespen met zwarte punt	pen|punt|vulpen	
-2714	vinkje	afgevinkt|check|dikgedrukt|klaar|teken	✓
-2716	vermenigvuldigen	annuleren|teken|x	×
+2714	vinkje	afgevinkt|check|dikgedrukt|klaar|teken|✓	
+2716	vermenigvuldigen	annuleren|teken|x|×	
 271D	christelijk kruis	christelijk|christus|kruis|Latijns|religie	
 2721	davidster	David|Jodendom|Jood|Joods|religie|ster	
-2728	sterretjes	glinsteren|glinsterende sterren|ster	*
-2733	achtpuntige asterisk	achtpuntig|asterisk	*
-2734	achtpuntige ster	achtpuntige|ster	*
+2728	sterretjes	glinsteren|glinsterende sterren|ster|*	
+2733	achtpuntige asterisk	achtpuntig|asterisk|*	
+2734	achtpuntige ster	achtpuntige|ster|*	
 2744	sneeuwvlok	koud|sneeuw|weer	
-2747	sprankeling		*
-274C	kruisteken	annuleren|kruis|teken|vermenigvuldigen|vermenigvuldiging|x	×
-274E	knop voor kruis	knop|kruis|teken|vermenigvuldigen|vermenigvuldiging|vierkant|x	×
-2753	rood vraagteken	interpunctie|rood|teken|vraag	?
-2754	wit vraagteken	contour|interpunctie|teken|vraag|wit	?
-2755	wit uitroepteken	contour|interpunctie|teken|uitroep|wit	!
-2757	rood uitroepteken	interpunctie|rood|teken|uitroep	!
+2747	sprankeling	*	
+274C	kruisteken	annuleren|kruis|teken|vermenigvuldigen|vermenigvuldiging|x|×	
+274E	knop voor kruis	knop|kruis|teken|vermenigvuldigen|vermenigvuldiging|vierkant|x|×	
+2753	rood vraagteken	interpunctie|rood|teken|vraag|?	
+2754	wit vraagteken	contour|interpunctie|teken|vraag|wit|?	
+2755	wit uitroepteken	contour|interpunctie|teken|uitroep|wit|!	
+2757	rood uitroepteken	interpunctie|rood|teken|uitroep|!	
 2763	hart als uitroepteken	hart met druppel eronder|interpunctie|leesteken|punctuatie|teken|uitroep|uitroepteken|uitroepteken met hart	
 2764	rood hart	emotie|hart|liefde	
-2795	plus		+
-2796	min	dikgedrukt|teken|wiskunde	-|−
-2797	delen	deling|dikgedrukt|teken|wiskunde	÷
+2795	plus	+	
+2796	min	dikgedrukt|teken|wiskunde|-|−	
+2797	delen	deling|dikgedrukt|teken|wiskunde|÷	
 27A1	pijl naar rechts	oost|pijl|rechts|richting|windrichting	
 27B0	gekrulde lus	gedraaid|lus	
 27BF	dubbele gekrulde lus	dubbel|krul|krullend|lus	
@@ -632,7 +632,7 @@ FDFC	rial	valuta
 1F33D	maïskolf	boerderij|doolhof|gewassen|kolf|maïs	
 1F33E	rijstplant	aar|graan|granen|plant|rijst|rijstaar	
 1F33F	kruid	blad|plant	
-1F340	klavertjevier	blad|geluk|Iers|klaver|plant|vier	4
+1F340	klavertjevier	blad|geluk|Iers|klaver|plant|vier|4	
 1F341	esdoornblad	blad|esdoorn|vallend	
 1F342	vallende bladeren	blad|gevallen|herfst|vallend	
 1F343	blad in de wind	blad|blazen|fladderen|wind	
@@ -740,7 +740,7 @@ FDFC	rial	valuta
 1F3AE	videogame	controller|game|gamecontroller|playstation|spel|videospel|xbox	
 1F3AF	directe treffer	bull’s eye|bullseye|darts|doelwit|in de roos|spel|sport|treffer|voltreffer	
 1F3B0	fruitautomaat	casino|eenarmige bandiet|gokkast|gokken|spel	
-1F3B1	biljart	8 ball|8-ball|acht|bal|pool|spel	8
+1F3B1	biljart	8 ball|8-ball|acht|bal|pool|spel|8	
 1F3B2	dobbelsteen	dobbelen|dobbelstenen|spel|yahtzee	
 1F3B3	bowlen	bal|spel|sport|strike	
 1F3B4	speelkaarten	bloem|bloemenkaart|bloemspeelkaarten|hanafuda|japans|kaart|kaartspel|spel|spelen	
@@ -991,7 +991,7 @@ FDFC	rial	valuta
 1F4AC	spraakballon	aan het typen|ballon|cartoonesk|dialoog|spraak|strip|tekstballon|tekstballon met puntjes	
 1F4AD	gedachteballon	ballon|besef|cartoonesk|dagdromen|denkballon|denkwolkje|gedachten|gedachtenballon|strip|uitvinden|uitvinding	
 1F4AE	witte bloem	bloem|wit	
-1F4AF	maximumscore	100 punten|beste|cijfer|fantastisch|foutloos|getal|geweldig|score|top|zeker	100
+1F4AF	maximumscore	100 punten|beste|cijfer|fantastisch|foutloos|getal|geweldig|score|top|zeker|100	
 1F4B0	zak met geld	dollar|geld|geldzak|rijk|zak	
 1F4B1	geld wisselen	bank|geld|valuta|wisselen	
 1F4B2	vetgedrukt dollarteken	betalen|dikgedrukt dollarteken|dollar|dollarteken|geld|munteenheid|valuta	
@@ -1101,11 +1101,11 @@ FDFC	rial	valuta
 1F51B	ON!-pijl	ON!|pijl|teken	
 1F51C	SOON-pijl	onderweg|pijl|SOON|zo terug	
 1F51D	TOP-pijl	omhoog|pijl|TOP	
-1F51E	niemand onder de 18	achttien|beperking|één|leeftijd|minderjarig|nee|niet|verboden	18
+1F51E	niemand onder de 18	achttien|beperking|één|leeftijd|minderjarig|nee|niet|verboden|18	
 1F520	hoofdletters	ABCD|invoeren|Latijns|letters	
 1F521	kleine letters	abcd|invoeren|Latijns|letters	
-1F522	cijfers	invoeren	1234
-1F523	symbolen	invoeren	&|%|♪|〒
+1F522	cijfers	invoeren|1234	
+1F523	symbolen	invoeren|&|%|♪|〒	
 1F524	Latijns alfabet	abc|alfabet|invoeren|Latijns|letters	
 1F525	vuur	brand|heet|hulpmiddel|vlam	
 1F526	zaklamp	elektrisch|lamp|licht|zaklantaarn	
@@ -1138,30 +1138,30 @@ FDFC	rial	valuta
 1F54C	moskee	geloof|islam|moslim|religie	
 1F54D	synagoge	geloof|jodendom|jood|joods|religie|tempel	
 1F54E	menora	hannuka|jodendom|joods|kandelaar|religie	
-1F550	één uur	één|klok|tijd|uur|01:00|1:00|13:00	00|1
-1F551	twee uur	klok|tijd|twee|uur|02:00|14:00|2:00	00|2
-1F552	drie uur	drie|klok|tijd|uur|03:00|15:00|3:00	00|3
-1F553	vier uur	klok|tijd|uur|vier|04:00|16:00|4:00	00|4
-1F554	vijf uur	klok|uur|vijf|05:00|17:00|5:00	00|5
-1F555	zes uur	klok|tijd|uur|zes|06:00|18:00|6:00	00|6
-1F556	zeven uur	klok|tijd|uur|zeven|07:00|19:00|7:00	00|7
-1F557	acht uur	acht|klok|tijd|uur|08:00|20:00|8:00	00|8
-1F558	negen uur	klok|negen|tijd|uur|09:00|21:00|9:00	00|9
-1F559	tien uur	klok|tien|tijd|uur|10:00|22:00	00|10
-1F55A	elf uur	elf|klok|tijd|uur|11:00|23:00	00|11
-1F55B	twaalf uur	klok|tijd|twaalf|uur|12:00	00|12
-1F55C	half twee	dertig|een|één|klok|tijd|1:30|13:30	1|30
-1F55D	half drie	dertig|klok|tijd|twee|14:30|2:30	2|30
-1F55E	half vier	dertig|drie|klok|tijd|15:30|3:30	3|30
-1F55F	half vijf	dertig|klok|tijd|vier|16:30|4:30	30|4
-1F560	half zes	dertig|klok|tijd|vijf|05:30|17:30|5:30	30|5
-1F561	half zeven	dertig|klok|tijd|zes|06:30|18:30|6:30	30|6
-1F562	half acht	dertig|klok|tijd|zeven|07:30|19:30|7:30	30|7
-1F563	half negen	acht|dertig|klok|tijd|08:30|20:30|8:30	30|8
-1F564	half tien	dertig|klok|negen|tijd|09:30|21:30|9:30	30|9
-1F565	half elf	dertig|klok|tien|tijd|10:30|22:30	10|30
-1F566	half twaalf	dertig|elf|klok|tijd|11:30|23:30	11|30
-1F567	half één	dertig|klok|tijd|twaalf|uur|00:30|12:30	12|30
+1F550	één uur	één|klok|tijd|uur|00|01:00|1|1:00|13:00	
+1F551	twee uur	klok|tijd|twee|uur|00|02:00|14:00|2|2:00	
+1F552	drie uur	drie|klok|tijd|uur|00|03:00|15:00|3|3:00	
+1F553	vier uur	klok|tijd|uur|vier|00|04:00|16:00|4|4:00	
+1F554	vijf uur	klok|uur|vijf|00|05:00|17:00|5|5:00	
+1F555	zes uur	klok|tijd|uur|zes|00|06:00|18:00|6|6:00	
+1F556	zeven uur	klok|tijd|uur|zeven|00|07:00|19:00|7|7:00	
+1F557	acht uur	acht|klok|tijd|uur|00|08:00|20:00|8|8:00	
+1F558	negen uur	klok|negen|tijd|uur|00|09:00|21:00|9|9:00	
+1F559	tien uur	klok|tien|tijd|uur|00|10|10:00|22:00	
+1F55A	elf uur	elf|klok|tijd|uur|00|11|11:00|23:00	
+1F55B	twaalf uur	klok|tijd|twaalf|uur|00|12|12:00	
+1F55C	half twee	dertig|een|één|klok|tijd|1|1:30|13:30|30	
+1F55D	half drie	dertig|klok|tijd|twee|14:30|2|2:30|30	
+1F55E	half vier	dertig|drie|klok|tijd|15:30|3|3:30|30	
+1F55F	half vijf	dertig|klok|tijd|vier|16:30|30|4|4:30	
+1F560	half zes	dertig|klok|tijd|vijf|05:30|17:30|30|5|5:30	
+1F561	half zeven	dertig|klok|tijd|zes|06:30|18:30|30|6|6:30	
+1F562	half acht	dertig|klok|tijd|zeven|07:30|19:30|30|7|7:30	
+1F563	half negen	acht|dertig|klok|tijd|08:30|20:30|30|8|8:30	
+1F564	half tien	dertig|klok|negen|tijd|09:30|21:30|30|9|9:30	
+1F565	half elf	dertig|klok|tien|tijd|10|10:30|22:30|30	
+1F566	half twaalf	dertig|elf|klok|tijd|11|11:30|23:30|30	
+1F567	half één	dertig|klok|tijd|twaalf|uur|00:30|12|12:30|30	
 1F56F	kaars	kaarslicht|licht	
 1F570	klok	pendule|staande klok|tijd	
 1F573	gat	hole	
@@ -1231,7 +1231,7 @@ FDFC	rial	valuta
 1F616	onthutst gezicht	bah|boos|gefrustreerd|geïrriteerd|gezicht|onthutst|smiley|verdrietig|verwarring	
 1F617	kussend gezicht	afspraakje|date|gezicht|hou van jou|hvj|kus|kussen|smiley|xoxo|zoen	
 1F618	gezicht dat kus toeblaast	flirten|gezicht|hartje|kus|kusje blazen|kussen|romantiek|smiley|xoxo|zoen	
-1F619	kussend gezicht met lachende ogen	afspraakje|daten|flirten|gesloten|gezicht|ik hou van je|kus|kussen|lach|lachen|liefde|nacht|ogen|oog	143
+1F619	kussend gezicht met lachende ogen	afspraakje|daten|flirten|gesloten|gezicht|ik hou van je|kus|kussen|lach|lachen|liefde|nacht|ogen|oog|143	
 1F61A	kussend gezicht met gesloten ogen	blosjes|blozen|gesloten|gesloten ogen|gezicht|kus|kussend gezicht met ogen dicht|oog|rode wangen|smiley|zoen	
 1F61B	gezicht met uitgestoken tong	gezicht|gezicht met uitgestoken tong en open ogen|grapje|grappig|ontdeugend|smiley|tong|tong uitsteken|uitgesteken tong	
 1F61C	knipoog met uitgestoken tong	gezicht|gezicht met uitgestoken tong en knipoog|grap|grapjas|knipoog|oog|plagen|smiley|tong	
@@ -1504,7 +1504,7 @@ FDFC	rial	valuta
 1F96D	mango	eten|fruit|tropisch	
 1F96E	maancake	cake|festival|herfst|maan|yuèbǐng	
 1F96F	bagel	bakkerij|brood|ontbijt|spread	
-1F970	lachend gezicht met hartjes	crush|dol|gezicht|glimlach|glimlachen|hart|hartjes|hou van jou|jou|liefde|romantiek	3
+1F970	lachend gezicht met hartjes	crush|dol|gezicht|glimlach|glimlachen|hart|hartjes|hou van jou|jou|liefde|romantiek|3	
 1F971	gapend gezicht	bed|dutje|gaap|gapen|geeuwen|gezicht|moe|rusten|saai|slaap lekker|slaperig|vermoeid|verveeld	
 1F972	lachend gezicht met traan	aangedaan|blij|dankbaar|enigszins lachend|gelukkig|opgelucht|smiley|traan|trots	
 1F973	feestend gezicht	feest|feesten|fuif|gelukkig|gezicht|hoed|hoera|opgewonden|roltong|verjaardag|vieren|viering	

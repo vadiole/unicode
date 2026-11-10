@@ -1,4 +1,4 @@
-annotations 1 da d6039dac
+annotations 1 da 137f1fff
 21	udråbstegn	bang|idé|tegn|tegnsætning|udråb	
 23	hashtag	antal|hash|nummer	
 24	dollar	AUD|CAD|HKD|NZD|penge|USD	
@@ -76,7 +76,7 @@ F7	divisionstegn	dele|dividere|division
 2034	tredobbelt anførselstegn	anførselstegn|citationstegn|tredobbelt citationstegn	
 2038	indskudstegn		
 203B	henvisningstegn	henvisning|reference	
-203C	dobbelt udråbstegn	tegnsætning|udråbstegn|!!	!
+203C	dobbelt udråbstegn	tegnsætning|udråbstegn|!|!!	
 203D	interrobang	interabang|spørgsmåls- og udråbstegn|spørgsmålstegn|udråbstegn	
 203E	høj streg	forbindelsesstreg|overstreg|vinculum	
 2042	asterisme	stjerner	
@@ -386,7 +386,7 @@ F7	divisionstegn	dele|dividere|division
 2603	snemand	kulde|sne|vejr	
 2604	komet	rummet	
 260E	telefon	fastnet	
-2611	afkrydsningsfelt med flueben	afkrydsning|felt|flueben|godkendt|markering	✓
+2611	afkrydsningsfelt med flueben	afkrydsning|felt|flueben|godkendt|markering|✓	
 2614	paraply med regndråber	dråbe|paraply|regn|vejr	
 2615	varm drik	dampende|drik|drikkevare|kaffe|kakao|te|varm	
 2618	kløver	grøn|Irland|plante	
@@ -476,26 +476,26 @@ F7	divisionstegn	dele|dividere|division
 270D	skrivende hånd	hånd|skrive	
 270F	blyant	skrive	
 2712	sort fyldepen	fyldepen|pen	
-2714	flueben	markering	✓
-2716	gange	annuller|multiplikation|multiplikationstegn|tegn|x	×
+2714	flueben	markering|✓	
+2716	gange	annuller|multiplikation|multiplikationstegn|tegn|x|×	
 271D	latinsk kors	kors|kristen|religion	
 2721	davidsstjerne	david|jøde|jødisk|religion|stjerne	
 2728	stjerner	glimt|magi|skinne|stjerne	
-2733	ottetakket spids stjerne	asterisk|stjerne	*
-2734	ottetakket stjerne	stjerne	*
+2733	ottetakket spids stjerne	asterisk|stjerne|*	
+2734	ottetakket stjerne	stjerne|*	
 2744	snefnug	kulde|rimfrost|sne|vejr	
-2747	funkle	glimte	*
-274C	kryds	annuller|forkert|gange|markering|multiplikation|x	×
+2747	funkle	glimte|*	
+274C	kryds	annuller|forkert|gange|markering|multiplikation|x|×	
 274E	krydsknap	gange|kvadrat|mærke|x	
-2753	rødt spørgsmålstegn	spørgsmål|spørgsmålstegn|tegn|tegnsætning	?
+2753	rødt spørgsmålstegn	spørgsmål|spørgsmålstegn|tegn|tegnsætning|?	
 2754	hvidt spørgsmålstegn	omrids|spørgsmål|spørgsmålstegn|tegn|tegnsætning	
 2755	hvidt udråbstegn	omrids|tegnsætning|udråb|udråbstegn	
-2757	rødt udråbstegn	tegnsætning|udråbstegn	!
+2757	rødt udråbstegn	tegnsætning|udråbstegn|!	
 2763	hjerte som udråbstegn	hjerte|tegnsætning|udråbstegn	
 2764	rødt hjerte	følelse|hjerte|kærlighed	
-2795	plus	matematik|plustegn|tegn	+
-2796	minus	matematik|minustegn|tegn	-|−
-2797	dividere	division|divisionstegn|matematik|tegn	÷
+2795	plus	matematik|plustegn|tegn|+	
+2796	minus	matematik|minustegn|tegn|-|−	
+2797	dividere	division|divisionstegn|matematik|tegn|÷	
 27A1	pil mod højre	øst|pil|retning|verdenshjørne	
 27B0	krølle	løkke|loop	
 27BF	dobbelt krølle	dobbelt|krølle|løkke|loop	
@@ -991,7 +991,7 @@ FDFC	rial	valuta
 1F4AC	taleboble	tale	
 1F4AD	tankeboble	tanke	
 1F4AE	hvid blomst	blomst	
-1F4AF	100 point	alle rigtige|hundrede|perfekt|point|rigtigt	100
+1F4AF	100 point	alle rigtige|hundrede|perfekt|point|rigtigt|100	
 1F4B0	pengepose	dollar|penge	
 1F4B1	valutaveksling	bank|penge|valuta|veksling	
 1F4B2	dollartegn	dollar	
@@ -1104,7 +1104,7 @@ FDFC	rial	valuta
 1F51E	forbudt for under 18	aldersgrænse|forbudt for børn|ingen under 18|mindst 18	
 1F520	store bogstaver	ABCD|symbol for store bogstaver	
 1F521	små bogstaver	abcd|symbol for små bogstaver	
-1F522	tal	symbol for tal	1234
+1F522	tal	symbol for tal|1234	
 1F523	symboler	symbol for symboler	
 1F524	latinske alfabet	abc|symbol for latinske alfabet	
 1F525	ild	flamme|varm	

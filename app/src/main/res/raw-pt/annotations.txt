@@ -1,4 +1,4 @@
-annotations 1 pt 06ef5215
+annotations 1 pt 0fc075d6
 21	ponto de exclamação	exclamação	
 23	cardinal	cerquilha|hashtag|número	
 24	dólar	dinheiro|dólar norte-americano|USD	
@@ -76,12 +76,12 @@ F7	sinal de divisão	dividir|divisão|símbolo|sinal
 2034	apóstrofo triplo	apóstrofo|plica tripla	
 2038	circunflexo		
 203B	marca de referência	marca|referência	
-203C	ponto de exclamação duplo	exclamação|pontuação|!!	!
+203C	ponto de exclamação duplo	exclamação|pontuação|!|!!	
 203D	ponto de exclarrogação		
 203E	traço sobrescrito		
 2042	asterismo		
 2044	barra de fração	barra|fração	
-2049	pontos de exclamação e de interrogação	exclamação|exclamação com interrogação|interrogação|pergunta|pontuação|!?	!|?
+2049	pontos de exclamação e de interrogação	exclamação|exclamação com interrogação|interrogação|pergunta|pontuação|!|!?|?	
 207B	menos sobrescrito	menos|sobrescrito	
 20A2	cruzeiro	BRB|moeda	
 20A3	franco francês	francês|franco|moeda	
@@ -386,7 +386,7 @@ F7	sinal de divisão	dividir|divisão|símbolo|sinal
 2603	boneco de neve	boneco|clima|frio|inverno|neve	
 2604	cometa	astro|espaço	
 260E	telefone	telefone fixo	
-2611	caixa com visto	caixa|marca de verificação|visto	✓
+2611	caixa com visto	caixa|marca de verificação|visto|✓	
 2614	guarda-chuva com gotas de chuva	acessório|chuva|gotas|guarda-chuva|meteorologia	
 2615	bebida quente	beber|bebida|café|chá|quente|vapor	
 2618	trevo	Irlanda|irlandês|planta|trevo de três folhas	
@@ -467,7 +467,7 @@ F7	sinal de divisão	dividir|divisão|símbolo|sinal
 26FA	tenda	acampamento|campismo	
 26FD	bomba de gasolina	abastecer|álcool|bomba|combustível|gasolina|posto	
 2702	tesoura	cortar|ferramenta|utensílio	
-2705	botão de visto	botão|marca de seleção branca|verificação|visto	✓
+2705	botão de visto	botão|marca de seleção branca|verificação|visto|✓	
 2708	avião	aéreo|veículo|viajar|voar|voo	
 2709	envelope	carta|correio|correspondência|e-mail|email	
 270A	punho erguido	cerrado|corpo|mão|punho|punho levantado|soco|solidariedade	
@@ -476,26 +476,26 @@ F7	sinal de divisão	dividir|divisão|símbolo|sinal
 270D	mão a escrever	corpo|escrever|mão	
 270F	lápis	escrever	
 2712	aparo preto	aparo|caneta|caneta de aparo|tinta	
-2714	visto	marca de seleção|marca de verificação|marcado	✓
-2716	multiplicação	cancelar|multiplicar|sinal de multiplicação	×
+2714	visto	marca de seleção|marca de verificação|marcado|✓	
+2716	multiplicação	cancelar|multiplicar|sinal de multiplicação|×	
 271D	cruz latina	cristã|cristão|cruz|religião	
 2721	estrela de David	david|estrela|judaísmo|judeu|religião	
-2728	cintilação	brilhantes|brilhos|estrelas|faíscas|mágica	*
-2733	asterisco com oito raios	asterisco	*
-2734	estrela com oito pontas	estrela	*
+2728	cintilação	brilhantes|brilhos|estrelas|faíscas|mágica|*	
+2733	asterisco com oito raios	asterisco|*	
+2734	estrela com oito pontas	estrela|*	
 2744	floco de neve	frio|meteorologia|neve	
-2747	faísca	brilho|centelha	*
-274C	cruz	cancelar|multiplicação|multiplicar|x	×
-274E	botão com cruz	multiplicação|multiplicar|quadrado|x	×
-2753	ponto de interrogação vermelho	interrogação|pergunta|ponto de interrogação|pontuação|sinal	?
-2754	ponto de interrogação branco	delineado|pergunta|ponto de interrogação|pontuação|sinal|sinal de interrogação branco	?
-2755	ponto de exclamação branco	delineado|exclamação|pontuação|sinal|sinal de exclamação branco	!
-2757	ponto de exclamação vermelho	exclamação|ponto de exclamação|pontuação	!
+2747	faísca	brilho|centelha|*	
+274C	cruz	cancelar|multiplicação|multiplicar|x|×	
+274E	botão com cruz	multiplicação|multiplicar|quadrado|x|×	
+2753	ponto de interrogação vermelho	interrogação|pergunta|ponto de interrogação|pontuação|sinal|?	
+2754	ponto de interrogação branco	delineado|pergunta|ponto de interrogação|pontuação|sinal|sinal de interrogação branco|?	
+2755	ponto de exclamação branco	delineado|exclamação|pontuação|sinal|sinal de exclamação branco|!	
+2757	ponto de exclamação vermelho	exclamação|ponto de exclamação|pontuação|!	
 2763	ponto de exclamação com coração	exclamação|pontuação|sinal	
 2764	coração vermelho	amor|coração|emoção	
-2795	adição	mais|matemática|símbolo de adição|sinal de adição	+
-2796	subtração	matemática|menos|sinal de subtração|subtracção	-|−
-2797	divisão	matemática|sinal de divisão	÷
+2795	adição	mais|matemática|símbolo de adição|sinal de adição|+	
+2796	subtração	matemática|menos|sinal de subtração|subtracção|-|−	
+2797	divisão	matemática|sinal de divisão|÷	
 27A1	seta para a direita	cardeal|cardinal|direção|este|leste|seta	
 27B0	laço encaracolado	caracol|laço	
 27BF	laço encaracolado duplo	caracol|duplo|espiral|laço	
@@ -542,7 +542,7 @@ FDFC	rial	moeda
 1F0CF	jóquer	baralho|carta|coringa|curinga|jogo|joker	
 1F170	botão A (tipo de sangue)	a|A|botão|botão A (tipo sanguíneo)|grupo sanguíneo|sangue|tipo sanguíneo	
 1F171	botão B (tipo de sangue)	b|B|blood|botão|grupo sanguíneo|tipo B|tipo sanguíneo	
-1F17E	botão O (tipo de sangue)	botão|botão 0 (tipo de sangue)|grupo sanguíneo|o|sangue|tipo O|tipo sanguíneo	0
+1F17E	botão O (tipo de sangue)	botão|botão 0 (tipo de sangue)|grupo sanguíneo|o|sangue|tipo O|tipo sanguíneo|0	
 1F17F	botão P	botão|estacionamento|estacionar|p	
 1F18E	botão AB (tipo de sangue)	ab|AB|botão AB|grupo sanguíneo|sangue|tipo AB|tipo sanguíneo	
 1F191	botão CL	botão|cl	
@@ -991,7 +991,7 @@ FDFC	rial	moeda
 1F4AC	balão de fala	balão|balão de diálogo|desenho|diálogo|fala|mensagem	
 1F4AD	balão de pensamento	balão|desenho|devaneio|ideia|invenção|pensamento|sonho	
 1F4AE	flor branca	flor	
-1F4AF	cem pontos	100 pontos|cem|concordo totalmente|perfeito|pontuação	100
+1F4AF	cem pontos	100 pontos|cem|concordo totalmente|perfeito|pontuação|100	
 1F4B0	saco de dinheiro	banco|dinheiro|dólar|pagamento|saco	
 1F4B1	câmbio de moeda	banco|câmbio|dinheiro|moeda	
 1F4B2	símbolo de dólar	cifrão|dinheiro|dólar|moeda|símbolo do dólar	
@@ -1101,10 +1101,10 @@ FDFC	rial	moeda
 1F51B	seta ON!	ligado|marca|ON!|seta	
 1F51C	seta SOON	a caminho|brevemente|seta	
 1F51D	seta TOP	para cima|parte superior|seta|seta para cima	
-1F51E	proibido a menores de dezoito anos	dezoito|menor de idade|menores|proibido|restrição	18
+1F51E	proibido a menores de dezoito anos	dezoito|menor de idade|menores|proibido|restrição|18	
 1F520	introdução de maiúsculas latinas	ABCD|introdução|latinas|letras|maiúsculas	
 1F521	introdução de minúsculas latinas	abcd|introdução|latinas|letras|minúsculas	
-1F522	introdução de números	introdução|números	1234
+1F522	introdução de números	introdução|números|1234	
 1F523	introdução de símbolos	introdução|símbolos|〒♪&%	
 1F524	introdução de letras latinas	abc|abecedário|alfabeto|introdução|latinas|letras	
 1F525	fogo	chama	
@@ -1138,30 +1138,30 @@ FDFC	rial	moeda
 1F54C	mesquita	islão|muçulmano|religião	
 1F54D	sinagoga	judaica|judaísmo|judeu|religião|templo	
 1F54E	menorá	castiçal|chanucá|judaísmo|religião	
-1F550	uma hora	13h00|1h00|horas|relógio|treze|uma|1:00|13:00	1
-1F551	duas horas	14h00|2h00|catorze|duas|horas|relógio|14:00|2:00	2
-1F552	três horas	15h00|3h00|horas|quinze|relógio|três|15:00|3:00	3
-1F553	quatro horas	16h00|4h00|dezasseis|horas|quatro|relógio|16:00|4:00	4
-1F554	cinco horas	17h00|5h00|cinco|dezassete|horas|relógio|17:00|5:00	5
-1F555	seis horas	18h00|6h00|dezoito|horas|relógio|seis|18:00|6:00	6
-1F556	sete horas	19h00|7h00|dezanove|horas|relógio|sete|19:00|7:00	7
-1F557	oito horas	20h00|8h00|horas|oito|relógio|vinte|20:00|8:00	8
-1F558	nove horas	21h00|9h00|horas|nove|relógio|vinte e uma|21:00|9:00	9
-1F559	dez horas	10h00|22h00|dez|horas|relógio|vinte e duas|10:00|22:00	10
-1F55A	onze horas	11h00|23h00|horas|onze|relógio|vinte e três|11:00|23:00	11
-1F55B	doze horas	12h00|doze|horas|meia-noite|meio-dia|relógio|vinte e quatro|12:00	00|12
-1F55C	uma e meia	13h30|1h30|horas|relógio|treze|uma|uma hora|1:30|13:30	1
-1F55D	duas e meia	14h30|2h30|duas|meia|relógio|trinta|14:30|2:30	2|30
-1F55E	três e meia	15h30|3h30|meia|relógio|três|trinta|15:30|3:30	3|30
-1F55F	quatro e meia	16h30|4h30|meia|quatro|relógio|trinta|16:30|4:30	30|4
-1F560	cinco e meia	17h30|5h30|cinco|meia|relógio|trinta|17:30|5:30	5
-1F561	seis e meia	18h30|6h30|meia|relógio|seis|trinta|18:30|6:30	30|6
-1F562	sete e meia	19h30|7h30|meia|relógio|sete|trinta|19:30|7:30	30|7
-1F563	oito e meia	20h30|8h30|meia|oito|relógio|trinta|20:30|8:30	30|8
-1F564	nove e meia	21h30|9h30|meia|nove|relógio|trinta|21:30|9:30	30|9
-1F565	dez e meia	10h30|22h30|dez|meia|relógio|trinta|10:30|22:30	10|30
-1F566	onze e meia	11h30|23h30|meia|onze|relógio|trinta|11:30|23:30	11|30
-1F567	doze e meia	12h30|doze|doze e trinta|meia-noite e meia|meio-dia e meia|relógio|trinta|12:30	12
+1F550	uma hora	13h00|1h00|horas|relógio|treze|uma|1|1:00|13:00	
+1F551	duas horas	14h00|2h00|catorze|duas|horas|relógio|14:00|2|2:00	
+1F552	três horas	15h00|3h00|horas|quinze|relógio|três|15:00|3|3:00	
+1F553	quatro horas	16h00|4h00|dezasseis|horas|quatro|relógio|16:00|4|4:00	
+1F554	cinco horas	17h00|5h00|cinco|dezassete|horas|relógio|17:00|5|5:00	
+1F555	seis horas	18h00|6h00|dezoito|horas|relógio|seis|18:00|6|6:00	
+1F556	sete horas	19h00|7h00|dezanove|horas|relógio|sete|19:00|7|7:00	
+1F557	oito horas	20h00|8h00|horas|oito|relógio|vinte|20:00|8|8:00	
+1F558	nove horas	21h00|9h00|horas|nove|relógio|vinte e uma|21:00|9|9:00	
+1F559	dez horas	10h00|22h00|dez|horas|relógio|vinte e duas|10|10:00|22:00	
+1F55A	onze horas	11h00|23h00|horas|onze|relógio|vinte e três|11|11:00|23:00	
+1F55B	doze horas	12h00|doze|horas|meia-noite|meio-dia|relógio|vinte e quatro|00|12|12:00	
+1F55C	uma e meia	13h30|1h30|horas|relógio|treze|uma|uma hora|1|1:30|13:30	
+1F55D	duas e meia	14h30|2h30|duas|meia|relógio|trinta|14:30|2|2:30|30	
+1F55E	três e meia	15h30|3h30|meia|relógio|três|trinta|15:30|3|3:30|30	
+1F55F	quatro e meia	16h30|4h30|meia|quatro|relógio|trinta|16:30|30|4|4:30	
+1F560	cinco e meia	17h30|5h30|cinco|meia|relógio|trinta|17:30|5|5:30	
+1F561	seis e meia	18h30|6h30|meia|relógio|seis|trinta|18:30|30|6|6:30	
+1F562	sete e meia	19h30|7h30|meia|relógio|sete|trinta|19:30|30|7|7:30	
+1F563	oito e meia	20h30|8h30|meia|oito|relógio|trinta|20:30|30|8|8:30	
+1F564	nove e meia	21h30|9h30|meia|nove|relógio|trinta|21:30|30|9|9:30	
+1F565	dez e meia	10h30|22h30|dez|meia|relógio|trinta|10|10:30|22:30|30	
+1F566	onze e meia	11h30|23h30|meia|onze|relógio|trinta|11|11:30|23:30|30	
+1F567	doze e meia	12h30|doze|doze e trinta|meia-noite e meia|meio-dia e meia|relógio|trinta|12|12:30	
 1F56F	vela	luz	
 1F570	relógio de lareira	relógio|relógio antigo|relógio de mesa	
 1F573	buraco	buraco no chão	

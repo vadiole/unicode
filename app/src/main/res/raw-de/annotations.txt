@@ -1,4 +1,4 @@
-annotations 1 de f86cb1f7
+annotations 1 de 90b7594b
 21	Ausrufezeichen	Ausrufungszeichen	
 23	Doppelkreuz	Hash|Nummernzeichen|Raute	
 24	Dollar	Geld|Peso|USD	
@@ -471,18 +471,18 @@ F7	Division	dividieren|Divisionszeichen|Geteiltzeichen|teilen|teilen durch
 2708	Flugzeug	Flieger	
 2709	Briefumschlag	Brief|E-Mail	
 270A	erhobene Faust	erhoben|Faust|Hand|Kampf|Solidarität	
-270B	erhobene Hand	erhoben|halt|Hand|Handfläche|high five|schlag ein|Stopp|warte	5
+270B	erhobene Hand	erhoben|halt|Hand|Handfläche|high five|schlag ein|Stopp|warte|5	
 270C	Victory-Geste	Sieg|V|Victory	
 270D	schreibende Hand	Hand|schreiben|schreibend|Stift	
 270F	Bleistift		
 2712	schwarzer Federhalter		
 2714	kräftiges Häkchen		
-2716	mal	abbrechen|Multiplikation|Multiplikationszeichen|multiplizieren|x	×
+2716	mal	abbrechen|Multiplikation|Multiplikationszeichen|multiplizieren|x|×	
 271D	lateinisches Kreuz	Christentum|Kreuz|lateinisch|Religion|römisch	
 2721	Davidstern	jüdisch|Religion	
 2728	funkelnde Sterne		
 2733	achtzackiger Stern		
-2734	achtstrahliger Stern	Stern	*
+2734	achtstrahliger Stern	Stern|*	
 2744	Schneeflocke	Flocke|kalt|Schnee|schneien|Wetter|Winter	
 2747	Funkeln		
 274C	Kreuzzeichen		
@@ -490,7 +490,7 @@ F7	Division	dividieren|Divisionszeichen|Geteiltzeichen|teilen|teilen durch
 2753	rotes Fragezeichen		
 2754	weißes Fragezeichen		
 2755	weißes Ausrufezeichen		
-2757	rotes Ausrufezeichen	Ausrufezeichen|rot|Satzzeichen	!
+2757	rotes Ausrufezeichen	Ausrufezeichen|rot|Satzzeichen|!	
 2763	Herz als Ausrufezeichen	Ausrufezeichen|Herz|Satzzeichen	
 2764	rotes Herz	Herz	
 2795	plus		
@@ -542,7 +542,7 @@ FDFC	Rial
 1F0CF	Jokerkarte	Joker|Spielkarte	
 1F170	Großbuchstabe A in rotem Quadrat	a|Blut|Blutgruppe|Großbuchstabe|negativ|positiv	
 1F171	Großbuchstabe B in rotem Quadrat	b|Blut|Blutgruppe|Großbuchstabe|negativ|positiv	
-1F17E	Großbuchstabe O in rotem Quadrat	Blut|Blutgruppe|Großbuchstabe|negativ|O|positiv	0
+1F17E	Großbuchstabe O in rotem Quadrat	Blut|Blutgruppe|Großbuchstabe|negativ|O|positiv|0	
 1F17F	Großbuchstabe P in blauem Quadrat	Großbuchstabe|P|parken|Parkplatz|Taste	
 1F18E	Großbuchstaben AB in rotem Quadrat	ab|Blut|Blutgruppe|negativ|positiv	
 1F191	Großbuchstaben CL in rotem Quadrat	CL	
@@ -991,7 +991,7 @@ FDFC	Rial
 1F4AC	Sprechblase mit drei Punkten	Comic|Dialog|Gespräch|Sprechblase|Unterhaltung	
 1F4AD	Gedankenblase	Comic|Nachdenken	
 1F4AE	Blumenstempel	Blume	
-1F4AF	100 Punkte	Punktestand|volle Punktzahl	100
+1F4AF	100 Punkte	Punktestand|volle Punktzahl|100	
 1F4B0	Geldsack		
 1F4B1	Geldwechsel	Geld|Währung|Wechsel	
 1F4B2	Dollarzeichen extrafett		
@@ -1104,8 +1104,8 @@ FDFC	Rial
 1F51E	Minderjährige verboten	Erwachsene|Mindestalter|nicht jugendfrei|Zeichen mit durchgestrichener 18	
 1F520	Eingabesymbol lateinische Großbuchstaben	abcd|Buchstaben|Eingabe|Eingabesymbol|Großbuchstaben|großschreiben|lateinisch	
 1F521	Eingabesymbol lateinische Kleinbuchstaben	Kleinbuchstaben|lateinische Kleinbuchstaben	
-1F522	Eingabesymbol Zahlen	Eingabe|Eingabesymbol|Symbol|Zahlen|Ziffern	1234
-1F523	Eingabesymbol Sonderzeichen	Eingabe|Eingabesymbol|keycap|Sonderzeichen|Symbol|Tastenkappe	&|%|♪|〒
+1F522	Eingabesymbol Zahlen	Eingabe|Eingabesymbol|Symbol|Zahlen|Ziffern|1234	
+1F523	Eingabesymbol Sonderzeichen	Eingabe|Eingabesymbol|keycap|Sonderzeichen|Symbol|Tastenkappe|&|%|♪|〒	
 1F524	Eingabesymbol lateinische Buchstaben	abc|Alphabet|Buchstaben|Eingabe|Eingabesymbol|lateinisch|Symbol	
 1F525	Feuer		
 1F526	Taschenlampe	Lampe|Licht	
@@ -1177,7 +1177,7 @@ FDFC	Rial
 1F58B	Füllhalter		
 1F58C	Pinsel	Kunst|malen	
 1F58D	Wachsmalstift		
-1F590	Hand mit gespreizten Fingern	Finger|fünf|gespreizt|Hand	5
+1F590	Hand mit gespreizten Fingern	Finger|fünf|gespreizt|Hand|5	
 1F595	Mittelfinger	Finger|Hand	
 1F596	vulkanischer Gruß	Finger|Gruß|grüßen|Hand|Hände|spreizen	
 1F5A4	schwarzes Herz	böse|Herz|schwarz	
@@ -1502,7 +1502,7 @@ FDFC	Rial
 1F96D	Mango	Essen|Frucht|Früchte|Obst|Shaker|tropisch	
 1F96E	Mondkuchen	Essen|Fest|Festival|Herbst|Kuchen|Mondfest|Pinyin|Yuebing	
 1F96F	Bagel	Bäckerei|Backwaren|Brötchen|Essen|Frühstück|Pausenbrot	
-1F970	lächelndes Gesicht mit Herzen	anhimmeln|bewundern|Gesicht|HDGDL|HDL|Herzchen|Herzen|lächeln|lieb|Liebe|Smiley|verknallt|verliebt|verzückt	3
+1F970	lächelndes Gesicht mit Herzen	anhimmeln|bewundern|Gesicht|HDGDL|HDL|Herzchen|Herzen|lächeln|lieb|Liebe|Smiley|verknallt|verliebt|verzückt|3	
 1F971	gähnendes Gesicht	gähnen|gähnend|gelangweilt|Gesicht|langweilig|müde|öde|schnarch|Smiley|zzz	
 1F972	lachendes Gesicht mit Träne	berührt|dankbar|erleichtert|Freudenträne|gerührt|Gesicht|lächeln|Smiley|stolz|Träne	
 1F973	Partygesicht	aufgeregt|Feier|Fest|fröhlich|Geburtstag|Gesicht|Glückwunsch|Hurra|Hut|Party|Smiley|Überraschung	
