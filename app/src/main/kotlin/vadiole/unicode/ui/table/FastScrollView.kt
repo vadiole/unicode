@@ -39,6 +39,7 @@ class FastScrollView(
         fun onFastScroll(progress: Float, precisionLevel: Int)
         fun onFastScrollEnd()
         fun getBlockName(progress: Float): String?
+        fun precisionProgress(anchor: Float, delta: Float): Float = anchor + delta
     }
 
     // Dimensions
@@ -633,7 +634,11 @@ class FastScrollView(
                 val speedFactor = precisionSpeedFactor(precisionLevel)
                 val deltaY = y - anchorY
                 val deltaProgress = (deltaY / availableTrack) * speedFactor
-                scrollProgress = (anchorProgress + deltaProgress).coerceIn(0f, 1f)
+                scrollProgress = if (precisionLevel == 0) {
+                    (anchorProgress + deltaProgress).coerceIn(0f, 1f)
+                } else {
+                    delegate.precisionProgress(anchorProgress, deltaProgress).coerceIn(0f, 1f)
+                }
             }
 
             calculateThumbRect()

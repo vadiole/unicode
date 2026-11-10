@@ -326,6 +326,8 @@ class TableScreen(
             val position = (itemCount * linearProgress(progress)).toInt().coerceIn(0, itemCount - 1)
             return tableController.getBlock(position * spanCount)?.name
         }
+
+        override fun precisionProgress(anchor: Float, delta: Float) = tableController.scrollScale?.offset(anchor, delta) ?: (anchor + delta)
     }
     private fun linearProgress(progress: Float) = tableController.scrollScale?.toLinear(progress) ?: progress
 
