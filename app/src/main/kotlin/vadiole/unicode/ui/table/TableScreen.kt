@@ -26,15 +26,18 @@ import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import vadiole.unicode.BuildConfig
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
+import vadiole.unicode.data.SearchResult
 import vadiole.unicode.data.binarySearch
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SearchBar
+import vadiole.unicode.ui.common.SquircleDrawable
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.TopBar
 import vadiole.unicode.ui.common.animatorsEnabled
@@ -150,7 +153,7 @@ class TableScreen(
             val view = if (viewType == VIEW_TYPE_HEADER) {
                 SearchHeaderCell(context)
             } else {
-                SearchResultCell(context, searchResultCellDelegate)
+                SearchResultCell(context, userConfig.searchMatchInline, searchResultCellDelegate)
             }
             return CollectionView.Cell(view)
         }
@@ -162,11 +165,50 @@ class TableScreen(
             if (isShowingRecents) {
                 view.bind(searchController.recentResult[index], tableController.abbreviations, null)
             } else {
-                view.bind(searchController.result(index), tableController.abbreviations, searchController.queryTokens)
+                val result = searchController.result(index)
+                view.bind(result, tableController.abbreviations, searchController.queryTokens)
+                bindMatch(view, result, index)
                 searchController.loadMore(index, onMoreResults)
             }
         }
     }
+
+    private fun bindMatch(view: SearchResultCell, result: SearchResult, index: Int) {
+        if (!searchController.hasMatch(index)) return
+        val match = searchController.match(index)
+        if (match != null) {
+            view.bindMatch(match.ifEmpty { null })
+            return
+        }
+        launch {
+            val loaded = searchController.loadMatch(index)
+            if (view.result === result && loaded.isNotEmpty()) view.bindMatch(loaded)
+        }
+    }
+
+    private val matchVariantSwitch = if (BuildConfig.DEBUG) {
+        TextView(context).apply {
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
+            typeface = font_regular
+            gravity = Gravity.CENTER
+            setTextColor(context.getColor(R.color.windowTextPrimary))
+            background = SquircleDrawable(12.dp(context)).apply {
+                colors = context.getColorStateList(R.color.layer1)
+            }
+            elevation = 2f.dp(context)
+            text = matchVariantLabel()
+            setOnClickListener {
+                userConfig.searchMatchInline = !userConfig.searchMatchInline
+                text = matchVariantLabel()
+                searchResultView.recycledViewPool.clear()
+                searchResultView.adapter = searchAdapter
+            }
+        }
+    } else {
+        null
+    }
+
+    private fun matchVariantLabel() = if (userConfig.searchMatchInline) "A" else "B"
 
     private var popup: BlockSelectorPopup? = null
 
@@ -400,6 +442,9 @@ class TableScreen(
         resultsLayer.addView(searchResultView, frameParams(matchParent, matchParent))
         resultsLayer.addView(noResultsView, frameParams(matchParent, matchParent))
         resultsLayer.addView(searchFastScrollView, frameParams(matchParent, matchParent))
+        if (matchVariantSwitch != null) {
+            resultsLayer.addView(matchVariantSwitch, frameParams(44.dp(context), 44.dp(context), gravity = Gravity.TOP or Gravity.RIGHT, marginTop = 8.dp(context), marginRight = 28.dp(context)))
+        }
         addView(bottomContainer, frameParams(matchParent, wrapContent, gravity = Gravity.BOTTOM))
         bottomContainer.addView(dockView, linearParams(matchParent, wrapContent))
         attachSearchBar()
@@ -517,6 +562,7 @@ class TableScreen(
         if (noResultsView.paddingTop != contentTop || noResultsView.paddingBottom != resultsBottom) {
             noResultsView.setPadding(0, contentTop, 0, resultsBottom)
         }
+        matchVariantSwitch?.translationY = contentTop.toFloat()
         if (searchFastScrollView.paddingTop != contentTop || searchFastScrollView.paddingBottom != resultsBottom) {
             searchFastScrollView.setPadding(0, contentTop, 0, resultsBottom)
         }
