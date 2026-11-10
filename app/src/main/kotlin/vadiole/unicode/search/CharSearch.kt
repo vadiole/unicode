@@ -24,14 +24,15 @@ class SearchMatch(val kind: Int, val text: String)
 
 class CharSearch(private val data: UnicodeData, private val index: SearchIndex, private val sources: Array<SearchSource>) {
     var shown: LongArray? = null
-    private val queryTokens = SearchTokens(MAX_TOKENS, symbols = true)
-    private val splitTokens = SearchTokens(2, symbols = false)
+    private val queryTokens = SearchTokens(MAX_TOKENS, distinct = true)
+    private val splitTokens = SearchTokens(2, distinct = true)
+    private val symbolTokens = SearchTokens(1, distinct = true)
+    private val textTokens = SearchTokens(Int.MAX_VALUE, distinct = false)
     private var tokens = queryTokens
     private var wholeOnly = false
-    private var splitChars = IntArray(64)
-    private var splitKeys = IntArray(64)
-    private var splitSize = 0
-    private val level = ByteArray(data.size) { LEVEL_OBSCURE }
+    private val level = ByteArray(data.size) { LEVEL_OTHER }
+    private val c1Start = data.lowerIndex(0x80)
+    private val c1End = data.lowerIndex(0xA0)
     private var acc = IntArray(0)
     private var cur = IntArray(0)
     private var stamp = ByteArray(0)
@@ -39,7 +40,32 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     private var touchedSize = 0
     private var gen = 0
     private var first = false
+    private var typing = 0
+    private var unfinished = false
     private var tokenCount = 0
+    private val tokenLow = IntArray(MAX_TOKENS)
+    private val tokenHigh = IntArray(MAX_TOKENS)
+    private val tokenOrder = IntArray(MAX_TOKENS)
+    private var spanStart = IntArray(256)
+    private var spanEnd = IntArray(256)
+    private var spanKey = IntArray(256)
+    private var spanSorted = LongArray(256)
+    private var spanCount = 0
+    private var spanChars = 0L
+    private var active = IntArray(16)
+    private var segmentStart = IntArray(256)
+    private var segmentEnd = IntArray(256)
+    private var segmentKey = IntArray(256)
+    private var segmentCount = 0
+    private var exactDocs = IntArray(64)
+    private var exactCount = 0
+    private var savedChars = IntArray(64)
+    private var savedKeys = IntArray(64)
+    private var savedSize = 0
+    private var postPosition = 0
+    private var postEnd = 0
+    private var postDoc = 0
+    private var postBits = 0
     private var top = LongArray(0)
     private val literals = IntArray(MAX_LITERALS)
     private var literalCount = 0
@@ -50,11 +76,16 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     private var codeExplicit = false
 
     init {
-        for (i in BASIC_AREAS.indices step 2) {
-            for (char in data.lowerIndex(BASIC_AREAS[i]) until data.lowerIndex(BASIC_AREAS[i + 1] + 1)) level[char] = LEVEL_BASIC
-        }
-        for (char in 0 until data.lowerIndex(COMMON_LIMIT)) level[char] = LEVEL_COMMON
+        setLevel(KNOWN_AREAS, LEVEL_KNOWN)
+        setLevel(COMMON_AREAS, LEVEL_COMMON)
         for (codePoint in data.keywords.codePoints) level[data.indexOf(codePoint)] = LEVEL_COMMON
+        setLevel(OTHER_AREAS, LEVEL_OTHER)
+    }
+
+    private fun setLevel(areas: IntArray, value: Byte) {
+        for (i in areas.indices step 2) {
+            for (char in data.lowerIndex(areas[i]) until data.lowerIndex(areas[i + 1] + 1)) level[char] = value
+        }
     }
 
     fun search(query: String, limit: Int): SearchResults {
@@ -79,13 +110,19 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         var names = false
         if (!codeExplicit) {
             if (!single && codeLength == 0 && hasSymbols(text, 0, text.length)) text = takeLiterals(text)
-            queryTokens.set(text)
+            val utf8 = paired(text).toByteArray(Charsets.UTF_8)
+            queryTokens.set(utf8, 0, utf8.size)
+            tokens = queryTokens
             names = queryTokens.count > 0
             if (names) {
-                matchSplits()
                 match()
-                mergeSplits()
+                matchExact()
+                matchSplits()
+            } else {
+                reserve(1)
+                gen++
             }
+            if (symbolTokens.setSymbols(utf8, 0, utf8.size)) matchSymbols()
             if (!single && codeLength == 0 && literalCount == 0 && !hasMatches() && !isAscii(text)) addLiterals(text)
         }
         return collect(query, limit, names)
@@ -111,6 +148,21 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             end -= Character.charCount(cp)
         }
         return text.substring(start, end)
+    }
+
+    private fun paired(text: String): String {
+        var result: StringBuilder? = null
+        var i = 0
+        while (i < text.length) {
+            val cp = text.codePointAt(i)
+            if (cp in SURROGATES) {
+                if (result == null) result = StringBuilder(text.length).append(text, 0, i)
+            } else {
+                result?.appendCodePoint(cp)
+            }
+            i += Character.charCount(cp)
+        }
+        return result?.toString() ?: text
     }
 
     private fun isAscii(text: String): Boolean {
@@ -173,7 +225,8 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     }
 
     private fun parseCode(input: String) {
-        val length = input.length
+        var length = input.length
+        while (length > 0 && input[length - 1] in CODE_TRAILERS) length--
         var from = 0
         if (length >= 2 && ((input[0] == 'U' || input[0] == 'u') && input[1] == '+' ||
                     input[0] == '0' && (input[1] == 'x' || input[1] == 'X') ||
@@ -181,6 +234,9 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         ) {
             codeExplicit = true
             from = 2
+            while (from < length && input[from] == ' ') from++
+        } else if (length != input.length) {
+            return
         } else if (input[0] == 'u' || input[0] == 'U') {
             from = 1
         } else if (length < 2) {
@@ -247,7 +303,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         for (k in 0 until touchedSize) {
             val char = touched[k]
             if (!isShown(char) || isPrefix(char)) continue
-            val packed = acc[char] xor Int.MIN_VALUE
+            val packed = acc[char]
             ranked++
             if (packed ushr TIER_SHIFT >= TIER_MEANING) meanings++
             val key = ((packed ushr DOC_BITS).toLong() shl 40) or (char.toLong() shl DOC_BITS) or (packed and DOC_MASK).toLong()
@@ -288,7 +344,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             val key = top[k++]
             put(codePoints, docs, n++, ((key ushr DOC_BITS) and CHAR_MASK).toInt(), (key and DOC_MASK.toLong()).toInt())
         }
-        val words = if (names) Array(tokens.count) { tokens.token(it).uppercase(Locale.ROOT) } else emptyArray()
+        val words = if (names) Array(queryTokens.count) { queryTokens.token(it).uppercase(Locale.ROOT) } else emptyArray()
         val exact = if (codeExact >= 0) data.codePointAt(codeExact) else -1
         return SearchResults(query, words, codePoints, docs, total, total - meanings, codeCount, codeLength, exact)
     }
@@ -298,117 +354,260 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         docs[position] = doc
     }
 
-    private fun matchSplits() {
-        splitSize = 0
-        val length = queryTokens.length[0]
-        if (queryTokens.count != 1 || length < MIN_COMPOUND || !queryTokens.isLetters(0)) return
-        tokens = splitTokens
-        wholeOnly = true
-        for (at in MIN_COMPOUND_PART..length - MIN_COMPOUND_PART) {
-            splitTokens.setSplit(queryTokens, at)
-            if (!isWord(0, at) || !isWord(at, length - at)) continue
-            touchedSize = 0
-            match()
-            if (splitSize + touchedSize > splitChars.size) {
-                splitChars = splitChars.copyOf(maxOf(splitChars.size * 2, splitSize + touchedSize))
-                splitKeys = splitKeys.copyOf(splitChars.size)
-            }
-            for (k in 0 until touchedSize) {
-                splitChars[splitSize] = touched[k]
-                splitKeys[splitSize++] = acc[touched[k]]
-            }
-        }
-        touchedSize = 0
-        tokens = queryTokens
-        wholeOnly = false
-    }
-
-    private fun mergeSplits() {
-        val g = gen.toByte()
-        for (i in 0 until splitSize) {
-            val char = splitChars[i]
-            if (stamp[char] == g) {
-                if (splitKeys[i] < acc[char]) acc[char] = splitKeys[i]
-                continue
-            }
-            stamp[char] = g
-            acc[char] = splitKeys[i]
-            if (touchedSize == touched.size) touched = touched.copyOf(touchedSize * 2)
-            touched[touchedSize++] = char
-        }
-    }
-
-    private fun isWord(start: Int, length: Int): Boolean {
-        val word = lowerBound(start, length)
-        return word < index.words && index.wordOff[word + 1] - 1 - index.wordOff[word] == length
-    }
-
-    private fun match() {
+    private fun reserve(count: Int) {
         if (acc.isEmpty()) {
             acc = IntArray(data.size)
             cur = IntArray(data.size)
             stamp = ByteArray(data.size)
         }
-        tokenCount = tokens.count
-        if (gen + tokenCount >= Byte.MAX_VALUE) {
+        if (gen + count >= Byte.MAX_VALUE) {
             stamp.fill(0)
             gen = 0
         }
+    }
+
+    private fun merge(char: Int, key: Int) {
+        if (stamp[char] == gen.toByte()) {
+            if (key < acc[char]) acc[char] = key
+            return
+        }
+        stamp[char] = gen.toByte()
+        acc[char] = key
+        if (touchedSize == touched.size) touched = touched.copyOf(touchedSize * 2)
+        touched[touchedSize++] = char
+    }
+
+    private fun matchSymbols() {
+        tokens = symbolTokens
+        val word = findWord(0)
+        tokens = queryTokens
+        if (word < 0) return
+        openPostings(word)
+        while (nextPosting()) merge(index.docChar[postDoc], (TIER_EXACT_ALIAS shl TIER_SHIFT) or postDoc)
+    }
+
+    private fun matchSplits() {
+        val length = queryTokens.length[0]
+        if (queryTokens.sequenceCount != 1 || length < MIN_SPLIT_FIRST + MIN_SPLIT_SECOND || !queryTokens.isLetters(0)) return
+        savedSize = -1
+        tokens = splitTokens
+        for (at in MIN_SPLIT_FIRST..length - MIN_SPLIT_SECOND) {
+            splitTokens.setSplit(queryTokens, at)
+            if (findWord(0) < 0 || findWord(1) < 0) continue
+            if (savedSize < 0) {
+                savedSize = 0
+                save(false)
+            }
+            wholeOnly = true
+            touchedSize = 0
+            match()
+            matchExact()
+            save(true)
+        }
+        tokens = queryTokens
+        wholeOnly = false
+        if (savedSize < 0) return
+        touchedSize = 0
+        reserve(1)
+        gen++
+        for (i in 0 until savedSize) merge(savedChars[i], savedKeys[i])
+    }
+
+    private fun save(split: Boolean) {
+        if (savedSize + touchedSize > savedChars.size) {
+            savedChars = savedChars.copyOf(maxOf(savedChars.size * 2, savedSize + touchedSize))
+            savedKeys = savedKeys.copyOf(savedChars.size)
+        }
+        for (k in 0 until touchedSize) {
+            val key = acc[touched[k]]
+            savedChars[savedSize] = touched[k]
+            val tier = key ushr TIER_SHIFT
+            savedKeys[savedSize++] = when {
+                !split -> key
+                tier <= TIER_EXACT_ALIAS -> (TIER_WORD shl TIER_SHIFT) or (key and DOC_MASK)
+                else -> (TIER_SPLIT shl TIER_SHIFT) or (tier shl DOC_BITS) or (key and DOC_MASK)
+            }
+        }
+    }
+
+    private fun findWord(token: Int): Int {
+        val start = tokens.start[token]
+        val length = tokens.length[token]
+        val word = lowerBound(start, length)
+        if (word == index.words || index.wordOff[word + 1] - 1 - index.wordOff[word] != length) return -1
+        val from = index.wordOff[word]
+        for (i in 0 until length) if (index.wordBytes[from + i] != tokens.bytes[start + i]) return -1
+        return word
+    }
+
+    private fun openPostings(word: Int) {
+        postPosition = index.postOff[word]
+        postEnd = index.postOff[word + 1]
+        postDoc = -1
+    }
+
+    private fun nextPosting(): Boolean {
+        if (postPosition >= postEnd) return false
+        val post = index.postBytes
+        var delta = 0
+        var shift = 0
+        while (true) {
+            val b = post[postPosition++].toInt()
+            delta = delta or ((b and 0x7F) shl shift)
+            if (b >= 0) break
+            shift += 7
+        }
+        postDoc += delta ushr SearchIndex.POSITION_BITS
+        postBits = delta and SearchIndex.POSITION_MASK
+        return true
+    }
+
+    private fun matchExact() {
+        val count = tokens.sequenceCount
+        var word = findWord(tokens.sequence[0])
+        if (word < 0) return
+        val docMeta = index.docMeta
+        val docWords = index.docWords
+        exactCount = 0
+        openPostings(word)
+        while (nextPosting()) {
+            val words = docWords[postDoc].toInt()
+            if (postBits and SearchIndex.FIRST_WORD == 0 || words > count || (count == 1 && words != 1)) continue
+            val meta = docMeta[postDoc].toInt()
+            if (meta and (SearchIndex.SPAN or SearchIndex.SHORT) != 0 || meta and SearchIndex.KIND_MASK > SearchKind.KEYWORD) continue
+            if (exactCount == exactDocs.size) exactDocs = exactDocs.copyOf(exactCount * 2)
+            exactDocs[exactCount++] = postDoc
+        }
+        var middle = 1
+        while (exactCount > MAX_VERIFIED && middle < count - 1) {
+            word = findWord(tokens.sequence[middle++])
+            if (word < 0) return
+            var kept = 0
+            var k = 0
+            openPostings(word)
+            while (k < exactCount && nextPosting()) {
+                while (k < exactCount && exactDocs[k] < postDoc) k++
+                if (k < exactCount && exactDocs[k] == postDoc) exactDocs[kept++] = exactDocs[k++]
+            }
+            exactCount = kept
+        }
+        val g = gen.toByte()
+        for (k in 0 until exactCount) {
+            val doc = exactDocs[k]
+            val char = index.docChar[doc]
+            if (stamp[char] != g) continue
+            val tier = when (docMeta[doc].toInt() and SearchIndex.KIND_MASK) {
+                SearchKind.NAME, SearchKind.UNICODE_1, SearchKind.FORMAL_ALIAS -> TIER_EXACT
+                SearchKind.ABBREVIATION -> if (char in c1Start until c1End) continue else TIER_EXACT
+                SearchKind.SHORT_NAME -> TIER_EXACT_ALIAS
+                SearchKind.ALIAS -> if (level[char] == LEVEL_COMMON) TIER_EXACT_ALIAS else continue
+                else -> TIER_WORD
+            }
+            if ((tier shl TIER_SHIFT) >= acc[char]) continue
+            val whole = if (count == 1) WHOLE else wholeText(doc, count)
+            val order = if (tier == TIER_WORD) 1 else whole - WHOLE
+            val key = (tier shl TIER_SHIFT) or (order shl ORDER_SHIFT) or doc
+            if (whole != 0 && key < acc[char]) acc[char] = key
+        }
+    }
+
+    private fun wholeText(doc: Int, count: Int): Int {
+        val text = textTokens
+        text.set(sources[index.sourceOf(doc)].text(index, doc, data.codePointAt(index.docChar[doc])))
+        if (text.count < count) return 0
+        val bytes = tokens.bytes
+        var result = WHOLE
+        for (i in 0 until count) {
+            val token = tokens.sequence[i]
+            val length = tokens.length[token]
+            if (text.length[i] != length) {
+                if (i < count - 1 || wholeOnly || text.length[i] < length || length < MIN_UNFINISHED) return 0
+                result = PREFIX
+            }
+            val from = tokens.start[token]
+            val start = text.start[i]
+            for (j in 0 until length) if (text.bytes[start + j] != bytes[from + j]) return 0
+        }
+        for (i in count until text.count) if (!SearchIndex.isClassWord(text, i, SearchIndex.DROPPED_WORDS)) return 0
+        return result
+    }
+
+    private fun match() {
+        tokenCount = tokens.count
+        reserve(tokenCount)
         val wordBytes = index.wordBytes
         val wordOff = index.wordOff
         val words = index.words
         val bytes = tokens.bytes
         for (t in 0 until tokenCount) {
-            first = t == 0
-            gen++
             val start = tokens.start[t]
             val length = tokens.length[t]
-            var word = lowerBound(start, length)
-            while (word < words) {
-                val wordStart = wordOff[word]
-                val wordLength = wordOff[word + 1] - 1 - wordStart
-                if (wordLength < length) break
-                var i = 0
-                while (i < length && wordBytes[wordStart + i] == bytes[start + i]) i++
-                if (i < length) break
-                if (wholeOnly && wordLength > length) break
-                postings(word, if (wordLength == length) WHOLE else PREFIX)
-                word++
-            }
+            val low = lowerBound(start, length)
+            var high = low
             if (wholeOnly) {
-                finishToken(t)
-                continue
+                if (low < words && wordOff[low + 1] - 1 - wordOff[low] == length) high++
+            } else {
+                high = prefixEnd(low, start, length)
             }
-            if (charCount(start, length) >= MIN_INFIX) {
-                val firstByte = bytes[start]
-                val last = wordBytes.size - length
-                var i = 0
-                word = 0
-                while (i <= last) {
-                    if (wordBytes[i] != firstByte) {
-                        i++
-                        continue
+            tokenLow[t] = low
+            tokenHigh[t] = high
+            val cost = index.postOff[high] - index.postOff[low]
+            var n = t
+            while (n > 0 && index.postOff[tokenHigh[tokenOrder[n - 1]]] - index.postOff[tokenLow[tokenOrder[n - 1]]] > cost) {
+                tokenOrder[n] = tokenOrder[n - 1]
+                n--
+            }
+            tokenOrder[n] = t
+        }
+        for (n in 0 until tokenCount) {
+            val t = tokenOrder[n]
+            first = n == 0
+            gen++
+            spanCount = 0
+            spanChars = 0
+            val start = tokens.start[t]
+            val length = tokens.length[t]
+            typing = if (tokenCount > 1) 0 else if (length >= MIN_TYPING) TYPING_WORD else if (length == MIN_TYPING - 1) TYPING_START else 0
+            unfinished = tokenCount > 1 && t == tokens.sequence[tokens.sequenceCount - 1]
+            for (other in 0 until tokenCount) {
+                if (other != t && isStartOf(t, tokens.bytes, tokens.start[other], tokens.length[other])) unfinished = false
+            }
+            for (word in tokenLow[t] until tokenHigh[t]) {
+                postings(word, if (wordOff[word + 1] - 1 - wordOff[word] == length) WHOLE else PREFIX)
+            }
+            if (!wholeOnly) {
+                if (charCount(start, length) >= MIN_INFIX) {
+                    val firstByte = bytes[start]
+                    val last = wordBytes.size - length
+                    var i = 0
+                    var word = 0
+                    while (i <= last) {
+                        if (wordBytes[i] != firstByte) {
+                            i++
+                            continue
+                        }
+                        var j = 1
+                        while (j < length && wordBytes[i + j] == bytes[start + j]) j++
+                        if (j < length) {
+                            i++
+                            continue
+                        }
+                        while (wordOff[word + 1] <= i) word++
+                        if (i != wordOff[word]) postings(word, INFIX)
+                        i = wordOff[word + 1]
                     }
-                    var j = 1
-                    while (j < length && wordBytes[i + j] == bytes[start + j]) j++
-                    if (j < length) {
-                        i++
-                        continue
-                    }
-                    while (wordOff[word + 1] <= i) word++
-                    if (i != wordOff[word]) postings(word, INFIX)
-                    i = wordOff[word + 1]
                 }
+                if (tokens.isHex(t)) matchHexNames(start, length)
+                matchHangulNames(t, start, length)
             }
-            if (tokens.isHex(t)) matchHexNames(start, length)
-            matchHangulNames(start, length)
-            finishToken(t)
+            if (spanCount > 0) matchSpans()
+            finishToken()
         }
     }
 
-    private fun finishToken(t: Int) {
+    private fun finishToken() {
         val g = gen.toByte()
-        if (t == 0) {
+        if (first) {
             for (k in 0 until touchedSize) {
                 val char = touched[k]
                 acc[char] = cur[char]
@@ -418,7 +617,11 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             for (k in 0 until touchedSize) {
                 val char = touched[k]
                 if (stamp[char] == g) {
-                    if (cur[char] > acc[char]) acc[char] = cur[char]
+                    val best = acc[char]
+                    val next = cur[char]
+                    val worst = if (next > best) next else best
+                    val words = maxOf(best and WORDS_MASK, next and WORDS_MASK)
+                    acc[char] = (worst and WORDS_MASK.inv()) or words
                     touched[kept++] = char
                 }
             }
@@ -456,11 +659,32 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         return low
     }
 
+    private fun prefixEnd(from: Int, start: Int, length: Int): Int {
+        val wordBytes = index.wordBytes
+        val wordOff = index.wordOff
+        val bytes = tokens.bytes
+        var low = from
+        var high = index.words
+        while (low < high) {
+            val mid = (low + high) ushr 1
+            val wordStart = wordOff[mid]
+            var matches = wordOff[mid + 1] - 1 - wordStart >= length
+            var i = 0
+            while (matches && i < length) {
+                if (wordBytes[wordStart + i] != bytes[start + i]) matches = false
+                i++
+            }
+            if (matches) low = mid + 1 else high = mid
+        }
+        return low
+    }
+
     private fun postings(word: Int, quality: Int) {
         val post = index.postBytes
         val docChar = index.docChar
         val docMeta = index.docMeta
-        val docWords = index.docWords
+        val g = gen.toByte()
+        val previous = (gen - 1).toByte()
         var p = index.postOff[word]
         val end = index.postOff[word + 1]
         var doc = -1
@@ -474,46 +698,167 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                 shift += 7
             }
             doc += delta ushr SearchIndex.POSITION_BITS
-            val position = delta and SearchIndex.POSITION_MASK
             val meta = docMeta[doc].toInt()
             val char = docChar[doc]
-            if (meta and SearchIndex.SPAN == 0) {
-                hit(char, doc, meta, docWords[doc].toInt(), quality, position)
-            } else {
-                val wordCount = docWords[doc].toInt()
-                for (c in char..index.spanLast(doc)) hit(c, doc, meta, wordCount, quality, position)
+            if (meta and SearchIndex.SPAN != 0) {
+                addSpan(char, doc, meta, quality, delta and SearchIndex.POSITION_MASK)
+                continue
             }
+            val seen = stamp[char]
+            if (seen != g && !first && seen != previous) continue
+            var key = key(char, doc, meta, if (unfinished) WHOLE else quality, delta and SearchIndex.POSITION_MASK)
+            if (unfinished && quality != WHOLE && key ushr TIER_SHIFT < TIER_MEANING) key = key or (1 shl ORDER_SHIFT)
+            if (key >= 0) hit(char, key, seen)
         }
     }
 
-    private fun hit(char: Int, doc: Int, meta: Int, words: Int, quality: Int, position: Int) {
-        val g = gen.toByte()
-        val seen = stamp[char]
-        if (seen != g && !first && seen != (gen - 1).toByte()) return
-        val kind = meta and SearchIndex.KIND_MASK
+    private fun key(char: Int, doc: Int, meta: Int, quality: Int, position: Int): Int {
         val level = level[char].toInt()
-        val exact = quality == WHOLE && words == tokenCount && meta and SearchIndex.SHORT == 0 && (kind != SearchKind.ALIAS || level == 0)
-        var tier = TIERS[GROUPS[kind] * 4 + if (exact) EXACT else quality].toInt()
-        var flag = level
-        var length = if (level == 2) words else 0
-        if (tier == TIER_NAME_WORD || tier == TIER_NAME_PREFIX) {
-            flag = if (position and SearchIndex.LAST_WORD != 0) 0 else if (position and SearchIndex.FIRST_WORD != 0) 1 else 2
+        var tier: Int
+        var order = 0
+        when (meta and SearchIndex.KIND_MASK) {
+            SearchKind.NAME, SearchKind.UNICODE_1, SearchKind.FORMAL_ALIAS -> when (quality) {
+                WHOLE -> {
+                    tier = if (level == LEVEL_OTHER.toInt()) TIER_WORD_OTHER else TIER_WORD
+                    order = if (position != 0) 0 else 1
+                }
+                PREFIX -> {
+                    tier = if (level == LEVEL_OTHER.toInt()) TIER_START_OTHER else TIER_START
+                    order = if (position != 0) 0 else 1
+                    if (level == LEVEL_COMMON.toInt() && typing != 0 && position != 0 && meta and SearchIndex.KIND_MASK == SearchKind.NAME) {
+                        tier = TIER_WORD
+                        order = TYPING_WORD - typing
+                    }
+                }
+                else -> tier = TIER_INSIDE_NAME
+            }
+            SearchKind.ABBREVIATION -> tier = if (quality == INFIX) TIER_INSIDE_ALIAS else TIER_ALIAS_START
+            SearchKind.ALIAS, SearchKind.SHORT_NAME -> {
+                tier = if (quality == WHOLE) TIER_ALIAS_WORD else if (quality == PREFIX) TIER_ALIAS_START else TIER_INSIDE_ALIAS
+                order = if (position != 0) 0 else 1
+            }
+            SearchKind.KEYWORD -> {
+                tier = if (quality == INFIX) TIER_INSIDE_KEYWORD else TIER_KEYWORD
+                order = if (quality == WHOLE) 0 else 1
+            }
+            SearchKind.BLOCK -> tier = if (quality == INFIX) TIER_INSIDE_BLOCK else TIER_BLOCK
+            SearchKind.SUBHEAD -> tier = if (quality == INFIX) TIER_INSIDE_BLOCK else TIER_SUBHEAD
+            else -> {
+                if (wholeOnly) return -1
+                tier = if (quality == WHOLE && index.docWords[doc].toInt() == tokenCount) TIER_MEANING else TIER_MEANING + quality
+                order = (meta shr SearchIndex.LEVEL_SHIFT) and 3
+            }
         }
-        if (level == 2 && tier in TIER_KNOWN_FIRST..TIER_KNOWN_LAST) tier += TIER_KNOWN_LAST - TIER_KNOWN_FIRST + 1
-        if (kind == SearchKind.MEANING) {
-            flag = (meta shr SearchIndex.LEVEL_SHIFT) and 3
-            length = words
+        var words = 0
+        if (tier >= TIER_MEANING) {
+            words = index.docWords[doc].toInt()
+        } else if (tokenCount > 1) {
+            order = if (meta and SearchIndex.SPAN != 0 && quality != WHOLE) 1 else 0
+            if (tier <= TIER_START_OTHER) {
+                words = index.docWords[doc].toInt()
+                if (meta and SearchIndex.KIND_MASK != SearchKind.NAME && words < SearchIndex.MAX_WORDS) words++
+            }
         }
-        val key = ((tier shl TIER_SHIFT) or (flag shl 25) or (length shl DOC_BITS) or doc) xor Int.MIN_VALUE
-        if (seen == g) {
+        return (tier shl TIER_SHIFT) or (order shl ORDER_SHIFT) or (words shl DOC_BITS) or doc
+    }
+
+    private fun hit(char: Int, key: Int, seen: Byte) {
+        if (seen == gen.toByte()) {
             if (key < cur[char]) cur[char] = key
             return
         }
-        stamp[char] = g
+        stamp[char] = gen.toByte()
         cur[char] = key
         if (first) {
             if (touchedSize == touched.size) touched = touched.copyOf(touchedSize * 2)
             touched[touchedSize++] = char
+        }
+    }
+
+    private fun hitGenerated(char: Int, doc: Int, quality: Int, named: Boolean) {
+        val seen = stamp[char]
+        if (seen != gen.toByte() && !first && seen != (gen - 1).toByte()) return
+        val words = if (tokenCount > 1) index.docWords[doc].toInt() else 0
+        val whole = quality == WHOLE || unfinished
+        var rank = if (!named) (TIER_GENERATED shl TIER_SHIFT) or ((quality - WHOLE) shl ORDER_SHIFT) else if (whole) TIER_WORD_OTHER shl TIER_SHIFT else TIER_START_OTHER shl TIER_SHIFT
+        if (named && quality != WHOLE && unfinished) rank = rank or (1 shl ORDER_SHIFT)
+        hit(char, rank or (words shl DOC_BITS) or doc, seen)
+    }
+
+    private fun addSpan(char: Int, doc: Int, meta: Int, quality: Int, position: Int) {
+        val key = key(char, doc, meta, quality, position)
+        if (key < 0) return
+        if (spanCount == spanStart.size) {
+            spanStart = spanStart.copyOf(spanCount * 2)
+            spanEnd = spanEnd.copyOf(spanCount * 2)
+            spanKey = spanKey.copyOf(spanCount * 2)
+            spanSorted = spanSorted.copyOf(spanCount * 2)
+        }
+        val last = index.spanLast(doc)
+        spanStart[spanCount] = char
+        spanEnd[spanCount] = last
+        spanKey[spanCount] = key
+        spanSorted[spanCount] = (char.toLong() shl 32) or spanCount.toLong()
+        spanCount++
+        spanChars += last - char + 1
+    }
+
+    private fun matchSpans() {
+        val scatter = first || spanChars <= touchedSize * PROBE_COST
+        java.util.Arrays.sort(spanSorted, 0, spanCount)
+        segmentCount = 0
+        var activeCount = 0
+        var next = 0
+        var position = 0
+        while (next < spanCount || activeCount > 0) {
+            if (activeCount == 0) position = spanStart[spanSorted[next].toInt()]
+            while (next < spanCount && spanStart[spanSorted[next].toInt()] <= position) {
+                if (activeCount == active.size) active = active.copyOf(activeCount * 2)
+                active[activeCount++] = spanSorted[next++].toInt()
+            }
+            var end = if (next < spanCount) spanStart[spanSorted[next].toInt()] - 1 else Int.MAX_VALUE
+            var key = Int.MAX_VALUE
+            for (i in 0 until activeCount) {
+                val span = active[i]
+                if (spanKey[span] < key) key = spanKey[span]
+                if (spanEnd[span] < end) end = spanEnd[span]
+            }
+            if (scatter) {
+                val g = gen.toByte()
+                val previous = (gen - 1).toByte()
+                for (char in position..end) {
+                    val seen = stamp[char]
+                    if (seen == g || first || seen == previous) hit(char, key, seen)
+                }
+            } else {
+                if (segmentCount == segmentStart.size) {
+                    segmentStart = segmentStart.copyOf(segmentCount * 2)
+                    segmentEnd = segmentEnd.copyOf(segmentCount * 2)
+                    segmentKey = segmentKey.copyOf(segmentCount * 2)
+                }
+                segmentStart[segmentCount] = position
+                segmentEnd[segmentCount] = end
+                segmentKey[segmentCount++] = key
+            }
+            position = end + 1
+            var kept = 0
+            for (i in 0 until activeCount) if (spanEnd[active[i]] >= position) active[kept++] = active[i]
+            activeCount = kept
+        }
+        if (scatter) return
+        val g = gen.toByte()
+        val previous = (gen - 1).toByte()
+        for (k in 0 until touchedSize) {
+            val char = touched[k]
+            val seen = stamp[char]
+            if (seen != g && seen != previous) continue
+            var low = 0
+            var high = segmentCount - 1
+            while (low <= high) {
+                val mid = (low + high) ushr 1
+                if (segmentStart[mid] <= char) low = mid + 1 else high = mid - 1
+            }
+            if (high >= 0 && char <= segmentEnd[high]) hit(char, segmentKey[high], seen)
         }
     }
 
@@ -532,23 +877,23 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                 val to = minOf(high, data.rangeLast[range])
                 if (from > to) continue
                 val doc = index.rangeDocs[range]
-                val meta = index.docMeta[doc].toInt()
-                val words = index.docWords[doc].toInt()
                 val quality = if (width == length) WHOLE else PREFIX
                 val offset = data.indexOf(data.rangeFirst[range]) - data.rangeFirst[range]
-                for (codePoint in from..to) hit(codePoint + offset, doc, meta, words, quality, SearchIndex.LAST_WORD)
+                for (codePoint in from..to) hitGenerated(codePoint + offset, doc, quality, true)
             }
         }
     }
 
-    private fun matchHangulNames(start: Int, length: Int) {
+    private fun matchHangulNames(token: Int, start: Int, length: Int) {
         if (length > HANGUL_NAME_MAX) return
+        var named = false
+        for (other in 0 until tokenCount) {
+            if (other != token && (isStartOf(other, HANGUL, 0, HANGUL.size) || isStartOf(other, SYLLABLE, 0, SYLLABLE.size))) named = true
+        }
         var range = 0
         while (range < data.rangeCount && !data.isHangulRange(range)) range++
         if (range == data.rangeCount) return
         val doc = index.rangeDocs[range]
-        val meta = index.docMeta[doc].toInt()
-        val words = index.docWords[doc].toInt()
         val offset = data.indexOf(HangulNames.FIRST)
         val end = start + length
         for (l in HANGUL_L.indices) {
@@ -560,10 +905,18 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                 for (t in HANGUL_T.indices) {
                     if (matchPart(afterV, end, HANGUL_T[t]) != end) continue
                     val whole = HANGUL_L[l].size + HANGUL_V[v].size + HANGUL_T[t].size == length
-                    hit(offset + (l * HangulNames.V_COUNT + v) * HangulNames.T_COUNT + t, doc, meta, words, if (whole) WHOLE else PREFIX, SearchIndex.LAST_WORD)
+                    hitGenerated(offset + (l * HangulNames.V_COUNT + v) * HangulNames.T_COUNT + t, doc, if (whole) WHOLE else PREFIX, named)
                 }
             }
         }
+    }
+
+    private fun isStartOf(token: Int, word: ByteArray, start: Int, size: Int): Boolean {
+        val length = tokens.length[token]
+        if (length > size) return false
+        val from = tokens.start[token]
+        for (i in 0 until length) if (tokens.bytes[from + i] != word[start + i]) return false
+        return true
     }
 
     private fun matchPart(from: Int, end: Int, part: ByteArray): Int {
@@ -577,38 +930,54 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
 
     private companion object {
         const val MAX_TOKENS = 16
+        val SURROGATES = 0xD800..0xDFFF
         const val MAX_LITERALS = 16
-        const val COMMON_LIMIT = 0x100
         const val MIN_INFIX = 3
-        const val MIN_COMPOUND = 6
-        const val MIN_COMPOUND_PART = 2
+        const val MIN_SPLIT_FIRST = 3
+        const val MIN_SPLIT_SECOND = 2
         const val HANGUL_NAME_MAX = 7
-        const val EXACT = 0
+        const val PROBE_COST = 8L
+        const val CODE_TRAILERS = ",.;:)"
         const val WHOLE = 1
         const val PREFIX = 2
         const val INFIX = 3
         const val DOC_BITS = 19
         const val DOC_MASK = (1 shl DOC_BITS) - 1
         const val CHAR_MASK = (1L shl 21) - 1
-        const val TIER_SHIFT = 27
-        const val TIER_NAME_WORD = 3
-        const val TIER_NAME_PREFIX = 4
-        const val TIER_KNOWN_FIRST = 3
-        const val TIER_KNOWN_LAST = 8
+        const val ORDER_SHIFT = 24
+        const val WORDS_MASK = SearchIndex.MAX_WORDS shl DOC_BITS
+        const val TIER_SHIFT = 26
+        const val TIER_EXACT = 1
+        const val TIER_EXACT_ALIAS = 2
+        const val TIER_WORD = 3
+        const val TIER_WORD_OTHER = 4
+        const val TIER_ALIAS_WORD = 5
+        const val TIER_START = 6
+        const val TIER_START_OTHER = 7
+        const val TIER_GENERATED = 8
+        const val TIER_ALIAS_START = 9
+        const val TIER_KEYWORD = 10
+        const val TIER_BLOCK = 11
+        const val TIER_SUBHEAD = 12
+        const val TIER_INSIDE_NAME = 13
+        const val TIER_INSIDE_ALIAS = 14
+        const val TIER_INSIDE_KEYWORD = 15
+        const val TIER_INSIDE_BLOCK = 16
+        const val TIER_SPLIT = 17
+        const val TIER_MEANING = 18
+        const val MIN_TYPING = 3
+        const val TYPING_START = 2
+        const val TYPING_WORD = 3
+        const val MAX_VERIFIED = 32
+        const val MIN_UNFINISHED = 2
         const val LEVEL_COMMON: Byte = 0
-        const val LEVEL_BASIC: Byte = 1
-        const val LEVEL_OBSCURE: Byte = 2
-        val BASIC_AREAS = intArrayOf(0x0100, 0x024F, 0x0370, 0x03FF, 0x0400, 0x04FF, 0x2000, 0x2BFF)
-        const val TIER_MEANING = 21
-        val GROUPS = byteArrayOf(0, 0, 0, 0, 1, 1, 2, 3, 4, 5)
-        val TIERS = byteArrayOf(
-            1, 3, 4, 17,
-            2, 5, 6, 18,
-            7, 8, 8, 19,
-            15, 15, 15, 20,
-            16, 16, 16, 20,
-            21, 22, 23, 24,
-        )
+        const val LEVEL_KNOWN: Byte = 1
+        const val LEVEL_OTHER: Byte = 2
+        val COMMON_AREAS = intArrayOf(0x0020, 0x00FF, 0x2000, 0x206F)
+        val KNOWN_AREAS = intArrayOf(0x0100, 0x024F, 0x0300, 0x04FF, 0x2000, 0x2BFF, 0x3040, 0x30FF)
+        val OTHER_AREAS = intArrayOf(0x007F, 0x009F, 0x2336, 0x237A)
+        val HANGUL = "hangul".toByteArray()
+        val SYLLABLE = "syllable".toByteArray()
         val HANGUL_L = jamo(HangulNames.L)
         val HANGUL_V = jamo(HangulNames.V)
         val HANGUL_T = jamo(HangulNames.T)

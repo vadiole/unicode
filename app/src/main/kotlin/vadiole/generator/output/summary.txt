@@ -1,14 +1,15 @@
-data version 1
+data version 2
 characters 172873, in generated ranges 131576, names 41297
 blocks 353, subheads 3204, versions 29
-second names 5948: unicode1 1917, correction 39, control 27, alternate 0, figment 0, abbreviation 354, alias 2969, short 642
-keywords 9791, displayed 5477, characters 1777
+second names 5945: unicode1 1917, correction 39, control 27, alternate 0, figment 0, abbreviation 354, alias 2966, short 642
+keywords 9820, displayed 5486, characters 1784
 meanings 23310
+keywords inherited from a heavy, light, black or white variant: 25F8 25F9 25FA 2672 2698 2713 2715
 
 section raw deflated
 code_points 1563 1145
-kinds 73 71
-ages 2830 1920
+kinds 72 70
+ages 2829 1919
 age_text 127 67
 blocks 954 523
 block_text 5951 2209
@@ -17,10 +18,10 @@ subhead_text 62039 17546
 ranges 97 102
 range_text 331 84
 names 1107566 161067
-second_names 11964 2753
-second_name_text 101940 30156
-keywords 19603 2199
-keyword_text 67245 24400
+second_names 11958 2750
+second_name_text 101937 30154
+keywords 19661 2201
+keyword_text 67443 24423
 meanings 46726 10578
 meaning_text 820580 293372
-file 2256159 555446
+file 2256408 555467

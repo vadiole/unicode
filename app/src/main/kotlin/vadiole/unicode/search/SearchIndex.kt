@@ -1,14 +1,10 @@
 package vadiole.unicode.search
 
 import java.io.DataInputStream
-import java.io.DataOutputStream
-import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.ByteBuffer
 import java.util.zip.CRC32
-import java.util.zip.CheckedInputStream
-import java.util.zip.CheckedOutputStream
 
 object SearchKind {
     const val NAME = 0
@@ -59,22 +55,22 @@ class SearchIndex(
     fun spanLast(doc: Int): Int = spanLast[java.util.Arrays.binarySearch(spanDocs, doc)]
 
     fun save(output: OutputStream, key: String) {
-        val checked = CheckedOutputStream(output, CRC32())
-        val out = DataOutputStream(checked)
-        out.writeInt(MAGIC)
-        out.writeUTF(key)
+        val keyBytes = key.toByteArray(Charsets.UTF_8)
         val ints = arrayOf(wordOff, postOff, docChar, spanDocs, spanLast, rangeDocs, sourceStart)
         val blobs = arrayOf(wordBytes, postBytes, docMeta, docWords)
-        ints.forEach { out.writeInt(it.size) }
-        blobs.forEach { out.writeInt(it.size) }
+        val buffer = ByteBuffer.allocate(8 + keyBytes.size + 4 * (INT_ARRAYS + BLOBS) + ints.sumOf { it.size * 4 } + blobs.sumOf { it.size } + 8)
+        buffer.putInt(MAGIC).putInt(keyBytes.size).put(keyBytes)
+        ints.forEach { buffer.putInt(it.size) }
+        blobs.forEach { buffer.putInt(it.size) }
         for (values in ints) {
-            val buffer = ByteBuffer.allocate(values.size * 4)
             buffer.asIntBuffer().put(values)
-            out.write(buffer.array())
+            buffer.position(buffer.position() + values.size * 4)
         }
-        blobs.forEach { out.write(it) }
-        out.writeLong(checked.checksum.value)
-        out.flush()
+        blobs.forEach { buffer.put(it) }
+        val checksum = CRC32()
+        checksum.update(buffer.array(), 0, buffer.position())
+        buffer.putLong(checksum.value)
+        output.write(buffer.array())
     }
 
     companion object {
@@ -83,45 +79,61 @@ class SearchIndex(
         const val SHORT = 1 shl 6
         const val SPAN = 1 shl 7
         const val MAX_DOCS = 1 shl 19
-        const val MAX_WORDS = 63
+        const val MAX_WORDS = 31
+        const val FORMAT = 2
         const val POSITION_BITS = 2
         const val POSITION_MASK = 3
         const val FIRST_WORD = 1
         const val LAST_WORD = 2
         private const val MAGIC = 0x55534931
+        val TRAILING_WORDS = arrayOf("sign".toByteArray(), "mark".toByteArray(), "symbol".toByteArray(), "suit".toByteArray())
+        val DROPPED_WORDS = arrayOf("sign".toByteArray(), "mark".toByteArray(), "arrow".toByteArray())
+
+        fun isClassWord(tokens: SearchTokens, index: Int, words: Array<ByteArray>): Boolean {
+            for (word in words) if (tokens.equals(index, word)) return true
+            return false
+        }
         private const val INT_ARRAYS = 7
         private const val BLOBS = 4
 
-        fun load(input: InputStream, key: String, length: Long): SearchIndex? {
-            val checked = CheckedInputStream(input, CRC32())
-            val data = DataInputStream(checked)
-            if (data.readInt() != MAGIC || data.readUTF() != key) return null
-            val sizes = IntArray(INT_ARRAYS + BLOBS) { data.readInt() }
-            var expected = 0L
+        fun hasKey(input: InputStream, key: String): Boolean {
+            val keyBytes = key.toByteArray(Charsets.UTF_8)
+            val data = DataInputStream(input)
+            if (data.readInt() != MAGIC || data.readInt() != keyBytes.size) return false
+            return ByteArray(keyBytes.size).also(data::readFully).contentEquals(keyBytes)
+        }
+
+        fun load(bytes: ByteArray, key: String): SearchIndex? {
+            val keyBytes = key.toByteArray(Charsets.UTF_8)
+            val header = 8 + keyBytes.size + 4 * (INT_ARRAYS + BLOBS)
+            if (bytes.size < header + 8) return null
+            val buffer = ByteBuffer.wrap(bytes)
+            if (buffer.int != MAGIC || buffer.int != keyBytes.size) return null
+            for (b in keyBytes) if (buffer.get() != b) return null
+            val sizes = IntArray(INT_ARRAYS + BLOBS) { buffer.int }
+            var expected = header + 8L
             for (i in sizes.indices) {
                 if (sizes[i] < 0) return null
                 expected += if (i < INT_ARRAYS) 4L * sizes[i] else sizes[i].toLong()
             }
-            if (expected > length) return null
+            if (expected != bytes.size.toLong()) return null
+            val checksum = CRC32()
+            checksum.update(bytes, 0, bytes.size - 8)
+            if (buffer.getLong(bytes.size - 8) != checksum.value) return null
             val ints = Array(INT_ARRAYS) { i ->
-                val bytes = ByteArray(sizes[i] * 4).also(data::readFully)
-                IntArray(sizes[i]).also { ByteBuffer.wrap(bytes).asIntBuffer().get(it) }
+                IntArray(sizes[i]).also {
+                    buffer.asIntBuffer().get(it)
+                    buffer.position(buffer.position() + it.size * 4)
+                }
             }
-            val blobs = Array(BLOBS) { i -> ByteArray(sizes[INT_ARRAYS + i]).also(data::readFully) }
-            val checksum = checked.checksum.value
-            if (data.readLong() != checksum) throw IOException("Search index checksum mismatch")
+            val blobs = Array(BLOBS) { i -> ByteArray(sizes[INT_ARRAYS + i]).also { buffer.get(it) } }
             return SearchIndex(blobs[0], ints[0], blobs[1], ints[1], ints[2], blobs[2], blobs[3], ints[3], ints[4], ints[5], ints[6])
         }
     }
 }
 
 class SearchIndexBuilder {
-    private companion object {
-        val GENERIC_WORDS = arrayOf("sign".toByteArray(), "mark".toByteArray(), "symbol".toByteArray())
-    }
-
-    private val tokens = SearchTokens(Int.MAX_VALUE, symbols = false)
-    private val symbolTokens = SearchTokens(Int.MAX_VALUE, symbols = true)
+    private val tokens = SearchTokens(Int.MAX_VALUE, distinct = false)
     private var pool = ByteArray(1 shl 18)
     private var poolSize = 0
     private var table = IntArray(1 shl 16) { -1 }
@@ -149,16 +161,15 @@ class SearchIndexBuilder {
         sourceStart[sourceCount++] = docCount
     }
 
-    fun add(kind: Int, level: Int, char: Int, text: CharSequence) = add(kind, level, char, char, text, 0)
+    fun add(kind: Int, level: Int, char: Int, text: ByteArray, from: Int, to: Int) = add(kind, level, char, char, text, from, to, 0)
 
-    fun addRangeName(first: Int, last: Int, prefix: CharSequence) {
+    fun addRangeName(first: Int, last: Int, prefix: ByteArray) {
         if (rangeCount == rangeDocs.size) rangeDocs = rangeDocs.copyOf(rangeCount * 2)
-        rangeDocs[rangeCount++] = add(SearchKind.NAME, 0, first, last, prefix, 1)
+        rangeDocs[rangeCount++] = add(SearchKind.NAME, 0, first, last, prefix, 0, prefix.size, 1)
     }
 
-    fun add(kind: Int, level: Int, first: Int, last: Int, text: CharSequence, extraWords: Int): Int {
-        val tokens = if (kind == SearchKind.KEYWORD) symbolTokens else tokens
-        tokens.set(text)
+    fun add(kind: Int, level: Int, first: Int, last: Int, text: ByteArray, from: Int, to: Int, extraWords: Int): Int {
+        if (kind != SearchKind.KEYWORD || !tokens.setSymbols(text, from, to)) tokens.set(text, from, to)
         if (docCount == docChar.size) {
             docChar = docChar.copyOf(docCount * 2)
             docMeta = docMeta.copyOf(docCount * 2)
@@ -166,8 +177,9 @@ class SearchIndexBuilder {
         }
         val doc = docCount++
         check(doc < SearchIndex.MAX_DOCS) { "Too many search documents" }
+        val count = tokens.count
         var meta = kind or (level shl SearchIndex.LEVEL_SHIFT)
-        if (kind != SearchKind.NAME && tokens.count == 1 && tokens.length[0] <= 2) meta = meta or SearchIndex.SHORT
+        if (kind == SearchKind.ALIAS && count == 1 && tokens.length[0] <= 2) meta = meta or SearchIndex.SHORT
         if (last > first) {
             meta = meta or SearchIndex.SPAN
             if (spanCount == spanDocs.size) {
@@ -177,34 +189,37 @@ class SearchIndexBuilder {
             spanDocs[spanCount] = doc
             spanLast[spanCount++] = last
         }
+        var lastWord = count - 1
+        var words = count
+        if (kind < SearchKind.KEYWORD) {
+            while (lastWord > 0 && SearchIndex.isClassWord(tokens, lastWord, SearchIndex.TRAILING_WORDS)) lastWord--
+            while (words > 1 && SearchIndex.isClassWord(tokens, words - 1, SearchIndex.DROPPED_WORDS)) words--
+        }
         docChar[doc] = first
         docMeta[doc] = meta.toByte()
-        docWords[doc] = minOf(tokens.count + extraWords, SearchIndex.MAX_WORDS).toByte()
-        var last = tokens.count - 1
-        if (kind < SearchKind.KEYWORD) {
-            while (last > 0 && isGeneric(tokens, last)) last--
-        }
-        for (i in 0 until tokens.count) {
+        docWords[doc] = minOf(words + extraWords, SearchIndex.MAX_WORDS).toByte()
+        val docStart = occCount
+        for (i in 0 until count) {
             if (occCount == occWord.size) {
                 occWord = occWord.copyOf(occCount * 2)
                 occDoc = occDoc.copyOf(occCount * 2)
             }
-            var position = if (i == 0) SearchIndex.FIRST_WORD else 0
-            if (i == last && extraWords == 0) position = position or SearchIndex.LAST_WORD
-            occWord[occCount] = wordId(tokens.bytes, tokens.start[i], tokens.length[i])
-            occDoc[occCount++] = (doc shl SearchIndex.POSITION_BITS) or position
+            var position = 0
+            if (extraWords == 0) {
+                if (i == 0) position = SearchIndex.FIRST_WORD
+                if (i == lastWord) position = position or SearchIndex.LAST_WORD
+            }
+            val word = wordId(tokens.bytes, tokens.start[i], tokens.length[i])
+            var seen = docStart
+            while (seen < occCount && occWord[seen] != word) seen++
+            if (seen < occCount) {
+                occDoc[seen] = occDoc[seen] or position
+            } else {
+                occWord[occCount] = word
+                occDoc[occCount++] = (doc shl SearchIndex.POSITION_BITS) or position
+            }
         }
         return doc
-    }
-
-    private fun isGeneric(tokens: SearchTokens, index: Int): Boolean {
-        for (word in GENERIC_WORDS) {
-            if (word.size != tokens.length[index]) continue
-            var i = 0
-            while (i < word.size && word[i] == tokens.bytes[tokens.start[index] + i]) i++
-            if (i == word.size) return true
-        }
-        return false
     }
 
     private fun wordId(bytes: ByteArray, start: Int, length: Int): Int {

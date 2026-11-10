@@ -1,12 +1,14 @@
 package vadiole.unicode.search
 
 import vadiole.unicode.data.TaggedTexts
+import vadiole.unicode.data.TextTable
 import vadiole.unicode.data.UnicodeData
 
 class UnicodeDataSource(private val data: UnicodeData, private val meanings: () -> TaggedTexts) : SearchSource {
     override val key = "en"
 
     override fun emit(builder: SearchIndexBuilder) {
+        val names = data.names
         var nameIndex = 0
         var range = 0
         var char = 0
@@ -14,34 +16,52 @@ class UnicodeDataSource(private val data: UnicodeData, private val meanings: () 
             val codePoint = data.codePointAt(char)
             if (range < data.rangeCount && data.rangeFirst[range] == codePoint) {
                 val last = char + data.rangeLast[range] - codePoint
-                builder.addRangeName(char, last, data.rangePrefixes[range])
+                builder.addRangeName(char, last, data.rangePrefixes[range].toByteArray())
                 range++
                 char = last + 1
             } else {
-                builder.add(SearchKind.NAME, 0, char++, data.names[nameIndex++])
+                builder.add(SearchKind.NAME, 0, char++, names.bytes, names.start(nameIndex), names.end(nameIndex))
+                nameIndex++
             }
         }
         val secondNames = data.secondNames
+        var texts = secondNames.texts
         for (i in 0 until secondNames.size) {
-            builder.add(secondKinds[secondNames.tags[i].toInt()], 0, data.indexOf(secondNames.codePoints[i]), secondNames.texts[i])
+            builder.add(secondKinds[secondNames.tags[i].toInt()], 0, data.indexOf(secondNames.codePoints[i]), texts.bytes, texts.start(i), texts.end(i))
         }
         val keywords = data.keywords
+        texts = keywords.texts
         for (i in 0 until keywords.size) {
-            builder.add(SearchKind.KEYWORD, 0, data.indexOf(keywords.codePoints[i]), keywords.texts[i])
+            val codePoint = keywords.codePoints[i]
+            val name = data.nameIndex(codePoint)
+            val start = texts.start(i)
+            val end = if (name >= 0 && isWord(names, name, texts.bytes, start, texts.end(i))) start else texts.end(i)
+            builder.add(SearchKind.KEYWORD, 0, data.indexOf(codePoint), texts.bytes, start, end)
         }
-        for (i in 0 until data.blockNames.size) {
+        texts = data.blockNames
+        for (i in 0 until texts.size) {
             val first = data.lowerIndex(data.blockStart[i])
             val last = data.lowerIndex(data.blockEnd[i] + 1) - 1
-            if (last >= first) builder.add(SearchKind.BLOCK, 0, first, last, data.blockNames[i], 0)
+            if (last >= first) builder.add(SearchKind.BLOCK, 0, first, last, texts.bytes, texts.start(i), texts.end(i), 0)
         }
-        for (i in 0 until data.subheads.size) {
-            builder.add(SearchKind.SUBHEAD, 0, data.indexOf(data.subheadStart[i]), data.indexOf(data.subheadEnd[i]), data.subheads[i], 0)
+        texts = data.subheads
+        for (i in 0 until texts.size) {
+            builder.add(SearchKind.SUBHEAD, 0, data.indexOf(data.subheadStart[i]), data.indexOf(data.subheadEnd[i]), texts.bytes, texts.start(i), texts.end(i), 0)
         }
         val meanings = meanings()
+        texts = meanings.texts
+        val bytes = texts.bytes
         for (i in 0 until meanings.size) {
             val index = data.indexOf(meanings.codePoints[i])
             val level = meanings.tags[i].toInt()
-            forEachSense(meanings.texts[i]) { sense -> builder.add(SearchKind.MEANING, level, index, sense) }
+            var start = texts.start(i)
+            val end = texts.end(i)
+            for (at in start..end) {
+                if (at == end || bytes[at] == SEMICOLON || bytes[at] == COMMA) {
+                    if (at > start) builder.add(SearchKind.MEANING, level, index, bytes, start, at)
+                    start = at + 1
+                }
+            }
         }
     }
 
@@ -62,6 +82,25 @@ class UnicodeDataSource(private val data: UnicodeData, private val meanings: () 
         }
     }
 
+    private fun isWord(names: TextTable, name: Int, word: ByteArray, from: Int, to: Int): Boolean {
+        val bytes = names.bytes
+        val length = to - from
+        val end = names.end(name)
+        var start = names.start(name)
+        for (at in start..end) {
+            if (at < end && isLetter(bytes[at])) continue
+            if (at - start == length) {
+                var i = 0
+                while (i < length && bytes[start + i].toInt() or 0x20 == word[from + i].toInt() or 0x20 && isLetter(word[from + i])) i++
+                if (i == length) return true
+            }
+            start = at + 1
+        }
+        return false
+    }
+
+    private fun isLetter(b: Byte) = b.toInt() or 0x20 in 'a'.code..'z'.code
+
     private inline fun forEachSense(text: String, action: (CharSequence) -> Unit) {
         var start = 0
         for (end in 0..text.length) {
@@ -81,6 +120,8 @@ class UnicodeDataSource(private val data: UnicodeData, private val meanings: () 
     }
 
     private companion object {
+        const val SEMICOLON = ';'.code.toByte()
+        const val COMMA = ','.code.toByte()
         val sections = intArrayOf(0, 1, 1, 1, 1, 1, 2, 3, 4, 5)
         val secondKinds = intArrayOf(
             SearchKind.UNICODE_1, SearchKind.FORMAL_ALIAS, SearchKind.FORMAL_ALIAS, SearchKind.FORMAL_ALIAS,

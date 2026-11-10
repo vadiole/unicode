@@ -5,6 +5,13 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
 import vadiole.unicode.data.UnicodeData
+import vadiole.unicode.data.UnicodeData.Companion.HAN_SCHOOL
+import vadiole.unicode.data.UnicodeData.Companion.KEYWORD_DISPLAY
+import vadiole.unicode.data.UnicodeData.Companion.RANGE_HANGUL
+import vadiole.unicode.data.UnicodeData.Companion.RANGE_HEX
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_ABBREVIATION
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_ALIAS
+import vadiole.unicode.data.UnicodeDataReader
 import vadiole.unicode.search.CharSearch
 import vadiole.unicode.search.SearchIndex
 import vadiole.unicode.search.SearchIndexBuilder
@@ -34,6 +41,8 @@ class GeneratorTest {
         assertEquals(listOf("period", "dot", "decimal point"), splitAliases("period, dot, decimal point"))
         assertEquals(listOf("derivative (Newtonian notation, old)"), splitAliases("derivative (Newtonian notation, old)"))
         assertEquals(listOf("latin capital ligature ae"), splitAliases("latin capital ligature ae (1.1)"))
+        assertEquals(listOf("German Mark currency symbol, before WWII"), splitAliases("German Mark currency symbol, before WWII"))
+        assertEquals(listOf("pound sterling", "Irish punt", "lira"), splitAliases("pound sterling, Irish punt, lira, etc."))
     }
 
     private val sample = GeneratorData(
@@ -52,9 +61,11 @@ class GeneratorTest {
     @Test
     fun fileRoundTrip() {
         val bytes = encodeFile(encodeSections(sample))
-        val data = UnicodeData.read(ByteArrayInputStream(bytes))
-        val meanings = UnicodeData.readMeanings(ByteArrayInputStream(bytes))
-        assertEquals(DATA_VERSION, data.version)
+        val reader = UnicodeDataReader(ByteArrayInputStream(bytes))
+        val data = reader.data()
+        val meanings = reader.meanings()
+        assertEquals(reader.checksum, data.checksum)
+        assertEquals(meanings.size, UnicodeDataReader(ByteArrayInputStream(bytes)).meanings().size)
         assertArrayEquals(sample.codePoints, data.codePoints(data.size))
         assertEquals(-1, data.indexOf(0x43))
         assertEquals(UnicodeData.KIND_ABBREVIATION, data.kindAt(data.indexOf(0xAD)))
@@ -77,34 +88,28 @@ class GeneratorTest {
     @Test
     fun indexCacheRoundTrip() {
         val bytes = encodeFile(encodeSections(sample))
-        val data = UnicodeData.read(ByteArrayInputStream(bytes))
-        val meanings = UnicodeData.readMeanings(ByteArrayInputStream(bytes))
+        val reader = UnicodeDataReader(ByteArrayInputStream(bytes))
+        val data = reader.data()
+        val meanings = reader.meanings()
         val sources = arrayOf<SearchSource>(UnicodeDataSource(data) { meanings })
         val builder = SearchIndexBuilder()
         builder.beginSource()
         sources[0].emit(builder)
         val saved = ByteArrayOutputStream().also { builder.build().save(it, "key") }.toByteArray()
-        val index = requireNotNull(SearchIndex.load(ByteArrayInputStream(saved), "key", saved.size.toLong()))
+        val index = requireNotNull(SearchIndex.load(saved, "key"))
         val search = CharSearch(data, index, sources)
         assertArrayEquals(intArrayOf(0xAD), search.search("shy", 0).codePoints)
         assertArrayEquals(intArrayOf(0x4E00), search.search("alone", 0).codePoints)
         assertArrayEquals(intArrayOf(0x4E01), search.search("cjk 4e01", 0).codePoints)
-        assertNull(SearchIndex.load(ByteArrayInputStream(saved), "other", saved.size.toLong()))
+        assertNull(SearchIndex.load(saved, "other"))
+        assertEquals(true, SearchIndex.hasKey(ByteArrayInputStream(saved), "key"))
+        assertEquals(false, SearchIndex.hasKey(ByteArrayInputStream(saved), "other"))
         for (position in intArrayOf(8, 20, saved.size / 2, saved.size - 1)) {
             val corrupt = saved.copyOf()
             corrupt[position] = (corrupt[position] + 1).toByte()
-            val loaded = try {
-                SearchIndex.load(ByteArrayInputStream(corrupt), "key", corrupt.size.toLong())
-            } catch (e: Exception) {
-                null
-            }
-            assertNull("corrupt byte $position", loaded)
+            assertNull("corrupt byte $position", SearchIndex.load(corrupt, "key"))
         }
-        val truncated = try {
-            SearchIndex.load(ByteArrayInputStream(saved, 0, saved.size / 2), "key", saved.size / 2L)
-        } catch (e: Exception) {
-            null
-        }
+        val truncated = SearchIndex.load(saved.copyOf(saved.size / 2), "key")
         assertNull(truncated)
     }
 }

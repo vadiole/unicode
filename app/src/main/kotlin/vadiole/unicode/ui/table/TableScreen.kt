@@ -419,13 +419,13 @@ class TableScreen(
             if (isCached) {
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
                 tableController.loadBlocks()
+                reloadChars(background = true)
             } else {
                 tableController.loadChars(fast = false)
                 tableAdapter.notifyDataSetChanged()
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
                 tableController.loadBlocks()
             }
-            tableController.prepareSearch()
         }
     }
 
@@ -572,6 +572,7 @@ class TableScreen(
     }
 
     override fun onDetachedFromWindow() {
+        searchController.cancel()
         fastScrollGestureRouter.cancel()
         super.onDetachedFromWindow()
     }
@@ -648,10 +649,11 @@ class TableScreen(
         delegate.onItemAdded(codePoint)
     }
 
-    fun reloadChars() {
+    fun reloadChars(background: Boolean = false) {
         launch {
+            if (background) tableController.awaitSearch()
             val chars = tableController.tableChars
-            if (!tableController.loadChars(fast = false)) return@launch
+            if (!tableController.loadChars(fast = false, background)) return@launch
             val topCodePoint = firstVisibleCodePoint(chars)
             val topOffset = tableView.firstVisibleRowOffset
             tableAdapter.notifyDataSetChanged()

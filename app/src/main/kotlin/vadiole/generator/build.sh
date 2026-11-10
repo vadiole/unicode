@@ -42,5 +42,5 @@ if [ ! -f "$root/input/unihan.txt" ]; then
     } > "$root/input/unihan.txt"
 fi
 
-kotlinc "$root/generator.kt" -include-runtime -d "$tmp/generator.jar" 2>/dev/null
+kotlinc "$root/generator.kt" "$root/../unicode/data/UnicodeData.kt" -include-runtime -d "$tmp/generator.jar" 2>/dev/null
 java -jar "$tmp/generator.jar"

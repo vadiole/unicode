@@ -2,7 +2,7 @@ package vadiole.unicode.search
 
 import java.text.Normalizer
 
-class SearchTokens(private val maxCount: Int, private val symbols: Boolean) {
+class SearchTokens(private val maxCount: Int, private val distinct: Boolean) {
     var bytes = ByteArray(256)
         private set
     var start = IntArray(16)
@@ -11,52 +11,81 @@ class SearchTokens(private val maxCount: Int, private val symbols: Boolean) {
         private set
     var count = 0
         private set
+    var sequence = IntArray(16)
+        private set
+    var sequenceCount = 0
+        private set
     private var size = 0
 
-    fun set(text: CharSequence) {
+    fun set(text: String) {
+        val utf8 = text.toByteArray(Charsets.UTF_8)
+        set(utf8, 0, utf8.size)
+    }
+
+    fun set(text: ByteArray, from: Int, to: Int) {
         count = 0
+        sequenceCount = 0
         size = 0
-        var index = 0
-        var chunkStart = 0
-        var chunkTokens = 0
-        var chunkEnd = if (symbols) symbolicEnd(text, 0) else 0
         var inWord = false
-        while (true) {
-            val cp = if (index < text.length) Character.codePointAt(text, index) else -1
-            var type = if (cp < 0) SPACE else typeOf(cp)
-            if (type == SYMBOL && index < chunkEnd) type = WORD
+        var index = from
+        while (index < to) {
+            val b = text[index].toInt()
+            if (b >= 0) {
+                index++
+                val letter = (b >= 'a'.code && b <= 'z'.code) || (b >= '0'.code && b <= '9'.code)
+                if (letter || (b >= 'A'.code && b <= 'Z'.code)) {
+                    if (!inWord) {
+                        if (count == maxCount) return
+                        begin()
+                        inWord = true
+                    }
+                    if (size == bytes.size) bytes = bytes.copyOf(size * 2)
+                    bytes[size++] = (if (letter) b else b + 32).toByte()
+                } else if (inWord) {
+                    end()
+                    inWord = false
+                }
+                continue
+            }
+            val cp = codePointAt(text, index)
+            index += byteCount(b)
+            val type = typeOf(cp)
             if (type == WORD) {
                 if (!inWord) {
                     if (count == maxCount) return
                     begin()
                     inWord = true
-                    chunkTokens++
                 }
                 append(fold(cp))
-            } else if (type != MARK) {
-                if (inWord) {
-                    end()
-                    inWord = false
-                }
-                if (type == SPACE) {
-                    if (symbols && chunkTokens == 0 && index > chunkStart && count < maxCount) {
-                        begin()
-                        var i = chunkStart
-                        while (i < index) {
-                            val symbol = Character.codePointAt(text, i)
-                            if (typeOf(symbol) == SYMBOL) append(symbol)
-                            i += Character.charCount(symbol)
-                        }
-                        end()
-                    }
-                    if (cp < 0) return
-                    chunkStart = index + Character.charCount(cp)
-                    chunkTokens = 0
-                    if (symbols) chunkEnd = symbolicEnd(text, chunkStart)
-                }
+            } else if (type != MARK && inWord) {
+                end()
+                inWord = false
             }
-            index += Character.charCount(cp)
         }
+        if (inWord) end()
+    }
+
+    fun setSymbols(text: ByteArray, from: Int, to: Int): Boolean {
+        count = 0
+        sequenceCount = 0
+        size = 0
+        var symbols = false
+        var index = from
+        begin()
+        while (index < to) {
+            val b = text[index].toInt()
+            val cp = if (b >= 0) b else codePointAt(text, index)
+            index += if (b >= 0) 1 else byteCount(b)
+            when (typeOf(cp)) {
+                SYMBOL -> symbols = true
+                WORD -> if (!Character.isDigit(cp)) return false
+                SPACE -> return false
+            }
+            append(cp)
+        }
+        if (!symbols) return false
+        end()
+        return true
     }
 
     fun setSplit(source: SearchTokens, at: Int) {
@@ -68,7 +97,10 @@ class SearchTokens(private val maxCount: Int, private val symbols: Boolean) {
         length[0] = at
         start[1] = at
         length[1] = total - at
+        sequence[0] = 0
+        sequence[1] = 1
         count = 2
+        sequenceCount = 2
         size = total
     }
 
@@ -92,6 +124,13 @@ class SearchTokens(private val maxCount: Int, private val symbols: Boolean) {
         return true
     }
 
+    fun equals(index: Int, word: ByteArray): Boolean {
+        if (length[index] != word.size) return false
+        val from = start[index]
+        for (i in word.indices) if (bytes[from + i] != word[i]) return false
+        return true
+    }
+
     private fun begin() {
         if (count == start.size) {
             start = start.copyOf(count * 2)
@@ -103,13 +142,19 @@ class SearchTokens(private val maxCount: Int, private val symbols: Boolean) {
     private fun end() {
         val from = start[count]
         if (size == from) return
-        for (other in 0 until count) {
-            if (length[other] == size - from && equal(start[other], from, size - from)) {
-                size = from
-                return
+        var token = count
+        if (distinct) {
+            for (other in 0 until count) {
+                if (length[other] == size - from && equal(start[other], from, size - from)) {
+                    size = from
+                    token = other
+                    break
+                }
             }
         }
-        length[count++] = size - from
+        if (token == count) length[count++] = size - from
+        if (sequenceCount == sequence.size) sequence = sequence.copyOf(sequenceCount * 2)
+        sequence[sequenceCount++] = token
     }
 
     private fun equal(a: Int, b: Int, length: Int): Boolean {
@@ -136,22 +181,6 @@ class SearchTokens(private val maxCount: Int, private val symbols: Boolean) {
         }
     }
 
-    private fun symbolicEnd(text: CharSequence, start: Int): Int {
-        var index = start
-        var digits = false
-        var marks = false
-        while (index < text.length) {
-            val cp = Character.codePointAt(text, index)
-            when (typeOf(cp)) {
-                SPACE -> break
-                SYMBOL -> marks = true
-                WORD -> if (Character.isDigit(cp)) digits = true else return start
-            }
-            index += Character.charCount(cp)
-        }
-        return if (digits && marks) index else start
-    }
-
     companion object {
         const val WORD = 0
         const val SPACE = 1
@@ -163,6 +192,22 @@ class SearchTokens(private val maxCount: Int, private val symbols: Boolean) {
         private const val LATIN_ADDITIONAL_LAST = 0x1EFF
         private val latin = baseLetters(LATIN_FIRST, LATIN_LAST)
         private val latinAdditional = baseLetters(LATIN_ADDITIONAL_FIRST, LATIN_ADDITIONAL_LAST)
+
+        fun byteCount(lead: Int): Int {
+            val b = lead and 0xFF
+            return if (b < 0x80) 1 else if (b < 0xE0) 2 else if (b < 0xF0) 3 else 4
+        }
+
+        fun codePointAt(text: ByteArray, index: Int): Int {
+            val b = text[index].toInt() and 0xFF
+            return when {
+                b < 0x80 -> b
+                b < 0xE0 -> ((b and 0x1F) shl 6) or (text[index + 1].toInt() and 0x3F)
+                b < 0xF0 -> ((b and 0x0F) shl 12) or ((text[index + 1].toInt() and 0x3F) shl 6) or (text[index + 2].toInt() and 0x3F)
+                else -> ((b and 0x07) shl 18) or ((text[index + 1].toInt() and 0x3F) shl 12) or
+                        ((text[index + 2].toInt() and 0x3F) shl 6) or (text[index + 3].toInt() and 0x3F)
+            }
+        }
 
         fun typeOf(cp: Int): Int {
             if (cp < 0x80) {

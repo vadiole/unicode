@@ -374,6 +374,9 @@
 25EF | ring ~ circle ~ hollow ~ large
 25F3 ~ hollow ~ quadrant ~ right ~ square ~ upper
 25F7 ~ circle ~ hollow ~ quadrant ~ right ~ upper ~ with
+25F8 | filled ~ left ~ triangle ~ upper
+25F9 | filled ~ right ~ triangle ~ upper
+25FA | filled ~ left ~ lower ~ triangle
 25FB | geometric ~ medium ~ square ~ white
 25FC | geometric ~ black ~ medium ~ square
 25FD | geometric ~ medium-small ~ square ~ white
@@ -423,6 +426,7 @@
 266A | music ~ eighth ~ note
 266D | bemolle | note ~ flat ~ music
 266F | dièse | diesis | note ~ music ~ sharp
+2672 ~ recycle ~ recycling ~ symbol
 267B ~ recycle ~ recycling ~ symbol
 267E | forever | unbounded | universal ~ infinity
 267F | access | handicap ~ symbol ~ wheelchair
@@ -432,6 +436,7 @@
 2695 | medicine ~ aesculapius ~ medical ~ staff ~ symbol
 2696 | justice | Libra | tool | weight | zodiac ~ balance ~ scale ~ scales
 2697 | chemistry | tool ~ alembic
+2698 ~ flower
 2699 | cog | cogwheel | tool ~ gear
 269B | atheist ~ atom ~ symbol
 269C | knights ~ fleur-de-lis
@@ -475,7 +480,9 @@
 270D ~ hand ~ write ~ writing
 270F ~ pencil
 2712 | pen ~ black ~ nib
+2713 | checkmark | done | tick ~ ✓ ~ check ~ checked ~ mark
 2714 | checkmark | done | tick ~ ✓ ~ check ~ checked ~ heavy ~ mark
+2715 | cancel | multiply | sign ~ × ~ multiplication ~ x
 2716 | cancel | sign ~ × ~ multiplication ~ multiply ~ x
 271D | christ | Christian | religion ~ cross ~ latin
 2721 | Jew | Jewish | judaism | religion ~ David ~ star

@@ -1,6 +1,7 @@
 package vadiole.unicode.data
 
 import android.content.Context
+import android.os.Process
 import android.util.SparseArray
 import java.io.DataInputStream
 import java.io.DataOutputStream
@@ -8,17 +9,29 @@ import java.io.File
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.util.concurrent.Executors
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.withContext
+import vadiole.unicode.BuildConfig
 
 class UnicodeStorage(private val context: Context) {
     private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
+    private val backgroundDispatcher = ThreadPoolExecutor(0, 1, 5, TimeUnit.SECONDS, LinkedBlockingQueue()) { task ->
+        Thread({
+            Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
+            task.run()
+        }, "revalidate")
+    }.asCoroutineDispatcher()
     private val lock = Any()
     @Volatile
     private var loadedData: UnicodeData? = null
     private var loadedMeanings: TaggedTexts? = null
     private var blockIcons: SparseArray<IntArray>? = null
     val cacheDir: File get() = File(context.filesDir, cacheDirName)
+    val buildKey: String
+        get() = if (BuildConfig.DEBUG) context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toString() else BuildConfig.VERSION_CODE.toString()
     val search = UnicodeSearch(this)
 
     fun data(): UnicodeData {
@@ -26,14 +39,18 @@ class UnicodeStorage(private val context: Context) {
         synchronized(lock) {
             loadedData?.let { return it }
             File(context.filesDir, legacyDatabaseDir).deleteRecursively()
-            val data = context.assets.open(dataName).buffered(1 shl 16).use { UnicodeData.read(it) }
-            loadedData = data
-            return data
+            return context.assets.open(dataName).buffered(1 shl 16).use { stream ->
+                val reader = UnicodeDataReader(stream)
+                val data = reader.data()
+                loadedData = data
+                if (!search.hasIndex(data)) loadedMeanings = reader.meanings()
+                data
+            }
         }
     }
 
     fun meanings(): TaggedTexts = synchronized(lock) {
-        loadedMeanings ?: context.assets.open(dataName).buffered(1 shl 16).use { UnicodeData.readMeanings(it) }.also { loadedMeanings = it }
+        loadedMeanings ?: context.assets.open(dataName).buffered(1 shl 16).use { UnicodeDataReader(it).meanings() }.also { loadedMeanings = it }
     }
 
     fun releaseMeanings() = synchronized(lock) {
@@ -48,7 +65,7 @@ class UnicodeStorage(private val context: Context) {
 
     suspend fun getTotalCharacters(): Int = withContext(dispatcher) { data().size }
 
-    suspend fun getCodePoints(count: Int, acceptGlyph: (String) -> Boolean): CodePointArray = withContext(dispatcher) {
+    suspend fun getCodePoints(count: Int, background: Boolean, acceptGlyph: (String) -> Boolean): CodePointArray = withContext(if (background) backgroundDispatcher else dispatcher) {
         val data = data()
         val limit = if (count > 0) minOf(count, data.size) else data.size
         val all = data.codePoints(limit)
@@ -72,12 +89,11 @@ class UnicodeStorage(private val context: Context) {
     }
 
     private fun acceptRange(all: IntArray, first: Int, last: Int, out: IntArray, start: Int, acceptGlyph: (String) -> Boolean): Int {
-        val length = last - first + 1
-        val samples = minOf(GLYPH_SAMPLES, length)
-        var accepted = 0
-        for (i in 0 until samples) {
-            val index = if (samples == 1) first else first + ((length - 1).toLong() * i / (samples - 1)).toInt()
-            if (acceptGlyph(CodePoint(all[index]).char)) accepted++
+        var accepted = countAccepted(all, first, last, GLYPH_SAMPLES, acceptGlyph)
+        var samples = minOf(GLYPH_SAMPLES, last - first + 1)
+        if (accepted == 0) {
+            accepted = countAccepted(all, first, last, GLYPH_REJECT_SAMPLES, acceptGlyph)
+            samples = -1
         }
         var size = start
         when (accepted) {
@@ -88,13 +104,24 @@ class UnicodeStorage(private val context: Context) {
         return size
     }
 
+    private fun countAccepted(all: IntArray, first: Int, last: Int, count: Int, acceptGlyph: (String) -> Boolean): Int {
+        val length = last - first + 1
+        val samples = minOf(count, length)
+        var accepted = 0
+        for (i in 0 until samples) {
+            val index = if (samples == 1) first else first + ((length - 1).toLong() * i / (samples - 1)).toInt()
+            if (acceptGlyph(CodePoint(all[index]).char)) accepted++
+        }
+        return accepted
+    }
+
     suspend fun readCache(name: String, key: String): IntArray? = withContext(dispatcher) {
         val file = File(cacheDir, name)
         if (!file.exists()) return@withContext null
         val data = data()
         try {
             DataInputStream(file.inputStream().buffered()).use { input ->
-                if (input.readUTF() != "${data.version};$key") return@withContext null
+                if (input.readUTF() != "${data.checksum};$key") return@withContext null
                 val size = input.readInt()
                 if (size !in 0..data.size) return@withContext null
                 val bytes = ByteArray(size * 4)
@@ -113,7 +140,7 @@ class UnicodeStorage(private val context: Context) {
         val temp = File(dir, "$name.tmp")
         try {
             DataOutputStream(temp.outputStream().buffered()).use { output ->
-                output.writeUTF("${data().version};$key")
+                output.writeUTF("${data().checksum};$key")
                 output.writeInt(values.size)
                 val bytes = ByteBuffer.allocate(values.size * 4)
                 bytes.asIntBuffer().put(values)
@@ -134,12 +161,22 @@ class UnicodeStorage(private val context: Context) {
             if (data.kindAt(index) == UnicodeData.KIND_ABBREVIATION) {
                 for (i in index until end) {
                     val codePoint = data.codePointAt(i)
-                    result[CodePoint(codePoint)] = ccOverrides[codePoint] ?: deriveAbbreviation(data.name(codePoint).orEmpty())
+                    result[CodePoint(codePoint)] = abbreviation(data, codePoint) ?: deriveAbbreviation(data.name(codePoint).orEmpty())
                 }
             }
             index = end
         }
         return@withContext result
+    }
+
+    private fun abbreviation(data: UnicodeData, codePoint: Int): String? {
+        val names = data.secondNames
+        var index = names.first(codePoint)
+        while (index < names.size && names.codePoints[index] == codePoint) {
+            if (names.tags[index].toInt() == UnicodeData.SECOND_ABBREVIATION) return names.texts[index]
+            index++
+        }
+        return null
     }
 
     private fun deriveAbbreviation(name: String): String {
@@ -200,26 +237,7 @@ class UnicodeStorage(private val context: Context) {
         private const val cacheDirName = "cache"
         private const val blockIconsName = "block_icons.txt"
         private const val GLYPH_SAMPLES = 16
+        private const val GLYPH_REJECT_SAMPLES = 256
         private val whitespace = Regex("\\s+")
-
-        private val ccOverrides: Map<Int, String> = mapOf(
-            0x00 to "NUL", 0x01 to "SOH", 0x02 to "STX", 0x03 to "ETX",
-            0x04 to "EOT", 0x05 to "ENQ", 0x06 to "ACK", 0x07 to "BEL",
-            0x08 to "BS", 0x09 to "HT", 0x0A to "LF", 0x0B to "VT",
-            0x0C to "FF", 0x0D to "CR", 0x0E to "SO", 0x0F to "SI",
-            0x10 to "DLE", 0x11 to "DC1", 0x12 to "DC2", 0x13 to "DC3",
-            0x14 to "DC4", 0x15 to "NAK", 0x16 to "SYN", 0x17 to "ETB",
-            0x18 to "CAN", 0x19 to "EM", 0x1A to "SUB", 0x1B to "ESC",
-            0x1C to "FS", 0x1D to "GS", 0x1E to "RS", 0x1F to "US",
-            0x7F to "DEL",
-            0x80 to "PAD", 0x81 to "HOP", 0x82 to "BPH", 0x83 to "NBH",
-            0x84 to "IND", 0x85 to "NEL", 0x86 to "SSA", 0x87 to "ESA",
-            0x88 to "HTS", 0x89 to "HTJ", 0x8A to "VTS", 0x8B to "PLD",
-            0x8C to "PLU", 0x8D to "RI", 0x8E to "SS2", 0x8F to "SS3",
-            0x90 to "DCS", 0x91 to "PU1", 0x92 to "PU2", 0x93 to "STS",
-            0x94 to "CCH", 0x95 to "MW", 0x96 to "SPA", 0x97 to "EPA",
-            0x98 to "SOS", 0x99 to "SGC", 0x9A to "SCI", 0x9B to "CSI",
-            0x9C to "ST", 0x9D to "OSC", 0x9E to "PM", 0x9F to "APC",
-        )
     }
-    }
+}

@@ -1,31 +1,25 @@
 import java.io.ByteArrayOutputStream
 import java.io.DataOutputStream
 import java.io.File
+import java.util.zip.CRC32
 import java.util.zip.Deflater
-
-const val DATA_MAGIC = 0x55434431
-const val DATA_VERSION = 1
-
-const val CHAR_KIND_NORMAL = 1
-const val CHAR_KIND_ABBREVIATION = 2
-
-const val RANGE_HEX = 0
-const val RANGE_HANGUL = 1
-
-const val SECOND_UNICODE_1 = 0
-const val SECOND_CORRECTION = 1
-const val SECOND_CONTROL = 2
-const val SECOND_ALTERNATE = 3
-const val SECOND_FIGMENT = 4
-const val SECOND_ABBREVIATION = 5
-const val SECOND_ALIAS = 6
-const val SECOND_SHORT_NAME = 7
-
-const val KEYWORD_DISPLAY = 1
-
-const val HAN_SCHOOL = 0
-const val HAN_CORE = 1
-const val HAN_OTHER = 2
+import vadiole.unicode.data.UnicodeData
+import vadiole.unicode.data.UnicodeData.Companion.HAN_CORE
+import vadiole.unicode.data.UnicodeData.Companion.HAN_OTHER
+import vadiole.unicode.data.UnicodeData.Companion.HAN_SCHOOL
+import vadiole.unicode.data.UnicodeData.Companion.KEYWORD_DISPLAY
+import vadiole.unicode.data.UnicodeData.Companion.KIND_ABBREVIATION
+import vadiole.unicode.data.UnicodeData.Companion.KIND_NORMAL
+import vadiole.unicode.data.UnicodeData.Companion.RANGE_HANGUL
+import vadiole.unicode.data.UnicodeData.Companion.RANGE_HEX
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_ABBREVIATION
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_ALIAS
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_ALTERNATE
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_CONTROL
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_CORRECTION
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_FIGMENT
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_SHORT_NAME
+import vadiole.unicode.data.UnicodeData.Companion.SECOND_UNICODE_1
 
 class GeneratorBlock(val start: Int, val end: Int, val name: String)
 
@@ -44,6 +38,7 @@ class GeneratorData(
     val secondNames: List<GeneratorText>,
     val keywords: List<GeneratorText>,
     val meanings: List<GeneratorText>,
+    val inherited: List<Int> = emptyList(),
 )
 
 // NR1 and NR2 prefixes from https://www.unicode.org/Public/18.0.0/ucd/extracted/DerivedName.txt
@@ -75,6 +70,10 @@ private val aliasTypes = mapOf(
     "abbreviation" to SECOND_ABBREVIATION,
 )
 
+private val variantPrefixes = listOf("HEAVY ", "LIGHT ", "BLACK ", "WHITE ")
+
+private val aliasContinuations = setOf("before", "after", "of", "or", "and", "in", "as", "with", "to", "for", "from", "by", "on", "at")
+
 private val hanSchoolFields = setOf("kGradeLevel", "kJoyoKanji", "kKoreanEducationHanja", "kHanyuPinlu")
 
 fun main() {
@@ -98,12 +97,13 @@ fun main() {
         out.println()
     }
     File("$root/output/summary.txt").printWriter().use { out ->
-        out.println("data version $DATA_VERSION")
+        out.println("data version ${UnicodeData.VERSION}")
         out.println("characters ${data.codePoints.size}, in generated ranges ${data.ranges.sumOf { it.last - it.first + 1 }}, names ${data.names.size}")
         out.println("blocks ${data.blocks.size}, subheads ${data.subheads.size}, versions ${data.versions.distinct().size}")
         out.println("second names ${data.secondNames.size}: " + secondNameLabels.mapIndexed { tag, label -> "$label ${data.secondNames.count { it.tag == tag }}" }.joinToString())
         out.println("keywords ${data.keywords.size}, displayed ${data.keywords.count { it.tag == KEYWORD_DISPLAY }}, characters ${data.keywords.distinctBy { it.codePoint }.size}")
         out.println("meanings ${data.meanings.size}")
+        out.println("keywords inherited from a heavy, light, black or white variant: " + data.inherited.joinToString(" ") { "%04X".format(it) })
         out.println()
         out.println("section raw deflated")
         sections.forEachIndexed { index, section ->
@@ -175,7 +175,7 @@ private fun readSources(input: File): GeneratorData {
             ranges.add(GeneratorRange(codePoint, end, if (prefix == "HANGUL SYLLABLE") RANGE_HANGUL else RANGE_HEX, prefix))
             for (cp in codePoint..end) {
                 codePoints.add(cp)
-                kinds.add(CHAR_KIND_NORMAL)
+                kinds.add(KIND_NORMAL)
             }
             continue
         }
@@ -189,7 +189,7 @@ private fun readSources(input: File): GeneratorData {
         val abbreviated = category == "Cc" || category == "Cf" || category == "Zl" || category == "Zp" ||
                 codePoint in 0xFE00..0xFE0F || codePoint in 0xE0100..0xE01EF
         codePoints.add(codePoint)
-        kinds.add(if (abbreviated && codePoint !in prependedConcatenationMarks) CHAR_KIND_ABBREVIATION else CHAR_KIND_NORMAL)
+        kinds.add(if (abbreviated && codePoint !in prependedConcatenationMarks) KIND_ABBREVIATION else KIND_NORMAL)
         names.add(name)
         formal[codePoint] = name
         addSecond(codePoint, SECOND_UNICODE_1, unicode1)
@@ -251,6 +251,16 @@ private fun readSources(input: File): GeneratorData {
         }
     }
     for ((codePoint, shortName) in shortNames) addSecond(codePoint, SECOND_SHORT_NAME, shortName)
+    val byName = formal.entries.associate { it.value to it.key }
+    val inherited = ArrayList<Int>()
+    for (codePoint in rawKeywords.keys.toList()) {
+        val name = formal[codePoint] ?: continue
+        val variant = variantPrefixes.firstOrNull { name.startsWith(it) } ?: continue
+        val base = byName[name.substring(variant.length)] ?: continue
+        if (base in rawKeywords || base in shortNames) continue
+        rawKeywords[base] = rawKeywords.getValue(codePoint).filter { !it.equals(variant.trim(), ignoreCase = true) }
+        inherited.add(base)
+    }
     val keywords = ArrayList<GeneratorText>()
     for (codePoint in rawKeywords.keys.sorted()) {
         val formalName = formal[codePoint] ?: rangeName(ranges, codePoint)
@@ -286,6 +296,7 @@ private fun readSources(input: File): GeneratorData {
         secondNames = secondNames.keys.sorted().flatMap { secondNames.getValue(it) },
         keywords = keywords,
         meanings = meanings,
+        inherited = inherited.sorted(),
     )
 }
 
@@ -296,7 +307,7 @@ private fun rangeName(ranges: List<GeneratorRange>, codePoint: Int): String {
 private fun unescapeXml(text: String) = text.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "\"").replace("&apos;", "'").replace("&amp;", "&")
 
 fun splitAliases(line: String): List<String> {
-    val result = ArrayList<String>()
+    val parts = ArrayList<String>()
     var depth = 0
     var start = 0
     for (i in line.indices) {
@@ -304,13 +315,15 @@ fun splitAliases(line: String): List<String> {
             '(' -> depth++
             ')' -> depth--
             ',' -> if (depth == 0) {
-                result.add(line.substring(start, i))
+                parts.add(line.substring(start, i))
                 start = i + 1
             }
         }
     }
-    result.add(line.substring(start))
-    return result.map { it.trim().removeSuffix("(1.0)").removeSuffix("(1.1)").trim() }.filter { it.isNotEmpty() }
+    parts.add(line.substring(start))
+    val names = parts.map { it.trim() }.filter { it != "etc." }
+    val whole = names.drop(1).any { it.substringBefore(' ').lowercase() in aliasContinuations }
+    return (if (whole) listOf(names.joinToString(", ")) else names).map { it.removeSuffix("(1.0)").removeSuffix("(1.1)").trim() }.filter { it.isNotEmpty() }
 }
 
 private val vowels = "aeiouy".toSet()
@@ -406,11 +419,10 @@ private class Section {
     }
 }
 
-private fun runs(values: IntArray, tableSize: Int): Section {
+private fun runs(values: IntArray): Section {
     val section = Section()
     var count = 0
     for (i in values.indices) if (i == 0 || values[i] != values[i - 1]) count++
-    section.varint(tableSize)
     section.varint(count)
     var start = 0
     for (i in 1..values.size) {
@@ -464,7 +476,7 @@ fun encodeSections(data: GeneratorData): List<ByteArray> {
     }
     val versionList = data.versions.distinct()
     val ageText = Section().apply { versionList.forEach { line(it) } }
-    val ages = runs(IntArray(data.versions.size) { versionList.indexOf(data.versions[it]) }, versionList.size)
+    val ages = runs(IntArray(data.versions.size) { versionList.indexOf(data.versions[it]) })
     val (blocks, blockText) = spans(data.blocks)
     val (subheads, subheadText) = spans(data.subheads)
     val ranges = Section()
@@ -481,7 +493,7 @@ fun encodeSections(data: GeneratorData): List<ByteArray> {
     val (keywords, keywordText) = texts(data.keywords)
     val (meanings, meaningText) = texts(data.meanings)
     return listOf(
-        codePoints, runs(data.kinds, 3), ages, ageText, blocks, blockText, subheads, subheadText, ranges, rangeText,
+        codePoints, runs(data.kinds), ages, ageText, blocks, blockText, subheads, subheadText, ranges, rangeText,
         names, secondNames, secondNameText, keywords, keywordText, meanings, meaningText,
     ).map { it.bytes.toByteArray() }
 }
@@ -489,8 +501,11 @@ fun encodeSections(data: GeneratorData): List<ByteArray> {
 fun encodeFile(sections: List<ByteArray>): ByteArray {
     val bytes = ByteArrayOutputStream()
     val out = DataOutputStream(bytes)
-    out.writeInt(DATA_MAGIC)
-    out.writeInt(DATA_VERSION)
+    val checksum = CRC32()
+    sections.forEach { checksum.update(it) }
+    out.writeInt(UnicodeData.MAGIC)
+    out.writeInt(UnicodeData.VERSION)
+    out.writeInt(checksum.value.toInt())
     out.writeInt(sections.size)
     sections.forEach { out.writeInt(it.size) }
     sections.forEach { out.write(it) }

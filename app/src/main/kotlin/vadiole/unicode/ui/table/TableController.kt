@@ -3,6 +3,8 @@ package vadiole.unicode.ui.table
 import android.graphics.Paint
 import android.os.Build
 import android.util.Log
+import kotlin.coroutines.resume
+import kotlinx.coroutines.suspendCancellableCoroutine
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.BlockList
 import vadiole.unicode.data.CodePoint
@@ -35,7 +37,9 @@ class TableController(
         abbreviations = unicodeStorage.getAbbreviations()
     }
 
-    fun prepareSearch() = unicodeStorage.search.prepare()
+    suspend fun awaitSearch() = suspendCancellableCoroutine { continuation ->
+        unicodeStorage.search.whenReady { if (continuation.isActive) continuation.resume(Unit) }
+    }
 
     suspend fun loadCachedChars(): Boolean {
         val cached = unicodeStorage.readCache(CACHE_NAME, cacheKey(userConfig.showUnsupportedChars)) ?: return false
@@ -45,10 +49,12 @@ class TableController(
         return true
     }
 
-    suspend fun loadChars(fast: Boolean): Boolean {
+    suspend fun loadChars(fast: Boolean, background: Boolean = false): Boolean {
         val count = if (fast) 256 else -1
         val showAll = userConfig.showUnsupportedChars
-        val codePoints = unicodeStorage.getCodePoints(count) { showAll || glyphPaint.hasGlyph(it) }
+        val paint = if (background) Paint() else glyphPaint
+        val codePoints = unicodeStorage.getCodePoints(count, background) { showAll || paint.hasGlyph(it) }
+        if (showAll != userConfig.showUnsupportedChars) return false
         val isChanged = !codePoints.storage.contentEquals(tableChars.storage)
         if (!fast && isChanged) unicodeStorage.writeCache(CACHE_NAME, cacheKey(showAll), codePoints.storage)
         tableChars = codePoints
@@ -61,7 +67,7 @@ class TableController(
         unicodeStorage.search.setShown(if (userConfig.showUnsupportedChars) null else tableChars.storage)
     }
 
-    private fun cacheKey(showAll: Boolean) = "$showAll;${Build.FINGERPRINT}"
+    private fun cacheKey(showAll: Boolean) = "$showAll;${Build.FINGERPRINT};${unicodeStorage.buildKey}"
 
     suspend fun loadBlocks() = worker {
         val generation = synchronized(blocksLock) { ++blocksGeneration }

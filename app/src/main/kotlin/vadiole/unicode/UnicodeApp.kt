@@ -15,7 +15,7 @@ class UnicodeApp : Application() {
         super.onCreate()
         val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
-        unicodeStorageInternal = UnicodeStorage(this)
+        unicodeStorageInternal = UnicodeStorage(this).also { it.search.prepare() }
         userConfigInternal = UserConfig(this)
         recentRepositoryInternal = RecentRepository(this, userConfig)
         Handler(Looper.getMainLooper()).postDelayed({ recentRepository.load() }, 1000)

@@ -19,12 +19,14 @@ import vadiole.unicode.search.UnicodeDataSource
 class UnicodeSearch(private val storage: UnicodeStorage) {
     private val lock = Object()
     private val mainHandler = Handler(Looper.getMainLooper())
+    private val sources by lazy { arrayOf<SearchSource>(UnicodeDataSource(storage.data(), storage::meanings)) }
     private var thread: Thread? = null
     private var pendingQuery: String? = null
     private var pendingLimit = 0
     private var pendingCallback: ((SearchResults) -> Unit)? = null
     private var generation = 0
     private var shownChanged = false
+    private var readyCallbacks: ArrayList<() -> Unit>? = ArrayList()
     @Volatile
     private var shown: IntArray? = null
     @Volatile
@@ -36,6 +38,16 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             isDaemon = true
             start()
         }
+    }
+
+    fun whenReady(callback: () -> Unit) {
+        synchronized(lock) {
+            readyCallbacks?.let {
+                it.add(callback)
+                return
+            }
+        }
+        callback()
     }
 
     fun setShown(codePoints: IntArray?) = synchronized(lock) {
@@ -67,14 +79,24 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
 
     fun match(results: SearchResults, position: Int): SearchMatch? = engine?.match(results, position)
 
-    fun createEngine(): CharSearch {
+    fun hasIndex(data: UnicodeData): Boolean {
+        val file = File(storage.cacheDir, INDEX_NAME)
+        return try {
+            file.exists() && file.inputStream().use { SearchIndex.hasKey(it, indexKey(data)) }
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    private fun indexKey(data: UnicodeData) = "${SearchIndex.FORMAT};${data.checksum};${storage.buildKey};${sources.joinToString(",") { it.key }}"
+
+    internal fun createEngine(): CharSearch {
         val start = SystemClock.elapsedRealtime()
         val data = storage.data()
-        val sources = arrayOf<SearchSource>(UnicodeDataSource(data, storage::meanings))
-        val key = "${data.version};${BuildConfig.VERSION_CODE};${sources.joinToString(",") { it.key }}"
+        val key = indexKey(data)
         val file = File(storage.cacheDir, INDEX_NAME)
         var index = try {
-            if (file.exists()) file.inputStream().buffered(1 shl 16).use { SearchIndex.load(it, key, file.length()) } else null
+            if (file.exists()) SearchIndex.load(file.readBytes(), key) else null
         } catch (e: Exception) {
             null
         }
@@ -86,20 +108,21 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
                 source.emit(builder)
             }
             index = builder.build()
-            storage.releaseMeanings()
+        }
+        storage.releaseMeanings()
+        val engine = CharSearch(data, index, sources)
+        if (BuildConfig.DEBUG) {
+            val source = if (cached) "cache" else "build"
+            Log.d(TAG, "index ready from $source in ${SystemClock.elapsedRealtime() - start}ms, ${SystemClock.uptimeMillis() - processStart()}ms after process start, ${index.bytes} bytes")
+        }
+        if (!cached) {
             val temp = File(storage.cacheDir.also { it.mkdirs() }, "$INDEX_NAME.tmp")
             try {
-                temp.outputStream().buffered(1 shl 16).use { index.save(it, key) }
+                temp.outputStream().use { index.save(it, key) }
                 temp.renameTo(file)
             } catch (e: Exception) {
                 temp.delete()
             }
-        }
-        val engine = CharSearch(data, index, sources)
-        engine.search(WARM_UP_QUERY, PAGE_SIZE)
-        if (BuildConfig.DEBUG) {
-            val source = if (cached) "cache" else "build"
-            Log.d(TAG, "index ready from $source in ${SystemClock.elapsedRealtime() - start}ms, ${SystemClock.uptimeMillis() - processStart()}ms after process start, ${index.bytes} bytes")
         }
         return engine
     }
@@ -109,39 +132,54 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private fun run() {
         val engine = createEngine()
         this.engine = engine
+        val ready = synchronized(lock) { readyCallbacks.also { readyCallbacks = null } }
+        ready?.forEach { mainHandler.post(it) }
         val data = storage.data()
+        var warmUp = 0
         while (true) {
-            val query: String
-            val limit: Int
-            val callback: (SearchResults) -> Unit
-            val current: Int
+            var query: String? = null
+            var limit = 0
+            var callback: ((SearchResults) -> Unit)? = null
+            var current = 0
+            var codePoints: IntArray? = null
+            var update = false
             synchronized(lock) {
-                while (pendingQuery == null) lock.wait()
-                query = pendingQuery!!
-                limit = pendingLimit
-                callback = pendingCallback!!
-                current = generation
-                pendingQuery = null
-                pendingCallback = null
-                if (shownChanged) {
+                while (pendingQuery == null && warmUp == WARM_UP.size) lock.wait()
+                if (pendingQuery != null) {
+                    query = pendingQuery
+                    limit = pendingLimit
+                    callback = pendingCallback
+                    current = generation
+                    pendingQuery = null
+                    pendingCallback = null
+                    update = shownChanged
                     shownChanged = false
-                    engine.shown = shown?.let { codePoints ->
-                        val bits = LongArray((data.size + 63) ushr 6)
-                        for (codePoint in codePoints) {
-                            val char = data.indexOf(codePoint)
-                            if (char >= 0) bits[char ushr 6] = bits[char ushr 6] or (1L shl char)
-                        }
-                        bits
+                    codePoints = shown
+                }
+            }
+            val text = query
+            if (text == null) {
+                engine.search(WARM_UP[warmUp++], PAGE_SIZE)
+                continue
+            }
+            if (update) {
+                engine.shown = codePoints?.let { shown ->
+                    val bits = LongArray((data.size + 63) ushr 6)
+                    for (codePoint in shown) {
+                        val char = data.indexOf(codePoint)
+                        if (char >= 0) bits[char ushr 6] = bits[char ushr 6] or (1L shl char)
                     }
+                    bits
                 }
             }
             val start = SystemClock.elapsedRealtimeNanos()
-            val results = engine.search(query, limit)
+            val results = engine.search(text, limit)
             if (BuildConfig.DEBUG) {
-                Log.d(TAG, "search \"$query\" limit $limit: ${(SystemClock.elapsedRealtimeNanos() - start) / 1000}us, ${results.total} results")
+                Log.d(TAG, "search \"$text\" limit $limit: ${(SystemClock.elapsedRealtimeNanos() - start) / 1000}us, ${results.total} results")
             }
+            val deliver = callback
             mainHandler.post {
-                if (synchronized(lock) { current == generation }) callback(results)
+                if (synchronized(lock) { current == generation }) deliver?.invoke(results)
             }
         }
     }
@@ -150,6 +188,6 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
         const val PAGE_SIZE = 64
         private const val TAG = "UnicodeSearch"
         private const val INDEX_NAME = "search"
-        private const val WARM_UP_QUERY = "a e"
+        private val WARM_UP = arrayOf("ar", "st", "co", "e", "a", "s")
     }
 }
