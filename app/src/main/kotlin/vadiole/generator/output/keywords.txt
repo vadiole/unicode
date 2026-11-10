@@ -1,0 +1,1777 @@
+0021 | bang | point ~ exclamation ~ mark
+0023 | hashtag | lb | pound ~ hash ~ number ~ sign
+0024 | money | peso | USD ~ dollar
+0025 | cent | per | per-cent ~ percent
+0026 | and | et ~ ampersand
+0027 | quote | single ~ apostrophe ~ typewriter
+0029 | bracket | paren | parens | round ~ close ~ parenthesis
+002A | star | wildcard ~ asterisk
+002B | add ~ plus ~ sign
+002C ~ comma
+002D | dash ~ hyphen ~ hyphen-minus ~ minus
+002E | dot ~ full ~ period ~ stop
+002F | oblique | stroke | virgule | whack ~ slash ~ solidus
+003A ~ colon
+003B | semi-colon ~ semicolon
+003C | open | tag ~ less ~ less-than ~ than
+003D ~ equal ~ equals
+003E | close | tag ~ greater ~ greater-than ~ than
+003F ~ mark ~ question
+0040 | ampersat | arobase | arroba | mark | strudel ~ at ~ at-sign ~ commercial ~ sign
+005B | crotchet ~ bracket ~ open ~ square
+005C | whack ~ backslash ~ reverse ~ solidus
+005D | crotchet ~ bracket ~ close ~ square
+005E | caret | chevron | control | hat | pointer | power | sign | wedge | xor ~ accent ~ circumflex
+005F | dash | underdash | underline ~ line ~ low
+0060 | tone ~ accent ~ grave
+007B | brace | gullwing ~ bracket ~ curly ~ open
+007C | bar | pike | pipe | sheffer | stick | stroke | vbar ~ line ~ vertical
+007D | brace | gullwing ~ bracket ~ close ~ curly
+007E ~ tilde
+00A1 | bang | point ~ exclamation ~ inverted ~ mark
+00A2 ~ cent
+00A3 | currency | EGP | GBP ~ pound
+00A5 | CNY | currency | JPY | yuan ~ yen
+00A7 | paragraph | part | silcrow ~ section
+00A8 | tréma | umlaut ~ diaeresis
+00A9 | C ~ copyright
+00AB | brackets | carets | chevron | quote ~ angle ~ guillemet ~ left
+00AC ~ negation ~ not
+00AE | R ~ registered
+00B0 | hour | proof ~ degree
+00B1 ~ plus-minus
+00B2 | squared ~ superscript ~ two
+00B3 | cubed ~ superscript ~ three
+00B4 | tone ~ accent ~ acute
+00B5 | measure ~ micro ~ sign
+00B6 | alinea | paraph ~ mark ~ paragraph ~ pilcrow
+00B7 | interpunct | middot ~ dot ~ middle
+00B9 ~ one ~ superscript
+00BB | brackets | carets | chevron | quote ~ angle ~ guillemet ~ right
+00BF ~ inverted ~ mark ~ question
+00D7 | multiply | times ~ multiplication ~ sign
+00F7 | divide | obelus ~ division ~ sign
+060C ~ arabic ~ comma
+061B | semi-colon ~ arabic ~ semicolon
+061F ~ arabic ~ mark ~ question
+2010 | dash ~ hyphen
+2013 ~ dash ~ en
+2014 ~ dash ~ em
+2015 | dash | line ~ bar ~ horizontal
+2018 | quote | smart ~ apostrophe ~ left ~ single
+2019 | quote | smart ~ apostrophe ~ right ~ single
+201A | quote ~ apostrophe ~ low ~ right
+201C | quote | smart ~ double ~ left ~ mark ~ quotation
+201D | quote | smart ~ double ~ mark ~ quotation ~ right
+201E | quote | smart ~ double ~ low ~ mark ~ quotation ~ right
+2020 | obelisk | obelus ~ dagger ~ sign
+2021 | obelisk | obelus ~ dagger ~ double ~ sign
+2022 | dot ~ bullet
+2026 | dots | omission ~ ellipsis
+2027 | dash | hyphen ~ hyphenation ~ point
+2030 | mil | permil | permille ~ mille ~ per
+2032 ~ prime
+2033 ~ double ~ prime
+2034 ~ prime ~ triple
+2038 ~ caret
+203B ~ mark ~ reference
+203C | bangbang | punctuation | !! ~ ! ~ double ~ exclamation ~ mark
+203D | interabang ~ interrobang
+203E | overstrike | vinculum ~ overline
+2042 | dinkus | stars ~ asterism
+2044 | stroke | virgule ~ fraction ~ slash
+2049 | interrobang | punctuation | !? ~ ! ~ ? ~ exclamation ~ mark ~ question
+207B ~ minus ~ superscript
+20A2 | BRB | currency ~ cruzeiro
+20A3 | currency ~ franc ~ french
+20A4 | currency ~ lira
+20A5 | mil ~ mill
+20A8 | currency ~ rupee
+20A9 | KPW | KRW ~ won
+20AC | currency | EUR ~ euro
+20B0 | currency | pfennig ~ german ~ penny
+20B1 ~ peso
+20B3 | ARA | currency ~ austral
+20B6 | currency ~ livre ~ tournois
+20B7 | currency ~ spesmilo
+20B9 | currency ~ indian ~ rupee
+20BD | currency ~ ruble
+20BF | BTC ~ bitcoin
+2117 ~ copyright ~ recording ~ sound
+2122 | TM | trademark ~ mark ~ trade
+2139 | I ~ information
+2190 ~ arrow ~ left ~ left-pointing
+2191 ~ arrow ~ up ~ up-pointing
+2192 ~ arrow ~ right ~ right-pointing
+2193 ~ arrow ~ down ~ down-pointing
+2194 ~ arrow ~ left-right
+2195 ~ arrow ~ up-down
+2196 | direction | intercardinal | northwest ~ arrow ~ up-left
+2197 | direction | intercardinal | northeast ~ arrow ~ up-right
+2198 | direction | intercardinal | southeast ~ arrow ~ down-right
+2199 | direction | intercardinal | southwest ~ arrow ~ down-left
+219A ~ arrow ~ leftwards ~ stroke
+219B ~ arrow ~ rightwards ~ stroke
+219C ~ arrow ~ leftwards ~ wave
+219D ~ arrow ~ rightwards ~ wave
+219E ~ arrow ~ headed ~ leftwards ~ two
+219F ~ arrow ~ headed ~ two ~ upwards
+21A0 ~ arrow ~ headed ~ rightwards ~ two
+21A1 ~ arrow ~ downwards ~ headed ~ two
+21A2 ~ arrow ~ leftwards ~ tail
+21A3 ~ arrow ~ rightwards ~ tail
+21A4 ~ arrow ~ bar ~ from ~ leftwards
+21A5 ~ arrow ~ bar ~ from ~ upwards
+21A6 ~ arrow ~ bar ~ from ~ rightwards
+21A7 ~ arrow ~ bar ~ downwards ~ from
+21A8 ~ arrow ~ base ~ down ~ up ~ with
+21A9 ~ arrow ~ curving ~ left ~ right
+21AA ~ arrow ~ curving ~ left ~ right
+21AB ~ arrow ~ leftwards ~ loop
+21AC ~ arrow ~ loop ~ rightwards
+21AD ~ arrow ~ left ~ right ~ wave
+21AE ~ arrow ~ left ~ right ~ stroke
+21AF ~ arrow ~ downwards ~ zigzag
+21B0 ~ arrow ~ leftwards ~ tip ~ upwards
+21B1 ~ arrow ~ rightwards ~ tip ~ upwards
+21B2 ~ arrow ~ downwards ~ leftwards ~ tip
+21B3 ~ arrow ~ downwards ~ rightwards ~ tip
+21B4 ~ arrow ~ corner ~ downwards ~ rightwards
+21B5 ~ arrow ~ corner ~ downwards ~ leftwards
+21B6 ~ anticlockwise ~ arrow ~ semicircle ~ top
+21B7 ~ arrow ~ clockwise ~ semicircle ~ top
+21B8 ~ arrow ~ bar ~ long ~ north ~ west
+21B9 ~ arrow ~ bar ~ bars ~ leftwards ~ over ~ rightwards
+21BA ~ anticlockwise ~ arrow ~ circle ~ open
+21BB ~ arrow ~ circle ~ clockwise ~ open
+21BC ~ barb ~ harpoon ~ leftwards ~ upwards
+21BD ~ barb ~ downwards ~ harpoon ~ leftwards
+21BE ~ barb ~ harpoon ~ rightwards ~ upwards
+21BF ~ barb ~ harpoon ~ leftwards ~ upwards
+21C0 ~ barb ~ harpoon ~ rightwards ~ upwards
+21C1 ~ barb ~ downwards ~ harpoon ~ rightwards
+21C2 ~ barb ~ downwards ~ harpoon ~ rightwards
+21C3 ~ barb ~ downwards ~ harpoon ~ leftwards
+21C4 ~ arrow ~ leftwards ~ over ~ rightwards
+21C5 ~ and ~ arrow ~ arrows ~ down ~ down-pointing ~ up ~ up-pointing
+21C6 ~ arrow ~ arrows ~ left ~ left-pointing ~ over ~ right ~ right-pointing
+21C7 ~ arrows ~ leftwards ~ paired
+21C8 ~ arrows ~ paired ~ upwards
+21C9 ~ arrows ~ paired ~ rightwards
+21CA ~ arrows ~ downwards ~ paired
+21CB ~ harpoon ~ leftwards ~ over ~ rightwards
+21CC ~ harpoon ~ leftwards ~ over ~ rightwards
+21CD ~ arrow ~ double ~ leftwards ~ stroke
+21CE ~ arrow ~ double ~ left ~ right ~ stroke
+21CF ~ arrow ~ double ~ rightwards ~ stroke
+21D0 ~ arrow ~ double ~ leftwards
+21D1 ~ arrow ~ double ~ upwards
+21D2 ~ arrow ~ double ~ rightwards
+21D3 ~ arrow ~ double ~ downwards
+21D4 ~ arrow ~ double ~ left ~ right
+21D6 ~ arrow ~ double ~ north ~ west
+21D7 ~ arrow ~ double ~ east ~ north
+21D8 ~ arrow ~ double ~ east ~ south
+21D9 ~ arrow ~ double ~ south ~ west
+21DA ~ arrow ~ leftwards ~ triple
+21DB ~ arrow ~ rightwards ~ triple
+21DC ~ arrow ~ leftwards ~ squiggle
+21DD ~ arrow ~ rightwards ~ squiggle
+21DE ~ arrow ~ double ~ stroke ~ upwards
+21DF ~ arrow ~ double ~ downwards ~ stroke
+21E0 ~ arrow ~ dashed ~ leftwards
+21E1 ~ arrow ~ dashed ~ upwards
+21E2 ~ arrow ~ dashed ~ rightwards
+21E3 ~ arrow ~ dashed ~ downwards
+21E4 ~ arrow ~ bar ~ leftwards
+21E5 ~ arrow ~ bar ~ rightwards
+21E6 ~ arrow ~ hollow ~ leftwards
+21E7 ~ arrow ~ hollow ~ upwards
+21E8 ~ arrow ~ hollow ~ rightwards
+21E9 ~ arrow ~ downwards ~ hollow
+21EA ~ arrow ~ bar ~ from ~ hollow ~ upwards
+21F5 ~ arrow ~ downwards ~ leftwards ~ upwards
+2200 | any | given | universal ~ all ~ for
+2202 ~ differential ~ partial
+2203 ~ exists ~ there
+2205 | mathematics | operator ~ empty ~ set
+2206 | triangle ~ increment
+2207 | triangle ~ nabla
+2208 | contains | membership | set ~ element ~ of
+2209 ~ an ~ element ~ not
+220B | element ~ as ~ contains ~ member
+220E | halmos | q.e.d. | qed | tombstone ~ end ~ proof
+220F | logic ~ n-ary ~ product
+2211 | mathematics ~ n-ary ~ summation
+2212 | subtract ~ minus ~ sign
+2213 ~ minus-or-plus ~ plus-minus
+2215 | stroke | virgule ~ division ~ slash
+2217 | star ~ asterisk ~ operator
+2218 | composition ~ operator ~ ring
+2219 ~ bullet ~ operator
+221A | radical | radix | surd ~ root ~ square
+221D | proportionality ~ proportional
+221E ~ infinity ~ sign
+221F | mathematics ~ angle ~ right
+2220 | acute ~ angle
+2223 | divisor ~ divides
+2225 ~ parallel
+2227 | ac | atque | wedge ~ and ~ logical
+2229 | set ~ intersection
+222A | collection | set ~ union
+222B | calculus ~ integral
+222C | calculus ~ double ~ integral
+222E ~ contour ~ integral
+2234 | logic ~ therefore
+2235 | logic ~ because
+2236 ~ ratio
+2237 | proportionality ~ proportion
+223C ~ operator ~ tilde
+223D ~ reversed ~ tilde
+223E ~ inverted ~ lazy ~ s
+2243 | asymptote | mathematics ~ asymptotically ~ equal
+2245 | congruence | equality | isomorphism | mathematics ~ approximately ~ equal
+2248 | approximate | approximation ~ almost ~ equal
+224C | equality | mathematics ~ all ~ equal
+2252 ~ approximately ~ equal ~ image ~ the
+2256 | equality | mathematics ~ equal ~ in ~ ring
+2260 | inequality | inequation ~ equal ~ not
+2261 | exact | triple ~ identical ~ to
+2263 | equality | mathematics ~ equivalent ~ strictly
+2264 | inequality ~ equal ~ equals ~ less-than ~ or
+2265 | inequality ~ equal ~ equals ~ greater-than ~ or
+2266 | inequality | mathematics ~ equal ~ less-than ~ over
+2267 | inequality | mathematics ~ equal ~ greater-than ~ over
+226A | inequality | mathematics ~ less-than ~ much
+226B | inequality | mathematics ~ greater-than ~ much
+226C ~ between
+226E | inequality | mathematics ~ less-than ~ not
+226F | inequality | mathematics ~ greater-than ~ not
+2273 | inequality | mathematics ~ equivalent ~ greater-than
+227A | mathematics | operator | set ~ precedes
+227B | mathematics | operator | set ~ succeeds
+2281 | mathematics | operator | set ~ does ~ not ~ succeed
+2282 | set ~ of ~ subset
+2283 | mathematics | operator | set ~ superset
+2286 ~ equal ~ subset
+2287 | equality | mathematics ~ equal ~ superset
+2295 ~ circled ~ plus
+2296 | difference | erosion | symmetric ~ circled ~ minus
+2297 | product | tensor ~ circled ~ times
+2298 | division-like | mathematics ~ circled ~ division ~ slash
+2299 | XNOR ~ circled ~ dot ~ operator
+229A ~ circled ~ operator ~ ring
+229B ~ asterisk ~ circled ~ operator
+229E | addition-like | mathematics ~ plus ~ squared
+229F | mathematics | subtraction-like ~ minus ~ squared
+22A5 | eet | falsum ~ tack ~ up
+22AE ~ does ~ force ~ not
+22B0 | mathematics | operator | set ~ precedes ~ relation ~ under
+22B1 | mathematics | operator | set ~ relation ~ succeeds ~ under
+22B6 ~ original
+22B9 | mathematics | self-adjoint | square ~ conjugate ~ hermitian ~ matrix
+22BF | mathematics | right-angled ~ right ~ triangle
+22C1 | disjunction | logic ~ logical ~ n-ary ~ or
+22C2 | mathematics | operator | set ~ intersection ~ n-ary
+22C3 | mathematics | operator | set ~ n-ary ~ union
+22C5 ~ dot ~ operator
+22C6 ~ operator ~ star
+22C8 | binary | operator ~ bowtie ~ join ~ natural
+22D2 | mathematics | operator | set ~ double ~ intersection
+22D8 | inequality | mathematics ~ less-than ~ much ~ very
+22D9 | inequality | mathematics ~ greater-than ~ much ~ very
+22ED | group | mathematics | theory ~ as ~ contain ~ does ~ equal ~ normal ~ not ~ subgroup
+22EE | mathematics ~ ellipsis ~ vertical
+22EF ~ ellipsis ~ horizontal ~ midline
+22F0 | mathematics ~ diagonal ~ ellipsis ~ right ~ up
+22F1 | mathematics ~ diagonal ~ down ~ ellipsis ~ right
+231A | clock | time ~ watch
+231B | sand | time | timer ~ done ~ hourglass
+2328 | computer ~ keyboard
+23CF ~ button ~ eject
+23E9 | arrow ~ button ~ double ~ fast ~ fast-forward ~ forward
+23EA | arrow | rewind ~ button ~ double ~ fast ~ reverse
+23EB | arrow ~ button ~ double ~ fast ~ up
+23EC | arrow ~ button ~ double ~ down ~ fast
+23ED | arrow | scene ~ button ~ next ~ track ~ triangle
+23EE | arrow | previous | scene ~ button ~ last ~ track ~ triangle
+23EF | arrow ~ button ~ pause ~ play ~ right ~ triangle
+23F0 | hours | hrs | late | time | waiting ~ alarm ~ clock
+23F1 | clock | time ~ stopwatch
+23F2 ~ clock ~ timer
+23F3 | hours | timer | waiting | yolo ~ done ~ flowing ~ hourglass ~ not ~ sand
+23F8 ~ bar ~ button ~ double ~ pause ~ vertical
+23F9 ~ button ~ square ~ stop
+23FA ~ button ~ circle ~ record
+24C2 ~ circle ~ circled ~ M
+25A0 ~ filled ~ square
+25A1 ~ hollow ~ square
+25A2 ~ corners ~ hollow ~ rounded ~ square ~ with
+25A3 ~ containing ~ filled ~ hollow ~ square
+25A4 ~ fill ~ horizontal ~ square ~ with
+25A5 ~ fill ~ square ~ vertical ~ with
+25A6 ~ crosshatch ~ fill ~ orthogonal ~ square
+25A7 ~ fill ~ left ~ lower ~ right ~ square ~ upper
+25A8 ~ fill ~ left ~ lower ~ right ~ square ~ upper
+25A9 ~ crosshatch ~ diagonal ~ fill ~ square
+25AA | geometric ~ black ~ small ~ square
+25AB | geometric ~ small ~ square ~ white
+25AC ~ filled ~ rectangle
+25AD ~ hollow ~ rectangle
+25AE ~ filled ~ rectangle ~ vertical
+25B0 ~ filled ~ parallelogram
+25B2 | arrow ~ filled ~ triangle ~ up ~ up-pointing
+25B3 ~ hollow ~ triangle ~ up-pointing
+25B4 ~ filled ~ small ~ triangle ~ up-pointing
+25B5 ~ hollow ~ small ~ triangle ~ up-pointing
+25B6 | arrow ~ button ~ play ~ right ~ triangle
+25B7 ~ hollow ~ right-pointing ~ triangle
+25B8 ~ filled ~ right-pointing ~ small ~ triangle
+25B9 ~ hollow ~ right-pointing ~ small ~ triangle
+25BA ~ filled ~ pointer ~ right-pointing
+25BB ~ hollow ~ pointer ~ right-pointing
+25BC | arrow ~ down ~ down-pointing ~ filled ~ triangle
+25BD ~ down-pointing ~ hollow ~ triangle
+25BE ~ down-pointing ~ filled ~ small ~ triangle
+25BF ~ down-pointing ~ hollow ~ small ~ triangle
+25C0 | arrow ~ button ~ left ~ reverse ~ triangle
+25C1 ~ hollow ~ left-pointing ~ triangle
+25C2 ~ filled ~ left-pointing ~ small ~ triangle
+25C3 ~ hollow ~ left-pointing ~ small ~ triangle
+25C4 ~ filled ~ left-pointing ~ pointer
+25C5 ~ hollow ~ left-pointing ~ pointer
+25C6 ~ diamond ~ filled
+25C7 ~ diamond ~ hollow
+25C8 ~ containing ~ diamond ~ filled ~ hollow
+25C9 | cicles | concentric | dot | ward ~ circle ~ circled ~ containing ~ filled ~ fisheye ~ hollow
+25CA | diamond | rhombus ~ lozenge
+25CB | ring ~ circle ~ hollow
+25CC ~ circle ~ dotted
+25CD ~ circle ~ fill ~ vertical ~ with
+25CE | double | target ~ circle ~ circles ~ concentric
+25CF ~ circle ~ filled
+25D0 ~ circle ~ filled ~ half ~ left
+25D1 ~ circle ~ filled ~ half ~ right
+25D2 ~ circle ~ filled ~ half ~ lower
+25D3 ~ circle ~ filled ~ half ~ upper
+25D4 ~ circle ~ filled ~ quadrant ~ right ~ upper
+25D5 ~ all ~ but ~ circle ~ filled ~ left ~ quadrant ~ upper
+25D6 ~ circle ~ filled ~ half ~ left
+25D7 ~ circle ~ filled ~ half ~ right
+25D8 ~ bullet ~ inverse
+25D9 ~ circle ~ containing ~ filled ~ hollow ~ inverse ~ square
+25DC ~ arc ~ circular ~ left ~ quadrant ~ upper
+25DD ~ arc ~ circular ~ quadrant ~ right ~ upper
+25DE ~ arc ~ circular ~ lower ~ quadrant ~ right
+25DF ~ arc ~ circular ~ left ~ lower ~ quadrant
+25E0 ~ circle ~ half ~ upper
+25E1 ~ circle ~ half ~ lower
+25E2 ~ filled ~ lower ~ right ~ triangle
+25E3 ~ filled ~ left ~ lower ~ triangle
+25E4 ~ filled ~ left ~ triangle ~ upper
+25E5 ~ filled ~ right ~ triangle ~ upper
+25E6 ~ bullet ~ hollow
+25EF | ring ~ circle ~ hollow ~ large
+25F3 ~ hollow ~ quadrant ~ right ~ square ~ upper
+25F7 ~ circle ~ hollow ~ quadrant ~ right ~ upper ~ with
+25FB | geometric ~ medium ~ square ~ white
+25FC | geometric ~ black ~ medium ~ square
+25FD | geometric ~ medium-small ~ square ~ white
+25FE | geometric ~ black ~ medium-small ~ square
+25FF ~ lower ~ right ~ triangle
+2600 | bright | space | sunny | weather ~ rays ~ sun
+2601 | weather ~ cloud
+2602 | clothing | rain ~ umbrella
+2603 | cold | man | snow ~ snowman
+2604 | space ~ comet
+260E | phone ~ telephone
+2611 | done | off | tick ~ ✓ ~ ballot ~ box ~ check ~ checked
+2614 | clothing | weather ~ drop ~ drops ~ rain ~ umbrella
+2615 | cafe | caffeine | chai | coffee | drink | morning | steaming | tea ~ beverage ~ hot
+2618 | irish | plant ~ shamrock
+261D | finger | hand | this ~ index ~ point ~ pointing ~ up
+2620 | bone | dead | death | face | monster ~ crossbones ~ skull
+2622 ~ radioactive ~ sign
+2623 ~ biohazard ~ sign
+2626 | Christian | religion ~ cross ~ orthodox
+262A | islam | Muslim | ramadan | religion ~ crescent ~ star
+262E | healing ~ peace ~ peaceful ~ symbol
+262F | difficult | lives | religion | tao | taoist | total | yinyang ~ yang ~ yin
+2638 | Buddhist | religion ~ dharma ~ wheel
+2639 | sad ~ face ~ frown ~ frowning
+263A | happy | outlined | relaxed ~ face ~ smile ~ smiling
+2640 | woman ~ female ~ sign
+2642 | man ~ male ~ sign
+2648 | horoscope | ram | zodiac ~ Aries
+2649 | bull | horoscope | ox | zodiac ~ Taurus
+264A | horoscope | twins | zodiac ~ Gemini
+264B | crab | horoscope | zodiac ~ Cancer
+264C | horoscope | lion | zodiac ~ Leo
+264D | horoscope | zodiac ~ Virgo
+264E | balance | horoscope | justice | scales | zodiac ~ Libra
+264F | horoscope | zodiac ~ Scorpio ~ scorpion ~ Scorpius
+2650 | archer | horoscope | zodiac ~ Sagittarius
+2651 | goat | horoscope | zodiac ~ Capricorn
+2652 | bearer | horoscope | water | zodiac ~ Aquarius
+2653 | fish | horoscope | zodiac ~ Pisces
+265F | dupe | expendable ~ chess ~ pawn
+2660 | card | game ~ spade ~ suit
+2663 | card | game ~ club ~ clubs ~ suit
+2665 | card | emotion | game ~ heart ~ hearts ~ suit
+2666 | card | game ~ diamond ~ suit
+2668 | hotsprings | steaming ~ hot ~ springs
+266A | music ~ eighth ~ note
+266D | bemolle | note ~ flat ~ music
+266F | dièse | diesis | note ~ music ~ sharp
+267B ~ recycle ~ recycling ~ symbol
+267E | forever | unbounded | universal ~ infinity
+267F | access | handicap ~ symbol ~ wheelchair
+2692 | tool ~ hammer ~ pick
+2693 | ship | tool ~ anchor
+2694 | weapon ~ crossed ~ swords
+2695 | medicine ~ aesculapius ~ medical ~ staff ~ symbol
+2696 | justice | Libra | tool | weight | zodiac ~ balance ~ scale ~ scales
+2697 | chemistry | tool ~ alembic
+2699 | cog | cogwheel | tool ~ gear
+269B | atheist ~ atom ~ symbol
+269C | knights ~ fleur-de-lis
+26A0 | caution ~ warning
+26A1 | danger | electric | electricity | lightning | nature | thunder | thunderbolt | zap ~ high ~ voltage
+26A7 ~ symbol ~ transgender
+26AA | geometric ~ circle ~ white
+26AB | geometric ~ black ~ circle
+26B0 | dead | death | vampire ~ coffin
+26B1 | ashes | death ~ funeral ~ urn
+26BD | football | futbol | sport ~ ball ~ soccer
+26BE | ball | sport ~ baseball
+26C4 | cold | man ~ snow ~ snowman
+26C5 | weather ~ behind ~ cloud ~ cloudy ~ sun
+26C8 | thunderstorm ~ cloud ~ lightning ~ rain ~ thunder
+26CE | bearer | serpent | snake | zodiac ~ Ophiuchus
+26CF | hammer | mining | tool ~ pick
+26D1 | aid | face | hat ~ cross ~ helmet ~ rescue ~ worker’s
+26D3 ~ chain ~ chains
+26D4 | do | fail | forbidden | not | pass | prohibited | traffic ~ entry ~ no
+26E9 | religion ~ shinto ~ shrine
+26EA | bless | chapel | Christian | cross | religion ~ church
+26F0 ~ mountain
+26F1 | rain | sun ~ ground ~ umbrella
+26F2 ~ fountain
+26F3 | golf | sport ~ flag ~ hole
+26F4 | boat | passenger ~ ferry
+26F5 | boat | resort | sailing | sea | yacht ~ sailboat
+26F7 | ski | snow ~ skier
+26F8 ~ ice ~ skate ~ skating
+26F9 | athletic | basketball | championship | dribble | net | player | throw ~ ball ~ bouncing ~ person
+26FA | camping ~ tent
+26FD | diesel | fuelpump | gas | gasoline | station ~ fuel ~ pump
+2702 | cut | cutting | paper | tool ~ scissors
+2705 | checkmark | complete | completed | done | fixed | tick ~ ✓ ~ button ~ check ~ checked ~ mark
+2708 | aeroplane | fly | flying | jet | plane | travel ~ airplane
+2709 | e-mail | email | letter ~ envelope
+270A | clenched | hand | punch | solidarity ~ fist ~ raised
+270B | five | high | stop ~ 5 ~ hand ~ raised
+270C | peace | v ~ hand ~ victory
+270D ~ hand ~ write ~ writing
+270F ~ pencil
+2712 | pen ~ black ~ nib
+2714 | checkmark | done | tick ~ ✓ ~ check ~ checked ~ heavy ~ mark
+2716 | cancel | sign ~ × ~ multiplication ~ multiply ~ x
+271D | christ | Christian | religion ~ cross ~ latin
+2721 | Jew | Jewish | judaism | religion ~ David ~ star
+2728 | magic | star ~ * ~ sparkle ~ sparkles
+2733 ~ * ~ asterisk ~ eight-spoked
+2734 ~ * ~ eight-pointed ~ star
+2744 | cold | snow | weather ~ snowflake
+2747 ~ * ~ sparkle
+274C | cancel | multiplication | multiply | x ~ × ~ cross ~ mark
+274E | multiplication | multiply | x ~ × ~ button ~ cross ~ mark ~ square
+2753 | punctuation ~ ? ~ mark ~ question ~ red
+2754 | outlined | punctuation ~ ? ~ mark ~ question ~ white
+2755 | bang | outlined | punctuation ~ ! ~ exclamation ~ mark ~ white
+2757 | bang | punctuation ~ ! ~ exclamation ~ mark ~ red
+2763 | bang | punctuation ~ exclamation ~ heart ~ heavy ~ mark
+2764 | emotion | love ~ heart ~ red
+2795 ~ + ~ plus
+2796 | math ~ - ~ − ~ heavy ~ minus ~ sign
+2797 | math ~ ÷ ~ divide ~ division ~ heavy ~ sign
+27A1 | cardinal | direction | east ~ arrow ~ right
+27B0 ~ curl ~ curly ~ loop
+27BF ~ curl ~ curly ~ double ~ loop
+2934 ~ arrow ~ curving ~ right ~ up
+2935 ~ arrow ~ curving ~ down ~ right
+2A27 ~ plus ~ subscript ~ two
+2A2F ~ cross ~ product ~ vector
+2A3C ~ interior ~ product
+2A63 ~ double ~ logical ~ or ~ underbar
+2A7D ~ equal ~ less-than ~ slanted
+2A8D ~ above ~ equal ~ less-than ~ similar
+2A9A | inequality | mathematics ~ double-line ~ equal ~ greater-than
+2ABA ~ above ~ almost ~ equal ~ not ~ succeeds
+2B05 | cardinal | direction | west ~ arrow ~ left
+2B06 | cardinal | direction | north ~ arrow ~ up
+2B07 | cardinal | direction | south ~ arrow ~ down
+2B1B | geometric ~ black ~ large ~ square
+2B1C | geometric ~ large ~ square ~ white
+2B50 | astronomy ~ medium ~ star ~ stars ~ white
+2B55 | o ~ circle ~ heavy ~ hollow ~ large ~ red
+3001 ~ comma ~ ideographic
+3002 ~ full ~ ideographic ~ period ~ stop
+3008 | chevron | diamond | pointy | tuple ~ angle ~ bracket ~ brackets ~ open
+3009 | chevron | diamond | pointy | tuple ~ angle ~ bracket ~ brackets ~ close
+300A ~ angle ~ bracket ~ double ~ open
+300B ~ angle ~ bracket ~ close ~ double
+300C ~ bracket ~ corner ~ open
+300D ~ bracket ~ close ~ corner
+300E ~ bracket ~ corner ~ hollow ~ open
+300F ~ bracket ~ close ~ corner ~ hollow
+3010 ~ black ~ bracket ~ lens ~ lenticular ~ open
+3011 ~ black ~ bracket ~ close ~ lens ~ lenticular
+3014 ~ bracket ~ open ~ shell ~ tortoise
+3015 ~ bracket ~ close ~ shell ~ tortoise
+3016 ~ bracket ~ hollow ~ lens ~ lenticular ~ open
+3017 ~ bracket ~ close ~ hollow ~ lens ~ lenticular
+3030 | punctuation ~ dash ~ wavy
+303D ~ alternation ~ mark ~ part
+30FB | interpunct | middot ~ dot ~ dots ~ katakana ~ middle
+3297 ~ button ~ congratulations ~ ideograph ~ Japanese
+3299 ~ button ~ ideograph ~ Japanese ~ secret
+FDFC | currency ~ rial
+1F004 | game ~ dragon ~ mahjong ~ red
+1F0CF | game | wildcard ~ card ~ joker
+1F170 ~ blood ~ button ~ type
+1F171 ~ B ~ blood ~ button ~ type
+1F17E ~ blood ~ button ~ O ~ type
+1F17F | parking ~ button ~ P
+1F18E ~ AB ~ blood ~ button ~ type
+1F191 ~ button ~ CL
+1F192 ~ button ~ COOL
+1F193 ~ button ~ FREE
+1F194 | identity ~ button ~ ID
+1F195 ~ button ~ NEW
+1F196 ~ button ~ NG
+1F197 | okay ~ button ~ OK
+1F198 | help ~ button ~ SOS
+1F199 ~ button ~ mark ~ UP ~ UP!
+1F19A | versus ~ button ~ VS
+1F201 ~ button ~ here ~ Japanese ~ katakana
+1F202 ~ button ~ charge ~ Japanese ~ katakana ~ service
+1F21A ~ button ~ charge ~ free ~ ideograph ~ Japanese
+1F22F ~ button ~ ideograph ~ Japanese ~ reserved
+1F232 ~ button ~ ideograph ~ Japanese ~ prohibited
+1F233 ~ button ~ ideograph ~ Japanese ~ vacancy
+1F234 ~ button ~ grade ~ ideograph ~ Japanese ~ passing
+1F235 ~ button ~ ideograph ~ Japanese ~ no ~ vacancy
+1F236 ~ button ~ charge ~ free ~ ideograph ~ Japanese ~ not
+1F237 ~ amount ~ button ~ ideograph ~ Japanese ~ monthly
+1F238 ~ application ~ button ~ ideograph ~ Japanese
+1F239 ~ button ~ discount ~ ideograph ~ Japanese
+1F23A ~ business ~ button ~ ideograph ~ Japanese ~ open
+1F250 ~ bargain ~ button ~ ideograph ~ Japanese
+1F251 ~ acceptable ~ button ~ ideograph ~ Japanese
+1F300 | dizzy | hurricane | twister | typhoon | weather ~ cyclone
+1F301 | fog ~ foggy
+1F302 | clothing | rain ~ closed ~ umbrella
+1F303 ~ night ~ star ~ stars
+1F304 | morning | sun ~ mountains ~ over ~ sunrise
+1F305 | morning | nature | sun ~ sunrise
+1F306 | building | city | evening | landscape | sun | sunset ~ at ~ cityscape ~ dusk
+1F307 | dusk | sun ~ building ~ sunset
+1F308 | gay | genderqueer | glbt | glbtq | lesbian | lgbt | lgbtq | lgbtqia | nature | pride | queer | rain | trans | transgender | weather ~ rainbow
+1F309 ~ at ~ bridge ~ night
+1F30A | nature | ocean | surf | surfer | surfing ~ water ~ wave
+1F30B | eruption | mountain | nature ~ volcano
+1F30C | space ~ milky ~ way
+1F30D | world ~ Africa ~ earth ~ Europe ~ Europe-Africa ~ globe ~ showing
+1F30E | world ~ Americas ~ earth ~ globe ~ showing
+1F30F | world ~ Asia ~ Asia-Australia ~ Australia ~ earth ~ globe ~ showing
+1F310 | earth | internet | web | world | worldwide ~ globe ~ meridians
+1F311 | dark | space ~ moon ~ new
+1F312 | dreams | space ~ crescent ~ moon ~ waxing
+1F313 | space ~ first ~ moon ~ quarter
+1F314 | space ~ gibbous ~ moon ~ waxing
+1F315 | space ~ full ~ moon
+1F316 | space ~ gibbous ~ moon ~ waning
+1F317 | space ~ last ~ moon ~ quarter
+1F318 | space ~ crescent ~ moon ~ waning
+1F319 | ramadan | space ~ crescent ~ moon
+1F31A | space ~ face ~ moon ~ new
+1F31B | space ~ face ~ first ~ moon ~ quarter
+1F31C | dreams ~ face ~ last ~ moon ~ quarter
+1F31D | bright ~ face ~ full ~ moon
+1F31E | beach | bright | day | heat | shine | sunny | sunshine | weather ~ face ~ sun
+1F31F | glittery | night | shining | sparkle | win ~ glow ~ glowing ~ star
+1F320 | falling | night | space ~ shooting ~ star
+1F321 | weather ~ thermometer
+1F324 | weather ~ behind ~ cloud ~ sun
+1F325 | weather ~ behind ~ cloud ~ sun
+1F326 | weather ~ behind ~ cloud ~ rain ~ sun
+1F327 | weather ~ cloud ~ rain
+1F328 | cold | weather ~ cloud ~ snow
+1F329 | weather ~ cloud ~ lightning
+1F32A | weather | whirlwind ~ cloud ~ tornado
+1F32B | cloud | weather ~ fog
+1F32C | cloud ~ blow ~ face ~ wind
+1F32D | frankfurter | hotdog | sausage ~ dog ~ hot
+1F32E | mexican ~ taco
+1F32F | mexican | wrap ~ burrito
+1F330 | almond | plant ~ chestnut
+1F331 | plant | sapling | sprout | young ~ seedling
+1F332 | christmas | forest | pine ~ evergreen ~ tree
+1F333 | forest | green | habitat | shedding ~ deciduous ~ tree
+1F334 | beach | plant | tropical ~ palm ~ tree
+1F335 | desert | drought | nature | plant ~ cactus
+1F336 ~ hot ~ pepper
+1F337 | blossom | flower | growth | plant ~ tulip
+1F338 | flower | plant | spring | springtime ~ blossom ~ cherry
+1F339 | beauty | elegant | flower | love | plant | red | valentine ~ rose
+1F33A | flower | plant ~ hibiscus
+1F33B | flower | outdoors | plant | sun ~ sunflower
+1F33C | buttercup | dandelion | flower | plant ~ blossom
+1F33D | crops | farm | maze ~ corn ~ ear ~ maize
+1F33E | grain | grains | plant ~ ear ~ rice ~ sheaf
+1F33F | leaf | plant ~ herb
+1F340 | irish | lucky | plant ~ 4 ~ clover ~ four ~ four-leaf ~ leaf
+1F341 | falling ~ leaf ~ maple
+1F342 | autumn | fall | falling ~ fallen ~ leaf
+1F343 | blow ~ flutter ~ fluttering ~ leaf ~ wind
+1F344 | fungus | toadstool ~ mushroom
+1F345 | food | fruit | vegetable ~ tomato
+1F346 | vegetable ~ aubergine ~ eggplant
+1F347 | Dionysus | fruit ~ grape ~ grapes
+1F348 | cantaloupe | fruit ~ melon
+1F349 | fruit ~ watermelon
+1F34A | c | citrus | fruit | nectarine | orange | vitamin ~ tangerine
+1F34B | citrus | fruit | sour ~ lemon
+1F34C | fruit | potassium ~ banana
+1F34D | colada | fruit | pina | tropical ~ pineapple
+1F34E | diet | food | fruit | health | ripe ~ apple ~ red
+1F34F | fruit ~ apple ~ green
+1F350 | fruit ~ pear
+1F351 | fruit ~ peach
+1F352 | berries | fruit | red ~ cherries ~ cherry
+1F353 | berry | fruit ~ strawberry
+1F354 | burger | eat | fast | food | hungry ~ hamburger
+1F355 | cheese | food | hungry | pepperoni ~ pizza ~ slice
+1F356 ~ bone ~ meat
+1F357 | bone | chicken | drumstick | hungry | turkey ~ leg ~ poultry
+1F358 | food ~ cracker ~ rice
+1F359 | food | Japanese ~ ball ~ rice
+1F35A | food ~ cooked ~ rice
+1F35B | food ~ curry ~ rice
+1F35C | chopsticks | food | noodle | pho | ramen | soup ~ bowl ~ steaming
+1F35D | food | meatballs | pasta | restaurant ~ spaghetti
+1F35E | carbs | food | grain | loaf | restaurant | toast | wheat ~ bread
+1F35F | fast | food ~ french ~ fries
+1F360 | food ~ potato ~ roasted ~ sweet
+1F361 | dessert | Japanese | skewer | stick | sweet ~ dango
+1F362 | food | kebab | restaurant | seafood | skewer | stick ~ oden
+1F363 | food ~ sushi
+1F364 | prawn | tempura ~ fried ~ shrimp
+1F365 | food | pastry | restaurant ~ cake ~ fish ~ swirl
+1F366 | dessert | food | icecream | restaurant | serve | sweet ~ cream ~ ice ~ soft
+1F367 | dessert | restaurant | sweet ~ ice ~ shaved
+1F368 | dessert | food | restaurant | sweet ~ cream ~ ice
+1F369 | breakfast | dessert | donut | food | sweet ~ doughnut
+1F36A | chip | chocolate | dessert | sweet ~ cookie
+1F36B | candy | dessert | halloween | sweet | tooth ~ bar ~ chocolate
+1F36C | cavities | dessert | halloween | restaurant | sweet | tooth | wrapper ~ candy
+1F36D | candy | dessert | food | restaurant | sweet ~ lollipop
+1F36E | dessert | pudding | sweet ~ custard
+1F36F | barrel | bear | food | honeypot | jar | sweet ~ honey ~ pot
+1F370 | cake | dessert | pastry | slice | sweet ~ shortcake
+1F371 | food ~ bento ~ box
+1F372 | soup | stew ~ food ~ pot
+1F373 | breakfast | easy | egg | fry | frying | over | pan | restaurant | side | sunny | up ~ cooking
+1F374 | breakfast | breaky | cooking | cutlery | delicious | dinner | eat | feed | food | hungry | lunch | restaurant | yum | yummy ~ fork ~ knife
+1F375 | beverage | cup | drink | oolong | tea ~ handle ~ teacup
+1F376 | bar | beverage | drink | restaurant ~ bottle ~ cup ~ sake
+1F377 | alcohol | bar | beverage | booze | club | drink | drinking | drinks | restaurant ~ glass ~ wine
+1F378 | alcohol | bar | booze | club | drink | drinking | drinks | mad | martini | men ~ cocktail ~ glass
+1F379 | alcohol | bar | booze | club | cocktail | mai | party | tai | tropics ~ drink ~ drinking ~ drinks ~ drunk ~ tropical
+1F37A | alcohol | ale | bar | booze | drink | drinking | drinks | octoberfest | oktoberfest | pint | stein | summer ~ beer ~ mug
+1F37B | alcohol | bar | booze | bottoms | cheers | drinking | drinks ~ beer ~ clink ~ clinking ~ mugs
+1F37C | birth | born | drink | infant | milk | newborn ~ babies ~ baby ~ bottle
+1F37D | cooking | dinner | eat ~ fork ~ knife ~ plate
+1F37E | bar | drink ~ bottle ~ cork ~ popping
+1F37F | corn | movie | pop ~ popcorn
+1F380 | celebration ~ ribbon
+1F381 | birthday | bow | box | celebration | christmas | surprise ~ gift ~ present ~ wrapped
+1F382 | bday | celebration | dessert | happy | pastry | sweet ~ birthday ~ cake
+1F383 | celebration | halloween | pumpkin ~ jack ~ jack-o-lantern ~ lantern
+1F384 | celebration ~ Christmas ~ tree
+1F385 | celebration | fairy | fantasy | holiday | merry | tale | xmas ~ Christmas ~ claus ~ father ~ santa
+1F386 | boom | celebration | entertainment | yolo ~ fireworks
+1F387 | boom | celebration ~ fireworks ~ sparkle ~ sparkler
+1F388 | birthday | celebrate | celebration ~ balloon
+1F389 | awesome | birthday | celebrate | celebration | excited | hooray | tada | woohoo ~ party ~ popper
+1F38A | celebrate | celebration | party | woohoo ~ ball ~ confetti
+1F38B | banner | celebration | Japanese ~ tanabata ~ tree
+1F38C | celebration | cross | Japanese ~ crossed ~ flags
+1F38D | bamboo | celebration | Japanese | plant ~ decoration ~ pine
+1F38E | celebration | doll | festival ~ dolls ~ Japanese
+1F38F | celebration ~ carp ~ streamer
+1F390 | bell | celebration ~ chime ~ wind
+1F391 | celebration ~ ceremony ~ moon ~ viewing
+1F392 | bag | bookbag | education | rucksack ~ backpack ~ backpacking ~ satchel ~ school
+1F393 | celebration | clothing | education | hat | scholar ~ cap ~ graduation
+1F396 | award | celebration ~ medal ~ military
+1F397 | celebration ~ reminder ~ ribbon
+1F399 | mic | music ~ microphone ~ studio
+1F39A | music ~ level ~ slider
+1F39B | music ~ control ~ knobs
+1F39E | cinema | movie ~ film ~ frames
+1F39F ~ admission ~ ticket ~ tickets
+1F3A0 | entertainment ~ carousel ~ horse
+1F3A1 | amusement | park | theme ~ ferris ~ wheel
+1F3A2 | amusement | park | theme ~ coaster ~ roller
+1F3A3 | entertainment | sport ~ fish ~ fishing ~ pole
+1F3A4 | karaoke | mic | music | sing | sound ~ microphone
+1F3A5 | bollywood | cinema | film | hollywood | record ~ camera ~ movie
+1F3A6 | camera | film | movie ~ cinema
+1F3A7 | earbud | sound ~ headphone
+1F3A8 | art | artsy | arty | colorful | creative | entertainment | museum | painter | painting ~ artist ~ palette
+1F3A9 | clothes | clothing | fancy | formal | magic | tophat ~ hat ~ top
+1F3AA ~ circus ~ tent
+1F3AB | admission | stub ~ ticket
+1F3AC | action | movie ~ board ~ clapper
+1F3AD | actor | actress | entertainment | mask | theater | theatre | thespian ~ art ~ arts ~ performing
+1F3AE | controller | entertainment ~ game ~ video
+1F3AF | bull | dart | entertainment | game | target ~ bullseye ~ direct ~ hit
+1F3B0 | casino | gamble | gambling | game ~ machine ~ slot ~ slots
+1F3B1 | 8ball | eight | game ~ 8 ~ ball ~ billiard ~ pool
+1F3B2 | dice | entertainment ~ die ~ game
+1F3B3 | ball | game | sport | strike ~ bowling
+1F3B4 | game | Japanese ~ card ~ cards ~ flower ~ playing
+1F3B5 | music | sound ~ musical ~ note
+1F3B6 | music | sound ~ musical ~ note ~ notes
+1F3B7 | instrument | music | sax ~ saxophone
+1F3B8 | instrument | music | strat ~ guitar
+1F3B9 | instrument | music | piano ~ keyboard ~ musical
+1F3BA | instrument | music ~ trumpet
+1F3BB | instrument | music ~ violin
+1F3BC | music | note ~ musical ~ score
+1F3BD | athletics ~ running ~ sash ~ shirt
+1F3BE | sport ~ ball ~ racquet ~ tennis
+1F3BF | snow | sport ~ ski ~ skis
+1F3C0 | ball | sport ~ basketball ~ hoop
+1F3C1 | checkered | finish | game | race | racing | sport | win ~ chequered ~ flag ~ flags
+1F3C2 | ski | snow | snowboard | sport ~ snowboarder
+1F3C3 | fast | hurry | marathon | move | quick | race | racing | rush | speed ~ person ~ run
+1F3C4 | beach | ocean | sport | swell | waves ~ person ~ surf ~ surfer ~ surfing
+1F3C5 | award | gold | winner ~ medal ~ sports
+1F3C6 | champion | champs | prize | slay | sport | victory | win | winning ~ trophy
+1F3C7 | jockey | racehorse | riding | sport ~ horse ~ racing
+1F3C8 | ball | bowl | sport | super ~ american ~ football
+1F3C9 | ball | sport ~ football ~ rugby
+1F3CA | freestyle | sport | triathlon ~ person ~ swim ~ swimmer ~ swimming
+1F3CB | barbell | bodybuilder | deadlift | powerlifting | weightlifter | workout ~ lifter ~ lifting ~ person ~ weight ~ weights
+1F3CC | ball | birdie | caddy | driving | green | pga | putt | range | tee ~ golf ~ golfing ~ person
+1F3CD ~ motorcycle ~ racing
+1F3CE | zoom ~ car ~ racing
+1F3CF ~ ball ~ bat ~ cricket ~ game
+1F3D0 | ball | game ~ volleyball
+1F3D1 | game ~ ball ~ field ~ hockey ~ stick
+1F3D2 | game ~ hockey ~ ice ~ puck ~ stick
+1F3D3 | bat | game | pingpong ~ ball ~ paddle ~ ping ~ pong ~ table ~ tennis
+1F3D4 | cold ~ mountain ~ snow ~ snow-capped
+1F3D5 ~ camping
+1F3D6 ~ beach ~ umbrella
+1F3D7 | crane ~ building ~ construction
+1F3D8 ~ house ~ houses
+1F3D9 | city ~ cityscape
+1F3DA | home ~ derelict ~ house
+1F3DB ~ building ~ classical
+1F3DC ~ desert
+1F3DD ~ desert ~ island
+1F3DE ~ national ~ park
+1F3DF ~ stadium
+1F3E0 | country | heart | home | ranch | settle | simple | suburban | suburbia | where ~ building ~ house
+1F3E1 | building | country | heart | home | ranch | settle | simple | suburban | suburbia | where ~ garden ~ house
+1F3E2 | city | cubical | job ~ building ~ office
+1F3E3 | building ~ Japanese ~ office ~ post
+1F3E4 | building ~ European ~ office ~ post
+1F3E5 | building | doctor | medicine ~ hospital
+1F3E6 | building ~ bank
+1F3E7 | bank | cash | money ~ ATM ~ automated ~ sign ~ teller
+1F3E8 | building ~ hotel
+1F3E9 | building ~ hotel ~ love
+1F3EA | building | hours ~ 24 ~ convenience ~ store
+1F3EB | building ~ school
+1F3EC | building ~ department ~ store
+1F3ED | building ~ factory
+1F3EE | bar | light | restaurant ~ lantern ~ paper ~ red
+1F3EF | building ~ castle ~ Japanese
+1F3F0 | building ~ castle ~ European
+1F3F3 ~ flag ~ waving ~ white
+1F3F4 ~ black ~ flag ~ waving
+1F3F5 | plant ~ rosette
+1F3F7 | tag ~ label
+1F3F8 | birdie | game ~ badminton ~ racquet ~ shuttlecock
+1F3F9 | archer | archery | Sagittarius | tool | weapon | zodiac ~ arrow ~ bow
+1F3FA | Aquarius | cooking | drink | jug | tool | weapon | zodiac ~ amphora
+1F3FB ~ 1–2 ~ light ~ skin ~ tone ~ type
+1F3FC ~ 3 ~ medium-light ~ skin ~ tone ~ type
+1F3FD ~ 4 ~ medium ~ skin ~ tone ~ type
+1F3FE ~ 5 ~ medium-dark ~ skin ~ tone ~ type
+1F3FF ~ 6 ~ dark ~ skin ~ tone ~ type
+1F400 | animal ~ rat
+1F401 | animal | animals ~ mouse
+1F402 | animal | animals | bull | farm | Taurus | zodiac ~ ox
+1F403 | animal | zoo ~ buffalo ~ water
+1F404 | animal | animals | farm | milk | moo ~ cow
+1F405 | animal | big | cat | predator | zoo ~ tiger
+1F406 | animal | big | cat | predator | zoo ~ leopard
+1F407 | animal | bunny | pet ~ rabbit
+1F408 | animal | animals | kitten | pet ~ cat ~ cats
+1F409 | animal | fairy | fairytale | knights | tale ~ dragon
+1F40A | animal | zoo ~ crocodile
+1F40B | animal | beach | ocean ~ whale
+1F40C | animal | escargot | garden | nature | slug ~ snail
+1F40D | animal | bearer | Ophiuchus | serpent | zodiac ~ snake
+1F40E | animal | equestrian | farm | racehorse | racing ~ horse
+1F40F | animal | Aries | horns | male | sheep | zodiac | zoo ~ ram
+1F410 | animal | Capricorn | farm | milk | zodiac ~ goat
+1F411 | animal | baa | farm | female | fluffy | lamb | wool ~ ewe ~ sheep
+1F412 | animal | banana ~ monkey
+1F413 | animal | bird | ornithology ~ rooster
+1F414 | animal | bird | ornithology ~ chicken
+1F415 | animal | animals | pet ~ dog ~ dogs
+1F416 | animal | bacon | farm | pork | sow ~ pig
+1F417 | animal | pig ~ boar
+1F418 | animal ~ elephant
+1F419 | animal | creature | ocean ~ octopus
+1F41A | animal | beach | conch | sea ~ shell ~ spiral
+1F41B | animal | garden | insect ~ bug
+1F41C | animal | garden | insect ~ ant
+1F41D | animal | bee | bumblebee | honey | insect | nature | spring ~ honeybee
+1F41E | animal | garden | insect | ladybird | ladybug | nature ~ beetle ~ lady
+1F41F | animal | dinner | Pisces | zodiac ~ fish ~ fishes ~ fishing
+1F420 | animal ~ fish ~ fishes ~ tropical
+1F421 | animal | fish ~ blowfish
+1F422 | animal | terrapin | tortoise ~ turtle
+1F423 | animal | baby | bird | egg ~ chick ~ hatching
+1F424 | animal | bird | ornithology ~ baby ~ chick
+1F425 | animal | bird | newborn | ornithology ~ baby ~ chick ~ front-facing
+1F426 | animal | ornithology ~ bird
+1F427 | animal | antarctica | bird | ornithology ~ penguin
+1F428 | animal | australia | bear | down | face | marsupial | under ~ koala
+1F429 | animal | dog | fluffy ~ poodle
+1F42A | animal | desert | hump | one ~ camel ~ dromedary
+1F42B | animal | desert ~ bactrian ~ camel ~ hump ~ two ~ two-hump
+1F42C | animal | beach | flipper | ocean ~ dolphin
+1F42D | animal ~ face ~ mouse
+1F42E | animal | farm | milk | moo ~ cow ~ face
+1F42F | animal | big | cat | predator ~ face ~ tiger
+1F430 | animal | bunny | pet ~ face ~ rabbit
+1F431 | animal | kitten | kitty | pet ~ cat ~ face
+1F432 | animal | fairy | fairytale | tale ~ dragon ~ face
+1F433 | animal | beach | face | ocean ~ spouting ~ whale
+1F434 | animal | dressage | equine | farm ~ face ~ horse ~ horses
+1F435 | animal | banana ~ face ~ monkey
+1F436 | adorbs | animal | pet | puppies | puppy ~ dog ~ face
+1F437 | animal | bacon | farm | pork ~ face ~ pig
+1F438 | animal ~ face ~ frog
+1F439 | animal | pet ~ face ~ hamster
+1F43A | animal ~ face ~ wolf
+1F43B | animal | grizzly | growl | honey ~ bear ~ face
+1F43C | animal | bamboo ~ face ~ panda
+1F43D | animal | face | farm | smell | snout ~ nose ~ pig
+1F43E | feet ~ paw ~ paws ~ print ~ prints
+1F43F | animal | squirrel ~ chipmunk
+1F440 | body | face | googly | look | looking | omg | peep | see | seeing ~ eye ~ eyes
+1F441 | body | one ~ 1 ~ eye
+1F442 | body | hear | hearing | listen | listening | sound ~ ear ~ ears
+1F443 | body | odor | smell | smells ~ nose ~ noses ~ nosey
+1F444 | beauty | body | kiss | kissing | lips | lipstick ~ mouth
+1F445 | body | lick | slurp ~ tongue
+1F446 | finger | hand ~ backhand ~ index ~ point ~ pointing ~ up
+1F447 | finger | hand ~ backhand ~ down ~ index ~ point ~ pointing
+1F448 | finger | hand ~ backhand ~ index ~ left ~ point ~ pointing
+1F449 | finger | hand ~ backhand ~ index ~ point ~ pointing ~ right
+1F44A | absolutely | agree | boom | bro | bruh | bump | clenched | correct | knuckle | pound | punch | rock | ttyl ~ fist ~ hand ~ oncoming
+1F44B | bye | cya | g2g | greetings | gtg | hello | hey | hi | later | outtie | ttfn | ttyl | yo | you ~ hand ~ wave
+1F44C | awesome | bet | dope | fleek | fosho | got | gotcha | legit | okay | pinch | rad | sure | sweet | three ~ hand ~ OK
+1F44D | good | hand | like | yes | +1 ~ thumb ~ up
+1F44E | bad | dislike | good | hand | no | nope | -1 ~ down ~ thumb ~ thumbs
+1F44F | applause | approval | awesome | congrats | congratulations | excited | good | great | homie | job | nice | prayed | well | yay ~ clap ~ hand
+1F450 | hug | jazz | swerve ~ hand ~ hands ~ open
+1F451 | clothing | family | king | medieval | queen | royal | royalty | win ~ crown
+1F452 | clothes | clothing | garden | party ~ hat ~ hats ~ woman ~ woman’s
+1F453 | clothing | eye | eyewear ~ eyeglasses ~ glasses
+1F454 | clothing | employed | serious | shirt | tie ~ necktie
+1F455 | blue | casual | clothes | clothing | collar | dressed | shopping | tshirt | weekend ~ shirt ~ t-shirt
+1F456 | blue | casual | clothes | clothing | denim | dressed | pants | shopping | trousers | weekend ~ jeans
+1F457 | clothes | clothing | dressed | fancy | shopping ~ dress
+1F458 | clothing | comfortable ~ kimono
+1F459 | bathing | beach | clothing | pool | suit | swim ~ bikini
+1F45A | blouse | collar | dress | dressed | lady | shirt | shopping ~ clothes ~ clothing ~ woman ~ woman’s
+1F45B | clothes | clothing | coin | dress | fancy | handbag | shopping ~ purse
+1F45C | bag | clothes | clothing | dress | lady | purse | shopping ~ handbag
+1F45D | clothes | clothing | dress | handbag | purse ~ bag ~ clutch ~ pouch
+1F45E | brown | clothes | clothing | feet | foot | kick | shopping ~ man ~ man’s ~ shoe ~ shoes
+1F45F | clothes | clothing | fast | kick | shopping | sneaker | tennis ~ athletic ~ running ~ shoe ~ shoes
+1F460 | clothes | clothing | dress | fashion | shopping | stiletto | woman ~ heel ~ heels ~ high-heeled ~ shoe ~ shoes
+1F461 | clothing | shoe ~ sandal ~ woman ~ woman’s
+1F462 | clothes | clothing | dress | shoe | shoes | shopping ~ boot ~ woman ~ woman’s
+1F463 | barefoot | clothing | omw | print | walk ~ footprint ~ footprints
+1F464 | mysterious | shadow ~ bust ~ silhouette
+1F465 | bff | everyone | friend | friends | people ~ bust ~ busts ~ silhouette
+1F466 | bright-eyed | child | grandson | kid | son | young | younger ~ boy
+1F467 | bright-eyed | child | daughter | granddaughter | kid | Virgo | young | younger | zodiac ~ girl
+1F468 | adult | bro ~ man
+1F469 | adult | lady ~ woman
+1F46A | child ~ family
+1F46B | bae | bestie | bff | couple | dating | flirt | friends | twins ~ hand ~ hold ~ man ~ woman
+1F46C | bae | bestie | bff | boys | brothers | couple | dating | flirt | friends | twins ~ hand ~ hold ~ men
+1F46D | bae | bestie | bff | couple | dating | flirt | friends | girls | sisters | twins ~ hand ~ hold ~ women
+1F46E | apprehend | arrest | citation | cop | law | over | pulled | undercover ~ officer ~ police
+1F46F | bestie | bff | counterpart | dancer | double | identical | pair | party | partying | soulmate | twin | twinsies ~ bunny ~ ear ~ people
+1F470 | wedding ~ person ~ veil
+1F471 | human ~ blond ~ blond-haired ~ person
+1F472 | cap | Chinese | guapi | hat ~ gua ~ mao ~ person ~ pi ~ skullcap
+1F473 ~ person ~ turban ~ wearing
+1F474 | adult | bald | elderly | gramps | grandfather | grandpa | wise ~ man ~ old
+1F475 | adult | elderly | grandma | grandmother | granny | lady | wise ~ old ~ woman
+1F476 | children | goo | infant | newborn | pregnant | young ~ babies ~ baby
+1F477 | build | fix | hardhat | hat | man | person | rebuild | remodel | repair | work ~ construction ~ worker
+1F478 | crown | fairy | fairytale | fantasy | queen | royal | royalty | tale ~ princess
+1F479 | creature | devil | face | fairy | fairytale | fantasy | mask | monster | scary | tale ~ ogre
+1F47A | angry | creature | face | fairy | fairytale | fantasy | mask | mean | monster | tale ~ goblin
+1F47B | boo | creature | excited | face | fairy | fairytale | fantasy | halloween | haunting | monster | scary | silly | tale ~ ghost
+1F47C | church | face | fairy | fairytale | fantasy | tale ~ angel ~ baby
+1F47D | creature | face | fairy | fairytale | fantasy | monster | space | tale | ufo ~ alien ~ extraterrestrial
+1F47E | creature | extraterrestrial | face | fairy | fairytale | fantasy | game | gamer | games | pixelated | space | tale | ufo ~ alien ~ monster
+1F47F | demon | devil | evil | fairy | fairytale | fantasy | mischievous | purple | shade | tale ~ angry ~ face ~ horns ~ imp
+1F480 | body | dead | death | face | fairy | fairytale | i’m | lmao | monster | tale | yolo ~ skull
+1F481 | fetch | flick | flip | gossip | sarcasm | sarcastic | sassy | seriously | whatever ~ hand ~ person ~ tipping
+1F482 | buckingham | helmet | london | palace ~ guard
+1F483 | elegant | festive | flair | flamenco | groove | let’s | salsa | tango ~ dance ~ dancer ~ dancing ~ woman
+1F484 | cosmetics | date | makeup ~ lipstick
+1F485 | bored | care | cosmetics | done | makeup | manicure | whatever ~ nail ~ polish
+1F486 | headache | relax | relaxing | salon | soothe | spa | tension | therapy | treatment ~ face ~ getting ~ massage ~ person
+1F487 | barber | beauty | chop | cosmetology | cut | groom | hair | parlor | shears | style ~ haircut ~ person
+1F488 | cut | fresh | haircut | shave ~ barber ~ pole
+1F489 | doctor | flu | medicine | needle | shot | sick | tool | vaccination ~ syringe
+1F48A | doctor | drugs | medicated | medicine | pills | sick | vitamin ~ pill
+1F48B | dating | emotion | heart | kissing | lips | romance | sexy ~ kiss ~ mark
+1F48C | heart | mail | romance | valentine ~ letter ~ love
+1F48D | diamond | engaged | engagement | married | romance | shiny | sparkling | wedding ~ ring
+1F48E | diamond | engagement | jewel | money | romance | wedding ~ gem ~ stone
+1F48F | anniversary | babe | bae | couple | date | dating | heart | love | mwah | person | romance | together | xoxo ~ kiss
+1F490 | anniversary | birthday | date | flower | love | plant | romance ~ bouquet
+1F491 | anniversary | babe | bae | dating | kiss | love | person | relationship | romance | together | you ~ couple ~ heart
+1F492 | chapel | hitched | nuptials | romance ~ wedding
+1F493 | cardio | emotion | heartbeat | ily | love | pulsating | pulse ~ 143 ~ beating ~ heart
+1F494 | break | crushed | emotion | heartbroken | lonely | sad ~ broken ~ heart
+1F495 | anniversary | date | dating | emotion | ily | kisses | love | loving | xoxo ~ 143 ~ heart ~ hearts ~ two
+1F496 | emotion | excited | good | ily | kisses | morning | night | xoxo ~ 143 ~ heart ~ sparkle ~ sparkling
+1F497 | emotion | excited | heartpulse | ily | kisses | muah | nervous | pulse | xoxo ~ 143 ~ growing ~ heart
+1F498 | adorbs | cupid | date | emotion | ily | love | romance | valentine ~ 143 ~ arrow ~ heart
+1F499 | emotion | ily | love | romance ~ 143 ~ blue ~ heart
+1F49A | emotion | ily | love | romantic ~ 143 ~ green ~ heart
+1F49B | cardiac | emotion | ily | love ~ 143 ~ heart ~ yellow
+1F49C | bestest | emotion | ily | love ~ 143 ~ heart ~ purple
+1F49D | anniversary | emotion | ily | kisses | valentine | xoxo ~ 143 ~ heart ~ ribbon
+1F49E | adorbs | anniversary | emotion ~ 143 ~ heart ~ hearts ~ revolving
+1F49F | emotion | purple | white ~ 143 ~ decoration ~ heart ~ hearth
+1F4A0 | comic | geometric ~ diamond ~ dot
+1F4A1 | comic | idea ~ bulb ~ electric ~ light
+1F4A2 | angry | comic | mad | upset ~ anger ~ symbol
+1F4A3 | boom | comic | dangerous | explosion | hot ~ bomb
+1F4A4 | comic | good | goodnight | night | tired ~ sleep ~ sleeping ~ sleepy ~ zzz
+1F4A5 | bomb | boom | collide | comic | explode ~ collision
+1F4A6 | comic | drip | drops | squirt | water | wet | work | workout ~ droplet ~ droplets ~ splashing ~ sweat
+1F4A7 | cold | comic | drop | nature | sad | sweat | tear | water | weather ~ droplet
+1F4A8 | cloud | comic | fart | fast | go | gone | gotta | running | smoke ~ away ~ dash ~ dashing
+1F4A9 | bs | comic | doo | dung | face | fml | monster | poop | smelly | smh | stink | stinks | stinky | turd ~ pile ~ poo
+1F4AA | arm | beast | bench | bodybuilder | bro | curls | gains | gym | jacked | muscle | press | ripped | strong | weightlift ~ biceps ~ flex
+1F4AB | comic | shining | shooting | star | stars ~ dizzy
+1F4AC | bubble | comic | dialog | message | sms | talk | text | typing ~ balloon ~ speech
+1F4AD | bubble | cartoon | cloud | comic | daydream | decisions | dream | idea | invent | invention | realize | think | wonder ~ balloon ~ thoughts
+1F4AE ~ flower ~ white
+1F4AF | a+ | agree | clearly | definitely | faithful | fleek | full | keep | perfect | score | TRUE | truth | yup ~ 100 ~ hundred ~ point
+1F4B0 | bank | bet | billion | cash | cost | dollar | gold | million | moneybag | paid | paying | pot | rich | win ~ bag ~ money
+1F4B1 | bank | money ~ currency ~ exchange
+1F4B2 | billion | cash | charge | currency | million | money | pay ~ dollar ~ heavy ~ sign
+1F4B3 | bank | cash | charge | money | pay ~ card ~ credit
+1F4B4 | bank | bill | currency | money | note ~ banknote ~ yen
+1F4B5 | bank | bill | currency | money | note ~ banknote ~ dollar
+1F4B6 | bank | bill | currency | money | note | rich ~ 100 ~ banknote ~ euro
+1F4B7 | bank | bill | billion | cash | currency | money | note ~ banknote ~ pound ~ pounds
+1F4B8 | bank | banknote | bill | billion | cash | dollar | fly | million | note | pay ~ money ~ wings
+1F4B9 | bank | currency | graph | growth | market | money | rise ~ chart ~ increasing ~ trend ~ upward ~ yen
+1F4BA | chair ~ seat
+1F4BB | office | pc ~ computer ~ laptop ~ personal
+1F4BC | office ~ briefcase
+1F4BD | optical ~ computer ~ disk ~ minidisk
+1F4BE | computer ~ disk ~ floppy
+1F4BF | blu-ray | CD | computer | dvd ~ disk ~ optical
+1F4C0 | Blu-ray | cd | computer | disk | optical ~ DVD
+1F4C1 ~ file ~ folder
+1F4C2 ~ file ~ folder ~ open
+1F4C3 | document | paper ~ curl ~ page
+1F4C4 | document | paper ~ facing ~ page ~ up
+1F4C5 | date ~ calendar
+1F4C6 ~ calendar ~ tear-off
+1F4C7 | old | rolodex | school ~ card ~ index
+1F4C8 | data | graph | growth | right | up ~ chart ~ increasing ~ trend ~ upward
+1F4C9 | data | down | graph | negative ~ chart ~ decreasing ~ downward ~ trend
+1F4CA | data | graph ~ bar ~ chart
+1F4CB | do | list | notes ~ clipboard
+1F4CC | collage | pin ~ pushpin
+1F4CD | location | map | pin ~ pushpin ~ round
+1F4CE ~ paperclip
+1F4CF | angle | edge | math | straightedge ~ ruler ~ straight
+1F4D0 | angle | math | rule | set | slide | triangle ~ ruler ~ triangular
+1F4D1 | mark | marker ~ bookmark ~ tabs
+1F4D2 | notebook ~ ledger
+1F4D3 ~ notebook
+1F4D4 | book | decorated | education | school | writing ~ cover ~ decorative ~ notebook
+1F4D5 | education ~ book ~ closed
+1F4D6 | education | fantasy | knowledge | library | novels | reading ~ book ~ open
+1F4D7 | education | fantasy | library | reading ~ book ~ green
+1F4D8 | education | fantasy | library | reading ~ blue ~ book
+1F4D9 | education | fantasy | library | reading ~ book ~ orange
+1F4DA | education | fantasy | knowledge | library | novels | reading | school | study ~ book ~ books
+1F4DB ~ badge ~ name
+1F4DC | paper ~ scroll
+1F4DD | communication | media | notes | pencil ~ memo
+1F4DE | communication | phone | voip ~ receiver ~ telephone
+1F4DF | communication ~ pager
+1F4E0 | communication ~ fax ~ machine
+1F4E1 | aliens | contact | dish | science ~ antenna ~ satellite
+1F4E2 | communication | loud | sound ~ address ~ loudspeaker ~ public
+1F4E3 | sound ~ cheering ~ megaphone
+1F4E4 | box | email | letter | mail | sent ~ outbox ~ tray
+1F4E5 | box | email | letter | mail | receive | zero ~ inbox ~ tray
+1F4E6 | box | communication | delivery | parcel | shipping ~ package
+1F4E7 | email | letter ~ e-mail ~ mail
+1F4E8 | delivering | e-mail | email | letter | mail | receive | sent ~ envelope ~ incoming
+1F4E9 | communication | down | e-mail | email | letter | mail | outgoing | send | sent ~ arrow ~ envelope
+1F4EA | mail | postbox ~ closed ~ flag ~ lowered ~ mailbox
+1F4EB | communication | mail | postbox ~ closed ~ flag ~ mailbox ~ raised
+1F4EC | mail | postbox ~ flag ~ mailbox ~ open ~ raised
+1F4ED | mail | postbox ~ flag ~ lowered ~ mailbox ~ open
+1F4EE | mail | mailbox ~ postbox
+1F4EF | post ~ horn ~ postal
+1F4F0 | communication | news | paper ~ newspaper
+1F4F1 | cell | communication | telephone ~ mobile ~ phone
+1F4F2 | build | call | cell | communication | receive | telephone ~ arrow ~ mobile ~ phone
+1F4F3 | cell | communication | mobile | phone | telephone ~ mode ~ vibration
+1F4F4 | cell | telephone ~ mobile ~ off ~ phone
+1F4F5 | cell | forbidden | not | prohibited | telephone ~ mobile ~ no ~ phone ~ phones
+1F4F6 | cell | communication | mobile | phone | signal | telephone ~ antenna ~ bar ~ bars
+1F4F7 | photo | selfie | snap | tbt | trip | video ~ camera
+1F4F8 | video ~ camera ~ flash
+1F4F9 | camcorder | tbt ~ camera ~ video
+1F4FA | tv | video ~ television
+1F4FB | entertainment | tbt | video ~ radio
+1F4FC | old | school | tape | vcr | vhs | video ~ videocassette
+1F4FD | cinema | movie | video ~ film ~ projector
+1F4FF | clothing | necklace | religion ~ beads ~ prayer
+1F500 | crossed ~ arrow ~ button ~ shuffle ~ tracks
+1F501 ~ arrow ~ button ~ clockwise ~ repeat
+1F502 | once ~ arrow ~ button ~ clockwise ~ repeat ~ single
+1F503 | refresh | reload ~ arrow ~ arrows ~ clockwise ~ vertical
+1F504 | again | deja | refresh | rewindershins | vu ~ anticlockwise ~ arrow ~ arrows ~ button ~ counterclockwise
+1F505 ~ brightness ~ button ~ dim ~ low
+1F506 | light ~ bright ~ brightness ~ button
+1F507 | quiet | silent | sound ~ mute ~ muted ~ speaker
+1F508 | soft | sound ~ low ~ speaker ~ volume
+1F509 ~ medium ~ sound ~ speaker ~ volume
+1F50A | loud | music ~ high ~ sound ~ speaker ~ volume
+1F50B ~ battery
+1F50C | electricity ~ electric ~ plug
+1F50D | lab | science | search | tool ~ glass ~ left ~ left-pointing ~ magnifying ~ tilted
+1F50E | contact | lab | science | search | tool ~ glass ~ magnifying ~ right ~ right-pointing ~ tilted
+1F50F | nib | privacy ~ ink ~ lock ~ locked ~ pen
+1F510 | bike | secure ~ closed ~ key ~ lock ~ locked
+1F511 | lock | major | password | unlock ~ key ~ keys
+1F512 | closed | private ~ lock ~ locked
+1F513 | cracked ~ lock ~ open ~ unlock ~ unlocked
+1F514 | break | church | sound ~ bell
+1F515 | forbidden | mute | no | not | prohibited | quiet | silent | sound ~ bell ~ slash
+1F516 | mark ~ bookmark
+1F517 ~ link ~ links
+1F518 | geometric ~ button ~ radio
+1F519 ~ arrow ~ BACK
+1F51A ~ arrow ~ END
+1F51B ~ arrow ~ mark ~ ON!
+1F51C | brb | omw ~ arrow ~ SOON
+1F51D | homie | up ~ arrow ~ TOP
+1F51E | age | forbidden | not | prohibited | restriction | underage ~ 18 ~ eighteen ~ no ~ one
+1F520 | ABCD ~ input ~ latin ~ letters ~ uppercase
+1F521 | abcd ~ input ~ latin ~ letters ~ lowercase
+1F522 ~ 1234 ~ input ~ numbers
+1F523 ~ & ~ % ~ ♪ ~ 〒 ~ input ~ symbols
+1F524 | abc | alphabet ~ input ~ latin ~ letters
+1F525 | af | burn | flame | hot | lit | litaf | tool ~ fire
+1F526 | light | tool ~ electric ~ flashlight ~ torch
+1F527 | home | improvement | spanner | tool ~ wrench
+1F528 | home | improvement | repairs | tool ~ hammer
+1F529 | home | improvement | tool ~ bolt ~ nut
+1F52A | chef | cooking | tool | weapon ~ hocho ~ kitchen ~ knife
+1F52B | gun | handgun | revolver | tool | weapon ~ pistol ~ water
+1F52C | experiment | lab | science | tool ~ microscope
+1F52D | contact | extraterrestrial | science | tool ~ telescope
+1F52E | fairy | fairytale | fantasy | fortune | future | magic | tale | tool ~ ball ~ crystal
+1F52F | fortune | jewish | judaism ~ dotted ~ six-pointed ~ star
+1F530 | chevron | green | leaf | tool | yellow ~ beginner ~ Japanese ~ symbol
+1F531 | anchor | poseidon | ship | tool ~ emblem ~ trident
+1F532 | geometric ~ black ~ button ~ square
+1F533 | geometric | outlined ~ button ~ square ~ white
+1F534 | geometric ~ circle ~ red
+1F535 | geometric ~ blue ~ circle
+1F536 | geometric ~ diamond ~ large ~ orange
+1F537 | geometric ~ blue ~ diamond ~ large
+1F538 | geometric ~ diamond ~ orange ~ small
+1F539 | geometric ~ blue ~ diamond ~ small
+1F53A | geometric ~ pointed ~ red ~ triangle ~ up
+1F53B | geometric ~ down ~ pointed ~ red ~ triangle
+1F53C | arrow ~ button ~ red ~ up ~ upwards
+1F53D | arrow ~ button ~ down ~ downwards ~ red
+1F549 | Hindu | religion ~ om
+1F54A | bird | fly | ornithology ~ dove ~ peace
+1F54B | hajj | islam | Muslim | religion | umrah ~ kaaba
+1F54C | islam | masjid | Muslim | religion ~ mosque
+1F54D | Jew | Jewish | judaism | religion | temple ~ synagogue
+1F54E | candelabrum | candlestick | hanukkah | jewish | judaism | religion ~ menorah
+1F550 | time | 1:00 ~ 1 ~ clock ~ o’clock ~ one
+1F551 | time | 2:00 ~ 2 ~ clock ~ o’clock ~ two
+1F552 | time | 3:00 ~ 3 ~ clock ~ o’clock ~ three
+1F553 | time | 4:00 ~ 4 ~ clock ~ four ~ o’clock
+1F554 | time | 5:00 ~ 5 ~ clock ~ five ~ o’clock
+1F555 | time | 6:00 ~ 6 ~ clock ~ o’clock ~ six
+1F556 | 7:00 ~ 0 ~ 7 ~ clock ~ o’clock ~ seven
+1F557 | time | 8:00 ~ 8 ~ clock ~ eight ~ o’clock
+1F558 | time | 9:00 ~ 9 ~ clock ~ nine ~ o’clock
+1F559 | 10:00 ~ 0 ~ 10 ~ clock ~ o’clock ~ ten
+1F55A | time | 11:00 ~ 11 ~ clock ~ eleven ~ o’clock
+1F55B | time | 12:00 ~ 12 ~ clock ~ o’clock ~ twelve
+1F55C | time | 1:30 ~ 1 ~ 30 ~ clock ~ one ~ one-thirty ~ thirty
+1F55D | time | 2:30 ~ 2 ~ 30 ~ clock ~ thirty ~ two ~ two-thirty
+1F55E | time | 3:30 ~ 3 ~ 30 ~ clock ~ thirty ~ three ~ three-thirty
+1F55F | time | 4:30 ~ 30 ~ 4 ~ clock ~ four ~ four-thirty ~ thirty
+1F560 | time | 5:30 ~ 30 ~ 5 ~ clock ~ five ~ five-thirty ~ thirty
+1F561 | 6:30 ~ 30 ~ 6 ~ clock ~ six ~ six-thirty ~ thirty
+1F562 | 7:30 ~ 30 ~ 7 ~ clock ~ seven ~ seven-thirty ~ thirty
+1F563 | time | 8:30 ~ 30 ~ 8 ~ clock ~ eight ~ eight-thirty ~ thirty
+1F564 | time | 9:30 ~ 30 ~ 9 ~ clock ~ nine ~ nine-thirty ~ thirty
+1F565 | time | 10:30 ~ 10 ~ 30 ~ clock ~ ten ~ ten-thirty ~ thirty
+1F566 | time | 11:30 ~ 11 ~ 30 ~ clock ~ eleven ~ eleven-thirty ~ thirty
+1F567 | time | 12:30 ~ 12 ~ 30 ~ clock ~ thirty ~ twelve ~ twelve-thirty
+1F56F | light ~ candle
+1F570 | time ~ clock ~ mantelpiece
+1F573 ~ hole
+1F574 ~ business ~ levitating ~ person ~ suit
+1F575 ~ detective ~ sleuth ~ spy
+1F576 | eye | eyewear | glasses ~ dark ~ sunglasses
+1F577 | animal | insect ~ spider
+1F578 ~ spider ~ web
+1F579 | game | video | videogame ~ joystick
+1F57A | dancer | elegant | festive | flair | flamenco | groove | let’s | salsa | tango ~ dance ~ dancing ~ man
+1F587 ~ link ~ linked ~ paperclip ~ paperclips
+1F58A ~ ballpoint ~ pen
+1F58B ~ fountain ~ pen
+1F58C | painting ~ paintbrush
+1F58D ~ crayon
+1F590 | stop ~ finger ~ fingers ~ hand ~ raised ~ splayed
+1F595 ~ finger ~ hand ~ middle
+1F596 ~ finger ~ hand ~ hands ~ salute ~ Vulcan
+1F5A4 | evil | wicked ~ black ~ heart
+1F5A5 | monitor ~ computer ~ desktop
+1F5A8 | computer ~ printer
+1F5B1 ~ computer ~ mouse
+1F5B2 | computer ~ trackball
+1F5BC | art | museum | painting ~ frame ~ framed ~ picture
+1F5C2 ~ card ~ dividers ~ index
+1F5C3 ~ box ~ card ~ file
+1F5C4 | paper ~ cabinet ~ file ~ filing
+1F5D1 | can | garbage | trash | waste ~ wastebasket
+1F5D2 ~ note ~ notepad ~ pad ~ spiral
+1F5D3 ~ calendar ~ pad ~ spiral
+1F5DC | compress | tool | vice ~ clamp
+1F5DD | clue | lock ~ key ~ old
+1F5DE | news | paper ~ newspaper ~ rolled ~ rolled-up
+1F5E1 | weapon ~ dagger ~ knife
+1F5E3 | face ~ head ~ silhouette ~ speak ~ speaking
+1F5E8 | balloon | dialog ~ bubble ~ left ~ speech
+1F5EF | angry | balloon | mad ~ anger ~ bubble ~ right
+1F5F3 ~ ballot ~ box
+1F5FA ~ map ~ world
+1F5FB | mountain | nature ~ fuji ~ mount
+1F5FC ~ Tokyo ~ tower
+1F5FD | new | ny | nyc | york ~ liberty ~ Liberty ~ statue ~ Statue
+1F5FE ~ Japan ~ map
+1F5FF | face | statue | stoneface | travel ~ moai ~ moyai
+1F600 | cheerful | cheery | happy | laugh | nice | smile | smiling | teeth ~ face ~ grin ~ grinning
+1F601 | happy | nice | teeth ~ beaming ~ eye ~ eyes ~ face ~ grin ~ grinning ~ smile ~ smiling
+1F602 | crying | feels | funny | haha | happy | hehe | hilarious | laugh | lmao | lol | rofl | roflmao ~ face ~ joy ~ tear
+1F603 | awesome | happy | teeth | yay ~ big ~ eyes ~ face ~ grin ~ grinning ~ mouth ~ open ~ smile ~ smiling
+1F604 | happy | laugh | lol ~ eye ~ eyes ~ face ~ grin ~ grinning ~ mouth ~ open ~ smile ~ smiling
+1F605 | dejected | excited | nervous | stress | stressed ~ cold ~ face ~ grinning ~ mouth ~ open ~ smile ~ smiling ~ sweat
+1F606 | haha | hahaha | happy | laugh | lol | rofl ~ closed ~ eyes ~ face ~ grinning ~ mouth ~ open ~ smile ~ smiling ~ squinting
+1F607 | angel | angelic | angels | blessed | fairy | fairytale | fantasy | happy | innocent | peaceful | spirit | tale ~ face ~ halo ~ smile ~ smiling
+1F608 | demon | devil | evil | fairy | fairytale | fantasy | purple | shade | tale ~ face ~ horns ~ smile ~ smiling
+1F609 | flirt | heartbreaker | sexy | slide | tease ~ face ~ wink ~ winking ~ winks
+1F60A | blush | glad | satisfied ~ eye ~ eyes ~ face ~ smile ~ smiling
+1F60B | eat | full | hungry | smile | smiling | tasty | um | yum | yummy ~ delicious ~ face ~ food ~ savor
+1F60C | calm | peace | zen ~ face ~ relief ~ relieved
+1F60D | bae | feels | ily | kisses | love | romance | romantic | xoxo ~ 143 ~ eye ~ face ~ heart-eyes ~ hearts ~ smile
+1F60E | awesome | beach | bright | bro | chilling | cool | rad | relaxed | shades | slay | style | swag | win ~ face ~ smile ~ sunglasses
+1F60F | boss | dapper | flirt | homie | kidding | leer | shade | slick | sly | smug | snicker | suave | suspicious | swag ~ face ~ smirk
+1F610 | awkward | blank | deadpan | expressionless | fine | jealous | meh | oh | shade | straight | unamused | unhappy | unimpressed | whatever ~ face ~ neutral
+1F611 | awkward | dead | fine | inexpressive | jealous | meh | not | oh | omg | straight | uh | unhappy | unimpressed | whatever ~ expressionless ~ face
+1F612 | bored | fine | jealous | jel | jelly | pissed | smh | ugh | uhh | unhappy | weird | whatever | ... ~ face ~ unamused
+1F613 | close | feels | headache | nervous | sad | scared | yikes ~ cold ~ downcast ~ face ~ sweat
+1F614 | awful | bored | dejected | died | disappointed | losing | lost | sad | sucks ~ face ~ pensive
+1F615 | befuddled | dunno | frown | hm | meh | not | sad | sorry | sure ~ confused ~ confusing ~ face
+1F616 | annoyed | confused | cringe | distraught | feels | frustrated | mad | sad ~ confounded ~ face
+1F617 | date | dating | flirt | ily | kiss | love | smooch | smooches | xoxo | you ~ 143 ~ face
+1F618 | adorbs | bae | flirt | heart | ily | love | lover | miss | muah | romantic | smooch | xoxo | you ~ blowing ~ face ~ kiss
+1F619 | closed | date | dating | flirt | ily | kiss | love | night ~ 143 ~ eye ~ eyes ~ face ~ kisses ~ kissing ~ smile ~ smiling
+1F61A | bae | blush | date | dating | flirt | ily | smooches | xoxo ~ 143 ~ closed ~ eye ~ eyes ~ face ~ kisses ~ kissing
+1F61B | awesome | cool | nice | party | sweet ~ face ~ stuck-out ~ tongue
+1F61C | crazy | epic | funny | joke | loopy | nutty | party | wacky | weirdo | yolo ~ eye ~ face ~ stuck-out ~ tongue ~ wink ~ winking
+1F61D | gross | horrible | omg | taste | whatever | yolo ~ closed ~ eye ~ eyes ~ face ~ squinting ~ stuck-out ~ tongue
+1F61E | awful | blame | dejected | fail | losing | sad | unhappy ~ disappointed ~ face
+1F61F | anxious | butterflies | nerves | nervous | sad | stress | stressed | surprised ~ face ~ worried ~ worry
+1F620 | anger | blame | feels | frustrated | mad | maddening | rage | shade | unhappy | upset ~ angry ~ face
+1F621 | anger | angry | feels | mad | maddening | rage | red | shade | unhappy | upset ~ enraged ~ face ~ pouting
+1F622 | awful | feels | miss | sad | tear | triste | unhappy ~ cry ~ crying ~ face
+1F623 | concentrate | concentration | focus | headache ~ face ~ persevere ~ persevering
+1F624 | anger | angry | feels | fume | fuming | furious | fury | mad | unhappy | won ~ face ~ nose ~ steam ~ triumph
+1F625 | anxious | call | close | complicated | not | sweat | time | whew ~ disappointed ~ face ~ relieved ~ sad
+1F626 | caught | guard | scared | scary | surprise | what | wow ~ face ~ frown ~ frowning ~ mouth ~ open
+1F627 | forgot | scared | scary | stressed | surprise | unhappy | what | wow ~ anguished ~ face
+1F628 | afraid | anxious | blame | scared | worried ~ face ~ fear ~ fearful
+1F629 | crying | fail | feels | hungry | mad | nooo | sad | sleepy | tired | unhappy ~ face ~ weary
+1F62A | crying | good | night | sad | tired ~ face ~ sleep ~ sleeping ~ sleepy
+1F62B | cost | feels | nap | sad | sneeze ~ face ~ tired
+1F62C | awk | awkward | dentist | grinning | smile | smiling ~ face ~ grimace ~ grimacing
+1F62D | bawling | sad | sob | tear | tears | unhappy ~ cry ~ crying ~ face ~ loudly
+1F62E | believe | forgot | omg | shocked | surprised | sympathy | unbelievable | unreal | whoa | wow | you ~ face ~ mouth ~ open
+1F62F | epic | omg | stunned | surprised | whoa | woah ~ face ~ hushed
+1F630 | blue | eek | nervous | rushed | scared | yikes ~ anxious ~ cold ~ face ~ mouth ~ open ~ sweat
+1F631 | epic | munch | scared | screamer | shocked | surprised | woah ~ face ~ fear ~ fearful ~ scream ~ screaming
+1F632 | cost | no | omg | shocked | totally | way ~ astonished ~ face
+1F633 | amazed | awkward | crazy | dazed | dead | disbelief | embarrassed | geez | heat | hot | impressed | jeez | what | wow ~ face ~ flushed
+1F634 | bed | bedtime | good | goodnight | nap | night | tired | whatever | yawn | zzz ~ face ~ sleep ~ sleeping
+1F635 | dead | feels | knocked | sick | tired ~ crossed-out ~ dizzy ~ eyes ~ face ~ out
+1F636 | awkward | blank | expressionless | mouthless | mute | quiet | secret | silence | silent | speechless ~ face ~ mouth
+1F637 | cold | dentist | dermatologist | doctor | dr | germs | medicine | sick ~ face ~ mask ~ medical
+1F638 | animal ~ cat ~ eye ~ eyes ~ face ~ grin ~ grinning ~ smile ~ smiling
+1F639 | animal | laugh | laughing | lol ~ cat ~ face ~ joy ~ tear ~ tears
+1F63A | animal ~ cat ~ face ~ grinning ~ mouth ~ open ~ smile ~ smiling
+1F63B | animal | love ~ cat ~ eye ~ face ~ heart ~ heart-eyes ~ smile ~ smiling
+1F63C | animal | ironic ~ cat ~ face ~ smile ~ wry
+1F63D | animal | kiss ~ cat ~ closed ~ eye ~ eyes ~ face ~ kissing
+1F63E | animal ~ cat ~ face ~ pouting
+1F63F | animal | sad | tear ~ cat ~ cry ~ crying ~ face
+1F640 | animal | oh | surprised ~ cat ~ face ~ weary
+1F641 | sad ~ face ~ frown ~ frowning ~ slightly
+1F642 | happy ~ face ~ slightly ~ smile ~ smiling
+1F643 | hehe | smile ~ face ~ upside-down
+1F644 | eyeroll | shade | ugh | whatever ~ eyes ~ face ~ rolling
+1F645 | forbidden | hand | not | prohibit ~ gesture ~ NO ~ person
+1F646 | exercise | hand | omg ~ gesture ~ gesturing ~ OK ~ person
+1F647 | apology | ask | beg | favor | forgive | gesture | meditate | meditation | pity | regret | sorry ~ bow ~ bowing ~ person
+1F648 | embarrassed | face | forbidden | forgot | gesture | hide | omg | prohibited | scared | secret | smh | watch ~ evil ~ monkey ~ no
+1F649 | animal | ears | face | forbidden | gesture | listen | not | prohibited | secret | shh | tmi ~ evil ~ hear ~ monkey ~ no
+1F64A | animal | face | forbidden | gesture | not | oops | prohibited | quiet | secret | stealth ~ evil ~ monkey ~ no ~ speak
+1F64B | gesture | here | know | me | pick | question ~ hand ~ person ~ raise ~ raising
+1F64C | gesture | hooray | praise ~ celebration ~ hand ~ hands ~ raised ~ raising
+1F64D | annoyed | disappointed | disgruntled | disturbed | frustrated | gesture | irritated | upset ~ frown ~ frowning ~ person
+1F64E | disappointed | downtrodden | frown | grimace | scowl | sulk | upset | whine ~ person ~ pouting
+1F64F | appreciate | ask | beg | blessed | bow | cmon | five | gesture | high | please | pray | thanks | thx ~ folded ~ hand
+1F680 | launch | space | travel ~ rocket ~ rockets
+1F681 | copter | roflcopter | travel | vehicle ~ helicopter
+1F682 | caboose | engine | railway | train | trains | travel ~ locomotive ~ steam
+1F683 | electric | train | tram | travel | trolleybus ~ car ~ railway
+1F684 | railway | shinkansen ~ high-speed ~ speed ~ train
+1F685 | railway | shinkansen | travel ~ bullet ~ high-speed ~ nose ~ speed ~ train
+1F686 | arrived | choo | railway ~ train
+1F687 | subway | travel ~ metro
+1F688 | arrived | monorail | railway ~ light ~ rail
+1F689 | railway | train ~ station
+1F68A | trolleybus ~ tram
+1F68B | bus | trolley | trolleybus ~ car ~ tram
+1F68C | school | vehicle ~ bus
+1F68D | cars ~ bus ~ oncoming
+1F68E | bus | tram | trolley ~ trolleybus
+1F68F | busstop ~ bus ~ stop
+1F690 | bus | drive | van | vehicle ~ minibus
+1F691 | emergency | vehicle ~ ambulance
+1F692 | truck ~ engine ~ fire
+1F693 | cops | patrol | 5–0 ~ car ~ police
+1F694 ~ car ~ oncoming ~ police
+1F695 | cab | cabbie | car | drive | vehicle | yellow ~ taxi
+1F696 | cab | cabbie | cars | drove | hail | yellow ~ oncoming ~ taxi
+1F697 | car | driving | vehicle ~ automobile
+1F698 | car | cars | drove | vehicle ~ automobile ~ oncoming
+1F699 | car | drive | sportutility ~ recreational ~ sport ~ utility ~ vehicle
+1F69A | car | drive | vehicle ~ delivery ~ truck
+1F69B | car | drive | move | semi | truck | vehicle ~ articulated ~ lorry
+1F69C | vehicle ~ tractor
+1F69D | vehicle ~ monorail
+1F69E | car | trip ~ mountain ~ railway
+1F69F ~ railway ~ suspension
+1F6A0 | cable | gondola | lift | ski ~ cableway ~ mountain
+1F6A1 | cable | car | gondola | ropeway ~ aerial ~ tramway
+1F6A2 | boat | passenger | travel ~ ship
+1F6A3 | canoe | cruise | fishing | lake | oar | paddle | raft | river ~ boat ~ person ~ row ~ rowboat ~ rowing
+1F6A4 | billionaire | boat | lake | luxury | millionaire | summer | travel ~ speedboat
+1F6A5 | intersection | signal | stop | stoplight ~ horizontal ~ light ~ traffic
+1F6A6 | drove | intersection | signal | stop | stoplight ~ light ~ traffic ~ vertical
+1F6A7 | barrier ~ construction
+1F6A8 | alarm | alert | beacon | emergency | siren ~ car ~ light ~ police ~ revolving
+1F6A9 | construction | golf ~ flag ~ post ~ triangular
+1F6AA | back | closet | front ~ door
+1F6AB | forbidden | not | smoke ~ entry ~ no ~ prohibited
+1F6AC ~ cigarette ~ smoking
+1F6AD | forbidden | not | prohibited ~ no ~ smoke ~ smoking
+1F6AE | litterbin ~ bin ~ litter ~ sign
+1F6AF | forbidden | prohibited ~ litter ~ littering ~ no ~ not
+1F6B0 | drinking ~ potable ~ water
+1F6B1 | dry | non-drinking | prohibited ~ non-potable ~ water
+1F6B2 | bike | class | cycle | cycling | cyclist | gang | ride | spin | spinning ~ bicycle
+1F6B3 | bike | forbidden | not | prohibited ~ bicycle ~ bicycles ~ no
+1F6B4 | bicycle | cycle | cyclist | riding | sport ~ bicyclist ~ bike ~ biking ~ person
+1F6B5 | bicycle | cycle | cyclist | riding | sport ~ bicyclist ~ bike ~ biking ~ mountain ~ person
+1F6B6 | amble | gait | hike | man | pace | stride | stroll ~ pedestrian ~ person ~ walk ~ walking
+1F6B7 | forbidden | not | prohibited ~ no ~ pedestrian ~ pedestrians
+1F6B8 | child | pedestrian | traffic ~ children ~ crossing
+1F6B9 | bathroom | lavatory | man | restroom | toilet | WC ~ men’s ~ room
+1F6BA | bathroom | lavatory | restroom | toilet | WC ~ room ~ woman ~ women’s
+1F6BB | bathroom | lavatory | toilet | WC ~ restroom
+1F6BC | changing ~ baby ~ symbol
+1F6BD | bathroom ~ toilet
+1F6BE | bathroom | lavatory | restroom | toilet | WC ~ closet ~ water
+1F6BF | water ~ shower
+1F6C0 | bathtub | tub ~ bath ~ person ~ taking
+1F6C1 | bath ~ bathtub
+1F6C2 ~ control ~ passport
+1F6C3 | packing ~ customs
+1F6C4 | arrived | bags | case | checked | journey | packing | plane | ready | travel | trip ~ baggage ~ claim
+1F6C5 | baggage | case | locker ~ left ~ luggage
+1F6CB | hotel ~ couch ~ lamp
+1F6CC | bedtime | good | goodnight | hotel | nap | night | tired | zzz ~ bed ~ person ~ sleep
+1F6CD | hotel ~ bag ~ bags ~ shopping
+1F6CE | hotel ~ bell ~ bellhop
+1F6CF | hotel | sleep ~ bed
+1F6D0 | pray | religion ~ place ~ worship
+1F6D1 ~ octagonal ~ sign ~ stop
+1F6D2 ~ cart ~ shopping ~ trolley
+1F6D5 ~ hindu ~ temple
+1F6D6 | home | house | roundhouse | shelter | yurt ~ hut
+1F6D7 | accessibility | hoist | lift ~ elevator
+1F6D8 | avalanche | danger | disaster | earthquake | mountain | mudslide | rocks
+1F6D9 | beacon | enlightenment | guidance | hope | light | maritime | navigation | sea | signal
+1F6DC | broadband | computer | connectivity | hotspot | internet | network | router | smartphone | wi-fi | wifi | wlan ~ wireless
+1F6DD | amusement | park | play | playing | theme ~ playground ~ slide ~ sliding
+1F6DE | car | circle | tire | turn | vehicle ~ wheel
+1F6DF | float | life | lifesaver | preserver | rescue | safety | save | saver | swim ~ buoy ~ ring
+1F6E0 | spanner | tool ~ hammer ~ wrench
+1F6E1 | weapon ~ shield
+1F6E2 ~ drum ~ oil
+1F6E3 | highway | road ~ motorway
+1F6E4 | train ~ railway ~ track
+1F6E5 | motorboat ~ boat ~ motor
+1F6E9 | aeroplane | plane ~ airplane ~ small
+1F6EB | aeroplane | check-in | plane ~ airplane ~ departure ~ departures
+1F6EC | aeroplane | landing | plane ~ airplane ~ arrival ~ arrivals ~ arriving
+1F6F0 | space ~ satellite
+1F6F3 ~ passenger ~ ship
+1F6F4 ~ kick ~ scooter
+1F6F5 ~ motor ~ scooter
+1F6F6 | boat ~ canoe
+1F6F7 | luge | sledge | sleigh | snow | toboggan ~ sled
+1F6F8 | aliens | extra | terrestrial | UFO ~ flying ~ saucer
+1F6F9 | board | skate | skater | wheels ~ skateboard
+1F6FA | tuk ~ auto ~ rickshaw
+1F6FB | automobile | car | flatbed | pick-up | transportation ~ pickup ~ truck
+1F6FC | blades | sport ~ roller ~ skate ~ skates
+1F7E0 ~ circle ~ orange
+1F7E1 ~ circle ~ yellow
+1F7E2 ~ circle ~ green
+1F7E3 ~ circle ~ purple
+1F7E4 ~ brown ~ circle
+1F7E5 | card | penalty ~ red ~ square
+1F7E6 ~ blue ~ square
+1F7E7 ~ orange ~ square
+1F7E8 | card | penalty ~ square ~ yellow
+1F7E9 ~ green ~ square
+1F7EA ~ purple ~ square
+1F7EB ~ brown ~ square
+1F7F0 | answer | equality | math ~ equal ~ equals ~ heavy ~ sign
+1F90C | gesture | hand | hold | huh | interrogation | patience | relax | sarcastic | ugh | what | zip ~ fingers ~ pinched
+1F90D ~ 143 ~ heart ~ white
+1F90E ~ 143 ~ brown ~ heart
+1F90F | amount | bit | fingers | little | small | sort ~ hand ~ pinching
+1F910 | keep | quiet | secret | shut | zip ~ face ~ mouth ~ zipper ~ zipper-mouth
+1F911 | paid ~ face ~ money ~ money-mouth ~ mouth
+1F912 | ill | sick ~ face ~ thermometer
+1F913 | brainy | clever | expert | geek | gifted | glasses | intelligent | smart ~ face ~ nerd
+1F914 | chin | consider | hmm | ponder | pondering | wondering ~ face ~ thinking
+1F915 | hurt | injury | ouch ~ bandage ~ face ~ head-bandage
+1F916 | monster ~ face ~ robot
+1F917 ~ face ~ hands ~ hug ~ hugging ~ open ~ smiling
+1F918 | finger | hand | rock-on ~ horns ~ sign
+1F919 | hang | loose | Shaka ~ call ~ hand ~ me
+1F91A | backhand ~ back ~ hand ~ raised
+1F91B | leftwards ~ fist ~ left-facing
+1F91C | rightwards ~ fist ~ right-facing
+1F91D | agreement | deal | hand | meeting | shake ~ handshake
+1F91E | cross | luck ~ crossed ~ finger ~ fingers ~ hand
+1F91F | fingers | ILY | three ~ gesture ~ hand ~ love ~ love-you ~ you
+1F920 | cowgirl ~ cowboy ~ face ~ hat
+1F921 ~ clown ~ face
+1F922 | gross | nasty | sick | vomit ~ face ~ nauseated
+1F923 | crying | face | funny | haha | happy | hehe | hilarious | joy | lmao | lol | rofl | roflmao | tear ~ floor ~ laugh ~ rolling
+1F924 ~ drooling ~ face
+1F925 | liar | lie | pinocchio ~ face ~ lying
+1F926 | again | bewilder | disbelief | exasperation | no | not | oh | omg | shock | smh ~ facepalm ~ person
+1F927 | fever | flu | gesundheit | sick ~ face ~ sneeze ~ sneezing
+1F928 | disapproval | disbelief | distrust | emoji | hmm | mild | skeptic | skeptical | skepticism | surprise | what ~ eyebrow ~ face ~ raised
+1F929 | excited | smile | starry-eyed | wow ~ eyes ~ face ~ grinning ~ star ~ star-struck
+1F92A | crazy | goofy ~ eye ~ eyes ~ face ~ large ~ small ~ zany
+1F92B | quiet | shh ~ face ~ shush ~ shushing
+1F92C | censor | cursing | cussing | mad | pissed | swearing ~ face ~ mouth ~ symbols
+1F92D | giggle | giggling | oops | realization | secret | shock | sudden | surprise | whoops ~ face ~ hand ~ mouth
+1F92E | barf | ew | gross | puke | sick | spew | throw | up ~ face ~ vomit ~ vomiting
+1F92F | blown | mind | mindblown | no | way ~ explode ~ exploding ~ head ~ shocked
+1F930 ~ pregnant ~ woman
+1F931 | baby | mom | mother | nursing | woman ~ breast ~ breast-feeding ~ feeding
+1F932 | cupped | dua | hands | pray | prayer | wish ~ palms ~ together ~ up
+1F933 | camera | phone ~ selfie
+1F934 | crown | fairy | fairytale | fantasy | king | royal | royalty | tale ~ prince
+1F935 | formal | wedding ~ person ~ tuxedo
+1F936 | celebration | fairy | fantasy | holiday | merry | santa | tale | xmas ~ Christmas ~ claus ~ mother ~ Mrs
+1F937 | doubt | dunno | guess | idk | ignorance | indifference | knows | maybe | whatever | who ~ person ~ shrug ~ shrugging
+1F938 | active | excited | flip | gymnastics | happy | somersault ~ cartwheel ~ cartwheeling ~ person
+1F939 | act | balance | balancing | handle | manage | multitask | skill ~ juggle ~ juggling ~ person
+1F93A | sword ~ fencer ~ fencing ~ person
+1F93C | combat | duel | grapple | ring | tournament ~ people ~ wrestle ~ wrestling
+1F93D | sport | swimming | waterpolo ~ person ~ playing ~ polo ~ water
+1F93E | athletics | ball | catch | chuck | hurl | lob | pitch | sport | throw | toss ~ handball ~ person ~ playing
+1F93F | scuba | snorkeling ~ diving ~ mask
+1F940 | dying ~ flower ~ wilted
+1F941 | music ~ drum ~ drumsticks
+1F942 | celebrate | drink | glass ~ clink ~ clinking ~ glasses
+1F943 | liquor | scotch | shot | whiskey | whisky ~ glass ~ tumbler
+1F944 | eat | tableware ~ spoon
+1F945 ~ goal ~ net
+1F947 | gold ~ 1st ~ first ~ medal ~ place
+1F948 | silver ~ 2nd ~ medal ~ place ~ second
+1F949 | bronze ~ 3rd ~ medal ~ place ~ third
+1F94A ~ boxing ~ glove
+1F94B | judo | karate | taekwondo ~ arts ~ martial ~ uniform
+1F94C | game | rock ~ curling ~ stone
+1F94D | goal | sports ~ ball ~ lacrosse ~ stick
+1F94E | ball | glove | sports | underarm ~ softball
+1F94F | ultimate ~ disc ~ flying
+1F950 | bread | breakfast | crescent | food | french | roll ~ croissant
+1F951 | food | fruit ~ avocado
+1F952 | food | pickle | vegetable ~ cucumber
+1F953 | breakfast | food | meat ~ bacon
+1F954 | food | vegetable ~ potato
+1F955 | food | vegetable ~ carrot
+1F956 | food | french ~ baguette ~ bread
+1F957 | food ~ green ~ salad
+1F958 | casserole | paella ~ food ~ pan ~ shallow
+1F959 | falafel | food | gyro | kebab ~ flatbread ~ stuffed
+1F95A | breakfast | food ~ egg
+1F95B | drink ~ glass ~ milk
+1F95C | food | nut | vegetable ~ peanut ~ peanuts
+1F95D | food ~ fruit ~ kiwi
+1F95E | breakfast | crêpe | food | hotcake ~ pancake ~ pancakes
+1F95F | empanada | gyōza | jiaozi | pierogi | potsticker ~ dumpling
+1F960 | prophecy ~ cookie ~ fortune
+1F961 | chopsticks | delivery | food | oyster | pail ~ box ~ takeout
+1F962 | hashi | jeotgarak | kuaizi ~ chopsticks
+1F963 | breakfast | cereal | congee | oatmeal | porridge ~ bowl ~ spoon
+1F964 | drink | juice | malt | soda | soft | water ~ cup ~ straw
+1F965 | colada | palm | piña ~ coconut
+1F966 | cabbage | wild ~ broccoli
+1F967 | apple | filling | fruit | meat | pastry | pumpkin | slice ~ pie
+1F968 | convoluted | twisted ~ pretzel
+1F969 | chop | lambchop | porkchop | red | steak ~ cut ~ meat
+1F96A | bread ~ sandwich
+1F96B ~ can ~ canned ~ food
+1F96C | bok | burgers | cabbage | choy | kale | lettuce | salad ~ green ~ leafy
+1F96D | food | fruit | tropical ~ mango
+1F96E | autumn | festival | yuèbǐng ~ cake ~ moon
+1F96F | bakery | bread | breakfast | schmear ~ bagel
+1F970 | adore | crush | ily | love | romance | you ~ 3 ~ face ~ heart ~ hearts ~ smile ~ smiling
+1F971 | bedtime | bored | goodnight | nap | night | sleep | sleepy | tired | whatever | zzz ~ face ~ yawn ~ yawning
+1F972 | glad | grateful | happy | joy | pain | proud | relieved | touched ~ face ~ smile ~ smiley ~ smiling ~ tear
+1F973 | bday | birthday | celebrate | celebration | excited | happy | hooray ~ face ~ hat ~ horn ~ party ~ partying
+1F974 | dizzy | drunk | intoxicated | tipsy ~ eyes ~ face ~ mouth ~ uneven ~ wavy ~ woozy
+1F975 | dying | feverish | heat | panting | red-faced | stroke | sweating | tongue ~ face ~ hot
+1F976 | blue | blue-faced | frostbite | icicles | subzero | teeth ~ cold ~ face ~ freezing
+1F977 | assassin | fight | fighter | hidden | person | secret | skills | sly | soldier | stealth | war ~ ninja
+1F978 | eyebrow | glasses | incognito | moustache | mustache | nose | person | spy | tache | tash ~ disguise ~ face
+1F979 | admiration | aww | cry | embarrassed | feelings | grateful | gratitude | joy | please | proud | resist | sad ~ back ~ face ~ holding ~ tears
+1F97A | begging | big | mercy | not | pretty | puppy | sad | why ~ eyes ~ face ~ pleading ~ please
+1F97B | clothing | dress ~ sari
+1F97C | clothes | doctor | dr | experiment | jacket | scientist | white ~ coat ~ lab
+1F97D | dive | eye | protection | scuba | swimming | welding ~ goggles
+1F97E | backpacking | brown | camping | outdoors | shoe ~ boot ~ hiking
+1F97F | ballet | comfy | slip-on | slipper ~ flat ~ flats ~ shoe
+1F980 | Cancer | zodiac ~ crab
+1F981 | alpha | animal | Leo | mane | order | rawr | roar | safari | strong | zodiac ~ face ~ lion
+1F982 | Scorpius | zodiac ~ Scorpio ~ scorpion
+1F983 | bird | gobble | thanksgiving ~ turkey
+1F984 ~ face ~ unicorn
+1F985 | animal | bird | ornithology ~ eagle
+1F986 | animal | bird | ornithology ~ duck
+1F987 | animal | vampire ~ bat
+1F988 | animal | fish ~ shark
+1F989 | animal | bird | ornithology | wise ~ owl
+1F98A | animal ~ face ~ fox
+1F98B | insect | pretty ~ butterfly
+1F98C | animal ~ deer
+1F98D | animal ~ gorilla
+1F98E | animal | reptile ~ lizard
+1F98F | animal ~ rhinoceros
+1F990 | food | shellfish | small ~ shrimp
+1F991 | animal | food | mollusk ~ squid
+1F992 | animal | spots ~ giraffe
+1F993 | animal | stripe ~ zebra
+1F994 | animal | spiny ~ hedgehog
+1F995 | brachiosaurus | brontosaurus | dinosaur | diplodocus ~ sauropod
+1F996 | dinosaur | Tyrannosaurus ~ Rex ~ T ~ T-Rex
+1F997 | animal | bug | grasshopper | insect | Orthoptera ~ cricket
+1F998 | animal | joey | jump | marsupial ~ kangaroo
+1F999 | alpaca | animal | guanaco | vicuña | wool ~ llama
+1F99A | animal | bird | colorful | ornithology | ostentatious | peahen | pretty | proud ~ peacock
+1F99B | animal | hippo ~ hippopotamus
+1F99C | animal | bird | ornithology | pirate | talk ~ parrot
+1F99D | animal | curious | sly ~ raccoon
+1F99E | animal | bisque | claws | seafood ~ lobster
+1F99F | bite | disease | fever | insect | malaria | pest | virus ~ mosquito
+1F9A0 | amoeba | bacteria | science | virus ~ microbe
+1F9A1 | animal | honey | pester ~ badger
+1F9A2 | animal | bird | cygnet | duckling | ornithology | ugly ~ swan
+1F9A3 | animal | extinction | large | tusk | wooly ~ mammoth
+1F9A4 | animal | bird | extinction | large | ornithology ~ dodo
+1F9A5 | lazy | slow ~ sloth
+1F9A6 | animal | fishing | playful ~ otter
+1F9A7 | animal | ape | monkey ~ orangutan
+1F9A8 | animal | stink ~ skunk
+1F9A9 | animal | bird | flamboyant | ornithology | tropical ~ flamingo
+1F9AA | diving | pearl ~ oyster
+1F9AB | animal | dam | teeth ~ beaver
+1F9AC | animal | buffalo | herd | wisent ~ bison
+1F9AD | animal | lion | ocean | sea ~ seal
+1F9AE | accessibility | animal | blind ~ dog ~ guide
+1F9AF | accessibility | blind ~ cane ~ probing ~ white
+1F9B0 | ginger | redhead ~ hair ~ red
+1F9B1 | afro | ringlets ~ curly ~ hair
+1F9B2 | chemotherapy | hair | hairless | no | shaven ~ bald
+1F9B3 | gray | old ~ hair ~ white
+1F9B4 | dog | skeleton | wishbone ~ bone ~ bones
+1F9B5 | bent | foot | kick | knee | limb ~ leg
+1F9B6 | ankle | feet | kick | stomp ~ foot
+1F9B7 | dentist | pearly | teeth | white ~ tooth
+1F9B8 | good | hero | superpower ~ superhero
+1F9B9 | bad | criminal | evil | superpower | villain ~ supervillain
+1F9BA | emergency ~ safety ~ vest
+1F9BB | accessibility | hard ~ aid ~ ear ~ hearing
+1F9BC | accessibility ~ motorized ~ wheelchair
+1F9BD | accessibility ~ manual ~ wheelchair
+1F9BE | accessibility | prosthetic ~ arm ~ mechanical
+1F9BF | accessibility | prosthetic ~ leg ~ mechanical
+1F9C0 ~ cheese ~ wedge
+1F9C1 | bakery | dessert | sprinkles | sugar | sweet | treat ~ cupcake
+1F9C2 | condiment | flavor | mad | taste | upset ~ salt ~ salty ~ shaker
+1F9C3 | juice | straw | sweet ~ beverage ~ box
+1F9C4 | flavoring ~ garlic
+1F9C5 | flavoring ~ onion
+1F9C6 | chickpea | meatball ~ falafel
+1F9C7 | breakfast | indecisive | iron ~ waffle
+1F9C8 | dairy ~ butter
+1F9C9 ~ drink ~ mate
+1F9CA | cold | iceberg ~ cube ~ ice
+1F9CB | boba | food | milk | pearl ~ bubble ~ tea
+1F9CC | fairy | fantasy | monster | tale | trolling ~ troll
+1F9CD ~ person ~ stand ~ standing
+1F9CE | knees ~ kneel ~ kneeling ~ person
+1F9CF | accessibility | ear | gesture | hear ~ deaf ~ person
+1F9D0 | classy | fancy | rich | stuffy | wealthy ~ face ~ monocle
+1F9D1 ~ adult ~ person
+1F9D2 | bright-eyed | grandchild | kid | young | younger ~ child
+1F9D3 | elderly | grandparent | old | wise ~ adult ~ person
+1F9D4 | whiskers ~ beard ~ bearded ~ person
+1F9D5 | bandana | head | hijab | kerchief | mantilla | tichel ~ headscarf ~ woman
+1F9D6 | day | luxurious | pamper | relax | sauna | spa | steambath | unwind ~ person ~ room ~ steam
+1F9D7 | climber | mountain | rock | scale | up ~ climb ~ climbing ~ person
+1F9D8 | cross | legged | legs | meditation | peace | relax | serenity | yoga | yogi | zen ~ lotus ~ person ~ position
+1F9D9 | fantasy | magic | play | sorcerer | sorceress | sorcery | spell | summon | witch | wizard ~ mage
+1F9DA | fairytale | fantasy | myth | person | pixie | tale | wings ~ fairy
+1F9DB | blood | Dracula | fangs | halloween | scary | supernatural | teeth | undead ~ vampire
+1F9DC | creature | fairytale | folklore | ocean | sea | siren | trident ~ merperson
+1F9DD | elves | enchantment | fantasy | folklore | magic | magical | myth ~ elf
+1F9DE | djinn | fantasy | jinn | lamp | myth | rub | wishes ~ genie
+1F9DF | apocalypse | dead | halloween | horror | scary | undead | walking ~ zombie
+1F9E0 | intelligent | smart ~ brain
+1F9E1 ~ 143 ~ heart ~ orange
+1F9E2 | baseball | bent | dad | hat ~ billed ~ cap
+1F9E3 | bundle | cold | neck | up ~ scarf
+1F9E4 | hand ~ gloves
+1F9E5 | brr | bundle | cold | jacket | up ~ coat
+1F9E6 | stocking ~ socks
+1F9E7 | good | hóngbāo | lai | luck | money | see ~ envelope ~ gift ~ red
+1F9E8 | dynamite | explosive | fire | fireworks | light | pop | popping | spark ~ firecracker
+1F9E9 | clue | interlocking ~ jigsaw ~ piece ~ puzzle
+1F9EA | chemist | chemistry | experiment | lab | science ~ test ~ tube
+1F9EB | bacteria | biologist | biology | culture | lab ~ dish ~ petri
+1F9EC | biologist | evolution | gene | genetics | life ~ dna
+1F9ED | direction | magnetic | navigation | orienteering ~ compass
+1F9EE | calculation | calculator ~ abacus
+1F9EF | extinguish | quench ~ extinguisher ~ fire
+1F9F0 | box | chest | mechanic | red | tool ~ toolbox
+1F9F1 | clay | mortar | wall ~ brick ~ bricks
+1F9F2 | attraction | horseshoe | magnetic | negative | positive | shape | u ~ magnet
+1F9F3 | bag | packing | roller | suitcase | travel ~ luggage
+1F9F4 | moisturizer | shampoo | sunscreen ~ bottle ~ lotion
+1F9F5 | needle | sewing | string ~ spool ~ thread
+1F9F6 | crochet | knit ~ ball ~ yarn
+1F9F7 | diaper | punk | rock ~ pin ~ safety
+1F9F8 | plaything | plush | stuffed | toy ~ bear ~ teddy
+1F9F9 | cleaning | sweeping | witch ~ broom
+1F9FA | farming | laundry | picnic ~ basket
+1F9FB | toilet | towels ~ paper ~ roll
+1F9FC | bathing | clean | cleaning | lather | soapdish ~ bar ~ soap
+1F9FD | absorbing | cleaning | porous | soak ~ sponge
+1F9FE | accounting | bookkeeping | evidence | invoice | proof ~ receipt
+1F9FF | bead | blue | charm | evil-eye | talisman ~ amulet ~ nazar
+1FA70 | dance ~ ballet ~ shoes
+1FA71 | bathing | suit ~ one-piece ~ swimsuit
+1FA72 | bathing | one-piece | suit | swimsuit | underwear ~ briefs
+1FA73 | bathing | pants | suit | swimsuit | underwear ~ shorts
+1FA74 | beach | flip | flop | shoe | zōri ~ sandal ~ sandals ~ thong ~ thongs
+1FA75 | cute | cyan | emotion | ily | like | love | sky | special | teal ~ 143 ~ blue ~ heart ~ light
+1FA76 | emotion | gray | ily | love | silver | slate | special ~ 143 ~ grey ~ heart
+1FA77 | adorable | cute | emotion | ily | like | love | special | sweet ~ 143 ~ heart ~ pink
+1FA78 | bleed | donation | injury | medicine | menstruation ~ blood ~ drop
+1FA79 ~ adhesive ~ bandage
+1FA7A | doctor | heart | medicine ~ stethoscope
+1FA7B | bones | doctor | medical | skeleton | skull | xray ~ x-ray
+1FA7C | aid | cane | disability | help | hurt | injured | mobility | stick ~ crutch
+1FA80 | fluctuate | toy ~ yo-yo
+1FA81 | fly | soar ~ kite
+1FA82 | hang-glide | parasail | skydive ~ parachute
+1FA83 | rebound | repercussion | weapon ~ boomerang
+1FA84 | magician | witch | wizard ~ magic ~ wand
+1FA85 | candy | celebrate | celebration | cinco | de | festive | mayo | party ~ pinada ~ pinata ~ piñata
+1FA86 | babooshka | baboushka | babushka | doll | matryoshka | russia ~ dolls ~ nesting
+1FA87 | cha | dance | instrument | music | party | percussion | rattle | shake | shaker ~ maracas
+1FA88 | band | fife | flautist | instrument | marching | music | orchestra | piccolo | pipe | recorder | woodwind ~ flute
+1FA89 | cupid | instrument | love | music | orchestra ~ harp
+1FA8A | brass | instrument | jazz | music | sad | slide
+1FA8B | apocalypse | falling | fireball | gravity | rock | space | star
+1FA8C | correction | delete | drawing | error | mistake | remove | rub | undo | writing ~ erase
+1FA8D | catch | collect | mesh | trap
+1FA8E | gem | gold | jewels | loot | money | prize | silver | valuables | wealth
+1FA8F | bury | dig | garden | hole | plant | scoop | snow | spade ~ shovel
+1FA90 | saturn | saturnine ~ planet ~ ringed
+1FA91 | seat | sit ~ chair
+1FA92 | sharp | shave ~ razor
+1FA93 | ax | chop | hatchet | split | wood ~ axe
+1FA94 | light | oil ~ diya ~ lamp
+1FA95 | music | stringed ~ banjo
+1FA96 | army | soldier | war | warrior ~ helmet ~ military
+1FA97 | box | concertina | instrument | music | squeeze | squeezebox ~ accordion
+1FA98 | beat | conga | instrument | rhythm ~ drum ~ long
+1FA99 | dollar | euro | gold | metal | money | rich | silver | treasure ~ coin
+1FA9A | cut | lumber | tool | trim ~ carpenter ~ carpentry ~ saw
+1FA9B | flathead | handy | screw | tool ~ screwdriver
+1FA9C | climb | rung | step ~ ladder
+1FA9D | catch | crook | curve | ensnare | point | selling ~ hook
+1FA9E | makeup | reflection | reflector | speculum ~ mirror
+1FA9F | air | frame | fresh | opening | transparent | view ~ window
+1FAA0 | cup | force | plumber | poop | suction | toilet ~ plunger
+1FAA1 | embroidery | stitches | sutures | tailoring | thread ~ needle ~ sew ~ sewing
+1FAA2 | cord | rope | tangled | tie | twine | twist ~ knot
+1FAA3 | cask | pail | vat ~ bucket
+1FAA4 | bait | cheese | lure | mousetrap | snare ~ mouse ~ trap
+1FAA5 | bathroom | brush | clean | dental | hygiene | teeth | toiletry ~ toothbrush
+1FAA6 | cemetery | dead | grave | graveyard | memorial | rip | tomb | tombstone ~ headstone
+1FAA7 | card | demonstration | notice | picket | plaque | protest | sign ~ placard
+1FAA8 | boulder | heavy | solid | stone | tough ~ rock
+1FAA9 | dance | disco | glitter | party ~ ball ~ mirror
+1FAAA | credentials | document | ID | license | security ~ card ~ identification
+1FAAB | drained | electronic | energy | power ~ battery ~ low
+1FAAC | amulet | Fatima | fortune | guide | hand | Mary | Miriam | palm | protect | protection ~ hamsa
+1FAAD | clack | clap | cool | cooling | dance | flirt | flutter | hot | shy ~ fan ~ folding ~ hand
+1FAAE | Afro | comb | groom ~ hair ~ pick
+1FAAF | Deg | Fateh | Khalsa | religion | Sikh | Sikhism | Tegh ~ Khanda
+1FAB0 | animal | disease | insect | maggot | pest | rotting ~ fly
+1FAB1 | animal | annelid | earthworm | parasite ~ worm
+1FAB2 | animal | bug | insect ~ beetle
+1FAB3 | animal | insect | pest | roach ~ cockroach
+1FAB4 | decor | grow | house | nurturing ~ plant ~ pot ~ potted
+1FAB5 | log | lumber | timber ~ wood
+1FAB6 | bird | flight | light | plumage ~ feather
+1FAB7 | beauty | Buddhism | calm | flower | Hinduism | peace | purity | serenity ~ lotus
+1FAB8 | change | climate | ocean | reef | sea ~ coral
+1FAB9 | branch | home ~ empty ~ nest ~ nesting
+1FABA | bird | branch ~ egg ~ eggs ~ nest ~ nesting
+1FABB | bloom | bluebonnet | flower | indigo | lavender | lilac | lupine | plant | purple | shrub | snapdragon | spring | violet ~ hyacinth
+1FABC | animal | aquarium | burn | invertebrate | jelly | life | marine | ocean | ouch | plankton | sea | sting | stinger | tentacles ~ jellyfish
+1FABD | angelic | ascend | aviation | bird | fly | flying | heavenly | mythology | soar ~ wing
+1FABE | bare | barren | branches | dead | drought | trunk | winter | wood ~ leafless ~ tree
+1FABF | animal | bird | duck | flock | fowl | gaggle | gander | geese | honk | ornithology | silly ~ goose
+1FAC0 | beat | cardiology | heartbeat | organ | pulse | real | red ~ anatomical ~ heart
+1FAC1 | breath | breathe | exhalation | inhalation | organ | respiration ~ lung ~ lungs
+1FAC2 | comfort | embrace | farewell | friendship | goodbye | hello | love | thanks ~ hug ~ hugging ~ people
+1FAC3 | belly | bloated | full | overeat ~ man ~ pregnant
+1FAC4 | belly | bloated | full | overeat | stuffed ~ person ~ pregnant
+1FAC5 | monarch | noble | regal | royal | royalty ~ crown ~ person
+1FAC6 | clue | crime | detective | forensics | identity | mystery | print | safety | trace ~ fingerprint
+1FAC8 | bigfoot | cryptid | forest | giant | sasquatch | woodwose | yeti ~ hairy
+1FACC | caterpillar | change | fragile | hope | insect | metamorphosis | migration | transformation
+1FACD | marine | ocean | whale
+1FACE | alces | animal | antlers | elk | mammal ~ moose
+1FACF | animal | ass | burro | hinny | mammal | mule | stubborn ~ donkey
+1FAD0 | berries | berry | bilberry | blue | food | fruit ~ blueberries ~ blueberry
+1FAD1 | capsicum | food | vegetable ~ bell ~ pepper
+1FAD2 | food ~ olive
+1FAD3 | arepa | bread | food | gordita | lavash | naan | pita ~ flatbread
+1FAD4 | food | mexican | pamonha | wrapped ~ tamale
+1FAD5 | cheese | chocolate | food | melted | pot | ski ~ fondue
+1FAD6 | brew | drink | food | pot | tea ~ teapot
+1FAD7 | accident | drink | empty | glass | oops | spill | water ~ liquid ~ pour ~ pouring
+1FAD8 | food | kidney | legume | small ~ beans
+1FAD9 | condiment | container | empty | nothing | sauce | store ~ jar
+1FADA | beer | health | herb | natural | spice ~ ginger ~ root
+1FADB | beans | beanstalk | edamame | legume | soybean | vegetable | veggie ~ pea ~ pod
+1FADC | beet | food | garden | radish | salad | turnip | vegetarian ~ root ~ vegetable
+1FADD | brine | condiment | cucumber | ferment | gherkin | relish | trouble
+1FADF | drip | holi | ink | liquid | mess | paint | spill | stain ~ splatter
+1FAE0 | disappear | dissolve | embarrassed | haha | heat | hot | liquid | lol | sarcasm | sarcastic ~ face ~ melt ~ melting
+1FAE1 | good | luck | ma’am | OK | respect | sir | troops | yes ~ face ~ salute ~ saluting
+1FAE2 | amazement | awe | disbelief | embarrass | gasp | omg | quiet | scared | shock | surprise ~ eyes ~ face ~ hand ~ mouth ~ open ~ over
+1FAE3 | captivated | embarrass | hide | hiding | peep | scared | shy | stare ~ eye ~ face ~ peek ~ peeking
+1FAE4 | confused | confusion | disappointed | doubt | doubtful | frustrated | frustration | meh | skeptical | unsure | whatever | wtv ~ diagonal ~ face ~ mouth
+1FAE5 | depressed | disappear | hidden | hide | introvert | invisible | meh | whatever | wtv ~ dotted ~ face ~ line
+1FAE6 | anxious | fear | flirt | flirting | kiss | lipstick | nervous | sexy | uncomfortable | worried | worry ~ bite ~ biting ~ lip
+1FAE7 | burp | clean | floating | pearl | soap | underwater ~ bubble ~ bubbles
+1FAE8 | crazy | daze | earthquake | omg | panic | shock | surprise | vibrate | whoa | wow ~ face ~ shaking
+1FAE9 | bored | exhausted | fatigued | late | sleepy | tired | weary ~ bags ~ eyes ~ face
+1FAEA | anxiety | bloated | panic | shocked | surprised | vulnerable
+1FAEB | breaking | crumbling | masking | resilience | reveal | tension | transformation
+1FAEF | argument | brawl | debate | disagreement | ruckus | wrestle ~ fight
+1FAF0 | expensive | heart | love | money | snap | <3 ~ crossed ~ finger ~ hand ~ index ~ thumb
+1FAF1 | handshake | hold | reach | right | shake ~ hand ~ rightward ~ rightwards
+1FAF2 | handshake | hold | left | reach | shake ~ hand ~ leftward ~ leftwards
+1FAF3 | dismiss | drop | dropped | pick | shoo | up ~ down ~ hand ~ palm
+1FAF4 | beckon | catch | come | hold | know | lift | me | offer | tell ~ hand ~ palm
+1FAF5 | finger | hand | poke | you ~ at ~ index ~ pointing ~ viewer
+1FAF6 | love | you | <3 ~ hands ~ heart
+1FAF7 | block | five | halt | high | hold | pause | refuse | slap | stop | wait ~ hand ~ leftward ~ leftwards ~ push ~ pushing
+1FAF8 | block | five | halt | high | hold | pause | refuse | slap | stop | wait ~ hand ~ push ~ pushing ~ rightward ~ rightwards
+1FAF9 | grip | left | neutral | point | that | this
+1FAFA | grip | neutral | point | right | that | this
