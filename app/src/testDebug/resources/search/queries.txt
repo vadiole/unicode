@@ -6,18 +6,18 @@
 prefix a
 prefix ar
 prefix arr
-prefix+improve arro
-prefix+improve arrow
+prefix arro
+prefix arrow
 prefix h
 prefix he
 prefix hea
 prefix hear
-prefix+improve heart
+prefix heart
 prefix s
 prefix sm
 prefix smi
 prefix smil
-prefix+improve smile
+prefix smile
 prefix l
 prefix la
 prefix lat
@@ -52,7 +52,7 @@ prefix check\s
 prefix check m
 prefix check ma
 prefix check mar
-prefix+improve check mark
+prefix check mark
 prefix co
 prefix cop
 prefix copy
@@ -60,7 +60,7 @@ prefix copyr
 prefix copyri
 prefix copyrig
 prefix copyrigh
-prefix+improve copyright
+prefix copyright
 prefix e
 prefix eu
 prefix eur
@@ -72,7 +72,7 @@ prefix degr
 prefix degre
 prefix degree
 prefix b
-prefix bu
+prefix+improve bu
 prefix bul
 prefix bull
 prefix bulle
@@ -128,7 +128,7 @@ prefix infinit
 prefix infinity
 prefix st
 prefix sta
-prefix+improve star
+prefix star
 prefix m
 prefix mu
 prefix mus
@@ -186,7 +186,7 @@ prefix right a
 prefix right ar
 prefix right arr
 prefix right arro
-prefix+improve right arrow
+prefix right arrow
 prefix rightw
 prefix rightwa
 prefix rightwar
@@ -205,7 +205,7 @@ prefix ques
 prefix quest
 prefix questi
 prefix questio
-prefix+improve question
+prefix question
 prefix question\s
 prefix question m
 prefix question ma
@@ -254,7 +254,7 @@ prefix doubl
 prefix double
 prefix double\s
 prefix double q
-prefix double qu
+prefix+improve double qu
 prefix double quo
 prefix double quot
 prefix double quote
@@ -351,7 +351,7 @@ prefix less-
 prefix less-t
 prefix less-th
 prefix less-tha
-prefix+improve less-than
+prefix less-than
 prefix so
 prefix sof
 prefix soft
@@ -422,8 +422,8 @@ two ok
 two on
 two or
 two to
-two+improve tm
-two+improve up
+two tm
+two up
 two zz
 two qq
 two xx
@@ -447,14 +447,14 @@ substring mall lett
 substring width jo
 
 # common single words
-word+improve zwj
-word+improve nbsp
-word+improve checkmark
-word+improve umlaut
-word+improve eszett
-word+improve poop
+word zwj
+word nbsp
+word checkmark
+word umlaut
+word eszett
+word poop
 word rtl
-word+improve bom
+word bom
 word shy
 word lrm
 word zwnj
@@ -462,32 +462,32 @@ word zwsp
 word emoji
 word trademark
 word hashtag
-word+improve tab
+word tab
 word cat
 word cry
 word sun
 word ipa
-word+improve sum
+word sum
 word dice
 word card
-word+improve dot
-word+improve lambda
+word dot
+word lambda
 word underscore
 word period
-word+improve newline
+word newline
 word enter
 word laugh
-word+improve hash
+word hash
 word cent
 word+improve tick
 word cross
 word fire
 word face
-word+improve rightarrow
-word+improve thumbsup
+word rightarrow
+word thumbsup
 word smiley
-word+improve backslash
-word+improve slash
+word backslash
+word slash
 word space
 word down
 word left
@@ -695,7 +695,7 @@ space
 space \s
 space \s\s
 space \s\s\s
-space+improve \sa
+space \sa
 space a\s
 space \sa\s
 space \s\sarrow
@@ -721,7 +721,7 @@ space u +41
 space 0x 41
 space e9\s
 space \s\x{2192}
-space+improve \x{2192}\s
+space \x{2192}\s
 space a\x{200B}b
 space em \sdash\s
 space latin \ssmall \sletter \sa
@@ -802,7 +802,7 @@ name2 degrees fahrenheit
 name2 angstrom unit
 name2 glottal stop
 name2 barred o
-name2 yogh
+name2+improve yogh
 name2 lambda bar
 name2 script f
 name2 d retroflex hook
@@ -851,7 +851,7 @@ code U+F8FF
 code U+F0000
 code U+100000
 code U+10FFFD
-code+improve U+4E2D
+code U+4E2D
 code U+4E00
 code U+4E
 code U+9FFF
@@ -1073,7 +1073,7 @@ literal \x{03C0}
 literal \x{05D0}
 literal \x{3042}
 literal \x{D55C}
-literal+improve \x{4E2D}
+literal \x{4E2D}
 literal \x{6C34}
 literal \x{3400}
 literal \x{9FFF}
@@ -1149,9 +1149,9 @@ literal \x{0085}
 literal \x{0378}
 literal \x{0600}
 literal \x{06DD}
-literal+improve e\x{0301}
+literal e\x{0301}
 literal a\x{0308}
-literal+improve \x{1F44D}\x{1F3FB}
+literal \x{1F44D}\x{1F3FB}
 literal \x{1F468}\x{200D}\x{1F469}\x{200D}\x{1F467}
 literal \x{1F1FA}\x{1F1F8}
 literal \x{2764}\x{FE0F}
@@ -1341,13 +1341,13 @@ like arrow\\
 like ar\\row
 like [a]
 like NULL
-like+improve \x{0000}a
-like+improve a\x{0000}
-like+improve a\x{0000}b
+like \x{0000}a
+like a\x{0000}
+like a\x{0000}b
 
 # long queries
 edge a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
-edge+improve a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+edge a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 edge latin small letter a with ring above and acute
 edge arabic ligature uighur kirghiz yeh with hamza above with alef maksura isolated form
 edge a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -1356,8 +1356,8 @@ edge ffffffff
 edge 10000000
 
 # queries of expectations.txt and weaknesses.txt not listed above
-weak+improve minus
-weak+improve plus
+word minus
+word plus
 
 # aliases, abbreviations and control names
 alias lf
@@ -1421,3 +1421,17 @@ range U+17000
 range U+3D000
 range \x{AC00}
 range \x{6C34}\x{706B}
+
+# queries of the review round
+typing ye
+typing eq
+typing ap
+typing div
+typing greater
+typing sa
+typing ha
+typing lam
+typing shin
+typing assign
+typing+improve divide
+typing+improve po

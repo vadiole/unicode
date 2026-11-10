@@ -1,50 +1,16 @@
-# Known weaknesses of the current search: expectations that fail today and that a better engine should meet.
+# Known weaknesses of the search: expectations that fail today and that a better engine should meet.
 # Same format as expectations.txt. They never fail the suite, verify reports each as open or fixed.
 # Their queries are marked +improve in queries.txt, so a changed result is reported instead of failing.
 
-# a name that ends with the word outranks the name that starts with it
-top:1 00A9 copyright
-top:3 003C less-than
-top:1 003F question
-# names tie within a tier and fall back to code point order, common characters get no boost
-above 2605>066D star
-above 2190>02FF arrow
-top:5 2665 heart
-# a word prefix ranks like any substring, so partial typing buries what the full word finds
-top:10 2190..2193 arro
-# multi-word queries have no exact name tier
-top:1 2713 check mark
-top:1 2192 right arrow
-# the Unicode 1.0 name is matched but never ranked for a single word
-top:3 002F slash
-top:3 005C backslash
-top:3 03BB lambda
-# no aliases, abbreviations or stemming
-top:5 200D zwj
-top:5 00A0 nbsp
-top:3 FEFF bom
-top:3 2122 tm
-top:10 263A smile
-top:5 0009 tab
-top:3 000A newline
-top:3 2212 minus
-top:3 002B plus
-top:5 0023 hash
+# kana BU is a whole word of a known script, BULLET is a word start
+top:1 2022 bu
+# kana PO is a whole word of a known script, POUND SIGN is a word start
+top:1 00A3 po
+# U+2047 DOUBLE QUESTION MARK is a formal name the query starts, U+0022 matches by its alias double quote
+top:1 0022 double qu
+# Cyrillic and mathematical names end in the whole word TICK, U+2713 has it only as a keyword
 top:5 2713 tick
-top:3 2713 checkmark
-top:5 2211 sum
-top:5 002E dot
-top:5 2191 up
-top:5 1F4A9 poop
-top:3 00DF eszett
-top:5 0308 umlaut
-top:1 1F44D thumbsup
-top:1 2192 rightarrow
-# a pasted character is only recognised when it is the whole untrimmed query
-top:1 2192 \x{2192}\s
-top:1 0061 \sa
-top:3 0065,0301 e\x{0301}
-top:5 1F44D,1F3FB \x{1F44D}\x{1F3FB}
-# CJK ideographs are stored as range endpoints only
-top:1 4E2D \x{4E2D}
-top:1 4E2D U+4E2D
+# U+2223 DIVIDES and other names start with the word, U+00F7 has it only as a keyword
+top:3 00F7 divide
+# U+01B7 has the Unicode 1.0 name LATIN CAPITAL LETTER YOGH and a lower code point
+top:1 021C yogh

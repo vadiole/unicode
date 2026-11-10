@@ -41,7 +41,7 @@ top:1 200B zero width space
 top:1 221E infinity
 top:3 221E infin
 above 221E>29DC infinity
-top:5 2605,2606 star
+top:6 2605,2606 star
 top:12 2654..265F chess
 top:10 2500..2503 box drawing
 top:1 00B2 superscript two
@@ -149,7 +149,7 @@ top:1 1F44D +1
 top:1 1F44E -1
 top:1 1F44D thumbsup
 top:1 2192 rightarrow
-top:1 2713 checkmark
+top:3 2713 checkmark
 top:1 1F355 pizza
 top:1 2764 red heart
 top:1 2665 heart suit
@@ -165,7 +165,7 @@ top:10 0030..0039 ascii digits
 top:26 0041..005A uppercase latin alphabet
 top:11 1F004 mahjong
 top:10 1F600..1F607 emoticons
-top:16 20AC,20BD currency symbols
+top:32 20AC,20BD currency symbols
 # CJK meanings rank after every other match
 above 1F30A>6C34 water
 above 6C34>6CB3 water
@@ -205,3 +205,85 @@ top:1 2192 \x{2192}\s
 top:1 0061 \sa
 top:2 0065,0301 e\x{0301}
 top:2 1F44D,1F3FB \x{1F44D}\x{1F3FB}
+# weaknesses of the SQLite search that the engine fixed
+top:5 2665 heart
+top:10 2190..2193 arro
+top:1 2713 check mark
+top:1 2192 right arrow
+top:5 200D zwj
+top:5 00A0 nbsp
+top:3 FEFF bom
+top:3 2122 tm
+top:5 0009 tab
+top:3 000A newline
+top:3 2212 minus
+top:3 002B plus
+top:5 0023 hash
+top:5 2211 sum
+top:5 002E dot
+top:5 2191 up
+top:3 00DF eszett
+top:5 0308 umlaut
+top:3 0065,0301 e\x{0301}
+top:5 1F44D,1F3FB \x{1F44D}\x{1F3FB}
+# everyday queries, typed letter by letter
+top:1 2190 arr
+top:4 2190..2193 arro
+top:1 00B0 deg
+top:1 00A9 cop
+top:1 0024 dol
+top:1 00A5 ye
+top:1 003D eq
+top:1 0027 ap
+top:1 00D7 mul
+top:1 00F7 div
+top:1 2014 em d
+top:1 2192 right ar
+top:1 2260 not equal
+top:1 25A0 black sq
+top:3 00BC,00BD,00BE fraction
+top:1 2122 trade mark
+top:1 0026 and
+top:1 007C pipe
+top:1 0023 hashtag
+top:1 2191 arrow up
+top:1 2192 arrow right
+top:1 03B1 greek small letter alpha
+top:1 3042 hiragana letter a
+top:1 1F3B2 dice
+top:1 2026 ellipsis
+top:1 005E circumflex
+top:1 0060 grave
+top:1 00B4 acute
+top:3 2318 key
+top:1 0030 zero
+top:1 003C less
+top:1 003C les
+top:1 003E gre
+top:2 003E greater
+top:3 00B2,00B3,00B9 sup
+top:1 2192 rightw
+top:3 2016 dou
+top:1 2713 check
+top:1 2122 trade
+top:1 00AC not
+top:1 002B plus
+top:1 2212 minus
+top:1 00B1 plus-or-minus
+top:1 274C cross
+top:1 0300 combining
+above 2E3A>1F3FE em d
+top:1 2191 up
+top:1 2193 down
+top:1 2190 left
+top:1 2192 right
+top:5 3055 sa
+top:10 306F ha
+top:3 0644 lam
+top:3 05E9 shin
+above 4777>0BF3 assign
+top:1 200D zero width j
+top:1 200F right-to-left
+top:1 2500 box d
+above 2605>235F star
+top:1 00A0 -break
