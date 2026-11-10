@@ -183,6 +183,11 @@ top:1 17000 tangut 17000
 top:1 18E00 jurchen character-18e00
 top:1 3D000 small seal character-3d000
 top:1 AC00 hangul syllable ga
+top:1 AC00 hangul ga
+top:3 C544 hangul a
+top:1 4E2D ideograph 4e2d
+top:1 4E00 U+4E00
+top:1 4E00 4e00
 top:4 D55C,D55D,D55E,D56D hangul syllable han
 top:1 D55C hangul han
 top:3 AC01..AC03 syllable gag

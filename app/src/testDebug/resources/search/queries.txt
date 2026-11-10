@@ -1435,3 +1435,10 @@ typing shin
 typing assign
 typing+improve divide
 typing+improve po
+generated 4e
+generated ga
+generated cj
+generated han
+generated ideograph 4e2d
+generated hangul ga
+generated hangul a

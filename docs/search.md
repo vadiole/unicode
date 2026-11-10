@@ -27,7 +27,7 @@ Paths are relative to `app/src/main/kotlin/vadiole/unicode/`.
 1. A query of exactly one code point, before or after trimming, is a character literal: that character is the first result, then the name search of it.
 2. Trimming removes spaces and control characters. An empty query has no results. Unpaired surrogates are ignored.
 3. Code query: the digits are what follows `U+`, `0x` or `\u` (explicit, any case, spaces after the prefix and a trailing `,.;:)` allowed), or what follows a bare leading `u`/`U`, or the whole input of at least 2 characters. It is a code query when the digits are 1 to 8 hex digits, the value is at most 10FFFF and, unless explicit, at least one digit is 0-9. `face`, `cafe`, `dead` are words; `41`, `e9`, `1f600`, `u41` are code points. Decimal numbers are read as hex.
-4. Code results: the exact value first, then every code point whose 4, 5 or 6 digit form starts with the digits, ascending. Digits with a leading zero are only padded to 4 digits. A private use or surrogate value has no code results.
+4. Code results: the exact value first, then every code point whose 4, 5 or 6 digit form starts with the digits, ascending. With fewer than 4 digits the characters of generated ranges (CJK ideographs, Hangul syllables, Tangut, ...) are left out of that list: `4e` is U+004E, not 256 ideographs. Digits with a leading zero are only padded to 4 digits. A private use or surrogate value has no code results.
 5. An explicit code query has only code results. A bare one continues with the name search, without the code results. Hex digits that are all letters (`fffd`, `feff`) are searched as a word first and read as a code point only when the word finds nothing.
 6. Pasted symbols: a space separated chunk that contains a non-ASCII symbol, mark or format character is read as characters, each one a result in order (at most 16); the other chunks are searched as words. A query with non-ASCII text that finds nothing lists its characters the same way.
 7. Words (`search/SearchTokens.kt`): runs of letters and digits in any script. Everything else separates words, so `less-than` is `less` and `than`. Repeated words count once, at most 16 words are used. The generator folds with the same code. Folding, one code point at a time:
@@ -43,6 +43,11 @@ Paths are relative to `app/src/main/kotlin/vadiole/unicode/`.
 - A word matches a whole word, or the start of a word. Words of three or more characters also match inside a word. One and two character words match word starts only. A word that begins with kana or a CJK ideograph matches inside a word from one character: Japanese and Chinese are written without spaces, so a keyword is one word (`ハート` is found in `赤いハート`, `心` in `红心`). Three letters is the minimum everywhere else, German compounds included (`bahn` in `Straßenbahn`); two letters inside a word match too much.
 - The last word of a query of several words is taken as unfinished: its word start matches count as whole words, ranked after the real whole words. Matches inside a word are not promoted. The rule is off when the last word is itself the start of another query word (`arrow arr`).
 - Compound: a single word of at most 64 letters is also tried as two whole words, the first of at least 3 letters, the second of at least 2, both existing words (`thumbsup`, `rightarrow`, `checkmark`, `newline`). CJK meanings are never matched this way.
+- Short words do not pull in whole ranges. A word of one or two ASCII characters:
+  - matches a block name, a sub-block heading or the name prefix of a generated range only as a whole word of a query of several words (`extended a`), never alone and never as a word start: `c` is not every CJK block, `cj` is not `CJK`. Three letters match as everywhere else (`cjk`, `han`);
+  - matches a CJK meaning only when it is a whole word, and when it is the whole query only a two character word that is the whole sense (`ox`, `to`); one character never matches a meaning. The unfinished last word of a longer query still matches word starts (`to ea`).
+- The hex part of a generated name is matched from 4 digits (`4e00`, `ideograph 4e2d`), or shorter when the query has other words (`cjk 6c`).
+- A Hangul syllable is matched by its whole romanization of at least 2 letters (`ga` is U+AC00 only). When another word starts `hangul` or `syllable`, one letter and the start of a syllable match too (`hangul a`, `syllable gag`).
 - Results are filtered by the set of characters the table shows, so "show unsupported characters" applies without asking the font per result.
 
 ## Ranking
@@ -61,7 +66,7 @@ Levels: common characters are U+0020..00FF, U+2000..206F and every character wit
 | 5 | `ALIAS_WORD` | a whole word of an alias or short name | 0: first or last word. 1: middle |
 | 6 | `START` | common or known character: the start of a word of a name | 0: first or last word. 1: middle |
 | 7 | `START_OTHER` | other character: the same; the start of the hex part of a generated name | 0: first or last word. 1: middle |
-| 8 | `GENERATED` | the syllable of a Hangul syllable name | 0: whole. 1: start |
+| 8 | `GENERATED` | the whole syllable of a Hangul syllable name | |
 | 9 | `ALIAS_START` | the start of a word of an alias or short name; an abbreviation that is not the whole query, or of one of the controls excluded in row 1 | 0: first or last word. 1: middle |
 | 10 | `KEYWORD` | a word of a keyword | 0: whole. 1: start |
 | 11 | `BLOCK` | a word or word start of the block name | |
@@ -109,6 +114,6 @@ The seam is `SearchEngine` (`app/src/debug/kotlin/vadiole/unicode/search/SearchE
 
 - On the JVM: `./gradlew testDebugUnitTest`. The report is `app/build/reports/search/verify.txt`.
 - On a device: `tools/search-golden.sh verify <serial>`.
-- After an intended change: `tools/search-golden.sh capture <serial>` rewrites `goldens.txt`; review the diff and empty `allowed.txt`.
+- After an intended change: `tools/search-golden.sh capture <serial>` rewrites `goldens.txt`; review the diff and empty `allowed.txt`. The JVM engine gives the same lines (`SearchSuite.capture` and `format` over `TestData.search`).
 
 Open weaknesses (`weaknesses.txt`): `bu` and `po` (kana BU and PO are whole words, BULLET and POUND SIGN word starts of 2 letters), `double qu` (DOUBLE QUESTION MARK is a formal name, U+0022 has `double quote` as an alias), `tick` and `divide` (✓ and ÷ have the word only as a keyword, other names have it as a word), `yogh` (the EZH letters have a Unicode 1.0 name with YOGH and lower code points).

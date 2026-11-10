@@ -36,6 +36,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     private var tokens = queryTokens
     private var wholeOnly = false
     private val level = ByteArray(data.size) { LEVEL_OTHER }
+    private val generated = LongArray((data.size + 63) ushr 6)
     private var acc = IntArray(0)
     private var cur = IntArray(0)
     private var stamp = ByteArray(0)
@@ -45,6 +46,8 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     private var first = false
     private var typing = 0
     private var unfinished = false
+    private var short = false
+    private var single = false
     private var tokenCount = 0
     private val tokenLow = IntArray(MAX_TOKENS)
     private val tokenHigh = IntArray(MAX_TOKENS)
@@ -83,6 +86,13 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         setLevel(COMMON_AREAS, LEVEL_COMMON)
         for (codePoint in data.keywords.codePoints) level[data.indexOf(codePoint)] = LEVEL_COMMON
         setLevel(OTHER_AREAS, LEVEL_OTHER)
+        for (range in 0 until data.rangeCount) {
+            for (char in data.indexOf(data.rangeFirst[range])..data.indexOf(data.rangeLast[range])) generated[char ushr 6] = generated[char ushr 6] or (1L shl char)
+        }
+    }
+
+    private fun isListed(char: Int): Boolean {
+        return isShown(char) && (codeLength >= MIN_GENERATED_HEX || generated[char ushr 6] and (1L shl char) == 0L)
     }
 
     private fun setLevel(areas: IntArray, value: Byte) {
@@ -235,6 +245,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     }
 
     private fun parseCode(input: String, letters: Boolean) {
+        if (input.isEmpty()) return
         var length = input.length
         while (length > 0 && input[length - 1] in CODE_TRAILERS) length--
         var from = 0
@@ -290,7 +301,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     private fun isPrefix(char: Int): Boolean {
         for (i in 0 until literalCount) if (literals[i] == char) return true
         if (char == codeExact) return true
-        for (i in 0 until codeBoundCount) if (char >= codeBounds[i * 2] && char < codeBounds[i * 2 + 1]) return true
+        for (i in 0 until codeBoundCount) if (char >= codeBounds[i * 2] && char < codeBounds[i * 2 + 1]) return isListed(char)
         return false
     }
 
@@ -302,7 +313,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     private fun collect(query: String, limit: Int, names: Boolean): SearchResults {
         var codeCount = if (codeExact >= 0) 1 else 0
         for (i in 0 until codeBoundCount) {
-            for (char in codeBounds[i * 2] until codeBounds[i * 2 + 1]) if (char != codeExact && isShown(char)) codeCount++
+            for (char in codeBounds[i * 2] until codeBounds[i * 2 + 1]) if (char != codeExact && isListed(char)) codeCount++
         }
         if (limit > top.size) top = LongArray(limit)
         val top = if (limit > 0) top else LongArray(touchedSize)
@@ -345,7 +356,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         for (i in 0 until codeBoundCount) {
             var char = codeBounds[i * 2]
             while (n < size && char < codeBounds[i * 2 + 1]) {
-                if (char != codeExact && isShown(char)) put(codePoints, docs, n++, char, -1)
+                if (char != codeExact && isListed(char)) put(codePoints, docs, n++, char, -1)
                 char++
             }
         }
@@ -582,6 +593,9 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             val start = tokens.start[t]
             val length = tokens.length[t]
             typing = if (tokenCount > 1) 0 else if (length >= MIN_TYPING) TYPING_WORD else if (length == MIN_TYPING - 1) TYPING_START else 0
+            val chars = charCount(start, length)
+            short = chars < MIN_SPAN && bytes[start] >= 0
+            single = chars == 1
             unfinished = tokenCount > 1 && t == tokens.sequence[tokens.sequenceCount - 1]
             for (other in 0 until tokenCount) {
                 if (other != t && isStartOf(t, tokens.bytes, tokens.start[other], tokens.length[other])) unfinished = false
@@ -590,7 +604,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                 postings(word, if (wordOff[word + 1] - 1 - wordOff[word] == length) WHOLE else PREFIX)
             }
             if (!wholeOnly) {
-                if (charCount(start, length) >= minInfix(start)) {
+                if (chars >= minInfix(start)) {
                     val firstByte = bytes[start]
                     val last = wordBytes.size - length
                     var i = 0
@@ -611,7 +625,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                         i = wordOff[word + 1]
                     }
                 }
-                if (tokens.isHex(t)) matchHexNames(start, length)
+                if ((length >= MIN_GENERATED_HEX || tokenCount > 1) && tokens.isHex(t)) matchHexNames(start, length)
                 matchHangulNames(t, start, length)
             }
             if (spanCount > 0) matchSpans()
@@ -721,6 +735,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             val meta = docMeta[doc].toInt()
             val char = docChar[doc]
             if (meta and SearchIndex.SPAN != 0) {
+                if (short && (quality != WHOLE || tokenCount == 1)) continue
                 addSpan(char, doc, meta, quality, delta and SearchIndex.POSITION_MASK)
                 continue
             }
@@ -764,7 +779,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             SearchKind.BLOCK -> tier = if (quality == INFIX) TIER_INSIDE_BLOCK else TIER_BLOCK
             SearchKind.SUBHEAD -> tier = if (quality == INFIX) TIER_INSIDE_BLOCK else TIER_SUBHEAD
             else -> {
-                if (wholeOnly) return -1
+                if (wholeOnly || short && !unfinished && (quality != WHOLE || tokenCount == 1 && (single || index.docWords[doc].toInt() != 1))) return -1
                 tier = if (quality == WHOLE && index.docWords[doc].toInt() == tokenCount) TIER_MEANING else TIER_MEANING + quality
                 order = (meta shr SearchIndex.LEVEL_SHIFT) and 3
             }
@@ -906,11 +921,11 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     }
 
     private fun matchHangulNames(token: Int, start: Int, length: Int) {
-        if (length > HANGUL_NAME_MAX) return
         var named = false
         for (other in 0 until tokenCount) {
             if (other != token && (isStartOf(other, HANGUL, 0, HANGUL.size) || isStartOf(other, SYLLABLE, 0, SYLLABLE.size))) named = true
         }
+        if (length > HANGUL_NAME_MAX || length < MIN_HANGUL_NAME && !named) return
         var range = 0
         while (range < data.rangeCount && !data.isHangulRange(range)) range++
         if (range == data.rangeCount) return
@@ -926,7 +941,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                 for (t in HANGUL_T.indices) {
                     if (matchPart(afterV, end, HANGUL_T[t]) != end) continue
                     val whole = HANGUL_L[l].size + HANGUL_V[v].size + HANGUL_T[t].size == length
-                    hitGenerated(offset + (l * HangulNames.V_COUNT + v) * HangulNames.T_COUNT + t, doc, if (whole) WHOLE else PREFIX, named)
+                    if (whole || named) hitGenerated(offset + (l * HangulNames.V_COUNT + v) * HangulNames.T_COUNT + t, doc, if (whole) WHOLE else PREFIX, named)
                 }
             }
         }
@@ -955,6 +970,9 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         const val MAX_LITERALS = 16
         const val MIN_INFIX = 3
         const val MIN_INFIX_CJK = 1
+        const val MIN_SPAN = 3
+        const val MIN_GENERATED_HEX = 4
+        const val MIN_HANGUL_NAME = 2
         const val KANA_FIRST = 0x3040
         const val KANA_LAST = 0x30FF
         const val MIN_SPLIT_FIRST = 3

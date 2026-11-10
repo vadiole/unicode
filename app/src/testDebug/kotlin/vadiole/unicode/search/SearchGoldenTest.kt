@@ -27,6 +27,18 @@ class SearchGoldenTest {
     }
 
     @Test
+    fun shortQueriesSkipGeneratedRanges() {
+        val data = TestData.data
+        for (query in listOf("1", "2", "a", "c", "h", "s", "cj", "4e")) {
+            val found = TestData.search.search(query, 0).codePoints.filter { data.rangeOf(it) >= 0 && (it != query.codePointAt(0) || query.length > 1) }
+            assertTrue("$query finds ${found.size} generated names, first ${found.take(4).map(SearchSuite::hex)}", found.isEmpty())
+        }
+        for (query in listOf("cjk", "hangul", "tangut", "4e00", "arrows", "braille", "中")) {
+            assertTrue(query, TestData.search.search(query, 0).total > 0)
+        }
+    }
+
+    @Test
     fun differencesAreReported() {
         val expected = Golden("q", 3, intArrayOf(1, 2, 3), intArrayOf(1, 2, 3), null)
         val reordered = SearchSuite.diff(expected, Golden("q", 3, intArrayOf(1, 3, 2), intArrayOf(1, 3, 2), null))
