@@ -23,7 +23,6 @@ class ScrollingLineView(context: Context) : View(context) {
     private val touchSlop = configuration.scaledTouchSlop
     private val minFlingVelocity = configuration.scaledMinimumFlingVelocity
     private val maxFlingVelocity = configuration.scaledMaximumFlingVelocity.toFloat()
-    private val fadeLength = 24.dp(context)
     private var velocityTracker: VelocityTracker? = null
     private var layout: Layout? = null
     private var textWidth = 0
@@ -47,7 +46,6 @@ class ScrollingLineView(context: Context) : View(context) {
 
     init {
         isHorizontalFadingEdgeEnabled = true
-        setFadingEdgeLength(fadeLength)
     }
 
     fun setColors(text: Int, surface: Int) {
@@ -69,23 +67,26 @@ class ScrollingLineView(context: Context) : View(context) {
         maxScroll = maxOf(0, textWidth - available)
         textLeft = paddingLeft + if (isRtl && maxScroll == 0) (available - textWidth).toFloat() else 0f
         textTop = paddingTop + (height - paddingTop - paddingBottom - (layout?.height ?: 0)) / 2f
+        setFadingEdgeLength(maxOf(paddingLeft, paddingRight))
         scrollTo(if (isRtl) maxScroll else 0, 0)
         invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
         val layout = layout ?: return
+        canvas.save()
         canvas.translate(textLeft, textTop)
         layout.draw(canvas)
+        canvas.restore()
     }
 
     override fun getSolidColor() = surfaceColor
 
     override fun computeHorizontalScrollRange() = width + maxScroll
 
-    override fun getLeftFadingEdgeStrength() = minOf(1f, scrollX.toFloat() / fadeLength)
+    override fun getLeftFadingEdgeStrength() = if (paddingLeft == 0) 0f else minOf(1f, scrollX.toFloat() / paddingLeft)
 
-    override fun getRightFadingEdgeStrength() = minOf(1f, (maxScroll - scrollX).toFloat() / fadeLength)
+    override fun getRightFadingEdgeStrength() = if (paddingRight == 0) 0f else minOf(1f, (maxScroll - scrollX).toFloat() / paddingRight)
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (maxScroll == 0) return false
