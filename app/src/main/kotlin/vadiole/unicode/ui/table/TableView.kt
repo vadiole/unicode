@@ -14,7 +14,13 @@ class TableView(
     private val spanCount: Int,
     private val delegate: Delegate,
 ) : CollectionView(context) {
-    private val tableLayoutManager = LinearLayoutManager(context)
+    private val tableLayoutManager = object : LinearLayoutManager(context) {
+        override fun calculateExtraLayoutSpace(state: State, extraLayoutSpace: IntArray) {
+            val rowHeight = getChildAt(0)?.height ?: 0
+            extraLayoutSpace[0] = rowHeight
+            extraLayoutSpace[1] = rowHeight
+        }
+    }
 
     init {
         recycledViewPool.setMaxRecycledViews(0, spanCount * 6)
@@ -22,7 +28,6 @@ class TableView(
         setItemViewCacheSize(spanCount * 2)
         setAdapter(adapter)
         setPaddingHorizontal(8.dp(context))
-        clipChildren = true
     }
 
     override fun onScrolled(dx: Int, dy: Int) {
