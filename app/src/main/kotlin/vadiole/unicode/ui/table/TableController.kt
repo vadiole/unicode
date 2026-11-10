@@ -41,6 +41,12 @@ class TableController(
         unicodeStorage.search.whenReady { if (continuation.isActive) continuation.resume(Unit) }
     }
 
+    fun needsRevalidation(): Boolean {
+        if (isRevalidated) return false
+        isRevalidated = true
+        return true
+    }
+
     suspend fun loadCachedChars(): Boolean {
         val cached = unicodeStorage.readCache(CACHE_NAME, cacheKey(userConfig.showUnsupportedChars)) ?: return false
         tableChars = CodePointArray(cached)
@@ -224,5 +230,6 @@ class TableController(
 
     private companion object {
         const val CACHE_NAME = "table"
+        var isRevalidated = false
     }
 }

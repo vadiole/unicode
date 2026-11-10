@@ -419,7 +419,7 @@ class TableScreen(
             if (isCached) {
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
                 tableController.loadBlocks()
-                reloadChars(background = true)
+                if (tableController.needsRevalidation()) reloadChars(background = true)
             } else {
                 tableController.loadChars(fast = false)
                 tableAdapter.notifyDataSetChanged()

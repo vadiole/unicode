@@ -31,8 +31,6 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
     private var tokens = queryTokens
     private var wholeOnly = false
     private val level = ByteArray(data.size) { LEVEL_OTHER }
-    private val c1Start = data.lowerIndex(0x80)
-    private val c1End = data.lowerIndex(0xA0)
     private var acc = IntArray(0)
     private var cur = IntArray(0)
     private var stamp = ByteArray(0)
@@ -105,7 +103,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             addLiteral(text.codePointAt(0))
             text = trim(text)
         } else {
-            parseCode(text)
+            parseCode(text, false)
         }
         var names = false
         if (!codeExplicit) {
@@ -123,7 +121,9 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
                 gen++
             }
             if (symbolTokens.setSymbols(utf8, 0, utf8.size)) matchSymbols()
-            if (!single && codeLength == 0 && literalCount == 0 && !hasMatches() && !isAscii(text)) addLiterals(text)
+            if (!single && codeLength == 0 && literalCount == 0 && !hasMatches()) {
+                if (isAscii(text)) parseCode(text, true) else addLiterals(text)
+            }
         }
         return collect(query, limit, names)
     }
@@ -224,7 +224,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         return shown[char ushr 6] and (1L shl char) != 0L
     }
 
-    private fun parseCode(input: String) {
+    private fun parseCode(input: String, letters: Boolean) {
         var length = input.length
         while (length > 0 && input[length - 1] in CODE_TRAILERS) length--
         var from = 0
@@ -254,7 +254,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             value = value * 16 + digit
             if (value > Character.MAX_CODE_POINT) valid = false
         }
-        if (!valid || (!codeExplicit && !hasDigit)) {
+        if (!valid || (!codeExplicit && !hasDigit && !letters)) {
             codeExplicit = false
             return
         }
@@ -388,7 +388,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
 
     private fun matchSplits() {
         val length = queryTokens.length[0]
-        if (queryTokens.sequenceCount != 1 || length < MIN_SPLIT_FIRST + MIN_SPLIT_SECOND || !queryTokens.isLetters(0)) return
+        if (queryTokens.sequenceCount != 1 || length !in MIN_SPLIT_FIRST + MIN_SPLIT_SECOND..MAX_SPLIT_LENGTH || !queryTokens.isLetters(0)) return
         savedSize = -1
         tokens = splitTokens
         for (at in MIN_SPLIT_FIRST..length - MIN_SPLIT_SECOND) {
@@ -498,7 +498,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             if (stamp[char] != g) continue
             val tier = when (docMeta[doc].toInt() and SearchIndex.KIND_MASK) {
                 SearchKind.NAME, SearchKind.UNICODE_1, SearchKind.FORMAL_ALIAS -> TIER_EXACT
-                SearchKind.ABBREVIATION -> if (char in c1Start until c1End) continue else TIER_EXACT
+                SearchKind.ABBREVIATION -> if (isRareControl(data.codePointAt(char))) continue else TIER_EXACT
                 SearchKind.SHORT_NAME -> TIER_EXACT_ALIAS
                 SearchKind.ALIAS -> if (level[char] == LEVEL_COMMON) TIER_EXACT_ALIAS else continue
                 else -> TIER_WORD
@@ -509,6 +509,10 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             val key = (tier shl TIER_SHIFT) or (order shl ORDER_SHIFT) or doc
             if (whole != 0 && key < acc[char]) acc[char] = key
         }
+    }
+
+    private fun isRareControl(codePoint: Int): Boolean {
+        return codePoint in 0x01..0x06 || codePoint in 0x0E..0x1A || codePoint in 0x1C..0x1F || codePoint in 0x80..0x9F
     }
 
     private fun wholeText(doc: Int, count: Int): Int {
@@ -602,6 +606,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             }
             if (spanCount > 0) matchSpans()
             finishToken()
+            if (touchedSize == 0) break
         }
     }
 
@@ -706,7 +711,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             }
             val seen = stamp[char]
             if (seen != g && !first && seen != previous) continue
-            var key = key(char, doc, meta, if (unfinished) WHOLE else quality, delta and SearchIndex.POSITION_MASK)
+            var key = key(char, doc, meta, if (unfinished && quality == PREFIX) WHOLE else quality, delta and SearchIndex.POSITION_MASK)
             if (unfinished && quality != WHOLE && key ushr TIER_SHIFT < TIER_MEANING) key = key or (1 shl ORDER_SHIFT)
             if (key >= 0) hit(char, key, seen)
         }
@@ -754,6 +759,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
             words = index.docWords[doc].toInt()
         } else if (tokenCount > 1) {
             order = if (meta and SearchIndex.SPAN != 0 && quality != WHOLE) 1 else 0
+            if (tier == TIER_WORD || tier == TIER_START) order += level * 2
             if (tier <= TIER_START_OTHER) {
                 words = index.docWords[doc].toInt()
                 if (meta and SearchIndex.KIND_MASK != SearchKind.NAME && words < SearchIndex.MAX_WORDS) words++
@@ -935,6 +941,7 @@ class CharSearch(private val data: UnicodeData, private val index: SearchIndex, 
         const val MIN_INFIX = 3
         const val MIN_SPLIT_FIRST = 3
         const val MIN_SPLIT_SECOND = 2
+        const val MAX_SPLIT_LENGTH = 64
         const val HANGUL_NAME_MAX = 7
         const val PROBE_COST = 8L
         const val CODE_TRAILERS = ",.;:)"

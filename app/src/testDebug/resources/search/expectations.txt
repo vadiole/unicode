@@ -287,3 +287,11 @@ top:1 200F right-to-left
 top:1 2500 box d
 above 2605>235F star
 top:1 00A0 -break
+top:2 041C,043C em
+above 041C>0019 em
+top:2 305D,30BD so
+above 305D>000E so
+top:1 05D0 hebrew ale
+above 05D0>05D3 hebrew ale
+top:2 0061 letter a
+top:1 FFFD fffd

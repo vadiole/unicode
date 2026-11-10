@@ -91,9 +91,9 @@ class UnicodeStorage(private val context: Context) {
     private fun acceptRange(all: IntArray, first: Int, last: Int, out: IntArray, start: Int, acceptGlyph: (String) -> Boolean): Int {
         var accepted = countAccepted(all, first, last, GLYPH_SAMPLES, acceptGlyph)
         var samples = minOf(GLYPH_SAMPLES, last - first + 1)
-        if (accepted == 0) {
-            accepted = countAccepted(all, first, last, GLYPH_REJECT_SAMPLES, acceptGlyph)
-            samples = -1
+        if (accepted == 0 || accepted == samples) {
+            accepted = countAccepted(all, first, last, GLYPH_UNANIMOUS_SAMPLES, acceptGlyph)
+            samples = minOf(GLYPH_UNANIMOUS_SAMPLES, last - first + 1)
         }
         var size = start
         when (accepted) {
@@ -237,7 +237,7 @@ class UnicodeStorage(private val context: Context) {
         private const val cacheDirName = "cache"
         private const val blockIconsName = "block_icons.txt"
         private const val GLYPH_SAMPLES = 16
-        private const val GLYPH_REJECT_SAMPLES = 256
+        private const val GLYPH_UNANIMOUS_SAMPLES = 256
         private val whitespace = Regex("\\s+")
     }
 }

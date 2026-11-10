@@ -14,9 +14,9 @@ Paths are relative to `app/src/main/kotlin/vadiole/unicode/`.
 
 ## Data and index
 
-- The generator (`vadiole/generator`) writes the flat file; `data/UnicodeData.kt` reads it and holds the format constants both use. The header is a magic number, the format version, a CRC32 of all sections and the section lengths. CJK meanings are the last two sections; they are read in the same pass when the index has to be built, otherwise only when a meaning is asked for.
+- The generator (`vadiole/generator`) writes the flat file; `data/UnicodeData.kt` reads it and holds the format constants both use. The header is a magic number, the format version, a CRC32 of all sections and the section lengths. The reader does not verify the CRC; it is the identity of the data in the cache keys. CJK meanings are the last two sections; they are read in the same pass when the index has to be built, otherwise only when a meaning is asked for.
 - The index is built on the device from `SearchSource`s (`search/SearchIndex.kt`): sorted distinct words, delta coded postings with two position bits (the word starts the text, the word ends it), and per document its character, kind and word count. `UnicodeDataSource` is the only source; its `key` is `en`.
-- A trailing `SIGN`, `MARK`, `SYMBOL` or `SUIT` is not the last word of a text (`QUESTION MARK` ends with `question`, `BLACK HEART SUIT` with `heart`). A trailing `SIGN`, `MARK` or `ARROW` is not counted in the length of a text (`minus` is the whole of `MINUS SIGN`, `up` of the Unicode 1.0 name `UP ARROW`).
+- Two lists of class words, on purpose different (`SearchIndex.TRAILING_WORDS` and `DROPPED_WORDS`): a trailing `SIGN`, `MARK`, `SYMBOL` or `SUIT` is not the last word of a text (`QUESTION MARK` ends with `question`, `BLACK HEART SUIT` with `heart`). A trailing `SIGN`, `MARK` or `ARROW` is not counted in the length of a text (`minus` is the whole of `MINUS SIGN`, `up` of the Unicode 1.0 name `UP ARROW`).
 - The index is cached in `filesDir/cache/search` as one buffer with a CRC, keyed by `SearchIndex.FORMAT`, the data checksum, the app version code (the install time in debug builds) and the source keys. A mismatch or any read error rebuilds it.
 - `UnicodeSearch` starts the search thread from `UnicodeApp.onCreate`, publishes the engine as soon as the index is loaded and warms up only while no query is waiting.
 - Documents, by kind (`SearchKind`): formal name, Unicode 1.0 name, formal alias (NameAliases correction, control, alternate, figment), abbreviation, alias (NamesList `=` lines), CLDR short name, CLDR keyword, block name, sub-block heading, CJK meaning (one document per sense, split on `;` and `,`). A keyword that repeats a word of the formal name is not stored.
@@ -28,7 +28,7 @@ Paths are relative to `app/src/main/kotlin/vadiole/unicode/`.
 2. Trimming removes spaces and control characters. An empty query has no results. Unpaired surrogates are ignored.
 3. Code query: the digits are what follows `U+`, `0x` or `\u` (explicit, any case, spaces after the prefix and a trailing `,.;:)` allowed), or what follows a bare leading `u`/`U`, or the whole input of at least 2 characters. It is a code query when the digits are 1 to 8 hex digits, the value is at most 10FFFF and, unless explicit, at least one digit is 0-9. `face`, `cafe`, `dead` are words; `41`, `e9`, `1f600`, `u41` are code points. Decimal numbers are read as hex.
 4. Code results: the exact value first, then every code point whose 4, 5 or 6 digit form starts with the digits, ascending. Digits with a leading zero are only padded to 4 digits. A private use or surrogate value has no code results.
-5. An explicit code query has only code results. A bare one continues with the name search, without the code results.
+5. An explicit code query has only code results. A bare one continues with the name search, without the code results. Hex digits that are all letters (`fffd`, `feff`) are searched as a word first and read as a code point only when the word finds nothing.
 6. Pasted symbols: a space separated chunk that contains a non-ASCII symbol, mark or format character is read as characters, each one a result in order (at most 16); the other chunks are searched as words. A query with non-ASCII text that finds nothing lists its characters the same way.
 7. Words (`search/SearchTokens.kt`): runs of letters and digits, lower cased, Latin letters with diacritics folded to the base letter, combining marks dropped. Everything else separates words, so `less-than` is `less` and `than`. Repeated words count once, at most 16 words are used.
 8. Symbol keywords: a query of symbols and digits with at least one symbol and no letters or spaces (`<3`, `+1`, `-1`) is also looked up, exactly, among the keywords that are written that way.
@@ -37,20 +37,20 @@ Paths are relative to `app/src/main/kotlin/vadiole/unicode/`.
 
 - Every word must match some text of the character; different words may match different texts of the same character.
 - A word matches a whole word, or the start of a word. Words of three or more characters also match inside a word. One and two character words match word starts only.
-- The last word of a query of several words is taken as unfinished: its word start matches count as whole words, ranked after the real whole words.
-- Compound: a single word of letters is also tried as two whole words, the first of at least 3 letters, the second of at least 2, both existing words (`thumbsup`, `rightarrow`, `checkmark`, `newline`). CJK meanings are never matched this way.
+- The last word of a query of several words is taken as unfinished: its word start matches count as whole words, ranked after the real whole words. Matches inside a word are not promoted. The rule is off when the last word is itself the start of another query word (`arrow arr`).
+- Compound: a single word of at most 64 letters is also tried as two whole words, the first of at least 3 letters, the second of at least 2, both existing words (`thumbsup`, `rightarrow`, `checkmark`, `newline`). CJK meanings are never matched this way.
 - Results are filtered by the set of characters the table shows, so "show unsupported characters" applies without asking the font per result.
 
 ## Ranking
 
-Results are sorted by tier, then order, then length, then code point. A character takes its best text for each query word and then the worst of its words. The table is `CharSearch.key`, `matchExact` and the `TIER_` constants, row for row.
+Results are sorted by tier, then order, then, for queries of several words, length, then code point. A character takes its best text for each query word and then the worst of its words. The table is `CharSearch.key`, `matchExact` and the `TIER_` constants, row for row.
 
 Levels: common characters are U+0020..00FF, U+2000..206F and every character with a CLDR annotation. Known characters are U+0100..024F, U+0300..04FF, U+2000..2BFF and U+3040..30FF. The others, and always the controls U+0000..001F, U+007F..009F and the APL symbols U+2336..237A, are other.
 
 | # | Tier | What matched | Order inside the tier |
 |---|---|---|---|
 | 0 | literal | the typed character, the code results | as typed, then ascending |
-| 1 | `EXACT` | the query is the whole formal name, Unicode 1.0 name or formal alias, or the abbreviation (not of a C1 control) | complete, then unfinished last word |
+| 1 | `EXACT` | the query is the whole formal name, Unicode 1.0 name or formal alias, or the abbreviation (not of a C1 control, nor of U+0001..0006, U+000E..001A, U+001C..001F) | complete, then unfinished last word |
 | 2 | `EXACT_ALIAS` | the query is the whole CLDR short name, the whole alias of a common character, or a symbol keyword | complete, then unfinished last word |
 | 3 | `WORD` | common or known character: a whole word of a name. Common character, one word typed: the start of the first or last word of the formal name. Any character: the whole keyword; a compound that is the whole name | 0: first or last word, start of at least 3 letters, compound. 1: middle word, start of 2 letters, keyword |
 | 4 | `WORD_OTHER` | other character: a whole word of a name; the whole hex part of a generated name | 0: first or last word. 1: middle word |
@@ -58,7 +58,7 @@ Levels: common characters are U+0020..00FF, U+2000..206F and every character wit
 | 6 | `START` | common or known character: the start of a word of a name | 0: first or last word. 1: middle |
 | 7 | `START_OTHER` | other character: the same; the start of the hex part of a generated name | 0: first or last word. 1: middle |
 | 8 | `GENERATED` | the syllable of a Hangul syllable name | 0: whole. 1: start |
-| 9 | `ALIAS_START` | the start of a word of an alias or short name; an abbreviation that is not the whole query, or of a C1 control | 0: first or last word. 1: middle |
+| 9 | `ALIAS_START` | the start of a word of an alias or short name; an abbreviation that is not the whole query, or of one of the controls excluded in row 1 | 0: first or last word. 1: middle |
 | 10 | `KEYWORD` | a word of a keyword | 0: whole. 1: start |
 | 11 | `BLOCK` | a word or word start of the block name | |
 | 12 | `SUBHEAD` | a word or word start of the sub-block heading | |
@@ -73,7 +73,9 @@ Rules the table follows:
 
 - A name is the formal name, the Unicode 1.0 name or a formal alias. A whole word of a name is above every word start, alias word and keyword word, with two exceptions that are both in row 3: the typing rule below, and the level, which puts the whole words of other characters in row 4 (`sa` leads with kana, not Linear B). Common and known characters are not separated.
 - Typing (row 3): while one word is being typed, a common character whose formal name starts or ends with it ranks with the whole words, so `cop` and `copy` both lead with U+00A9 and the first result does not change at the last letter. With 2 letters it ranks after the whole words (`po`: kana PO, then U+00A3).
-- Several words: the order inside rows 3 to 10 is 0, or 1 for an unfinished last word and for the name prefix of a generated range. Then names with fewer words come first; a text that is not the formal name counts one word more. A whole text match needs the words in the order typed.
+- Several words: the order of every row below `MEANING` is replaced: 0, or 1 for an unfinished last word and for the name prefix of a generated range, so a whole keyword and a keyword start are not told apart. In rows 3 and 6 common characters then come before known ones (`letter a` leads with the Latin letters, not kana). Then names with fewer words come first; a text that is not the formal name counts one word more. A whole text match needs the words in the order typed, and an unfinished last word of an exact match needs at least 2 letters.
+- A word start still counts as the first or last word of its text. `arr`, `arro` and `sum` depend on it: the characters whose name ends with the word being typed stay ahead of those with it in the middle.
+- The whole sense of a CJK meaning (row 18) is approximated by the word count: every query word is a whole word of the sense and the sense has as many words as the query.
 - A Hangul syllable part ranks in rows 4 and 7 when another query word starts `hangul` or `syllable`.
 - A text of one word of one or two characters is never an exact alias, so the alias `a` of an obscure letter does not outrank U+0041.
 - `SearchResults.meaningsStart` is the position of the first result that matched only by a CJK meaning. `CharSearch.match` gives the kind and text a result matched by.

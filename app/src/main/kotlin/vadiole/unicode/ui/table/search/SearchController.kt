@@ -56,7 +56,6 @@ class SearchController(
     fun cancel() {
         search.cancel()
         isLoadingMore = false
-        results = SearchResults.EMPTY
     }
 
     fun result(position: Int): SearchResult {

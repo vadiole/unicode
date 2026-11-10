@@ -26,6 +26,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private var pendingCallback: ((SearchResults) -> Unit)? = null
     private var generation = 0
     private var shownChanged = false
+    private var unsaved: (() -> Unit)? = null
     private var readyCallbacks: ArrayList<() -> Unit>? = ArrayList()
     @Volatile
     private var shown: IntArray? = null
@@ -115,16 +116,18 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             val source = if (cached) "cache" else "build"
             Log.d(TAG, "index ready from $source in ${SystemClock.elapsedRealtime() - start}ms, ${SystemClock.uptimeMillis() - processStart()}ms after process start, ${index.bytes} bytes")
         }
-        if (!cached) {
-            val temp = File(storage.cacheDir.also { it.mkdirs() }, "$INDEX_NAME.tmp")
-            try {
-                temp.outputStream().use { index.save(it, key) }
-                temp.renameTo(file)
-            } catch (e: Exception) {
-                temp.delete()
-            }
-        }
+        if (!cached) unsaved = { save(index, key) }
         return engine
+    }
+
+    private fun save(index: SearchIndex, key: String) {
+        val temp = File(storage.cacheDir.also { it.mkdirs() }, "$INDEX_NAME.tmp")
+        try {
+            temp.outputStream().use { index.save(it, key) }
+            temp.renameTo(File(storage.cacheDir, INDEX_NAME))
+        } catch (e: Exception) {
+            temp.delete()
+        }
     }
 
     private fun processStart() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Process.getStartUptimeMillis() else 0L
@@ -134,6 +137,8 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
         this.engine = engine
         val ready = synchronized(lock) { readyCallbacks.also { readyCallbacks = null } }
         ready?.forEach { mainHandler.post(it) }
+        unsaved?.invoke()
+        unsaved = null
         val data = storage.data()
         var warmUp = 0
         while (true) {
