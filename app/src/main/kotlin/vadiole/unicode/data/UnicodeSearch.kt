@@ -33,6 +33,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private var readyCallbacks: ArrayList<() -> Unit>? = ArrayList()
     private var request = 0
     private var requestedKey: String? = null
+    private val languageListeners = ArrayList<() -> Unit>()
     @Volatile
     private var shown: IntArray? = null
     @Volatile
@@ -82,6 +83,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             val engine = createEngine(annotations, cached = true)
             val ready = synchronized(lock) {
                 if (id != request) return
+                if (this.annotations?.key != annotations?.key) mainHandler.post(::notifyLanguageChanged)
                 this.annotations = annotations
                 this.engine = engine
                 if (activeQuery != null) {
@@ -95,6 +97,18 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             ready?.forEach { mainHandler.post(it) }
             unsaved?.invoke()
         }
+    }
+
+    fun addLanguageListener(listener: () -> Unit) {
+        languageListeners.add(listener)
+    }
+
+    fun removeLanguageListener(listener: () -> Unit) {
+        languageListeners.remove(listener)
+    }
+
+    private fun notifyLanguageChanged() {
+        for (listener in languageListeners.toTypedArray()) listener()
     }
 
     fun whenReady(callback: () -> Unit) {

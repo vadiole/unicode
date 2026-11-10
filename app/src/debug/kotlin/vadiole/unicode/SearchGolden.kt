@@ -9,8 +9,10 @@ import android.os.Handler
 import android.os.Looper
 import java.io.File
 import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import vadiole.unicode.search.SearchEngine
 import vadiole.unicode.search.SearchHits
+import vadiole.unicode.search.SearchResults
 import vadiole.unicode.search.SearchSuite
 import vadiole.unicode.search.SuiteFiles
 
@@ -27,7 +29,8 @@ class SearchGolden : ContentProvider() {
             "verify" -> verify(context)
             "time" -> time(context)
             "memory" -> memory()
-            else -> throw IllegalArgumentException("Unknown method $method, expected capture, verify, time or memory")
+            "find" -> find(requireNotNull(arg))
+            else -> throw IllegalArgumentException("Unknown method $method, expected capture, verify, time, memory or find")
         }
         return Bundle().apply { putString("result", result) }
     }
@@ -82,6 +85,20 @@ class SearchGolden : ContentProvider() {
         return "java heap: data ${data - base}, index and working arrays ${index - data}, meanings ${all - index} (${meanings.size} loaded in ${loaded}ms)"
     }
 
+    private fun find(query: String): String {
+        val search = UnicodeApp.unicodeStorage.search
+        val done = CountDownLatch(1)
+        var found = SearchResults.EMPTY
+        search.search(query, SearchSuite.FIRST_LIMIT) {
+            found = it
+            done.countDown()
+        }
+        if (!done.await(FIND_TIMEOUT, TimeUnit.SECONDS)) return "no index"
+        val first = found.codePoints.take(FIND_LISTED).joinToString(" ") { SearchSuite.hex(it) }
+        val match = if (found.codePoints.isEmpty()) "" else found.match(0)?.text.orEmpty()
+        return "index ${search.annotations?.key ?: "en"}, total ${found.total}: $first, first matched by \"$match\""
+    }
+
     private fun usedHeap(): Long {
         val runtime = Runtime.getRuntime()
         repeat(3) {
@@ -105,6 +122,8 @@ class SearchGolden : ContentProvider() {
 
     private companion object {
         const val TIME_ROUNDS = 5
+        const val FIND_TIMEOUT = 5L
+        const val FIND_LISTED = 8
     }
 
     override fun query(uri: Uri, projection: Array<String>?, selection: String?, selectionArgs: Array<String>?, sortOrder: String?) = null
