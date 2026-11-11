@@ -19,8 +19,8 @@ class UnicodeApp : Application() {
         val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
         userConfigInternal = UserConfig(this)
-        if (!processName().endsWith(":sendcrash")) {
-            unicodeStorageInternal = UnicodeStorage(this).also { it.search.prepare() }
+        if (processName() == packageName) {
+            unicodeStorageInternal = UnicodeStorage(this)
             TableController.preload(unicodeStorage, userConfig.showUnsupportedChars)
             recentRepositoryInternal = RecentRepository(this, userConfig)
             Handler(Looper.getMainLooper()).postDelayed({ recentRepository.load() }, 1000)

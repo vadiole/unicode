@@ -1,5 +1,6 @@
 package vadiole.unicode.ui.table
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -13,6 +14,7 @@ import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -25,8 +27,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.launch
+import vadiole.unicode.BuildConfig
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.Block
@@ -206,7 +208,11 @@ class TableScreen(
     }
     private val contentContainer = FrameLayout(context)
     private val tableLayer = FrameLayout(context)
-    private val loader = DotsLoader(context).apply { visibility = GONE }
+    private val loader = DotsLoader(context).apply {
+        setBackgroundColor(context.getColor(R.color.layer0))
+        isClickable = true
+        visibility = GONE
+    }
     private val tableDim = View(context).apply {
         setBackgroundColor(context.getColor(R.color.dialogDim))
         alpha = 0f
@@ -442,7 +448,7 @@ class TableScreen(
         tableLayer.addView(tableView, frameParams(matchParent, matchParent))
         tableLayer.addView(fastScrollView, frameParams(matchParent, matchParent))
         tableLayer.addView(tableDim, frameParams(matchParent, matchParent))
-        tableLayer.addView(loader, frameParams(wrapContent, wrapContent, gravity = Gravity.CENTER))
+        tableLayer.addView(loader, frameParams(matchParent, matchParent))
         resultsLayer.addView(searchResultView, frameParams(matchParent, matchParent))
         resultsLayer.addView(noResultsView, frameParams(matchParent, matchParent))
         resultsLayer.addView(searchFastScrollView, frameParams(matchParent, matchParent))
@@ -454,28 +460,37 @@ class TableScreen(
         dockView.scrollPosition = userConfig.dockScroll
         updateDockTip(animate = false)
         updateContentInsets()
-        if (tableController.loadCache()) {
+        if (BuildConfig.DEBUG && (context as? Activity)?.intent?.getBooleanExtra(DEBUG_LOADER, false) == true) {
+            loader.visibility = VISIBLE
+        } else if (tableController.loadCache()) {
             tableAdapter.notifyDataSetChanged()
             scrollToCodePoint(userConfig.tableScrollCodePoint, userConfig.tableScrollOffset)
-            launch {
-                repeat(2) { awaitFrame() }
-                tableController.startSearch()
-                if (tableController.needsRevalidation()) reloadChars(background = true)
-            }
+            if (tableController.needsRevalidation()) reloadChars(background = true)
         } else {
             launch {
                 val scrollCodePoint = userConfig.tableScrollCodePoint
                 loader.visibility = VISIBLE
+                val loaderShownAt = SystemClock.uptimeMillis()
                 tableController.loadPreview(scrollCodePoint)
-                loader.visibility = GONE
                 tableAdapter.notifyDataSetChanged()
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
+                hideLoader(loaderShownAt)
                 tableController.loadChars()
                 tableAdapter.notifyDataSetChanged()
                 loadBlocks()
-                tableController.startSearch()
             }
         }
+    }
+
+    private fun hideLoader(shownAt: Long) {
+        val delay = LOADER_MIN_DURATION - (SystemClock.uptimeMillis() - shownAt)
+        loader.animate()
+            .alpha(0f)
+            .setStartDelay(delay.coerceAtLeast(0))
+            .setDuration(LOADER_FADE_DURATION)
+            .setInterpolator(LinearInterpolator())
+            .withEndAction { loader.visibility = GONE }
+            .start()
     }
 
     private fun firstVisibleCodePoint(chars: CodePointArray = tableController.tableChars): Int {
@@ -827,6 +842,9 @@ class TableScreen(
     private companion object {
         const val VIEW_TYPE_RESULT = 0
         const val VIEW_TYPE_HEADER = 1
+        const val DEBUG_LOADER = "debug.loader"
+        const val LOADER_MIN_DURATION = 300L
+        const val LOADER_FADE_DURATION = 120L
     }
 
     interface Delegate {

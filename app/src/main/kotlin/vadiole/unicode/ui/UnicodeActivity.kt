@@ -14,6 +14,7 @@ import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
+import androidx.core.view.doOnPreDraw
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -45,6 +46,7 @@ class UnicodeActivity : Activity() {
         val navigationView = NavigationView(this)
         navigationViewNullable = navigationView
         setContentView(navigationView)
+        navigationView.doOnPreDraw { it.post { unicodeStorage.search.start() } }
         val fromHistory = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
         if (savedInstanceState == null && !fromHistory) onNewIntent(intent)
 

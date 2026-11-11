@@ -12,6 +12,8 @@ adb shell am start -S -n $A --es debug.preset legacy --ez debug.searchAtTop true
 
 `help` lists the presets with what each sets, and every setting with its `am` flag and current value.
 
+To check the table loader, launch with `--ez debug.loader true`: it stays on screen instead of the table.
+
 ## Emoji overlay
 
 With the developer option "Show layout bounds" on (Android 11+), the app shows an emoji readout over the table: scroll speed in rows/s, whether rows may sharpen, and how many visible emoji rows are low-res, sharp, scaled or waiting for the background thread. Cells drawn from the low-res strip are tinted red, cells drawn from a strip of another size (during a size-slider drag) blue. Turn the option off when measuring frames: the readout redraws the table on every scroll.

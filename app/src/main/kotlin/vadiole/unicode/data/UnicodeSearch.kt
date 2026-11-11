@@ -20,7 +20,6 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private val lock = Object()
     private val buildLock = Any()
     private val mainHandler = Handler(Looper.getMainLooper())
-    private var thread: Thread? = null
     private var pendingQuery: String? = null
     private var pendingLimit = 0
     private var pendingCallback: ((SearchResults) -> Unit)? = null
@@ -34,6 +33,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private var request = 0
     private var requestedKey: String? = null
     private var started = false
+    private var pendingBuild: PendingBuild? = null
     @Volatile
     private var shown: IntArray? = null
     @Volatile
@@ -42,22 +42,17 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     var annotations: Annotations? = null
         private set
 
-    fun prepare() = synchronized(lock) {
-        if (thread != null) return
-        thread = Thread(::run, "search").apply {
+    fun start() {
+        val build = synchronized(lock) {
+            if (started) return
+            started = true
+            pendingBuild.also { pendingBuild = null }
+        }
+        Thread(::run, "search").apply {
             isDaemon = true
             start()
         }
-    }
-
-    fun start() = synchronized(lock) {
-        if (started) return
-        started = true
-        lock.notifyAll()
-    }
-
-    private fun awaitStart() = synchronized(lock) {
-        while (!started) lock.wait()
+        build?.start()
     }
 
     fun ensure(stream: InputStream) {
@@ -78,11 +73,22 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             stream.close()
             return
         }
-        Thread({ build(id, key, stream) }, "search-index").start()
+        val build = PendingBuild(id, key, stream)
+        val queued = synchronized(lock) {
+            if (!started) {
+                pendingBuild?.stream?.close()
+                pendingBuild = build
+            }
+            !started
+        }
+        if (!queued) build.start()
+    }
+
+    private inner class PendingBuild(val id: Int, val key: String, val stream: InputStream) {
+        fun start() = Thread({ build(id, key, stream) }, "search-index").start()
     }
 
     private fun build(id: Int, key: String, stream: InputStream) {
-        awaitStart()
         var annotations = try {
             stream.use { if (key == Annotations.NONE) null else Annotations.read(key, it) }
         } catch (e: Exception) {
@@ -135,7 +141,6 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     }
 
     fun search(query: String, limit: Int, callback: (SearchResults) -> Unit) {
-        prepare()
         start()
         synchronized(lock) {
             generation++
@@ -205,7 +210,6 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private fun processStart() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Process.getStartUptimeMillis() else 0L
 
     private fun run() {
-        awaitStart()
         val data = storage.data()
         var engine: CharSearch? = null
         var bits: LongArray? = null

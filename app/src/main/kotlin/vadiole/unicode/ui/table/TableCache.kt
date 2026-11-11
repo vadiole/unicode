@@ -4,6 +4,8 @@ import java.io.DataOutputStream
 import java.io.File
 import java.io.IOException
 import java.nio.ByteBuffer
+import java.util.zip.CRC32
+import java.util.zip.CheckedOutputStream
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.BlockList
 import vadiole.unicode.data.CodePoint
@@ -17,7 +19,8 @@ class TableCache(
     fun write(file: File, key: String) {
         val temp = File(file.parentFile, "${file.name}.tmp")
         try {
-            DataOutputStream(temp.outputStream().buffered(1 shl 16)).use { out ->
+            val checksum = CRC32()
+            DataOutputStream(CheckedOutputStream(temp.outputStream().buffered(1 shl 16), checksum)).use { out ->
                 out.writeString(key)
                 out.writeInts(chars)
                 out.writeInt(abbreviations.size)
@@ -39,6 +42,7 @@ class TableCache(
                 for (label in blockList.labels) out.writeString(label)
                 out.writeBoolean(scrollScale != null)
                 scrollScale?.write(out)
+                out.writeLong(checksum.value)
             }
             if (!temp.renameTo(file)) temp.delete()
         } catch (e: IOException) {
@@ -60,12 +64,17 @@ class TableCache(
 
     companion object {
         fun read(file: File, key: String): TableCache? = try {
-            if (file.exists()) read(ByteBuffer.wrap(file.readBytes()), key) else null
+            if (file.exists()) read(file.readBytes(), key) else null
         } catch (e: Exception) {
             null
         }
 
-        private fun read(buffer: ByteBuffer, key: String): TableCache? {
+        private fun read(bytes: ByteArray, key: String): TableCache? {
+            if (bytes.size < 8) return null
+            val checksum = CRC32()
+            checksum.update(bytes, 0, bytes.size - 8)
+            val buffer = ByteBuffer.wrap(bytes, 0, bytes.size - 8)
+            if (ByteBuffer.wrap(bytes).getLong(bytes.size - 8) != checksum.value) return null
             if (buffer.string() != key) return null
             val chars = buffer.ints()
             val abbreviations = HashMap<CodePoint, String>()
@@ -80,6 +89,7 @@ class TableCache(
             val types = ByteArray(blocks.size).also(buffer::get)
             val labels = Array(blocks.size) { buffer.string() }
             val scrollScale = if (buffer.get().toInt() != 0) ScrollScale.read(buffer) else null
+            if (buffer.hasRemaining()) return null
             return TableCache(chars, abbreviations, BlockList(blocks, icons, iconFlags, types, labels), scrollScale)
         }
 

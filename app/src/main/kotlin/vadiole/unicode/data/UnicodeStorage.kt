@@ -53,28 +53,30 @@ class UnicodeStorage(private val context: Context) {
         loadedMeanings = null
     }
 
-    suspend fun getCodePoints(count: Int, background: Boolean, acceptGlyph: (String) -> Boolean): CodePointArray = withContext(if (background) backgroundDispatcher else dispatcher) {
+    suspend fun previewEnd(codePoint: Int, extra: Int): Int = withContext(dispatcher) {
         val data = data()
-        val all = data.codePoints(data.size)
-        val limit = if (count > 0) splitIndex(data, all, minOf(count, data.size)) else data.size
-        val result = IntArray(limit)
-        val size = scan(data, all, limit, result, acceptGlyph)
+        var index = minOf(data.lowerIndex(codePoint) + extra, data.size)
+        while (index < data.size) {
+            val codePoint = data.codePointAt(index)
+            val range = data.rangeOf(codePoint)
+            if (range < 0) break
+            index += data.rangeLast[range] - codePoint + 1
+        }
+        index
+    }
+
+    suspend fun getCodePoints(from: Int, to: Int, background: Boolean, acceptGlyph: (String) -> Boolean): CodePointArray = withContext(if (background) backgroundDispatcher else dispatcher) {
+        val data = data()
+        val end = if (to < 0) data.size else to
+        val all = data.codePoints(end)
+        val result = IntArray(end - from)
+        val size = scan(data, all, from, end, result, acceptGlyph)
         CodePointArray(result.copyOf(size))
     }
 
-    private fun splitIndex(data: UnicodeData, all: IntArray, start: Int): Int {
-        var index = start
-        while (index < all.size) {
-            val range = data.rangeOf(all[index])
-            if (range < 0) return index
-            index += data.rangeLast[range] - all[index] + 1
-        }
-        return all.size
-    }
-
-    private fun scan(data: UnicodeData, all: IntArray, to: Int, result: IntArray, acceptGlyph: (String) -> Boolean): Int {
+    private fun scan(data: UnicodeData, all: IntArray, from: Int, to: Int, result: IntArray, acceptGlyph: (String) -> Boolean): Int {
         var size = 0
-        var index = 0
+        var index = from
         var range = 0
         while (index < to) {
             val codePoint = all[index]
