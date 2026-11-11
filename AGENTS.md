@@ -8,6 +8,7 @@
 - Application-scoped singletons `unicodeStorage`, `userConfig`, `recentRepository` provided via the `UnicodeApp` companion object.
 - Data comes from one flat file, `assets/u18.bin`, written by `vadiole/generator` (`build.sh`) and read into memory once per process by `UnicodeStorage` (`data/UnicodeData.kt`); CJK meanings are read on demand.
 - Search is an in-memory word index (`search/`, plain Kotlin) built on the device, cached in `filesDir/cache/search` and queried on its own thread by `unicodeStorage.search`; see `docs/search.md`.
+- Startup: `TableController.preload` reads the table snapshot (`filesDir/cache/table`: shown chars, abbreviations, blocks, scroll scale) from `UnicodeApp`, so the first frame binds rows without decoding `u18.bin`; search starts after the first table frame.
 - Screens extend `Screen : FrameLayout, CoroutineScope` and cancel their scope in `onDetachedFromWindow`.
 - UI is views in kotlin, navigation via custom `NavigationView : FrameLayout`.
 - `Nav` manages the screen stack and screen transitions, including predictive back; `NavigationView` coordinates screens and the character details sheet.

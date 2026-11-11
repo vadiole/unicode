@@ -7,6 +7,7 @@ import android.os.Looper
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.RecentRepository
 import vadiole.unicode.data.config.UserConfig
+import vadiole.unicode.ui.table.TableController
 
 @SuppressLint("StaticFieldLeak")
 class UnicodeApp : Application() {
@@ -17,6 +18,7 @@ class UnicodeApp : Application() {
         Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
         unicodeStorageInternal = UnicodeStorage(this).also { it.search.prepare() }
         userConfigInternal = UserConfig(this)
+        TableController.preload(unicodeStorage, userConfig.showUnsupportedChars)
         recentRepositoryInternal = RecentRepository(this, userConfig)
         Handler(Looper.getMainLooper()).postDelayed({ recentRepository.load() }, 1000)
         if (userConfig.crashReportDisabled) {

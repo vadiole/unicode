@@ -3,11 +3,7 @@ package vadiole.unicode.data
 import android.content.Context
 import android.os.Process
 import android.util.SparseArray
-import java.io.DataInputStream
-import java.io.DataOutputStream
 import java.io.File
-import java.io.IOException
-import java.nio.ByteBuffer
 import java.util.concurrent.Executors
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
@@ -57,21 +53,34 @@ class UnicodeStorage(private val context: Context) {
         loadedMeanings = null
     }
 
-    suspend fun getTotalCharacters(): Int = withContext(dispatcher) { data().size }
-
     suspend fun getCodePoints(count: Int, background: Boolean, acceptGlyph: (String) -> Boolean): CodePointArray = withContext(if (background) backgroundDispatcher else dispatcher) {
         val data = data()
-        val limit = if (count > 0) minOf(count, data.size) else data.size
-        val all = data.codePoints(limit)
+        val all = data.codePoints(data.size)
+        val limit = if (count > 0) splitIndex(data, all, minOf(count, data.size)) else data.size
         val result = IntArray(limit)
+        val size = scan(data, all, limit, result, acceptGlyph)
+        CodePointArray(result.copyOf(size))
+    }
+
+    private fun splitIndex(data: UnicodeData, all: IntArray, start: Int): Int {
+        var index = start
+        while (index < all.size) {
+            val range = data.rangeOf(all[index])
+            if (range < 0) return index
+            index += data.rangeLast[range] - all[index] + 1
+        }
+        return all.size
+    }
+
+    private fun scan(data: UnicodeData, all: IntArray, to: Int, result: IntArray, acceptGlyph: (String) -> Boolean): Int {
         var size = 0
         var index = 0
         var range = 0
-        while (index < limit) {
+        while (index < to) {
             val codePoint = all[index]
             while (range < data.rangeCount && data.rangeLast[range] < codePoint) range++
             if (range < data.rangeCount && data.rangeFirst[range] <= codePoint) {
-                val last = minOf(index + data.rangeLast[range] - codePoint, data.ageRunEnd(index) - 1, limit - 1)
+                val last = minOf(index + data.rangeLast[range] - codePoint, data.ageRunEnd(index) - 1, to - 1)
                 size = acceptRange(all, index, last, result, size, acceptGlyph)
                 index = last + 1
             } else {
@@ -79,7 +88,7 @@ class UnicodeStorage(private val context: Context) {
                 index++
             }
         }
-        return@withContext CodePointArray(result.copyOf(size))
+        return size
     }
 
     private fun acceptRange(all: IntArray, first: Int, last: Int, out: IntArray, start: Int, acceptGlyph: (String) -> Boolean): Int {
@@ -107,43 +116,6 @@ class UnicodeStorage(private val context: Context) {
             if (acceptGlyph(CodePoint(all[index]).char)) accepted++
         }
         return accepted
-    }
-
-    suspend fun readCache(name: String, key: String): IntArray? = withContext(dispatcher) {
-        val file = File(cacheDir, name)
-        if (!file.exists()) return@withContext null
-        val data = data()
-        try {
-            DataInputStream(file.inputStream().buffered()).use { input ->
-                if (input.readUTF() != "${data.checksum};$key") return@withContext null
-                val size = input.readInt()
-                if (size !in 0..data.size) return@withContext null
-                val bytes = ByteArray(size * 4)
-                input.readFully(bytes)
-                val values = IntArray(bytes.size / 4)
-                ByteBuffer.wrap(bytes).asIntBuffer().get(values)
-                values
-            }
-        } catch (e: IOException) {
-            null
-        }
-    }
-
-    suspend fun writeCache(name: String, key: String, values: IntArray) = withContext(dispatcher) {
-        val dir = cacheDir.also { it.mkdirs() }
-        val temp = File(dir, "$name.tmp")
-        try {
-            DataOutputStream(temp.outputStream().buffered()).use { output ->
-                output.writeUTF("${data().checksum};$key")
-                output.writeInt(values.size)
-                val bytes = ByteBuffer.allocate(values.size * 4)
-                bytes.asIntBuffer().put(values)
-                output.write(bytes.array())
-            }
-            temp.renameTo(File(dir, name))
-        } catch (e: IOException) {
-            temp.delete()
-        }
     }
 
     suspend fun getAbbreviations(): Map<CodePoint, String> = withContext(dispatcher) {

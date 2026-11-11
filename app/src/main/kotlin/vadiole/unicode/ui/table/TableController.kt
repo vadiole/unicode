@@ -3,6 +3,9 @@ package vadiole.unicode.ui.table
 import android.graphics.Paint
 import android.os.Build
 import android.util.Log
+import java.io.File
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.FutureTask
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 import vadiole.unicode.data.Block
@@ -32,14 +35,13 @@ class TableController(
     var scrollScale: ScrollScale? = null
         private set
     private val blocksLock = Any()
-    private var blocksGeneration = 0
     private val glyphPaint = Paint()
+    private val cacheLock = Any()
+    private var blocksGeneration = 0
     private var lastBlock: Block? = null
     private var lastBlockIndex = -1
 
-    suspend fun loadAbbreviations() = worker {
-        abbreviations = unicodeStorage.getAbbreviations()
-    }
+    fun startSearch() = unicodeStorage.search.start()
 
     suspend fun awaitSearch() = suspendCancellableCoroutine { continuation ->
         unicodeStorage.search.whenReady { if (continuation.isActive) continuation.resume(Unit) }
@@ -51,25 +53,52 @@ class TableController(
         return true
     }
 
-    suspend fun loadCachedChars(): Boolean {
-        val cached = unicodeStorage.readCache(CACHE_NAME, cacheKey(userConfig.showUnsupportedChars)) ?: return false
-        tableChars = CodePointArray(cached)
-        totalChars = cached.size
+    fun loadCache(): Boolean {
+        val showAll = userConfig.showUnsupportedChars
+        val task = preloaded?.takeIf { preloadedShowAll == showAll }
+        preloaded = null
+        val latest = latest
+        val cache = when {
+            task != null -> try {
+                task.get()
+            } catch (e: ExecutionException) {
+                null
+            }
+            latest?.showAll == showAll -> latest.cache
+            else -> TableCache.read(cacheFile(unicodeStorage), cacheKey(unicodeStorage, showAll))
+        } ?: return false
+        Companion.latest = LatestCache(showAll, cache)
+        tableChars = CodePointArray(cache.chars)
+        totalChars = cache.chars.size
+        abbreviations = cache.abbreviations
+        synchronized(blocksLock) {
+            blockList = cache.blockList
+            scrollScale = cache.scrollScale
+        }
         updateShown()
         return true
     }
 
-    suspend fun loadChars(fast: Boolean, background: Boolean = false): Boolean {
-        val count = if (fast) 256 else -1
+    suspend fun loadPreview(untilCodePoint: Int) {
+        val showAll = userConfig.showUnsupportedChars
+        val (codePoints, abbreviations) = worker {
+            val count = unicodeStorage.data().lowerIndex(untilCodePoint) + PREVIEW_SIZE
+            unicodeStorage.getCodePoints(count, background = false) { showAll || glyphPaint.hasGlyph(it) } to unicodeStorage.getAbbreviations()
+        }
+        tableChars = codePoints
+        totalChars = unicodeStorage.data().size
+        this.abbreviations = abbreviations
+    }
+
+    suspend fun loadChars(background: Boolean = false): Boolean {
         val showAll = userConfig.showUnsupportedChars
         val paint = if (background) Paint() else glyphPaint
-        val codePoints = unicodeStorage.getCodePoints(count, background) { showAll || paint.hasGlyph(it) }
+        val codePoints = unicodeStorage.getCodePoints(-1, background) { showAll || paint.hasGlyph(it) }
         if (showAll != userConfig.showUnsupportedChars) return false
         val isChanged = !codePoints.storage.contentEquals(tableChars.storage)
-        if (!fast && isChanged) unicodeStorage.writeCache(CACHE_NAME, cacheKey(showAll), codePoints.storage)
         tableChars = codePoints
-        totalChars = if (fast) unicodeStorage.getTotalCharacters() else codePoints.size
-        if (!fast) updateShown()
+        totalChars = codePoints.size
+        updateShown()
         return isChanged
     }
 
@@ -77,10 +106,10 @@ class TableController(
         unicodeStorage.search.setShown(if (userConfig.showUnsupportedChars) null else tableChars.storage)
     }
 
-    private fun cacheKey(showAll: Boolean) = "$showAll;${Build.FINGERPRINT};${unicodeStorage.buildKey}"
-
     suspend fun loadBlocks() = worker {
         val generation = synchronized(blocksLock) { ++blocksGeneration }
+        val chars = tableChars
+        val showAll = userConfig.showUnsupportedChars
         val allBlocks = unicodeStorage.getBlocks()
         val filteredBlocks = allBlocks.filter { block ->
             getPosition(block) != 0 || block.start == 0
@@ -90,26 +119,34 @@ class TableController(
         val iconFlags = ByteArray(icons.size)
         val types = ByteArray(filteredBlocks.size)
         val labels = arrayOfNulls<String>(filteredBlocks.size)
-        val showAll = userConfig.showUnsupportedChars
         val iconPaint = Paint()
         val data = unicodeStorage.data()
         filteredBlocks.forEachIndexed { index, block ->
             val source = sources.get(block.start)
             types[index] = (source?.type ?: BlockList.TYPE_SYMBOL).toByte()
             labels[index] = source?.label
-            fillBlockIcons(block, source, data, icons, iconFlags, index * BlockList.ICON_SLOTS, showAll, iconPaint)
+            fillBlockIcons(block, source, data, chars.storage, icons, iconFlags, index * BlockList.ICON_SLOTS, showAll, iconPaint)
         }
-        val scale = ScrollScale.create(tableChars.storage, filteredBlocks, data)
+        val scale = ScrollScale.create(chars.storage, filteredBlocks, data)
+        val list = BlockList(filteredBlocks, icons, iconFlags, types, labels)
         synchronized(blocksLock) {
             if (generation != blocksGeneration) return@worker
             lastBlock = null
             lastBlockIndex = -1
-            blockList = BlockList(filteredBlocks, icons, iconFlags, types, labels)
+            blockList = list
             scrollScale = scale
+        }
+        val file = cacheFile(unicodeStorage)
+        file.parentFile?.mkdirs()
+        synchronized(cacheLock) {
+            if (generation != blocksGeneration) return@worker
+            val cache = TableCache(chars.storage, abbreviations, list, scale)
+            cache.write(file, cacheKey(unicodeStorage, showAll))
+            latest = LatestCache(showAll, cache)
         }
     }
 
-    private fun fillBlockIcons(block: Block, source: BlockIconSource?, data: UnicodeData, out: IntArray, outFlags: ByteArray, offset: Int, showAll: Boolean, paint: Paint) {
+    private fun fillBlockIcons(block: Block, source: BlockIconSource?, data: UnicodeData, chars: IntArray, out: IntArray, outFlags: ByteArray, offset: Int, showAll: Boolean, paint: Paint) {
         var size = 0
         if (source != null) {
             val codePoints = source.codePoints
@@ -133,7 +170,6 @@ class TableController(
             if (source.type == BlockList.TYPE_NOTHING) return
         }
         val markFlag = if (source?.type == BlockList.TYPE_MARKS) BlockList.FLAG_MARK.toByte() else 0
-        val chars = tableChars.storage
         var index = chars.binarySearch(block.start).let { if (it < 0) -it - 1 else it }
         while (size < BlockList.ICON_SLOTS && index < chars.size && chars[index] <= block.end) {
             val codePoint = chars[index++]
@@ -249,8 +285,32 @@ class TableController(
         return codePoints
     }
 
-    private companion object {
-        const val CACHE_NAME = "table"
-        var isRevalidated = false
+    companion object {
+        private const val CACHE_NAME = "table"
+        private const val PREVIEW_SIZE = 256
+        private const val CACHE_FORMAT = 2
+        private var isRevalidated = false
+        private var preloaded: FutureTask<TableCache?>? = null
+        private var preloadedShowAll = false
+        @Volatile
+        private var latest: LatestCache? = null
+
+        fun preload(storage: UnicodeStorage, showAll: Boolean) {
+            val task = FutureTask {
+                TableCache.read(cacheFile(storage), cacheKey(storage, showAll)) ?: run {
+                    storage.data()
+                    null
+                }
+            }
+            preloaded = task
+            preloadedShowAll = showAll
+            Thread(task, "table-cache").start()
+        }
+
+        private class LatestCache(val showAll: Boolean, val cache: TableCache)
+
+        private fun cacheFile(storage: UnicodeStorage) = File(storage.cacheDir, CACHE_NAME)
+
+        private fun cacheKey(storage: UnicodeStorage, showAll: Boolean) = "$CACHE_FORMAT;$showAll;${Build.FINGERPRINT};${storage.buildKey}"
     }
 }

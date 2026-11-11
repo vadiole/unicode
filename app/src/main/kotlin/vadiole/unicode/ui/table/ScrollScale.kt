@@ -1,5 +1,7 @@
 package vadiole.unicode.ui.table
 
+import java.io.DataOutputStream
+import java.nio.ByteBuffer
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.UnicodeData
 import kotlin.math.abs
@@ -32,6 +34,11 @@ class ScrollScale private constructor(private val linear: FloatArray, private va
         return toThumb(position.coerceIn(0f, 1f))
     }
 
+    fun write(out: DataOutputStream) {
+        out.writeInt(speed.size)
+        for (array in arrayOf(linear, thumb, speed)) for (value in array) out.writeFloat(value)
+    }
+
     private fun map(from: FloatArray, to: FloatArray, value: Float): Float {
         if (value <= 0f) return 0f
         if (value >= 1f) return 1f
@@ -46,6 +53,13 @@ class ScrollScale private constructor(private val linear: FloatArray, private va
     companion object {
         private const val MAX_GROUP_RATIO = 1.5f
         private const val MAX_SPEED = 4f
+
+        fun read(buffer: ByteBuffer): ScrollScale {
+            val size = buffer.getInt()
+            return ScrollScale(buffer.floats(size + 1), buffer.floats(size + 1), buffer.floats(size))
+        }
+
+        private fun ByteBuffer.floats(size: Int) = FloatArray(size) { getFloat() }
 
         fun create(chars: IntArray, blocks: Array<Block>, data: UnicodeData): ScrollScale? {
             if (chars.isEmpty() || blocks.isEmpty()) return null

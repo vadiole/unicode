@@ -25,6 +25,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.launch
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
@@ -37,6 +38,7 @@ import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SearchBar
 import vadiole.unicode.ui.common.TEXT_BODY
+import vadiole.unicode.ui.common.DotsLoader
 import vadiole.unicode.ui.common.TopBar
 import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.dp
@@ -204,6 +206,7 @@ class TableScreen(
     }
     private val contentContainer = FrameLayout(context)
     private val tableLayer = FrameLayout(context)
+    private val loader = DotsLoader(context).apply { visibility = GONE }
     private val tableDim = View(context).apply {
         setBackgroundColor(context.getColor(R.color.dialogDim))
         alpha = 0f
@@ -343,6 +346,7 @@ class TableScreen(
 
     private suspend fun loadBlocks() {
         tableController.loadBlocks()
+        tableViewDelegate.onBlockChanged(tableView.currentBlock()?.name)
         tableViewDelegate.onScrollProgressChanged(tableView.getScrollProgress())
     }
 
@@ -438,6 +442,7 @@ class TableScreen(
         tableLayer.addView(tableView, frameParams(matchParent, matchParent))
         tableLayer.addView(fastScrollView, frameParams(matchParent, matchParent))
         tableLayer.addView(tableDim, frameParams(matchParent, matchParent))
+        tableLayer.addView(loader, frameParams(wrapContent, wrapContent, gravity = Gravity.CENTER))
         resultsLayer.addView(searchResultView, frameParams(matchParent, matchParent))
         resultsLayer.addView(noResultsView, frameParams(matchParent, matchParent))
         resultsLayer.addView(searchFastScrollView, frameParams(matchParent, matchParent))
@@ -449,23 +454,26 @@ class TableScreen(
         dockView.scrollPosition = userConfig.dockScroll
         updateDockTip(animate = false)
         updateContentInsets()
-        launch {
-            val scrollCodePoint = userConfig.tableScrollCodePoint
-            val isCached = tableController.loadCachedChars()
-            if (!isCached && scrollCodePoint <= 0) {
-                tableController.loadChars(fast = true)
-            }
-            tableController.loadAbbreviations()
+        if (tableController.loadCache()) {
             tableAdapter.notifyDataSetChanged()
-            if (isCached) {
-                scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
-                loadBlocks()
+            scrollToCodePoint(userConfig.tableScrollCodePoint, userConfig.tableScrollOffset)
+            launch {
+                repeat(2) { awaitFrame() }
+                tableController.startSearch()
                 if (tableController.needsRevalidation()) reloadChars(background = true)
-            } else {
-                tableController.loadChars(fast = false)
+            }
+        } else {
+            launch {
+                val scrollCodePoint = userConfig.tableScrollCodePoint
+                loader.visibility = VISIBLE
+                tableController.loadPreview(scrollCodePoint)
+                loader.visibility = GONE
                 tableAdapter.notifyDataSetChanged()
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
+                tableController.loadChars()
+                tableAdapter.notifyDataSetChanged()
                 loadBlocks()
+                tableController.startSearch()
             }
         }
     }
@@ -700,7 +708,7 @@ class TableScreen(
         launch {
             if (background) tableController.awaitSearch()
             val chars = tableController.tableChars
-            if (!tableController.loadChars(fast = false, background)) return@launch
+            if (!tableController.loadChars(background)) return@launch
             val topCodePoint = firstVisibleCodePoint(chars)
             val topOffset = tableView.firstVisibleRowOffset
             tableAdapter.notifyDataSetChanged()

@@ -33,6 +33,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private var readyCallbacks: ArrayList<() -> Unit>? = ArrayList()
     private var request = 0
     private var requestedKey: String? = null
+    private var started = false
     @Volatile
     private var shown: IntArray? = null
     @Volatile
@@ -47,6 +48,16 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
             isDaemon = true
             start()
         }
+    }
+
+    fun start() = synchronized(lock) {
+        if (started) return
+        started = true
+        lock.notifyAll()
+    }
+
+    private fun awaitStart() = synchronized(lock) {
+        while (!started) lock.wait()
     }
 
     fun ensure(stream: InputStream) {
@@ -71,6 +82,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     }
 
     private fun build(id: Int, key: String, stream: InputStream) {
+        awaitStart()
         var annotations = try {
             stream.use { if (key == Annotations.NONE) null else Annotations.read(key, it) }
         } catch (e: Exception) {
@@ -124,6 +136,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
 
     fun search(query: String, limit: Int, callback: (SearchResults) -> Unit) {
         prepare()
+        start()
         synchronized(lock) {
             generation++
             pendingQuery = query
@@ -192,6 +205,7 @@ class UnicodeSearch(private val storage: UnicodeStorage) {
     private fun processStart() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Process.getStartUptimeMillis() else 0L
 
     private fun run() {
+        awaitStart()
         val data = storage.data()
         var engine: CharSearch? = null
         var bits: LongArray? = null
