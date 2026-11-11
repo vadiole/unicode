@@ -11,3 +11,5 @@ fun Int.dp(context: Context): Int = ceil(this * context.resources.displayMetrics
 fun borderWidth(context: Context) = if (context.resources.configuration.isDarkMode) 1f.dp(context) else 1f
 
 fun Float.sp(context: Context) = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, this, context.resources.displayMetrics)
+
+fun hairline(context: Context): Int = maxOf(1, Math.round(0.5f.dp(context)))

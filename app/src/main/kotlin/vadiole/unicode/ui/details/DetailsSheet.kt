@@ -38,6 +38,7 @@ import vadiole.unicode.ui.common.SquircleDrawable
 import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.TEXT_TITLE
 import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.hairline
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
@@ -68,7 +69,7 @@ class DetailsSheet(
     private val charViewHeight = 200.dp(context)
     private val actionGroupGap = 16.dp(context)
     private val bottomBuffer = 36.dp(context)
-    private val hairlinePx = 1
+    private val hairlinePx = hairline(context)
 
     private val backgroundDrawable = SquircleDrawable(
         cornerRadius = 0,
@@ -257,12 +258,12 @@ class DetailsSheet(
 
     private val divider2 = View(context).apply {
         layoutParams = linearParams(matchParent, hairlinePx)
-        setBackgroundColor(context.getColor(R.color.windowDivider))
+        setBackgroundColor(context.getColor(R.color.layer0))
     }
 
     private val divider3 = View(context).apply {
         layoutParams = linearParams(matchParent, hairlinePx)
-        setBackgroundColor(context.getColor(R.color.windowDivider))
+        setBackgroundColor(context.getColor(R.color.layer0))
     }
 
     private val tableActionGroup = LinearLayout(context).apply {
@@ -296,7 +297,7 @@ class DetailsSheet(
         addView(actionShare)
         if (mergedActions) {
             addView(View(context).apply {
-                setBackgroundColor(context.getColor(R.color.windowDivider))
+                setBackgroundColor(context.getColor(R.color.layer0))
             }, linearParams(matchParent, hairlinePx))
             addView(actionViewInTable)
         }
