@@ -11,14 +11,15 @@ class SettingsGroup(context: Context, items: List<View>) : LinearLayout(context)
         items.forEachIndexed { index, item ->
             if (index > 0) {
                 addView(View(context).apply {
-                    setBackgroundColor(context.getColor(R.color.windowDivider))
-                }, linearParams(matchParent, 1))
+                    setBackgroundColor(context.getColor(R.color.layer0))
+                }, linearParams(matchParent, hairline(context)))
             }
             val top = index == 0
             val bottom = index == items.lastIndex
             when (item) {
                 is ActionCell -> item.setCorners(top, bottom)
                 is ToggleCell -> item.cell.setCorners(top, bottom)
+                is SliderCell -> item.setCorners(top, bottom)
             }
             addView(item, linearParams(matchParent, wrapContent))
         }

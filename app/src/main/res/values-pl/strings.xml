@@ -14,12 +14,14 @@
     <string name="search_no_results">Brak wyników</string>
     <string name="search_recents">Ostatnie</string>
     <string name="search_title">Wyszukiwanie</string>
+    <string name="table_choose_block">Wybierz blok Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Dotykaj znaków, aby je zbierać</string>
     <string name="dock_tip_copy">Dotknij panelu, aby skopiować kolekcję</string>
     <string name="dock_backspace">Usuń ostatni znak</string>
     <string name="dock_copy_all">Kopiuj wszystko</string>
+    <string name="dock_clear_all">Wyczyść kolekcję</string>
 
     <!-- Settings -->
     <string name="settings_title">Ustawienia</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">Zbieranie dotknięciem</string>
     <string name="settings_search_at_top">Pasek wyszukiwania u góry</string>
     <string name="settings_show_unsupported">Pokazuj nieobsługiwane znaki</string>
+    <string name="settings_character_size_in_table">Rozmiar znaków w tabeli</string>
+    <string name="settings_enlarge_small_chars">Powiększaj małe znaki</string>
     <string name="settings_crash_reports">Raporty o awariach</string>
     <string name="settings_save_recents">Zapisuj ostatnie znaki</string>
     <string name="settings_clear_recents">Wyczyść ostatnie znaki</string>

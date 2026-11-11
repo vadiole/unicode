@@ -7,9 +7,13 @@ on:
     branches-ignore: [ master ]
     types: [ opened ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    name: Build and publish debug APK
+    name: Build and publish alpha APK
     runs-on: ubuntu-latest
     steps:
       - name: Set start time
@@ -17,23 +21,14 @@ jobs:
         run: |
           echo "START_TIME=$(date +%s)" >> $GITHUB_ENV
       - name: Checkout the repo
-        uses: actions/checkout@v3
-      - name: Setup java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'oracle'
-          java-version: '17'
+        uses: actions/checkout@v5
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v5
         with:
           cache-read-only: false
-      - name: Execute Gradle build
-        run: ./gradlew buildDebug
-      - name: Run lint
-        run: ./gradlew lintDebug
-      - name: Assemble debug APK
-        run: ./gradlew assembleDebug
-      - name: Publish debug APK to Telegram
+      - name: Assemble alpha APK
+        run: ./gradlew assembleAlpha
+      - name: Publish alpha APK to Telegram
         run: |
           formatDuration() { # like 1m 1s
               local ms=$1
@@ -43,13 +38,13 @@ jobs:
           }
           TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}
-          FILE_PATH=$(find ./app/build/outputs/apk/debug/ -name '*.apk' | head -n 1)
-          THUMBNAIL_PATH="./assets/logo-320.jpg"
+          FILE_PATH=$(find ./app/build/outputs/apk/alpha/ -name '*.apk' | head -n 1)
           DURATION=$(( $(date +%s) - $START_TIME ))
           CAPTION="${{ github.head_ref || github.ref_name }}"$'\n'"[$(formatDuration $DURATION)]"
 
           curl --silent --show-error -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument" \
               -F chat_id="$TELEGRAM_CHAT_ID" \
               -F document=@"$FILE_PATH" \
-              -F thumb=@"$THUMBNAIL_PATH" \
               -F caption="$CAPTION"
+      - name: Run lint
+        run: ./gradlew lintDebug

@@ -12,11 +12,9 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 23
         targetSdk = 37
-        versionCode = 173
-        versionName = "1.9.0"
+        versionCode = 176
+        versionName = "1.10.0"
         buildConfigField("String", "UNICODE_VERSION", "\"18.0.0\"")
-        buildConfigField("String", "DATABASE_NAME", "\"u18.sqlite\"")
-        buildConfigField("int", "TOTAL_CHARACTERS", "41341")
         base.archivesName.set("unicode-v$versionName")
     }
 
@@ -26,6 +24,12 @@ android {
     }
 
     signingConfigs {
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
         val storeFile = providers.gradleProperty("unicode.signing.storeFile").orNull
         if (storeFile != null) {
             create("release") {
@@ -41,6 +45,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
             isShrinkResources = false
             proguardFiles("proguard-rules.pro")
@@ -52,6 +57,12 @@ android {
             vcsInfo.include = false
             signingConfig = signingConfigs.findByName("release")
             proguardFiles("proguard-rules.pro")
+        }
+
+        create("alpha") {
+            initWith(getByName("release"))
+            applicationIdSuffix = ".alpha"
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
@@ -70,6 +81,12 @@ android {
 
     buildFeatures {
         buildConfig = true
+    }
+
+    sourceSets {
+        getByName("debug") {
+            assets.srcDir("src/testDebug/resources")
+        }
     }
 
     lint {
@@ -100,6 +117,6 @@ tasks.matching { it.name == "minifyReleaseWithR8" }.configureEach {
 dependencies {
     implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
-    implementation("androidx.dynamicanimation:dynamicanimation:1.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    testImplementation("junit:junit:4.13.2")
 }

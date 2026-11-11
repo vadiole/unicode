@@ -1,0 +1,16 @@
+# Known weaknesses of the search: expectations that fail today and that a better engine should meet.
+# Same format as expectations.txt. They never fail the suite, verify reports each as open or fixed.
+# Their queries are marked +improve in queries.txt, so a changed result is reported instead of failing.
+
+# kana BU is a whole word of a known script, BULLET is a word start
+top:1 2022 bu
+# kana PO is a whole word of a known script, POUND SIGN is a word start
+top:1 00A3 po
+# U+2047 DOUBLE QUESTION MARK is a formal name the query starts, U+0022 matches by its alias double quote
+top:1 0022 double qu
+# Cyrillic and mathematical names end in the whole word TICK, U+2713 has it only as a keyword
+top:5 2713 tick
+# U+2223 DIVIDES and other names start with the word, U+00F7 has it only as a keyword
+top:3 00F7 divide
+# U+01B7 has the Unicode 1.0 name LATIN CAPITAL LETTER YOGH and a lower code point
+top:1 021C yogh

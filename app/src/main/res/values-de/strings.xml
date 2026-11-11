@@ -14,12 +14,14 @@
     <string name="search_no_results">Keine Ergebnisse</string>
     <string name="search_recents">Zuletzt verwendet</string>
     <string name="search_title">Suche</string>
+    <string name="table_choose_block">Unicode-Block auswählen</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Tippe auf Zeichen, um sie zu sammeln</string>
     <string name="dock_tip_copy">Tippe auf die Leiste, um die Sammlung zu kopieren</string>
     <string name="dock_backspace">Letztes Zeichen löschen</string>
     <string name="dock_copy_all">Alle kopieren</string>
+    <string name="dock_clear_all">Sammlung leeren</string>
 
     <!-- Settings -->
     <string name="settings_title">Einstellungen</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">Zum Sammeln tippen</string>
     <string name="settings_search_at_top">Suchleiste oben</string>
     <string name="settings_show_unsupported">Nicht unterstützte Zeichen anzeigen</string>
+    <string name="settings_character_size_in_table">Zeichengröße in der Tabelle</string>
+    <string name="settings_enlarge_small_chars">Kleine Zeichen vergrößern</string>
     <string name="settings_crash_reports">Absturzberichte</string>
     <string name="settings_save_recents">Zuletzt verwendete Zeichen speichern</string>
     <string name="settings_clear_recents">Zuletzt verwendete Zeichen löschen</string>

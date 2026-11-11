@@ -1,0 +1,302 @@
+# Ranking expectations that hold today and must hold for any search engine.
+# top:<N> <code points> <query>    every code point is within the first N results
+# above <A>><B>[,<A>><B>] <query>  A is found and ranks above B
+# Code points are hex, comma separated, ranges as 2190..2193. Queries use the escapes of queries.txt.
+top:10 2190..2193 arrow
+top:10 2190..2193 ARROW
+top:10 2190..2193 \s\sarrow
+top:20 2190..2193 arrow arrow
+top:10 2192 ightwards
+top:5 2192 right arrow
+top:5 2192 right \sarrow
+top:5 2192 arrow right
+top:5 2192 rightwards arrow
+top:1 0061 latin small letter a
+top:1 0061 LATIN SMALL LETTER A
+top:1 0061 a letter small latin
+top:1 0041 latin capital letter a
+top:2 00C9,00E9 e acute
+top:1 00E9 latin small letter e with acute
+top:2 03B1 greek small letter alpha
+top:5 0391,03B1 alpha
+top:5 03A9,03C9 omega
+top:2 03A0,03C0 pi
+top:2 00A9 copyright
+top:10 2764 heart
+top:1 20AC euro
+above 20AC>20A0 euro
+top:1 00B0 degree
+above 00B0>2103 degree
+top:1 2022 bullet
+top:1 2022 bulle
+above 2022>2023 bullet
+top:1 2014 em dash
+top:1 2014 dash em
+above 2014>2E3A em dash
+top:1 00A0 non-breaking space
+top:1 00A0 no-break space
+top:1 200D zero width joiner
+above 200D>200C zero width joiner
+top:1 200B zero width space
+top:1 221E infinity
+top:3 221E infin
+above 221E>29DC infinity
+top:6 2605,2606 star
+top:12 2654..265F chess
+top:10 2500..2503 box drawing
+top:1 00B2 superscript two
+top:3 2713 check mark
+above 2713>2714 check mark
+top:1 0024 dollar
+top:1 0024 dolla
+top:3 0024 ollar
+above 0024>FF04 dollar
+top:1 1F600 grinning face
+above 1F600>1F601 grinning face
+top:1 003F question mark
+top:2 2122 trade mark
+top:1 2122 trademark
+top:1 00B6 pilcrow
+top:1 2603 snowman
+top:1 00BD fraction one half
+top:1 00BD half
+top:1 0301 combining acute
+top:1 00AD soft hyphen
+top:1 002E period
+top:1 005F underscore
+top:1 0000 null
+top:1 0007 bell
+top:1 1F525 fire
+top:1 1F408 cat
+top:1 2609 sun
+top:5 2260 not equal
+top:1 1F44D thumbs up
+top:1 0020 space
+top:1 0040 at
+top:1 000A (lf)
+top:1 1FA7B x-ray
+top:1 2192 U+2192
+top:1 2192 2192
+top:1 1F600 u+1f600
+top:1 1F600 0x1f600
+top:1 1F600 1f600
+top:1 0041 U+41
+top:1 0041 0x41
+top:1 0041 \\u0041
+top:1 0041 41
+top:1 00E9 U+E9
+top:1 00E9 \\u00e9
+top:1 00E9 e9
+top:1 200D U+200D
+top:1 0061 a
+above 0061>0041 a
+top:1 0041 A
+above 0041>0061 A
+top:1 0024 $
+top:1 0025 %
+top:1 005F _
+top:1 0027 '
+top:1 0022 "
+top:1 005C \\
+top:1 0020 \s
+top:1 00E9 \x{00E9}
+top:1 2192 \x{2192}
+top:1 1F600 \x{1F600}
+top:1 0301 \x{0301}
+top:1 200D \x{200D}
+top:1 00A0 \x{00A0}
+top:1 00DF \x{00DF}
+# ranking traps: short aliases earn no whole-text bonus, common characters beat obscure exact words
+top:2 0041,0061 a
+top:2 0041,0061 A
+top:1 00A9 copy
+above 00A9>32A2 copy
+top:10 263A smile
+above 1F603>1DA3E smile
+above 2605>066D star
+above 2190>02FF arrow
+top:1 00A9 copyright
+top:1 003F question
+top:3 003C less-than
+# aliases, abbreviations and control names
+top:1 200D zwj
+top:1 00A0 nbsp
+top:1 FEFF bom
+top:1 2122 tm
+top:1 0009 tab
+top:1 000A lf
+top:1 000D cr
+top:1 001B esc
+top:1 200C zwnj
+top:1 200B zwsp
+top:1 000A new line
+top:1 000A newline
+top:1 000A line feed
+top:1 0009 horizontal tabulation
+top:1 0023 octothorpe
+top:1 002E full stop
+top:1 002E decimal point
+top:1 2011 non-breaking hyphen
+top:1 00AE registered trade mark
+top:1 FEFF byte order mark
+top:3 002F slash
+top:3 005C backslash
+top:3 002E dot
+top:3 03BB lambda
+top:1 00DF eszett
+# CLDR keywords and short names
+top:1 1F44D +1
+top:1 1F44E -1
+top:1 1F44D thumbsup
+top:1 2192 rightarrow
+top:3 2713 checkmark
+top:1 1F355 pizza
+top:1 2764 red heart
+top:1 2665 heart suit
+top:1 2191 up arrow
+top:3 2212 subtract
+top:10 1F602 laugh
+top:5 1F4A9 poop
+# block names and sub-block headings
+top:64 0020,0030 basic latin
+top:30 2190..2193 arrows
+top:3 00BC..00BE vulgar fractions
+top:10 0030..0039 ascii digits
+top:26 0041..005A uppercase latin alphabet
+top:11 1F004 mahjong
+top:10 1F600..1F607 emoticons
+top:32 20AC,20BD currency symbols
+# CJK meanings rank after every other match
+above 1F30A>6C34 water
+above 6C34>6CB3 water
+top:1 7011 waterfall
+above 1F6A3>6CB3 river
+above 26F0>5C71 mountain
+above 1F409>9F8D dragon
+# generated names
+top:1 4E00 cjk 4e00
+top:1 4E00 cjk unified ideograph-4e00
+top:1 6C34 ideograph-6c34
+top:16 6C00..6C0F cjk 6c
+top:1 17000 tangut ideograph-17000
+top:1 17000 tangut 17000
+top:1 18E00 jurchen character-18e00
+top:1 3D000 small seal character-3d000
+top:1 AC00 hangul syllable ga
+top:1 AC00 hangul ga
+top:3 C544 hangul a
+top:1 4E2D ideograph 4e2d
+top:1 4E00 U+4E00
+top:1 4E00 4e00
+top:4 D55C,D55D,D55E,D56D hangul syllable han
+top:1 D55C hangul han
+top:3 AC01..AC03 syllable gag
+# code points and pasted characters of the ranges
+top:1 6C34 U+6C34
+top:1 6C34 0x6c34
+top:1 6C34 \\u6c34
+top:1 6C34 6c34
+top:1 AC00 U+AC00
+top:1 17000 U+17000
+top:1 3D000 U+3D000
+top:1 6C34 \x{6C34}
+top:1 AC00 \x{AC00}
+top:1 4E2D \x{4E2D}
+top:1 4E2D U+4E2D
+top:2 6C34,706B \x{6C34}\x{706B}
+top:3 1F468,200D,1F469 \x{1F468}\x{200D}\x{1F469}\x{200D}\x{1F467}
+# fixed query handling
+top:1 2192 \x{2192}\s
+top:1 0061 \sa
+top:2 0065,0301 e\x{0301}
+top:2 1F44D,1F3FB \x{1F44D}\x{1F3FB}
+# weaknesses of the SQLite search that the engine fixed
+top:5 2665 heart
+top:10 2190..2193 arro
+top:1 2713 check mark
+top:1 2192 right arrow
+top:5 200D zwj
+top:5 00A0 nbsp
+top:3 FEFF bom
+top:3 2122 tm
+top:5 0009 tab
+top:3 000A newline
+top:3 2212 minus
+top:3 002B plus
+top:5 0023 hash
+top:5 2211 sum
+top:5 002E dot
+top:5 2191 up
+top:3 00DF eszett
+top:5 0308 umlaut
+top:3 0065,0301 e\x{0301}
+top:5 1F44D,1F3FB \x{1F44D}\x{1F3FB}
+# everyday queries, typed letter by letter
+top:1 2190 arr
+top:4 2190..2193 arro
+top:1 00B0 deg
+top:1 00A9 cop
+top:1 0024 dol
+top:1 00A5 ye
+top:1 003D eq
+top:1 0027 ap
+top:1 00D7 mul
+top:1 00F7 div
+top:1 2014 em d
+top:1 2192 right ar
+top:1 2260 not equal
+top:1 25A0 black sq
+top:3 00BC,00BD,00BE fraction
+top:1 2122 trade mark
+top:1 0026 and
+top:1 007C pipe
+top:1 0023 hashtag
+top:1 2191 arrow up
+top:1 2192 arrow right
+top:1 03B1 greek small letter alpha
+top:1 3042 hiragana letter a
+top:1 1F3B2 dice
+top:1 2026 ellipsis
+top:1 005E circumflex
+top:1 0060 grave
+top:1 00B4 acute
+top:3 2318 key
+top:1 0030 zero
+top:1 003C less
+top:1 003C les
+top:1 003E gre
+top:2 003E greater
+top:3 00B2,00B3,00B9 sup
+top:1 2192 rightw
+top:3 2016 dou
+top:1 2713 check
+top:1 2122 trade
+top:1 00AC not
+top:1 002B plus
+top:1 2212 minus
+top:1 00B1 plus-or-minus
+top:1 274C cross
+top:1 0300 combining
+above 2E3A>1F3FE em d
+top:1 2191 up
+top:1 2193 down
+top:1 2190 left
+top:1 2192 right
+top:5 3055 sa
+top:10 306F ha
+top:3 0644 lam
+top:3 05E9 shin
+above 4777>0BF3 assign
+top:1 200D zero width j
+top:1 200F right-to-left
+top:1 2500 box d
+above 2605>235F star
+top:1 00A0 -break
+top:2 041C,043C em
+above 041C>0019 em
+top:2 305D,30BD so
+above 305D>000E so
+top:1 05D0 hebrew ale
+above 05D0>05D3 hebrew ale
+top:2 0061 letter a
+top:1 FFFD fffd

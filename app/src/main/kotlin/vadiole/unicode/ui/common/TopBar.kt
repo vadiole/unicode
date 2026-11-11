@@ -1,15 +1,16 @@
 package vadiole.unicode.ui.common
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Paint
+import android.os.Build
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.Gravity
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.core.view.updateLayoutParams
 import vadiole.unicode.R
-import vadiole.unicode.ui.extension.onClick
 
 class TopBar(
     context: Context,
@@ -49,23 +50,29 @@ class TopBar(
     }
 
     private val titlePaint = Paint(titleView.paint)
+    private val borderHeight = borderWidth(context).toInt().toFloat()
+    private val borderPaint = Paint().apply { color = context.getColor(R.color.floatingBorder) }
     private var isSearchShown = false
+    private var titleInsets = 0
 
     init {
         setBackgroundColor(this.context.getColor(R.color.layer1))
         onClick = { if (!isSearchShown) onTitleClick() }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) tooltipText = context.getString(R.string.table_choose_block)
         val titleGravity = (if (centerTitle) Gravity.CENTER_HORIZONTAL else Gravity.LEFT) or Gravity.CENTER_VERTICAL
         addView(titleView, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(searchTitle, frameParams(wrapContent, matchParent, gravity = titleGravity))
         addView(settingsButton, frameParams(settingsSize + settingsMargin, matchParent, Gravity.RIGHT))
-        addView(View(context).apply {
-            setBackgroundColor(context.getColor(R.color.floatingBorder))
-        }, frameParams(matchParent, borderWidth(context).toInt(), Gravity.BOTTOM))
+        setWillNotDraw(false)
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        canvas.drawRect(0f, height - borderHeight, width.toFloat(), height.toFloat(), borderPaint)
     }
 
     private fun createTitle() = TextView(context).apply {
-        setLineHeightX(22.dp(context))
-        typeface = font_semibold
+        setLineHeightCompat(22.dp(context))
+        typeface = fontSemibold
         includeFontPadding = false
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         setPadding(sidePadding, 0, titleEndPadding, 0)
@@ -83,6 +90,9 @@ class TopBar(
     fun setSearchShown(shown: Boolean) {
         if (isSearchShown == shown) return
         isSearchShown = shown
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            tooltipText = if (shown) null else context.getString(R.string.table_choose_block)
+        }
         settingsButton.isEnabled = !shown
         setContentAlpha(1f)
     }
@@ -100,12 +110,30 @@ class TopBar(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        titleView.maxWidth = w - reservedWidth
+        updateTitleWidth()
+    }
+
+    fun setInsets(left: Int, right: Int) {
+        val titleLeft = if (centerTitle) maxOf(left, right) else left
+        val titleRight = if (centerTitle) titleLeft else right
+        for (title in arrayOf(titleView, searchTitle)) {
+            title.updateLayoutParams<LayoutParams> {
+                leftMargin = titleLeft
+                rightMargin = titleRight
+            }
+        }
+        settingsButton.updateLayoutParams<LayoutParams> { rightMargin = right }
+        titleInsets = titleLeft + titleRight
+        updateTitleWidth()
+    }
+
+    private fun updateTitleWidth() {
+        titleView.maxWidth = width - titleInsets - reservedWidth
         fitTitle()
     }
 
     private fun fitTitle() {
-        val available = width - reservedWidth - sidePadding - titleEndPadding -
+        val available = width - titleInsets - reservedWidth - sidePadding - titleEndPadding -
             chevron.intrinsicWidth - titleView.compoundDrawablePadding
         if (available <= 0) return
         val text = titleView.text.toString()

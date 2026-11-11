@@ -1,0 +1,1778 @@
+annotations 1 sl 07d4f37f
+21	klicaj	vzklik	
+23	lojtra	grabljice|ključnik|znak #|znak za številko	
+24	dolar	denar|peso|USD	
+25	odstotek	procent	
+26	znak et	in|znak &	
+27	strojepisni opuščaj	enojni narekovaj|narekovaj|opuščaj	
+29	zaklepaj	oklepaj|oklepaji|okrogli oklepaj	
+2A	zvezdica	asterisk|nadomestni znak	
+2B	znak za plus	plus|seštevanje	
+2C	vejica		
+2D	znak minus	črtica|minus|vezaj	
+2E	pika	končno ločilo|pikica	
+2F	poševnica	desna poševnica|poševna črta|poševnica v desno|solidus	
+3A	dvopičje		
+3B	podpičje		
+3C	manjše od	oznaka|začetna oznaka	
+3D	enačaj	znak za enakost	
+3E	večje od	oznaka|zaključna oznaka	
+3F	vprašaj	vprašanje	
+40	afna	ajka|obkrožena črka a|polžek|znak @|znak at|znak pri|znak za afno	
+5B	oglati uklepaj	oglati oklepaj|oklepaj	
+5C	leva poševnica	levo nagnjena poševnica|obratni solidus|poševnica v levo	
+5D	oglati zaklepaj	oglati oklepaj|oklepaj	
+5E	strešica	cirkumfleks|kazalec|kljukica|krmilka|naglas|znak xor|znamenje za dodano	
+5F	podčrtaj	črta|črtica|podčrtati|spodnja črta	
+60	krativec	naglas|naglasno znamenje	
+7B	zaviti uklepaj	oklepaj|zaviti oklepaj	
+7C	navpična črta	cev|črta|navpičnica|paličica|pokončna črta|pokončnica	
+7D	zaviti zaklepaj	oklepaj|zaviti oklepaj	
+7E	vijuga	tilda	
+A1	obrnjen klicaj	klicaj|narobe obrnjen|obrnjen|vzklik	
+A2	cent		
+A3	funt	EGP|GBP|valuta	
+A5	jen	CNY|JPY|juan|valuta	
+A7	razdelek	člen|del|znak za razdelek	
+A8	preglas	diereza	
+A9	avtorske pravice	c	
+AB	levi francoski narekovaj	kotni|levi|narekovaji|navednica|škarnice|znak	
+AC	negacija	ne	
+AE	registrirano	r	
+B0	stopinja	količina|ura	
+B1	znak plus/minus		
+B2	nadpisana dvojka	dvojka|kvadrat|nadpis	
+B3	nadpisana trojka	kub|nadpis|trojka	
+B4	ostrivec	naglas|naglasno znamenje	
+B5	znak za mikro	mera	
+B6	znak za odstavek	alineja|odstavek	
+B7	srednja pika	ločilo|pika|srednja	
+B9	nadpisana enka	enka|nadpis	
+BB	desni francoski narekovaj	desni|kotni|narekovaji|navednica|škarnice|znak	
+BF	obrnjen vprašaj	obrnjen|vprašaj|vprašanje	
+D7	znak za množenje	krat|množenje|množi	
+F7	znak za deljenje	deli|deljenje	
+60C	arabska vejica	arabska|vejica	
+61B	arabsko podpičje	arabsko|podpičje	
+61F	arabski vprašaj	arabski|vprašaj|vprašanje	
+2010	vezaj	črtica	
+2013	pomišljaj	kratek	
+2014	dolgi pomišljaj	dolg|pomišljaj	
+2015	vodoravna črta	črta|linija|pomišljaj	
+2018	levi opuščaj	enojni narekovaj|narekovaj|opuščaj	
+2019	desni opuščaj	enojni narekovaj|narekovaj|opuščaj	
+201A	nizki desni opuščaj	narekovaj|nizki narekovaj|opuščaj	
+201C	levi narekovaj	dvojni narekovaj|dvojni srednji narekovaj|narekovaj|navedek	
+201D	desni narekovaj	dvojni narekovaj|dvojni srednji narekovaj|narekovaj|navedek	
+201E	nizki desni narekovaj	dvojni narekovaj|dvojni srednji narekovaj|narekovaj|navedek|nizki narekovaj	
+2020	znak za bodalo	bodalo|križec|znamenje	
+2021	znak za dvojno bodalo	bodalo|dvojno|križec|znamenje	
+2022	vrstična oznaka	pika	
+2026	elipsa	izpust|tri pike	
+2027	delilna pika	pika|pomišljaj|vezaj	
+2030	odtisoček	na tisoč|promile	
+2032	znak za kotne minute in čevlje		
+2033	znak za kotne sekunde in inče		
+2034	znak za linijo		
+2038	spodnja strešica		
+203B	referenčna oznaka		
+203C	dvojni klicaj	dva klicaja|klicaj|ločilo|znak|!|!!	
+203D	klicajvprašaj		
+203E	nadčrtano		
+2042	asterizem		
+2044	poševnica ulomka	poševnica	
+2049	klicaj in vprašaj	klicaj|klicaj-vprašaj|ločilo|vprašaj|znak|!|!?|?	
+207B	nadpisani minus	minus|nadpis	
+20A2	cruzeiro	BRB|valuta	
+20A3	francoski frank	frank|valuta	
+20A4	lira	valuta	
+20A5	tisočinka	tisočinka dolarja	
+20A8	rupija	valuta	
+20A9	won	KPW|KRW	
+20AC	evro	EUR|valuta	
+20B0	nemški pfenig	pfenig|valuta	
+20B1	peso		
+20B3	avstral	ARA|valuta	
+20B6	livre tournois	valuta	
+20B7	spesmilo	valuta	
+20B9	indijska rupija	rupija|valuta	
+20BD	rubelj	valuta	
+20BF	bitcoin	BTC	
+2117	avtorske pravice za zvočni posnetek	avtorske pravice|posnetek|zvočni	
+2122	blagovna znamka	TM|znak	
+2139	vir informacij	i|informacije	
+2190	puščica, obrnjena v levo	levo|obrnjena v levo|puščica	
+2191	puščica, obrnjena navzgor	navzgor|obrnjena navzgor|puščica	
+2192	puščica, obrnjena v desno	desno|obrnjena v desno|puščica	
+2193	puščica, obrnjena navzdol	navzdol|obrnjena navzdol|puščica	
+2194	puščica levo desno	puščica	
+2195	puščica gor dol	puščica	
+2196	puščica levo gor	puščica|severozahodno|smer|stransko	
+2197	puščica desno gor	puščica|severovzhod|smer|stransko	
+2198	puščica desno dol	jugovzhod|puščica|smer|stransko	
+2199	puščica levo dol	jugozahod|puščica|smer|stransko	
+219A	puščica levo s poševnico		
+219B	puščica desno s poševnico		
+219C	vijugasta puščica levo		
+219D	vijugasta puščica desno		
+219E	puščica z dvojno glavo levo		
+219F	puščica z dvojno glavo navzgor		
+21A0	puščica z dvojno glavo desno		
+21A1	puščica z dvojno glavo navzdol		
+21A2	puščica z repom levo		
+21A3	puščica z repom desno		
+21A4	puščica od črte levo		
+21A5	puščica od črte navzgor		
+21A6	puščica od črte desno		
+21A7	puščica od črte navzdol		
+21A8	puščica gor-dol z osnovno črto		
+21A9	puščica desno, ki se ukrivlja v levo	ki se ukrivlja v levo|puščica|puščica desno	
+21AA	puščica levo, ki se ukrivlja v desno	ki se ukrivlja v desno|puščica|puščica levo	
+21AB	zankasta puščica levo		
+21AC	zankasta puščica desno		
+21AD	vijugasta puščica levo-desno		
+21AE	puščica levo-desno s poševnico		
+21AF	cikcakasta puščica navzdol		
+21B0	puščica navzgor levo		
+21B1	puščica navzgor desno		
+21B2	puščica navzdol levo		
+21B3	puščica navzdol desno		
+21B4	kotna puščica desno navzdol		
+21B5	kotna puščica levo navzdol		
+21B6	zgornja polkrožna puščica v nasprotni smeri urnega kazalca		
+21B7	zgornja polkrožna puščica v smeri urnega kazalca		
+21B8	puščica severozahod z dolgo črtico zgoraj		
+21B9	puščica levo s črtico nad puščico desno s črtico		
+21BA	odprta krožna puščica v nasprotni smeri urnega kazalca		
+21BB	odprta krožna puščica v smeri urnega kazalca		
+21BC	harpuna levo z ostjo navzgor		
+21BD	harpuna levo z ostjo navzdol		
+21BE	harpuna navzgor z desno ostjo		
+21BF	harpuna navzgor z levo ostjo		
+21C0	harpuna desno z ostjo navzgor		
+21C1	harpuna desno z ostjo navzdol		
+21C2	harpuna navzdol z desno ostjo		
+21C3	harpuna navzdol z levo ostjo		
+21C4	puščica desno nad puščico levo		
+21C5	puščici, obrnjeni navzgor in navzdol	navzdol|navzgor|obrnjeni navzgor in navzdol|puščica|Puščici	
+21C6	puščica v levo nad puščico v desno	desno|levo|nad puščico|obrnjena v levo|obrnjeno v desno|puščica	
+21C7	par puščic levo		
+21C8	par puščic navzgor		
+21C9	par puščic desno		
+21CA	par puščic navzdol		
+21CB	harpuna levo nad harpuno desno		
+21CC	harpuna desno nad harpuno levo		
+21CD	dvojna prečrtana puščica levo		
+21CE	dvojna prečrtana puščica levo-desno		
+21CF	dvojna prečrtana puščica desno		
+21D0	dvojna puščica levo		
+21D1	dvojna puščica navzgor		
+21D2	dvojna puščica desno		
+21D3	dvojna puščica navzdol		
+21D4	dvojna puščica levo-desno		
+21D6	dvojna puščica severozahod		
+21D7	dvojna puščica severovzhod		
+21D8	dvojna puščica jugovzhod		
+21D9	dvojna puščica jugozahod		
+21DA	trojna puščica levo		
+21DB	trojna puščica desno		
+21DC	valovita puščica levo		
+21DD	valovita puščica desno		
+21DE	dvakrat prečrtana puščica navzgor		
+21DF	dvakrat prečrtana puščica navzdol		
+21E0	črtkana puščica levo		
+21E1	črtkana puščica navzgor		
+21E2	črtkana puščica desno		
+21E3	črtkana puščica navzdol		
+21E4	puščica levo s črtico		
+21E5	puščica desno s črtico		
+21E6	votla puščica levo		
+21E7	votla puščica navzgor		
+21E8	votla puščica desno		
+21E9	votla puščica navzdol		
+21EA	votla puščica od črte navzgor		
+21F5	puščica navzdol levo od puščice navzgor		
+2200	za vse	dano|karkoli|univerzalno|vse	
+2202	parcialni diferencial	diferencial	
+2203	obstaja		
+2205	prazna množica	matematika|operator množic	
+2206	razlika	trikotnik	
+2207	nabla	trikotnik	
+2208	je element množice	članstvo|element|množica|vsebuje	
+2209	ni element	element	
+220B	vključuje kot element	element	
+220E	znak za konec	halmos|nagrobnik|q.e.d.|qed	
+220F	produkt n-skupine	logika|produkt	
+2211	vsota n-skupine	matematika|vsota	
+2212	znak za minus	minus|odštevanje	
+2213	minus ali plus	plus-minus	
+2215	poševnica za deljenje	poševnica	
+2217	operator zvezdice	zvezdica	
+2218	operator obroča	kompozicija|operator	
+2219	operator vrstične oznake	operator	
+221A	kvadratni koren	iracionalno število|koren|korenski|kvadratni	
+221D	sorazmerno	sorazmernost	
+221E	znak za neskončno	neskončno	
+221F	pravi kot	matematika	
+2220	kot	ostrivec	
+2223	deljenje	delitelj	
+2225	vzporedno		
+2227	logični in	strešica	
+2229	presek	množica	
+222A	unija	množica|zbirka	
+222B	integral	integralni račun	
+222C	dvojni integral	integralni račun	
+222E	obrisni integral		
+2234	zato	logika	
+2235	ker	logika	
+2236	razmerje		
+2237	sorazmerje	sorazmernost	
+223C	operator vijuge	operator	
+223D	obrnjena vijuga	vijuga	
+223E	obrnjen ležeči s		
+2243	asimptotično enako	asimptota|matematika	
+2245	približno enako	enakost|izomorfizem|kongruenca|matematika	
+2248	skoraj enako	približek|približno	
+224C	vse enako	enakost|matematika	
+2252	približno enako preslikavi		
+2256	obroč v enačaju	enakost|matematika	
+2260	ni enako	neenak|neenakost	
+2261	je enako	enako|točno	
+2263	povsem enako	enakost|matematika	
+2264	manjše ali enako	enako|enakovredno|manjše|neenakovrednost	
+2265	večje ali enako	enako|enakovredno|neenakovrednost|večje	
+2266	manjše od nad enačajem	matematika|neenakost	
+2267	večje od nad enačajem	matematika|neenakost	
+226A	veliko manjše od	matematika|neenakost	
+226B	veliko večje od	matematika|neenakost	
+226C	med		
+226E	ne manjše od	matematika|neenakost	
+226F	ne večje od	matematika|neenakost	
+2273	večje od enakovredno	matematika|neenakost	
+227A	predhodnik	matematika	
+227B	naslednik	matematika	
+2281	ni naslednik	matematika	
+2282	je podmnožica množice	množica|podmnožica	
+2283	nadmnožica	matematika	
+2286	je podmnožica		
+2287	je nadmnožica	enakost|matematika	
+2295	plus v krogu	plus	
+2296	minus v krogu	erozija|simetrična razlika	
+2297	krat v krogu	produkt	
+2298	poševnica za deljenje v krogu	matematika|podobno deljenju	
+2299	operator pike v krogu	operator|XNOR	
+229A	operator obroča v krogu		
+229B	operator zvezdice v krogu	operator|zvezdica	
+229E	plus v kvadratu	matematika|podobno seštevanju	
+229F	minus v kvadratu	matematika|podobno odštevanju	
+22A5	žebljiček navzgor		
+22AE	ne vsiljuje		
+22B0	predhodnik v razmerju	matematika	
+22B1	naslednik v razmerju	matematika	
+22B6	original		
+22B9	hermitska konjugirana matrika		
+22BF	pravokotni trikotnik	matematika	
+22C1	logična n-skupina ali	disjunkcija|logika	
+22C2	presek n-skupin	matematika|presek	
+22C3	unija n-skupin	matematika|unija	
+22C5	operator pike	operator	
+22C6	operator zvezde	operator	
+22C8	naravna združitev	binarni operator|metuljček	
+22D2	dvojni presek	matematika|presek	
+22D8	zelo veliko manj kot	matematika|neenakost	
+22D9	zelo veliko več kot	matematika|neenakost	
+22ED	ne vsebuje kot običajna podskupina, enaka	enaka|matematika|ne vsebuje kot običajna podskupina|teorija skupin	
+22EE	navpične tri pike	matematika|tri pike	
+22EF	tri pike v sredi vodoravno	tri pike	
+22F0	tri pike v diagonali gor desno	matematika|tri pike	
+22F1	tri pike v diagonali dol desno	matematika|tri pike	
+231A	ročna ura	čas|ura	
+231B	peščena ura	čas|časovnik|pesek	
+2328	tipkovnica	računalnik	
+23CF	gumb za izvrženje	izvrženje	
+23E9	gumb za hitro previjanje naprej	dvojno|hitro|naprej|puščica	
+23EA	gumb za hitro previjanje nazaj	dvojno|previjanje nazaj|puščica	
+23EB	gumb za hitro gor	dvojno|puščica	
+23EC	gumb za hitro dol	dvojno|navzdol|puščica	
+23ED	gumb za naslednjo skladbo	naslednja skladba|naslednji prizor|puščica|trikotnik	
+23EE	gumb za zadnjo skladbo	prejšnja skladba|prejšnji prizor|puščica|trikotnik	
+23EF	gumb za predvajanje ali zaustavitev	desno|predvajanje|puščica|trikotnik|zaustavitev	
+23F0	budilka	alarm|čas|ura	
+23F1	štoparica	čas|ura	
+23F2	časovnik	odštevalnik časa|ura	
+23F3	peščena ura, ki teče	čas|časovnik|ki teče|peščena ura|pesek	
+23F8	gumb za zaustavitev	dvojno|navpično|premor|stolpec|začasno ustavi|zaustavitev	
+23F9	gumb za ustavitev	kvadrat|ustavitev	
+23FA	gumb za snemanje	krog|snemanje	
+24C2	črka m v krogu	krog|m	
+25A0	poln kvadrat		
+25A1	prazen kvadrat		
+25A2	prazen kvadrat z zaobljenimi koti		
+25A3	poln kvadrat v praznem kvadratu		
+25A4	kvadrat z vodoravnim polnilom		
+25A5	kvadrat z navpičnim polnilom		
+25A6	kvadrat s pravokotnim križnim polnilom		
+25A7	kvadrat s poševnim polnilom od leve navzdol		
+25A8	kvadrat s poševnim polnilom od desne navzgor		
+25A9	kvadrat z diagonalnim križnim polnilom		
+25AA	majhen črn kvadrat	geometrično|kvadrat	
+25AB	majhen bel kvadrat	geometrično|kvadrat	
+25AC	poln pravokotnik		
+25AD	prazen pravokotnik		
+25AE	poln navpičen pravokotnik		
+25B0	poln paralelogram		
+25B2	poln navzgor obrnjen trikotnik	navzgor|poln|puščica|trikotnik	
+25B3	prazen trikotnik, obrnjen navzgor	obrnjen navzgor|prazen trikotnik	
+25B4	poln majhen trikotnik, obrnjen navzgor	obrnjen navzgor|poln majhen trikotnik	
+25B5	prazen majhen trikotnik, obrnjen navzgor	obrnjen navzgor|prazen majhen trikotnik	
+25B6	gumb za predvajanje	desno|predvajanje|puščica|trikotnik	
+25B7	prazen trikotnik, obrnjen v desno	obrnjen v desno|prazen trikotnik	
+25B8	poln majhen trikotnik, obrnjen v desno	obrnjen v desno|poln majhen trikotnik	
+25B9	prazen majhen trikotnik, obrnjen v desno	obrnjen v desno|prazen majhen trikotnik	
+25BA	poln kazalec, obrnjen v desno	obrnjen v desno|poln kazalec	
+25BB	prazen kazalec, obrnjen v desno	obrnjen v desno|prazen kazalec	
+25BC	poln navzdol obrnjen trikotnik	navzdol|poln|puščica|trikotnik	
+25BD	prazen trikotnik, obrnjen navzdol	obrnjen navzdol|prazen trikotnik	
+25BE	poln majhen trikotnik, obrnjen navzdol	obrnjen navzdol|poln majhen trikotnik	
+25BF	prazen majhen trikotnik, obrnjen navzdol	obrnjen navzdol|prazen majhen trikotnik	
+25C0	gumb za predvajanje nazaj	levo|nazaj|puščica|trikotnik	
+25C1	prazen trikotnik, obrnjen v levo	obrnjen v levo|prazen trikotnik	
+25C2	poln majhen trikotnik, obrnjen v levo	obrnjen v levo|poln majhen trikotnik	
+25C3	prazen majhen trikotnik, obrnjen v levo	obrnjen v levo|prazen majhen trikotnik	
+25C4	poln kazalec, obrnjen v levo	obrnjen v levo|poln kazalec	
+25C5	prazen kazalec, obrnjen v levo	obrnjen v levo|prazen kazalec	
+25C6	poln karo		
+25C7	prazen karo		
+25C8	poln karo v praznem karu		
+25C9	poln krog v praznem krogu	napolnjen koncentrični krogi|obkrožena pika|ribje oko	
+25CA	romb	rombast lik	
+25CB	votel krog	krog|obroč	
+25CC	pikčast krog		
+25CD	krog z navpičnim polnilom		
+25CE	koncentrična kroga	dvojni krog|tarča	
+25CF	poln krog	krog	
+25D0	krog s polno levo polovico		
+25D1	krog s polno desno polovico		
+25D2	krog s polno spodnjo polovico		
+25D3	krog s polno zgornjo polovico		
+25D4	krog s polno desno zgornjo četrtino		
+25D5	poln krog s prazno levo zgornjo četrtino		
+25D6	polna leva polovica kroga		
+25D7	polna desna polovica kroga		
+25D8	obratna vrstična oznaka		
+25D9	prazen krog v polnem kvadratu		
+25DC	zgornja leva četrtina krožnega loka		
+25DD	zgornja desna četrtina krožnega loka		
+25DE	spodnja desna četrtina krožnega loka		
+25DF	spodnja leva četrtina krožnega loka		
+25E0	zgornji polkrog		
+25E1	spodnji polkrog		
+25E2	poln spodnji desni trikotnik		
+25E3	poln spodnji levi trikotnik		
+25E4	poln zgornji levi trikotnik		
+25E5	poln zgornji desni trikotnik		
+25E6	prazna vrstična oznaka		
+25EF	velik votel krog	krog|obroč	
+25F3	prazen kvadrat z zgornjo desno četrtino		
+25F7	prazen krog z zgornjo desno četrtino		
+25FB	srednji bel kvadrat	geometrično|kvadrat	
+25FC	srednji črn kvadrat	geometrično|kvadrat	
+25FD	srednje mali beli kvadrat	geometrično|kvadrat	
+25FE	srednje majhen črn kvadrat	geometrično|kvadrat	
+25FF	spodnji desni trikotnik		
+2600	sonce	sončno|svetlo|vesolje|vreme|žarki	
+2601	oblak	vreme	
+2602	dežnik	dež|oblačila|vreme	
+2603	snežak	mraz|mrzlo|sneg|vreme	
+2604	komet	vesolje	
+260E	telefon	klicanje	
+2611	potrditveno polje s kljukico	kljukica|končano|opravljeno|polje|potrditveno polje s kjukico|✓	
+2614	dežnik z dežnimi kapljami	dež|dežnik|kaplja|oblačila|vreme	
+2615	vroč napitek	čaj|kava|napitek|piti|vrelo|vroče	
+2618	deteljica	irsko|rastlina	
+261D	kazalec, ki kaže gor	dlan|gor|kazalec|kazati|navzgor|prst|roka|to	
+2620	mrtvaška glava s prekrižanima kostema	lobanja|mrtvaška glava|obraz|pošast|prekrižane kosti|smrt|telo	
+2622	radioaktivno	nevarnost|znak	
+2623	bionevarnost	biološka nevarnost|biološki poskusi|tvegano|znak	
+2626	pravoslavni križ	križ|krščansko|vera	
+262A	zvezda in polmesec	islam|muslimansko|vera	
+262E	simbol za mir	mir|mirno	
+262F	jin jang	jang|jin|tao|taoistično|vera	
+2638	kolo darme	budistično|darma|kolo|vera	
+2639	namrščen obraz	mrščenje|obraz|žalosten	
+263A	smejoči obraz	nasmeh|obraz|obris|rdečica|sproščen|sproščeno|vesel	
+2640	znak za ženski spol	dekle|ženska	
+2642	znak za moški spol	fant|moški	
+2648	astrološki znak ovna	horoskop|oven|zodiak	
+2649	bik	horoskop|vol|zodiak	
+264A	dvojčka	horoskop|zodiak	
+264B	rak	horoskop|zodiak	
+264C	zodiak: lev	horoskop|lev|zodiak	
+264D	devica		
+264E	tehnica	horoskop|pravičnost|ravnovesje|tehtnica|zodiak	
+264F	astrološki znak škorpijona	horoskop|škorpijon|zodiak	
+2650	strelec	horoskop|zodiak	
+2651	kozorog	horoskop|koza|zodiak	
+2652	vodnar	horoskop|nosec|voda|zodiak	
+2653	ribi	horoskop|riba|zodiak	
+265F	kmet pri šahu	pogrešljiv|šah|tepček	
+2660	pik	barva|igra|karta	
+2663	križ	barva|igra|karta|križi	
+2665	srce	barva|igra|karta|srca	
+2666	karo	barva|kari igra|karta	
+2668	termalni vrelec	izvir|vrelec|vrelo|vroče	
+266A	osminka	glasba|nota|osma	
+266D	nižaj	glasba|nota|znižani ton	
+266F	višaj	glasba|nota|zvišani ton	
+267B	simbol za recikliranje	reciklirati	
+267E	neskončnost	neomejeno|univerzalno|večno	
+267F	invalidski voziček	dostop|invalid	
+2692	kladivo in kramp	kladivo|kramp|orodje	
+2693	sidro	ladja|orodje	
+2694	prekrižana meča	meča|meči|orožje|prekrižano	
+2695	simbol zdravstva	eskulapova palica|medicina|osebje|zdravnik|zdravstvo	
+2696	tehtnica	orodje|pravičnost|ravnovesje|teža|zodiak	
+2697	destilator	kemija|orodje	
+2699	zobnik	orodje	
+269B	simbol za atom	ateist|atom	
+269C	lilija	vitezi	
+26A0	opozorilo	pozor|previdno	
+26A1	visoka napetost	električno|elektrika|napetost|nevarnost|strela|sunek	
+26A7	simbol za transseksualnost	transseksualnost	
+26AA	bel krog	geometrično|krog	
+26AB	črn krog	geometrično|krog	
+26B0	krsta	smrt|vampir	
+26B1	žara	pogreb|smrt	
+26BD	nogometna žoga	nogomet|šport|žoga	
+26BE	žogica za baseball	baseball|šport|žoga	
+26C4	snežak brez snega	mrzlo|sneg|snežak|vreme|zima	
+26C5	sonce za oblakom	oblačno|oblak|sonce|vreme	
+26C8	oblak s strelo in dežjem	dež|oblak|strela|vreme	
+26CE	kačenosec	kača|nosec|zodiak	
+26CF	kramp	kladivo|orodje|rudarjenje	
+26D1	čelada z belim križem	čelada|čepica|križ|obraz|pomoč	
+26D3	verige	veriga	
+26D4	ni prehoda	ne|ni dovoljeno|ni vstopa|prepovedano|promet|vstop	
+26E9	šintoistično svetišče	šinto|svetišče|vera	
+26EA	cerkev	križ|krščansko|vera|zgradba	
+26F0	gora	plezanje|vrh	
+26F1	dežnik na tleh	dež|senčnik|sonce|tla	
+26F2	fontana	vodnjak	
+26F3	zastavica v luknji	golf|luknja|šport	
+26F4	trajekt	ladja|potnik|vozilo	
+26F5	jadrnica	čoln|jadranje|jahta|letovišče|morje|vozilo	
+26F7	smučar	smučati|sneg|šport	
+26F8	drsalka	drsanje|drsati|led	
+26F9	oseba z žogo	ciljati koš|košarka|košarkar|košarkarska žoga|oseba odbija žogo|preigravati|prosti met|prvenstvo|športno|žoga	
+26FA	šotor	kampiranje|taborjenje	
+26FD	črpalka za gorivo	bencin|črpalka|gorivo|servis	
+2702	škarje	orodje|rezanje	
+2705	gumb s kljukico	gumb|kljukica|opravljeno|potrditev|✓	
+2708	letalo	letenje|potovanje|vozilo	
+2709	ovojnica	e-pošta|pismo|pošta	
+270A	dvignjena pest	dlan|pest|pokrčeno|solidarnost|stisnjena pest|telo|udarec	
+270B	dvignjena dlan	dlan|petka|stop|5	
+270C	dlan s prstoma, ki kažeta znak za zmago	dlan|mir|roka|v|zmaga	
+270D	pišoča dlan	dlan|pisanje|pisati|telo	
+270F	svinčnik	pisalo	
+2712	črna konica peresa	konica|pero	
+2714	kljukica	končano|znak|✓	
+2716	množi	množenje|množiti|prekliči|x|znak|znak za množenje|×	
+271D	krščanski križ	križ|krščansko|vera	
+2721	davidova zvezda	david|jud|judovsko|vera|zvezda	
+2728	iskrice	iskrenje|lesketanje|zvezda|zvezdice|*	
+2733	zvezdica z osmimi špicami	zvezdica|*	
+2734	osemkraka zvezda	zvezda|*	
+2744	snežinka	mrzlo|sneg|vreme	
+2747	iskra	iskrica|*	
+274C	križec	množenje|množiti|oznaka|preklic|x|×	
+274E	gumb s križcem	kvadrat|množenje|oznaka|x|×	
+2753	rdeč vprašaj	ločilo|vprašaj|znak|?	
+2754	bel vprašaj	ločilo|obrobljeno|oznaka|vprašaj|vprašanje|?	
+2755	bel klicaj	klicaj|obrobljeno|znak|!	
+2757	rdeč klicaj	klicaj|ločilo|znak|!	
+2763	klicaj v obliki srca	klicaj|ločilo|srce|znak	
+2764	rdeče srce	čustvo|ljubezen|srce	
+2795	plus	matematika|znak|znak za plus|+	
+2796	minus	matematika|odštevanje|znak|znak za minus|-|−	
+2797	deli	deljenje|matematika|znak|znak za deljenje|÷	
+27A1	puščica desno	glavno|puščica|smer|vzhod	
+27B0	zavita pentlja	pentlja|spirala|zanka	
+27BF	dvojna zavita pentlja	dvojno|pentlja|spirala|zanka	
+2934	puščica desno, ki se ukrivlja gor	ki se ukrivlja gor|puščica|puščica desno	
+2935	puščica desno, ki se ukrivlja dol	ki se ukrivlja dol|navzdol|puščica|puščica desno	
+2A27	plus s podpisano številko 2		
+2A2F	vektorski produkt		
+2A3C	notranji produkt		
+2A63	logična ali dvojna podčrta		
+2A7D	manjše od s poševnim enačajem		
+2A8D	manjše od nad približno enako		
+2A9A	dvočrtni enačaj nad večje od	matematika|neenakost	
+2ABA	naslednik nad skoraj enako		
+2B05	puščica levo	glavno|puščica|smer|zahod	
+2B06	puščica gor	glavno|puščica|sever|smer	
+2B07	puščica dol	glavno|jug|navzdol|puščica|smer	
+2B1B	velik črn kvadrat	geometrično|kvadrat	
+2B1C	velik bel kvadrat	geometrično|kvadrat	
+2B50	bela srednja zvezda	astronomija|zvezda|zvezde	
+2B55	velik prazen krog	krog|o|rdeč|velik	
+3001	ideografska vejica	ideografska|vejica	
+3002	ideografska pika	ideografska|pika	
+3008	kotni uklepaj	koničasti oklepaj|kotni oklepaj|oklepaj	
+3009	kotni zaklepaj	koničasti oklepaj|kotni oklepaj|oklepaj	
+300A	dvojni kotni uklepaj	dvojni kotni oklepaj|oklepaj	
+300B	dvojni kotni zaklepaj	dvojni kotni oklepaj|oklepaj	
+300C	vogalni uklepaj	oklepaj|vogalni oklepaj	
+300D	vogalni zaklepaj	oklepaj|vogalni oklepaj	
+300E	votli vogalni uklepaj	oklepaj|votli vogalni oklepaj	
+300F	votli vogalni zaklepaj	oklepaj|votli vogalni oklepaj	
+3010	polni lečasti uklepaj	lečasti oklepaj|oklepaj	
+3011	polni lečasti zaklepaj	lečasti oklepaj|oklepaj	
+3014	rombasti uklepaj	oklepaj|rombasti oklepaj	
+3015	rombasti zaklepaj	oklepaj|rombasti oklepaj	
+3016	votli lečasti uklepaj	oklepaj|votli lečasti oklepaj	
+3017	votli lečasti zaklepaj	oklepaj|votli lečasti oklepaj	
+3030	valovit pomišljaj	ločilo|pomišljaj|valovit|valovito	
+303D	znak za part	part|znak	
+30FB	katakanska srednja pika	katakana|ločilo|pike|srednja pika	
+3297	pojmovni znak za čestitanje v krogu	čestitka|čestitke|ideogram|japonsko	
+3299	pojmovni znak za skrivnost v krogu	ideogram|japonsko|skrivnost	
+FDFC	rial	valuta	
+1F004	rdeči zmaj v mahjongu	igra|madžong|mahjong|rdeče	
+1F0CF	joker	igra|igranje|karta	
+1F170	gumb s črko a (krvna skupina)	a|gumb s črko a|kri|krvna skupina	
+1F171	gumb s črko b (krvna skupina)	b|gumb|gumb s črko b|kri|krvna skupina	
+1F17E	gumb s črko O (krvna skupina)	gumb|gumb s črko o|kri|krvna skupina|o	
+1F17F	gumb s črko p	gumb|p|parkiranje|parkirišče	
+1F18E	gumb AB (krvna skupina)	ab|gumb AB|kri|krvna skupina	
+1F191	gumb CL	cl|gumb	
+1F192	gumb COOL	frajersko|gumb|kul	
+1F193	gumb FREE	gumb|prosto	
+1F194	gumb ID	gumb|id|identiteta	
+1F195	gumb NEW	gumb|novo	
+1F196	gumb NG	gumb|ng	
+1F197	gumb OK	gumb V REDU|v redu	
+1F198	gumb SOS	na pomoč|pomoč|sos	
+1F199	gumb z besedo up in klicajem	gumb|navzgor|znak	
+1F19A	gumb VS	gumb|proti	
+1F201	gumb za »tukaj« v japonščini	japonsko|katakana|pisava|tukaj	
+1F202	japonski znak za "napitnino" v kvadratu	japonsko|katakana|napitnina|pisava|postrežnina	
+1F21A	gumb za »brezplačno« v japonščini	brezplačno|ideogram|japonsko|pojmovni znak	
+1F22F	gumb za »rezervirano« v japonščini	ideogram|japonsko|pojmovni znak|rezervirano	
+1F232	gumb za »prepovedano« v japonščini	ideogram|japonsko|pojmovni znak|prepovedano	
+1F233	gumb za »prosto« v japonščini	ideogram|japonsko|pojmovni znak|prazno|prosto	
+1F234	pojmovni znak za skupaj v kvadratu	ideogram|japonsko|pojmovni znak|zadostna ocena|zadostni uspeh	
+1F235	gumb za »ni prosto« v japonščini	ideogram|japonsko|ni prosto|pojmovni znak|zasedeno	
+1F236	gumb za »ni brezplačno« v japonščini	ideogram|japonsko|ni brezplačno|plačljivo|pojmovni znak	
+1F237	japonski znak za "mesečni znesek"	ideogram|japonski znak za "mesečni znesek" v kvadratu|japonsko|mesečni znesek|pojmovni znak	
+1F238	gumb za »aplikacija« v japonščini	ideogram|japonsko|pojmovni znak|uporaba	
+1F239	gumb za »popust« v japonščini	ideogram|japonsko|pojmovni znak|popust	
+1F23A	gumb za »odprto« v japonščini	ideogram|japonsko|odprto za poslovanje|pojmovni znak	
+1F250	gumb za »ugodno« v japonščini	ideogram|japonsko|pojmovni znak|ugoden nakup	
+1F251	gumb za »sprejemljivo« v japonščini	ideogram|japonsko|pojmovni znak|sprejemljivo	
+1F300	ciklon	tajfun|tornado|vreme|vrtoglavica	
+1F301	megleno	megla|vreme	
+1F302	zaprt dežnik	dež|dežnik|oblačila|vreme	
+1F303	zvezdnata noč	noč|vreme|zvezda	
+1F304	sončni vzhod v gorah	gora|jutro|sonce|sončni vzhod|vreme	
+1F305	sončni vzhod	jutro|narava|sonce|vreme	
+1F306	mestna pokrajina v mraku	mesto|mrak|pokrajina|sonce|sončni zahod|večer|vreme|zgradba	
+1F307	sončni zahod	mrak|sonce|vreme|zgradba	
+1F308	mavrica	dež|homoseksualen|lezbično|lgbt|narava|ponos|trans|transspolnost|vreme	
+1F309	most ponoči	most|noč|vreme	
+1F30A	vodni val	morje|val|voda|vreme	
+1F30B	vulkan	gora|izbruh|vreme	
+1F30C	rimska cesta	vesolje|vreme	
+1F30D	globus z Evropo in Afriko	afrika|Afrika|evropa|Evropa|globus|svet|zemlja	
+1F30E	globus s Severno in Južno Ameriko	ameriki|Ameriki|globus|svet|zemlja	
+1F30F	globus z Azijo in Avstralijo	avstralija|Avstralija|azija|Azija|globus|svet|zemlja	
+1F310	globus s poldnevniki	globus|poldnevniki|splet|svet|zemlja	
+1F311	mlada luna	luna|tema|vesolje|vreme	
+1F312	prvi krajec	krajec|luna|prvi|vesolje|vreme	
+1F313	polovično osvetljena luna v prvem krajcu	četrt|luna|vesolje|vreme	
+1F314	več kot polovično osvetljen prvi krajec	luna|polovično|prvi|vesolje|vreme	
+1F315	polna luna	luna|polno|vesolje|vreme	
+1F316	več kot polovično osvetljen zadnji krajec	luna|polovično|vesolje|vreme|zadnji	
+1F317	polovično osvetljena luna v zadnjem krajcu	četrt|luna|vesolje|vreme	
+1F318	zadnji krajec	krajec|luna|vesolje|vreme|zadnji	
+1F319	lunin srp	krajec|luna|vesolje|vreme	
+1F31A	mlada luna z obrazom	luna|obraz|vesolje|vreme	
+1F31B	polovično osvetljena luna v prvem krajcu z obrazom	četrt|luna|obraz|vesolje|vreme	
+1F31C	polovično osvetljena luna v zadnjem krajcu z obrazom	četrt|luna|obraz|vesolje|vreme	
+1F31D	polna luna z obrazom	luna|obraz|polno|svetlo|vesolje|vreme	
+1F31E	sonce z obrazom	obraz|sonce|sončno|svetlo|vreme|vročina	
+1F31F	žareča zvezda	bleščeče|lesketanje|sijanje|žar|zvezda	
+1F320	utrinek	padanje|repatica|vesolje|zvezda	
+1F321	termometer	vreme|vročina	
+1F324	sonce za oblačkom	oblak|sonce|vreme	
+1F325	sonce za velikim oblakom	oblak|sonce|vreme	
+1F326	sonce za oblakom z dežjem	dež|oblak|sonce|vreme	
+1F327	oblak z dežjem	dež|oblak|vreme	
+1F328	oblak s snegom	mrzlo|oblak|sneg|vreme	
+1F329	oblak s strelo	oblak|strela|vreme	
+1F32A	tornado	oblak|vreme|vrtinec	
+1F32B	megla	oblak|vreme	
+1F32C	obraz, ki piha veter	ki piha veter|oblak|obraz|pihati|veter|vreme	
+1F32D	hot dog	hrana|hrenovka|klobasa	
+1F32E	taco	mehiški prigrizek|tako	
+1F32F	burito	mehiški prigrizek|tortilja	
+1F330	kostanj	rastlina	
+1F331	sadika	mlado|poganjek|rastlina	
+1F332	zimzeleno drevo	božično drevo|drevo|gozd|rastlina	
+1F333	listnato drevo	drevo|listnato|odpadanje|rastlina	
+1F334	palma	drevo|plaža|rastlina|tropsko	
+1F335	kaktus	narava|puščava|rastlina	
+1F336	feferon	paprika|pekoče	
+1F337	tulipan	cvet|rastlina|roža	
+1F338	češnjev cvet	češnja|cvet|rastlina|roža	
+1F339	vrtnica	cvetlica|rastlina|roža|valentinovo	
+1F33A	hibiskus	rastlina|roža	
+1F33B	sončnica	rastlina|roža|sonce	
+1F33C	cvet	rastlina|regrat|roža	
+1F33D	koruzni storž	klas|koruza|rastlina	
+1F33E	snop riža	klas|rastlina|riž	
+1F33F	zelišče	list|rastlina	
+1F340	štiriperesna deteljica	detelja|list|rastlina|štiri|4	
+1F341	javorov list	javor|list|padanje|rastlina	
+1F342	padlo listje	jesen|list|padanje|rastlina	
+1F343	listje, ki se vrtinči v vetru	ki se vrtinči v vetru|list|listje|pihati|rastlina|veter|vrtinčiti se	
+1F344	goba	mario|rastlina	
+1F345	paradižnik	rastlina|zelenjava	
+1F346	jajčevec	rastlina|zelenjava	
+1F347	grozdje	grozd|rastlina|sadje	
+1F348	melona	rastlina|sadje	
+1F349	lubenica	rastlina|sadje	
+1F34A	mandarina	agrum|pomaranča|rastlina|sadje|vitamin c	
+1F34B	limona	agrum|kislo|rastlina|sadje	
+1F34C	banana	rastlina|sadje	
+1F34D	ananas	rastlina|sadje|tropsko	
+1F34E	rdeče jabolko	hrana|jabolko|rastlina|rdeče|sadje	
+1F34F	zeleno jabolko	jabolko|sadje|zeleno	
+1F350	hruška	sadje	
+1F351	breskev	sadje	
+1F352	češnje	češnja|hrana|rastlina|sadje	
+1F353	jagoda	rastina|rastlina|sadež|sadje	
+1F354	hamburger	burger|hitra hrana|lakota	
+1F355	pica	hrana|kos pice|rezina|sir	
+1F356	meso s kostjo	kost|meso	
+1F357	piščančje bedro	bedro|kost|perutnina|piščanec	
+1F358	rižev kreker	hrana|kreker|riž	
+1F359	riževa kroglica	japonsko|kroglica|riž	
+1F35A	kuhan riž	hrana|kuhano|riž	
+1F35B	riž s karijem	kari|riž	
+1F35C	skleda rezancev	ramen|rezanci|skleda|vrelo	
+1F35D	špageti	hrana|mesne kroglice|restavracija|testenine	
+1F35E	kruh	hrana|restavracija|štruca	
+1F35F	krompirček	ocvrt krompirček|pomfrit	
+1F360	pečeni sladki krompir	hrana|krompir|pečeno|sladko	
+1F361	dango	japonsko|paličica|posladek|sladko|špila	
+1F362	oden	hrana|kebab|morska hrana|paličica|špila	
+1F363	suši	hrana	
+1F364	ocvrt rakec	kozica|ocvrto|rakec|tempura	
+1F365	ribji kolač s spiralo	kolač|pecivo|riba|spirala	
+1F366	rahel sladoled	krema|led|mehko|posladek|sladko|sladoled	
+1F367	nastrgan led	led|nastrgano|posladek|sladko	
+1F368	sladoled	krema|led|posladek|sladica|sladko	
+1F369	krof	hrana|posladek|sladko	
+1F36A	piškot	koščki čokolade|posladek|sladko	
+1F36B	tablica čokolade	čokolada|posladek|sladko|tablica	
+1F36C	bonbon	noč čarovnic|posladek|sladkarije|sladko	
+1F36D	lizika	posladek|sladkarija|sladko|slaščica	
+1F36E	vanilijev puding	posladek|puding|sladica|sladko	
+1F36F	vrč medu	kozarec za med|lonček|med|sladko	
+1F370	krhek kolač	pecivo|posladek|rezina|sladko|torta	
+1F371	posoda za malico bento	bento|japonsko|malica|posoda	
+1F372	skodelica hrane	hrana|juha|lonec|obara|skodelica	
+1F373	kuhanje	cvrtje|jajce|na oko|ponev|restavracija|zajtrk	
+1F374	vilice in nož	hrana|kosilo|kuhanje|nož|restavracija|vilice	
+1F375	čajna skodelica brez ročaja	čaj|napitek|piti|skodelica|skodelica čaja	
+1F376	sake	bar|napitek|pijača|skodelica|steklenica	
+1F377	vinski kozarec	bar|napitek|pijača|steklenica|vino	
+1F378	kozarec za koktajl	bar|koktajl|kozarec|pijača	
+1F379	tropska pijača	bar|koktalj|pijača|tropsko	
+1F37A	vrček za pivo	bar|pijača|pivo|vrček	
+1F37B	nazdravljanje z vrčkoma za pivo	bar|pijača|pivo|trkanje|vrček	
+1F37C	steklenička	dojenček|mleko|piti|steklenica	
+1F37D	vilice, nož in krožnik	krožnik|kuhanje|nož|obrok|večerja|vilice	
+1F37E	odpiranje penine	bar|odleteti|pijača|steklenica|zamašek	
+1F37F	pokovka	film|kokice	
+1F380	pentlja	slavje	
+1F381	zavito darilo	dar|darilo|škatla|slavje|zavito	
+1F382	rojstnodnevna torta	hrana|pecivo|posladek|rojstni dan|sladko|slavje|torta|vse najboljše	
+1F383	izrezljana buča	buča|laterna|noč čarovnic|slavje	
+1F384	jelka	božič|božična jelka|božično drevo|drevešček|slavje	
+1F385	Božiček	božič|fantazija|oče|pravljica|slavje	
+1F386	ognjemet	bum|slavje|zabava	
+1F387	sibirska lučka	bum|iskrenje|ognjemet|slavje	
+1F388	balon	praznovanje|rojstni dan|slavje	
+1F389	pokalica za zabave	pokalica|rojstni dan|slavje|zabava	
+1F38A	konfeti	krogla|praznovanje|slavje	
+1F38B	drevo za tanabato	drevo|japonsko|pasica|slavje	
+1F38C	prekrižani zastavi	japonska zastava|japonsko|križ|prekrižano|slavje	
+1F38D	okrasitev bora	bambus|bor|japonsko|rastlina|slavje	
+1F38E	japonski lutki	festival|japonsko|lutka|slavje	
+1F38F	zastavni trak z ribama	barvno|krap|riba|slavje|trak	
+1F390	vetrni zvončki	slavje|veter|zvonček|zvonec	
+1F391	lunino slavje	luna|obred|slavje	
+1F392	šolski nahrbtnik	izobrazba|nahrbtnik|šola|torba	
+1F393	maturantska kapa	kapa|klobuk|matura|oblačila|slavje	
+1F396	vojaško odlikovanje	odlikovanje|slavje|vojaško	
+1F397	simbolna pentlja	pentlja|simbol|slavje	
+1F399	studijski mikrofon	glasba|mikrofon|studio	
+1F39A	drsnik za raven	drsnik|glasba|raven	
+1F39B	kontrolni gumbi	glasba|gumbi|kontrolnik	
+1F39E	filmski trak	film|kino|sličice	
+1F39F	vstopnice	vstopnica|vstopnina	
+1F3A0	konj na vrtiljaku	konj|vrtiljak|zabava	
+1F3A1	panoramsko kolo	kolo|lunapark	
+1F3A2	vlakec smrti	lunapark|vlak smrti|zabaviščni park	
+1F3A3	ribiška palica	palica|riba|šport	
+1F3A4	mikrofon	glasba|karaoke|petje|zvok	
+1F3A5	filmska kamera	film|kamera|kino|snemanje	
+1F3A6	kino	film|kamera	
+1F3A7	slušalka	glasba|ušesna slušalka|zvok	
+1F3A8	slikarska paleta	muzej|paleta|slika|slikanje|umetnost	
+1F3A9	cilinder	elegantno|klobuk|oblačila	
+1F3AA	cirkuški šotor	cirkus|šotor	
+1F3AB	vstopnica	odrezek|vstopnina	
+1F3AC	klapa	akcija|film	
+1F3AD	scenske umetnosti	gledališče|maska|nastopanje|umetnost	
+1F3AE	videoigra	igra|krmilnik|playstation|zabava	
+1F3AF	zadetek v polno	igra|pikado|središče|zadetek	
+1F3B0	igralni avtomat	avtomat|casino|igra|igre na srečo	
+1F3B1	biljard	igra|krogla|osmica|8	
+1F3B2	igralna kocka	igra|kocka|kockanje|zabava	
+1F3B3	kegljanje	igra|krogla|šport	
+1F3B4	rožne igralne karte	igra|igranje|japonsko|karta|roža	
+1F3B5	glasbena nota	glasba|nota	
+1F3B6	glasbene note	glasba|nota|note	
+1F3B7	saksofon	glasba|glasbilo|instrument	
+1F3B8	kitara	glasba|glasbilo|instrument	
+1F3B9	klaviatura	glasba|glasbilo|klavir	
+1F3BA	trobenta	glasba|glasbilo	
+1F3BB	violina	glasba|glasbilo|instrument	
+1F3BC	partitura	glasba|nota	
+1F3BD	tekaška majica	lenta|majica|šport|tek	
+1F3BE	tenis	lopar|šport|žoga	
+1F3BF	smučke	smučanje|smučati|sneg|šport	
+1F3C0	košarkarska žoga	koš|obroč|šport|žoga	
+1F3C1	kockasta zastava	dirkanje|kockasto|šport|zastava|zmaga	
+1F3C2	deskar na snegu	deskanje na snegu|smučanje|smučati|sneg|snežna deska	
+1F3C3	tekač	dirka|hitro|hitrost|maraton|naglica|oseba teče|pohiti|premikati se|prihajam|tek	
+1F3C4	oseba deska	deskanje|deskar|ocean|plaža|šport|surfanje|valovanje|valovi	
+1F3C5	športna medalja	medalja|zlato|zmaga|zmagovalec	
+1F3C6	trofeja	nagrada|prvaki|šport|zmaga	
+1F3C7	konjske dirke	dirkalni konj|dirkanje|džokej|konj	
+1F3C8	žoga za ameriški nogomet	ameriški nogomet|ameriško|nogomet|šport|žoga	
+1F3C9	žoga za ragbi	nogomet|ragbi|šport|žoga	
+1F3CA	oseba plava	plavalec|plavanje|plavati|prosti slog|šport|triatlon	
+1F3CB	oseba dviga uteži	bodibilder|deadlift|drog za uteži|dvigalec|dvigalec uteži|mišičnjak|mrtvi dvig|powerlifting|telovadba|utež	
+1F3CC	igralec golfa	birdie|golf|golfišče|klinček|nosač golfskih palic|oseba igra golf|patanje|pga|zelenica|žogica	
+1F3CD	motor	dirkanje	
+1F3CE	dirkalnik	avto|dirkanje|hitrost	
+1F3CF	kriket	igra|kij|šport|žogica	
+1F3D0	žoga za odbojko	igra|šport|žoga	
+1F3D1	hokej na travi	hokej|igra|palica|polje|žogica	
+1F3D2	hokejska palica in plošček	hokej|igra|led|palica|plošček	
+1F3D3	namizni tenis	igra|kij|lopar|šport|žogica	
+1F3D4	zasnežena gora	gora|hladno|sneg	
+1F3D5	kampiranje	narava|šotor	
+1F3D6	plaža s senčnikom	plaža|senčnik	
+1F3D7	gradbišče	gradnja|žerjav|zgradba	
+1F3D8	hiše	hiša|zgradba	
+1F3D9	mestna pokrajina	mesto|zgradba	
+1F3DA	zapuščena hiša	hiša|zapuščeno|zgradba	
+1F3DB	klasična zgradba	klasično|zgradba	
+1F3DC	puščava	suša|vročina	
+1F3DD	samotni otok	otok|puščava	
+1F3DE	nacionalni park	park	
+1F3DF	stadion		
+1F3E0	hiša	dom|preprost dom|ranč|zgradba	
+1F3E1	hiša z vrtom	dom|hiša|vrt|zgradba	
+1F3E2	poslovna stavba	mesto|pisarna|služba|zgradba	
+1F3E3	japonska pošta	japonsko|pošta|zgradba	
+1F3E4	pošta	evropska|evropsko|zgradba	
+1F3E5	bolnišnica	zdravilo|zdravnik|zgradba	
+1F3E6	banka	zgradba	
+1F3E7	znak za bankomat	avtomat|bankomat|denar	
+1F3E8	hotel	zgradba	
+1F3E9	ljubezenski hotel	hotel|ljubezen|zgradba	
+1F3EA	trgovina z mešanim blagom	hotel|komfort|trgovina|zgradba	
+1F3EB	šola	zgradba	
+1F3EC	veleblagovnica	blago|trgovina|zgradba	
+1F3ED	tovarna	industrija|zgradba	
+1F3EE	rdeči lampijon	bar|japonsko|lampijon|luč|rdeče	
+1F3EF	japonski grad	grad|japonsko|zgradba	
+1F3F0	grad	evropsko|zgradba	
+1F3F3	plapolajoča bela zastava	bela zastava|plapolanje	
+1F3F4	črna zastava	plapolanje	
+1F3F5	rozeta	rastlina	
+1F3F7	etiketa	nalepka|oznaka	
+1F3F8	badminton	igra|lopar|perjanica|žogica	
+1F3F9	lok in puščica	lok|lokostrelec|orodje|orožje|puščica|strelec|zodiak	
+1F3FA	amfora	kuhanje|orodje|orožje|pijača|vodnar|vrč|zodiak	
+1F3FB	svetel ten kože	ten|vrsti 1 in 2	
+1F3FC	srednje svetel ten kože	ten|vrsta 3	
+1F3FD	srednji ten kože	ten|vrsta 4	
+1F3FE	srednje temen ten kože	ten|vrsta 5	
+1F3FF	temen ten kože	ten|vrsta 6	
+1F400	podgana	žival	
+1F401	miš	miška|žival	
+1F402	vol	bik|kmetija|žival|zodiak	
+1F403	vodni bivol	bivol|voda|žival|živalski vrt	
+1F404	krava	kmetija|mleko|žival|živali	
+1F405	tiger	plenilec|velika mačka|žival|živalski vrt	
+1F406	leopard	plenilec|velika mačka|žival|živalski vrt	
+1F407	zajec	domači ljubljenček|zajček|žival	
+1F408	mačka	domači ljubljenček|mačke|žival|živali	
+1F409	zmaj	igra prestolov|pravljica|vitezi|žival	
+1F40A	krokodil	florida|žival|živali|živalski vrt	
+1F40B	kit	ocean|plaža|žival	
+1F40C	polž	narava|vrt|žival	
+1F40D	kača	kačenosec|prinašalec|zodiak	
+1F40E	konj	dirkanje|kmetija|konjske dirke|žival	
+1F40F	oven	ovca|rogovi|žival|zodiak	
+1F410	koza	kmetija|kozorog|žival|zodiak	
+1F411	ovca	kmetija|ovčka|volna|žival	
+1F412	opica	banana|žival	
+1F413	petelin	ptiči|žival|živali	
+1F414	kokoš	kokoška|kura|žival	
+1F415	pes	domači ljubljenček|psi|žival|živali	
+1F416	prašič	kmetija|slanina|svinja|žival	
+1F417	divja svinja	divji|igra prestolov|prašič|žival	
+1F418	slon	žival	
+1F419	hobotnica	bitje|ocean|žival	
+1F41A	spiralna školjka	plaža|školjka|spiralno|žival	
+1F41B	žuželka	vrt|žival	
+1F41C	mravlja	vrt|žival|žuželka	
+1F41D	čebela	med|pomlad|žival|žuželka	
+1F41E	pikapolonica	hrošč|narava|žival|žuželka	
+1F41F	riba	ribi|ribolov|žival|zodiak	
+1F420	tropska riba	riba|tropsko|žival	
+1F421	riba napihovalka	riba|tropsko|žival	
+1F422	želva	želve|žival|živali	
+1F423	pišče, ki se izvali	ki se izvali|mladič|piščanček|pišče|valjenje|žival	
+1F424	piščanček	mladič|valjenje|žival	
+1F425	piščanček, gleda naprej	gleda naprej|mladič|piščanček|žival	
+1F426	ptica	ptič|ptiček|žival	
+1F427	pingvin	antarktika|žival	
+1F428	koala	avstralija|medved|žival	
+1F429	pudelj	pes|puhast|žival	
+1F42A	kamela	dromedar|grba|puščava|žival	
+1F42B	dvogrba kamela	dvogrbo|grba|kamela|žival	
+1F42C	delfin	fliper|ocean|plaža|žival	
+1F42D	mišji obraz	miš|miška|obraz|žival	
+1F42E	kravji obraz	krava|mleko|obraz|žival	
+1F42F	tigrov obraz	obraz|plenilec|tiger|žival	
+1F430	zajčji obraz	domači ljubljenček|obraz|zajček|zajec|žival	
+1F431	mačji obraz	domači ljubljenček|mačka|obraz|žival	
+1F432	zmajski obraz	obraz|pravljica|žival|zmaj	
+1F433	kit, ki brizga vodo	brizganje|ki brizga vodo|kit|obraz|ocean|žival	
+1F434	konjev obraz	kmetija|konj|obraz|žival	
+1F435	opičji obraz	banana|obraz|opica	
+1F436	pasji obraz	domači ljubljenček|obraz|pes|žival	
+1F437	prašičji obraz	kmetija|obraz|prašič|žival	
+1F438	žaba	obraz|princesa|žabji obraz|žival	
+1F439	hrček	domači ljubljenček|obraz|žival	
+1F43A	volk	obraz|volčji obraz|žival	
+1F43B	medved	grizli|obraz|žival	
+1F43C	panda	bambus|obraz|žival	
+1F43D	prašičji rilec	obraz|prašič|rilec|žival	
+1F43E	odtisi tac	odtis|šapa|tace	
+1F43F	progasta veverica	veverica|žival	
+1F440	oči	gledam|obraz|pogled|telo	
+1F441	oko	eno oko|telo	
+1F442	uho	poslušati|slišati|telo|zvok	
+1F443	nos	smrad|telo|vonj	
+1F444	usta	lepota|poljub|telo|ustnice	
+1F445	jezik	lizati|telo	
+1F446	hrbtna stran dlani s kazalcem, ki kaže gor	dlani|gor|hrbtna|kazalec|kazati navzgor|navzgor|prst|roka|stran	
+1F447	hrbtna stran dlani s kazalcem, ki kaže dol	dlani|dol|hrbtna|kazalec|kazati navzdol|navzdol|prst|roka|stran	
+1F448	hrbtna stran dlani s kazalcem, ki kaže levo	dlani|hrbtna|kazalec|kazati levo|levo|prst|roka|stran|v levo	
+1F449	hrbtna stran dlani s kazalcem, ki kaže desno	desno|dlani|hrbtna|kazalec|kazati desno|prst|roka|stran|v desno	
+1F44A	bližajoča se pest	dlan|pest|pokrčeno|telo|udarec	
+1F44B	mahajoča dlan	adijo|dlan|mahanje|mahati|pozdrav|si tu?|telo|živjo	
+1F44C	roka, ki kaže V REDU	dlan|ki kaže V REDU|odlično|OK|razumem|roka|seveda|super|telo|v redu	
+1F44D	palec gor	dlan|gor|ja|odlično|palec|seveda|super|telo|všeč mi je|+1	
+1F44E	palec dol	dlan|dol|ni mi všeč|palec|telo|-1	
+1F44F	ploskajoči dlani	aplavz|bravo|čestitam|dlan|dobro opravljeno|navdušenje|ploskati|telo	
+1F450	odprti dlani	dlan|jazz|objem|odprto	
+1F451	krona	igra prestolov|kralj|kraljica|oblačila	
+1F452	ženski klobuk	klobuk|oblačila|ženska	
+1F453	očala	oblačila|oči|sončna očala	
+1F454	kravata	oblačila|resna|srajca	
+1F455	majica	kratka majica|nakupovanje|oblačila|srajca	
+1F456	kavbojke	hlače|oblačila|vikend|za prosti čas	
+1F457	ženska obleka	elegantno|nakupovanje|oblačila|obleka	
+1F458	kimono	oblačila|udobje	
+1F459	bikini	bazen|kopalke|oblačila|plavanje|plavati	
+1F45A	ženska oblačila	dama|nakupovanje|oblačila|ženska|ženske	
+1F45B	drobižnica	kovanec|nakupovanje|oblačila|ročna torbica	
+1F45C	ročna torbica	nakupovanje|oblačila|torbica	
+1F45D	večerna torbica	dodatki|oblačila|ročna torbica|torbica	
+1F45E	moški čevelj	čevelj|moški|nakupovanje|oblačila	
+1F45F	tekaški čevelj	čevelj|oblačila|športno|superga	
+1F460	čevelj z visoko peto	čevelj|oblačila|peta|ženska	
+1F461	ženski sandali	čevelj|oblačila|sandal|ženska	
+1F462	ženski škorenj	čevelj|oblačila|škorenj|ženska	
+1F463	stopinje	oblačila|odtis|stopinja|telo	
+1F464	silhueta doprsja	doprsje|senca|silhueta	
+1F465	silhueti doprsja	doprsje|prijatelja|silhueta	
+1F466	fant	deček|mlad|otrok	
+1F467	dekle	dama|devica|hči|kitke|mlada|zodiak	
+1F468	moški	brat|fant|prijatelj	
+1F469	ženska	dekle|pričeska|svetlolaska	
+1F46A	družina	mati|oče|otrok	
+1F46B	moški in ženska se držita za roke	držati|ljubezen|moški|par|roka|ženska	
+1F46C	moška se držita za roke	dvojčka|homoseksualni par|ljubezen|moški|par|prijatelja|zodiak	
+1F46D	ženski se držita za roke	držati|dvojčici|par|roka|ženska|ženski	
+1F46E	policaj	aretirati|policaj pod krinko|policija|policija ustavi|policist|poziv|prijeti|zakonito	
+1F46F	žurerski ženski	bestica|dekle|dve osebi|dvojčici|dvojčka|dvojnici|identični|najboljša prijateljica|par|plesalka|prijateljica|sorodna duša|uho|zabava|zajčica|zajčja ušesa|ženska|žur	
+1F470	oseba s pajčolanom	nevesta|nevesta s pajčolanom|oseba|pajčolan|poroka	
+1F471	oseba: svetli lasje	blond|človek|lasje|obraz|oseba|svetli lasje|svetlolasa oseba	
+1F472	moški s kitajsko čepico	čepica|kitajska čepica|moški	
+1F473	oseba s turbanom	moški|turban	
+1F474	starec	dedek|izguba las|modrost|moški|star	
+1F475	starka	babica|modrost|stara mama|staro|ženska	
+1F476	dojenček	majhen|novorojenček|otrok	
+1F477	gradbenik	čelada|čepica|delavec|delo|gradbeništvo|gradbinec|gradnja|oseba|popravilo|popraviti|predelati|prenoviti|zaščitna čelada|zgraditi	
+1F478	princesa	fantazija|kraljica|kraljična|krona|pravljica	
+1F479	pošastni velikan	bitje|fantazija|japonsko|obraz|pošast|pravljica	
+1F47A	škratelj	bitje|fantazija|japonsko|obraz|pošast|pravljica	
+1F47B	duh	bitje|fantazija|obraz|pošast|pravljica	
+1F47C	angelček	angel|dojenček|fantazija|obraz|pravljica	
+1F47D	vesoljec	bitje|fantazija|nezemljan|nlp|obraz|vesolje	
+1F47E	vesoljska pošast	bitje|nezemljan|nlp|obraz|vesolje|vesoljec	
+1F47F	vragec	demon|fantazija|hudič|obraz|pravljica	
+1F480	mrtvaška glava	lobanja|obraz|pošast|pravljica|smrt|telo	
+1F481	oseba, ki dela na informacijah	govorice|informacije|jezikava|kakor koli|ki dela na informacijah|metati si lase nazaj|obveščati|oseba|oseba izda skrivnost|oseba s privzdignjeno roko|pomoč|resno|roka|sarkastična|sarkazem|vreči si lase nazaj|zgovorno|živahno	
+1F482	stražar	buckinghamska palača|čelada|čuvaj|london	
+1F483	ženska, ki pleše	ki pleše|ples|plesalka|tango|ženska	
+1F484	šminka	kozmetika|ličila|zmenek	
+1F485	lak za nohte	kozmetika|lak|manikira|nega|noht|telo	
+1F486	masaža obraza	glavobol|masaža|napetost|obraz|oseba na masaži|salon|sproščanje|sprostitev|sprostiti se|terapija|toplice	
+1F487	striženje	brivec|frizer|kozmetologija|lasje|oseba|pričeska|salon|slog|striči|urediti	
+1F488	brivski izvesek	brivec|izvesek|pričeska|striženje	
+1F489	injekcija	bolezen|bolno|igla|medicina|orodje|zdravnik	
+1F48A	tableta	bolno|medicina|zdravilo|zdravnik	
+1F48B	sled šminke po poljubu	odtis|poljub|romanca|srce|ustnice	
+1F48C	ljubezensko pismo	ljubezen|pismo|pošta|romanca|srce	
+1F48D	prstan	diamant|poroka|romanca|zaroka	
+1F48E	dragulj	diamant|dragi kamen|poroka|romanca	
+1F48F	poljub	obletnica|par|romanca|srček	
+1F490	šopek	obletnica|rastlina|romanca|roža	
+1F491	par s srčkom	ljubezen|par|romanca|srce	
+1F492	poročna kapela	kapela|poroka|romanca	
+1F493	utripajoče srce	bitje|ljubezen|srce|srčni utrip|utripanje	
+1F494	strto srce	osamljenost|počeno|srce|žalostno|zlomiti	
+1F495	dve srci	čustvo|ljubezen|poljubi|RTM|srce|zmenek	
+1F496	lesketajoče srce	lesketati se|poljubčki|srce|vznemirjeno	
+1F497	rastoče srce	rastoče|srce|srčni utrip|vznemirjeno|živčno	
+1F498	srce s puščico	kupid|puščica|romanca|srce	
+1F499	modro srce	ljubezen|modro|romanca|srce	
+1F49A	zeleno srce	ljubezen|romantično|srce|zeleno	
+1F49B	rumeno srce	čustva|RTM|rumeno|srce	
+1F49C	vijolično srce	ljubezen|srce|vijolično	
+1F49D	srce s pentljo	pentlja|poljub|RTM|srce|valentin	
+1F49E	vrteči se srci	čustvo|obletnica|srce|vrtenje	
+1F49F	okrasje s srcem	belo srce|čustvo|srce|vijolično srce	
+1F4A0	karo s piko	geometrično|karo|strip|znotraj	
+1F4A1	žarnica	električno|luč|strip|svetilka|zamisel	
+1F4A2	simbol jeze	divje|jeza|jezno|strip	
+1F4A3	bomba	eksplozija|nevarno|strip|vroče	
+1F4A4	spanec	lahko noč|noč|spanje|strip|utrujen|zzz	
+1F4A5	trk	bum|eksplozija|strip	
+1F4A6	potne kapljice	kapljice|pljuskanje|pot|strip|vadba	
+1F4A7	kapljica	kaplja|mrzlo|pot|strip|vreme	
+1F4A8	švigniti	dim|prdec|strip|švigati|tek	
+1F4A9	kup kakca	drekec|iztrebki|kakec|obraz|pošast|strip	
+1F4AA	napeti bicepsi	biceps|mišica|napenjati|strip|telo	
+1F4AB	omotica	omotično|planeti|strip|zvezda|zvezda repatica|zvezde	
+1F4AC	oblaček z govorom	balon|dialog|govor|oblaček|strip	
+1F4AD	oblaček z mislimi	balon|ideja|misel|oblaček|strip	
+1F4AE	bela cvetlica	cvetlica|roža	
+1F4AF	sto točk	popolna ocena|sto|zagotovo|100	
+1F4B0	vreča denarja	bogat|denar|dolar|vreča	
+1F4B1	menjava valut	banka|denar|menjava|valuta	
+1F4B2	znak za dolar	denar|dolar|plačilo|valuta	
+1F4B3	kreditna kartica	banka|denar|kartica|kreditno|plačilo	
+1F4B4	bankovec za jen	apoen|banka|bankovec|denar|jen|valuta	
+1F4B5	dolarski bankovec	apoen|banka|bankovec|denar|dolar|valuta	
+1F4B6	evrski bankovec	apoen|banka|bankovec|denar|evro|valuta	
+1F4B7	bankovec za funt	apoen|banka|bankovec|denar|funt|valuta	
+1F4B8	denar s krili	apoen|banka|bankovec|denar|dolar|krila|leteti|valuta	
+1F4B9	grafikon rasti za jen	banka|denar|graf|grafikon|jen|navzgor|rast|rasti|trend|trg|valuta	
+1F4BA	sedež	stol	
+1F4BB	prenosnik	osebni računalnik|osebno|računalnik|sistem|windows	
+1F4BC	kovček	aktovka|pisarna	
+1F4BD	računalniški disk	disk|minidisk|optično|računalnik	
+1F4BE	disketa	disk|računalnik	
+1F4BF	optični disk	blu-ray|cd|disk|dvd|optično|računalnik	
+1F4C0	dvd	blu-ray|cd|disk|optično|računalnik	
+1F4C1	mapa za spise	mapa|spis	
+1F4C2	odprta mapa za spise	mapa|odprto|spis	
+1F4C3	zvita stran	dokument|nagrbančiti se|stran	
+1F4C4	list s prikazano popisano stranjo	dokument|stran	
+1F4C5	koledar	datum	
+1F4C6	koledar z odstranljivimi listi	koledar	
+1F4C7	organizator vizitk	kartica|kartoteka|vizitka	
+1F4C8	grafikon rasti	graf|grafikon|navzgor|rast|trend	
+1F4C9	grafikon padca	graf|grafikon|navzdol|trend	
+1F4CA	črtni grafikon	črtno|graf|grafikon|podatki	
+1F4CB	podložna mapa	opombe|seznam opravil	
+1F4CC	risalni žebljiček	oznaka|žebljiček	
+1F4CD	okrogli risalni žebljiček	lokacija|oznaka|risalni žebljiček|zemljevid	
+1F4CE	sponka za papir	sponka	
+1F4CF	ravnilo	kot|matematika|merilo	
+1F4D0	trikotno ravnilo	merilo|nastaviti|ravnilo|trikotnik	
+1F4D1	zaznamki na straneh	marker|oznaka|zavihki|zaznamek	
+1F4D2	zvezek s spiralno vezavo	zvezek	
+1F4D3	zvezek	beležnica	
+1F4D4	zvezek z okrasno platnico	knjiga|okrašeno|pisanje|platnica|zvezek	
+1F4D5	zaprta knjiga	branje|izobrazba|knjiga|zaprto	
+1F4D6	odprta knjiga	branje|izobrazba|knjiga|odprto|znanje	
+1F4D7	zelena knjiga	branje|izobrazba|knjiga|knjižnica|zeleno	
+1F4D8	modra knjiga	branje|knjiga|knjižnica|modro	
+1F4D9	oranžna knjiga	branje|izobrazba|knjiga|oranžno|znanje	
+1F4DA	knjige	branje|izobraževanje|knjiga|šola	
+1F4DB	značka za ime	ime|značka	
+1F4DC	zvitek	papir	
+1F4DD	zapisek	beležnica|komunikacija|opomba|svinčnik	
+1F4DE	telefonska slušalka	komunikacija|sprejemnik|telefon	
+1F4DF	pozivnik	komunikacija	
+1F4E0	telefaks	faks|komunikacija	
+1F4E1	satelitska antena	antena|krožnik|satelit|satelitsko	
+1F4E2	javni zvočnik	glasnost|javna objava|komunikacija|zvok	
+1F4E3	megafon	skandiranje|zvok	
+1F4E4	pladenj za odhodno pošto	nabiralnik|odhodna pošta|pismo|pladenj|poslano|pošta	
+1F4E5	pladenj za dohodno pošto	dohodna pošta|nabiralnik|pismo|pladenj|pošta|prejeti	
+1F4E6	paket	dostava|nabiralnik|škatla	
+1F4E7	e-pošta	elektronska pošta|pismo|pošta	
+1F4E8	dohodna ovojnica	dohodno|e-pošta|elektronska pošta|pismo|pošta|prejeti	
+1F4E9	ovojnica s puščico	e-pošta|elektronska pošta|kuverta|navzdol|odhodno|pismo|poslano|pošta|puščica	
+1F4EA	zaprt poštni nabiralnik s spuščeno zastavico	pošta|poštni nabiralnik|spuščeno|zaprto	
+1F4EB	zaprt poštni nabiralnik z dvignjeno zastavico	komunikacija|pošta|poštni nabiralnik|zaprto	
+1F4EC	odprt poštni nabiralnik z dvignjeno zastavico	odprto|pošta|poštni nabiralnik	
+1F4ED	odprt poštni nabiralnik s spuščeno zastavico	odprto|pošta|poštni nabiralnik|spuščeno	
+1F4EE	poštni nabiralnik	komunikacija|pošta	
+1F4EF	poštni rog	pošta|poštno|rog	
+1F4F0	časopis	komunikacija|novice	
+1F4F1	mobilni telefon	komunikacija|mobilnik|mobilno|telefon	
+1F4F2	mobilni telefon s puščico	klic|mobilnik|mobilno|puščica|sprejeti|telefon	
+1F4F3	način vibriranja	mobilnik|mobilno|način|telefon|vibriranje	
+1F4F4	mobilni telefon izklopljen	izklopljeno|mobilnik|mobilno|telefon	
+1F4F5	mobilni telefoni prepovedani	mobilnik|mobilno|ne|ni dovoljeno|prepovedano|telefon	
+1F4F6	signal	antena|mobilnik|mobilno|stolpec|telefon	
+1F4F7	fotoaparat	instagram|kamera|selfi|video	
+1F4F8	fotoaparat z bliskavico	bliskavica|fotoaparat|slika|video	
+1F4F9	videokamera	kamera|snemanje|video	
+1F4FA	televizija	tv|video	
+1F4FB	radio	glasba|video|zabava	
+1F4FC	videokaseta	kaseta|vhs|video	
+1F4FD	filmski projektor	film|kino|projektor|video	
+1F4FF	rožni venec	koralde|molitev|oblačila|ogrlica|vera	
+1F500	gumb za naključno predvajanje	prekrižano|puščica	
+1F501	gumb za vnovično predvajanje	ponavljanje|puščica|smer urnega kazalca	
+1F502	gumb za vnovično posamezno predvajanje	enkratno|puščica|smer urnega kazalca	
+1F503	navpični puščici, ki se ukrivljata v smeri urnega kazalca	ki se ukrivljata v smeri urnega kazalca|navpični puščici|navpični puščici, ki se ukrivljata v smeri urinega kazalca|osveži|puščica|smer urinega kazalca|smer urnega kazalca|vnovično nalaganje	
+1F504	gumb s puščicama, ki se ukrivljata v obratni smeri urnega kazalca	gumb s puščicama|gumb s puščicama, ki se ukrivljata v obratni smeri urinega kazalca|ki se ukrivljata v obratni smeri urnega kazalca|nasprotna smer urinega kazalca|nasprotna smer urnega kazalca|nazaj|osveži|puščica	
+1F505	gumb za zatemnitev	nizko|osvetlitev|svetlost|zatemnitev	
+1F506	gumb za svetlost	osvetlitev|svetlo|svetlost	
+1F507	ugasnjen zvočnik	brez zvoka|glasnost|tiho|zvočnik	
+1F508	zvočnik pri nizki glasnosti	glasnost|potiho	
+1F509	zvočnik pri zmerni glasnosti	glasnost|nizko|val|zmerno|zvočnik|zvok	
+1F50A	zvočnik na glas	glasba|glasno|zvočnik|zvok	
+1F50B	baterija	energija	
+1F50C	električni vtikač	električno|elektrika|vtikač	
+1F50D	povečevalno steklo, usmerjeno v levo	iskanje|lupa|orodje|povečevalno|steklo|usmerjeno v levo	
+1F50E	povečevalno steklo, usmerjeno v desno	desno|iskanje|laboratorij|nagnjeno|orodje|povečevalno|steklo|v desno|znanost	
+1F50F	ključavnica s peresom	črnilo|ključavnica|konica|pero|zasebnost	
+1F510	zaprta ključavnica s ključem	ključ|ključavnica|varno|zaprto	
+1F511	ključ	geslo|ključavnica|odkleniti|zakleniti	
+1F512	ključavnica	zaklenjena ključavnica|zaklenjeno|zaprto|zasebno	
+1F513	odklenjena ključavnica	ključavnica|odkleniti|odprto|zakleniti	
+1F514	zvonec	cerkev|odmor|zvok	
+1F515	prečrtan zvonec	brez zvoka|molčeče|ne|ni dovoljeno|prepovedano|tiho|zvonec	
+1F516	zaznamek	oznaka	
+1F517	člen	členi	
+1F518	izbirni gumb	geometrično|gumb|gumb za radio|izbirni|radio	
+1F519	puščica nazaj	nazaj|puščica	
+1F51A	puščica konec	konec|puščica	
+1F51B	puščica NAPREJ!	puščica|puščica ON|vklop|znak	
+1F51C	puščica kmalu	kmalu|puščica	
+1F51D	puščica na vrh	navzgor|puščica|zgoraj	
+1F51E	prepovedano za mlajše od 18 let	mladoletno|ne|ni dovoljeno|omejitev starosti|osemnajst|prepovedano|18	
+1F520	vnos velikih črk latinice	črke|latinica|velike črke|vnos	
+1F521	vnos malih črk latinice	abcd|črke|latinica|male črke|vnos	
+1F522	vnos številk	številke|vnos|1234	
+1F523	vnos simbolov	simboli|vnos	
+1F524	vnos črk latinice	abc|abeceda|črke|latinica|vnos	
+1F525	ogenj	orodje|plamen|vroče|vročina	
+1F526	svetilka	električno|luč|orodje	
+1F527	ključ za matice	francoski ključ|orodje|vijačni ključ	
+1F528	kladivo	orodje|popravila	
+1F529	matica in vijak	matica|orodje|vijak	
+1F52A	kuhinjski nož	hocho|kuhanje|kuhar|nož|orodje|orožje	
+1F52B	vodna pištola	orodje|orožje|pištola|revolver	
+1F52C	mikroskop	laboratorij|orodje|poskus|znanost	
+1F52D	teleskop	orodje|stik|znanost	
+1F52E	kristalna krogla	fantazija|kristalna|krogla|orodje|pravljica|prerokba	
+1F52F	šestkraka zvezda s piko	judovstvo|sreča|zvezda	
+1F530	japonski simbol za začetnika	cik-cak|japonsko|list|orodje|puščica|rumeno|začetnik|zeleno	
+1F531	trizobo znamenje	ladja|orodje|pozejdon|sidro|trizob|znamenje	
+1F532	gumb s črnim kvadratom	geometrično|gumb|kvadrat	
+1F533	gumb z belim kvadratom	geometrično|gumb|kvadrat|obrobljeno	
+1F534	rdeč krog	geometrično|krog|rdeče	
+1F535	moder krog	geometrično|krog|modro	
+1F536	velik oranžen karo	geometrično|karo|oranžno	
+1F537	velik moder karo	geometrično|karo|modro	
+1F538	majhen oranžen karo	geometrično|karo|oranžno	
+1F539	majhen moder karo	geometrično|karo|modro	
+1F53A	rdeč trikotnik gor	geometrično|rdeče	
+1F53B	rdeč trikotnik dol	geometrično|navzdol|rdeče|trikotnik dol	
+1F53C	gumb za gor	gor|gumb|puščica|rdeče	
+1F53D	gumb za dol	dol|gumb|navzdol|puščica|rdeče	
+1F549	om	hinduistično|vera	
+1F54A	golobica	leteti|mir|ptič|žival	
+1F54B	kaaba	islam|muslimansko|vera	
+1F54C	mošeja	islam|muslimansko|vera	
+1F54D	sinagoga	jud|judovsko|tempelj|vera	
+1F54E	menora	namizni svečnik|svečnik|vera	
+1F550	ura je ena	ena|ura|00|1|1.00	
+1F551	ura je dve	dve|ura|00|2|2.00	
+1F552	ura je tri	tri|ura|00|3|3.00	
+1F553	ura je štiri	štiri|ura|00|4|4.00	
+1F554	ura je pet	pet|ura|00|5|5.00	
+1F555	ura je šest	šest|ura|00|6|6.00	
+1F556	ura je sedem	sedem|ura|00|7|7.00	
+1F557	ura je osem	osem|ura|00|8|8.00	
+1F558	ura je devet	devet|ura|00|9|9.00	
+1F559	ura je deset	deset|ura|00|10|10.00	
+1F55A	ura je enajst	enajst|ura|00|11|11.00	
+1F55B	poldne	dvanajst|opoldan|ura|00|12|12.00	
+1F55C	pol dveh	dve|ena|pol|ura|1|1.30|30	
+1F55D	pol treh	dve|pol|tri|ura|2|2.30|30	
+1F55E	pol štirih	pol|štiri|tri|ura|3|3.30|30	
+1F55F	pol petih	čas|pet|pol|štiri|ura|30|4|4.30	
+1F560	pol šestih	pet|pol|šest|ura|30|5|5.30	
+1F561	pol sedmih	pol|sedem|šest|ura|30|6|6.30	
+1F562	pol osmih	osem|pol|sedem|ura|30|7|7.30	
+1F563	pol devetih	devet|osem|pol|ura|30|8|8.30	
+1F564	pol desetih	deset|devet|pol|ura|30|9|9.30	
+1F565	pol enajstih	deset|enajst|pol|ura|10|10.30|30	
+1F566	pol dvanajstih	dvanajst|enajst|pol|ura|11|11.30|30	
+1F567	pol enih	dvanajst|ena|pol|ura|12|12.30|30	
+1F56F	sveča	luč	
+1F570	ura za na okvir kamina	čas|ura	
+1F573	luknja	odprtina	
+1F574	moški v poslovni obleki, ki lebdi	ki lebdi|moški|moški v poslovni obleki|obleka|posli	
+1F575	preiskovalec	detektiv|moški|vohljač|vohun	
+1F576	sončna očala	očala|oči|temno	
+1F577	pajek	žival|žuželka	
+1F578	pajkova mreža	mreža|pajek	
+1F579	igralna palica	igra|videoigra	
+1F57A	plesalec	moški|ples|salsa|tango	
+1F587	povezani sponki	povezano|sponka	
+1F58A	nalivno pero	kemični svinčnik|nalivnik	
+1F58B	nalivnik	nalivno pero|pero	
+1F58C	čopič	barvanje|slikanje	
+1F58D	voščenka	barvica	
+1F590	dvignjena dlan z razprtimi prsti	dlan|prst|razprto|telo	
+1F595	sredinec	dlan|kazati|prst|telo	
+1F596	vulkanski pozdrav	dlan|prst|spock|telo|vulkan	
+1F5A4	črno srce	črno|hudobno|podlo|srce|zlobno	
+1F5A5	namizni računalnik	namizno|računalnik|zaslon	
+1F5A8	tiskalnik	računalnik	
+1F5B1	računalniška miška	računalnik	
+1F5B2	sledilna kroglica	računalnik	
+1F5BC	uokvirjena slika	muzej|okvir|risba|slika|umetnost	
+1F5C2	kartoteke z vmesnimi listi	kartica|kartoteka|vmesni listi	
+1F5C3	škatla z dokumenti	dokumenti|škatla|spis	
+1F5C4	predalnik za dokumente	predalnik|spis	
+1F5D1	koš za smeti	koš|smeti	
+1F5D2	spiralna beležnica	beležka|beležnica|spirala	
+1F5D3	spiralni koledar	beležka|koledar|spirala	
+1F5DC	stiskanje	orodje|primež	
+1F5DD	star ključ	ključ|ključavnica|namig|staro	
+1F5DE	zvit časopis	časopis|novice|zvito	
+1F5E1	bodalo	nož|orožje	
+1F5E3	govoreča glava	glava|govoriti|govorjenje|obraz|silhueta	
+1F5E8	levi oblaček z govorom	dialog|govor	
+1F5EF	desni oblaček z jeznim govorom	balon|divje|jezno|oblaček	
+1F5F3	škatla za glasovanje z glasovnico	glasovnica|škatla	
+1F5FA	zemljevid sveta	svet|zemljevid	
+1F5FB	gora Fuji	fuji|Fuji|gora|narava|vrh	
+1F5FC	tokijski stolp	stolp|tokio|Tokio	
+1F5FD	kip svobode	kip|new york|nyc|svoboda	
+1F5FE	zemljevid Japonske	japonska|Japonska|zemljevid	
+1F5FF	moai	kamnit obraz|kip|obraz|potovanje	
+1F600	režeči obraz	nasmeh|obraz|prijazen|režanje|smeh|vesel|zobje	
+1F601	režeči obraz s smejočimi očmi	lepo|nasmeh|obraz|oči|režanje|vesel	
+1F602	obraz s solzami veselja	haha|lol|obraz|rofl|smeh|smeh do solz|smeško|solze|veselje	
+1F603	smejoči obraz z odprtimi usti	nasmeh|obraz|odprto|usta	
+1F604	smejoči obraz z odprtimi usti in smejočimi očmi	nasmeh|obraz|oči|odprto|usta	
+1F605	smejoči obraz z odprtimi usti in mrzlim potom	mrzlo|nasmeh|obraz|odprto|pot	
+1F606	smejoči obraz z odprtimi usti in trdno zaprtimi očmi	haha|lol|nasmeh|obraz|odprt|odprto|smeh|usta|zadovoljen|zadovoljno	
+1F607	smejoči obraz s svetniškim sijem	angel|avra|blagoslovljen|fantazija|nasmeh|nedolžno|obraz|pravljica	
+1F608	smejoči obraz z rogovi	fantazija|nasmeh|obraz|pravljica|rogovi	
+1F609	obraz s pomežikom	obraz|pomežik|seksi|spogledovanje	
+1F60A	smejoči obraz s smejočimi očmi	nasmeh|obraz|oči|zardevanje	
+1F60B	obraz, ki z užitkom pomalica okusno hrano	hrana|jesti|lačen|nasmeh|njami|obraz|okusno|poln|slastno|zaužiti	
+1F60C	olajšan obraz	obraz|olajšano|spokoj	
+1F60D	smejoči obraz z očmi v obliki srčka	ljubezen|nasmeh|obraz|oči|srce	
+1F60E	smejoči obraz s sončnimi očali	frajersko|nasmeh|obraz|očala|plaža|sonce|sončna očala|svetlo|zmaga	
+1F60F	obraz s privoščljivim nasmeškom	nezaupljiv|obraz|prebrisan|privoščljiv nasmešek|samovšečen|spogledovanje	
+1F610	nevtralni obraz	brezizrazen|mrtvo hladno|nevtralno|obraz	
+1F611	brezizrazni obraz	brezizrazno|neprizadeto|obraz|prazno	
+1F612	obraz s hladnim nasmeškom	čudno|jezen|kr neki|ljubosumen|nenaklonjeno|nezadovoljen|nezadovoljno|obraz	
+1F613	obraz z mrzlim potom	glavobol|mrzlo|obraz|pot	
+1F614	brezvoljen obraz	brezvoljno|dolgočasno|obraz|pobito|razočaranje	
+1F615	zmeden obraz	ne vem|obraz|oprosti|žalosten|zmeden|zmedeno	
+1F616	zbegan obraz	obraz|slaba volja|zbegan|zbegano|zmeden	
+1F617	obraz, ki poljublja	ki poljublja|ljubezen|obraz|poljub|poljubljanje	
+1F618	obraz, ki pošlje ljubčka	ki pošlje ljubčka|ljubčki|obraz|pogrešam te|poljub|romantično|srce|srček	
+1F619	obraz s smejočimi očmi, ki poljublja	ljubezen|nasmeh|noč|obraz|oči|oko|poljub|spogledovanje|zaprto|zmenek	
+1F61A	obraz z zaprtimi očmi, ki poljublja	ljubezen|objem|obraz|oči|oko|poljub|rdečica|spogledovanje|zaprto|zmenek	
+1F61B	obraz z molečim jezikom	jezik|kul|obraz|odlično	
+1F61C	obraz z molečim jezikom in pomežikom	jezik|mežik|obraz|oči|šala	
+1F61D	obraz z molečim jezikom in zaprtimi očmi	grozno|jezik|obraz|obraz z molečim jezikom in trdno zaprtimi očmi|oči|ogabno|okus	
+1F61E	razočaran obraz	neuspeh|obraz|razočarano|žalost	
+1F61F	zaskrbljen obraz	obraz|stres|zaskrbljen|zaskrbljeno|živčen	
+1F620	jezen obraz	besen|besno|jezen|jezno|nesrečen|obraz	
+1F621	obraz, ki kuha mulo	besen|besno|gnev|jezen|jezno|ki kuha mulo|kujanje|obraz|rdeče	
+1F622	jokajoči obraz	jokanje|obraz|solza|žalostno	
+1F623	vztrajen obraz	obraz|osredotočen|vztrajanje|zbran	
+1F624	obraz s paro skozi nos	bes|jeza|obraz|para|zmaga|zmagoslavje	
+1F625	razočaran, a olajšan obraz	ne|obraz|olajšan|pot|prestrašen|razočaran|skoraj|žalosten|zapleteno	
+1F626	namrščen obraz z odprtimi usti	namrščenost|obraz|odprto|presenečenje|prestrašen|usta	
+1F627	trpeč obraz	nesrečen|obraz|presenečen|prestrašen|trpeče	
+1F628	bojazljiv obraz	obraz|preplašen|preplašeno|prestrašen|prestrašeno|strah	
+1F629	izčrpan obraz	izčrpan|izčrpano|lačen|obraz|utrujen|utrujeno|zaspano	
+1F62A	zaspan obraz	jok|obraz|spanje|utrujen	
+1F62B	utrujen obraz	obraz|utrujen|utrujeno|žalosten	
+1F62C	spačen obraz	grimasa|nerodno|obraz|zobozdravnik	
+1F62D	cmerajoči obraz	ihtenje|jokanje|obraz|solze|žalosten|žalostno	
+1F62E	obraz z odprtimi usti	ne morem verjeti|obraz|odprto|sočutje|šokiran|usta	
+1F62F	osupljen obraz	obraz|osupel obraz|osuplo|presenečeno|tiho	
+1F630	obraz z odprtimi usti in mrzlim potom	hladno|modro|obraz|odprto|pot|prestrašen|usta|živčen	
+1F631	obraz, ki kriči od strahu	izjemno|kričač|krik|obraz|presenečen|prestrašen|pretresen|strah	
+1F632	začuden obraz	frapirano|obraz|osupel|popolnoma|presenečen|presenečeno|začuden|začudeno	
+1F633	zardeli obraz	nerodno|noro|obraz|vau|zardelo|zmedeno	
+1F634	speči obraz	lahko noč|obraz|smeško|spanje|utrujen|zaspan|zzz	
+1F635	omotičen obraz	bolezen|obraz|omotično|slabost	
+1F636	obraz brez ust	molčeč|molčeče|obraz|tiho|usta	
+1F637	obraz z medicinsko masko	bolno|maska|obraz|prehlad|zdravilo|zdravnik	
+1F638	režeča se mačka s smejočimi očmi	mačka|nasmeh|obraz|oko|režanje	
+1F639	mačka s solzami sreče	mačji obraz s solzami sreče|mačka|obraz|solze|veselje	
+1F63A	režeča se mačka	mačka|nasmeh|obraz|odprta|smeh|usta	
+1F63B	smejoča se mačka z očmi v obliki srčka	ljubezen|mačka|nasmeh|obraz|oči|smejoči mačji obraz z očmi v obliki srčka|srce|žival	
+1F63C	mačka s prifrknjenim nasmeškom	ironično|mačji obraz s prifrknjenim nasmeškom|mačka|nasmeh|obraz|porogljivo	
+1F63D	mačka poljublja z zaprtimi očmi	ki poljublja|mačji obraz z zaprtimi očmi|mačji obraz z zaprtimi očmi, ki poljublja|mačka|obraz|oči|poljub	
+1F63E	mačka kuha mulo	ki kuha mulo|kujanje|mačji obraz|mačji obraz, ki kuha mulo|mačka|obraz|žival	
+1F63F	jokajoča mačka	jokajoči mačji obraz|jokanje|mačka|obraz|solza|žalostno	
+1F640	presenečena mačka	mačka|naveličan|naveličano|obraz|odprta usta|presenečen|presenečeno	
+1F641	nekoliko namrščen obraz	mrščenje|obraz|žalosten	
+1F642	rahlo smejoči obraz	nasmeh|obraz|smehljanje|vesel	
+1F643	na glavo obrnjen obraz	narobe obrnjeno|nasmeh|obraz	
+1F644	obraz z zavijajočimi očmi	kr neki|obraz|oči|smeško|zavijanje|zavijanje z očmi	
+1F645	oseba, ki kaže NE	gesta|izključiti|ki kaže NE|ne|ni|ni dovoljeno|nikakor|niti pod razno|oseba|oseba kaže NE|prepovedano|prepovedati|roka	
+1F646	oseba, ki kaže V REDU	gesta|ki kaže V REDU|OK|omg|oseba|oseba kaže V REDU|roka|telovadba|v redu|V REDU	
+1F647	oseba, ki se prikloni	gesta|ki se prikloni|meditacija|meditirati|obžalovati|odpustiti|opravičilo|oprosti|oseba|oseba se priklanja|pomilovati|priklon|prositi	
+1F648	opica, ki ne vidi ničesar	gesta|ki ne vidi ničesar|obraz|opica|prepovedano|videti|žival|zlobno	
+1F649	opica, ki ne sliši ničesar	gesta|ki ne sliši ničesar|obraz|opica|prepovedano|slišati|zlobno	
+1F64A	opica, ki ničesar ne govori	gesta|govoriti|ki ničesar ne govori|obraz|opica|prepovedano|zlobno	
+1F64B	vesela oseba, ki dvigne roko	dvignjena roka|dvignjeno|gesta|izberi mene|jaz|jaz vem|ki dvigne roko|lahko pomagam|oseba z dvignjeno roko|roka|roke|točno tukaj|tukaj sem|vesela oseba|veselo|vprašanje	
+1F64C	oseba, ki dvigne roke	dlan|dlani|dvignjeno|hura|hvaljenje|kretnja|roka|slavje	
+1F64D	oseba, ki se mršči	čemerna|gesta|jezna|ki se mršči|mrščenje|namrščena oseba|nejevoljna|nezadovoljna|ni vesela|oseba|razburjena|razdražena|razočarana|slabe volje	
+1F64E	oseba, ki kuha mulo	gesta|godrnjati|izraz|jezno|ki kuha mulo|kujanje|kujati se|mrščiti se|mulati se|oseba|oseba šobi usta|razočarano|spačiti|stokati|užaljeno	
+1F64F	staknjeni dlani	hvala|moliti|predklon|prosim|prositi|roka|sklenjeno	
+1F680	raketa	potovanje|vesolje|vozilo	
+1F681	helikopter	potovanje|vozilo	
+1F682	lokomotiva	para|stroj|vlak|vozilo|železnica	
+1F683	železniški vagon	avtomobil|električno|tramvaj|trolejbus|vlak|vozilo|železnica	
+1F684	hitri vlak	hitrost|shinkansen|vlak|vozilo|železnica	
+1F685	hitri vlak s koničastim nosom	hitrost|koničast nos|shinkansen|vlak|vozilo|železnica	
+1F686	vlak	prihod|vozilo|železnica	
+1F687	podzemni vlak	podzemna železnica|vozilo	
+1F688	ozkotirna železnica	vlak|vozilo|železnica	
+1F689	postaja	vlak|vozilo|železnica	
+1F68A	tramvaj	trolejbus|vozilo	
+1F68B	vagon tramvaja	tramvaj|trolejbus|vagon|vozilo	
+1F68C	avtobus	šola|šolski avtobus|vozilo	
+1F68D	prihajajoči avtobus	avtobus|prihajajoče|vozila|vozilo	
+1F68E	trolejbus	avtobus|tramvaj|vozilo	
+1F68F	avtobusna postaja	avtobus|avtobusno postajališče|postajališče	
+1F690	minibus	avtobus|vozilo|vožnja	
+1F691	reševalno vozilo	prva pomoč|rešilec|vozilo	
+1F692	gasilsko vozilo	avto|gasilsko|požar|vozilo	
+1F693	policijsko vozilo	avto|patruljno|policija|vozilo	
+1F694	prihajajoče policijsko vozilo	avto|policija|prihajajoče|vozilo	
+1F695	taksi	taksist|vozilo|vožnja	
+1F696	prihajajoči taksi	avtomobil|poklicati taksi|prihajajoče|taksi|vozilo	
+1F697	avtomobil	avto|vozilo|vožnja	
+1F698	prihajajoči avtomobil	avto|avtomobil|prihajajoče|vozilo|vožnja	
+1F699	cestni terenec	avtomobil|prostočasno|vozilo|vožnja	
+1F69A	dostavno vozilo	dostavno|poltovornjak|tovornjak|vozilo	
+1F69B	tovornjak s prikolico	kamion|polpriklopnik|tovornjak|vozilo	
+1F69C	traktor	vozilo	
+1F69D	enotirna železnica	vozilo	
+1F69E	gorska železnica	avto|gora|vozilo|železnica	
+1F69F	viseča železnica	viseče|vozilo|železnica	
+1F6A0	nihalka	gondola|gora|jeklena vrv|vozilo	
+1F6A1	žičnica	gondola|jeklena vrv|tramvaj|vagon|vozilo|zračno	
+1F6A2	ladja	potnik|potovanje|titanik|vozilo	
+1F6A3	oseba v čolnu na vesla	čoln|čoln na vesla|jezero|kanu|ladja|reka|ribolov|splav|vesla|veslanje|veslati|veslo|vozilo	
+1F6A4	gliser	čoln|luksuz|poletje|vozilo	
+1F6A5	vodoravni semafor	križišče|luč|promet|semafor	
+1F6A6	navpični semafor	križišče|luč|promet|semafor	
+1F6A7	zaprto zaradi gradnje	gradnja|ovira|prepreka	
+1F6A8	policijska luč	avto|luč|policija|rotacijska luč|vozilo|vrteče	
+1F6A9	trikotna zastava	golf|gradnja|zastavica	
+1F6AA	vrata	omara|zadnja vrata	
+1F6AB	prepovedano	kajenje prepovedano|ne|ni vstopa|vstop	
+1F6AC	kajenje	cigara|cigareta	
+1F6AD	prepovedano kajenje	kajenje|ne|ni dovoljeno|prepovedano	
+1F6AE	znak za smeti v košu	koš|koš za smeti|smeti	
+1F6AF	prepovedano odlaganje smeti	ne|ni dovoljeno|odlagati|prepovedano|smeti	
+1F6B0	pitna voda	piti|pitno|voda	
+1F6B1	voda ni pitna	ne|ni dovoljeno|piti|pitno|prepovedati|voda	
+1F6B2	kolo	kolesarjenje|šport|vozilo	
+1F6B3	prepovedano za kolesa	kolo|ne|ni dovoljeno|prepovedano|vozilo	
+1F6B4	oseba na kolesu	bicikel|biciklist|kolesar|kolesariti|kolesarjenje|kolo|šport	
+1F6B5	gorski kolesar	bicikel|biciklist|gora|kolesar|kolesarjenje|kolo|oseba vozi gorsko kolo|šport|športno	
+1F6B6	pešec	hoditi|hoja|korak|korakanje|oseba se sprehaja|paradirati|pohajkovati|pohod|potep|sprehajati se|sprehod	
+1F6B7	prepovedano za pešce	ne|ni dovoljeno|pešec|prepovedano	
+1F6B8	otroci prečkajo cesto	otrok|pešec|prehod|promet	
+1F6B9	stranišče za moške	moški|stranišče|wc	
+1F6BA	stranišče za ženske	stranišče|wc|ženska	
+1F6BB	javno stranišče	stranišče|wc	
+1F6BC	simbol dojenčka	dojenček|previjanje	
+1F6BD	straniščna školjka	stranišče	
+1F6BE	wc	stranišče|voda	
+1F6BF	tuš	prha|voda	
+1F6C0	oseba, ki se kopa	kad|ki se kopa|kopalna kad|kopel|oseba	
+1F6C1	kad	banja|kopalna kad|kopanje	
+1F6C2	pregled dokumentov	nadzor|potni list	
+1F6C3	carina	carinik|pakiranje	
+1F6C4	prevzem prtljage	letalo|potovanje|prevzem|prtljaga	
+1F6C5	prtljaga v garderobi	garderoba|kovčki|omarica|prtljaga	
+1F6CB	kavč in svetilka	hotel|kavč|svetilka	
+1F6CC	oseba v postelji	čas za spanje|hotel|lahko noč|počitek|spanje|zzz	
+1F6CD	nakupovalni vrečki	hotel|nakupovanje|torbica	
+1F6CE	hotelski zvonec	hotel|portir|zvonec	
+1F6CF	postelja	hotel|spanje	
+1F6D0	božji hram	čaščenje|vera	
+1F6D1	znak stop	osemkotnik|stop|znak	
+1F6D2	nakupovalni voziček	košarica|nakupovanje|voziček	
+1F6D5	hindujski tempelj	hindu|tempelj	
+1F6D6	koča	bivanje|dom|hiša|jurta|okrogla hiša|zavetišče	
+1F6D7	dvigalo	dostopnost|elevator|lift|znak	
+1F6D8	zemeljski plaz	blatni plaz|gora|nesreča|nevarnost|plaz|potres|skale	
+1F6D9	svetilnik	morje|morski|navigacija|osvetlitev|plovba|signal|svetloba|svetlobni signal|upanje|vodenje	
+1F6DC	brezžična povezava	dostopna točka|internet|omrežje|pametni telefon|povezava|računalnik|širokopasovno|usmerjevalnik|Wi-Fi|WLAN	
+1F6DD	tobogan	igra|igrišče|zabaviščni park	
+1F6DE	avtomobilsko kolo	avto|krog|pnevmatika|vozilo|vrtenje	
+1F6DF	rešilni obroč	plavajoč|plavanje|reševanje|reševanje iz vode|rešilni jopič|rešilni pripomoček|varnost	
+1F6E0	kladivo in ključ	kladivo|ključ|orodje	
+1F6E1	ščit	orožje	
+1F6E2	naftni sod	nafta|sod	
+1F6E3	avtocesta	cesta	
+1F6E4	železniška proga	vlak|železnica	
+1F6E5	motorni čoln	čoln|ladja|vozilo	
+1F6E9	manjše letalo	letalo|vozilo	
+1F6EB	odhod letala	letalo|odhod|odhodi|prijava|vozilo	
+1F6EC	prihod letala	letalo|prihod|prihodi|pristanek|vozilo	
+1F6F0	satelit	vesolje|vozilo	
+1F6F3	potniška ladja	ladja|potnik|vozilo	
+1F6F4	skiro	poganjanje	
+1F6F5	skuter	motor|vozilo	
+1F6F6	kanu	čoln	
+1F6F7	sanke	sankanje|sneg	
+1F6F8	leteči krožnik	nezemljani|neznani leteči predmet|NLP	
+1F6F9	rolka	deska|kolesa|rolkanje	
+1F6FA	rikša z motorjem	tuk tuk|vozilo	
+1F6FB	poltovornjak	avto|delovno vozilo|pick-up|pickup|tovornjak|transport|vozilo|vožnja	
+1F6FC	kotalke	kotalka|kotalkanje|roler|šport	
+1F7E0	oranžen krog	krog|oblika|oranžen	
+1F7E1	rumen krog	krog|oblika|rumen	
+1F7E2	zelen krog	krog|oblika|zelen	
+1F7E3	škrlaten krog	krog|oblika|škrlaten|vijoličen	
+1F7E4	rjav krog	krog|oblika|rjav	
+1F7E5	rdeč kvadrat	kvadrat|oblika|rdeč	
+1F7E6	moder kvadrat	kvadrat|moder|oblika	
+1F7E7	oranžen kvadrat	kvadrat|oblika|oranžen	
+1F7E8	rumen kvadrat	kvadrat|oblika|rumen	
+1F7E9	zelen kvadrat	kvadrat|oblika|zelen	
+1F7EA	škrlaten kvadrat	kvadrat|oblika|škrlaten|vijoličen	
+1F7EB	rjav kvadrat	kvadrat|oblika|rjav	
+1F7F0	znak za enakovrednost	enakovrednost|matematika|odgovor|znak za enakost	
+1F90C	prsti, stisnjeni skupaj	dlan|izpraševanje|kretnja z roko|počakaj|pomiri se|prsti|sarkastično|stisnjen|stisnjeni skupaj|utihni	
+1F90D	belo srce	belo|srce	
+1F90E	rjavo srce	rjavo|srce	
+1F90F	roka s ščepcem	majhna količina|malo	
+1F910	obraz z usti v obliki zadrge	obraz|usta|zadrga|zapečateno|zaprto	
+1F911	obraz z denarjem namesto ust	denar|obraz|plačilo|usta	
+1F912	obraz s termometrom	bolan|bolezen|bolno|obraz|slabotno|termometer	
+1F913	piflarski obraz	frik|obraz|piflar|znalec	
+1F914	razmišljujoči obraz	hmm|obraz|razmišljanje	
+1F915	obraz, obvezan s povojem	bolečina|obraz|poškodba|poškodovan|povita glava|povoj	
+1F916	robot	obraz|pošast|robotski obraz	
+1F917	obraz, ki objema	nasmeh|objem|obraz|odprt|roki	
+1F918	znak za rogove	dlan|metal|metalski pozdrav|prst|rock|rock za vedno|rogovi|telo	
+1F919	pokliči me	pokliči|roka	
+1F91A	dvignjena hrbtna stran dlani	dlan|dvignjena|hrbtna stran	
+1F91B	pest, obrnjena levo	levo|obrnjena levo|pest	
+1F91C	pest, obrnjena desno	desno|obrnjena desno|pest	
+1F91D	rokovanje	dogovor|roka|sporazum|srečanje	
+1F91E	prekrižani prsti	prsti|roka|sreča	
+1F91F	znak za ljubim te	ljubim te|roka|RTM|trije prsti	
+1F920	obraz s kavbojskim klobukom	kavboj|kavbojka|klobuk	
+1F921	klovnovski obraz	klovn|klovnesa|obraz	
+1F922	obraz, ki se počuti slabo	bolezen|bruhanje|obraz|ogabno|slabo počutje|slabost	
+1F923	krohotanje	lol|rofl|smeh|smeh do solz|smejanje|smešno|solze|tla|valjanje po tleh	
+1F924	obraz, ki se slini	ki se slini|obraz|slinjenje	
+1F925	lažnivi obraz	laž|lažnivec|ostržek	
+1F926	oseba z dlanjo na obrazu	dvom|facepalm|joj|ne že spet|nejevera|odkimavati z glavo|ogorčenje|omg|oseba|prekriti obraz z dlanjo|skepsa|skomigniti|smh	
+1F927	obraz, ki kiha	bolezen|gripa|kihanje|na zdravje|obraz|prehlad|vročina	
+1F928	obraz z dvignjenimi obrvmi	hmm|neodobravanje|nezaupljivost|presenečenje	
+1F929	obraz z očmi v obliki zvezdic	nasmeh|navdušenje|uau|zvezdice	
+1F92A	nor obraz	majhen|nore oči|oči|oko|velik	
+1F92B	obraz s prstom čez usta	pššt|tiho|tišina|utihni	
+1F92C	obraz, ki kolne	cenzura|jeza|ki kolne|obraz|obraz s simboli prek ust|preklinjanje	
+1F92D	obraz z roko čez usta	hihitanje|skrivnost|šok|ups	
+1F92E	obraz, ki bruha	bljak|bolezen|bruhanje|obraz|ogabno	
+1F92F	eksplozija v glavi	eksplozija|neverjetno|obraz|šokiran	
+1F930	nosečnica	noseča ženska|ženska	
+1F931	dojenje	dojenček|prsi	
+1F932	dvignjeni odprti dlani	dlani|molitev|skupaj|želja	
+1F933	selfi	fotoaparat|kamera|mobilni telefon	
+1F934	princ	kraljev|kraljeva družina|kraljevič|krona|pravljica	
+1F935	oseba v smokingu	moški|moški v smokingu|oseba|smoking|ženin	
+1F936	gospa Božiček	božič|Božič|gospa|praznovanje	
+1F937	oseba, ki skomiga	brezbrižnost|dvom|idk|kakor koli|kdo bi vedel|ki skomiga|mogoče|ne vem|ne znam|nevednost|nezanimanje|oseba|skomigniti|verjetno	
+1F938	oseba izvaja kolo	aktivno|dejavno|gimnastika|kolo|navdušeno|oseba|premet vstran|salto|šport|veselo	
+1F939	žongliranje	obvladati|oseba|ravnotežje|spretnost|večopravilnost|žonglirati	
+1F93A	sabljanje	meč|sabljač|šport	
+1F93C	rokoborba	borba|ljudje|spopad|šport|tekmovanje v rokoborbi|v ringu|wrestling	
+1F93D	vaterpolo	bazen|oseba|plavanje|šport|vodni šport|waterpolo|žoga	
+1F93E	rokomet	lob|met|metati|oseba|šport|športno|ujeti|vreči|zalučati|žoga	
+1F93F	potapljaška maska	na dah|potapljanje|snorkljanje	
+1F940	ovenela roža	ovenela|roža	
+1F941	boben	glasba|tolkalo	
+1F942	nazdravljanje	kozarca|pijača|praznovanje|trkanje	
+1F943	kozarec žgane pijače	kozarec|merica|viski|žgane pijače	
+1F944	žlica	jedilni pribor|pribor	
+1F945	gol	mreža|šport	
+1F947	zlata medalja	medalja|prvo mesto|zlato|zmaga	
+1F948	srebrna medalja	drugo mesto|medalja|srebro	
+1F949	bronasta medalja	bron|medalja|tretje mesto	
+1F94A	boksarska rokavica	boks|rokavica|šport	
+1F94B	kimono za borilne športe	borilne veščine|judo|karate|šport|taekwondo|uniforma	
+1F94C	curling	igra|kegljanje na ledu|kerling	
+1F94D	lacrosse	gol|palica|šport|žoga	
+1F94E	žoga za softball	pod roko|rokavica|šport|žoga	
+1F94F	frizbi	leteči disk|najboljši	
+1F950	rogljič	francoski|hrana|pecivo	
+1F951	avokado	hrana|sadje	
+1F952	kumara	hrana|kumarica|zelenjava	
+1F953	slanina	hrana|meso	
+1F954	krompir	hrana|zelenjava	
+1F955	korenje	hrana|zelenjava	
+1F956	bageta	francoska|hrana|kruh	
+1F957	zelena solata	hrana|solata|zelena	
+1F958	kozica s hrano	hrana|kozica|paella|ponev	
+1F959	kebab	falafel|gyros|hrana|nadev	
+1F95A	jajce	hrana|jajca	
+1F95B	kozarec mleka	kozarec|mleko|pijača	
+1F95C	arašidi	arašid|hrana|oreški|zelenjava	
+1F95D	kivi	hrana|sadje	
+1F95E	palačinke	hrana|večerja|zajtrk	
+1F95F	cmok	gyoza|zavitek|žlikrof	
+1F960	piškotek sreče	prerokba	
+1F961	embalaža za hrano	dostava hrane|jedilne paličice|kartonska embalaža za hrano	
+1F962	jedilne paličice	paličice	
+1F963	skodelica z žlico	kaša|kosmiči|ovsena kaša|zajtrk	
+1F964	kozarec s slamico	soda|sok|voda	
+1F965	kokos	palma|pina colada	
+1F966	brokoli	hrana|zelenjava	
+1F967	pita	jabolčna pita|pecivo	
+1F968	presta	hrana|zvita	
+1F969	kos mesa	meso|rdeče meso|svinjski kotlet|zrezek	
+1F96A	sendvič	hrana|kruh	
+1F96B	konzervirana hrana	hrana|konzerva	
+1F96C	listnata zelenjava	burgerji|hrana|kitajsko zelje|listnato zelena|listni ohrovt|solata|zelje	
+1F96D	mango	hrana|sadež|tropski	
+1F96E	lunina torta	festival|hrana|jesen|yuebing	
+1F96F	bagel	hrana|namaz|pekarna|zajtrk	
+1F970	smejoči obraz s srčki	3 srčki|ljubezen|oboževanje|RTM|simpatija|srčki|zaljubljenost	
+1F971	zehajoč obraz	dolgčas|lahko noč|počitek|smeško|utrujen|zehanje|zzz	
+1F972	smejoči obraz s solzo	ganjenost|hvaležnost|nasmeh|olajšanje|ponos|smeško|solza|veselje	
+1F973	praznujoči obraz	hupa|hura|klobuček|obraz|praznovanje|rojstni dan|smeško|vse najboljše|zabava	
+1F974	okajen obraz	omotičen|različni očesi|v rožicah|valovita usta|vinjen	
+1F975	vroč obraz	poten|rdeč obraz|vroče|vročina|vročinska kap	
+1F976	mrzel obraz	ledene sveče|mrzel|ozebline|plav obraz|premražen	
+1F977	nindža	bojevnik|borba|morilec|oseba|prikrivanje|sablja|skrivanje|vojak	
+1F978	maska	brki|inkognito|nos|obraz|obrvi|očala|preobleka|smeško	
+1F979	obraz, ki zadržuje jok	hvaležnost|jeza|jok|ki zadržuje jok|občudovanje|obraz|ponos|solze sreče|upor|žalost	
+1F97A	proseč obraz	kužkove oči|milost|moledovanje|obraz|pasje oči|zakaj	
+1F97B	sari	oblačilo|obleka|ogrinjalo	
+1F97C	laboratorijska halja	eksperiment|oblačilo|zdravnik|znanstvenik	
+1F97D	zaščitna očala	plavanje|potapljanje|varjenje|zaščita oči	
+1F97E	pohodniški čevelj	čevelj|kampiranje|planinarjenje|pohodništvo	
+1F97F	balerinke	balernike|brez pete|čevlji|natakniti|nizki čevlji	
+1F980	rakovica	rak|žival|zodiak	
+1F981	lev	obraz|safari|žival|zodiak	
+1F982	škorpijon	horoskop|žival|zodiak	
+1F983	puran	zahvalni dan|žival	
+1F984	samorog	obraz	
+1F985	orel	ptica|žival	
+1F986	raca	ptica|žival	
+1F987	netopir	žival	
+1F988	morski pes	riba|žival	
+1F989	sova	modra|pamet|ptica|žival	
+1F98A	lisica	obraz|žival	
+1F98B	metulj	insekt|lep|žival	
+1F98C	jelen	rogovi|žival	
+1F98D	gorila	žival	
+1F98E	kuščar	plazilec|žival	
+1F98F	nosorog	žival	
+1F990	morski rakec	hrana|kozica|rak|škamp	
+1F991	ligenj	hrana|mehkužec|žival	
+1F992	žirafa	pike|žival	
+1F993	zebra	progasta|proge|žival	
+1F994	jež	ježek|žival	
+1F995	zavropod	brahiozaver|brontozaver|dinozaver|diplodok	
+1F996	tiranozaver	dinozaver	
+1F997	muren	čriček|kobilica|mrčes|žival|žuželka	
+1F998	kenguru	Avstralija|mlad kenguru|skok|vrečar|žival	
+1F999	lama	alpaka|gvanako|vikunja|volna|žival	
+1F99A	pav	bahava|barvita|pavica|ponosna|ptica|žival	
+1F99B	povodni konj	hipo|žival	
+1F99C	papagaj	govor|pirat|ptič|žival	
+1F99D	rakun	radoveden|žival|zvijačen|zvit	
+1F99E	jastog	klešče|kremna juha|morska hrana|žival	
+1F99F	komar	bolezen|insekt|malarija|mrzlica|virus	
+1F9A0	mikrob	ameba|bakterija|virus|znanost	
+1F9A1	jazbec	medarski jazbec|nadloga|žival	
+1F9A2	labod	grdi raček|mlad labod|ptica|žival	
+1F9A3	mamut	izumrtje|okel|velik|volnatost|žival	
+1F9A4	dodo	izumrl|izumrtje|Mavricij|ptica|velik|velikan|žival	
+1F9A5	lenivec	len|počasen|zaspan|žival	
+1F9A6	vidra	igriva|lovi ribe|žival	
+1F9A7	orangutan	opica|žival	
+1F9A8	skunk	dihur|smrdi|žival	
+1F9A9	flamingo	nastopaški|tropski|vpadljiv|žival	
+1F9AA	ostriga	biser|potapljanje|školjka	
+1F9AB	bober	glodavec|jez|sekalci|žival|zobje	
+1F9AC	bizon	bivol|čreda|močen|žival|zober	
+1F9AD	tjulenj	morje|morski lev|ocean|plavanje|žival	
+1F9AE	pes vodnik	slepi|vodnik|žival	
+1F9AF	palica za slepe	dostopnost|invalid|slepota	
+1F9B0	rdeči lasje	rdečelasec|redečelas	
+1F9B1	kodrasti lasje	afro|koder|kodrast	
+1F9B2	plešast	brez las|kamoterapija|obrit	
+1F9B3	sivi lasje	bel|lasje|siv|star	
+1F9B4	kost	kosti|okostje|pes	
+1F9B5	noga	brca|del telesa|okončina|pokrčeno koleno	
+1F9B6	stopalo	brca|gleženj|noga|topot	
+1F9B7	zob	bel|zobje|zobozdravnik	
+1F9B8	superjunak/superjunakinja	dober|dobra|junak|junakinja|nadnaravne moči|super moč|superjunakinja|supermoč|superženska	
+1F9B9	super negativec	kriminalec|nadnaravne moči|negativec|oseba|super moč|supermoč|supernegativec|zloben|zločinec	
+1F9BA	varnostni jopič	jopič|reševalni|v sili	
+1F9BB	uho s slušnim aparatom	naglušni|okvara sluha|slušni aparat	
+1F9BC	motoriziran invalidski voziček	invalid	
+1F9BD	ročni invalidski voziček	invalid	
+1F9BE	mehanska roka	invalid|proteza|umetni ud	
+1F9BF	mehanska noga	invalid|proteza|umetni ud	
+1F9C0	kos sira	hrana|sir	
+1F9C1	kolaček	hrana|pekarna|posladek|sladkor	
+1F9C2	sol	okus|solnica|začimba	
+1F9C3	tetrapak s pijačo	pijača|sok|tetrapak s sokom	
+1F9C4	česen	aromatično|dišavnica|hrana|začimba	
+1F9C5	čebula	aroma|aromatično|hrana|solzenje	
+1F9C6	falafel	čičerika|hrana|kroglica	
+1F9C7	vafelj	hrana|oblat|pecivo|zajtrk	
+1F9C8	maslo	hrana|mlečni izdelek|mlečno	
+1F9C9	mate čaj	napitek|pijača	
+1F9CA	ledena kocka	hladno|ledeno|ohladitev	
+1F9CB	čaj s kroglicami	biser|boba|bubble tea|čaj|hrana|mleko|pena|pijača|tajvan	
+1F9CC	trol	domišljija|pošast|pravljica	
+1F9CD	stoječa oseba	pokonci|stati	
+1F9CE	klečeča oseba	klečanje|kolena|na kolenih	
+1F9CF	gluha oseba	gluh|invalid|sluh|uho	
+1F9D0	obraz z monoklom	bogat|premožen|vzvišen	
+1F9D1	odrasla oseba	spolno nevtralen	
+1F9D2	otrok	mlajši|spolno nevtralen	
+1F9D3	starejši odrasli	starejša oseba|starejši|stari starši	
+1F9D4	oseba: brada	brada|moški|moški z brado|moški: brada|oseba	
+1F9D5	ženska z naglavno ruto	hidžab|mantilja|naglavna ruta	
+1F9D6	oseba v parni savni	dnevni velnes|para|parna savna|razkošno|razvajanje|savna|sproščanje|sprostitev|toplice	
+1F9D7	oseba, ki pleza	gora|ki pleza|oseba|oseba pleza|plezalec|plezalka|plezanje|plezati|vzpon	
+1F9D8	oseba v lotusovem položaju	joga|jogi|meditacija|mir|oseba v lotosovem položaju|prekrižane noge|sedenje po turško|sproščanje|sproščati se|sprostitev|zen	
+1F9D9	oseba, ki čara	čarovnica|čarovnija|čarovnik|fantazija|igra vlog|ki čara|mag|oseba|urok|zbor	
+1F9DA	vilinsko bitje	fantazija|krila|mit|pravljica|škratovka|vila	
+1F9DB	vampirji	Drakula|kostum|kri|nadnaravno|nesmrtnost|neživo|noč čarovnic|podočniki|strašno|vampir|zobje	
+1F9DC	morska oseba	folklora|morska bitja|morska deklica|morska ženska|morski mož|pravljica|sirena|trizob|v morju	
+1F9DD	škrati	čarobno|čarobnost|čarovnija|fantazija|folklora|mistično|mitično|vila|vilin	
+1F9DE	duh iz steklenice	duh|džin|fantazija|jinn|mistično|mitično|podrgniti svetilko|želje	
+1F9DF	zombi	apokalipsa|groza|nemrtev|neživo|noč čarovnic|strašno|živi mrtvec	
+1F9E0	možgani	inteligenca|pamet	
+1F9E1	oranžno srce	oranžno|srce	
+1F9E2	kapa s ščitom	čepica|kapa|kapa s ščitnikom	
+1F9E3	šal	mraz|toplina|vrat|zima	
+1F9E4	rokavice	roka	
+1F9E5	plašč	jakna|mraz|toplina|zima	
+1F9E6	nogavice	oblačilo|obutev	
+1F9E7	rdeča ovojnica	darilo|denar|hóngbāo|lai see|sreča	
+1F9E8	petarda	dinamit|eksploziv|ognjemet|pok	
+1F9E9	delček sestavljanke	delček|namig|prileganje|sestavljanka	
+1F9EA	epruveta	eksperiment|kemija|kemik|laboratorij|znanost	
+1F9EB	petrijevka	bakterije|biolog|biologija|kultura|laboratorij	
+1F9EC	dnk	biolog|evolucija|gen|genetika|življenje	
+1F9ED	kompas	magnet|navigacija|orientacija|smer	
+1F9EE	abak	izračun|kalkulator	
+1F9EF	gasilni aparat	gašenje|ogenj|pogasiti	
+1F9F0	zaboj za orodje	mehanik|orodje|rdeč zaboj|zaboj	
+1F9F1	opeka	glina|malta|opeke|zid	
+1F9F2	magnet	magnetno|podkev|privlačnost	
+1F9F3	prtljaga	kovček|pakiranje|potovanje	
+1F9F4	steklenička losjona	krema za sončenje|losjon|šampon|vlažilna krema	
+1F9F5	sukanec	navitek|nit|šivanje|šivanka	
+1F9F6	preja	klobčič|kvačkanje|pletenje	
+1F9F7	varnostna zaponka	plenica|punk rock	
+1F9F8	medvedek	igrača|lutka|plišast medvedek|plišasta|polnjena	
+1F9F9	metla	čarovnica|čiščenje|pometanje	
+1F9FA	košara	kmetovanje|perilo|piknik	
+1F9FB	zvitek papirja	papirnate brisače|toaletni papir	
+1F9FC	milo	čiščenje|kopanje|kos|pena|posodica za milo	
+1F9FD	spužva	čiščenje|porozno|vpojno	
+1F9FE	račun	dokaz|dokazilo|knjigovodstvo|računovodstvo	
+1F9FF	amulet zlobno oko	amulet|koralda|nazar|talisman|zlobno oko	
+1FA70	baletni čeveljci	balet|obutev|ples	
+1FA71	enodelne kopalke	kopalke|kopalna obleka|obleka|ženske kopalke	
+1FA72	spodnje hlače	enodelno|kopalke|kopalno oblačilo|oblačilo|spodnje perilo	
+1FA73	kratke hlače	kopalke|kopalne hlače|oblačilo|spodnje perilo	
+1FA74	japonke	obuvalo za plažo|plaža|sandali|sandali za plažo|zōri	
+1FA75	svetlomodro srce	cijan|ljubezen|nebo|prisrčno|RTM|srce|svetlomodra|všeč si mi|zelenomodra	
+1FA76	sivo srce	čustva|ljubezen|RTM|sivo|skrilasto|srce|srebrno|všeč si mi	
+1FA77	rožnato srce	čustva|ljubezen|prisrčno|rožnato|RTM|srce|všeč|všeč si mi	
+1FA78	kaplja krvi	krvodajalstvo|medicina|menstruacija|zdravstvo	
+1FA79	samolepilni obliž	hanzaplast|obliž|rana	
+1FA7A	stetoskop	medicina|pljuča|prsni koš|srce|zdravnik	
+1FA7B	rentgen	kosti|okostje|rentgenski žarki|zdravnik|zdravniški	
+1FA7C	bergla	invalidnost|opora|palica|poškodba|pripomoček za mobilnost	
+1FA80	jojo	igrača|nihanje|proč sem	
+1FA81	zmaj (igrača)	jadrati|leteti	
+1FA82	padalo	jadralni zmaj|jadralno padalo|parasailing|skok s padalom	
+1FA83	bumerang	aborigini|avstralija|metanje|orožje|udarec nazaj|vračanje	
+1FA84	čarobna palica	čaranje|čarovnica|čarovnija|čarovnik|magija|palica	
+1FA85	pinjata	mehiško|praznično|praznovanje|sladkarije|zabava	
+1FA86	babuška	gnezdenje|igrača|lutka|punčka|rusija	
+1FA87	marake	glasba|glasbilo|instrument|ropotulja|stresaj|tolkala	
+1FA88	flavta	flavtist|glasba|glasbilo|instrument|orkester|pihala|piščal|snemalnik	
+1FA89	harfa	glasba|glasbilo|kupido|ljubezen|orkester	
+1FA8A	pozavna	glasba|glissando|inštrument|jazz|otožno|poteg|trobila|trombon|žalostno	
+1FA8B	meteor	apokalipsa|kamen|ognjena krogla|padajoč|padanje|padati|težnost|vesolje|zvezda	
+1FA8C	radirka	brisanje|brisati|drgniti|izbrisati|napaka|odstraniti|pisati|popravljanje|razveljaviti|risanje|risati	
+1FA8D	mreža z ročajem	loviti|lovljenje|mreža|past	
+1FA8E	skrinja z zakladom	bogastvo|denar|dragocenosti|dragulj|nagrada|nakit|plen|srebro|zlato	
+1FA8F	lopata	jama|kopanje	
+1FA90	planet z obročem	saturn|saturnov obroč	
+1FA91	stol	pohištvo|sedeti|sedež	
+1FA92	britev	britje|britvica|ostro	
+1FA93	sekira	cepljenje|drva|les|sekanje	
+1FA94	oljna lučka	dyja|lučka|olje|svetilka	
+1FA95	bendžo	brenkalo|glasba|glasbilo|strune	
+1FA96	vojaška čelada	armada|bojevnik|čelada|vojak|vojna|vojska	
+1FA97	harmonika	glasba|igranje|inštrument|kromatična harmonika|meh|muzikant	
+1FA98	visok boben	boben|glasba|igranje|inštrument|kongo|ritem|visoki boben	
+1FA99	kovanec	bogat|denar|evro|kovina|srebro|zaklad|zlato	
+1FA9A	lisičja žaga	lisičji rep|mizar|orodje|rezati|žaga|žagati	
+1FA9B	izvijač	delo|orodje|spreten|vijak	
+1FA9C	lestev	dostop|klin|plezanje|prečka	
+1FA9D	kljuka	kavelj|krivuljnik|orodje|pirat|prednost|zanka|zaponka	
+1FA9E	zrcalo	ličenje|odsev|ogledalo	
+1FA9F	okno	odprtina|okvir|pogled|prosojno|svež zrak	
+1FAA0	odmaševalnik	kakec|sesalna skodela|sesanje|stranišče|vodoinštalater|WC	
+1FAA1	šivanka	igla|krojenje|šivanje|šivi|spoji|vezenje	
+1FAA2	vozel	sukanec|vrv|vrvica|zanka	
+1FAA3	vedro	čeber|čiščenje|škaf|sod	
+1FAA4	mišolovka	miš|mišelovka|past za miši|sir|vaba	
+1FAA5	zobna ščetka	čisto|higiena|kopalnica|potrebščine|ščetka|ščetkanje|zobje|zobna	
+1FAA6	nagrobnik	grob|grobovi|mrtev|počivaj v miru|pokopališče|rip|spomenik	
+1FAA7	plakat	demonstracija|kol|obvestilo|protest|znak	
+1FAA8	skala	kamen|kamenje|pečina|pesek|težek|trd	
+1FAA9	disko krogla	bleščanje|disko|ples|zabava	
+1FAAA	osebni dokument	dokument|dovoljenje|identifikacija|poverilnice|varnost	
+1FAAB	skoraj prazna baterija	elektronsko|izčrpanost|nizka raven energije	
+1FAAC	roka Fatime	amulet|dlan|Fatima|Marija|Mirjam|roka|zaščita	
+1FAAD	pahljača	flirtanje|hlajenje|pahljati|ples|sramežljiv|trepetati|vroče	
+1FAAE	glavnik za v lase	afro|česati|glavnik|lasje	
+1FAAF	khanda	sikh|vera|veroizpoved	
+1FAB0	muha	bolezen|domača muha|gnitje|insekt|letenje|ličinka|muha cece|nadležen|obad|žival	
+1FAB1	črv	deževnik|kolobarnik|zajedavec|zemlja|žival	
+1FAB2	hrošč	insekt|narava|žival|žužek|žuželka	
+1FAB3	ščurek	insekt|narava|ogabno|žival|žuželka	
+1FAB4	lončnica	dolgčas|gojenje|hiša|neuporabno|okras|praprot|rasti|rastlina	
+1FAB5	les	bruna|debla|deblo|drevo|gozdar|klada	
+1FAB6	pero	lahek|letenje|perje|pisanje|ptica	
+1FAB7	lotos	budizem|čistost|cvet|hinduizem|lepota|pomirjenost	
+1FAB8	korala	greben|ocean|podnebne spremembe	
+1FAB9	prazno gnezdo	dom|gnezdenje	
+1FABA	gnezdo z jajcema	gnezdenje|ptice	
+1FABB	hijacinta	bob|cvet|cvetlica|odolina|roža|sivka|vijolična|volčji bob	
+1FABC	meduza	akvarij|au|lovke|morje|morska|nevretenčar|ocean|opeklina|plankton|želo	
+1FABD	krilo	angelsko|božansko|letalstvo|letenje|mitologija|ptica	
+1FABE	drevo brez listja	nerodovitnost|suša|zima	
+1FABF	gos	gaganje|goska|jata|neumno|perjad|perutnica|ptica	
+1FAC0	človeško srce	anatomija|človeško|kardiologija|organ|srce|srčni utrip|telo|utrip	
+1FAC1	pljuča	dih|dihanje|izdih|organ|telo|vdih	
+1FAC2	osebi, ki se objemata	hvala|ki se objemata|nasvidenje|objem|oeba|osebi|prijateljstvo|tolažba|živijo	
+1FAC3	noseč moški	moški z nosečniškim trebuhom|napihnjen|noseč|poln|prenajedanje|trebuh	
+1FAC4	noseča oseba	napihnjen|noseč|nosečniški trebuh|poln|prenajedanje|trebuh	
+1FAC5	oseba s krono	kralj|kraljev|kraljeva oseba|kraljica|krona|monarh|plemič	
+1FAC6	prstni odtis	forenzika|identiteta|varnost	
+1FAC8	kosmato bitje	bigfoot|gozd|gozdni mož|jeti|kosmat|kriptid|sasquatch|velikan	
+1FACC	metulj monarh	gosenica|krhko|migracija|preobrazba|selitev|sprememba|transformacija|upanje|žuželka	
+1FACD	orka	kit|morje|ocean	
+1FACE	los	rogovje|sesalec|žival	
+1FACF	osel	mula|osliček|sesalec|trmast|žival	
+1FAD0	borovnice	borovnica|črnica|hrana|jagoda|jagodičevje|modra|sadje	
+1FAD1	paprika	babura|capsicum|hrana|zelena|zelenjava	
+1FAD2	oliva	hrana|oljčno olje|oljka|rastlina	
+1FAD3	indijski kruh	arepa|hrana|kruh|lavaš|naan|pita|ploščati kruh	
+1FAD4	tamale	hrana|mehiška|tortilja|zavitek	
+1FAD5	fondi	čokolada|hrana|lonček|pomakanje|posoda|sir|smučanje|stopljena|švicarski	
+1FAD6	čajnik	čaj|hrana|pijača|vrč	
+1FAD7	zlivanje tekočine	kozarec|nesreča|pijača|polivanje|prazen	
+1FAD8	fižol	majhen|stročnica|živilo	
+1FAD9	kozarec za vlaganje	omaka|posoda|prazen kozarec|prazna|praznina|shramba|začimba	
+1FADA	korenina ingverja	ingver|ingverjevo|korenina|naravno|pivo|začimba|zelišče	
+1FADB	strok graha	edamame|grah|seme|stročnice|strok|zelenjava	
+1FADC	korenasta zelenjava	korenina|pesa|repa|vrt|zelenjava	
+1FADD	kisla kumarica	fermentirati|gurka|kisanje|kisati|kumarica|slanica|težave|vrenje|vreti|začimba|začiniti	
+1FADF	packa	barva|holi|madež|praznik barv|razlitje	
+1FAE0	taleči se obraz	haha|izginjanje|nerodno mi je|raztapljanje|sarkazem|taljenje|tekočina|topim se|topim se od vročine|vroče|vročina	
+1FAE1	salutirajoč obraz	da|enote|razumem|salutiranje|seveda|sončno|spoštovanje|strinjanje|v redu	
+1FAE2	obraz z razprtimi očmi in roko pred usti	nejevera|osuplost|presenečen|presenečenost|prestrašenost|šokiran|šokiranost|sram|začuden|začudenje|začudenost	
+1FAE3	obraz s pogledujočim očesom	kukanje|kuku|nerodno mi je|pogledovanje|prestrašenost|prevzetost|skrivanje|strmenje	
+1FAE4	obraz s poševnimi usti	brezvezno|dvom|negotovost|razočaranost|skeptičnost|vzdih|zmedenost	
+1FAE5	obraz s črtkasto črto	brezvezno|depresivnost|introvertiranost|izginjanje|nevidnost|potrtost|skrivanje	
+1FAE6	grizenje ustnice	flirtanje|nelagodje|seksi|spogledovanje|strah|ustnice|vznemirjenost|zaskrbljenost|živčnost	
+1FAE7	mehurčki	čisto|kupček|lebdenje|milo|podvodni	
+1FAE8	tresoči se obraz	noro|obraz|panika|potres|šok|tresenje|vau|vibriranje	
+1FAE9	obraz s podočnjaki	izčrpanost|utrujenost|zaspanost	
+1FAEA	popačen obraz	napihnjen|panika|presenečen|ranljiv|šokiran|tesnoba	
+1FAEB	razpočen obraz	maskiranje|napetost|odpornost|preobrazba|razkriti|razpadajoč|razpadanje|transformacija|zlomljen	
+1FAEF	spor v oblaku	borba|debata|nesporazum|pretep|razgrajanje|razprava|spopad	
+1FAF0	roka s prekrižanima kazalcem in palcem	denar|drago|ljubezen|pri srcu|priljubljeno|srce|tlesk	
+1FAF1	roka, obrnjena v desno	desna roka|desno|obrnjena v desno|roka|stisk roke	
+1FAF2	roka, obrnjena v levo	leva roka|levo|obrnjena v levo|roka|stisk roke	
+1FAF3	roka z dlanjo navzdol	nehati|odslovitev|opustitev|pobiranje|roka	
+1FAF4	roka z dlanjo navzgor	namig|ne vem|ponuditi|ponuditi roko|pridi|priti|ujeti	
+1FAF5	kazalec, usmerjen v opazovalca	dregljaj|dregniti|kazalec|kazati|prst|ti|usmerjen v opazovalca	
+1FAF6	roki, sklenjeni v obliki srca	ljubezen|ljubim te|roki|sklenjeni v obliki srca|srce	
+1FAF7	dlan, ki potiska v levo	blokiranje|čakaj|levo|petka|potiskanje|premor|roka|stop|ustavitev|v levo|zavrnitev	
+1FAF8	dlan, ki potiska v desno	blokiranje|čakaj|desno|petka|potiskanje|premor|roka|stop|ustavitev|v desno|zavrnitev	
+1FAF9	znak palca, ki kaže v levo	kazati|levo|nevtralno|prijem|tisto|to	
+1FAFA	znak palca, ki kaže v desno	desno|kazati|nevtralno|prijem|tisto|to	

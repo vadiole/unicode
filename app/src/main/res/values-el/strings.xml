@@ -14,12 +14,14 @@
     <string name="search_no_results">Δεν βρέθηκαν αποτελέσματα</string>
     <string name="search_recents">Πρόσφατα</string>
     <string name="search_title">Αναζήτηση</string>
+    <string name="table_choose_block">Επιλογή μπλοκ Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Πατήστε χαρακτήρες για να τους συλλέξετε</string>
     <string name="dock_tip_copy">Πατήστε τη γραμμή για αντιγραφή της συλλογής</string>
     <string name="dock_backspace">Διαγραφή τελευταίου χαρακτήρα</string>
     <string name="dock_copy_all">Αντιγραφή όλων</string>
+    <string name="dock_clear_all">Εκκαθάριση συλλογής</string>
 
     <!-- Settings -->
     <string name="settings_title">Ρυθμίσεις</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">Συλλογή με πάτημα</string>
     <string name="settings_search_at_top">Αναζήτηση στο επάνω μέρος</string>
     <string name="settings_show_unsupported">Εμφάνιση μη υποστηριζόμενων χαρακτήρων</string>
+    <string name="settings_character_size_in_table">Μέγεθος χαρακτήρων στον πίνακα</string>
+    <string name="settings_enlarge_small_chars">Μεγέθυνση μικρών χαρακτήρων</string>
     <string name="settings_crash_reports">Αναφορές σφαλμάτων</string>
     <string name="settings_save_recents">Αποθήκευση πρόσφατων χαρακτήρων</string>
     <string name="settings_clear_recents">Απαλοιφή πρόσφατων χαρακτήρων</string>

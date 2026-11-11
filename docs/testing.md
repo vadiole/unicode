@@ -1,5 +1,9 @@
 # Testing on a device
 
+## Alpha
+
+`./gradlew installAlpha` installs `vadiole.unicode.alpha` next to release and debug: the release build with R8 and resource shrinking, debug-signed, profileable from shell, without the debug config and search golden providers. Use it to check R8 and to profile; CI publishes the same APK to Telegram.
+
 ## Debug config
 
 Debug builds apply `debug.*` launch extras to the app's settings before the first screen is built. `-S` force-stops the app first, so every launch is a cold start with the new state.
@@ -12,6 +16,16 @@ adb shell am start -S -n $A --es debug.preset legacy --ez debug.searchAtTop true
 
 `help` lists the presets with what each sets, and every setting with its `am` flag and current value.
 
+To check the table loader, launch with `--ez debug.loader true`: it stays on screen instead of the table.
+
+## Emoji overlay
+
+With the developer option "Show layout bounds" on (Android 11+), the app shows an emoji readout over the table: scroll speed in rows/s, whether rows may sharpen, and how many visible emoji rows are low-res, sharp, scaled or waiting for the background thread. Cells drawn from the low-res strip are tinted red, cells drawn from a strip of another size (during a size-slider drag) blue. Turn the option off when measuring frames: the readout redraws the table on every scroll.
+
+```sh
+adb shell setprop debug.layout true && adb shell service call activity 1599295570
+```
+
 ## Per-app language
 
 ```sh
@@ -20,6 +34,16 @@ adb shell cmd locale set-app-locales vadiole.unicode.debug --locales ""
 ```
 
 The tag is BCP 47 (`pt-BR`, `zh-CN`), not the resource qualifier (`pt-rBR`). The first launch after an install or a locale change can still render the previous language, so check the visible text with `adb shell uiautomator dump` before taking a screenshot.
+
+## Languages
+
+The index key and where it came from are logged in debug builds:
+
+```sh
+adb logcat -s UnicodeSearch | grep "index "
+```
+
+`index en,de@<crc> ready from build` after a language change, `from cache` on the next launches, `index en` for English and for a language whose split is not installed. To test a missing split, build `./gradlew bundleDebug`, then `bundletool build-apks --connected-device` with a device spec that lists only some locales and `bundletool install-apks`.
 
 ## Screenshots
 
@@ -34,3 +58,14 @@ adb shell am start -S -n $A -a android.intent.action.VIEW -d "https://unicode.va
 ```
 
 The settings and search buttons have content descriptions, so `uiautomator dump` gives their bounds for `adb shell input tap`. Character cells have none.
+
+## Search goldens
+
+```sh
+./gradlew testDebugUnitTest
+tools/search-golden.sh verify <serial>
+adb shell content call --uri content://vadiole.unicode.debug.searchgolden --method time
+adb shell content call --uri content://vadiole.unicode.debug.searchgolden --method memory
+```
+
+The first runs the suite on the JVM and writes `app/build/reports/search/verify.txt`. `verify` installs the debug build and runs the same suite on the device, with every character shown and English only. `time` and `memory` include the language the running app has loaded, so open the app first. `--method find --arg <query>` searches with the running app's index and prints its language key, the first results and what the first one matched by. `time` reports the median and the slowest query of the suite, `memory` the Java heap held by the data, the index and the CJK meanings. `docs/search.md` describes the files and what to do after an intended change.

@@ -6,20 +6,25 @@
 ## General
 
 - Application-scoped singletons `unicodeStorage`, `userConfig`, `recentRepository` provided via the `UnicodeApp` companion object.
-- Data comes from a read-only database, `assets/<unicode_version>.sqlite.zip`, unzipped into `filesDir/sql/` on first open.
+- Data comes from one flat file, `assets/u18.bin`, written by `vadiole/generator` (`build.sh`) and read into memory once per process by `UnicodeStorage` (`data/UnicodeData.kt`); CJK meanings are read on demand.
+- Search is an in-memory word index (`search/`, plain Kotlin) built on the device, cached in `filesDir/cache/search` and queried on its own thread by `unicodeStorage.search`; see `docs/search.md`.
+- Startup: `TableController.preload` reads the table snapshot (`filesDir/cache/table`: shown chars, abbreviations, blocks, scroll scale) from `UnicodeApp`, so the first frame binds rows without decoding `u18.bin`; without a snapshot the table shows `DotsLoader` until a preview of rows around the saved position is ready; `UnicodeActivity` starts search after the first frame.
 - Screens extend `Screen : FrameLayout, CoroutineScope` and cancel their scope in `onDetachedFromWindow`.
 - UI is views in kotlin, navigation via custom `NavigationView : FrameLayout`.
 - `Nav` manages the screen stack and screen transitions, including predictive back; `NavigationView` coordinates screens and the character details sheet.
-- Motion uses spring animations (`androidx.dynamicanimation`), rounded surfaces use Squircle.
+- Motion uses our own springs (`ui/common/Spring.kt` core, `SpringAnimator` frame driver), rounded surfaces use Squircle.
 - A plain `Controller` class owns data for a screen; a `Delegate` interface forwards events up.
 - Performance is high: no heavy operations in often called methods like drawing or touch.
 - Memory usage: no boxing for large data, object reuse if possible.
-- `ui/common/`: UI component library, e.g. `Dp.kt`, `Typeface.kt`, `Screen.kt`, `Squircle.kt`, `TopBar.kt` etc.
+- `ui/common/`: UI component library, e.g. `Dimensions.kt`, `View.kt`, `Typeface.kt`, `Screen.kt`, `Squircle.kt`, `TopBar.kt` etc.
 - colors in `colors.xml`
-- no tests, no xml layouts, no compose, no ContextCompat
+- no xml layouts, no compose, no ContextCompat
+- Tests are the search regression suite (`docs/search.md`) and the spring contract (`SpringTest`): JVM tests in `app/src/testDebug` run with `./gradlew testDebugUnitTest`, JUnit is the only test dependency. Do not add other tests without asking.
+- After changing search or its data run `tools/search-golden.sh verify <serial>`.
 - After completing a task or fix, build and launch the app: `./gradlew installDebug && adb shell am start -n vadiole.unicode.debug/vadiole.unicode.ui.UnicodeActivity` 
-- Device testing (debug config presets, per-app language, screenshots): `docs/testing.md`.
+- Device testing (debug config presets, per-app language, screenshots, search goldens): `docs/testing.md`.
 - Release: `./gradlew assembleRelease bundleRelease`, signed from `unicode.signing.*` in `~/.gradle/gradle.properties`; the R8 mapping is copied to `app/mapping/`.
+- Alpha (`./gradlew assembleAlpha`, `vadiole.unicode.alpha`): release with R8, debug-signed and profileable, without `src/debug`. CI sends the alpha APK to Telegram on every push outside `master`.
 
 ## UI interaction quality
 

@@ -1,5 +1,6 @@
 package vadiole.unicode.ui.table
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -12,10 +13,11 @@ import android.view.Gravity.TOP
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewConfiguration
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
@@ -26,33 +28,39 @@ import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import vadiole.unicode.BuildConfig
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.Block
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
+import vadiole.unicode.data.SearchResult
 import vadiole.unicode.data.binarySearch
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.Screen
 import vadiole.unicode.ui.common.SearchBar
 import vadiole.unicode.ui.common.TEXT_BODY
+import vadiole.unicode.ui.common.DotsLoader
 import vadiole.unicode.ui.common.TopBar
 import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.isLandscape
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.ime
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.navigationBars
+import vadiole.unicode.ui.common.systemBarsAndCutout
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.hideKeyboard
+import vadiole.unicode.ui.common.hideKeyboard
 import vadiole.unicode.ui.table.dock.DockController
 import vadiole.unicode.ui.table.dock.DockView
 import vadiole.unicode.ui.table.dock.FlyOverlay
 import vadiole.unicode.ui.table.search.SearchController
+import vadiole.unicode.ui.table.search.SearchHighlighter
 import vadiole.unicode.ui.table.search.SearchHeaderCell
 import vadiole.unicode.ui.table.search.SearchResultCell
 import vadiole.unicode.ui.table.search.SearchResultView
@@ -66,9 +74,13 @@ class TableScreen(
     private val dockController: DockController,
     private val delegate: Delegate,
 ) : Screen(context) {
-    private var spanCount = 8
+    private val spanCount = if (resources.configuration.isLandscape) 16 else 8
+    private var characterScale = userConfig.tableCharacterScale
+    private var enlargeSmallChars = userConfig.enlargeSmallChars
     private var topInset = 0
     private var navigationInset = 0
+    private var leftInset = 0
+    private var rightInset = 0
     private var imeInset = 0
     private val statusBarPaint = Paint().apply {
         style = Paint.Style.FILL
@@ -94,7 +106,7 @@ class TableScreen(
         }
     }
     private val tableAdapter = object : TableAdapter() {
-        override fun getItemCount(): Int = tableController.totalChars / spanCount
+        override fun getItemCount(): Int = (tableController.totalChars + spanCount - 1) / spanCount
         override fun getBlock(position: Int) = tableController.getBlock(position)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
             val charCell = CharRow(context, spanCount, charCellDelegate)
@@ -105,7 +117,13 @@ class TableScreen(
             val cell = holder.itemView as CharRow
             val codePoints = tableController.getChars(position, spanCount)
             val abbreviations = tableController.abbreviations
+            cell.characterScale = characterScale
+            cell.enlargeSmallChars = enlargeSmallChars
             cell.bind(codePoints, abbreviations)
+        }
+
+        override fun onViewRecycled(holder: CollectionView.Cell) {
+            (holder.itemView as CharRow).releaseSprites()
         }
     }
     private val searchResultCellDelegate = object : SearchResultCell.Delegate {
@@ -130,10 +148,9 @@ class TableScreen(
     private var searchJob: Job? = null
     private var isShowingRecents = false
     private val areRecentsDisplayed: Boolean
-        get() = isShowingRecents && userConfig.recentsEnabled && searchController.recentResult.isNotEmpty()
+        get() = isShowingRecents && searchController.recentResult.isNotEmpty()
+    private val onMoreResults: () -> Unit = { updateSearchResults() }
     private val searchAdapter = object : CollectionView.Adapter() {
-        private val items
-            get() = if (isShowingRecents) searchController.recentResult else searchController.searchResult
         private val headerCount: Int
             get() = if (searchAtTop && areRecentsDisplayed) 1 else 0
 
@@ -141,7 +158,9 @@ class TableScreen(
             return if (headerCount > 0 && position == 0) VIEW_TYPE_HEADER else VIEW_TYPE_RESULT
         }
 
-        override fun getItemCount(): Int = items.size + headerCount
+        override fun getItemCount(): Int {
+            return (if (isShowingRecents) searchController.recentResult.size else searchController.resultCount) + headerCount
+        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
             val view = if (viewType == VIEW_TYPE_HEADER) {
@@ -155,11 +174,32 @@ class TableScreen(
         override fun onBindViewHolder(holder: CollectionView.Cell, position: Int) {
             if (holder.itemViewType == VIEW_TYPE_HEADER) return
             val view = holder.itemView as SearchResultCell
-            val data = items[position - headerCount]
-            val tokens = if (isShowingRecents) null else searchController.queryTokens
-            view.bind(data, tableController.abbreviations, tokens)
+            val index = position - headerCount
+            if (isShowingRecents) {
+                view.bind(searchController.recentResult[index], tableController.abbreviations, null)
+            } else {
+                val result = searchController.result(index)
+                view.bind(result, tableController.abbreviations, searchController.queryTokens)
+                bindMatch(view, result, index)
+                searchController.loadMore(index, onMoreResults)
+            }
         }
     }
+
+    private fun bindMatch(view: SearchResultCell, result: SearchResult, index: Int) {
+        if (!searchController.hasMatch(index)) return
+        val match = searchController.match(index, matchHighlighter)
+        if (match != null) {
+            view.bindMatch(match.ifEmpty { null })
+            return
+        }
+        launch {
+            val loaded = searchController.loadMatch(index, matchHighlighter)
+            if (view.result === result && loaded.isNotEmpty()) view.bindMatch(loaded)
+        }
+    }
+
+    private val matchHighlighter = SearchHighlighter(context.getColor(R.color.searchMatchHighlight))
 
     private var popup: BlockSelectorPopup? = null
 
@@ -168,6 +208,12 @@ class TableScreen(
     }
     private val contentContainer = FrameLayout(context)
     private val tableLayer = FrameLayout(context)
+    private val loader = FrameLayout(context).apply {
+        setBackgroundColor(context.getColor(R.color.layer0))
+        isClickable = true
+        visibility = GONE
+        addView(DotsLoader(context), frameParams(wrapContent, wrapContent, gravity = Gravity.CENTER))
+    }
     private val tableDim = View(context).apply {
         setBackgroundColor(context.getColor(R.color.dialogDim))
         alpha = 0f
@@ -199,12 +245,18 @@ class TableScreen(
     private val dockDelegate: DockView.Delegate = object : DockView.Delegate {
         override fun onBackspace() {
             flyOverlay.cancelAll()
-            if (dockController.backspace()) dockView.setText(dockController.text)
+            if (dockController.backspace()) {
+                dockView.setText(dockController.text)
+                updateDockTip(animate = true)
+            }
         }
 
         override fun onClear() {
             flyOverlay.cancelAll()
-            if (dockController.clear()) dockView.setText(dockController.text)
+            if (dockController.clear()) {
+                dockView.setText(dockController.text)
+                updateDockTip(animate = true)
+            }
         }
 
         override fun onCopyAll() {
@@ -218,6 +270,7 @@ class TableScreen(
         override fun onRestore(): Boolean {
             if (!dockController.restore()) return false
             dockView.setText(dockController.text, popFrom = 0)
+            updateDockTip(animate = true)
             return true
         }
 
@@ -265,15 +318,24 @@ class TableScreen(
         }
 
         override fun onScrollProgressChanged(progress: Float) {
-            fastScrollView.setScrollProgress(progress)
+            fastScrollView.setScrollProgress(tableController.scrollScale?.toThumb(progress) ?: progress)
         }
     }
-    private val tableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate)
+    private val tableView: TableView = TableView(context, tableAdapter, spanCount = spanCount, tableViewDelegate).apply {
+        addOnChildAttachStateChangeListener(object : RecyclerView.OnChildAttachStateChangeListener {
+            override fun onChildViewAttachedToWindow(view: View) {
+                (view as CharRow).characterScale = characterScale
+                view.enlargeSmallChars = enlargeSmallChars
+            }
+
+            override fun onChildViewDetachedFromWindow(view: View) = Unit
+        })
+    }
     private val fastScrollDelegate = object : FastScrollView.Delegate {
         override fun onFastScrollStart() = Unit
 
         override fun onFastScroll(progress: Float, precisionLevel: Int) {
-            tableView.scrollToProgress(progress, precisionLevel)
+            tableView.scrollToProgress(linearProgress(progress), precisionLevel)
         }
 
         override fun onFastScrollEnd() = Unit
@@ -281,10 +343,20 @@ class TableScreen(
         override fun getBlockName(progress: Float): String? {
             val itemCount = tableAdapter.itemCount
             if (itemCount <= 0) return null
-            val position = (itemCount * progress).toInt().coerceIn(0, itemCount - 1)
+            val position = (itemCount * linearProgress(progress)).toInt().coerceIn(0, itemCount - 1)
             return tableController.getBlock(position * spanCount)?.name
         }
+
+        override fun precisionProgress(anchor: Float, delta: Float) = tableController.scrollScale?.offset(anchor, delta) ?: (anchor + delta)
     }
+    private fun linearProgress(progress: Float) = tableController.scrollScale?.toLinear(progress) ?: progress
+
+    private suspend fun loadBlocks() {
+        tableController.loadBlocks()
+        tableViewDelegate.onBlockChanged(tableView.currentBlock()?.name)
+        tableViewDelegate.onScrollProgressChanged(tableView.getScrollProgress())
+    }
+
     private val searchFastScrollDelegate = object : FastScrollView.Delegate {
         override fun onFastScrollStart() {
             searchResultView.stopScroll()
@@ -312,17 +384,13 @@ class TableScreen(
     private val searchResultView = SearchResultView(context, searchAdapter, searchResultViewDelegate)
     private val noResultsView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
-        typeface = font_regular
+        typeface = fontRegular
         setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
         gravity = Gravity.CENTER
         text = context.getString(R.string.search_no_results)
         visibility = GONE
     }
-    private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
-    private val tmpLocation = IntArray(2)
-    private var downRawX = 0f
-    private var downRawY = 0f
-    private var interceptedFastScrollView: FastScrollView? = null
+    private val fastScrollGestureRouter = FastScrollGestureRouter(this)
     private var isImeAnimationRunning = false
 
     init {
@@ -340,6 +408,9 @@ class TableScreen(
             if (paddingTop != statusBarInset) setPadding(0, statusBarInset, 0, 0)
             topInset = statusBarInset
             navigationInset = insets.navigationBars.bottom
+            leftInset = insets.systemBarsAndCutout.left
+            rightInset = insets.systemBarsAndCutout.right
+            topBar.setInsets(leftInset, rightInset)
             imeInset = insets.ime.bottom
             updateContentInsets()
             if (!isImeAnimationRunning) applyKeyboardLift(imeInset)
@@ -378,6 +449,7 @@ class TableScreen(
         tableLayer.addView(tableView, frameParams(matchParent, matchParent))
         tableLayer.addView(fastScrollView, frameParams(matchParent, matchParent))
         tableLayer.addView(tableDim, frameParams(matchParent, matchParent))
+        tableLayer.addView(loader, frameParams(matchParent, matchParent))
         resultsLayer.addView(searchResultView, frameParams(matchParent, matchParent))
         resultsLayer.addView(noResultsView, frameParams(matchParent, matchParent))
         resultsLayer.addView(searchFastScrollView, frameParams(matchParent, matchParent))
@@ -389,25 +461,39 @@ class TableScreen(
         dockView.scrollPosition = userConfig.dockScroll
         updateDockTip(animate = false)
         updateContentInsets()
-        launch {
-            val scrollCodePoint = userConfig.tableScrollCodePoint
-            val isCached = tableController.loadCachedChars()
-            if (!isCached && scrollCodePoint <= 0) {
-                tableController.loadChars(fast = true)
-            }
-            tableController.loadAbbreviations()
+        if (BuildConfig.DEBUG && (context as? Activity)?.intent?.getBooleanExtra(DEBUG_LOADER, false) == true) {
+            loader.visibility = VISIBLE
+        } else if (tableController.loadCache()) {
             tableAdapter.notifyDataSetChanged()
-            if (isCached) {
-                scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
-                tableController.loadBlocks()
-                reloadChars()
-            } else {
-                tableController.loadChars(fast = false)
+            scrollToCodePoint(userConfig.tableScrollCodePoint, userConfig.tableScrollOffset)
+            if (tableController.needsRevalidation()) reloadChars(background = true)
+        } else {
+            launch {
+                val scrollCodePoint = userConfig.tableScrollCodePoint
+                val showAll = userConfig.showUnsupportedChars
+                loader.visibility = VISIBLE
+                val loaderShownAt = SystemClock.uptimeMillis()
+                tableController.loadPreview(scrollCodePoint)
                 tableAdapter.notifyDataSetChanged()
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
-                tableController.loadBlocks()
+                hideLoader(loaderShownAt)
+                tableController.loadChars()
+                if (showAll != userConfig.showUnsupportedChars) return@launch
+                tableAdapter.notifyDataSetChanged()
+                loadBlocks()
             }
         }
+    }
+
+    private fun hideLoader(shownAt: Long) {
+        val delay = LOADER_MIN_DURATION - (SystemClock.uptimeMillis() - shownAt)
+        loader.animate()
+            .alpha(0f)
+            .setStartDelay(delay.coerceAtLeast(0))
+            .setDuration(LOADER_FADE_DURATION)
+            .setInterpolator(LinearInterpolator())
+            .withEndAction { loader.visibility = GONE }
+            .start()
     }
 
     private fun firstVisibleCodePoint(chars: CodePointArray = tableController.tableChars): Int {
@@ -424,41 +510,8 @@ class TableScreen(
     }
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
-        val fastScrollView = if (searchBar.isExpanded()) searchFastScrollView else fastScrollView
-        if (!fastScrollView.isShown) return false
-        when (event.actionMasked) {
-            MotionEvent.ACTION_DOWN -> {
-                downRawX = event.rawX
-                downRawY = event.rawY
-                interceptedFastScrollView = null
-            }
-
-            MotionEvent.ACTION_MOVE -> {
-                fastScrollView.getLocationOnScreen(tmpLocation)
-                val localX = downRawX - tmpLocation[0]
-                val localY = downRawY - tmpLocation[1]
-                if (localY < fastScrollView.paddingTop || localY >= fastScrollView.height - fastScrollView.paddingBottom) return false
-                if (!fastScrollView.isInThumbZone(localX, localY) &&
-                    !fastScrollView.isInEdgeZone(localX)
-                ) return false
-                val dx = event.rawX - downRawX
-                val dy = event.rawY - downRawY
-                if (dx * dx + dy * dy > scaledTouchSlop * scaledTouchSlop) {
-                    interceptedFastScrollView = fastScrollView
-                    val down = MotionEvent.obtain(
-                        event.downTime, event.eventTime,
-                        MotionEvent.ACTION_DOWN,
-                        fastScrollView.width.toFloat() - 1f,
-                        localY,
-                        0
-                    )
-                    fastScrollView.onTouchEvent(down)
-                    down.recycle()
-                    return true
-                }
-            }
-        }
-        return false
+        val scroller = if (searchBar.isExpanded()) searchFastScrollView else fastScrollView
+        return fastScrollGestureRouter.onInterceptTouchEvent(event, scroller)
     }
 
     fun setSearchAtTop(atTop: Boolean) {
@@ -516,24 +569,23 @@ class TableScreen(
         val tableBottom = chromeBottom + if (searchAtTop) topBarHeight else 0
         val contentTop = if (searchAtTop) searchBarHeight else 0
         val keyboardLift = (imeInset - navigationInset).coerceAtLeast(0)
-        dockView.setBottomInset(navigationInset)
-        if (tableView.paddingTop != contentTop || tableView.paddingBottom != tableBottom) {
-            tableView.updatePadding(top = contentTop, bottom = tableBottom)
+        dockView.setInsets(leftInset, rightInset, navigationInset)
+        val searchParams = searchBar.layoutParams as MarginLayoutParams
+        if (searchParams.leftMargin != leftInset || searchParams.rightMargin != rightInset) {
+            searchBar.updateLayoutParams<MarginLayoutParams> {
+                leftMargin = leftInset
+                rightMargin = rightInset
+            }
         }
-        if (fastScrollView.paddingTop != contentTop || fastScrollView.paddingBottom != tableBottom) {
-            fastScrollView.setPadding(0, contentTop, 0, tableBottom)
-        }
+        val tablePadding = 8.dp(context)
+        tableView.updatePadding(left = tablePadding + leftInset, top = contentTop, right = tablePadding + rightInset, bottom = tableBottom)
+        fastScrollView.setPadding(leftInset, contentTop, rightInset, tableBottom)
         val resultsBottom = chromeBottom + keyboardLift
         searchResultView.keyboardInset = keyboardLift
-        if (searchResultView.paddingTop != contentTop || searchResultView.paddingBottom != resultsBottom) {
-            searchResultView.updatePadding(top = contentTop, bottom = resultsBottom)
-        }
-        if (noResultsView.paddingTop != contentTop || noResultsView.paddingBottom != resultsBottom) {
-            noResultsView.setPadding(0, contentTop, 0, resultsBottom)
-        }
-        if (searchFastScrollView.paddingTop != contentTop || searchFastScrollView.paddingBottom != resultsBottom) {
-            searchFastScrollView.setPadding(0, contentTop, 0, resultsBottom)
-        }
+        searchResultView.updatePadding(left = leftInset, top = contentTop, right = rightInset, bottom = resultsBottom)
+        val centerInset = maxOf(leftInset, rightInset)
+        noResultsView.setPadding(centerInset, contentTop, centerInset, resultsBottom)
+        searchFastScrollView.setPadding(leftInset, contentTop, rightInset, resultsBottom)
     }
 
     private fun applyKeyboardLift(ime: Int) {
@@ -542,12 +594,10 @@ class TableScreen(
     }
 
     private fun updateDockTip(animate: Boolean) {
-        val tip = when {
-            dockController.usedCopy -> DockView.Tip.Hidden
-            dockController.usedCollect -> DockView.Tip.Copy
-            else -> DockView.Tip.Collect
-        }
+        val tip = if (!dockController.usedCopy && dockController.length > 0) DockView.Tip.Copy else DockView.Tip.Hidden
+        val previousHeight = dockView.chromeHeight
         dockView.setTip(tip, animate)
+        if (dockView.chromeHeight != previousHeight) updateContentInsets()
     }
 
     private fun applySearchProgress(p: Float) {
@@ -584,41 +634,56 @@ class TableScreen(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        val fastScrollView = interceptedFastScrollView
-        if (fastScrollView != null) {
-            val fsEvent = MotionEvent.obtain(event)
-            fastScrollView.getLocationOnScreen(tmpLocation)
-            fsEvent.setLocation(event.rawX - tmpLocation[0], event.rawY - tmpLocation[1])
-            fastScrollView.onTouchEvent(fsEvent)
-            fsEvent.recycle()
-            if (event.actionMasked == MotionEvent.ACTION_UP ||
-                event.actionMasked == MotionEvent.ACTION_CANCEL
-            ) {
-                interceptedFastScrollView = null
-            }
-            return true
-        }
-        return super.onTouchEvent(event)
+        return fastScrollGestureRouter.onTouchEvent(event) || super.onTouchEvent(event)
+    }
+
+    override fun onDetachedFromWindow() {
+        searchController.cancel()
+        fastScrollGestureRouter.cancel()
+        super.onDetachedFromWindow()
     }
 
     private fun showBlockSelector() {
-        if (tableController.blocks.isEmpty()) return
+        val blockList = tableController.blockList
+        if (blockList.blocks.isEmpty()) return
 
         val popup = popup ?: kotlin.run {
-            val blockSelectorView = BlockSelectorView(context, tableController.blocks, blockSelectorDelegate)
+            val blockSelectorView = BlockSelectorView(context, blockList, blockSelectorDelegate)
             BlockSelectorPopup(blockSelectorView, wrapContent, wrapContent).also {
+                it.setOnDismissListener { setMainScrollerHidden(false) }
                 popup = it
             }
         }
 
+        setMainScrollerHidden(true)
         if (popup.isShowing) {
             popup.reopen()
             return
         }
-        val xOffset = (topBar.width - popup.view.calculateWidth()) / 2
+        tableView.stopScroll()
+        popup.view.showCurrent(blockList.blocks.indexOf(tableView.currentBlock()))
+        val popupWidth = popup.view.calculateWidth()
+        val xOffset = if (topBar.centerTitle) {
+            (topBar.width - popupWidth) / 2
+        } else {
+            minOf(leftInset + 8.dp(context), topBar.width - rightInset - popupWidth)
+        }
         val yOffset = (-8).dp(context)
         popup.setAnchorX(if (topBar.centerTitle) Float.NaN else 0f)
         popup.showAsDropDown(topBar, xOffset, yOffset, LEFT or TOP)
+    }
+
+    private fun setMainScrollerHidden(hidden: Boolean) {
+        val alpha = if (hidden) 0f else 1f
+        fastScrollView.animate().cancel()
+        searchFastScrollView.animate().cancel()
+        if (animatorsEnabled) {
+            fastScrollView.animate().alpha(alpha).setDuration(150).start()
+            searchFastScrollView.animate().alpha(alpha).setDuration(150).start()
+        } else {
+            fastScrollView.alpha = alpha
+            searchFastScrollView.alpha = alpha
+        }
     }
 
     fun addToDock(codePoint: CodePoint) {
@@ -657,15 +722,16 @@ class TableScreen(
         delegate.onItemAdded(codePoint)
     }
 
-    fun reloadChars() {
+    fun reloadChars(background: Boolean = false) {
         launch {
+            if (background) tableController.awaitSearch()
             val chars = tableController.tableChars
-            if (!tableController.loadChars(fast = false)) return@launch
+            if (!tableController.loadChars(background)) return@launch
             val topCodePoint = firstVisibleCodePoint(chars)
             val topOffset = tableView.firstVisibleRowOffset
             tableAdapter.notifyDataSetChanged()
             scrollToCodePoint(topCodePoint, topOffset)
-            tableController.loadBlocks()
+            loadBlocks()
             popup = null
         }
     }
@@ -687,7 +753,7 @@ class TableScreen(
     private fun updateSearchResults() {
         topBar.setSearchRecents(!searchAtTop && areRecentsDisplayed)
         searchAdapter.notifyDataSetChanged()
-        noResultsView.visibility = if (!isShowingRecents && searchController.searchResult.isEmpty()) VISIBLE else GONE
+        noResultsView.visibility = if (!isShowingRecents && searchController.resultCount == 0) VISIBLE else GONE
     }
 
     private fun showSearch() {
@@ -695,6 +761,7 @@ class TableScreen(
         isShowingRecents = true
         topBar.setSearchShown(!searchAtTop)
         searchController.recentResult = emptyArray()
+        searchController.cancel()
         updateSearchResults()
         searchResultView.scrollToPosition(0)
         delegate.onSearchShown()
@@ -708,28 +775,54 @@ class TableScreen(
     private fun hideSearchInternal() {
         topBar.setSearchShown(false)
         searchJob?.cancel()
+        searchController.cancel()
         searchResultView.stopScroll()
         delegate.onSearchHidden()
+    }
+
+    fun setCharacterScale(value: Float) {
+        characterScale = value
+        forEachRow { it.characterScale = value }
+        tableView.onCharacterScaleChanged()
+    }
+
+    fun setCharacterScaleAdjusting(adjusting: Boolean) {
+        tableView.setScaleAdjusting(adjusting)
+    }
+
+    fun setEnlargeSmallChars(enabled: Boolean) {
+        enlargeSmallChars = enabled
+        forEachRow { it.enlargeSmallChars = enabled }
+    }
+
+    private inline fun forEachRow(action: (CharRow) -> Unit) {
+        for (index in 0 until tableView.childCount) {
+            action(tableView.getChildAt(index) as CharRow)
+        }
+    }
+
+    fun refreshRecents() {
+        if (isShowingRecents) runSearch("")
     }
 
     private fun runSearch(query: String) {
         if (!searchBar.isExpanded()) return
         searchJob?.cancel()
-        searchJob = launch {
-            if (query.isEmpty()) {
+        if (query.isEmpty()) {
+            searchController.cancel()
+            searchJob = launch {
                 isShowingRecents = true
                 noResultsView.visibility = GONE
                 searchResultView.stopScroll()
                 searchController.loadRecents()
                 searchResultView.scrollToPosition(0)
                 updateSearchResults()
-            } else {
+            }
+        } else {
+            searchController.search(query) {
                 isShowingRecents = false
                 searchResultView.stopScroll()
-                searchController.search(query, 64)
                 searchResultView.scrollToPosition(0)
-                updateSearchResults()
-                searchController.search(query)
                 updateSearchResults()
             }
         }
@@ -752,6 +845,9 @@ class TableScreen(
     private companion object {
         const val VIEW_TYPE_RESULT = 0
         const val VIEW_TYPE_HEADER = 1
+        const val DEBUG_LOADER = "debug.loader"
+        const val LOADER_MIN_DURATION = 300L
+        const val LOADER_FADE_DURATION = 120L
     }
 
     interface Delegate {

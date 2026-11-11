@@ -38,17 +38,22 @@ import vadiole.unicode.ui.common.SquircleDrawable
 import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.TEXT_TITLE
 import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.isLandscape
+import vadiole.unicode.ui.common.hairline
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.font_regular
-import vadiole.unicode.ui.common.font_semibold
+import vadiole.unicode.ui.common.fontRegular
+import vadiole.unicode.ui.common.fontSemibold
 import vadiole.unicode.ui.common.navigationBars
+import vadiole.unicode.ui.common.maxContentWidth
 import vadiole.unicode.ui.common.share
+import vadiole.unicode.ui.common.systemBarsAndCutout
+import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.onClick
-import vadiole.unicode.ui.extension.onLongClick
+import vadiole.unicode.ui.common.onClick
+import vadiole.unicode.ui.common.onLongClick
 
 class DetailsSheet(
     context: Context,
@@ -68,7 +73,12 @@ class DetailsSheet(
     private val charViewHeight = 200.dp(context)
     private val actionGroupGap = 16.dp(context)
     private val bottomBuffer = 36.dp(context)
-    private val hairlinePx = 1
+    private val hairlinePx = hairline(context)
+    private var sideInset = 0
+    private var navigationInset = 0
+    private var statusInset = 0
+    private val isWide = resources.configuration.isLandscape
+    private val maxWidth = if (isWide) WIDE_MAX_WIDTH.dp(context) else maxContentWidth(context)
 
     private val backgroundDrawable = SquircleDrawable(
         cornerRadius = 0,
@@ -84,7 +94,7 @@ class DetailsSheet(
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         includeFontPadding = false
         ellipsize = TextUtils.TruncateAt.END
-        typeface = font_semibold
+        typeface = fontSemibold
         isSingleLine = true
         onLongClick = {
             charObj?.let { value ->
@@ -105,7 +115,7 @@ class DetailsSheet(
         textAlignment = TEXT_ALIGNMENT_CENTER
         ellipsize = TextUtils.TruncateAt.END
         includeFontPadding = false
-        typeface = font_regular
+        typeface = fontRegular
         isSingleLine = true
     }
 
@@ -113,6 +123,7 @@ class DetailsSheet(
         orientation = LinearLayout.VERTICAL
         layoutParams = linearParams(matchParent, wrapContent)
         setPadding(screenPadding, screenPadding, screenPadding, 0)
+        clipToPadding = false
         addView(title)
         addView(subtitle)
     }
@@ -123,7 +134,7 @@ class DetailsSheet(
     }
 
     private val charView = CharTextView(context).apply {
-        layoutParams = linearParams(matchParent, charViewHeight)
+        layoutParams = if (isWide) linearParams(matchParent, 0, weight = 1f) else linearParams(matchParent, charViewHeight)
         textSize = 100f.dp(context)
         onLongClick = {
             charObj?.let { value ->
@@ -151,6 +162,8 @@ class DetailsSheet(
     private val minSpan = 10.dp(context).toFloat()
 
     private companion object {
+        const val SEPARATOR = " · "
+        const val WIDE_MAX_WIDTH = 840
         const val RAD_TO_DEG = (180.0 / Math.PI).toFloat()
         const val TWO_PI = (2.0 * Math.PI).toFloat()
         val PI_F = Math.PI.toFloat()
@@ -255,12 +268,12 @@ class DetailsSheet(
 
     private val divider2 = View(context).apply {
         layoutParams = linearParams(matchParent, hairlinePx)
-        setBackgroundColor(context.getColor(R.color.windowDivider))
+        setBackgroundColor(context.getColor(R.color.layer0))
     }
 
     private val divider3 = View(context).apply {
         layoutParams = linearParams(matchParent, hairlinePx)
-        setBackgroundColor(context.getColor(R.color.windowDivider))
+        setBackgroundColor(context.getColor(R.color.layer0))
     }
 
     private val tableActionGroup = LinearLayout(context).apply {
@@ -294,7 +307,7 @@ class DetailsSheet(
         addView(actionShare)
         if (mergedActions) {
             addView(View(context).apply {
-                setBackgroundColor(context.getColor(R.color.windowDivider))
+                setBackgroundColor(context.getColor(R.color.layer0))
             }, linearParams(matchParent, hairlinePx))
             addView(actionViewInTable)
         }
@@ -302,14 +315,14 @@ class DetailsSheet(
 
     private val bottomBlock = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
-        layoutParams = linearParams(matchParent, wrapContent)
-        setPadding(screenPadding, 0, screenPadding, screenPadding + bottomBuffer)
+        layoutParams = if (isWide) linearParams(0, wrapContent, weight = 1f) else linearParams(matchParent, wrapContent)
+        setPadding(if (isWide) 0 else screenPadding, if (isWide) screenPadding else 0, screenPadding, screenPadding + bottomBuffer)
         addView(infoViewsContainer)
         if (!mergedActions) addView(tableActionGroup)
         addView(actionGroup)
     }
 
-    private val content = object : LinearLayout(context) {
+    private val charColumn = object : LinearLayout(context) {
         override fun drawChild(canvas: Canvas, child: View, drawingTime: Long): Boolean {
             if (child === charView && !zoomMatrix.isIdentity) {
                 val count = canvas.save()
@@ -322,10 +335,18 @@ class DetailsSheet(
         }
     }.apply {
         orientation = LinearLayout.VERTICAL
-        layoutParams = frameParams(matchParent, wrapContent)
+        clipChildren = false
+        layoutParams = if (isWide) linearParams(0, matchParent, weight = 1f) else linearParams(matchParent, wrapContent)
         addView(topBlock)
         addView(divider1)
         addView(charView)
+    }
+
+    private val content = LinearLayout(context).apply {
+        orientation = if (isWide) LinearLayout.HORIZONTAL else LinearLayout.VERTICAL
+        clipChildren = false
+        layoutParams = frameParams(matchParent, wrapContent)
+        addView(charColumn)
         addView(bottomBlock)
     }
 
@@ -336,14 +357,29 @@ class DetailsSheet(
         title.setTextColor(this.context.getColor(R.color.windowTextPrimary))
         subtitle.setTextColor(this.context.getColor(R.color.windowTextSecondary))
         background = backgroundDrawable
-        layoutParams = frameParams(matchParent, wrapContent, gravity = Gravity.BOTTOM)
+        layoutParams = frameParams(matchParent, wrapContent, gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL)
         clipChildren = false
         setWillNotDraw(false)
         addView(content)
         charView.setOnTouchListener(::handleZoomTouch)
         ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
-            bottomBlock.updatePadding(bottom = screenPadding + bottomBuffer + insets.navigationBars.bottom)
+            navigationInset = insets.navigationBars.bottom
+            statusInset = insets.statusBars.top
+            sideInset = maxOf(insets.systemBarsAndCutout.left, insets.systemBarsAndCutout.right)
+            requestLayout()
             insets
+        }
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val width = minOf(MeasureSpec.getSize(widthMeasureSpec) - sideInset * 2, maxWidth)
+        val widthSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY)
+        bottomBlock.updatePadding(bottom = screenPadding + bottomBuffer + navigationInset)
+        super.onMeasure(widthSpec, heightMeasureSpec)
+        val overflow = measuredHeight - (MeasureSpec.getSize(heightMeasureSpec) - statusInset)
+        if (overflow > 0) {
+            bottomBlock.updatePadding(bottom = screenPadding + navigationInset + maxOf(0, bottomBuffer - overflow))
+            super.onMeasure(widthSpec, heightMeasureSpec)
         }
     }
 
@@ -407,7 +443,7 @@ class DetailsSheet(
                     prevAngle = currAngle
                     prevFocusX = currFocusX
                     prevFocusY = currFocusY
-                    content.invalidate()
+                    charColumn.invalidate()
                 }
                 true
             }
@@ -449,13 +485,13 @@ class DetailsSheet(
                     tmpMatrixValues[i] = identityValues[i] + (snapBackStartValues[i] - identityValues[i]) * t
                 }
                 zoomMatrix.setValues(tmpMatrixValues)
-                content.invalidate()
+                charColumn.invalidate()
             }
             addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     zoomMatrix.reset()
                     charView.translationZ = 0f
-                    content.invalidate()
+                    charColumn.invalidate()
                 }
             })
             start()
@@ -471,7 +507,7 @@ class DetailsSheet(
     fun bind(codePoint: CodePoint, abbreviations: Map<CodePoint, String>) = launch {
         val obj: CharObj = unicodeStorage.getCharObj(codePoint) ?: return@launch
         title.text = obj.name
-        subtitle.text = obj.blockName
+        subtitle.text = if (obj.subhead == null) obj.blockName else obj.blockName + SEPARATOR + obj.subhead
         charView.text = obj.char
         charView.abbreviation = abbreviations[codePoint]
         infoViews.forEachIndexed { index, infoView ->

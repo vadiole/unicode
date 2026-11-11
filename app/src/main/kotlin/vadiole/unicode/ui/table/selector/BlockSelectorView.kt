@@ -9,23 +9,23 @@ import android.view.animation.LayoutAnimationController
 import android.view.animation.PathInterpolator
 import android.view.animation.ScaleAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
-import vadiole.unicode.R
 import vadiole.unicode.data.Block
+import vadiole.unicode.data.BlockList
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
-import vadiole.unicode.ui.common.ScrollbarDrawable
-import vadiole.unicode.ui.common.VerticalScrollBarItemDecoration
 import vadiole.unicode.ui.common.dp
 
 class BlockSelectorView(
     context: Context,
-    private val blocks: Array<Block>,
+    blockList: BlockList,
     private val delegate: Delegate,
 ) : CollectionView(context) {
     interface Delegate {
         fun onBlockSelected(block: Block)
     }
 
+    private val blocks = blockList.blocks
+    private val iconList = blockList
     private val floatingInset = BlockSelectorGeometry.FLOATING_INSET_DP.dp(context)
     private val topMargin = (
         BlockSelectorGeometry.ARROW_HEIGHT_DP.dp(context) -
@@ -43,7 +43,7 @@ class BlockSelectorView(
         override fun onBindViewHolder(holder: Cell, position: Int) {
             val block = blocks[position]
             val cell = holder.itemView as BlockSelectorCell
-            cell.text = block.name
+            cell.bind(block.name, iconList, position)
             cell.setOnClickListener {
                 delegate.onBlockSelected(block)
             }
@@ -54,22 +54,43 @@ class BlockSelectorView(
         }
     }
 
-    private val scrollbarDrawable = ScrollbarDrawable()
-    private val scrollBars = VerticalScrollBarItemDecoration(
-        recyclerView = this,
-        scrollbarDrawable = scrollbarDrawable,
-        scrollBarWidth = 4.dp(context),
-    )
-    private val divider = CollectionItemDecoration(leftPadding = 14f.dp(context))
+    var onScrollProgressChanged: ((Float, Boolean) -> Unit)? = null
+    private val divider = CollectionItemDecoration(leftPadding = BlockSelectorCell.textStart(context).toFloat())
+    private val measuringCell = BlockSelectorCell(context)
+    private val rowHeights = IntArray(blocks.size)
+    private var rowWidth = 0
+    private var viewportHeight = 0
+    private var maxScrollPosition = 0f
+    private var currentPosition = -1
+    private var pressedCell: BlockSelectorCell? = null
+    private val pressCurrent = Runnable {
+        releasePressed()
+        val cell = blockSelectorLayoutManager.findViewByPosition(currentPosition) as? BlockSelectorCell ?: return@Runnable
+        cell.background.setHotspot(cell.iconCenterX, cell.height / 2f)
+        cell.isPressed = true
+        pressedCell = cell
+        post(releaseCurrent)
+    }
+    private val releaseCurrent = Runnable { releasePressed() }
+
+    private fun releasePressed() {
+        pressedCell?.isPressed = false
+        pressedCell = null
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        removeCallbacks(pressCurrent)
+        removeCallbacks(releaseCurrent)
+        releasePressed()
+    }
 
     init {
-        scrollbarDrawable.setColor(this.context.getColor(R.color.scrollIndicator))
         recycledViewPool.setMaxRecycledViews(0, 32)
         layoutManager = blockSelectorLayoutManager
         setItemViewCacheSize(8)
         setAdapter(adapter)
         addItemDecoration(divider)
-        addItemDecoration(scrollBars)
         setPadding(
             floatingInset.toInt(),
             BlockSelectorGeometry.CONTENT_VERTICAL_PADDING_DP.dp(context) + topMargin + floatingInset.toInt(),
@@ -107,6 +128,93 @@ class BlockSelectorView(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
+        updateScrollProgress()
+    }
+
+    override fun onScrolled(dx: Int, dy: Int) {
+        updateScrollProgress()
+    }
+
+    private fun updateScrollProgress() {
+        updateScrollRange()
+        val position = blockSelectorLayoutManager.findFirstVisibleItemPosition()
+        val view = blockSelectorLayoutManager.findViewByPosition(position)
+        val progress = if (maxScrollPosition > 0f && view != null) {
+            val hiddenFraction = (paddingTop - blockSelectorLayoutManager.getDecoratedTop(view)).toFloat() / view.height
+            ((position + hiddenFraction) / maxScrollPosition).coerceIn(0f, 1f)
+        } else 0f
+        onScrollProgressChanged?.invoke(progress, maxScrollPosition > 0f)
+    }
+
+    private fun updateScrollRange() {
+        val width = width - paddingLeft - paddingRight
+        val height = height - paddingTop - paddingBottom
+        if (width <= 0 || height <= 0 || (rowWidth == width && viewportHeight == height)) return
+        if (rowWidth != width) rowHeights.fill(0)
+        rowWidth = width
+        viewportHeight = height
+        var remaining = height
+        maxScrollPosition = 0f
+        for (position in blocks.indices.reversed()) {
+            val rowHeight = rowHeight(position)
+            if (remaining < rowHeight) {
+                maxScrollPosition = position + 1f - remaining.toFloat() / rowHeight
+                break
+            }
+            remaining -= rowHeight
+        }
+    }
+
+    private fun rowHeight(position: Int): Int {
+        if (rowHeights[position] == 0) {
+            measuringCell.text = blocks[position].name
+            measuringCell.measure(
+                MeasureSpec.makeMeasureSpec(rowWidth, MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+            )
+            rowHeights[position] = measuringCell.measuredHeight
+        }
+        return rowHeights[position]
+    }
+
+    fun scrollToProgress(progress: Float) {
+        updateScrollRange()
+        if (maxScrollPosition <= 0f) return
+        val target = maxScrollPosition * progress.coerceIn(0f, 1f)
+        val position = target.toInt().coerceAtMost(blocks.lastIndex)
+        val offset = ((target - position) * rowHeight(position)).toInt()
+        blockSelectorLayoutManager.scrollToPositionWithOffset(position, -offset)
+    }
+
+    fun showCurrent(position: Int) {
+        removeCallbacks(pressCurrent)
+        removeCallbacks(releaseCurrent)
+        releasePressed()
+        if (position < 0) return
+        if (rowWidth == 0) rowWidth = calculateWidth() - paddingLeft - paddingRight
+        val viewport = (if (height > 0) height else calculateHeight()) - paddingTop - paddingBottom
+        if (!isRowVisible(position, viewport)) {
+            blockSelectorLayoutManager.scrollToPositionWithOffset(position, (viewport - rowHeight(position)) / 2)
+        }
+        currentPosition = position
+        postDelayed(pressCurrent, CURRENT_RIPPLE_DELAY)
+    }
+
+    private fun isRowVisible(position: Int, viewport: Int): Boolean {
+        if (height > 0) {
+            val view = blockSelectorLayoutManager.findViewByPosition(position) ?: return false
+            return view.top >= paddingTop && view.bottom <= paddingTop + viewport
+        }
+        var bottom = 0
+        for (row in 0..position) {
+            bottom += rowHeight(row)
+            if (bottom > viewport) return false
+        }
+        return true
+    }
+
     fun calculateWidth(): Int {
         val displayWidth = context.resources.displayMetrics.widthPixels
         return 500.dp(context).coerceAtMost((displayWidth * .95f).toInt())
@@ -118,6 +226,7 @@ class BlockSelectorView(
     }
 
     companion object {
+        private const val CURRENT_RIPPLE_DELAY = 200L
         private val showInterpolator = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     }
 }

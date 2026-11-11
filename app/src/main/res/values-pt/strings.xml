@@ -14,12 +14,14 @@
     <string name="search_no_results">Sem resultados</string>
     <string name="search_recents">Recentes</string>
     <string name="search_title">Pesquisar</string>
+    <string name="table_choose_block">Escolher bloco Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Toque nos carateres para os juntar</string>
     <string name="dock_tip_copy">Toque na barra para copiar a coleção</string>
     <string name="dock_backspace">Apagar o último carater</string>
     <string name="dock_copy_all">Copiar tudo</string>
+    <string name="dock_clear_all">Limpar coleção</string>
 
     <!-- Settings -->
     <string name="settings_title">Definições</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">Toque para juntar</string>
     <string name="settings_search_at_top">Pesquisa no topo</string>
     <string name="settings_show_unsupported">Mostrar carateres não suportados</string>
+    <string name="settings_character_size_in_table">Tamanho dos carateres na tabela</string>
+    <string name="settings_enlarge_small_chars">Ampliar carateres pequenos</string>
     <string name="settings_crash_reports">Relatórios de erro</string>
     <string name="settings_save_recents">Guardar carateres recentes</string>
     <string name="settings_clear_recents">Limpar carateres recentes</string>

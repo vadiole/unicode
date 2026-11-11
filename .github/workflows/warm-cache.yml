@@ -1,0 +1,22 @@
+name: Warm Gradle cache
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  warm:
+    name: Build on master to seed the Gradle cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v5
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+      - name: Build alpha APK and lint
+        run: ./gradlew assembleAlpha lintDebug

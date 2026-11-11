@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Outline
 import android.graphics.Path
 import android.os.Build
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.view.animation.PathInterpolator
@@ -14,11 +15,13 @@ import androidx.core.animation.addListener
 import androidx.core.graphics.withClip
 import vadiole.unicode.ui.common.FloatingSurfaceDrawable
 import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.table.FastScrollGestureRouter
+import vadiole.unicode.ui.table.FastScrollView
 
 internal object BlockSelectorGeometry {
     const val CORNER_RADIUS_DP = 16
     const val FLOATING_INSET_DP = 8f
-    const val CONTENT_VERTICAL_PADDING_DP = 8
+    const val CONTENT_VERTICAL_PADDING_DP = 10
     const val ARROW_WIDTH_DP = 24f
     const val ARROW_HEIGHT_DP = 11f
     const val ARROW_OVERLAP_DP = 4f
@@ -47,6 +50,17 @@ internal class BlockSelectorSurfaceView(
             arrowCenterX = { anchorX },
         ),
     )
+    private val fastScrollView = FastScrollView(context, object : FastScrollView.Delegate {
+        override fun onFastScrollStart() = listView.stopScroll()
+        override fun onFastScroll(progress: Float, precisionLevel: Int) = listView.scrollToProgress(progress)
+        override fun onFastScrollEnd() = Unit
+        override fun getBlockName(progress: Float): String? = null
+    }).apply {
+        val cornerInset = 8.dp(context)
+        setPadding(0, listView.paddingTop + cornerInset, 0, listView.paddingBottom + cornerInset)
+        visibility = INVISIBLE
+    }
+    private val fastScrollGestureRouter = FastScrollGestureRouter(this)
     private val clipPath = Path()
     private var showAnimator: ValueAnimator? = null
     private var showProgress = 0f
@@ -58,15 +72,45 @@ internal class BlockSelectorSurfaceView(
         background = surfaceDrawable
         alpha = 0f
         addView(listView, LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT))
+        addView(fastScrollView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
+        listView.onScrollProgressChanged = { progress, canScroll ->
+            fastScrollView.visibility = if (canScroll) VISIBLE else INVISIBLE
+            fastScrollView.setScrollProgress(progress)
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            listView.outlineProvider = object : ViewOutlineProvider() {
+            val surfaceOutline = object : ViewOutlineProvider() {
                 override fun getOutline(view: View, outline: Outline) {
                     surfaceDrawable.getOutline(outline)
                 }
             }
+            listView.outlineProvider = surfaceOutline
             listView.clipToOutline = true
+            fastScrollView.outlineProvider = surfaceOutline
+            fastScrollView.clipToOutline = true
         }
+    }
+
+    override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
+        return fastScrollGestureRouter.onInterceptTouchEvent(event, fastScrollView)
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        return fastScrollGestureRouter.onTouchEvent(event) || super.onTouchEvent(event)
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        listView.measure(widthMeasureSpec, heightMeasureSpec)
+        val rightTouchInset = ((context.resources.displayMetrics.widthPixels - listView.measuredWidth) / 2)
+            .coerceIn(0, 16.dp(context))
+        val width = listView.measuredWidth + rightTouchInset
+        val height = listView.measuredHeight
+        fastScrollView.setPadding(0, fastScrollView.paddingTop, rightTouchInset + floatingInset.toInt(), fastScrollView.paddingBottom)
+        fastScrollView.measure(
+            MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
+            MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY),
+        )
+        setMeasuredDimension(width, height)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -80,13 +124,14 @@ internal class BlockSelectorSurfaceView(
             return
         }
 
-        if (!surfaceDrawable.copySurfacePath(clipPath)) return
+        if (clipPath.isEmpty) return
         canvas.withClip(clipPath) {
             super.dispatchDraw(canvas)
         }
     }
 
     override fun onDetachedFromWindow() {
+        fastScrollGestureRouter.cancel()
         cancelShowAnimator()
         super.onDetachedFromWindow()
     }
@@ -157,12 +202,13 @@ internal class BlockSelectorSurfaceView(
         }
 
         val clipModifier = if (dismiss) 0.1f else 1f
-        val originX = if (anchorX.isNaN()) width / 2f else anchorX.coerceIn(floatingInset, width - floatingInset)
+        val surfaceWidth = listView.measuredWidth.toFloat()
+        val originX = if (anchorX.isNaN()) surfaceWidth / 2f else anchorX.coerceIn(floatingInset, surfaceWidth - floatingInset)
         val horizontalShrink = 0.8f * actualProgress * clipModifier
         val topOffset = 12.dp(context).toFloat() * actualProgress
         val bottomOffset = height * 0.9f * actualProgress * clipModifier
         val left = floatingInset + (originX - floatingInset) * horizontalShrink
-        val right = width - floatingInset - (width - floatingInset - originX) * horizontalShrink
+        val right = surfaceWidth - floatingInset - (surfaceWidth - floatingInset - originX) * horizontalShrink
         val top = topMargin + floatingInset + topOffset
         val bottom = height - floatingInset - bottomOffset
 
@@ -179,6 +225,9 @@ internal class BlockSelectorSurfaceView(
     private fun invalidateClipOutline() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             listView.invalidateOutline()
+            fastScrollView.invalidateOutline()
+        } else {
+            surfaceDrawable.copySurfacePath(clipPath)
         }
     }
 
