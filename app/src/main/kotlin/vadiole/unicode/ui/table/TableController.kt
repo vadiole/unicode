@@ -92,12 +92,13 @@ class TableController(
         val types = ByteArray(filteredBlocks.size)
         val labels = arrayOfNulls<String>(filteredBlocks.size)
         val showAll = userConfig.showUnsupportedChars
+        val iconPaint = Paint()
         val data = unicodeStorage.data()
         filteredBlocks.forEachIndexed { index, block ->
             val source = sources.get(block.start)
             types[index] = (source?.type ?: BlockList.TYPE_SYMBOL).toByte()
             labels[index] = source?.label
-            fillBlockIcons(block, source, data, icons, iconFlags, index * BlockList.ICON_SLOTS, showAll)
+            fillBlockIcons(block, source, data, icons, iconFlags, index * BlockList.ICON_SLOTS, showAll, iconPaint)
         }
         val scale = ScrollScale.create(tableChars.storage, filteredBlocks, data)
         synchronized(blocksLock) {
@@ -109,14 +110,14 @@ class TableController(
         }
     }
 
-    private fun fillBlockIcons(block: Block, source: BlockIconSource?, data: UnicodeData, out: IntArray, outFlags: ByteArray, offset: Int, showAll: Boolean) {
+    private fun fillBlockIcons(block: Block, source: BlockIconSource?, data: UnicodeData, out: IntArray, outFlags: ByteArray, offset: Int, showAll: Boolean, paint: Paint) {
         var size = 0
         if (source != null) {
             val codePoints = source.codePoints
             val rendered = BooleanArray(codePoints.size)
             for (index in codePoints.indices) {
                 val flags = source.flags[index].toInt()
-                rendered[index] = hasIconGlyph(codePoints[index], flags and BlockList.FLAG_MARK != 0)
+                rendered[index] = hasIconGlyph(paint, codePoints[index], flags and BlockList.FLAG_MARK != 0)
                 if (rendered[index] && size < BlockList.ICON_SLOTS) {
                     out[offset + size] = codePoints[index]
                     outFlags[offset + size++] = flags.toByte()
@@ -151,9 +152,9 @@ class TableController(
         return false
     }
 
-    private fun hasIconGlyph(codePoint: Int, mark: Boolean): Boolean {
+    private fun hasIconGlyph(paint: Paint, codePoint: Int, mark: Boolean): Boolean {
         val char = CodePoint(codePoint).char
-        return glyphPaint.hasGlyph(char) || (mark && glyphPaint.hasGlyph(BlockList.MARK_BASE + char))
+        return paint.hasGlyph(char) || (mark && paint.hasGlyph(BlockList.MARK_BASE + char))
     }
 
     fun getBlock(position: Int): Block? {

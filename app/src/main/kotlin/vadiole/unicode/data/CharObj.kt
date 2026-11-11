@@ -9,7 +9,6 @@ class CharObj(
     val version: String,
     val blockName: String,
     val subhead: String? = null,
-    val otherNames: List<String> = emptyList(),
 ) {
     val char: String = String(Character.toChars(codePointRaw))
     val hex = codePointRaw.toString(16).uppercase(Locale.ENGLISH).leftPad(4, '0')

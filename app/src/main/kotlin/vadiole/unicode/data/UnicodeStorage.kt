@@ -230,40 +230,7 @@ class UnicodeStorage(private val context: Context) {
             version = data.versionOf(codePoint.value),
             blockName = data.blockName(codePoint.value).orEmpty(),
             subhead = data.subhead(codePoint.value),
-            otherNames = otherNames(data, codePoint.value, name),
         )
-    }
-
-    private fun otherNames(data: UnicodeData, codePoint: Int, name: String): List<String> {
-        val result = ArrayList<String>()
-        val add = { text: String ->
-            if (text.isNotEmpty() && !text.equals(name, ignoreCase = true) && result.none { it.equals(text, ignoreCase = true) }) result.add(text)
-        }
-        val annotations = search.annotations
-        val second = data.secondNames(codePoint)
-        add(annotations?.name(codePoint) ?: second.firstOrNull { it.kind == UnicodeData.SECOND_SHORT_NAME }?.text.orEmpty())
-        for (other in second) if (other.kind in UnicodeData.SECOND_CORRECTION..UnicodeData.SECOND_ALTERNATE || other.kind == UnicodeData.SECOND_ALIAS) add(other.text)
-        for (other in second) if (other.kind == UnicodeData.SECOND_ABBREVIATION) add(other.text)
-        val keywords = annotations?.displayKeywords(codePoint).orEmpty()
-        if (keywords.isNotEmpty()) keywords.forEach(add) else data.displayKeywords(codePoint).forEach(add)
-        if (Character.isIdeographic(codePoint)) {
-            val meanings = meanings()
-            val index = meanings.first(codePoint)
-            if (index < meanings.size && meanings.codePoints[index] == codePoint) {
-                val text = meanings.texts[index]
-                var depth = 0
-                var start = 0
-                for (end in 0..text.length) {
-                    val c = if (end < text.length) text[end] else ';'
-                    if (c == '(') depth++ else if (c == ')') depth--
-                    if (c == ';' || (c == ',' && depth <= 0)) {
-                        add(text.substring(start, end).trim())
-                        start = end + 1
-                    }
-                }
-            }
-        }
-        return result
     }
 
     companion object {

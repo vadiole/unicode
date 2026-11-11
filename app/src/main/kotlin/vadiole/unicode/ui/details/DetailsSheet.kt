@@ -471,18 +471,7 @@ class DetailsSheet(
         context.getString(R.string.details_info_css),
         context.getString(R.string.details_info_version),
     )
-    private var abbreviations: Map<CodePoint, String> = emptyMap()
-    private val onLanguageChanged: () -> Unit = {
-        charObj?.let { bind(CodePoint(it.codePointRaw), abbreviations) }
-    }
-
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        unicodeStorage.search.addLanguageListener(onLanguageChanged)
-    }
-
     fun bind(codePoint: CodePoint, abbreviations: Map<CodePoint, String>) = launch {
-        this@DetailsSheet.abbreviations = abbreviations
         val obj: CharObj = unicodeStorage.getCharObj(codePoint) ?: return@launch
         title.text = obj.name
         subtitle.text = if (obj.subhead == null) obj.blockName else obj.blockName + SEPARATOR + obj.subhead
@@ -497,7 +486,6 @@ class DetailsSheet(
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        unicodeStorage.search.removeLanguageListener(onLanguageChanged)
         snapBackAnim?.cancel()
         zoomMatrix.reset()
         charView.translationZ = 0f

@@ -20,8 +20,6 @@ class SearchController(
         get() = results.tokens
     val resultCount: Int
         get() = results.codePoints.size
-    val meaningsStart: Int
-        get() = results.meaningsStart
     private var isLoadingMore = false
     private var matches = arrayOfNulls<CharSequence>(0)
 

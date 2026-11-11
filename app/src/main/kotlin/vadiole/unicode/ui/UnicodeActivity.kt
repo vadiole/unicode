@@ -38,7 +38,6 @@ class UnicodeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         languageTag = getString(R.string.lang_tag)
-        ensureLanguage()
         setDecorFitsSystemWindows(window, false)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             window.navigationBarColor = getColor(R.color.navigationBarScrim)
