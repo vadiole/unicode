@@ -39,14 +39,12 @@ jobs:
           TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}
           FILE_PATH=$(find ./app/build/outputs/apk/alpha/ -name '*.apk' | head -n 1)
-          THUMBNAIL_PATH="./assets/logo-alpha-320.jpg"
           DURATION=$(( $(date +%s) - $START_TIME ))
           CAPTION="${{ github.head_ref || github.ref_name }}"$'\n'"[$(formatDuration $DURATION)]"
 
           curl --silent --show-error -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument" \
               -F chat_id="$TELEGRAM_CHAT_ID" \
               -F document=@"$FILE_PATH" \
-              -F thumbnail=@"$THUMBNAIL_PATH" \
               -F caption="$CAPTION"
       - name: Run lint
         run: ./gradlew lintDebug
