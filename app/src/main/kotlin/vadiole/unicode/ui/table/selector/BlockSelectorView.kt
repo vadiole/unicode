@@ -64,15 +64,25 @@ class BlockSelectorView(
     private var currentPosition = -1
     private var pressedCell: BlockSelectorCell? = null
     private val pressCurrent = Runnable {
+        releasePressed()
         val cell = blockSelectorLayoutManager.findViewByPosition(currentPosition) as? BlockSelectorCell ?: return@Runnable
-        cell.background.setHotspot(cell.width / 2f, cell.height / 2f)
+        cell.background.setHotspot(cell.iconCenterX, cell.height / 2f)
         cell.isPressed = true
         pressedCell = cell
         post(releaseCurrent)
     }
-    private val releaseCurrent = Runnable {
+    private val releaseCurrent = Runnable { releasePressed() }
+
+    private fun releasePressed() {
         pressedCell?.isPressed = false
         pressedCell = null
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        removeCallbacks(pressCurrent)
+        removeCallbacks(releaseCurrent)
+        releasePressed()
     }
 
     init {
@@ -181,6 +191,7 @@ class BlockSelectorView(
     fun showCurrent(position: Int) {
         removeCallbacks(pressCurrent)
         removeCallbacks(releaseCurrent)
+        releasePressed()
         if (position < 0) return
         if (rowWidth == 0) rowWidth = calculateWidth() - paddingLeft - paddingRight
         val viewport = (if (height > 0) height else calculateHeight()) - paddingTop - paddingBottom

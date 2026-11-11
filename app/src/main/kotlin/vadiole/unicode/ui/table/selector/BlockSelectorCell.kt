@@ -31,6 +31,8 @@ class BlockSelectorCell(context: Context) : TextView(context) {
     private val gridGap = GRID_GAP.dp(context)
     private val gridCell = (iconInner - gridGap) / 2f
     private val iconRect = RectF()
+    val iconCenterX: Float
+        get() = iconRect.centerX()
     private val iconPath = Path()
     private val borderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE

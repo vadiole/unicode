@@ -14,6 +14,7 @@ class CollectionItemDecoration(private val leftPadding: Float = 0f) : RecyclerVi
         val right = if (isRtl) parent.width - leftPadding else parent.width.toFloat()
         for (i in 0 until parent.childCount) {
             val child = parent.getChildAt(i)
+            if (parent.getChildAdapterPosition(child) == state.itemCount - 1) continue
             parent.getDecoratedBoundsWithMargins(child, bounds)
             val yCoord: Float = bounds.bottom + child.translationY
             c.drawLine(left, yCoord, right, yCoord, dividerPaint)
