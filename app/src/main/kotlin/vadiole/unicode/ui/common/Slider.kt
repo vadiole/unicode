@@ -3,6 +3,7 @@ package vadiole.unicode.ui.common
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.Rect
@@ -70,11 +71,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         strokeWidth = 2f.dp(context)
         color = ColorUtils.setAlphaComponent(activeColor, FOCUS_ALPHA)
     }
-    private val holePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = ColorUtils.setAlphaComponent(activeColor, HOLE_ALPHA) }
-    private val linePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.STROKE
-        strokeCap = Paint.Cap.ROUND
-    }
+    private val holePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.WHITE }
+    private val holeCoverPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = lineColor }
     private val activePath = Path()
     private val inactivePath = Path()
     private val ringPath = Path().apply { fillType = Path.FillType.EVEN_ODD }
@@ -85,13 +83,9 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private val segmentRect = RectF()
     private val radii = FloatArray(8)
     private var shapesDirty = true
-    private var drawHole = false
-    private var drawLine = false
-    private var lineX = 0f
-    private var lineHalf = 0f
 
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
-    private val thumbTouchHalf = 22f.dp(context)
+    private val thumbGrabHalf = max(capsuleWidth / 2f, 22f.dp(context))
     private val exclusionHalf = 24.dp(context)
     private val exclusionRect = Rect()
     private val exclusionRects = listOf(exclusionRect)
@@ -178,9 +172,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
-        if (!changed) return
         shapesDirty = true
-        updateExclusionRects()
+        if (changed) updateExclusionRects()
     }
 
     private fun updateExclusionRects() {
@@ -204,8 +197,9 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         val nearStart = proximity(x0 - minX, falloff)
         val nearEnd = proximity(maxX - x0, falloff)
         val cx = x0 + (half - capsuleWidth / 2f) * (nearStart - nearEnd)
-        val cy = height / 2f
-        val border = radius + (pressedBorder - radius) * p
+        val cy = (paddingTop + height - paddingBottom) / 2f
+        val holeHalfWidth = lineWidth / 2f + (half - pressedBorder - lineWidth / 2f) * p
+        val holeHalfHeight = lineHeight / 2f + (h / 2f - pressedBorder - lineHeight / 2f) * p
         val cut = gap + (pressedGap - gap) * p
         val edge = x0 + (left - x0) * nearStart + (right - x0) * nearEnd
 
@@ -213,7 +207,8 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         inactivePath.rewind()
         val outer = trackHeight / 2f
         piece(left, minOf(cx - half - cut, right), edge, cy, outer, 0f)
-        piece(max(cx - half + border, left), minOf(cx + half - border, right), edge, cy, 0f, 0f)
+        val inner = (holeHalfWidth + half) / 2f
+        piece(max(cx - inner, left), minOf(cx + inner, right), edge, cy, 0f, 0f)
         piece(max(cx + half + cut, left), right, edge, cy, 0f, outer)
 
         shapeRect.set(cx - half, cy - h / 2f, cx + half, cy + h / 2f)
@@ -226,18 +221,12 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         ringPath.reset()
         ringPath.addSquircle(shapeRect, radius)
         holePath.rewind()
-        drawHole = border < radius
-        if (drawHole) {
-            shapeRect.inset(border, border)
-            holePath.addSquircle(shapeRect, radius - border)
-            ringPath.addPath(holePath)
-        }
-
-        linePaint.strokeWidth = lineWidth
-        linePaint.color = ColorUtils.setAlphaComponent(lineColor, ((1f - p) * 255).toInt())
-        drawLine = linePaint.alpha > 0
-        lineX = cx
-        lineHalf = (lineHeight - lineWidth) / 2f
+        shapeRect.set(cx - holeHalfWidth, cy - holeHalfHeight, cx + holeHalfWidth, cy + holeHalfHeight)
+        holePath.addSquircle(shapeRect, minOf(holeHalfWidth, holeHalfHeight))
+        ringPath.addPath(holePath)
+        val holeFade = minOf(1f, p / HOLE_FADE)
+        holePaint.alpha = (HOLE_ALPHA * holeFade).toInt()
+        holeCoverPaint.alpha = ((1f - holeFade) * 255).toInt()
     }
 
     private fun proximity(distance: Float, falloff: Float): Float {
@@ -268,13 +257,52 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         if (shapesDirty) layoutShapes()
         canvas.drawPath(activePath, activePaint)
         canvas.drawPath(inactivePath, inactivePaint)
-        if (drawHole) canvas.drawPath(holePath, holePaint)
+        if (holePaint.alpha > 0) canvas.drawPath(holePath, holePaint)
         canvas.drawPath(ringPath, activePaint)
+        if (holeCoverPaint.alpha > 0) canvas.drawPath(holePath, holeCoverPaint)
         if (isFocused) canvas.drawPath(focusPath, focusPaint)
-        if (drawLine) {
-            val cy = height / 2f
-            canvas.drawLine(lineX, cy - lineHalf, lineX, cy + lineHalf, linePaint)
+        if (DebugLayout.isShown) drawDebug(canvas)
+    }
+
+    private val debugPaint by lazy { Paint() }
+    private var debugShown = false
+
+    private fun drawDebug(canvas: Canvas) {
+        val paint = debugPaint
+        val x = valueX()
+        val top = 0f
+        val bottom = height.toFloat()
+        paint.style = Paint.Style.FILL
+        paint.color = DEBUG_GRAB
+        canvas.drawRect(x - thumbGrabHalf, top, x + thumbGrabHalf, bottom, paint)
+        if (!detent.isNaN()) {
+            val center = minX + (detent - range.start) / span * (maxX - minX)
+            val band = DETENT_BAND / 2f * (maxX - minX)
+            paint.color = DEBUG_DETENT
+            canvas.drawRect(center - band, top, center + band, bottom, paint)
         }
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 1f.dp(context)
+        paint.color = DEBUG_EXCLUSION
+        canvas.drawRect(exclusionRect, paint)
+        paint.color = DEBUG_ANCHOR
+        canvas.drawLine(x, top, x, bottom, paint)
+        if (state == DRAGGING) {
+            paint.color = DEBUG_FINGER
+            canvas.drawLine(lastMoveX, top, lastMoveX, bottom, paint)
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        debugShown = DebugLayout.refresh()
+    }
+
+    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
+        super.onWindowFocusChanged(hasWindowFocus)
+        if (!hasWindowFocus || DebugLayout.refresh() == debugShown) return
+        debugShown = !debugShown
+        invalidate()
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -289,7 +317,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
                 downX = event.x
                 downY = event.y
                 val x = valueX()
-                state = if (abs(downX - x) <= max(capsuleWidth / 2f, thumbTouchHalf)) DRAGGING else PENDING
+                state = if (abs(downX - x) <= thumbGrabHalf) DRAGGING else PENDING
                 valueSpring.cancel()
                 if (state == DRAGGING) {
                     grabOffset = x - downX
@@ -391,6 +419,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             lastMoveTime = time
         }
         applyUserValue(valueAt(x + grabOffset), haptics = true)
+        if (DebugLayout.isShown) invalidate()
     }
 
     private fun endDrag(closeInteraction: Boolean = true) {
@@ -508,10 +537,14 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private fun step(direction: Int): Boolean {
         val target = (value + direction * span * STEP).coerceIn(range)
         if (target == value) return false
+        jumpTo(target)
+        return true
+    }
+
+    private fun jumpTo(target: Float) {
         valueSpring.cancel()
         applyUserValue(target, haptics = false)
         updateExclusionRects()
-        return true
     }
 
     private fun announceValue() {
@@ -552,9 +585,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             action == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD -> return step(1)
             action == AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD -> return step(-1)
             Build.VERSION.SDK_INT >= 24 && action == android.R.id.accessibilityActionSetProgress && arguments != null -> {
-                valueSpring.cancel()
-                applyUserValue(arguments.getFloat(AccessibilityNodeInfo.ACTION_ARGUMENT_PROGRESS_VALUE).coerceIn(range), haptics = false)
-                updateExclusionRects()
+                jumpTo(arguments.getFloat(AccessibilityNodeInfo.ACTION_ARGUMENT_PROGRESS_VALUE).coerceIn(range))
                 return true
             }
         }
@@ -581,6 +612,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         const val DETENT_BAND = 0.02f
         const val PRESSED_SCALE = 1.5f
         const val HOLE_ALPHA = 38
+        const val HOLE_FADE = 0.35f
         const val FOCUS_ALPHA = 77
         const val DECELERATION_RATE = 0.998f
         const val FLING_MAX_DISTANCE = 0.12f
@@ -593,5 +625,10 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         const val HUM_QUIET_AFTER_CLICK_MS = 80L
         const val HUM_MIN_AMPLITUDE = 0.1f
         const val HUM_MAX_AMPLITUDE = 0.5f
+        const val DEBUG_GRAB = 0x3334C759
+        const val DEBUG_DETENT = 0x55FF9500
+        const val DEBUG_EXCLUSION = 0xFF007AFF.toInt()
+        const val DEBUG_ANCHOR = 0xFFFF3B30.toInt()
+        const val DEBUG_FINGER = 0xFFAF52DE.toInt()
     }
 }

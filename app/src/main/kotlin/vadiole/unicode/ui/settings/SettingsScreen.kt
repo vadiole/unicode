@@ -53,6 +53,7 @@ class SettingsScreen(
     private var adjustingSize = false
     private var isRevealed = false
     private var revealHolds = 0
+    private var enlargeShown = false
     private val restoreReveal = Runnable { revealLayout.restore() }
     private val characterSizeCell = SliderCell(
         context,
@@ -60,6 +61,7 @@ class SettingsScreen(
         0.75f..2f,
         userConfig.tableCharacterScale,
     ).apply {
+        extendTouchBelow(16.dp(context))
         slider.detent = 1f
         slider.onValueChanged = { value ->
             setValue(value)
@@ -82,13 +84,18 @@ class SettingsScreen(
         delegate.onEnlargeSmallCharsChanged(checked)
         if (isRevealed && revealHolds == 0) lingerReveal()
     }.apply {
-        switch.onPreview = { checked -> delegate.onEnlargeSmallCharsChanged(checked) }
+        switch.onPreview = { checked ->
+            enlargeShown = checked
+            delegate.onEnlargeSmallCharsChanged(checked)
+        }
         switch.onInteractionChanged = { active ->
-            if (!active) delegate.onEnlargeSmallCharsChanged(userConfig.enlargeSmallChars)
-            holdReveal(active, linger = true)
+            val enlarge = userConfig.enlargeSmallChars
+            val toggled = !active && enlarge != enlargeShown
+            enlargeShown = enlarge
+            if (toggled) delegate.onEnlargeSmallCharsChanged(enlarge)
+            holdReveal(active, linger = toggled)
         }
     }
-    private val appearanceGroup = SettingsGroup(context, listOf(characterSizeCell, enlargeSmallCharsCell))
 
     private val clearRecentsCell = HoldActionCell(context, context.getString(R.string.settings_clear_recents)) {
         recentRepository.clear()
@@ -112,8 +119,9 @@ class SettingsScreen(
                 userConfig.showUnsupportedChars = checked
                 delegate.onShowUnsupportedCharsChanged()
             })
-        }))
-        add(appearanceGroup)
+            add(enlargeSmallCharsCell)
+            add(characterSizeCell)
+        }), marginBottom = -characterSizeCell.touchBelow)
         add(SettingsGroup(context, listOf(
             ToggleCell(context, context.getString(R.string.settings_save_recents), userConfig.recentsEnabled) { checked ->
                 userConfig.recentsEnabled = checked
@@ -159,8 +167,11 @@ class SettingsScreen(
     }
 
     private fun revealAppearance() {
-        val bounds = Rect(0, 0, appearanceGroup.width, appearanceGroup.height)
-        revealLayout.offsetDescendantRectToMyCoords(appearanceGroup, bounds)
+        val bounds = Rect(0, 0, enlargeSmallCharsCell.width, enlargeSmallCharsCell.height)
+        revealLayout.offsetDescendantRectToMyCoords(enlargeSmallCharsCell, bounds)
+        val sliderBounds = Rect(0, 0, characterSizeCell.width, characterSizeCell.height - characterSizeCell.touchBelow)
+        revealLayout.offsetDescendantRectToMyCoords(characterSizeCell, sliderBounds)
+        bounds.union(sliderBounds)
         val path = Path().apply {
             addSquircle(RectF(bounds), 13f.dp(context))
         }

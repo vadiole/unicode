@@ -26,9 +26,9 @@ class SettingsList(context: Context) : ScrollView(context) {
         }
     }
 
-    fun add(view: View, marginTop: Int = 16.dp(context), gravity: Int = Gravity.NO_GRAVITY, width: Int = matchParent, height: Int = wrapContent) {
+    fun add(view: View, marginTop: Int = 16.dp(context), gravity: Int = Gravity.NO_GRAVITY, width: Int = matchParent, height: Int = wrapContent, marginBottom: Int = 0) {
         val margin = 16.dp(context)
-        content.addView(view, linearParams(width, height, gravity, marginLeft = margin, marginTop = marginTop, marginRight = margin))
+        content.addView(view, linearParams(width, height, gravity, marginLeft = margin, marginTop = marginTop, marginRight = margin, marginBottom = marginBottom))
     }
 
     fun addFootnote(text: String) {

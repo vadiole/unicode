@@ -47,6 +47,7 @@ class ToggleSwitch(context: Context) : Switch(context) {
     private var interacting = false
     private var preview = false
     private val startInteraction = Runnable { setInteracting(true) }
+    private val endInteraction = Runnable { setInteracting(false) }
 
     init {
         background = null
@@ -82,19 +83,25 @@ class ToggleSwitch(context: Context) : Switch(context) {
             MotionEvent.ACTION_DOWN -> {
                 downX = event.x
                 preview = isChecked
-                postDelayed(startInteraction, HOLD_DELAY)
+                removeCallbacks(endInteraction)
+                if (!interacting) postDelayed(startInteraction, HOLD_DELAY)
             }
             MotionEvent.ACTION_MOVE -> {
                 if (!interacting && abs(event.x - downX) > touchSlop) setInteracting(true)
                 if (interacting) updatePreview()
             }
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> setInteracting(false)
+            MotionEvent.ACTION_UP -> {
+                removeCallbacks(startInteraction)
+                post(endInteraction)
+            }
+            MotionEvent.ACTION_CANCEL -> setInteracting(false)
         }
         return handled
     }
 
     private fun setInteracting(active: Boolean) {
         removeCallbacks(startInteraction)
+        removeCallbacks(endInteraction)
         if (interacting == active) return
         interacting = active
         onInteractionChanged?.invoke(active)

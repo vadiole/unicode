@@ -119,13 +119,14 @@ open class ActionCell(
         super.onDraw(canvas)
         val value = value ?: return
         val right = width - paddingRight - if (iconWidth > 0) iconWidth + iconGap else 0
-        val y = (height - valuePaint.descent() - valuePaint.ascent()) / 2f
+        val centerY = (paddingTop + height - paddingBottom) / 2f
+        val y = centerY - (valuePaint.descent() + valuePaint.ascent()) / 2f
         if (valueScale == 1f) {
             canvas.drawText(value, (right - valueWidth).toFloat(), y, valuePaint)
             return
         }
         val save = canvas.save()
-        canvas.scale(valueScale, valueScale, right.toFloat(), height / 2f)
+        canvas.scale(valueScale, valueScale, right.toFloat(), centerY)
         canvas.drawText(value, (right - valueWidth).toFloat(), y, valuePaint)
         canvas.restoreToCount(save)
     }

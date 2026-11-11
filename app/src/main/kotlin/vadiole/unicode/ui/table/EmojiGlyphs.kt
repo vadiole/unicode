@@ -11,7 +11,6 @@ import android.os.Looper
 import android.os.Process
 import android.util.SparseBooleanArray
 import kotlin.math.ceil
-import vadiole.unicode.BuildConfig
 
 class EmojiPainter {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.WHITE }
@@ -54,19 +53,6 @@ object EmojiGlyphs {
     private val free = arrayOfNulls<Bitmap>(MAX_FREE)
     private var freeCount = 0
     private var freeHeight = 0
-    private var debugLayout = false
-    val showIndicators: Boolean
-        get() = BuildConfig.DEBUG && debugLayout
-
-    fun updateIndicators(): Boolean {
-        val enabled = runCatching {
-            Class.forName("android.os.SystemProperties").getMethod("getBoolean", String::class.java, Boolean::class.javaPrimitiveType)
-                .invoke(null, "debug.layout", false) as Boolean
-        }.getOrDefault(false)
-        if (enabled == debugLayout) return false
-        debugLayout = enabled
-        return true
-    }
 
     fun obtainStrip(width: Int, height: Int): Bitmap {
         if (height != freeHeight) clearFree(height)
