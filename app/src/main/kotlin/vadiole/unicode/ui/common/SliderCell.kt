@@ -24,6 +24,7 @@ class SliderCell(
         background = null
         isClickable = false
         isFocusable = false
+        importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
         valueMaxScale = LABEL_PRESSED_SCALE
         minHeight = (48 - LABEL_TRIM).dp(context)
         setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom - LABEL_TRIM.dp(context))
