@@ -68,7 +68,7 @@ class UnicodeStorage(private val context: Context) {
     suspend fun getCodePoints(from: Int, to: Int, background: Boolean, acceptGlyph: (String) -> Boolean): CodePointArray = withContext(if (background) backgroundDispatcher else dispatcher) {
         val data = data()
         val end = if (to < 0) data.size else to
-        val all = data.codePoints(end)
+        val all = data.codePoints(from, end)
         val result = IntArray(end - from)
         val size = scan(data, all, from, end, result, acceptGlyph)
         CodePointArray(result.copyOf(size))
@@ -79,11 +79,11 @@ class UnicodeStorage(private val context: Context) {
         var index = from
         var range = 0
         while (index < to) {
-            val codePoint = all[index]
+            val codePoint = all[index - from]
             while (range < data.rangeCount && data.rangeLast[range] < codePoint) range++
             if (range < data.rangeCount && data.rangeFirst[range] <= codePoint) {
                 val last = minOf(index + data.rangeLast[range] - codePoint, data.ageRunEnd(index) - 1, to - 1)
-                size = acceptRange(all, index, last, result, size, acceptGlyph)
+                size = acceptRange(all, index - from, last - from, result, size, acceptGlyph)
                 index = last + 1
             } else {
                 if (data.kindAt(index) == UnicodeData.KIND_ABBREVIATION || acceptGlyph(CodePoint(codePoint).char)) result[size++] = codePoint

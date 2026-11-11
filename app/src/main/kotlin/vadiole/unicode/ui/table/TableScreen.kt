@@ -208,10 +208,11 @@ class TableScreen(
     }
     private val contentContainer = FrameLayout(context)
     private val tableLayer = FrameLayout(context)
-    private val loader = DotsLoader(context).apply {
+    private val loader = FrameLayout(context).apply {
         setBackgroundColor(context.getColor(R.color.layer0))
         isClickable = true
         visibility = GONE
+        addView(DotsLoader(context), frameParams(wrapContent, wrapContent, gravity = Gravity.CENTER))
     }
     private val tableDim = View(context).apply {
         setBackgroundColor(context.getColor(R.color.dialogDim))
@@ -469,6 +470,7 @@ class TableScreen(
         } else {
             launch {
                 val scrollCodePoint = userConfig.tableScrollCodePoint
+                val showAll = userConfig.showUnsupportedChars
                 loader.visibility = VISIBLE
                 val loaderShownAt = SystemClock.uptimeMillis()
                 tableController.loadPreview(scrollCodePoint)
@@ -476,6 +478,7 @@ class TableScreen(
                 scrollToCodePoint(scrollCodePoint, userConfig.tableScrollOffset)
                 hideLoader(loaderShownAt)
                 tableController.loadChars()
+                if (showAll != userConfig.showUnsupportedChars) return@launch
                 tableAdapter.notifyDataSetChanged()
                 loadBlocks()
             }

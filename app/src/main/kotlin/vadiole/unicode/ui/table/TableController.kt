@@ -51,9 +51,9 @@ class TableController(
         val showAll = userConfig.showUnsupportedChars
         val snapshot = snapshot
         val cache = if (snapshot?.showAll == showAll) {
-            snapshot.cache.get()
+            snapshot.cache()
         } else {
-            TableCache.read(cacheFile(unicodeStorage), cacheKey(unicodeStorage, showAll))?.also { Companion.snapshot = Snapshot(showAll, it) }
+            TableCache.read(cacheFile(unicodeStorage), cacheKey(unicodeStorage, showAll))?.also { cache -> Companion.snapshot = Snapshot(showAll) { cache } }
         } ?: return false
         tableChars = CodePointArray(cache.chars)
         totalChars = cache.chars.size
@@ -68,12 +68,19 @@ class TableController(
 
     suspend fun loadPreview(untilCodePoint: Int) {
         val showAll = userConfig.showUnsupportedChars
-        val end = unicodeStorage.previewEnd(untilCodePoint, PREVIEW_SIZE)
-        val codePoints = unicodeStorage.getCodePoints(0, end, background = false) { showAll || glyphPaint.hasGlyph(it) }
+        val accept = { char: String -> showAll || glyphPaint.hasGlyph(char) }
+        var end = unicodeStorage.previewEnd(untilCodePoint, PREVIEW_SIZE)
+        var codePoints = unicodeStorage.getCodePoints(0, end, background = false, accept).storage
+        val data = unicodeStorage.data()
+        while (end < data.size && codePoints.size - codePoints.binarySearch(untilCodePoint).let { if (it < 0) -it - 1 else it } < PREVIEW_SIZE) {
+            val next = unicodeStorage.previewEnd(data.codePointAt(end), PREVIEW_SIZE)
+            codePoints += unicodeStorage.getCodePoints(end, next, background = false, accept).storage
+            end = next
+        }
         abbreviations = unicodeStorage.getAbbreviations()
         previewEnd = end
         previewShowAll = showAll
-        tableChars = codePoints
+        tableChars = CodePointArray(codePoints)
         totalChars = codePoints.size
     }
 
@@ -128,7 +135,7 @@ class TableController(
             lastBlockIndex = -1
             blockList = list
             scrollScale = scale
-            snapshot = Snapshot(showAll, cache)
+            snapshot = Snapshot(showAll) { cache }
         }
         isRevalidated = true
         val file = cacheFile(unicodeStorage)
@@ -290,16 +297,14 @@ class TableController(
 
         fun preload(storage: UnicodeStorage, showAll: Boolean) {
             val task = FutureTask { TableCache.read(cacheFile(storage), cacheKey(storage, showAll)) }
-            snapshot = Snapshot(showAll, task)
+            snapshot = Snapshot(showAll, task::get)
             Thread({
                 task.run()
                 if (task.get() == null) storage.data()
             }, "table-cache").start()
         }
 
-        private class Snapshot(val showAll: Boolean, val cache: FutureTask<TableCache?>) {
-            constructor(showAll: Boolean, cache: TableCache) : this(showAll, FutureTask { cache }.apply { run() })
-        }
+        private class Snapshot(val showAll: Boolean, val cache: () -> TableCache?)
 
         private fun cacheFile(storage: UnicodeStorage) = File(storage.cacheDir, CACHE_NAME)
 

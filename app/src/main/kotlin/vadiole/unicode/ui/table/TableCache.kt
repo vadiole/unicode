@@ -20,7 +20,7 @@ class TableCache(
         val temp = File(file.parentFile, "${file.name}.tmp")
         try {
             val checksum = CRC32()
-            DataOutputStream(CheckedOutputStream(temp.outputStream().buffered(1 shl 16), checksum)).use { out ->
+            DataOutputStream(CheckedOutputStream(temp.outputStream(), checksum).buffered(1 shl 16)).use { out ->
                 out.writeString(key)
                 out.writeInts(chars)
                 out.writeInt(abbreviations.size)
@@ -42,6 +42,7 @@ class TableCache(
                 for (label in blockList.labels) out.writeString(label)
                 out.writeBoolean(scrollScale != null)
                 scrollScale?.write(out)
+                out.flush()
                 out.writeLong(checksum.value)
             }
             if (!temp.renameTo(file)) temp.delete()

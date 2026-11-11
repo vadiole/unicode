@@ -19,7 +19,7 @@ class UnicodeApp : Application() {
         val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler(this))
         userConfigInternal = UserConfig(this)
-        if (processName() == packageName) {
+        if (!processName().contains(':')) {
             unicodeStorageInternal = UnicodeStorage(this)
             TableController.preload(unicodeStorage, userConfig.showUnsupportedChars)
             recentRepositoryInternal = RecentRepository(this, userConfig)

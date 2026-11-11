@@ -16,7 +16,7 @@ class DotsLoader(context: Context) : View(context) {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val size = (radius * 2 * MAX_SCALE).toInt() + 1
-        setMeasuredDimension(resolveSize((step * (COUNT - 1)).toInt() + size, widthMeasureSpec), resolveSize(size, heightMeasureSpec))
+        setMeasuredDimension((step * (COUNT - 1)).toInt() + size, size)
     }
 
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
@@ -26,12 +26,12 @@ class DotsLoader(context: Context) : View(context) {
 
     override fun onDraw(canvas: Canvas) {
         val animate = animatorsEnabled
-        val wave = if (animate) (SystemClock.uptimeMillis() - startTime) % PERIOD * COUNT / PERIOD.toFloat() else -COUNT.toFloat()
+        val wave = (SystemClock.uptimeMillis() - startTime) % PERIOD * COUNT / PERIOD.toFloat()
         val left = (width - step * (COUNT - 1)) / 2f
         val cy = height / 2f
         for (i in 0 until COUNT) {
-            val distance = abs(wave - i - 0.5f).let { minOf(it, COUNT - it) }
-            val intensity = 1f - minOf(distance, 1f).let { it * it }
+            val distance = abs(wave - i - 0.5f).let { minOf(it, COUNT - it, 1f) }
+            val intensity = if (animate) 1f - distance * distance else 0f
             paint.alpha = (255 * (MIN_ALPHA + (1f - MIN_ALPHA) * intensity)).toInt()
             canvas.drawCircle(left + step * i, cy, radius * (1f + (MAX_SCALE - 1f) * intensity), paint)
         }

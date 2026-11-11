@@ -132,12 +132,13 @@ class UnicodeData(
         return runStart[run] + index - runIndex[run]
     }
 
-    fun codePoints(count: Int): IntArray {
-        val result = IntArray(count)
-        var run = 0
-        for (index in 0 until count) {
+    fun codePoints(from: Int, to: Int): IntArray {
+        val result = IntArray(to - from)
+        if (from >= to) return result
+        var run = findStart(runIndex, runStart.size, from)
+        for (index in from until to) {
             if (index == runIndex[run + 1]) run++
-            result[index] = runStart[run] + index - runIndex[run]
+            result[index - from] = runStart[run] + index - runIndex[run]
         }
         return result
     }

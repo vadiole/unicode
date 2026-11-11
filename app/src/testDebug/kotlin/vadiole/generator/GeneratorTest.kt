@@ -69,7 +69,7 @@ class GeneratorTest {
         val meanings = reader.meanings()
         assertEquals(reader.checksum, data.checksum)
         assertEquals(meanings.size, UnicodeDataReader(ByteArrayInputStream(bytes)).meanings().size)
-        assertArrayEquals(sample.codePoints, data.codePoints(data.size))
+        assertArrayEquals(sample.codePoints, data.codePoints(0, data.size))
         assertEquals(-1, data.indexOf(0x43))
         assertEquals(UnicodeData.KIND_ABBREVIATION, data.kindAt(data.indexOf(0xAD)))
         assertEquals("13.0", data.versionOf(0x4E02))
