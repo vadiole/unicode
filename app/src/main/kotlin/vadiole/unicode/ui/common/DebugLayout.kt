@@ -1,18 +1,7 @@
 package vadiole.unicode.ui.common
 
-import vadiole.unicode.BuildConfig
+import android.os.Build
+import android.view.View
 
-object DebugLayout {
-    private var enabled = false
-    val isShown: Boolean
-        get() = BuildConfig.DEBUG && enabled
-
-    fun refresh(): Boolean {
-        if (!BuildConfig.DEBUG) return false
-        enabled = runCatching {
-            Class.forName("android.os.SystemProperties").getMethod("getBoolean", String::class.java, Boolean::class.javaPrimitiveType)
-                .invoke(null, "debug.layout", false) as Boolean
-        }.getOrDefault(false)
-        return enabled
-    }
-}
+val View.showsLayoutBounds: Boolean
+    get() = Build.VERSION.SDK_INT >= 30 && isShowingLayoutBounds

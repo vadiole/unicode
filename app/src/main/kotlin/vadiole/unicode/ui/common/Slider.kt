@@ -19,7 +19,6 @@ import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
-import android.view.VelocityTracker
 import android.view.ViewConfiguration
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
@@ -31,7 +30,6 @@ import androidx.core.graphics.ColorUtils
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt
-import kotlin.math.sign
 import vadiole.unicode.R
 
 class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : View(context) {
@@ -98,10 +96,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private var lastMoveTime = 0L
     private var speed = 0f
     private var interacting = false
-    private var velocityTracker: VelocityTracker? = null
-    private var flingingToDetent = false
     private var springTarget = 0f
-    private val flingMinVelocity = 1000f.dp(context)
 
     private val click = TickHaptic(this, 0.8f)
     private val clickIntervalMs = if (Build.VERSION.SDK_INT >= 34) 17L else 30L
@@ -136,11 +131,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         minVisibleChange = 0.0005f,
         onUpdate = { applyUserValue((range.start + it * span).coerceIn(range), haptics = false) },
         onEnd = { canceled ->
-            if (!canceled) {
-                applyUserValue(springTarget, haptics = false)
-                if (flingingToDetent) click.perform()
-            }
-            flingingToDetent = false
+            if (!canceled) applyUserValue(springTarget, haptics = false)
             if (state == IDLE) {
                 setInteracting(false)
                 updateExclusionRects()
@@ -261,11 +252,10 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         canvas.drawPath(ringPath, activePaint)
         if (holeCoverPaint.alpha > 0) canvas.drawPath(holePath, holeCoverPaint)
         if (isFocused) canvas.drawPath(focusPath, focusPaint)
-        if (DebugLayout.isShown) drawDebug(canvas)
+        if (showsLayoutBounds) drawDebug(canvas)
     }
 
     private val debugPaint by lazy { Paint() }
-    private var debugShown = false
 
     private fun drawDebug(canvas: Canvas) {
         val paint = debugPaint
@@ -293,24 +283,9 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         }
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        debugShown = DebugLayout.refresh()
-    }
-
-    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
-        super.onWindowFocusChanged(hasWindowFocus)
-        if (!hasWindowFocus || DebugLayout.refresh() == debugShown) return
-        debugShown = !debugShown
-        invalidate()
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (!isEnabled) return false
-        val tracker = velocityTracker ?: VelocityTracker.obtain().also { velocityTracker = it }
-        if (event.actionMasked == MotionEvent.ACTION_DOWN) tracker.clear()
-        tracker.addMovement(event)
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 activePointerId = event.getPointerId(0)
@@ -365,12 +340,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
                     performClick()
                     animateTo(valueAt(event.x))
                     if (!valueSpring.isRunning) setInteracting(false)
-                } else if (state == DRAGGING) {
-                    state = IDLE
-                    activePointerId = MotionEvent.INVALID_POINTER_ID
-                    tracker.computeCurrentVelocity(1000)
-                    val flung = flingToDetent(tracker.getXVelocity(event.getPointerId(event.actionIndex)))
-                    endDrag(closeInteraction = !flung)
                 } else {
                     endGesture()
                 }
@@ -419,27 +388,14 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             lastMoveTime = time
         }
         applyUserValue(valueAt(x + grabOffset), haptics = true)
-        if (DebugLayout.isShown) invalidate()
+        if (showsLayoutBounds) invalidate()
     }
 
-    private fun endDrag(closeInteraction: Boolean = true) {
+    private fun endDrag() {
         animatePress(0f)
         onPressedChanged?.invoke(false)
-        if (!closeInteraction) return
         setInteracting(false)
         updateExclusionRects()
-    }
-
-    private fun flingToDetent(velocity: Float): Boolean {
-        if (detent.isNaN() || abs(velocity) <= flingMinVelocity || !animatorsEnabled) return false
-        val cap = FLING_MAX_DISTANCE * (width - paddingLeft - paddingRight)
-        val distance = (abs(velocity) / 1000f * DECELERATION_RATE / (1f - DECELERATION_RATE)).coerceAtMost(cap)
-        val projected = range.start + ((valueX() + distance * sign(velocity) - minX) / (maxX - minX)) * span
-        val crosses = if (velocity > 0) detent > value && detent < projected else detent < value && detent > projected
-        if (!crosses) return false
-        flingingToDetent = true
-        springTo(detent, FLING_STIFFNESS, FLING_DAMPING)
-        return true
     }
 
     private fun animatePress(target: Float) {
@@ -462,13 +418,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
             updateExclusionRects()
             return
         }
-        springTo(target, SPRING_STIFFNESS, 1f)
-    }
-
-    private fun springTo(target: Float, stiffness: Float, dampingRatio: Float) {
         springTarget = target
-        valueSpring.stiffness = stiffness
-        valueSpring.dampingRatio = dampingRatio
         valueSpring.value = (value - range.start) / span
         valueSpring.animateTo((target - range.start) / span)
     }
@@ -596,8 +546,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         super.onDetachedFromWindow()
         endGesture()
         valueSpring.cancel()
-        velocityTracker?.recycle()
-        velocityTracker = null
         pressSpring.cancel()
         pressSpring.value = 0f
         press = 0f
@@ -614,10 +562,6 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         const val HOLE_ALPHA = 38
         const val HOLE_FADE = 0.35f
         const val FOCUS_ALPHA = 77
-        const val DECELERATION_RATE = 0.998f
-        const val FLING_MAX_DISTANCE = 0.12f
-        const val FLING_STIFFNESS = 900f
-        const val FLING_DAMPING = 0.85f
         const val SPRING_STIFFNESS = 600f
         const val PRESS_DAMPING = 0.6f
         const val HUM_BUCKETS = 8

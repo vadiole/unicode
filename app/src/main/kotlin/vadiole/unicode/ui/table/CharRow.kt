@@ -18,7 +18,7 @@ import kotlin.math.floor
 import vadiole.unicode.R
 import vadiole.unicode.data.CodePoint
 import vadiole.unicode.data.CodePointArray
-import vadiole.unicode.ui.common.DebugLayout
+import vadiole.unicode.ui.common.showsLayoutBounds
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.rippleDrawable
 
@@ -223,7 +223,7 @@ class CharRow(
             charCoordY + inkBoxes[offset + 3] * size,
         )
         canvas.drawBitmap(bitmap, spriteSource, spriteTarget, spritePaint)
-        if (DebugLayout.isShown) {
+        if (showsLayoutBounds) {
             when {
                 isSpritePreview -> canvas.drawRect(spriteTarget, previewTintPaint)
                 spriteTextSize != size -> canvas.drawRect(spriteTarget, stretchedTintPaint)
@@ -362,9 +362,8 @@ class CharRow(
         ripple.draw(canvas)
         codePoints.forEachIndexed { index, codePoint ->
             val charCoordX = charCoordsX[index]
-            val charPivotX = charCoordsX[index]
             if (charRipples[index]) {
-                canvas.drawCircle(charPivotX, charPivotY, rippleRadius, ripplePaint)
+                canvas.drawCircle(charCoordX, charPivotY, rippleRadius, ripplePaint)
             }
             val scale = inkScales[index]
             val bitmap = sprites

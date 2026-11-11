@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.RectF
+import android.os.SystemClock
 import android.widget.LinearLayout
 import android.widget.Toast
 import vadiole.unicode.R
@@ -53,6 +54,7 @@ class SettingsScreen(
     private var adjustingSize = false
     private var isRevealed = false
     private var revealHolds = 0
+    private var revealStart = 0L
     private var enlargeShown = false
     private val restoreReveal = Runnable { revealLayout.restore() }
     private val characterSizeCell = SliderCell(
@@ -153,11 +155,13 @@ class SettingsScreen(
         removeCallbacks(restoreReveal)
         if (active) {
             revealHolds++
+            if (!isRevealed) revealStart = SystemClock.uptimeMillis()
             revealAppearance()
         } else {
             revealHolds = maxOf(0, revealHolds - 1)
             if (revealHolds > 0) return
-            if (linger) lingerReveal() else revealLayout.restore()
+            val wait = if (linger) REVEAL_LINGER else REVEAL_MIN - (SystemClock.uptimeMillis() - revealStart)
+            if (wait > 0L) postDelayed(restoreReveal, wait) else revealLayout.restore()
         }
     }
 
@@ -186,5 +190,6 @@ class SettingsScreen(
 
     private companion object {
         const val REVEAL_LINGER = 700L
+        const val REVEAL_MIN = 300L
     }
 }

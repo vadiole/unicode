@@ -10,9 +10,8 @@ import android.view.View
 import kotlin.math.abs
 import androidx.core.view.doOnNextLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import vadiole.unicode.BuildConfig
 import vadiole.unicode.ui.common.CollectionView
-import vadiole.unicode.ui.common.DebugLayout
+import vadiole.unicode.ui.common.showsLayoutBounds
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.extension.setPaddingHorizontal
 
@@ -45,7 +44,7 @@ class TableView(
         }
         delegate.onScrollProgressChanged(getScrollProgress())
         if (dy != 0) trackSpeed(dy)
-        if (DebugLayout.isShown) invalidate()
+        if (showsLayoutBounds) invalidate()
     }
 
     private var rowsPerSecond = 0f
@@ -61,7 +60,7 @@ class TableView(
                     val sharpener = sharpener ?: EmojiSharpener().also { sharpener = it }
                     isSharpening = true
                     sharpeningRow = row
-                    if (DebugLayout.isShown) invalidate()
+                    if (showsLayoutBounds) invalidate()
                     row.sharpenEmoji(row.charSize, sharpener, sharpened)
                     return
                 }
@@ -71,12 +70,11 @@ class TableView(
     private val sharpened = Runnable {
         isSharpening = false
         sharpeningRow = null
-        if (DebugLayout.isShown) invalidate()
+        if (showsLayoutBounds) invalidate()
         scheduleRefineEmoji(0L)
     }
     private var sharpener: EmojiSharpener? = null
     private var isWindowShown = true
-    private var indicatorsShown = false
     private var isSharpening = false
     private var sharpeningRow: CharRow? = null
     private val readoutPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -110,7 +108,6 @@ class TableView(
         if (shown == isWindowShown) return
         isWindowShown = shown
         if (shown) {
-            updateIndicators()
             for (index in 0 until childCount) (getChildAt(index) as CharRow).restoreSprites()
             scheduleRefineEmoji(SHARPEN_DELAY)
         } else {
@@ -120,28 +117,9 @@ class TableView(
         }
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        updateIndicators()
-    }
-
-    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
-        super.onWindowFocusChanged(hasWindowFocus)
-        if (hasWindowFocus) updateIndicators()
-    }
-
-    private fun updateIndicators() {
-        if (!BuildConfig.DEBUG) return
-        val shown = DebugLayout.refresh()
-        if (shown == indicatorsShown) return
-        indicatorsShown = shown
-        for (index in 0 until childCount) getChildAt(index).invalidate()
-        invalidate()
-    }
-
     override fun dispatchDraw(canvas: Canvas) {
         super.dispatchDraw(canvas)
-        if (DebugLayout.isShown) drawReadout(canvas)
+        if (showsLayoutBounds) drawReadout(canvas)
     }
 
     private fun drawReadout(canvas: Canvas) {
@@ -177,7 +155,7 @@ class TableView(
     fun setScaleAdjusting(adjusting: Boolean) {
         if (isAdjustingScale == adjusting) return
         isAdjustingScale = adjusting
-        if (DebugLayout.isShown) invalidate()
+        if (showsLayoutBounds) invalidate()
         if (!adjusting) scheduleRefineEmoji(0L)
     }
 
@@ -188,7 +166,7 @@ class TableView(
     override fun onScrollStateChanged(state: Int) {
         if (state != SCROLL_STATE_IDLE) return
         rowsPerSecond = 0f
-        if (DebugLayout.isShown) invalidate()
+        if (showsLayoutBounds) invalidate()
         scheduleRefineEmoji(SHARPEN_DELAY)
     }
 
