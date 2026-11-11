@@ -26,7 +26,7 @@ class SliderCell(
         isFocusable = false
         valueMaxScale = LABEL_PRESSED_SCALE
         minHeight = (48 - LABEL_TRIM).dp(context)
-        setPadding(paddingLeft, paddingTop, paddingRight, 1.dp(context))
+        setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom - LABEL_TRIM.dp(context))
     }
     private val sliderInset = 16.dp(context)
     private val sliderHeight = SLIDER_HEIGHT.dp(context)
@@ -114,9 +114,9 @@ class SliderCell(
 
     private companion object {
         const val LABEL_PRESSED_SCALE = 1.15f
-        const val LABEL_TRIM = 9
-        const val SLIDER_HEIGHT = 36
-        const val SLIDER_BOTTOM = 6
+        const val LABEL_TRIM = 8
+        const val SLIDER_HEIGHT = 32
+        const val SLIDER_BOTTOM = 8
         const val LABEL_STIFFNESS = 500f
     }
 }
