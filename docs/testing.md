@@ -1,5 +1,9 @@
 # Testing on a device
 
+## Alpha
+
+`./gradlew installAlpha` installs `vadiole.unicode.alpha` next to release and debug: the release build with R8 and resource shrinking, debug-signed, profileable from shell, without the debug config and search golden providers. Use it to check R8 and to profile; CI publishes the same APK to Telegram.
+
 ## Debug config
 
 Debug builds apply `debug.*` launch extras to the app's settings before the first screen is built. `-S` force-stops the app first, so every launch is a cold start with the new state.

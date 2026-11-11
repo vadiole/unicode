@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build and publish debug APK
+    name: Build and publish alpha APK
     runs-on: ubuntu-latest
     steps:
       - name: Set start time
@@ -26,9 +26,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
         with:
           cache-read-only: false
-      - name: Assemble debug APK
-        run: ./gradlew assembleDebug
-      - name: Publish debug APK to Telegram
+      - name: Assemble alpha APK
+        run: ./gradlew assembleAlpha
+      - name: Publish alpha APK to Telegram
         run: |
           formatDuration() { # like 1m 1s
               local ms=$1
@@ -38,7 +38,7 @@ jobs:
           }
           TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}
-          FILE_PATH=$(find ./app/build/outputs/apk/debug/ -name '*.apk' | head -n 1)
+          FILE_PATH=$(find ./app/build/outputs/apk/alpha/ -name '*.apk' | head -n 1)
           THUMBNAIL_PATH="./assets/logo-320.jpg"
           DURATION=$(( $(date +%s) - $START_TIME ))
           CAPTION="${{ github.head_ref || github.ref_name }}"$'\n'"[$(formatDuration $DURATION)]"

@@ -58,6 +58,12 @@ android {
             signingConfig = signingConfigs.findByName("release")
             proguardFiles("proguard-rules.pro")
         }
+
+        create("alpha") {
+            initWith(getByName("release"))
+            applicationIdSuffix = ".alpha"
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
 
     packaging {

@@ -24,6 +24,7 @@
 - After completing a task or fix, build and launch the app: `./gradlew installDebug && adb shell am start -n vadiole.unicode.debug/vadiole.unicode.ui.UnicodeActivity` 
 - Device testing (debug config presets, per-app language, screenshots, search goldens): `docs/testing.md`.
 - Release: `./gradlew assembleRelease bundleRelease`, signed from `unicode.signing.*` in `~/.gradle/gradle.properties`; the R8 mapping is copied to `app/mapping/`.
+- Alpha (`./gradlew assembleAlpha`, `vadiole.unicode.alpha`): release with R8, debug-signed and profileable, without `src/debug`. CI sends the alpha APK to Telegram on every push outside `master`.
 
 ## UI interaction quality
 
