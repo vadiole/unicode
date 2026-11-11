@@ -46,7 +46,8 @@ class UnicodeActivity : Activity() {
         val navigationView = NavigationView(this)
         navigationViewNullable = navigationView
         setContentView(navigationView)
-        onNewIntent(intent)
+        val fromHistory = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
+        if (savedInstanceState == null && !fromHistory) onNewIntent(intent)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val callback = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
@@ -79,8 +80,9 @@ class UnicodeActivity : Activity() {
 
     override fun onNewIntent(intent: Intent) {
         val navigationView = navigationViewNullable ?: return
+        val codePointValue = intent.data?.getQueryParameter("c")?.toIntOrNull()
+        intent.data = null
         navigationView.post {
-            val codePointValue = intent.data?.getQueryParameter("c")?.toIntOrNull()
             if (codePointValue != null && codePointValue in 1..917999) {
                 val codePoint = CodePoint(codePointValue)
                 navigationView.showDetailsBottomSheet(codePoint, skipAnimation = true)
