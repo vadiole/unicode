@@ -12,7 +12,6 @@ import android.widget.FrameLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import vadiole.unicode.R
-import vadiole.unicode.ui.extension.onClick
 import kotlin.math.PI
 import kotlin.math.roundToInt
 import kotlin.math.sin

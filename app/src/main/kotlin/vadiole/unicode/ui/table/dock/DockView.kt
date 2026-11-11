@@ -21,6 +21,7 @@ import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.ViewCompat.replaceAccessibilityAction
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -35,11 +36,11 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.onClick
-import vadiole.unicode.ui.extension.onLongClick
+import vadiole.unicode.ui.common.onClick
+import vadiole.unicode.ui.common.onLongClick
 
 class DockView(context: Context, private val delegate: Delegate) : LinearLayout(context) {
     interface Delegate {
@@ -64,6 +65,8 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         get() = contentHeight + if (tipView.visibility == VISIBLE) tipHeight else 0
     private val buttonWidth = 48.dp(context)
     private val edgePadding = 4.dp(context)
+    private var leftInset = -1
+    private var rightInset = -1
     private val backspaceExtraLeft = (contentHeight - buttonWidth) / 2
     private val easeOut = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -73,7 +76,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     }
     private val tipView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_CAPTION)
-        typeface = font_regular
+        typeface = fontRegular
         includeFontPadding = false
         gravity = Gravity.CENTER
         isSingleLine = true
@@ -85,7 +88,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     private val emptyHint = TextView(context).apply {
         setText(R.string.dock_tip_collect)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
-        typeface = font_regular
+        typeface = fontRegular
         includeFontPadding = false
         gravity = Gravity.CENTER
         setPadding(16.dp(context), 4.dp(context), 16.dp(context), 4.dp(context))
@@ -175,8 +178,22 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         addView(row, linearParams(matchParent, contentHeight))
     }
 
-    fun setBottomInset(inset: Int) {
-        if (paddingBottom != inset) setPadding(0, 0, 0, inset)
+    fun setInsets(left: Int, right: Int, bottom: Int) {
+        if (paddingBottom != bottom) setPadding(0, 0, 0, bottom)
+        if (left == leftInset && right == rightInset) return
+        leftInset = left
+        rightInset = right
+        val center = maxOf(left, right)
+        tipView.updateLayoutParams<MarginLayoutParams> {
+            leftMargin = center
+            rightMargin = center
+        }
+        emptyHint.updateLayoutParams<MarginLayoutParams> {
+            leftMargin = center
+            rightMargin = center
+        }
+        scrollView.updateLayoutParams<MarginLayoutParams> { leftMargin = left }
+        backspaceButton.updateLayoutParams<MarginLayoutParams> { rightMargin = edgePadding + right }
     }
 
     val textWidth: Float

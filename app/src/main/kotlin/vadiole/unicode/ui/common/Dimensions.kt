@@ -13,3 +13,5 @@ fun borderWidth(context: Context) = if (context.resources.configuration.isDarkMo
 fun Float.sp(context: Context) = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, this, context.resources.displayMetrics)
 
 fun hairline(context: Context): Int = maxOf(1, Math.round(0.5f.dp(context)))
+
+fun maxContentWidth(context: Context): Int = 600.dp(context)

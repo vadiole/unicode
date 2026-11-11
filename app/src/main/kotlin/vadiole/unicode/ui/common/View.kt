@@ -1,12 +1,10 @@
-package vadiole.unicode.ui.extension
+package vadiole.unicode.ui.common
 
 import android.content.Context
-import android.graphics.Paint
+import android.os.Build
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.Px
-import vadiole.unicode.R
 
 private var enabled: Boolean = true
 private val ENABLE_AGAIN = object : Runnable {
@@ -36,19 +34,7 @@ var <T : View> T.onLongClick: T.() -> Unit
         true
     }
 
-inline var View.isVisible: Boolean
-    get() = visibility == View.VISIBLE
-    set(value) {
-        visibility = if (value) View.VISIBLE else View.GONE
-    }
-
-@Suppress("NOTHING_TO_INLINE")
-inline fun View.setPaddingHorizontal(@Px size: Int) {
-    setPadding(size, paddingTop, size, paddingBottom)
-}
-
-@Suppress("NOTHING_TO_INLINE")
-inline fun View.hideKeyboard() {
+fun View.hideKeyboard() {
     try {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         if (!imm.isActive) {
@@ -60,8 +46,5 @@ inline fun View.hideKeyboard() {
     }
 }
 
-fun View.getDividerPaint() = Paint().apply {
-    isAntiAlias = false
-    strokeWidth = 1f
-    color = context.getColor(R.color.windowDivider)
-}
+val View.showsLayoutBounds: Boolean
+    get() = Build.VERSION.SDK_INT >= 30 && isShowingLayoutBounds

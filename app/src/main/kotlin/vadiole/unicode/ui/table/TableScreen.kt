@@ -40,16 +40,18 @@ import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.TopBar
 import vadiole.unicode.ui.common.animatorsEnabled
 import vadiole.unicode.ui.common.dp
+import vadiole.unicode.ui.common.isLandscape
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.ime
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.navigationBars
+import vadiole.unicode.ui.common.systemBarsAndCutout
 import vadiole.unicode.ui.common.statusBars
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.hideKeyboard
+import vadiole.unicode.ui.common.hideKeyboard
 import vadiole.unicode.ui.table.dock.DockController
 import vadiole.unicode.ui.table.dock.DockView
 import vadiole.unicode.ui.table.dock.FlyOverlay
@@ -68,11 +70,13 @@ class TableScreen(
     private val dockController: DockController,
     private val delegate: Delegate,
 ) : Screen(context) {
-    private var spanCount = 8
+    private val spanCount = if (resources.configuration.isLandscape) 16 else 8
     private var characterScale = userConfig.tableCharacterScale
     private var enlargeSmallChars = userConfig.enlargeSmallChars
     private var topInset = 0
     private var navigationInset = 0
+    private var leftInset = 0
+    private var rightInset = 0
     private var imeInset = 0
     private val statusBarPaint = Paint().apply {
         style = Paint.Style.FILL
@@ -98,7 +102,7 @@ class TableScreen(
         }
     }
     private val tableAdapter = object : TableAdapter() {
-        override fun getItemCount(): Int = tableController.totalChars / spanCount
+        override fun getItemCount(): Int = (tableController.totalChars + spanCount - 1) / spanCount
         override fun getBlock(position: Int) = tableController.getBlock(position)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionView.Cell {
             val charCell = CharRow(context, spanCount, charCellDelegate)
@@ -369,7 +373,7 @@ class TableScreen(
     private val searchResultView = SearchResultView(context, searchAdapter, searchResultViewDelegate)
     private val noResultsView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
-        typeface = font_regular
+        typeface = fontRegular
         setTextColor(this@TableScreen.context.getColor(R.color.windowTextSecondary))
         gravity = Gravity.CENTER
         text = context.getString(R.string.search_no_results)
@@ -393,6 +397,9 @@ class TableScreen(
             if (paddingTop != statusBarInset) setPadding(0, statusBarInset, 0, 0)
             topInset = statusBarInset
             navigationInset = insets.navigationBars.bottom
+            leftInset = insets.systemBarsAndCutout.left
+            rightInset = insets.systemBarsAndCutout.right
+            topBar.setInsets(leftInset, rightInset)
             imeInset = insets.ime.bottom
             updateContentInsets()
             if (!isImeAnimationRunning) applyKeyboardLift(imeInset)
@@ -536,24 +543,23 @@ class TableScreen(
         val tableBottom = chromeBottom + if (searchAtTop) topBarHeight else 0
         val contentTop = if (searchAtTop) searchBarHeight else 0
         val keyboardLift = (imeInset - navigationInset).coerceAtLeast(0)
-        dockView.setBottomInset(navigationInset)
-        if (tableView.paddingTop != contentTop || tableView.paddingBottom != tableBottom) {
-            tableView.updatePadding(top = contentTop, bottom = tableBottom)
+        dockView.setInsets(leftInset, rightInset, navigationInset)
+        val searchParams = searchBar.layoutParams as MarginLayoutParams
+        if (searchParams.leftMargin != leftInset || searchParams.rightMargin != rightInset) {
+            searchBar.updateLayoutParams<MarginLayoutParams> {
+                leftMargin = leftInset
+                rightMargin = rightInset
+            }
         }
-        if (fastScrollView.paddingTop != contentTop || fastScrollView.paddingBottom != tableBottom) {
-            fastScrollView.setPadding(0, contentTop, 0, tableBottom)
-        }
+        val tablePadding = 8.dp(context)
+        tableView.updatePadding(left = tablePadding + leftInset, top = contentTop, right = tablePadding + rightInset, bottom = tableBottom)
+        fastScrollView.setPadding(leftInset, contentTop, rightInset, tableBottom)
         val resultsBottom = chromeBottom + keyboardLift
         searchResultView.keyboardInset = keyboardLift
-        if (searchResultView.paddingTop != contentTop || searchResultView.paddingBottom != resultsBottom) {
-            searchResultView.updatePadding(top = contentTop, bottom = resultsBottom)
-        }
-        if (noResultsView.paddingTop != contentTop || noResultsView.paddingBottom != resultsBottom) {
-            noResultsView.setPadding(0, contentTop, 0, resultsBottom)
-        }
-        if (searchFastScrollView.paddingTop != contentTop || searchFastScrollView.paddingBottom != resultsBottom) {
-            searchFastScrollView.setPadding(0, contentTop, 0, resultsBottom)
-        }
+        searchResultView.updatePadding(left = leftInset, top = contentTop, right = rightInset, bottom = resultsBottom)
+        val centerInset = maxOf(leftInset, rightInset)
+        noResultsView.setPadding(centerInset, contentTop, centerInset, resultsBottom)
+        searchFastScrollView.setPadding(leftInset, contentTop, rightInset, resultsBottom)
     }
 
     private fun applyKeyboardLift(ime: Int) {
@@ -630,7 +636,12 @@ class TableScreen(
         }
         tableView.stopScroll()
         popup.view.showCurrent(blockList.blocks.indexOf(tableView.currentBlock()))
-        val xOffset = (topBar.width - popup.view.calculateWidth()) / 2
+        val popupWidth = popup.view.calculateWidth()
+        val xOffset = if (topBar.centerTitle) {
+            (topBar.width - popupWidth) / 2
+        } else {
+            minOf(leftInset + 8.dp(context), topBar.width - rightInset - popupWidth)
+        }
         val yOffset = (-8).dp(context)
         popup.setAnchorX(if (topBar.centerTitle) Float.NaN else 0f)
         popup.showAsDropDown(topBar, xOffset, yOffset, LEFT or TOP)

@@ -1,7 +1,5 @@
 package vadiole.unicode.ui.common
 
-import android.animation.ValueAnimator
-import android.os.Build
 import android.view.Choreographer
 
 class SpringAnimator(
@@ -16,6 +14,6 @@ class SpringAnimator(
     override fun postFrame() = Choreographer.getInstance().postFrameCallback(this)
 
     override fun doFrame(frameTimeNanos: Long) {
-        frame(frameTimeNanos, if (Build.VERSION.SDK_INT >= 33) ValueAnimator.getDurationScale() else 1f)
+        frame(frameTimeNanos, animatorDurationScale)
     }
 }

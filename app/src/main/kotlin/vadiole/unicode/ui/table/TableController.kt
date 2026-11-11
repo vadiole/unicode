@@ -13,9 +13,8 @@ import vadiole.unicode.data.CodePointArray
 import vadiole.unicode.data.UnicodeData
 import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.UserConfig
-import vadiole.unicode.ui.extension.binarySearch
-import vadiole.unicode.ui.extension.filterMaybe
-import vadiole.unicode.ui.extension.worker
+import vadiole.unicode.data.binarySearch
+import vadiole.unicode.data.worker
 
 class TableController(
     private val unicodeStorage: UnicodeStorage,
@@ -83,7 +82,7 @@ class TableController(
     suspend fun loadBlocks() = worker {
         val generation = synchronized(blocksLock) { ++blocksGeneration }
         val allBlocks = unicodeStorage.getBlocks()
-        val filteredBlocks = allBlocks.filterMaybe { block ->
+        val filteredBlocks = allBlocks.filter { block ->
             getPosition(block) != 0 || block.start == 0
         }.toTypedArray()
         val sources = unicodeStorage.getBlockIcons()

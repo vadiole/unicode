@@ -55,7 +55,7 @@ class BlockSelectorView(
     }
 
     var onScrollProgressChanged: ((Float, Boolean) -> Unit)? = null
-    private val divider = CollectionItemDecoration(leftPadding = floatingInset + BlockSelectorCell.textStart(context))
+    private val divider = CollectionItemDecoration(leftPadding = BlockSelectorCell.textStart(context).toFloat())
     private val measuringCell = BlockSelectorCell(context)
     private val rowHeights = IntArray(blocks.size)
     private var rowWidth = 0

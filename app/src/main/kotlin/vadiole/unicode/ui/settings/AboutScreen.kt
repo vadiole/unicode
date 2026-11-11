@@ -32,8 +32,8 @@ import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.toClipboard
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.onClick
-import vadiole.unicode.ui.extension.onLongClick
+import vadiole.unicode.ui.common.onClick
+import vadiole.unicode.ui.common.onLongClick
 
 class AboutScreen(context: Context, onBack: () -> Unit) : Screen(context) {
     private val appVersion = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"

@@ -23,11 +23,11 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.onClick
-import vadiole.unicode.ui.extension.onLongClick
+import vadiole.unicode.ui.common.onClick
+import vadiole.unicode.ui.common.onLongClick
 import java.util.Locale
 
 class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(context) {
@@ -48,13 +48,13 @@ class SearchResultCell(context: Context, delegate: Delegate) : FrameLayout(conte
     }
     val name = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
-        typeface = font_regular
+        typeface = fontRegular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
     }
     private val matchView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_CAPTION)
-        typeface = font_regular
+        typeface = fontRegular
         includeFontPadding = false
         setTextColor(context.getColor(R.color.windowTextSecondary))
         visibility = GONE

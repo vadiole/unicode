@@ -9,7 +9,6 @@ import android.view.Choreographer
 import android.view.Gravity
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import setCursorDrawable
 import vadiole.unicode.R
 
 class SearchField(context: Context, private val onQueryChanged: (String) -> Unit) : EditText(context) {
@@ -47,7 +46,7 @@ class SearchField(context: Context, private val onQueryChanged: (String) -> Unit
         addTextChangedListener(textWatcher)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
         isSingleLine = true
-        typeface = font_regular
+        typeface = fontRegular
         includeFontPadding = false
         isLongClickable = true
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL

@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
-import vadiole.unicode.ui.extension.onClick
 
 class ToggleCell(context: Context, label: String, checked: Boolean, onChanged: (Boolean) -> Unit) : FrameLayout(context) {
     val switch = ToggleSwitch(context).apply {

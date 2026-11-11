@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.extension
+package vadiole.unicode.data
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

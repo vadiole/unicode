@@ -15,7 +15,7 @@
 - A plain `Controller` class owns data for a screen; a `Delegate` interface forwards events up.
 - Performance is high: no heavy operations in often called methods like drawing or touch.
 - Memory usage: no boxing for large data, object reuse if possible.
-- `ui/common/`: UI component library, e.g. `Dp.kt`, `Typeface.kt`, `Screen.kt`, `Squircle.kt`, `TopBar.kt` etc.
+- `ui/common/`: UI component library, e.g. `Dimensions.kt`, `View.kt`, `Typeface.kt`, `Screen.kt`, `Squircle.kt`, `TopBar.kt` etc.
 - colors in `colors.xml`
 - no xml layouts, no compose, no ContextCompat
 - Tests are the search regression suite (`docs/search.md`) and the spring contract (`SpringTest`): JVM tests in `app/src/testDebug` run with `./gradlew testDebugUnitTest`, JUnit is the only test dependency. Do not add other tests without asking.

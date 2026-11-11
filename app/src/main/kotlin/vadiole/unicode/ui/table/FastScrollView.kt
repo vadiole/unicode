@@ -26,7 +26,7 @@ import vadiole.unicode.ui.common.FloatingSurfaceDrawable
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.addSquircle
 import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.sp
 
 class FastScrollView(
@@ -91,7 +91,7 @@ class FastScrollView(
     private val bubbleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = bubbleTextSize
         color = context.getColor(R.color.windowTextPrimary)
-        typeface = font_regular
+        typeface = fontRegular
         textAlign = Paint.Align.LEFT
         isSubpixelText = true
     }

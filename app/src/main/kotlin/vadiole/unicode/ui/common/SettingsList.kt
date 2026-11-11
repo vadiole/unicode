@@ -11,7 +11,14 @@ import androidx.core.view.updatePadding
 import vadiole.unicode.R
 
 class SettingsList(context: Context) : ScrollView(context) {
-    private val content = LinearLayout(context).apply {
+    private val maxContentWidth = maxContentWidth(context)
+    private var sideInset = 0
+    private val content = object : LinearLayout(context) {
+        override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+            val width = minOf(MeasureSpec.getSize(widthMeasureSpec) - sideInset * 2, maxContentWidth)
+            super.onMeasure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY), heightMeasureSpec)
+        }
+    }.apply {
         orientation = LinearLayout.VERTICAL
     }
     private val bottomPadding = 24.dp(context)
@@ -19,8 +26,10 @@ class SettingsList(context: Context) : ScrollView(context) {
     init {
         isFillViewport = true
         clipToPadding = false
-        addView(content, frameParams(matchParent, wrapContent))
+        addView(content, frameParams(matchParent, wrapContent, gravity = Gravity.CENTER_HORIZONTAL))
         setOnApplyWindowInsetsListener(this) { _, insets ->
+            sideInset = maxOf(insets.systemBarsAndCutout.left, insets.systemBarsAndCutout.right)
+            content.requestLayout()
             content.updatePadding(bottom = bottomPadding + insets.navigationBars.bottom)
             insets
         }
@@ -35,7 +44,7 @@ class SettingsList(context: Context) : ScrollView(context) {
         add(TextView(context).apply {
             this.text = text
             textSize = TEXT_SECONDARY
-            typeface = font_regular
+            typeface = fontRegular
             includeFontPadding = false
             setTextColor(context.getColor(R.color.windowTextSecondary))
             setPadding(16.dp(context), 0, 16.dp(context), 0)

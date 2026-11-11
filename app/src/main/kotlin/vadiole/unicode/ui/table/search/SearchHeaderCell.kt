@@ -9,7 +9,7 @@ import vadiole.unicode.R
 import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.wrapContent
 
 class SearchHeaderCell(context: Context) : TextView(context) {
@@ -19,7 +19,7 @@ class SearchHeaderCell(context: Context) : TextView(context) {
         setPadding(16.dp(context), 8.dp(context), 16.dp(context), 8.dp(context))
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
-        typeface = font_regular
+        typeface = fontRegular
         textSize = TEXT_SECONDARY
         setTextColor(context.getColor(R.color.windowTextSecondary))
         text = context.getString(R.string.search_recents)

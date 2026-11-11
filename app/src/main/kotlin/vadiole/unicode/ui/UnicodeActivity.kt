@@ -12,6 +12,7 @@ import android.window.BackEvent
 import android.window.OnBackAnimationCallback
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,6 @@ import kotlinx.coroutines.launch
 import vadiole.unicode.R
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.data.CodePoint
-import vadiole.unicode.ui.common.insetsController
 import vadiole.unicode.ui.common.isDarkMode
 
 class UnicodeActivity : Activity() {
@@ -110,6 +110,7 @@ class UnicodeActivity : Activity() {
     }
 
     private fun updateSystemBars(isDarkMode: Boolean) {
+        val insetsController = WindowCompat.getInsetsController(window, window.decorView)
         insetsController.isAppearanceLightStatusBars = !isDarkMode
         insetsController.isAppearanceLightNavigationBars = !isDarkMode
     }

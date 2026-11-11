@@ -25,7 +25,7 @@ import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.onClick
+import vadiole.unicode.ui.common.onClick
 
 class SettingsScreen(
     context: Context,

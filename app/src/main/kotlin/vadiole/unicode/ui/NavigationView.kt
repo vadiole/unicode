@@ -26,7 +26,7 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.details.DetailsSheet
-import vadiole.unicode.ui.extension.isVisible
+import androidx.core.view.isVisible
 import vadiole.unicode.ui.settings.AboutScreen
 import vadiole.unicode.ui.settings.SettingsScreen
 import vadiole.unicode.ui.table.TableController

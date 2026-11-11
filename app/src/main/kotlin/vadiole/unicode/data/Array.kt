@@ -1,4 +1,4 @@
-package vadiole.unicode.ui.extension
+package vadiole.unicode.data
 
 fun <T> Array<T>.binarySearch(fromIndex: Int = 0, toIndex: Int = size, comparison: (T) -> Int): Int {
     rangeCheck(size, fromIndex, toIndex)
@@ -27,8 +27,4 @@ private fun rangeCheck(size: Int, fromIndex: Int, toIndex: Int) {
         fromIndex < 0 -> throw IndexOutOfBoundsException("fromIndex ($fromIndex) is less than zero.")
         toIndex > size -> throw IndexOutOfBoundsException("toIndex ($toIndex) is greater than size ($size).")
     }
-}
-
-inline fun <T> Array<out T>.filterMaybe(predicate: (T) -> Boolean): List<T> {
-    return filterTo(ArrayList(size), predicate)
 }

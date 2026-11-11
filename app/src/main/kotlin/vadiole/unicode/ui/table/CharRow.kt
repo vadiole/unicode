@@ -53,7 +53,7 @@ class CharRow(
     }
     private val longClickDuration: Long = ViewConfiguration.getLongPressTimeout().toLong()
     private val ripplePaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val baseCharSize = 144f.dp(context) / count
+    private val baseCharSize = 18f.dp(context)
     val charSize: Float
         get() = baseCharSize * characterScale
     private val abbreviationSize: Float
@@ -101,7 +101,7 @@ class CharRow(
     private var charCoordY: Float = 0f
     private var abbreviationCoordY: Float = 0f
     private var charPivotY: Float = 0f
-    private val maxRippleRadius = 200f.dp(context) / count
+    private val maxRippleRadius = 25f.dp(context)
     private val rippleInset = 1.5f.dp(context)
     private var rippleRadius: Float = maxRippleRadius
     private var actionDownIndex = -1

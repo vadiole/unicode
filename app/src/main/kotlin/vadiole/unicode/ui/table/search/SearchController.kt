@@ -7,7 +7,7 @@ import vadiole.unicode.data.UnicodeStorage
 import vadiole.unicode.data.config.RecentRepository
 import vadiole.unicode.search.SearchKind
 import vadiole.unicode.search.SearchResults
-import vadiole.unicode.ui.extension.worker
+import vadiole.unicode.data.worker
 
 class SearchController(
     private val unicodeStorage: UnicodeStorage,

@@ -66,10 +66,14 @@ class Nav(private val container: FrameLayout) {
         }
     }
 
-    private fun fadeGate(t: Long): Float = when {
-        t < 50L -> 0f
-        t <= 133L -> (t - 50f) / 83f
-        else -> 1f
+    private fun fadeIn(t: Float): Float = ((t - 50f) / 83f).coerceIn(0f, 1f)
+
+    private fun fadeOut(t: Float): Float = 1f - ((t - 35f) / 83f).coerceIn(0f, 1f)
+
+    private fun setFade(screen: View, alpha: Float) {
+        screen.alpha = alpha
+        val layerType = if (alpha > 0f && alpha < 1f) View.LAYER_TYPE_HARDWARE else View.LAYER_TYPE_NONE
+        if (screen.layerType != layerType) screen.setLayerType(layerType, null)
     }
 
     fun setRoot(screen: Screen) {
@@ -101,15 +105,16 @@ class Nav(private val container: FrameLayout) {
         previous?.alpha = 1f
 
         runTransition(
+            interpolator = linear,
             onUpdate = { f ->
-                val t = (f * DURATION).toLong()
-                screen.translationX = offset * (1f - f)
-                screen.alpha = fadeGate(t)
-                previous?.translationX = round(-offset * f)
+                val e = emphasized.getInterpolation(f)
+                screen.translationX = offset * (1f - e)
+                setFade(screen, fadeIn(f * DURATION))
+                previous?.translationX = round(-offset * e)
             },
             onEnd = {
                 screen.translationX = 0f
-                screen.alpha = 1f
+                setFade(screen, 1f)
                 previous?.let { if (it !in stack) container.removeView(it) else it.visibility = View.INVISIBLE }
             },
         )
@@ -190,10 +195,12 @@ class Nav(private val container: FrameLayout) {
         previous.alpha = 1f
 
         runTransition(
+            interpolator = linear,
             onUpdate = { f ->
-                top.translationX = offset * f
-                top.alpha = 1f - f
-                previous.translationX = round(-offset * (1f - f))
+                val e = emphasized.getInterpolation(f)
+                top.translationX = offset * e
+                setFade(top, fadeOut(f * DURATION))
+                previous.translationX = round(-offset * (1f - e))
             },
             onEnd = {
                 previous.translationX = 0f
@@ -295,7 +302,7 @@ class Nav(private val container: FrameLayout) {
                 previous.scaleY = scale
                 previous.translationX = fromTx * (1f - e)
                 previous.translationY = fromTy * (1f - e)
-                scrim?.alpha = (SCRIM_ALPHA * (1f - f / SCRIM_FADE)).toInt().coerceAtLeast(0)
+                scrim?.alpha = (SCRIM_ALPHA * (1f - f * DURATION / SCRIM_FADE)).toInt().coerceAtLeast(0)
             },
             onEnd = {
                 clearBackVisuals(top, previous)
@@ -448,6 +455,6 @@ class Nav(private val container: FrameLayout) {
         const val EDGE_MARGIN = 16f
         const val SCRIM_ALPHA = 77
         const val FADE_OUT = 0.2f
-        const val SCRIM_FADE = 0.5f
+        const val SCRIM_FADE = 225f
     }
 }

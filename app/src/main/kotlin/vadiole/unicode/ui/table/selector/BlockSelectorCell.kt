@@ -18,7 +18,7 @@ import vadiole.unicode.data.BlockList
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.addSquircle
 import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
@@ -66,7 +66,7 @@ class BlockSelectorCell(context: Context) : TextView(context) {
         minHeight = 48.dp(context)
         setTextColor(this.context.getColor(R.color.windowTextPrimary))
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_BODY)
-        typeface = font_regular
+        typeface = fontRegular
         gravity = Gravity.CENTER_VERTICAL
         includeFontPadding = false
         setPaddingRelative(textStart(context), 4.dp(context), 16.dp(context), 4.dp(context))

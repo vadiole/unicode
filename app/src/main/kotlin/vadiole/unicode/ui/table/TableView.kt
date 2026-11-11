@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.showsLayoutBounds
 import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.extension.setPaddingHorizontal
 
 class TableView(
     context: Context,
@@ -34,7 +33,6 @@ class TableView(
         layoutManager = tableLayoutManager
         setItemViewCacheSize(spanCount * 2)
         setAdapter(adapter)
-        setPaddingHorizontal(8.dp(context))
     }
 
     override fun onScrolled(dx: Int, dy: Int) {
