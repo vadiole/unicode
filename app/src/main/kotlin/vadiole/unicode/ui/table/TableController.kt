@@ -47,11 +47,7 @@ class TableController(
         unicodeStorage.search.whenReady { if (continuation.isActive) continuation.resume(Unit) }
     }
 
-    fun needsRevalidation(): Boolean {
-        if (isRevalidated) return false
-        isRevalidated = true
-        return true
-    }
+    fun needsRevalidation() = !isRevalidated
 
     fun loadCache(): Boolean {
         val showAll = userConfig.showUnsupportedChars
@@ -95,6 +91,7 @@ class TableController(
         val paint = if (background) Paint() else glyphPaint
         val codePoints = unicodeStorage.getCodePoints(-1, background) { showAll || paint.hasGlyph(it) }
         if (showAll != userConfig.showUnsupportedChars) return false
+        isRevalidated = true
         val isChanged = !codePoints.storage.contentEquals(tableChars.storage)
         tableChars = codePoints
         totalChars = codePoints.size
@@ -296,15 +293,13 @@ class TableController(
         private var latest: LatestCache? = null
 
         fun preload(storage: UnicodeStorage, showAll: Boolean) {
-            val task = FutureTask {
-                TableCache.read(cacheFile(storage), cacheKey(storage, showAll)) ?: run {
-                    storage.data()
-                    null
-                }
-            }
+            val task = FutureTask { TableCache.read(cacheFile(storage), cacheKey(storage, showAll)) }
             preloaded = task
             preloadedShowAll = showAll
-            Thread(task, "table-cache").start()
+            Thread({
+                task.run()
+                if (task.get() == null) storage.data()
+            }, "table-cache").start()
         }
 
         private class LatestCache(val showAll: Boolean, val cache: TableCache)
