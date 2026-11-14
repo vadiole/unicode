@@ -6,6 +6,7 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.TypedValue
 import android.view.Choreographer
+import android.view.ContextMenu
 import android.view.Gravity
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -36,9 +37,7 @@ class SearchField(context: Context, private val onQueryChanged: (String) -> Unit
     }
 
     init {
-        val cursorDrawable = context.getDrawable(R.drawable.cursor)!!
-        cursorDrawable.setTint(this.context.getColor(R.color.searchFieldCursor))
-        setCursorDrawable(cursorDrawable)
+        setCursorDrawable(R.drawable.cursor)
         setTextColor(this.context.getColor(R.color.windowTextPrimary))
         setHintTextColor(this.context.getColor(R.color.windowTextSecondary))
         highlightColor = this.context.getColor(R.color.windowTextSelection)
@@ -58,6 +57,15 @@ class SearchField(context: Context, private val onQueryChanged: (String) -> Unit
         super.onDetachedFromWindow()
         choreographer.removeFrameCallback(reportQuery)
         isReportScheduled = false
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu) {
+        try {
+            super.onCreateContextMenu(menu)
+        } catch (e: RuntimeException) {
+            // Honor Pad 9 API 34 theme resolves action mode icons to a pointer-icon: https://play.google.com/console/developers/4763171503902347202/app/4974791172247945696/vitals/crashes/5faded67c504eae0f9a9f71e8f64ccac/details
+            menu.clear()
+        }
     }
 
     override fun drawableStateChanged() {

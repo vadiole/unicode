@@ -1,11 +1,11 @@
 package vadiole.unicode.ui.common
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
 import androidx.annotation.Px
 
@@ -21,15 +21,15 @@ fun TextView.setLineHeightCompat(
     }
 }
 
-fun EditText.setCursorDrawable(drawable: Drawable) {
+fun EditText.setCursorDrawable(@DrawableRes drawable: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-        textCursorDrawable = drawable
+        setTextCursorDrawable(drawable)
     } else {
         try {
-            @SuppressLint("BlockedPrivateApi")
-            val field = TextView::class.java.getDeclaredField("mCursorDrawable")
+            @SuppressLint("DiscouragedPrivateApi")
+            val field = TextView::class.java.getDeclaredField("mCursorDrawableRes")
             field.isAccessible = true
-            field.set(this, drawable)
+            field.setInt(this, drawable)
         } catch (throwable: Throwable) {
             Log.e("EditText", "Reflection", throwable)
         }
