@@ -1,5 +1,6 @@
 package vadiole.unicode.ui.common
 
+import android.content.ActivityNotFoundException
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -24,5 +25,9 @@ fun Context.share(text: CharSequence) {
     val intent = Intent(ACTION_SEND)
         .putExtra(EXTRA_TEXT, text)
         .setType("text/plain")
-    startActivity(intent)
+    try {
+        startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        Log.e("Share", "No activity to share", e)
+    }
 }

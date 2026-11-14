@@ -53,7 +53,7 @@
             android:name=".ui.SendCrashActivity"
             android:autoRemoveFromRecents="true"
             android:excludeFromRecents="true"
-            android:exported="true"
+            android:exported="false"
             android:finishOnTaskLaunch="true"
             android:label=""
             android:launchMode="singleTask"
@@ -61,14 +61,7 @@
             android:process=":sendcrash"
             android:taskAffinity=":sendcrash"
             android:theme="@style/Theme.Dialog.Transparent"
-            android:windowSoftInputMode="stateHidden">
-
-            <intent-filter>
-                <action android:name="vadiole.unicode.SEND_CRASH" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

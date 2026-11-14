@@ -31,8 +31,7 @@ class UncaughtExceptionHandler(private val context: Context) : UncaughtException
             createNewFile()
             writeText(outputText)
         }
-        val intent = Intent()
-            .setAction("vadiole.unicode.SEND_CRASH")
+        val intent = Intent(context, SendCrashActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME)
             .addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS or Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NO_ANIMATION)
             .putExtra(SendCrashActivity.STACKTRACE_FILE_PATH, stackTraceFile.canonicalPath)

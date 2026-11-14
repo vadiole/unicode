@@ -26,7 +26,8 @@ class SendCrashActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState != null) finish()
-        Process.killProcess(intent.getIntExtra(MAIN_PROCESS_PID, -1))
+        val mainPid = intent.getIntExtra(MAIN_PROCESS_PID, -1)
+        if (mainPid > 0) Process.killProcess(mainPid)
         val stacktracePath = intent.getStringExtra(STACKTRACE_FILE_PATH) ?: return
         val userConfig = UserConfig(this)
         dialog = AlertDialog.Builder(this)
