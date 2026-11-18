@@ -8,7 +8,6 @@ import androidx.core.view.ViewCompat.setAccessibilityHeading
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.updatePadding
 import vadiole.unicode.R
-import vadiole.unicode.ui.extension.onClick
 
 class SettingsTopBar(context: Context, title: String, onBack: () -> Unit) : FrameLayout(context) {
     private val barHeight = 48.dp(context)
@@ -27,7 +26,7 @@ class SettingsTopBar(context: Context, title: String, onBack: () -> Unit) : Fram
         }, frameParams(56.dp(context), barHeight, Gravity.LEFT or Gravity.BOTTOM))
         addView(TextView(context).apply {
             textSize = TEXT_TITLE
-            typeface = font_semibold
+            typeface = fontSemibold
             includeFontPadding = false
             gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
             setTextColor(context.getColor(R.color.windowTextPrimary))
@@ -35,7 +34,7 @@ class SettingsTopBar(context: Context, title: String, onBack: () -> Unit) : Fram
             setAccessibilityHeading(this, true)
         }, frameParams(wrapContent, barHeight, Gravity.LEFT or Gravity.BOTTOM, marginLeft = 56.dp(context)))
         setOnApplyWindowInsetsListener(this) { _, insets ->
-            updatePadding(top = insets.statusBars.top)
+            updatePadding(left = insets.systemBarsAndCutout.left, top = insets.statusBars.top, right = insets.systemBarsAndCutout.right)
             insets
         }
     }

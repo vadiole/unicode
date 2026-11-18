@@ -29,6 +29,8 @@
     <string name="settings_dock">Toque para coletar</string>
     <string name="settings_search_at_top">Pesquisa no topo</string>
     <string name="settings_show_unsupported">Mostrar caracteres não compatíveis</string>
+    <string name="settings_character_size_in_table">Tamanho dos caracteres na tabela</string>
+    <string name="settings_enlarge_small_chars">Ampliar caracteres pequenos</string>
     <string name="settings_crash_reports">Relatórios de erro</string>
     <string name="settings_save_recents">Salvar caracteres recentes</string>
     <string name="settings_clear_recents">Limpar caracteres recentes</string>

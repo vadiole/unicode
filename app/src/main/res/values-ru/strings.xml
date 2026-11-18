@@ -29,6 +29,8 @@
     <string name="settings_dock">Собирать нажатием</string>
     <string name="settings_search_at_top">Поиск сверху</string>
     <string name="settings_show_unsupported">Показывать неподдерживаемые символы</string>
+    <string name="settings_character_size_in_table">Размер символов в таблице</string>
+    <string name="settings_enlarge_small_chars">Увеличивать мелкие символы</string>
     <string name="settings_crash_reports">Отчёты о сбоях</string>
     <string name="settings_save_recents">Сохранять недавние символы</string>
     <string name="settings_clear_recents">Очистить недавние символы</string>

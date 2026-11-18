@@ -21,7 +21,7 @@ import vadiole.unicode.ui.table.FastScrollView
 internal object BlockSelectorGeometry {
     const val CORNER_RADIUS_DP = 16
     const val FLOATING_INSET_DP = 8f
-    const val CONTENT_VERTICAL_PADDING_DP = 8
+    const val CONTENT_VERTICAL_PADDING_DP = 10
     const val ARROW_WIDTH_DP = 24f
     const val ARROW_HEIGHT_DP = 11f
     const val ARROW_OVERLAP_DP = 4f

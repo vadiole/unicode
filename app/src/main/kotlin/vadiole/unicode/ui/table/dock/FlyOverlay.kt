@@ -4,10 +4,8 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.View
-import androidx.dynamicanimation.animation.FloatValueHolder
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import vadiole.unicode.R
+import vadiole.unicode.ui.common.SpringAnimator
 import vadiole.unicode.ui.common.dp
 import kotlin.math.hypot
 
@@ -136,25 +134,21 @@ class FlyOverlay(context: Context, private val delegate: Delegate) : View(contex
         var slotRight = 0f
         var end = 0
         var away = 0f
-        val progress = FloatValueHolder()
-        private val progressSpring = SpringAnimation(progress).apply {
-            spring = SpringForce(1f).apply {
-                dampingRatio = 0.85f
-            }
-            setMinimumVisibleChange(0.001f)
-            addUpdateListener { _, value, _ ->
-                if (value >= LANDING) land() else invalidate()
-            }
-        }
+        val progress = SpringAnimator(
+            stiffness = BASE_STIFFNESS,
+            dampingRatio = 0.85f,
+            minVisibleChange = 0.001f,
+            onUpdate = { if (it >= LANDING) land() else invalidate() },
+        )
+
         fun start(stiffness: Float) {
+            progress.stiffness = stiffness
             progress.value = 0f
-            progressSpring.spring.stiffness = stiffness
-            progressSpring.setStartValue(0f)
-            progressSpring.start()
+            progress.animateTo(1f)
         }
 
         fun stop() {
-            progressSpring.cancel()
+            progress.cancel()
         }
 
         private fun land() {

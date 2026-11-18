@@ -10,19 +10,22 @@ import android.view.animation.PathInterpolator
 import android.view.animation.ScaleAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import vadiole.unicode.data.Block
+import vadiole.unicode.data.BlockList
 import vadiole.unicode.ui.common.CollectionItemDecoration
 import vadiole.unicode.ui.common.CollectionView
 import vadiole.unicode.ui.common.dp
 
 class BlockSelectorView(
     context: Context,
-    private val blocks: Array<Block>,
+    blockList: BlockList,
     private val delegate: Delegate,
 ) : CollectionView(context) {
     interface Delegate {
         fun onBlockSelected(block: Block)
     }
 
+    private val blocks = blockList.blocks
+    private val iconList = blockList
     private val floatingInset = BlockSelectorGeometry.FLOATING_INSET_DP.dp(context)
     private val topMargin = (
         BlockSelectorGeometry.ARROW_HEIGHT_DP.dp(context) -
@@ -40,7 +43,7 @@ class BlockSelectorView(
         override fun onBindViewHolder(holder: Cell, position: Int) {
             val block = blocks[position]
             val cell = holder.itemView as BlockSelectorCell
-            cell.text = block.name
+            cell.bind(block.name, iconList, position)
             cell.setOnClickListener {
                 delegate.onBlockSelected(block)
             }
@@ -52,12 +55,35 @@ class BlockSelectorView(
     }
 
     var onScrollProgressChanged: ((Float, Boolean) -> Unit)? = null
-    private val divider = CollectionItemDecoration(leftPadding = 14f.dp(context))
+    private val divider = CollectionItemDecoration(leftPadding = BlockSelectorCell.textStart(context).toFloat())
     private val measuringCell = BlockSelectorCell(context)
     private val rowHeights = IntArray(blocks.size)
     private var rowWidth = 0
     private var viewportHeight = 0
     private var maxScrollPosition = 0f
+    private var currentPosition = -1
+    private var pressedCell: BlockSelectorCell? = null
+    private val pressCurrent = Runnable {
+        releasePressed()
+        val cell = blockSelectorLayoutManager.findViewByPosition(currentPosition) as? BlockSelectorCell ?: return@Runnable
+        cell.background.setHotspot(cell.iconCenterX, cell.height / 2f)
+        cell.isPressed = true
+        pressedCell = cell
+        post(releaseCurrent)
+    }
+    private val releaseCurrent = Runnable { releasePressed() }
+
+    private fun releasePressed() {
+        pressedCell?.isPressed = false
+        pressedCell = null
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        removeCallbacks(pressCurrent)
+        removeCallbacks(releaseCurrent)
+        releasePressed()
+    }
 
     init {
         recycledViewPool.setMaxRecycledViews(0, 32)
@@ -162,6 +188,33 @@ class BlockSelectorView(
         blockSelectorLayoutManager.scrollToPositionWithOffset(position, -offset)
     }
 
+    fun showCurrent(position: Int) {
+        removeCallbacks(pressCurrent)
+        removeCallbacks(releaseCurrent)
+        releasePressed()
+        if (position < 0) return
+        if (rowWidth == 0) rowWidth = calculateWidth() - paddingLeft - paddingRight
+        val viewport = (if (height > 0) height else calculateHeight()) - paddingTop - paddingBottom
+        if (!isRowVisible(position, viewport)) {
+            blockSelectorLayoutManager.scrollToPositionWithOffset(position, (viewport - rowHeight(position)) / 2)
+        }
+        currentPosition = position
+        postDelayed(pressCurrent, CURRENT_RIPPLE_DELAY)
+    }
+
+    private fun isRowVisible(position: Int, viewport: Int): Boolean {
+        if (height > 0) {
+            val view = blockSelectorLayoutManager.findViewByPosition(position) ?: return false
+            return view.top >= paddingTop && view.bottom <= paddingTop + viewport
+        }
+        var bottom = 0
+        for (row in 0..position) {
+            bottom += rowHeight(row)
+            if (bottom > viewport) return false
+        }
+        return true
+    }
+
     fun calculateWidth(): Int {
         val displayWidth = context.resources.displayMetrics.widthPixels
         return 500.dp(context).coerceAtMost((displayWidth * .95f).toInt())
@@ -173,6 +226,7 @@ class BlockSelectorView(
     }
 
     companion object {
+        private const val CURRENT_RIPPLE_DELAY = 200L
         private val showInterpolator = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     }
 }

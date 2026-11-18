@@ -21,14 +21,13 @@ import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.ViewCompat.replaceAccessibilityAction
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat
-import androidx.dynamicanimation.animation.FloatValueHolder
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.abs
 import kotlin.math.ceil
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.IconButton
+import vadiole.unicode.ui.common.SpringAnimator
 import vadiole.unicode.ui.common.TEXT_CAPTION
 import vadiole.unicode.ui.common.TEXT_SECONDARY
 import vadiole.unicode.ui.common.animatorsEnabled
@@ -37,11 +36,11 @@ import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.linearParams
 import vadiole.unicode.ui.common.matchParent
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.rippleDrawable
 import vadiole.unicode.ui.common.wrapContent
-import vadiole.unicode.ui.extension.onClick
-import vadiole.unicode.ui.extension.onLongClick
+import vadiole.unicode.ui.common.onClick
+import vadiole.unicode.ui.common.onLongClick
 
 class DockView(context: Context, private val delegate: Delegate) : LinearLayout(context) {
     interface Delegate {
@@ -66,6 +65,8 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         get() = contentHeight + if (tipView.visibility == VISIBLE) tipHeight else 0
     private val buttonWidth = 48.dp(context)
     private val edgePadding = 4.dp(context)
+    private var leftInset = -1
+    private var rightInset = -1
     private val backspaceExtraLeft = (contentHeight - buttonWidth) / 2
     private val easeOut = PathInterpolator(0.23f, 1f, 0.32f, 1f)
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
@@ -75,7 +76,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     }
     private val tipView = TextView(context).apply {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_CAPTION)
-        typeface = font_regular
+        typeface = fontRegular
         includeFontPadding = false
         gravity = Gravity.CENTER
         isSingleLine = true
@@ -87,7 +88,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     private val emptyHint = TextView(context).apply {
         setText(R.string.dock_tip_collect)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, TEXT_SECONDARY)
-        typeface = font_regular
+        typeface = fontRegular
         includeFontPadding = false
         gravity = Gravity.CENTER
         setPadding(16.dp(context), 4.dp(context), 16.dp(context), 4.dp(context))
@@ -158,7 +159,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     }
     private var hasContent = true
     private var tip = Tip.Hidden
-    private var collapseAnimator: ValueAnimator? = null
+    private var tipAnimator: ValueAnimator? = null
     private val tmpLocation = IntArray(2)
 
     init {
@@ -177,8 +178,22 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         addView(row, linearParams(matchParent, contentHeight))
     }
 
-    fun setBottomInset(inset: Int) {
-        if (paddingBottom != inset) setPadding(0, 0, 0, inset)
+    fun setInsets(left: Int, right: Int, bottom: Int) {
+        if (paddingBottom != bottom) setPadding(0, 0, 0, bottom)
+        if (left == leftInset && right == rightInset) return
+        leftInset = left
+        rightInset = right
+        val center = maxOf(left, right)
+        tipView.updateLayoutParams<MarginLayoutParams> {
+            leftMargin = center
+            rightMargin = center
+        }
+        emptyHint.updateLayoutParams<MarginLayoutParams> {
+            leftMargin = center
+            rightMargin = center
+        }
+        scrollView.updateLayoutParams<MarginLayoutParams> { leftMargin = left }
+        backspaceButton.updateLayoutParams<MarginLayoutParams> { rightMargin = edgePadding + right }
     }
 
     val textWidth: Float
@@ -220,42 +235,47 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
     fun setTip(value: Tip, animate: Boolean) {
         if (tip == value) return
         tip = value
+        tipAnimator?.removeAllListeners()
+        tipAnimator?.cancel()
+        tipAnimator = null
         val canAnimate = animate && isLaidOut && animatorsEnabled
-        if (value == Tip.Hidden) {
-            if (canAnimate) collapseTip() else hideTip()
-        } else {
-            collapseAnimator?.removeAllListeners()
-            collapseAnimator?.cancel()
-            collapseAnimator = null
-            row.translationY = 0f
-            delegate.onTipCollapse(0f)
+        val hidden = value == Tip.Hidden
+        if (!hidden) {
+            if (tipView.visibility == GONE) setTipCollapse(1f)
             tipView.setText(R.string.dock_tip_copy)
-            tipView.alpha = 1f
             tipView.visibility = VISIBLE
+        }
+        if (canAnimate) {
+            val start = -row.translationY / tipHeight
+            val end = if (hidden) 1f else 0f
+            tipAnimator = ValueAnimator.ofFloat(start, end).apply {
+                duration = (250 * abs(end - start)).toLong()
+                interpolator = easeOut
+                addUpdateListener { setTipCollapse(it.animatedValue as Float) }
+                addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        tipAnimator = null
+                        if (hidden) hideTip()
+                    }
+                })
+                start()
+            }
+        } else if (hidden) {
+            hideTip()
+        } else {
+            setTipCollapse(0f)
         }
     }
 
-    private fun collapseTip() {
-        collapseAnimator?.cancel()
-        val height = tipHeight.toFloat()
-        collapseAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
-            duration = 250
-            interpolator = easeOut
-            addUpdateListener {
-                val f = it.animatedValue as Float
-                tipView.alpha = (1f - f / 0.6f).coerceAtLeast(0f)
-                row.translationY = -height * f
-                delegate.onTipCollapse(height * f)
-            }
-            addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) = hideTip()
-            })
-            start()
-        }
+    private fun setTipCollapse(fraction: Float) {
+        val offset = tipHeight * fraction
+        tipView.alpha = (1f - fraction / 0.6f).coerceAtLeast(0f)
+        row.translationY = -offset
+        delegate.onTipCollapse(offset)
     }
 
     private fun hideTip() {
-        collapseAnimator = null
+        tipAnimator = null
         if (tipView.visibility == GONE) return
         tipView.visibility = GONE
         tipView.alpha = 1f
@@ -331,7 +351,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         stopTap()
         backspaceButton.animate().cancel()
         tipView.animate().cancel()
-        collapseAnimator?.end()
+        tipAnimator?.end()
     }
 
     private class DockTextView(context: Context) : View(context) {
@@ -350,19 +370,17 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
         private var charBaseline = 0f
         private var popProgress = 1f
         private var isBounce = false
-        private val bounceHolder = FloatValueHolder(1f)
-        private val bounceSpring = SpringAnimation(bounceHolder).apply {
-            spring = SpringForce(1f).apply {
-                stiffness = 700f
-                dampingRatio = 0.35f
-            }
-            setMinimumVisibleChange(0.001f)
-            addUpdateListener { _, _, _ -> invalidate() }
-            addEndListener { _, _, _, _ ->
+        private val bounceSpring = SpringAnimator(
+            stiffness = 700f,
+            dampingRatio = 0.35f,
+            minVisibleChange = 0.001f,
+            value = 1f,
+            onUpdate = { invalidate() },
+            onEnd = {
                 isBounce = false
                 invalidate()
-            }
-        }
+            },
+        )
         private val popAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
             duration = 120
             interpolator = PathInterpolator(0.23f, 1f, 0.32f, 1f)
@@ -415,9 +433,9 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
                 isBounce = bounce
                 if (bounce) {
                     popProgress = 1f
-                    bounceHolder.value = 1f
-                    bounceSpring.setStartVelocity(BOUNCE_VELOCITY)
-                    bounceSpring.start()
+                    bounceSpring.value = 1f
+                    bounceSpring.velocity = BOUNCE_VELOCITY
+                    bounceSpring.animateTo(1f)
                 } else {
                     popProgress = 0f
                     popAnimator.start()
@@ -450,7 +468,7 @@ class DockView(context: Context, private val delegate: Delegate) : LinearLayout(
             }
             if (popStart > 0) canvas.drawText(text, 0, popStart, x, charBaseline, charPaint)
             val popX = x + popStartWidth
-            val scale = if (isBounce) bounceHolder.value else 0.9f + 0.1f * popProgress
+            val scale = if (isBounce) bounceSpring.value else 0.9f + 0.1f * popProgress
             val count = canvas.save()
             canvas.scale(scale, scale, popX + (popEndWidth - popStartWidth) / 2f, height / 2f)
             charPaint.alpha = (255 * popProgress).toInt()

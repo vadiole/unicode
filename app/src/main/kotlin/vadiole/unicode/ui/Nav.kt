@@ -16,6 +16,7 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
 import kotlin.math.abs
+import kotlin.math.round
 import vadiole.unicode.R
 import vadiole.unicode.ui.common.Screen
 
@@ -38,6 +39,11 @@ class Nav(private val container: FrameLayout) {
     private var leaving: Screen? = null
 
     private var cachedCornerRadius = -1f
+    private var revealedScreen: Screen? = null
+    private var peekCancel: (() -> Unit)? = null
+    private var revealedTranslationX = 0f
+    private var revealedVisibility = View.INVISIBLE
+    private var revealedAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_AUTO
 
     private val emphasized = PathInterpolator(Path().apply {
         moveTo(0f, 0f)
@@ -60,10 +66,14 @@ class Nav(private val container: FrameLayout) {
         }
     }
 
-    private fun fadeGate(t: Long): Float = when {
-        t < 50L -> 0f
-        t <= 133L -> (t - 50f) / 83f
-        else -> 1f
+    private fun fadeIn(t: Float): Float = ((t - 50f) / 83f).coerceIn(0f, 1f)
+
+    private fun fadeOut(t: Float): Float = 1f - ((t - 35f) / 83f).coerceIn(0f, 1f)
+
+    private fun setFade(screen: View, alpha: Float) {
+        screen.alpha = alpha
+        val layerType = if (alpha > 0f && alpha < 1f) View.LAYER_TYPE_HARDWARE else View.LAYER_TYPE_NONE
+        if (screen.layerType != layerType) screen.setLayerType(layerType, null)
     }
 
     fun setRoot(screen: Screen) {
@@ -74,6 +84,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun push(screen: Screen) {
+        cancelPeek()
         clearBackState()
         val exiting = leaving
         if (exiting != null) {
@@ -94,15 +105,16 @@ class Nav(private val container: FrameLayout) {
         previous?.alpha = 1f
 
         runTransition(
+            interpolator = linear,
             onUpdate = { f ->
-                val t = (f * DURATION).toLong()
-                screen.translationX = offset * (1f - f)
-                screen.alpha = fadeGate(t)
-                previous?.translationX = -offset * f
+                val e = emphasized.getInterpolation(f)
+                screen.translationX = offset * (1f - e)
+                setFade(screen, fadeIn(f * DURATION))
+                previous?.translationX = round(-offset * e)
             },
             onEnd = {
                 screen.translationX = 0f
-                screen.alpha = 1f
+                setFade(screen, 1f)
                 previous?.let { if (it !in stack) container.removeView(it) else it.visibility = View.INVISIBLE }
             },
         )
@@ -161,6 +173,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun pop(): Boolean {
+        cancelPeek()
         if (stack.size <= 1) return false
         if (backProgress >= 0f) {
             commitBack()
@@ -182,10 +195,12 @@ class Nav(private val container: FrameLayout) {
         previous.alpha = 1f
 
         runTransition(
+            interpolator = linear,
             onUpdate = { f ->
-                top.translationX = offset * f
-                top.alpha = 1f - f
-                previous.translationX = -offset * (1f - f)
+                val e = emphasized.getInterpolation(f)
+                top.translationX = offset * e
+                setFade(top, fadeOut(f * DURATION))
+                previous.translationX = round(-offset * (1f - e))
             },
             onEnd = {
                 previous.translationX = 0f
@@ -199,6 +214,7 @@ class Nav(private val container: FrameLayout) {
     }
 
     fun startBack(fromLeft: Boolean = true, touchY: Float = 0f) {
+        cancelPeek()
         if (stack.size <= 1) return
         transition?.end()
         clearBackState()
@@ -286,7 +302,7 @@ class Nav(private val container: FrameLayout) {
                 previous.scaleY = scale
                 previous.translationX = fromTx * (1f - e)
                 previous.translationY = fromTy * (1f - e)
-                scrim?.alpha = (SCRIM_ALPHA * (1f - f / SCRIM_FADE)).toInt().coerceAtLeast(0)
+                scrim?.alpha = (SCRIM_ALPHA * (1f - f * DURATION / SCRIM_FADE)).toInt().coerceAtLeast(0)
             },
             onEnd = {
                 clearBackVisuals(top, previous)
@@ -366,6 +382,35 @@ class Nav(private val container: FrameLayout) {
         return radius
     }
 
+    fun peekPrevious(onCancel: () -> Unit) {
+        if (revealedScreen != null || stack.size < 2 || backProgress >= 0f) return
+        transition?.end()
+        peekCancel = onCancel
+        val screen = stack[stack.lastIndex - 1]
+        revealedTranslationX = screen.translationX
+        revealedVisibility = screen.visibility
+        revealedAccessibility = screen.importantForAccessibility
+        revealedScreen = screen
+        screen.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+        screen.translationX = 0f
+        screen.visibility = View.VISIBLE
+    }
+
+    fun endPeek() {
+        val screen = revealedScreen ?: return
+        screen.translationX = revealedTranslationX
+        screen.visibility = revealedVisibility
+        screen.importantForAccessibility = revealedAccessibility
+        revealedScreen = null
+        peekCancel = null
+    }
+
+    private fun cancelPeek() {
+        val cancel = peekCancel
+        endPeek()
+        cancel?.invoke()
+    }
+
     fun current(): Screen? = stack.lastOrNull()
 
     fun canPop(): Boolean = stack.size > 1
@@ -410,6 +455,6 @@ class Nav(private val container: FrameLayout) {
         const val EDGE_MARGIN = 16f
         const val SCRIM_ALPHA = 77
         const val FADE_OUT = 0.2f
-        const val SCRIM_FADE = 0.5f
+        const val SCRIM_FADE = 225f
     }
 }

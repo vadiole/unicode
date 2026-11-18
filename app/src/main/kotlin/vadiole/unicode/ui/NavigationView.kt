@@ -11,9 +11,6 @@ import android.widget.FrameLayout
 import android.window.BackEvent
 import androidx.annotation.RequiresApi
 import androidx.core.view.doOnLayout
-import androidx.dynamicanimation.animation.DynamicAnimation
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.atan
@@ -24,11 +21,12 @@ import vadiole.unicode.UnicodeApp.Companion.recentRepository
 import vadiole.unicode.UnicodeApp.Companion.unicodeStorage
 import vadiole.unicode.UnicodeApp.Companion.userConfig
 import vadiole.unicode.data.CodePoint
+import vadiole.unicode.ui.common.SpringAnimator
 import vadiole.unicode.ui.common.dp
 import vadiole.unicode.ui.common.frameParams
 import vadiole.unicode.ui.common.matchParent
 import vadiole.unicode.ui.details.DetailsSheet
-import vadiole.unicode.ui.extension.isVisible
+import androidx.core.view.isVisible
 import vadiole.unicode.ui.settings.AboutScreen
 import vadiole.unicode.ui.settings.SettingsScreen
 import vadiole.unicode.ui.table.TableController
@@ -39,9 +37,27 @@ import vadiole.unicode.ui.table.search.SearchController
 class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private val scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val scaledMinimumFlingVelocity = ViewConfiguration.get(context).scaledMinimumFlingVelocity
-    private var openAnimation: SpringAnimation? = null
-    private var scaleXAnimation: SpringAnimation? = null
-    private var scaleYAnimation: SpringAnimation? = null
+    private val openAnimation = SpringAnimator(
+        SPRING_STIFFNESS,
+        onUpdate = { translationY ->
+            detailsSheet?.let { sheet ->
+                sheet.translationY = translationY
+                updateDimBackground(translationY, sheet.measuredHeight)
+            }
+        },
+        onEnd = { updateBackEnabled() },
+    )
+    private val scaleAnimation = SpringAnimator(
+        SPRING_STIFFNESS,
+        minVisibleChange = 0.002f,
+        value = 1f,
+        onUpdate = { scale ->
+            detailsSheet?.let { sheet ->
+                sheet.scaleX = scale
+                sheet.scaleY = scale
+            }
+        },
+    )
     private var isDetailsOpenOrOpening = false
     private var isBackGestureInProgress = false
     private var isNavBackInProgress = false
@@ -62,7 +78,7 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private var pendingCodePoint = CodePoint(-1)
     private var pendingCharSkipAnimation = false
     private val tableController = TableController(unicodeStorage, userConfig)
-    private val searchController = SearchController(unicodeStorage, recentRepository, userConfig)
+    private val searchController = SearchController(unicodeStorage, recentRepository)
     private val dockController = DockController(userConfig)
     private val tableDelegate = object : TableScreen.Delegate {
         override fun onShowDetails(codePoint: CodePoint) {
@@ -93,6 +109,11 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         override fun onBack() = hideSettings()
         override fun onShowUnsupportedCharsChanged() = tableScreen.reloadChars()
         override fun onDockEnabledChanged() = applyDockEnabled()
+        override fun onCharacterScaleChanged(value: Float) = tableScreen.setCharacterScale(value)
+        override fun onCharacterScaleAdjusting(adjusting: Boolean) = tableScreen.setCharacterScaleAdjusting(adjusting)
+        override fun onEnlargeSmallCharsChanged(enabled: Boolean) = tableScreen.setEnlargeSmallChars(enabled)
+        override fun onTableRevealStarted(onCancel: () -> Unit) = nav.peekPrevious(onCancel)
+        override fun onTableRevealEnded() = nav.endPeek()
         override fun onAbout() {
             val screen = AboutScreen(context) { hideSettings() }
             nav.push(screen)
@@ -131,10 +152,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
                 addView(dimView)
                 addView(detailsSheet)
                 detailsSheet.setDockEnabled(userConfig.dockEnabled)
-                if (!pendingCharSkipAnimation) {
-                    detailsSheet.doOnLayout {
-                        it.translationY = it.measuredHeight.toFloat()
-                    }
+                detailsSheet.doOnLayout {
+                    if (!isDetailsOpenOrOpening) it.translationY = it.measuredHeight.toFloat()
                 }
             }
             requestApplyInsets()
@@ -203,32 +222,22 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
     private fun hideSettings() {
         isNavBackInProgress = false
         tableScreen.setSearchAtTop(userConfig.searchAtTop)
+        tableScreen.refreshRecents()
         nav.pop()
         updateBackEnabled()
     }
 
     private fun startSpringAnimation(view: View, toPosition: Int, startVelocity: Float) {
-        openAnimation?.cancel()
-        openAnimation = SpringAnimation(view, DynamicAnimation.TRANSLATION_Y).apply {
-            spring = SpringForce(toPosition.toFloat()).apply {
-                stiffness = SPRING_STIFFNESS
-                dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-            }
-            setStartVelocity(startVelocity)
-            addUpdateListener { _, translationY, _ ->
-                updateDimBackground(translationY, view.measuredHeight)
-            }
-            addEndListener { _, _, _, _ ->
-                updateBackEnabled()
-            }
-            start()
-        }
+        openAnimation.cancel()
+        openAnimation.value = view.translationY
+        openAnimation.velocity = startVelocity
+        openAnimation.animateTo(toPosition.toFloat())
     }
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         if (isBackGestureInProgress) return false
         val content = detailsSheet ?: return false
-        if (event.actionMasked == MotionEvent.ACTION_DOWN) isGestureIgnored = !isDetailsOpenOrOpening && openAnimation?.isRunning != true
+        if (event.actionMasked == MotionEvent.ACTION_DOWN) isGestureIgnored = !isDetailsOpenOrOpening && !openAnimation.isRunning
         if (isGestureIgnored) return false
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
@@ -239,8 +248,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
                 if (isTouchOutside) {
                     return isDetailsOpenOrOpening
                 } else {
-                    if (openAnimation?.isRunning == true) {
-                        openAnimation?.cancel()
+                    if (openAnimation.isRunning) {
+                        openAnimation.cancel()
                         isDetailsOpenOrOpening = true
                         return true
                     }
@@ -359,9 +368,8 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
             return
         }
         val sheet = detailsSheet ?: return
-        openAnimation?.cancel()
-        scaleXAnimation?.cancel()
-        scaleYAnimation?.cancel()
+        openAnimation.cancel()
+        scaleAnimation.cancel()
         isBackGestureInProgress = true
         sheet.pivotX = sheet.measuredWidth / 2f
         sheet.pivotY = 0f
@@ -432,29 +440,15 @@ class NavigationView(context: Context) : FrameLayout(context), OnBackHandler {
         if (isBackGestureInProgress) {
             isBackGestureInProgress = false
         }
-        scaleXAnimation?.cancel()
-        scaleYAnimation?.cancel()
+        scaleAnimation.cancel()
         sheet.scaleX = 1f
         sheet.scaleY = 1f
     }
 
     private fun startScaleSpring(view: View, target: Float) {
-        scaleXAnimation?.cancel()
-        scaleXAnimation = SpringAnimation(view, DynamicAnimation.SCALE_X).apply {
-            spring = SpringForce(target).apply {
-                stiffness = SPRING_STIFFNESS
-                dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-            }
-            start()
-        }
-        scaleYAnimation?.cancel()
-        scaleYAnimation = SpringAnimation(view, DynamicAnimation.SCALE_Y).apply {
-            spring = SpringForce(target).apply {
-                stiffness = SPRING_STIFFNESS
-                dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-            }
-            start()
-        }
+        scaleAnimation.cancel()
+        scaleAnimation.value = view.scaleX
+        scaleAnimation.animateTo(target)
     }
 
     private fun updateBackEnabled() {

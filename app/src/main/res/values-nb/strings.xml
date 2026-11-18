@@ -29,6 +29,8 @@
     <string name="settings_dock">Trykk for å samle</string>
     <string name="settings_search_at_top">Søk øverst</string>
     <string name="settings_show_unsupported">Vis tegn som ikke støttes</string>
+    <string name="settings_character_size_in_table">Tegnstørrelse i tabell</string>
+    <string name="settings_enlarge_small_chars">Forstørr små tegn</string>
     <string name="settings_crash_reports">Krasjrapporter</string>
     <string name="settings_save_recents">Lagre siste tegn</string>
     <string name="settings_clear_recents">Tøm siste tegn</string>

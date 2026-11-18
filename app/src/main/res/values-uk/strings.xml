@@ -29,6 +29,8 @@
     <string name="settings_dock">Збирати дотиком</string>
     <string name="settings_search_at_top">Пошук угорі</string>
     <string name="settings_show_unsupported">Показувати непідтримувані символи</string>
+    <string name="settings_character_size_in_table">Розмір символів у таблиці</string>
+    <string name="settings_enlarge_small_chars">Збільшувати дрібні символи</string>
     <string name="settings_crash_reports">Звіти про збої</string>
     <string name="settings_save_recents">Зберігати останні символи</string>
     <string name="settings_clear_recents">Очистити останні символи</string>

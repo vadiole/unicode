@@ -44,6 +44,7 @@ class RecentRepository(private val context: Context, private val userConfig: Use
     }
 
     fun getRecents(): CodePointArray {
+        if (!userConfig.recentsEnabled) return CodePointArray(0)
         if (!loaded) load()
         return CodePointArray(recents.size) { index -> CodePoint(recents[index]) }
     }

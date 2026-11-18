@@ -29,6 +29,8 @@
     <string name="settings_dock">点按收集</string>
     <string name="settings_search_at_top">搜索栏置顶</string>
     <string name="settings_show_unsupported">显示不支持的字符</string>
+    <string name="settings_character_size_in_table">表中字符大小</string>
+    <string name="settings_enlarge_small_chars">放大较小的字符</string>
     <string name="settings_crash_reports">崩溃报告</string>
     <string name="settings_save_recents">保存最近使用的字符</string>
     <string name="settings_clear_recents">清除最近使用的字符</string>

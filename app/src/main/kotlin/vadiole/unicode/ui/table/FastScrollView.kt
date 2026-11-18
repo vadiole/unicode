@@ -26,7 +26,7 @@ import vadiole.unicode.ui.common.FloatingSurfaceDrawable
 import vadiole.unicode.ui.common.TEXT_BODY
 import vadiole.unicode.ui.common.addSquircle
 import vadiole.unicode.ui.common.dp
-import vadiole.unicode.ui.common.font_regular
+import vadiole.unicode.ui.common.fontRegular
 import vadiole.unicode.ui.common.sp
 
 class FastScrollView(
@@ -39,6 +39,7 @@ class FastScrollView(
         fun onFastScroll(progress: Float, precisionLevel: Int)
         fun onFastScrollEnd()
         fun getBlockName(progress: Float): String?
+        fun precisionProgress(anchor: Float, delta: Float): Float = anchor + delta
     }
 
     // Dimensions
@@ -90,7 +91,7 @@ class FastScrollView(
     private val bubbleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = bubbleTextSize
         color = context.getColor(R.color.windowTextPrimary)
-        typeface = font_regular
+        typeface = fontRegular
         textAlign = Paint.Align.LEFT
         isSubpixelText = true
     }
@@ -633,7 +634,11 @@ class FastScrollView(
                 val speedFactor = precisionSpeedFactor(precisionLevel)
                 val deltaY = y - anchorY
                 val deltaProgress = (deltaY / availableTrack) * speedFactor
-                scrollProgress = (anchorProgress + deltaProgress).coerceIn(0f, 1f)
+                scrollProgress = if (precisionLevel == 0) {
+                    (anchorProgress + deltaProgress).coerceIn(0f, 1f)
+                } else {
+                    delegate.precisionProgress(anchorProgress, deltaProgress).coerceIn(0f, 1f)
+                }
             }
 
             calculateThumbRect()
