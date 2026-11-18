@@ -1,32 +1,19 @@
 package vadiole.unicode.ui.common
 
-import androidx.dynamicanimation.animation.FloatValueHolder
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
+import android.view.Choreographer
 
 class SpringAnimator(
-    initialValue: Float,
-    private val stiffness: Float = SpringForce.STIFFNESS_LOW,
-    private val dampingRatio: Float = SpringForce.DAMPING_RATIO_NO_BOUNCY,
-) {
-    private val floatValueHolder = FloatValueHolder(initialValue)
-    private val springAnimation = SpringAnimation(floatValueHolder).setMinimumVisibleChange(0.001f)
+    stiffness: Float,
+    dampingRatio: Float = 1f,
+    minVisibleChange: Float = 1f,
+    value: Float = 0f,
+    onUpdate: UpdateListener? = null,
+    onEnd: EndListener? = null,
+) : Spring(stiffness, dampingRatio, minVisibleChange, value, onUpdate, onEnd), Choreographer.FrameCallback {
 
-    fun onUpdate(callback: (value: Float) -> Unit): SpringAnimator {
-        springAnimation.addUpdateListener { _, value, _ ->
-            callback(value)
-        }
-        return this
-    }
+    override fun postFrame() = Choreographer.getInstance().postFrameCallback(this)
 
-    fun setValue(value: Float) {
-        springAnimation.apply {
-            cancel()
-            spring = SpringForce(value).apply {
-                this.stiffness = this@SpringAnimator.stiffness
-                this.dampingRatio = this@SpringAnimator.dampingRatio
-            }
-            start()
-        }
+    override fun doFrame(frameTimeNanos: Long) {
+        frame(frameTimeNanos, animatorDurationScale)
     }
 }

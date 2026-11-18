@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.InsetDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
+import android.os.Build
 import android.view.View
 import vadiole.unicode.R
 
@@ -17,6 +18,7 @@ class IconButton(
     iconColor: Int = context.getColor(R.color.windowTextPrimary),
     private val floating: Boolean = true,
     altIcon: Drawable? = null,
+    surfaceShadow: Drawable? = null,
 ) : View(context) {
 
     private val currentIcon: Drawable = icon.mutate().apply {
@@ -25,7 +27,7 @@ class IconButton(
     private val altIcon: Drawable? = altIcon?.mutate()?.apply {
         setTint(iconColor)
     }
-    private val surfaceDrawable = FloatingSurfaceDrawable(context, FloatingSurfaceDrawable.circle())
+    private val surfaceDrawable = FloatingSurfaceDrawable(context, FloatingSurfaceDrawable.circle(), surfaceShadow)
     private val rippleMask = ShapeDrawable(OvalShape())
 
     var iconProgress = 0f
@@ -42,6 +44,11 @@ class IconButton(
         minimumHeight = size
         updateBackgroundInset()
         setOnTouchListener(TouchEffect(maxDragPx = 8f.dp(context)))
+    }
+
+    override fun setContentDescription(contentDescription: CharSequence?) {
+        super.setContentDescription(contentDescription)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) tooltipText = contentDescription
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

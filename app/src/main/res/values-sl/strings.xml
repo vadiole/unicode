@@ -14,12 +14,14 @@
     <string name="search_no_results">Ni zadetkov</string>
     <string name="search_recents">Nedavno</string>
     <string name="search_title">Iskanje</string>
+    <string name="table_choose_block">Izberi blok Unicode</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Tapnite znake, da jih zberete</string>
     <string name="dock_tip_copy">Tapnite vrstico, da kopirate zbirko</string>
     <string name="dock_backspace">Izbriši zadnji znak</string>
     <string name="dock_copy_all">Kopiraj vse</string>
+    <string name="dock_clear_all">Počisti zbirko</string>
 
     <!-- Settings -->
     <string name="settings_title">Nastavitve</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">Tapnite za zbiranje</string>
     <string name="settings_search_at_top">Iskanje na vrhu</string>
     <string name="settings_show_unsupported">Prikaži nepodprte znake</string>
+    <string name="settings_character_size_in_table">Velikost znakov v tabeli</string>
+    <string name="settings_enlarge_small_chars">Povečaj majhne znake</string>
     <string name="settings_crash_reports">Poročila o napakah</string>
     <string name="settings_save_recents">Shranjuj nedavne znake</string>
     <string name="settings_clear_recents">Počisti nedavne znake</string>

@@ -1,0 +1,1778 @@
+annotations 1 nb 5a2c86d3
+21	utropstegn		
+23	nummertegn	emneknagg|firkant|hashtagg|skigard	
+24	dollar	MXN|peso|USD|valuta	
+25	prosent	prosenttegn	
+26	og-tegn	ampersand|et|et-tegn|og	
+27	rett apostrof	apostrof|enkelt rett anførselstegn|sitattegn	
+29	høyre parentes	bueparentes|parentes|sluttparentes	
+2A	asterisk	jokertegn|stjerne	
+2B	plusstegn	addere|legge|pluss|til	
+2C	komma		
+2D	bindestrek-minus-tegn		
+2E	punktum		
+2F	skråstrek	slash	
+3A	kolon		
+3B	semikolon		
+3C	er mindre enn	enn|er|mindre|starttagg|ulikhet	
+3D	er lik	er|lik|likhetstegn	
+3E	er større enn	endetagg|enn|er|større|ulikhet	
+3F	spørsmålstegn	spørsmål	
+40	krøllalfa	alfakrøll|at-tegn	
+5B	venstre hakeparentes	firkantparentes|klammeparentes|parentes|startparentes	
+5C	omvendt skråstrek	backslash|bakstrek	
+5D	høyre hakeparentes	firkantparentes|klammeparentes|parentes|sluttparentes	
+5E	circumfleks	aksent|tonem	
+5F	understrek		
+60	gravis	aksent|tonem|trykk|venstreaksent	
+7B	venstre krøllparentes	klammeparentes|krøllparentes|parentes|startparentes	
+7C	loddrett strek	loddrett|strek	
+7D	høyre krøllparentes	klammeparentes|krøllparentes|parentes|sluttparentes	
+7E	tilde		
+A1	opp-ned utropstegn	utropstegn	
+A2	cent	valuta	
+A3	pund	britiske pund|EGP|GBP|valuta	
+A5	yen	CNY|japanske yen|JPY|kinesiske yuan|valuta	
+A7	paragraftegn	avsnittstegn|del|paragraf|signum sectionis	
+A8	trema	omlyd|tødler	
+A9	opphavsrett	copyright	
+AB	venstre anførselstegn	anførselstegn|hermetegn|sitat start|sitattegn|sjevron	
+AC	negasjon	ikke	
+AE	registrert varemerke	r|varemerkesymbol	
+B0	gradetegn	alkoholinnhold|grader|timer	
+B1	pluss/minus	minus|pluss	
+B2	hevet totall	hevet|i andre|kvadrat|opphøyd i andre|to	
+B3	hevet tretall	hevet|i tredje|kubikk|opphøyd i tredje|tre	
+B4	akutt aksent	aksent|akutt|høyreaksent|tonem|trykk	
+B5	mikrotegn	gresk|liten|mikro|milliondel|milliontedels|my	
+B6	avsnittstegn		
+B7	midtstilt punkt	interpunkt|punkt mellom ord|sentrert punkt	
+B9	hevet ettall	en|hevet|i første|opphøyd i første	
+BB	høyre anførselstegn	anførselstegn|hermetegn|sitat slutt|sitattegn|sjevron	
+BF	opp-ned spørsmålstegn	spørsmål|spørsmålstegn	
+D7	gangetegn	gange|matematisk|multiplikasjon|multiplikasjonstegn|multiplisere|tegn	
+F7	deletegn	dele|dividere|divisjon|divisjonstegn|matematisk|tegn	
+60C	arabisk komma	komma	
+61B	arabisk semikolon	semikolon	
+61F	arabisk spørsmålstegn	spørsmål|spørsmålstegn	
+2010	bindestrek		
+2013	tankestrek	bindestreker|en-dash|halvgefirt	
+2014	lang tankestrek	bindestreker|em-dash|gefirt	
+2015	vannrett strek	strek	
+2018	enkelt krøllet venstre anførselstegn	sitattegn|smart anførselstegn|start sitat	
+2019	enkelt krøllet høyre anførselstegn	apostrof|sitat slutt|sitattegn|smart anførselstegn|typografisk apostrof	
+201A	enkelt krøllet lavt venstre anførselstegn	sitattegn|smart anførselstegn|start sitat	
+201C	dobbelt krøllet venstre anførselstegn	sitattegn|smart anførselstegn|start sitat	
+201D	dobbelt krøllet høyre anførselstegn	sitat slutt|sitattegn|smart anførselstegn	
+201E	dobbelt krøllet lavt venstre anførselstegn	sitattegn|smart anførselstegn|start sitat	
+2020	korstegn	kors|latinsk kors	
+2021	dobbeltkorstegn	dobbelt kors	
+2022	punkttegn	prikk|punkt|punktliste	
+2026	ellipse	tre prikker|utelatelse	
+2027	stavelsesmerke	bindestrek|interpunkt|prikk|punkt	
+2030	promille	promilletegn	
+2032	primtegn		
+2033	dobbelt primtegn		
+2034	trippelt primtegn		
+2038	innsettingstegn		
+203B	referansemerke		
+203C	dobbelt utropstegn	bangbang|tegn|tegnsetting|utropstegn|!|!!	
+203D	interrobang		
+203E	overstrek		
+2042	asterisme	stjerner	
+2044	skråstrek for brøk	skråstrek	
+2049	utropstegn og spørsmålstegn	interrobang|spørsmål|spørsmålstegn|tegn|tegnsetting|utrop|utropstegn|!|!?|?|‽	
+207B	hevet minustegn	hevet|ion|ladning|matematiske|minus|minustegn|negativ|tegn	
+20A2	cruzeiro	BRB|valuta	
+20A3	fransk franc	franc|fransk|valuta	
+20A4	lire	valuta	
+20A5	mill	tusendels valutaenhet|valuta	
+20A8	rupi	valuta	
+20A9	won	KPW|KRW|valuta	
+20AC	euro	EUR|valuta	
+20B0	tysk pfennig	pfennig|tysk|valuta	
+20B1	peso	PHP|valuta	
+20B3	austral	ARA|valuta	
+20B6	livre tournois	livre|tournois|valuta	
+20B7	spesmilo	valuta	
+20B9	indiske rupi	INR|rupi|valuta	
+20BD	rubler	RUB|russiske rubler|valuta	
+20BF	bitcoin	BTC|kryptovaluta|valuta	
+2117	opphavsrett for lydopptak	copyright|for|lydopptak|opphavsrett	
+2122	varemerke	tm|trademark	
+2139	informasjon	i|info	
+2190	pil mot venstre	mot|pil|retning|venstre|venstrepil|vest	
+2191	pil oppover	nord|opp|oppover|oppoverpil|pil|retning	
+2192	pil mot høyre	høyre|høyrepil|øst|pil|retning	
+2193	pil nedover	ned|nedover|nedoverpil|pil|retning|sør	
+2194	pil venstre-høyre	pil	
+2195	pil opp og ned	pil	
+2196	pil opp-venstre	nordvest|pil|retning	
+2197	pil opp-høyre	nordøst|pil|retning	
+2198	pil ned-høyre	pil|retning|sørøst	
+2199	pil ned-venstre	pil|retning|sørvest	
+219A	pil venstre med skråstrek	pil|skråstrek|venstre	
+219B	pil høyre med skråstrek	høyre|pil|skråstrek	
+219C	bølgepil mot venstre	bølge|pil|venstre	
+219D	bølgepil mot høyre	bølge|høyre|pil	
+219E	pil venstre med to mothaker	mothaker|pil|to|venstre	
+219F	pil opp med to mothaker	mothaker|opp|pil|to	
+21A0	pil høyre med to mothaker	høyre|mothaker|pil|to	
+21A1	pil ned med to mothaker	mothaker|ned|pil|to	
+21A2	pil venstre med styrefjær	pil|styrefjær|venstre	
+21A3	pil høyre med styrefjær	høyre|pil|styrefjær	
+21A4	pil venstre fra loddrett strek	fra|loddrett|pil|strek|venstre	
+21A5	pil opp fra vannrett strek	fra|opp|pil|strek|vannrett	
+21A6	pil høyre fra loddrett strek	fra|høyre|loddrett|pil|strek	
+21A7	pil ned fra vannrett strek	fra|ned|pil|strek|vannrett	
+21A8	pil opp og ned med underlag	base|med|ned|opp|pil|underlag	
+21A9	pil som bøyer mot venstre	pil	
+21AA	pil som bøyer mot høyre	pil	
+21AB	pil venstre med løkke	løkke|pil|venstre	
+21AC	pil høyre med løkke	høyre|løkke|pil	
+21AD	bølgepil mot høyre og venstre	bølge|høyre|pil|toveis|venstre	
+21AE	pil begge veier med skråstrek	høyre|pil|skråstrek|toveis|venstre	
+21AF	sikksakkpil nedover	ned|pil|sikksakk	
+21B0	pil opp med spiss mot venstre	opp|pil|spiss|venstre|vinkel	
+21B1	pil opp med spiss mot høyre	høyre|opp|pil|spiss|vinkel	
+21B2	pil ned med spiss mot venstre	ned|pil|spiss|venstre|vinkel	
+21B3	pil ned med spiss mot høyre	høyre|ned|pil|spiss|vinkel	
+21B4	pil høyre som snur ned	hjørne|høyre|ned|pil|snur	
+21B5	pil ned som snur mot venstre	hjørne|ned|pil|snur|venstre	
+21B6	halvsirkelpil mot klokken	halvsirkelpil|klokken|mot	
+21B7	halvsirkelpil med klokken	halvsirkelpil|klokken|med	
+21B8	pil mot nordvest med strek over	mot|nordvest|over|pil|strek	
+21B9	pil venstre over pil høyre mot loddrette streker	høyre|loddrett|over|pil|strek|venstre	
+21BA	pil åpen sirkel mot klokken	åpen|klokken|mot|moturs|pil|sirkel	
+21BB	pil åpen sirkel med klokken	åpen|klokken|med|medurs|pil|sirkel	
+21BC	harpunpil venstre med mothake opp	harpun|harpunpil|mothake|opp|venstre	
+21BD	harpunpil venstre med mothake ned	harpun|harpunpil|mothake|ned|venstre	
+21BE	harpunpil opp med mothake mot høyre	harpun|harpunpil|høyre|mothake|opp	
+21BF	harpunpil opp med mothake mot venstre	harpun|harpunpil|mothake|opp|venstre	
+21C0	harpunpil høyre med mothake opp	harpun|harpunpil|høyre|mothake|opp	
+21C1	harpunpil høyre med mothake ned	harpun|harpunpil|høyre|mothake|ned	
+21C2	harpunpil ned med mothake mot høyre	harpun|harpunpil|høyre|mothake|ned	
+21C3	harpunpil ned med mothake mot venstre	harpun|harpunpil|mothake|ned|venstre	
+21C4	pil høyre over pil venstre	høyre|over|pil|venstre	
+21C5	pil oppover foran pil nedover	hver vei|nord-sør|opp og ned|opp-ned|piler	
+21C6	pil mot venstre over pil mot høyre	frem og tilbake|hver vei|øst-vest|piler|venstre-høyre	
+21C7	parallelle piler mot venstre	mot|parallelle|piler|venstre	
+21C8	parallelle piler opp	opp|parallelle|piler	
+21C9	parallelle piler mot høyre	høyre|mot|parallelle|piler	
+21CA	parallelle piler ned	ned|parallelle|piler	
+21CB	harpunpil venstre over harpunpil høyre	harpunpil|høyre|over|venstre	
+21CC	harpunpil høyre over harpunpil venstre	harpunpil|høyre|over|venstre	
+21CD	dobbeltpil venstre med strek	dobbeltpil|med|strek|venstre	
+21CE	dobbeltpil begge veier med strek	dobbel|høyre|pil|strek|toveis|venstre	
+21CF	dobbeltpil høyre med strek	dobbel|høyre|pil|strek	
+21D0	dobbeltpil venstre	dobbeltpil|venstre	
+21D1	dobbeltpil opp	dobbeltpil|opp	
+21D2	dobbeltpil høyre	dobbel|høyre|pil	
+21D3	dobbeltpil ned	dobbeltpil|ned	
+21D4	dobbeltpil begge veier	dobbel|høyre|pil|toveis|venstre	
+21D6	dobbeltpil nordvest	dobbeltpil|nordvest	
+21D7	dobbeltpil nordøst	dobbeltpil|nordøst	
+21D8	dobbeltpil sørøst	dobbeltpil|sørøst	
+21D9	dobbeltpil sørvest	dobbeltpil|sørvest	
+21DA	trippelpil venstre	trippelpil|venstre	
+21DB	trippelpil høyre	høyre|trippelpil	
+21DC	snirkelpil venstre	snirkelpil|venstre	
+21DD	snirkelpil høyre	høyre|snirkelpil	
+21DE	pil opp med to streker	med|opp|pil|streker|to	
+21DF	pil ned med to streker	med|ned|pil|streker|to	
+21E0	stiplet pil venstre	pil|stiplet|venstre	
+21E1	stiplet pil opp	opp|pil|stiplet	
+21E2	stiplet pil høyre	høyre|pil|stiplet	
+21E3	stiplet pil ned	ned|pil|stiplet	
+21E4	pil venstre mot loddrett strek	loddrett|mot|pil|strek|venstre	
+21E5	pil høyre mot loddrett strek	høyre|loddrett|mot|pil|strek	
+21E6	hul pil venstre	hul|pil|venstre	
+21E7	hul pil opp	hul|opp|pil	
+21E8	hul pil høyre	høyre|hul|pil	
+21E9	hul pil ned	hul|ned|pil	
+21EA	hul pil opp fra vannrett strek	fra|hul|opp|pil|strek|vannrett	
+21F5	pil ned til venstre for pil opp	dobbel|ned|opp|pil|toveis	
+2200	allkvantor	alle|for	
+2202	partiellderivert	derivasjon|derivert|partiell	
+2203	eksistenskvantor	det|eksisterer|finnes|fins	
+2205	den tomme mengden	matematikk|matte|mengde|mengdeoperator|settoperator|tom	
+2206	matematisk endring	dekrement|delta|endring|inkrement|matematisk|matematiske|tegn|trekant	
+2207	nabla	matematiske|tegn|trekant|triangel|vektorfelt|vektoroperator	
+2208	element i	element|elementsymbol|i|matematiske|mengdelære|tegn	
+2209	er ikke element i	element	
+220B	inneholder som medlem	element|inneholder|medlem|som	
+220E	slutt på bevis	q.e.d|qed	
+220F	produkt	logikk|matte|produkt av n faktorer|produkttegn	
+2211	sum	av|ledd|matte|n|summering	
+2212	minustegn	fra|minus|subtrahere|trekke	
+2213	minus-pluss	minus-eller-pluss|pluss-minus	
+2215	skråstrek for divisjon	skråstrek	
+2217	asteriskoperator	asterisk|operator|stjerne	
+2218	ringoperator	komposisjon|operator	
+2219	punktoperator	operator	
+221A	kvadratrot	kvadratrottegn|matematisk|tegn	
+221D	er proporsjonal med	proporsjonalitet	
+221E	uendelighetstegn	matematisk|tegn|uendelig	
+221F	rett vinkel	matte	
+2220	vinkel	matte|spiss	
+2223	divisor	er delelig med	
+2225	parallell		
+2227	logisk og	logikk|logisk konjunksjon|og	
+2229	snitt	matematiske|mengdelære|snittegn|tegn	
+222A	union	forening|matematiske|mengdelære|tegn|uniontegn	
+222B	integral	kalkulus|matematisk analyse	
+222C	dobbelt integral	dobbel|integral|kalkulus	
+222E	konturintegral	integral	
+2234	derfor	logikk	
+2235	fordi	logikk	
+2236	forhold	forholdstall	
+2237	proporsjon	proporsjonalitet	
+223C	tildeoperator	operator	
+223D	omvendt tilde	omvendt|tilde	
+223E	speilvendt liggende s	liggende|s|speilvendt	
+2243	asymptotisk lik	asymptote|matte	
+2245	tilnærmet lik	isomorf|kongruens|likhet|matte	
+2248	er tilnærmet lik	avrundes|er|lik|til|tilnærmet	
+224C	kongruent	likhet|matte	
+2252	tilnærmet lik bildet	bildet|lik|tilnærmet	
+2256	ring i likhetstegn	likhet|matte	
+2260	er ikke lik	er|ikke|lik|ulikhet|ulikhetstegn	
+2261	identisk lik	identisk|kongruent|lik|likhetstegn|matematiske|med|tegn	
+2263	strengt ekvivalent	likhet|matte	
+2264	er mindre enn eller lik	eller|enn|er|lik|likhetstegn|mindre|ulikhet	
+2265	er større enn eller lik	eller|enn|er|lik|likhetstegn|større|ulikhet	
+2266	mindre enn over likhetstegn	matte|ulikhet	
+2267	større enn over likhetstegn	matte|ulikhet	
+226A	mye mindre enn	matte|ulikhet	
+226B	mye større enn	matte|ulikhet	
+226C	mellom		
+226E	er ikke mindre enn	matte|ulikhet	
+226F	er ikke større enn	matte|ulikhet	
+2273	tilnærmet større enn	matte|ulikhet	
+227A	kommer før	matte|mengdeoperator	
+227B	kommer etter	matte|mengdeoperator	
+2281	kommer ikke etter	matte|mengdeoperator	
+2282	delmengde av	av|delmengde|inklusjonstegn|matematiske|mengdelære|tegn	
+2283	supermengde	matte|mengdeoperator	
+2286	delmengde lik	matte|mengdeoperator	
+2287	supermengde lik	likhet|matte|mengdeoperator	
+2295	plusstegn i sirkel	i|pluss|plusstegn|sirkel	
+2296	minustegn i sirkel	erosjon|symmetrisk forskjell	
+2297	multipliseringstegn i sirkel	gangetegn i sirkel|produkt|tensor	
+2298	skråstrek for divisjon i sirkel	divisjonslignende|matte	
+2299	prikkoperator i sirkel	operator|prikkoperator|sirkel|XNOR	
+229A	ringoperator i sirkel	i|ringoperator|sirkel	
+229B	stjerneoperator i sirkel	asterisk|operator|stjerne	
+229E	plusstegn i firkant	addisjonslignende|firkant|matte|plusstegn	
+229F	minustegn i firkant	firkant|matte|minustegn|subtraksjonslignende	
+22A5	falsum	usann|usant	
+22AE	tvinger ikke	ikke|tvinger	
+22B0	kommer før under relasjon	før|kommer|matte|mengdeoperator|relasjon|under	
+22B1	kommer etter under relasjon	etter|kommer|matte|mengdeoperator|relasjon|under	
+22B6	original		
+22B9	hermitisk konjugert matrise	hermitisk|konjugert|kvadratmatrise|matrise|matte	
+22BF	rettvinklet trekant	matematikk|matte|rett|rettvinklet|trekant|vinkel	
+22C1	n-ær logisk eller	disjunksjon|eller|logikk|logisk|n-ær	
+22C2	n-ært snitt	matte|mengdeoperator|n-ær|n-ært|snitt	
+22C3	n-ær union	matte|mengdeoperator|n-ær|n-ært|union	
+22C5	prikkoperator	operator	
+22C6	stjerneoperator	operator	
+22C8	naturlig skjøt	binæroperator|join|naturlig|skjøt|sløyfe	
+22D2	dobbelt snitt	dobbelt|matematikk|matte|mengdeoperator|settoperator|snitt	
+22D8	veldig mye mindre enn	enn|matematikk|matte|mindre|mye|ulikhet|veldig	
+22D9	veldig mye større enn	enn|matematikk|matte|mye|større|ulikhet|veldig	
+22ED	inneholder ikke som normal delgruppe lik	delgruppe|gruppeteori|ikke|inneholder|lik|matte|normal|som	
+22EE	loddrett ellipse	ellipse|loddrett|matematikk|matte	
+22EF	sentrert vannrett ellipse	ellipse|sentrert|vannrett	
+22F0	diagonal ellipse opp mot høyre	diagonal|ellipse|høyre|matematikk|matte|mot|opp	
+22F1	diagonal ellipse ned mot høyre	diagonal|ellipse|høyre|matematikk|matte|mot|ned	
+231A	armbåndsur	ur	
+231B	ferdig timeglass	sand|tidtaker	
+2328	tastatur	datamaskin	
+23CF	mat ut-knapp	eject|knapp|løse ut|mate ut	
+23E9	spol framover-knapp	dobbel pil|høyre|spoling	
+23EA	spol tilbake-knapp	dobbel pil|spoling|venstre	
+23EB	raskt opp-knapp	dobbel|opp|pil	
+23EC	raskt ned-knapp	dobbel pil ned|ned|pil	
+23ED	neste spor-knapp	knapp|neste|pil|scene|spor|trekant	
+23EE	forrige spor-knapp	forrige scene|pil|trekant	
+23EF	spill av/pause-knapp	høyre|pause|pil|spill av|trekant	
+23F0	vekkerklokke	alarm|klokke	
+23F1	stoppeklokke	klokke	
+23F2	tidtaker	klokke|nedtelling	
+23F3	startet timeglass	sand|tidtaker	
+23F8	pause-knapp	dobbel|strek|vertikal	
+23F9	stopp-knapp	firkant|stopp	
+23FA	spill inn-knapp	innspilling|sirkel|ta opp	
+24C2	M med ring rundt	m|sirkel	
+25A0	fylt kvadrat	fylt|kvadrat	
+25A1	hult kvadrat	hult|kvadrat	
+25A2	hult kvadrat med avrundede hjørner	avrundede|hjørner|hult|kvadrat|med	
+25A3	hult kvadrat rundt et fylt kvadrat	et|fylt|hult|kvadrat|rundt	
+25A4	kvadrat med vannrett fyll	fyll|kvadrat|med|vannrett	
+25A5	kvadrat med loddrett fyll	fyll|kvadrat|loddrett|med	
+25A6	kvadrat med rettvinklet rutefyll	kvadrat|med|rettvinklet|rutefyll	
+25A7	kvadrat med diagonalt fyll ned mot høyre	diagonalt|fyll|høyre|kvadrat|med|mot|ned	
+25A8	kvadrat med diagonalt fyll ned mot venstre	diagonalt|fyll|kvadrat|med|mot|ned|venstre	
+25A9	kvadrat med diagonalt rutefyll	diagonalt|kvadrat|med|rutefyll	
+25AA	lite, svart kvadrat	firkant|geometrisk|kvadrat|lite|liten|svart	
+25AB	lite, hvitt kvadrat	firkant|geometrisk|hvit|hvitt|kvadrat|lite|liten	
+25AC	fylt rektangel	fylt|rektangel	
+25AD	hult rektangel	hul|hult|rektangel	
+25AE	fylt vertikalt rektangel	fylt|rektangel|vertikalt	
+25B0	fylt parallellogram	fylt|parallellogram	
+25B2	fylt trekant som peker opp	fylt|opp|peker|pil|som|trekant	
+25B3	hul trekant som peker opp	hul|opp|peker|som|trekant	
+25B4	liten fylt trekant som peker opp	fylt|liten|opp|peker|som|trekant	
+25B5	liten hul trekant som peker opp	hul|liten|opp|peker|som|trekant	
+25B6	avspillingsknapp	høyre|pil|trekant	
+25B7	hul trekant som peker mot høyre	høyre|hul|mot|peker|som|trekant	
+25B8	liten fylt trekant som peker mot høyre	fylt|høyre|liten|mot|peker|som|trekant	
+25B9	liten hul trekant som peker mot høyre	høyre|hul|liten|mot|peker|som|trekant	
+25BA	fylt peker som peker mot høyre	fylt|høyre|mot|peker|som	
+25BB	hul peker som peker mot høyre	høyre|hul|mot|peker|som	
+25BC	fylt trekant som peker ned	fylt|ned|peker|pil|som|trekant	
+25BD	hul trekant som peker ned	hul|ned|peker|som|trekant	
+25BE	liten fylt trekant som peker ned	fylt|liten|ned|peker|som|trekant	
+25BF	liten hul trekant som peker ned	hul|liten|ned|peker|som|trekant	
+25C0	bakover-knapp	pil|tilbake|trekant|venstre	
+25C1	hul trekant som peker mot venstre	hul|mot|peker|som|trekant|venstre	
+25C2	liten fylt trekant som peker mot venstre	fylt|liten|mot|peker|som|trekant|venstre	
+25C3	liten hul trekant som peker mot venstre	hul|liten|mot|peker|som|trekant|venstre	
+25C4	fylt peker som peker mot venstre	fylt|mot|peker|som|venstre	
+25C5	hul peker som peker mot venstre	hul|mot|peker|som|venstre	
+25C6	fylt rutersymbol	fylt|rutersymbol	
+25C7	hult rutersymbol	hul|hult|rutersymbol	
+25C8	hult rutersymbol rundt fylt rutersymbol	fylt|hul|hult|rundt|rutersymbol	
+25C9	hul sirkel rundt fylt sirkel	fiskeøye|fylt|hul|konsentriske|omkranset|prikk|rundt|sirkel|sirkler	
+25CA	hult rombesymbol	diamant|hul|hult|rombe|rombesymbol|ruter	
+25CB	hul sirkel	hul|ring|runding|sirkel	
+25CC	stiplet sirkel	sirkel|stiplet	
+25CD	sirkel med loddrett fyll	fyll|loddrett|med|sirkel	
+25CE	konsentriske sirkler	dobbel|hul|konsentrisk|mål|rundt|sirkel	
+25CF	fylt sirkel	fylt|runding|sirkel	
+25D0	sirkel med venstre halvdel fylt	fylt|halvdel|sirkel|venstre	
+25D1	sirkel med høyre halvdel fylt	fylt|halvdel|høyre|sirkel	
+25D2	sirkel med nedre halvdel fylt	fylt|halvdel|nedre|sirkel	
+25D3	sirkel med øvre halvdel fylt	fylt|halvdel|øvre|sirkel	
+25D4	sirkel med øvre høyre kvadrant fylt	fylt|høyre|kvadrant|øvre|sirkel	
+25D5	fylt sirkel med øvre venstre kvadrant tom	fylt|kvadrant|øvre|sirkel|tom|venstre	
+25D6	fylt venstre halvsirkel	fylt|halvsirkel|venstre	
+25D7	fylt høyre halvsirkel	fylt|halvsirkel|høyre	
+25D8	invertert punkttegn	invertert|punkttegn	
+25D9	fylt kvadrat rundt hul sirkel	fylt|hul|invers|kvadrat|rundt|sirkel	
+25DC	sirkelbue øvre venstre kvadrant	bue|kvadrant|øvre|sirkel|venstre	
+25DD	sirkelbue øvre høyre kvadrant	bue|høyre|kvadrant|øvre|sirkel	
+25DE	sirkelbue nedre høyre kvadrant	bue|høyre|kvadrant|nedre|sirkel	
+25DF	sirkelbue nedre venstre kvadrant	bue|kvadrant|nedre|sirkel|venstre	
+25E0	øvre halvsirkel	halv|øvre|sirkel	
+25E1	nedre halvsirkel	halv|nedre|sirkel	
+25E2	fylt trekant med rett vinkel nede til høyre	fylt|høyre|nede|rett|trekant|vinkel	
+25E3	fylt trekant med rett vinkel nede til venstre	fylt|nede|rett|trekant|venstre|vinkel	
+25E4	fylt trekant med rett vinkel oppe til venstre	fylt|oppe|rett|trekant|venstre|vinkel	
+25E5	fylt trekant med rett vinkel oppe til høyre	fylt|høyre|oppe|rett|trekant|vinkel	
+25E6	hult punkttegn	hult|punkttegn	
+25EF	stor hul sirkel	hul|ring|runding|sirkel|stor	
+25F3	hult kvadrat øvre høyre kvadrant	høyre|hul|hult|kvadrant|kvadrat|øvre	
+25F7	hul sirkel øvre høyre kvadrant	høyre|hul|kvadrant|øvre|sirkel	
+25FB	mellomstort hvitt kvadrat	firkant|geometrisk|hvit|hvitt|kvadrat|mellomstor|mellomstort	
+25FC	mellomstort svart kvadrat	firkant|geometrisk|kvadrat|mellomstor|mellomstort|svart	
+25FD	lite/mellomstort hvitt kvadrat	firkant|geometrisk|hvit|hvitt|kvadrat|lite/mellomstort|liten/mellomstor	
+25FE	lite/mellomstort svart kvadrat	firkant|geometrisk|kvadrat|lite/mellomstort|liten/mellomstor|svart	
+25FF	hul trekant med rett vinkel nede til høyre	høyre|hul|med|nede|rett|til|trekant|vinkel	
+2600	sol	lys|lyst|solfylt|stråler|vær|verdensrommet	
+2601	sky	vær	
+2602	paraply	klær|regn|vær	
+2603	snømann	kaldt|snø|vær	
+2604	komet	verdensrommet	
+260E	telefon	fasttelefon|ringe	
+2611	boks med hakemerke	avkrysset boks|boks|hakemerke|✓	
+2614	paraply med regndråper	dråpe|klær|paraply|regn|vær	
+2615	varm drikke	drikke|kaffe|kaffekopp|koffein|morgen|rykende|te|tekopp|varm	
+2618	trekløver	kløver|plante	
+261D	peker opp	finger|hånd|kropp|opp|peke|pekefinger	
+2620	dødningehode	bein|død|fjes|hodeskalle|monster	
+2622	radioaktivt	radioaktiv|radioaktivitet	
+2623	farlig biologisk materiale	advarsel|biologisk fare|skilt	
+2626	ortodokst kors	kors|kristen|ortodoks|religion	
+262A	stjerne og halvmåne	islam|muslim|religion	
+262E	fredssymbol	fred	
+262F	yin yang	balanse|helhet|liv|religion|tao|taoist|total|vanskelig|yang|yin|yinyang	
+2638	dharmas hjul	buddhist|dharma|dharmachakra|hjul|religion	
+2639	surt fjes	fjes|surt|trist	
+263A	smilefjes	fjes|omriss|smil	
+2640	kvinnesymbol	kvinne	
+2642	mannssymbol	mann	
+2648	Væren	stjernetegn|vær	
+2649	Tyren	okse|stjernetegn|tyr	
+264A	Tvillingene	stjernetegn|tvillinger	
+264B	Krepsen	krabbe|kreps|stjernetegn	
+264C	Løven	løve|stjernetegn	
+264D	Jomfruen	stjernetegn	
+264E	Vekten	rettferdighet|stjernetegn|vekt	
+264F	Skorpionen	skorpion|stjernetegn	
+2650	Skytten	bueskytter|stjernetegn	
+2651	Steinbukken	geit|stjernetegn	
+2652	Vannmannen	stjernetegn|vann	
+2653	Fiskene	fisk|stjernetegn	
+265F	bonde	brikke|sjakk	
+2660	spar	farge|kort|spill	
+2663	kløver	farge|kort|spill	
+2665	hjerter	farge|kort|spill	
+2666	ruter	diamant|farge|kort|spill	
+2668	varme kilder	kilder|rykende|vame kilder|varm	
+266A	åttendelsnote	musikk|note	
+266D	note-b	b|halvnote ned|musikk	
+266F	note-kryss	halvnote|kryss|musikk|opp	
+267B	resirkuleringssymbol	resirkulering|symbol|universelt	
+267E	uendelig	for alltid|grenseløs|universal|universell	
+267F	rullestolsymbol	handikaptilgang|rullestol|rullestolbruker	
+2692	hammer og hakke	hakke|hammer|verktøy	
+2693	anker	båt|skip|verktøy	
+2694	sverd i kryss	kryss|sverd|våpen	
+2695	legesymbol	asklepiosstav|lege|medisin	
+2696	likearmet skålvekt	balanse|rettferdighet|stjernetegn|vekt|Vekten|verktøy	
+2697	destillerkolbe	destillasjonskolbe|kjemi|verktøy	
+2699	tannhjul	del|tann|verktøy	
+269B	atomsymbol	ateist|atom	
+269C	fransk lilje	fleur-de-lis	
+26A0	advarsel	OBS	
+26A1	høyspenning	fare|høy|høyspent|lyn|spenning	
+26A7	transperson-symbol	transperson	
+26AA	hvit sirkel	geometrisk|hvit|sirkel	
+26AB	svart sirkel	geometrisk|sirkel|svart	
+26B0	kiste	begravelse|død	
+26B1	urne	begravelse|død|kremasjon	
+26BD	fotball	ball	
+26BE	baseball	ball|sydd	
+26C4	snømann uten snø	kald|mann|snø|snømann	
+26C5	sol bak sky	sky|sol|sol og sky	
+26C8	sky med lyn og regn	regn|sky|torden|vær	
+26CE	Slangebæreren	bærer|slange|stjernetegn	
+26CF	hakke	gruvedrift|verktøy	
+26D1	hjelm med hvitt kors	fjes|hatt|hjelm|hjelp|kors	
+26D3	kjetting	kjede	
+26D4	ingen adgang	adgang forbudt|enveiskjøring|skilt|stopp	
+26E9	Shinto-alter	alter|religion|shinto	
+26EA	kirke	bygning|kors|kristen|religion	
+26F0	fjell	berg	
+26F1	parasoll på bakken	paraply|regn|sol|vær	
+26F2	fontene		
+26F3	golfflagg	golf|golfhull|hull	
+26F4	ferge	båt|passasjer	
+26F5	seilbåt	båt	
+26F7	skiløper	ski|snø	
+26F8	skøyter	is|skøyte	
+26F9	person med ball	atletisk|ball|basket|basketball|drible|kaste|kurv|mesterskap|person|spiller	
+26FA	telt	camping|telttur	
+26FD	bensinpumpe	bensin|bensinstasjon|diesel|stasjon	
+2702	saks	klippe|verktøy	
+2705	hakemerke i firkant	avkryssing|avmerking|hake|hakemerke|utført|✓	
+2708	fly	fremkomstmiddel	
+2709	konvolutt	brev|e-post	
+270A	hevet knyttneve	hånd|knyttet neve|neve	
+270B	hevet hånd	flat hånd|håndflate	
+270C	seierstegn	hånd|peace-tegn	
+270D	skrivende hånd	hånd|kropp|skrive	
+270F	blyant		
+2712	svart pennesplitt	penn|pennespiss	
+2714	hakemerke	hake|merke|✓	
+2716	gange	avbryt|gangetegn|matte|multiplikasjon|multiplisere|x|×	
+271D	latinsk kors	kors|kristen|religion	
+2721	Davidstjerne	David|jøde|jødisk|religion|stjerne	
+2728	stjerner	glitrende|skinnende|*	
+2733	asterisk med åtte spisser	asterisk|stjerne|*	
+2734	åttetagget stjerne	stjerne|*	
+2744	snøfnugg	kaldt|snø|vær	
+2747	gnist	*	
+274C	kryss	avbryt|rødt kryss|x|X|×	
+274E	kryss i firkant	kryss|kvadrat|x|×	
+2753	rødt spørsmålstegn	rød|spørsmål|spørsmålstegn|?	
+2754	hvitt spørsmålstegn	hvit|spørsmål|spørsmålstegn|?	
+2755	hvitt utropstegn	hvit|utrop|utropstegn|!	
+2757	rødt utropstegn	rød|utrop|utropstegn|!	
+2763	utropstegn med hjerte	tegn|tegnsetting|utrop|utropstegn	
+2764	rødt hjerte	hjerte	
+2795	pluss	addisjon|fortegn|matte|plusstegn|positivt|+	
+2796	minus	fortegn|matte|minustegn|negativt|subtraksjon|-|−	
+2797	dele	deletegn|deling|divisjon|divisjonstegn|matte|÷	
+27A1	pil høyre	høyrepil|øst|pil|retning	
+27B0	løkke	løkketegn	
+27BF	dobbel løkke	dobbel løkke-tegn	
+2934	pil som bøyer opp	pil	
+2935	pil som bøyer ned	ned|pil	
+2A27	plusstegn med senket totall	med|plusstegn|senket|totall	
+2A2F	kryssprodukt av vektorer	av|kryssprodukt|vektorer	
+2A3C	indreprodukt		
+2A63	logisk eller dobbelt understreket	dobbelt|eller|logisk|understreket	
+2A7D	mindre enn eller lik med likhetstegn på skrå	eller|enn|lik|likhetstegn|med|mindre|på|skrå	
+2A8D	mindre enn eller lik over asymptotisk lik	asymptotisk|eller|enn|lik|mindre|over	
+2A9A	likhetstegn over større enn	enn|likhetstegn|matte|over|større|ulikhet	
+2ABA	kommer etter over ikke tilnærmet lik	etter|ikke|kommer|lik|over|tilnærmet	
+2B05	pil venstre	pil|retning|venstrepil|vest	
+2B06	pil opp	nord|oppoverpil|pil|retning	
+2B07	pil ned	nedoverpil|pil|retning|sør	
+2B1B	stort svart kvadrat	firkant|geometrisk|kvadrat|stor|svart	
+2B1C	stort hvitt kvadrat	firkant|geometrisk|hvit|hvitt|kvadrat|stor	
+2B50	stjerne	verdensrommet	
+2B55	tykk rød sirkel	o|rød|sirkel|stor	
+3001	ideografisk komma	komma	
+3002	ideografisk punktum	punktum	
+3008	venstre vinkelparentes	parentes|spissparentes|startparentes|vinkelparentes	
+3009	høyre vinkelparentes	parentes|sluttparentes|spissparentes|vinkelparentes	
+300A	venstre dobbel vinkelparentes	dobbelparentes|parentes|spissparentes|startparentes|vinkelparentes	
+300B	høyre dobbel vinkelparentes	dobbelparentes|parentes|sluttparentes|spissparentes|vinkelparentes	
+300C	venstre hjørneparentes	hjørneparentes|parentes|startparentes	
+300D	høyre hjørneparentes	hjørneparentes|parentes|sluttparentes	
+300E	venstre hul hjørneparentes	hjørneparentes|hul parentes|parentes|startparentes	
+300F	høyre hul hjørneparentes	hjørneparentes|hul parentes|parentes|sluttparentes	
+3010	venstre fylt linseparentes	fylt parentes|linseparentes|parentes|startparentes|svart parentes	
+3011	høyre fylt linseparentes	fylt parentes|linseparentes|parentes|sluttparentes|svart parentes	
+3014	venstre skilpaddeparentes	parentes|skillpaddeskall|skillpaddeskallparentes|startparentes	
+3015	høyre skilpaddeparentes	parentes|skillpaddeskall|skillpaddeskallparentes|sluttparentes	
+3016	venstre hul linseparentes	hul parentes|linseparentes|parentes|startparentes	
+3017	høyre hul linseparentes	hul parentes|linseparentes|parentes|sluttparentes	
+3030	bølgestrek	bølge|bølget bindestrek|tegn for lang lyd	
+303D	merke for nytt parti	merke|nytt|parti	
+30FB	midtstilt prikk i katakana	bindestrek|interpunkt|katakana|prikk|punkt	
+3297	«gratulerer» på japansk	gratulerer|ideograf|japansk|knapp	
+3299	«hemmelig» på japansk	hemmelig|ideograf|japansk|knapp	
+FDFC	rial	valuta	
+1F004	mahjongbrikke med rød drage	mahjong|rød|spill	
+1F0CF	joker	jokerkort|kort|spillkort	
+1F170	A-knapp (blodtype)	A|blod|blodtype|type A	
+1F171	B-knapp (blodtype)	B|blod|blodtype|type B	
+1F17E	O-knapp (blodtype)	blod|blodtype|O|type O	
+1F17F	P-knapp	parkering|parkeringsplass	
+1F18E	AB-knapp (blodtype)	AB|blod|blodtype|type AB	
+1F191	CL-knapp	clear|slett|tøm	
+1F192	COOL-knapp	cool	
+1F193	FREE-knapp	free|free-symbol|gratis	
+1F194	ID-knapp	ID-symbol|identitet	
+1F195	NEW-knapp	new|new-symbol|ny|nyhet	
+1F196	NG-knapp	ikke bra|NG|NG-symbol|no good	
+1F197	OK-knapp	OK|OK-symbol	
+1F198	SOS-knapp	hjelp|hjelp-symbol|sos|SOS-symbol	
+1F199	UP!-knapp	opp|opp-symbol|up|UP!-symbol	
+1F19A	VS-knapp	versus|vs|vs-symbol	
+1F201	«her» på japansk	her|japansk|katakana|knapp	
+1F202	«gebyr» på japansk	gebyr|japansk|katakana|knapp|service|tjeneste	
+1F21A	«gratis» på japansk	gratis|ideograf|japansk|knapp	
+1F22F	«reservert» på japansk	ideograf|japansk|knapp|reservert	
+1F232	«forbudt» på japansk	forbudt|ideograf|japansk|knapp	
+1F233	«ledig» på japansk	ideograf|knapp|ledig japansk	
+1F234	«bestått» på japansk	bestått|ideograf|japansk|knapp	
+1F235	«fullt» på japansk	fullt|ideograf|japansk|knapp	
+1F236	«ikke gratis» på japansk	betale|gratis|ideograf|ikke|japansk|knapp|kostnad	
+1F237	«månedlig beløp» på japansk	beløp|ideograf|japansk|knapp|månedlig|månedsbeløp	
+1F238	«søknad» på japansk	ideograf|japansk|knapp|søknad	
+1F239	«rabatt» på japansk	ideograf|japansk|knapp|rabatt	
+1F23A	«åpen for handel» på japansk	åpen|bedrift|handel|ideograf|japansk|knapp	
+1F250	«spesialtilbud» på japansk	ideograf|japansk|knapp|kupp|spesialtilbud	
+1F251	«akseptabelt» på japansk	akseptabelt|ideograf|japansk|knapp	
+1F300	syklon	orkan|svimmel|tornado	
+1F301	tåkete	tåke|vær	
+1F302	lukket paraply	regn|regnvær	
+1F303	stjernenatt	natt|stjerner	
+1F304	soloppgang over fjell	fjell|fjellsol|morgen|morgensol|sol	
+1F305	soloppgang	morgen|morgensol|sol	
+1F306	bylandskap i skumring	by|bygning|byhorisont|skumring|sol|solnedgang	
+1F307	solnedgang	bygning|skumring|sol|solnedgang over byhorisont	
+1F308	regnbue	regn|vær	
+1F309	bro om natten	bro|natt	
+1F30A	bølge	hav|kanagawa|natur|surfer|surfing|vann	
+1F30B	vulkan	utbrudd|vulkanutbrudd	
+1F30C	melkeveien	galakse|verdensrommet	
+1F30D	jordklode med Europa og Afrika	Afrika|Europa|gaia|globus|jorda|jorden|klode|tellus|verden	
+1F30E	jordklode med Amerika	Amerika|jorden|USA|verden	
+1F30F	jordklode med Asia og Australia	Asia|Australia|jorden|verden	
+1F310	jordklode med meridianer	jorden|lengde- og breddegrader|verden	
+1F311	nymåne	måne|mørk	
+1F312	voksende nymåne	måne|månefase|ny|voksende	
+1F313	voksende halvmåne	første kvarter|halvmåne|måne|månefase|ny	
+1F314	voksende fullmåne	måne|månefase|ny	
+1F315	fullmåne	full|hel måne|måne	
+1F316	avtakende fullmåne	måne|månefase|ne	
+1F317	avtakende halvmåne	halvmåne|måne|månefase|ne|siste kvarter	
+1F318	avtakende nemåne	avtakende|måne|månefase|ne|nemåne	
+1F319	månesigd	måne	
+1F31A	nymåneansikt	ansikt|måne|nymåne|nymåne med ansikt	
+1F31B	nymåne med ansikt	kvartmåne med ansikt|måneansikt	
+1F31C	nemåne med ansikt	kvartmåne med ansikt|måneansikt	
+1F31D	fullmåneansikt	ansikt|fullmåne|fullmåne med ansikt|måne|måne med ansikt	
+1F31E	solansikt	ansikt|lys|sol	
+1F31F	lysende stjerne	glitrende|skinnende|stjerne|verdensrommet	
+1F320	stjerneskudd	fallende stjerne|faller|stjerne|verdensrommet	
+1F321	termometer	temperatur|vær	
+1F324	sol bak liten sky	sky|sol|vær	
+1F325	sol bak stor sky	sky|sol|vær	
+1F326	sol bak sky med regn	regn|sky|sol|vær	
+1F327	sky med regn	regn|sky|vær	
+1F328	sky med snø	kaldt|sky|snø|vær	
+1F329	sky med lyn	lyn|sky|vær	
+1F32A	tornado	sky|vær	
+1F32B	tåke	sky|vær	
+1F32C	vindansikt	blåse|fjes|sky|vær|vind	
+1F32D	pølse med brød	hot dog|hotdog|pølse	
+1F32E	taco	meksikansk	
+1F32F	burrito	meksikansk|wrap	
+1F330	kastanje	kastanjenøtt|nøtt	
+1F331	spire	plante|ung	
+1F332	bartre	barnåler|eviggrønt tre|gran|juletre|tre	
+1F333	løvtre	blader|tre	
+1F334	palme	palmetre|tre	
+1F335	kaktus	plante	
+1F336	rød chili	chili|sterk	
+1F337	tulipan	blomst	
+1F338	kirsebærblomst	blomst|kirsebær	
+1F339	rose	blomst	
+1F33A	hibiskus	blomst	
+1F33B	solsikke	blomst|sol	
+1F33C	blomst	plante	
+1F33D	maiskolbe	mais	
+1F33E	risplante	aks|plante|ris|siv|strå	
+1F33F	urteblader	blader|plante|urt	
+1F340	firkløver	flaks|hell|kløver|plante|4	
+1F341	lønneblad	blad|høstblad|lønn	
+1F342	høstblad	blad|fallende|løv	
+1F343	blader i vind	blåse|blåser|blåst|løv i vind|vind	
+1F344	sopp	fluesopp	
+1F345	tomat	frukt|grønnsak	
+1F346	aubergine	grønnsak	
+1F347	druer	drueklase|frukt	
+1F348	melon	cantaloupe|frukt|honningmelon	
+1F349	vannmelon	frukt|melon	
+1F34A	mandarin	appelsin|c|frukt|klementin|sitrus|vitamin	
+1F34B	sitron	frukt|sitrus	
+1F34C	banan	frukt	
+1F34D	ananas	frukt	
+1F34E	rødt eple	diett|eple|frukt|helse|modent|rød|rødt	
+1F34F	grønt eple	eple|frukt|grønn|grønt	
+1F350	pære	frukt	
+1F351	fersken	frukt	
+1F352	kirsebær	bær|moreller	
+1F353	jordbær	bær	
+1F354	hamburger	burger|restaurant	
+1F355	pizzastykke	pizza|pizzabit|restaurant	
+1F356	kjøtt med bein	kjøttbein|restaurant	
+1F357	kyllinglår	fjærfe|fjærkre|kyllingklubbe|restaurant	
+1F358	riskjeks	kjeks|ris	
+1F359	risball	japansk|onigiri|restaurant|ris	
+1F35A	kokt ris	kokt|mat|ris	
+1F35B	karriris	curry|karri|restaurant|ris	
+1F35C	matbolle som damper	matbolle|nudelbolle|ramen|restaurant	
+1F35D	spagetti	pasta|restaurant	
+1F35E	brød	loff	
+1F35F	pommes frites	chips|restaurant|stekte poteter	
+1F360	bakt søtpotet	bakt|potet|restaurant|søtpotet	
+1F361	dango	japansk|restaurant|riskonfekt	
+1F362	oden	restaurant|sjømat|sjømat på pinne|sjømatspyd	
+1F363	sushi	restaurant	
+1F364	fritert reke	grillet scampi|kongereke|restaurant|scampi|tempura	
+1F365	fiskekake med mønster	fisk|restaurant	
+1F366	soft-is	dessert|is|iskrem|restaurant|softis	
+1F367	slush-is	dessert|is|restaurant|shave-ice	
+1F368	iskrem	dessert|is|restaurant	
+1F369	donut	dessert|restaurant|smultring	
+1F36A	kjeks	cookie|dessert|restaurant	
+1F36B	sjokoladeplate		
+1F36C	godteri	karamell|smågodt|søtsaker|sukkertøy	
+1F36D	kjærlighet på pinne	sukkertøy	
+1F36E	pudding	dessert|karamellpudding	
+1F36F	honningkrukke	honning|krukke	
+1F370	kakestykke	dessert|formkake|kake	
+1F371	bento-boks	bento|boks|matboks	
+1F372	gryterett	gryte|middag|middagsmat|panne	
+1F373	matlaging	egg|steke|stekepanne	
+1F374	kniv og gaffel	bestikk|frokost|gaffel|kniv|lunsj|mat|matlaging|middag|nam|restaurant|spise|sulten	
+1F375	tekopp	drikke|suppe|te	
+1F376	sake	drikke|flaske|karaffel|mugge og kopp	
+1F377	vinglass	drikke|glass|rødvin|vin	
+1F378	cocktailglass	bar|cocktaildrink|drink	
+1F379	tropisk drink	bar|drink|juice	
+1F37A	ølkrus	bar|halvliter|ølglass|pils|pilsner	
+1F37B	ølkrus som skåler	bar|halvliter|øl|ølglass|ølkrus|pils	
+1F37C	tåteflaske	babyflaske|drikke|melk	
+1F37D	tallerken med kniv og gaffel	gaffel|kniv|matlaging|tallerken	
+1F37E	flaske med sprettkork	bar|drikke|flaske|kork|sprette	
+1F37F	popkorn	kino|popcorn	
+1F380	sløyfe	bånd|gavebånd	
+1F381	gave	bursdag|feiring|innpakket|julegave|presang	
+1F382	bursdagskake	bløtkake|bursdag|dessert|feiring|fødselsdag|gebursdag|gratulerer|kake|nam|selskap	
+1F383	gresskarlykt	gresskar|Halloween|halloweenlykt	
+1F384	juletre	høytid|jul|julefeiring|tre	
+1F385	julenissen	feiring|jul|nissefar|nissen	
+1F386	fyrverkeri	feiring|nyttår	
+1F387	stjerneskudd på pinne	feiring|fyrverkeri|nyttår	
+1F388	ballong	feiring	
+1F389	smell-bon-bon	feiring|fest|serpentin	
+1F38A	konfettiball	ball|feiring|fest|konfettikule|wohoo	
+1F38B	tanabatatre	feiring|papirremser|stjernefestival|tanabata|tre	
+1F38C	kryssede flagg	feiring|flagg|japansk|japanske|kryssede|krysset	
+1F38D	furudekorasjon	feiring|japansk høytid|nyttår	
+1F38E	japanske dukker	festival|japansk høytid	
+1F38F	koinobori	feiring|japansk høytid|karpe|papirfisk	
+1F390	vindspill	bjelle|drømmefanger|feiring|vind	
+1F391	månebeskuelsesseremoni	feiring|høytid|måne|månefeiring|måneseremoni	
+1F392	skolesekk	ransel|ryggsekk	
+1F393	studentlue	feiring|hatt|klær|uteksaminering	
+1F396	militærmedalje	feiring|medalje|militæret	
+1F397	minnesløyfe	bånd|feiring|minne|påminnelse	
+1F399	studiomikrofon	mik|mikrofon|musikk|studio	
+1F39A	glidebryter	musikk|nivå|skyveknapp	
+1F39B	kontrollbrytere	brytere|knotter|kontroll|musikk	
+1F39E	filmruter	bilder|film|kino|ruter	
+1F39F	inngangsbilletter	adgang|billett|inngang	
+1F3A0	karusellhest	fornøyelsespark|hest|karusell|tivoli	
+1F3A1	pariserhjul	fornøyelsespark|tivoli	
+1F3A2	berg-og-dal-bane	fornøyelsespark|tivoli	
+1F3A3	fiskestang	fisk|fisking|fritid|natur	
+1F3A4	mikrofon	karaoke|mik|musikk|underholdning	
+1F3A5	filmkamera	film|kamera|kino|underholdning	
+1F3A6	kino	film|filmkamera|kamera|underholdning	
+1F3A7	hodetelefoner	headset|øretelefoner|underholdning	
+1F3A8	malerpalett	kunst|maling	
+1F3A9	flosshatt	hatt|klær	
+1F3AA	sirkustelt	sirkus|telt|underholdning	
+1F3AB	billett	adgang|inngang|underholdning	
+1F3AC	filmklapper	action|film|filming|klapper|underholdning	
+1F3AD	teatermasker	kunst|scenekunst|teater|underholdning	
+1F3AE	videospill	konsoll|kontroller|spill|spillkonsoll|spillkontroller|TV-spill	
+1F3AF	blink	dart|mål|midt i blinken|pilspill|treff	
+1F3B0	spilleautomat	spill	
+1F3B1	biljard	åtte|åtterkule|spill|8	
+1F3B2	terning	spill|terningkast|terningspill	
+1F3B3	bowling	bowlingkule|kule|spill	
+1F3B4	spillkort	kort|kortspill	
+1F3B5	note	musikk|musikknote	
+1F3B6	noter	musikk|musikknoter	
+1F3B7	saksofon	instrument|musikk|musikkinstrument|sax	
+1F3B8	gitar	instrument|musikk|musikkinstrument	
+1F3B9	piano	instrument|keyboard|musikk|musikkinstrument|tangenter	
+1F3BA	trompet	instrument|musikk|musikkinstrument	
+1F3BB	fiolin	fele|instrument|musikk|musikkinstrument	
+1F3BC	musikk	g-nøkkel|notetegn	
+1F3BD	treningstrøye	singlet|sport|t-skjorte|treningstopp	
+1F3BE	tennis	ball|racket|sport|tenninsball	
+1F3BF	ski	ski og staver|snø|staver|vintersport	
+1F3C0	basketball	ball|kurv|sport	
+1F3C1	rutete flagg	flagg|formel|mål|motorsport|racingflagg|rutete|1	
+1F3C2	snowboarder	snøbrett|snøbrettkjøring|snowboard|snowboarding|vintersport	
+1F3C3	løper	fart|fort|idrett|jogger|jogging|løp|maraton|person|rask|sport	
+1F3C4	surfer	hav|sport|strand|surfebrett|surfing	
+1F3C5	idrettsmedalje	medalje	
+1F3C6	trofé	premie	
+1F3C7	hesteveddeløp	galopp|hest|jockey|løp|sport|veddeløpshest	
+1F3C8	amerikansk fotball	amerikansk|ball|oval|sport	
+1F3C9	rugby	rugbyball|sport	
+1F3CA	svømmer	crawl|fristil|frisvømming|krål|person|sport|svømme|svømming|triatlon	
+1F3CB	vektløfter	bodybuilder|kroppsbygger|løfte vekter|løfter|person|sport|styrke|trening|vekt|vektstang	
+1F3CC	golfspiller	ball|birdie|caddy|driving|golf|golfe|green|person|pga|putte|range|tee	
+1F3CD	motorsykkel	motorsport|motorsyklist	
+1F3CE	racerbil	bil|billøp|motorsport	
+1F3CF	cricket	ball|balltre|kamp	
+1F3D0	volleyball	ball|kamp|spill	
+1F3D1	landhockey	ball|hockey|kamp|kølle|land	
+1F3D2	ishockey	hockey|is|kamp|kølle|puck	
+1F3D3	bordtennis	ball|balltre|bord|kamp|racket|tennis	
+1F3D4	snødekt fjell	fjell|kaldt|snø	
+1F3D5	telttur	camping	
+1F3D6	strand med parasoll	parasoll|strand	
+1F3D7	bygning under konstruksjon	bygg|byggearbeid|bygging|bygning	
+1F3D8	boliger	bygning|hus	
+1F3D9	bylandskap	by	
+1F3DA	falleferdig hus	bygning|falleferdig|forlatt|hus	
+1F3DB	klassisk bygning	bygning|klassisk	
+1F3DC	ørken		
+1F3DD	øde øy	øde|øy	
+1F3DE	nasjonalpark	park	
+1F3DF	stadion	arena	
+1F3E0	hus	bygning|hjem	
+1F3E1	hus med hage	bygning|hjem|hus	
+1F3E2	kontorbygg	bygning|kontor	
+1F3E3	japansk postkontor	bygning|japansk|post	
+1F3E4	postkontor	bygning|europeisk|post	
+1F3E5	sykehus	lege|medisin	
+1F3E6	bank	bygning	
+1F3E7	minibankskilt	automatisk|bank|minibank|penger	
+1F3E8	hotell	bygning	
+1F3E9	kjærlighetshotell	bygning|hotell	
+1F3EA	dagligvarebutikk	butikk|bygning|dagligvare|storkiosk	
+1F3EB	skole	bygning|skolebygning	
+1F3EC	kjøpesenter	butikk|varehus	
+1F3ED	fabrikk	bygning	
+1F3EE	rød papirlykt	bar|izakaya|lampe|lanterne|lykt|rød	
+1F3EF	japansk slott	bygning|japansk|slott	
+1F3F0	slott	borg|bygning|europeisk slott|festning	
+1F3F3	hvitt flagg	flagg|flagging|hvitt	
+1F3F4	svart flagg	flagg|flagging|svart	
+1F3F5	rosett	plante	
+1F3F7	etikett	merke	
+1F3F8	badminton	birdie|fjærball|kamp|racket	
+1F3F9	pil og bue	bue|bueskytter|pil|Skytten|stjernebilde|stjernetegn|våpen	
+1F3FA	amfora	drikke|krukke|matlaging|stjernebilde|stjernetegn|vannmannen	
+1F3FB	hudtype 1–2	emojimodifikator|fitzpatrick|hud|hudfarge|type 1–2	
+1F3FC	hudtype 3	emojimodifikator|fitzpatrick|hud|hudfarge|type 3	
+1F3FD	hudtype 4	emojimodifikator|fitzpatrick|hud|hudfarge|type 4	
+1F3FE	hudtype 5	emojimodifikator|fitzpatrick|hud|hudfarge|type 5	
+1F3FF	hudtype 6	emojimodifikator|fitzpatrick|hud|hudfarge|type 6	
+1F400	rotte	dyr	
+1F401	mus	dyr	
+1F402	okse	dyr|stjernebilde|stjernetegn|tyren	
+1F403	vannbøffel	bøffel|dyr	
+1F404	ku	dyr	
+1F405	tiger	dyr	
+1F406	leopard	dyr	
+1F407	kanin	dyr|hare	
+1F408	katt	dyr	
+1F409	drage	dyr|eventyr	
+1F40A	krokodille	dyr	
+1F40B	hval	dyr	
+1F40C	snegle	dyr	
+1F40D	slange	dyr|orm|slangebæreren|stjernebilde|stjernetegn	
+1F40E	hest	dyr|galopp|trav	
+1F40F	bukk	dyr|stjernebilde|stjernetegn|væren	
+1F410	geit	dyr|steinbukken|stjernebilde|stjernetegn	
+1F411	søye	dyr|sau	
+1F412	ape	dyr	
+1F413	hane	dyr|fugl	
+1F414	høne	dyr|fugl	
+1F415	hund	dyr|valp	
+1F416	gris	dyr	
+1F417	villsvin	dyr	
+1F418	elefant	dyr	
+1F419	blekksprut	bløtdyr|dyr	
+1F41A	spiralskjell	dyr|skjell	
+1F41B	insekt	åme|dyr|kryp|larve	
+1F41C	maur	dyr|insekt	
+1F41D	honningbie	bie|dyr|insekt	
+1F41E	marihøne	bille|dyr|insekt	
+1F41F	fisk	dyr|fiskene|stjernebilde|stjernetegn	
+1F420	tropisk fisk	dyr|fisk|tropisk	
+1F421	kulefisk	dyr|fisk	
+1F422	skilpadde	dyr	
+1F423	nyklekket kylling	dyr|fugl|klekking|kylling	
+1F424	kylling	baby|dyr|fugl	
+1F425	kylling forfra	baby|dyr|fugl|kylling	
+1F426	fugl	dyr	
+1F427	pingvin	dyr|fugl	
+1F428	koala	dyr|koalabjørn	
+1F429	puddel	dyr|hund	
+1F42A	dromedar	dyr|kamel|pukkel	
+1F42B	kamel	dyr|pukkel	
+1F42C	delfin	dyr|flipper|hav|strand	
+1F42D	musefjes	dyr|fjes|mus	
+1F42E	kufjes	dyr|fjes|ku	
+1F42F	tigerfjes	dyr|fjes|tiger	
+1F430	kaninfjes	dyr|fjes|kanin	
+1F431	kattefjes	dyr|fjes|katt	
+1F432	dragefjes	drage|dyr|eventyr|fjes	
+1F433	sprutende hval	dyr|hval|spruter	
+1F434	hestefjes	dyr|fjes|hest	
+1F435	apefjes	ape|dyr|fjes	
+1F436	hundefjes	dyr|fjes|hund	
+1F437	grisefjes	dyr|fjes|gris	
+1F438	frosk	dyr|fjes	
+1F439	hamster	dyr|fjes	
+1F43A	ulv	dyr|fjes	
+1F43B	bjørn	dyr|fjes	
+1F43C	panda	dyr|fjes	
+1F43D	grisetryne	dyr|gris|snute	
+1F43E	poteavtrykk	avtrykk|dyr|poter|spor	
+1F43F	ekorn	dyr|jordekorn	
+1F440	øyne	fjes|øye	
+1F441	øye	kropp	
+1F442	øre	kropp	
+1F443	nese	fjes|kropp	
+1F444	munn	fjes|kropp|lepper	
+1F445	tunge	fjes|kropp	
+1F446	peker opp – bakhånd	finger|hånd|pekende finger|peker opp	
+1F447	peker ned – bakhånd	finger|hånd|pekende finger|peker ned	
+1F448	peker mot venstre – bakhånd	finger|hånd|pekende finger|peker venstre	
+1F449	peker mot høyre – bakhånd	finger|hånd|pekende finger|peker opp	
+1F44A	knyttneve	enig|hand|hånd|knyttet neve|kompis|neve|stein	
+1F44B	vinkende hånd	farvel|hallo|hand|hånd|hei|hilse|sees|senere|ses|vinke	
+1F44C	OK-hånd	ålreit|bra|glimrende|greit|hand|hånd|klart|kult|OK|okay|perfekt|supert	
+1F44D	tommel opp	bra|fint|flott|greit|ja|klart|ok|okay|okei|tommel|topp	
+1F44E	tommel ned	hånd|tegn|tommel	
+1F44F	klappende hender	hånd|hender|klapping	
+1F450	åpne hender	åpen hand|åpen hånd|åpne|hand|hånd|hender|klem	
+1F451	krone	dronning|klær|konge	
+1F452	damehatt	hatt|klær	
+1F453	briller	klær|lesebriller	
+1F454	slips	klær	
+1F455	t-skjorte	klær|skjorte	
+1F456	bukser	jeans|klær	
+1F457	kjole	klær	
+1F458	kimono	kjole|klær	
+1F459	bikini	badedrakt|badetøy|klær	
+1F45A	dameklær	klær	
+1F45B	portemoné	klær|pung	
+1F45C	håndveske	klær|veske	
+1F45D	clutch-veske	klær|liten veske	
+1F45E	herresko	klær|sko	
+1F45F	joggesko	fritidssko|klær|sko|tennissko	
+1F460	høyhælt sko	klær|sko	
+1F461	damesandal	dame|klær|sandal|sko	
+1F462	damestøvlett	dame|klær|sko|støvlett	
+1F463	fotavtrykk	avtrykk|fot|fotspor|kropp|spor	
+1F464	silhuett av byste	byste|menneske|silhuett	
+1F465	silhuett av byster	byste|menneske|silhuett	
+1F466	gutt	menneske|ung	
+1F467	jente	Jomfruen|menneske|stjernebilde|stjernetegn|ung	
+1F468	mann	menneske|voksen	
+1F469	kvinne	menneske|voksen	
+1F46A	familie	barn|far|mennesker|mor	
+1F46B	mann og kvinne som leier	bestevenn|bestevenner|bff|dating|forelsket|hånd|holder hender|kjærester|kvinne|mann|par|søsken	
+1F46C	menn som leier	bestevenner|bff|brødre|dating|gutter|hender|karer|menn|par|tvillinger|venner|vennskap	
+1F46D	kvinner som leier	bestevenner|bff|damer|dating|hender|jenter|kvinner|par|søstre|tvillinger|venner|vennskap	
+1F46E	politibetjent	arrest|arrestere|betjent|menneske|pågripe|politi|purk|spaner	
+1F46F	personer med kaninører	bestevenner|danser|fest|hareører|identiske personer|kaninører|menneske|par|sjelevenner|tvillinger	
+1F470	person med slør	brud|brud med slør|bryllup|mennesker|slør	
+1F471	Person: blond	ansikt|blond|fjes|hår|lyshåret|menneske|person	
+1F472	mann med kinesisk lue	gua pi mao|hatt|lue|mann|menneske	
+1F473	turbankledd person	hodeplagg|person|turban|turbankledd	
+1F474	eldre mann	bestefar|eldre|fyr|gubbe|klok|mann|mister håret|morfar	
+1F475	eldre kvinne	bestemor|dame|eldre|gammel|kjerring|klok|kvinne|mormor	
+1F476	baby	menneske|ung	
+1F477	anleggsarbeider	anlegg|arbeider|bygg|hjelm|ingeniør|menneske|person|refleksvest|vernehjelm	
+1F478	prinsesse	eventyr|fantasy|menneske	
+1F479	japansk troll	eventyr|japansk ogre|ogre	
+1F47A	tengu	ansikt|eventyr|japansk troll	
+1F47B	spøkelse	eventyr|fjes|skapning	
+1F47C	babyengel	ansikt|engel|eventyr	
+1F47D	romvesen	fjes|sci-fi|UFO|utenomjordisk	
+1F47E	rommonster	fjes|sci-fi|UFO|utenomjordisk	
+1F47F	sint djevel	djevel|fjes	
+1F480	hodeskalle	død|dødninghode|fjes	
+1F481	hjelpende person	hånd|hjelp|hjelpende|informasjon|menneske|person|sarkasme|sarkastisk|seriøst|sladder	
+1F482	gardist	menneske|vakt	
+1F483	dansende kvinne	dans|kvinne	
+1F484	leppestift	kosmetikk|sminke	
+1F485	neglelakk	kosmetikk|manikyr|negl	
+1F486	ansiktsmassasje	ansikt|anspent|avslapning|hodepine|massasje|person|skjønnhetssalong|terapi	
+1F487	hårklipp	frisør|frisørsalong|frisyre|hår|person|salong|skjønnhet|skjønnhetssalong	
+1F488	barberskilt	barberer|barberersøyle|frisør|frisørsalong	
+1F489	sprøyte	medisin|nål|syk|vaksine	
+1F48A	pille	lege|medisin|tablett	
+1F48B	kyssemerke	kyss|lepper|romantikk	
+1F48C	kjærlighesbrev	brev|brev med hjerte|hjerte|romantikk	
+1F48D	ring	diamant|romantikk	
+1F48E	diamant	edelsten|romantikk|smykkestein	
+1F48F	kyss	kyssing|mennesker|romantikk	
+1F490	bukett	blomst|blomster|romantikk	
+1F491	par med hjerte	hjerte|kjærlighet|mennesker|romantikk	
+1F492	bryllup	kapell|romantikk	
+1F493	bankende hjerte	bankende|følelser|hjerte|hjertebank|kjærlighet|pulserende	
+1F494	knust hjerte	brudd|følelser|hjerte	
+1F495	to hjerter	elskere|følelser|kjærlighet	
+1F496	skinnende hjerte	følelser|kjærlighet|skinnende	
+1F497	voksende hjerte	følelser|kjærlighet|nervøs|spent	
+1F498	hjerte med pil	følelser|hjerte|kjærlighet|pil	
+1F499	blått hjerte	blå|følelser|hjerte	
+1F49A	grønt hjerte	følelser|grønn|hjerte	
+1F49B	gult hjerte	følelser|gul|hjerte	
+1F49C	lilla hjerte	følelser|hjerte|lilla	
+1F49D	hjerte med bånd	bånd|følelser|hjerte|valentine	
+1F49E	snurrende hjerter	følelser|hjerter|kjærlighet|snurrende|søtt	
+1F49F	hjertedekorasjon	hjerte	
+1F4A0	diamant med prikk	blomst|diamant|søtt	
+1F4A1	lyspære	elektrisitet|idé|lys|pære|tegneserie	
+1F4A2	sinne	følelse|sinnesymbol|sint|tegneserie	
+1F4A3	bombe	følelse|tegneserie	
+1F4A4	zzz	følelse|god natt|snorker|sover|soving|søvn|søvnig|tegneserie|trett|trøtt	
+1F4A5	krasj	følelse|kollisjon|smell|tegneserie	
+1F4A6	svettedråper	dråper|sprut|sprutende|svette|tegneserie	
+1F4A7	dråpe	drypp|tegneserie|vann	
+1F4A8	stikker av	forsvinne|løpe|tegneserie	
+1F4A9	bæsj	bæsjeklatt|hundebæsj|kuruke	
+1F4AA	biceps	fleks|muskel|muskelfleksing|sterk|tegneserie	
+1F4AB	svimmel	se stjerner|stjerner|tegneserie	
+1F4AC	snakkeboble	ballong|boble|dialog|dialogboble|tegneserie	
+1F4AD	tankeboble	boble|tanke|tegneserie	
+1F4AE	hvit blomst	blomst|blomsterstempel|stempel	
+1F4AF	hundre poeng	full pott|poeng|100	
+1F4B0	pengesekk	dollar|penger|sekk	
+1F4B1	valutaveksling	bank|penger|valuta|veksling	
+1F4B2	dollartegn	dollar|penger|stort dollartegn	
+1F4B3	kredittkort	bankkort|betalingskort|kort|kreditt|visa	
+1F4B4	yenseddel	penger|seddel|yen	
+1F4B5	dollarseddel	dollar|penger|seddel	
+1F4B6	euroseddel	euro|penger|seddel	
+1F4B7	pundseddel	penger|pund|seddel	
+1F4B8	penger med vinger	bank|flygende seddel|penger|seddel	
+1F4B9	stigende diagram med yen	graf|marked|oppover|penger|stigende|trend|yen	
+1F4BA	sete	stol	
+1F4BB	bærbar datamaskin	datamaskin|maskin|PC	
+1F4BC	dokumentmappe	stresskoffert	
+1F4BD	datadisk	disk|lagring|MD|minidisk|optisk	
+1F4BE	diskett	datamaskin|disk|lagring	
+1F4BF	optisk plate	blu-ray|CD|disk|DVD|lagring	
+1F4C0	DVD	disk|DVD-plate|lagring|optisk|plate	
+1F4C1	arkivmappe	arkiv|fil|mappe	
+1F4C2	åpen arkivmappe	åpen|arkivmappe|fil|filmappe|mappe	
+1F4C3	side med bøy	ark|opprullet|side	
+1F4C4	side som vender opp	ark|papir|side	
+1F4C5	kalender	dato	
+1F4C6	veggkalender	kalender|riv-av-kalender	
+1F4C7	kartotek	indeks|register	
+1F4C8	diagram som peker oppover	chart|graf|opp|positiv|stigende	
+1F4C9	diagram som peker nedover	chart|fallende|graf|ned|negativ|synkende	
+1F4CA	stolpediagram	diagram|histogram|søylediagram	
+1F4CB	skriveplate	ordrebrett|tavle|utklippstavle	
+1F4CC	stift	kontorrekvisita	
+1F4CD	rund stift	kontorrekvisita|markørnål	
+1F4CE	binders	kontorrekvisita	
+1F4CF	linjal	rett	
+1F4D0	trekantlinjal	linjal|trekant|vinkel	
+1F4D1	bokmerkefane	bokmerke|faner|markør|merker	
+1F4D2	spiralblokk	kontorrekvisita|notatbok	
+1F4D3	notatbok	kladdebok|kontorrekvisita	
+1F4D4	dekorert notatbok	notatbok|omslag	
+1F4D5	lukket bok	bok|lukket|utdannelse|utdanning	
+1F4D6	åpen bok	åpen|bibliotek|bok|fantasi|kunnskap|læring|lesing|romaner|utdannelse|utdanning	
+1F4D7	grønn bok	bibliotek|bok|fantasi|grønn|lesing|utdannelse|utdanning	
+1F4D8	blå bok	bibliotek|blå|bok|fantasi|lesing|utdannelse|utdanning	
+1F4D9	oransje bok	bibliotek|bok|fantasi|lesing|oransje|utdannelse|utdanning	
+1F4DA	bøker	bok	
+1F4DB	navneskilt	navn|skilt	
+1F4DC	pergamentrull	papir|papirrull|papyrus|pergament|rull	
+1F4DD	notat	blyant|bok|kommunikasjon	
+1F4DE	telefonrør	kommunikasjon|telefon	
+1F4DF	personsøker	kommunikasjon|telefon	
+1F4E0	faksmaskin	kommunikasjon|telefon	
+1F4E1	satellittantenne	antenne|kommunikasjon|parabol|parabolantenne|satellitt	
+1F4E2	høyttaler	høy|kommunikasjon|megafon|ropert	
+1F4E3	megafon	heiing|kommunikasjon|ropert	
+1F4E4	utboks	brev|e-post|kommunikasjon|sendt|skuff	
+1F4E5	innboks	brev|e-post|kommunikasjon|mottatt|skuff	
+1F4E6	pakke	eske|levering	
+1F4E7	e-post	brev|kommunikasjon|post	
+1F4E8	innkommende konvolutt	brev|e-post|epost|innkommende|konvolutt|levering|mail|motta|sendt	
+1F4E9	konvolutt med pil	brev|e-post|epost|konvolutt|sende|sendt|utgående	
+1F4EA	lukket postkasse med flagget nede	flagg|post	
+1F4EB	lukket postkasse med flagget oppe	flagg|post	
+1F4EC	åpen postkasse med flagget oppe	flagg|post	
+1F4ED	åpen postkasse med flagget nede	flagg|post	
+1F4EE	postkasse	post	
+1F4EF	posthorn	horn|post	
+1F4F0	avis	nyheter|publikasjon	
+1F4F1	mobiltelefon	mobil|telefon	
+1F4F2	mobiltelefon med pil	anrop|mobiltelefon|pil|ring|telefon	
+1F4F3	vibreringsmodus	mobil|mobiltelefon|modus|vibrasjon|vibrering	
+1F4F4	mobiltelefon av	av|mobil|mobiltelefon	
+1F4F5	mobiltelefon ikke tillatt	forbudt|ikke|ikke tillatt|ingen telefonsamtaler|mobil|mobiltelefon|nei|telefon	
+1F4F6	mobilsignaler	antenne|mobil|signal|signalstyrke|telefon	
+1F4F7	kamera	foto|kamerateknikk|video	
+1F4F8	kamera med blits	blits|foto|kamera|video	
+1F4F9	videokamera	kamera|video	
+1F4FA	TV	fjernsyn|video	
+1F4FB	radio	radiosignaler|teknologi	
+1F4FC	videokassett	kassett|opptak|vhs|video	
+1F4FD	filmfremviser	film|filmframviser|kino|projektor|video	
+1F4FF	bønnekrans	bønn|halssmykke|klær|perler|religion	
+1F500	bland spor-symbol	kryssede piler mot høyre|piler	
+1F501	gjenta-knapp	med klokken|piler	
+1F502	gjenta ett spor-knapp	1 gang|én gang|med klokken|piler	
+1F503	vertikale piler med klokken	last inn på nytt|piler	
+1F504	piler mot klokken	mot klokken|piler	
+1F505	lite lys-knapp	lav|lysstyrke	
+1F506	mye lys-knapp	høy|lysstyrke	
+1F507	dempet høyttaler	dempet|høyttaler med strek over|ingen prating|stille	
+1F508	høyttaler med lavt volum	lav|lyd|ropert	
+1F509	høyttaler med middels volum	lyd|middels|ropert	
+1F50A	høyttaler med høyt volum	høy|lyd|ropert	
+1F50B	batteri	energilagring|strøm	
+1F50C	støpsel	elektrisitet|elektrisk|plugg	
+1F50D	forstørrelsesglass mot venstre	forstørrelse|glass|lupe|søk	
+1F50E	forstørrelsesglass mot høyre	forstørrelse|glass|lupe|søk	
+1F50F	låst med penn	penn|personvern	
+1F510	låst med nøkkel	lås med nøkkel|sikker	
+1F511	nøkkel	lås|passord	
+1F512	låst	hengelås|lås|privat	
+1F513	ulåst	åpen|hengelås|lås	
+1F514	bjelle	klokke|ringing	
+1F515	overstreket bjelle	bjelle med strek over|ingen lyd|klokke|lydløs|stille	
+1F516	bokmerke	merke	
+1F517	lenke	link|to ringer	
+1F518	radioknapp	knapp|radio	
+1F519	BACK-pil	pil|pil til venstre|tilbake|tilbakepil	
+1F51A	END-pil	pil|pil til venstre|slutt|slutt med pil|sluttpil	
+1F51B	ON!-pil	ON|PÅ|pil|utrop|utropstegn	
+1F51C	SOON-pil	pil|snart|snart med pil	
+1F51D	TOP-pil	opp|pil opp|TOP|topp|topp med pil	
+1F51E	aldersgrense 18 år	attenårsgrense|ingen under 18|under 18|18	
+1F520	store bokstaver	ABCD|bokstaver|inndata	
+1F521	små bokstaver	abcd|bokstaver|inndata	
+1F522	tall	inndata|numeriske data|1234	
+1F523	symboler	inndata|〒♪&%	
+1F524	latinsk alfabet	ABC|bokstaver|inndata|latinsk	
+1F525	ild	flamme	
+1F526	lommelykt	elektrisk|lykt|lys	
+1F527	fastnøkkel	skrunøkkel|verktøy	
+1F528	hammer	verktøy	
+1F529	mutter og skrue	mutter|skrue|verktøy	
+1F52A	kokkekniv	kniv|matlaging|våpen|verktøy	
+1F52B	vannpistol	leketøysvåpen|pistol|revolver|våpen	
+1F52C	mikroskop	forskning|verktøy|vitenskap	
+1F52D	teleskop	astronomi|forskning|verktøy|vitenskap	
+1F52E	krystallkule	spådom|spådommer	
+1F52F	sekstagget stjerne med prikk	magi|sekskantet|stjerne	
+1F530	japansk tegn for nybegynner	grønn og gul|grønt og gult blad|japansk|nybegynner	
+1F531	treforkemblem	anker|emblem|treenighet|trefork|tridentsymbol	
+1F532	svart firkantet knapp	firkant|knapp	
+1F533	hvit firkantet knapp	firkant|knapp	
+1F534	rød sirkel	geometrisk|rød|sirkel	
+1F535	blå sirkel	blå|geometrisk|sirkel	
+1F536	stort oransje rutersymbol	geometrisk|oransje|ruter	
+1F537	stort blått rutersymbol	blå|geometrisk|ruter	
+1F538	lite oransje rutersymbol	geometrisk|oransje|ruter	
+1F539	lite blått rutersymbol	blå|geometrisk|ruter	
+1F53A	rød trekant som peker opp	geometrisk|oppover|trekant	
+1F53B	rød trekant som peker ned	geometrisk|nedover|trekant	
+1F53C	oppover-knapp	oppover|pil	
+1F53D	nedover-knapp	ned|nedover	
+1F549	om	hindu|religion	
+1F54A	fredsdue	due|dyr|fly|fred|fugl	
+1F54B	Kaba	islam|muslim|religion	
+1F54C	moské	bygning|islam|muslim|religion	
+1F54D	synagoge	bygning|jøde|jødisk|religion|tempel	
+1F54E	menora	lysestake|religion	
+1F550	klokken ett	ett|klokka|klokken|tretten|1|1:00|13:00	
+1F551	klokken to	fjorten|klokka|klokken|to|14:00|2|2:00	
+1F552	klokken tre	femten|klokka|klokken|tre|15:00|3|3:00	
+1F553	klokken fire	fire|klokka|klokken|seksten|16:00|4|4:00	
+1F554	klokken fem	fem|klokka|klokken|sytten|17:00|5|5:00	
+1F555	klokken seks	atten|klokka|klokken|seks|18:00|6|6:00	
+1F556	klokken sju	klokka|klokken|nitten|sju|syv|19:00|7|7:00	
+1F557	klokken åtte	åtte|klokka|klokken|tjue|20:00|8|8:00	
+1F558	klokken ni	klokka|klokken|ni|tjueen|tjueett|21:00|9|9:00	
+1F559	klokken ti	klokka|klokken|ti|tjueto|10|10:00|22:00	
+1F55A	klokken elleve	elleve|klokka|klokken|tjuetre|11|11:00|23:00	
+1F55B	klokken tolv	klokka|tolv|0:00|12:00|24:00	
+1F55C	klokken halv to	halv to|klokka|klokken|1:30|13:30	
+1F55D	klokken halv tre	halv tre|klokka|klokken|14:30|2:30	
+1F55E	klokken halv fire	halv fire|klokka|klokken|15:30|3:30	
+1F55F	klokken halv fem	halv fem|klokka|klokken|16:30|4:30	
+1F560	klokken halv seks	halv seks|klokka|klokken|17:30|5:30	
+1F561	klokken halv sju	halv sju|halv syv|klokka|klokken|18:30|6:30	
+1F562	klokken halv åtte	halv åtte|klokka|klokken|19:30|7:30	
+1F563	klokken halv ni	halv ni|klokka|klokken|20:30|8:30	
+1F564	klokken halv ti	halv ti|klokka|klokken|09:30|21:30	
+1F565	klokken halv elleve	halv elleve|klokka|klokken|10:30|22:30	
+1F566	klokken halv tolv	halv tolv|klokka|klokken|11:30|23:30	
+1F567	klokken halv ett	halv ett|klokka|klokken|0:30|12:30	
+1F56F	stearinlys	lys|stearin	
+1F570	peisur	klokke	
+1F573	hull i bakken	hull	
+1F574	svevende mann i dress	business|dress|forretningsmann|mann	
+1F575	detektiv	etterforsker|spion	
+1F576	solbriller	briller|mørkt|øye|øyne	
+1F577	edderkopp	dyr|insekt	
+1F578	spindelvev	dyr|edderkopp|nett	
+1F579	joystick	spill|styrespak|styrespake|videospill	
+1F57A	dansende mann	dans|mann	
+1F587	sammenlenkede binders	binders|kjede	
+1F58A	penn	kulepenn	
+1F58B	fyllepenn	blekk|penn	
+1F58C	pensel	maling	
+1F58D	fargestift	tegning	
+1F590	flat hånd med spredte fingre	finger|hånd|spredt	
+1F595	langfinger	finger|hånd|kropp|vise fingeren	
+1F596	Vulcan-hilsen	finger|hånd|spock|vulcan	
+1F5A4	svart hjerte	hjerte|ond|svart	
+1F5A5	stasjonær datamaskin	datamaskin|monitor|PC|skjerm|stasjonær	
+1F5A8	skriver	datamaskin|printer	
+1F5B1	datamus	datamaskin|knapp|mus	
+1F5B2	styrekule	datamaskin	
+1F5BC	innrammet bilde	bilde|kunst|maleri|museum|ramme	
+1F5C2	skillekort	faner|indeks|kort|skillere	
+1F5C3	kartotekboks	arkiv|boks|fil|kort	
+1F5C4	arkivskap	arkiv|fil|kabinett|mapper	
+1F5D1	papirkurv	søppelkasse|søppelkurv	
+1F5D2	spiralhefte	blokk|notat|spiral	
+1F5D3	spiralkalender	blokk|kalender|spiral	
+1F5DC	skrutvinge	klemme|skruetvinge|skrustikke|verktøy	
+1F5DD	gammeldags nøkkel	gammel|lås|ledetråd|nøkkel	
+1F5DE	sammenrullet avis	avis|nyheter|opprullet|papir	
+1F5E1	dolk	kniv|våpen	
+1F5E3	snakkende hode i profil	fjes|hode|silhuett|snakke|snakker	
+1F5E8	snakkeboble mot venstre	dialog|tale	
+1F5EF	sint snakkeboble mot høyre	ballong|boble|sint|sur	
+1F5F3	urne med stemmeseddel	boks|stemmeseddel	
+1F5FA	verdenskart	kart|verden	
+1F5FB	Fuji-fjellet	fjell|fuji	
+1F5FC	Tokyo-tårnet	tårn|Tokyo	
+1F5FD	Frihetsgudinnen	frihet|statue	
+1F5FE	kart over Japan	Japan|kart	
+1F5FF	moai-statue	ansiktsstatue|moai|påskeøya|statue	
+1F600	glisefjes	fint|fjes|flir|glad|glis|latter|smilefjes|smiler|tenner	
+1F601	glisefjes med smilende øyne	fjes|glis|latter|lol|smil|smilefjes	
+1F602	gledestårer	fjes|flire|glede|gøy|haha|hoho|latter|le|lol|morsomt|tårer	
+1F603	glisende fjes med vidåpne øyne	åpen|fjes|latter|munn|smil|smilefjes|smilefjes med åpen munn	
+1F604	glisende fjes med smilende øyne	åpen|fjes|flir|glis|latter|lol|morsomt|øye|smil|smilefjes|tenner	
+1F605	glisende fjes som svetter	åpen|kaldsvette|munn|smil med svette|svett smil med åpen munn	
+1F606	smil med sammenknepne øyne	åpen munn|artig|fjes|flir|fornøyd|glad|gøy|haha|latter|le|ler|lol|lykkelig|morsomt|smil|smiler	
+1F607	smil med glorie	engel|fjes|glorie|smil|uskyldig	
+1F608	smilende djevel	djevel|fjes|horn|smil|smilende	
+1F609	blunkende ansikt	blunke|blunker|erte|fjes|flørte|glimt|hjerteknuser|sexy	
+1F60A	smil med smilende øyne	fjes|rødme|smil|smilende øyne	
+1F60B	nam-nam	deilig mat|fjes|mmm|nam|sulten	
+1F60C	lettet	fjes	
+1F60D	smilefjes med hjerteøyne	fjes|hjerte|hjerteøyne|kjærlighet|øyne	
+1F60E	smilefjes med solbriller	fjes|kul|lyst|sol|solbriller	
+1F60F	lurt smil	fjes|selvtilfreds	
+1F610	nøytral	fjes|ingen kommentar|stum	
+1F611	uttrykksløs	fjes|ingen kommentar|nøytral|stum	
+1F612	misfornøyd	fjes|sur	
+1F613	kaldsvetter	ansikt|kaldsvette	
+1F614	tankefull	alvorlig|fjes|lei seg	
+1F615	forvirret	fjes|forvirrende|hm|ikke|lei|omtåket|trist|usikker|vet	
+1F616	fortvilet	fjes|sint|skuffet	
+1F617	kyssefjes	elsker deg|fjes|glad i deg|kyss|slengkyss	
+1F618	slengkyss	elsker deg|fjes|glad i deg|hjerte|kyss	
+1F619	kyss med smilende øyne	fjes|kyss|slengkyss|smil|smilende øyne	
+1F61A	kyss med lukkede øyne	elsker deg|fjes|glad i deg|kyss|lukkede øyne|trutmunn	
+1F61B	rekker tunge	fjes|fjes som rekker tunge|tungen ut	
+1F61C	blunker og rekker tunge	blunk|erte|fjes|rekke tunge med blunk|spøk	
+1F61D	æsj	fælt|fjes|lukkende øyne|rekke tunge|tungen ut med øynene lukket	
+1F61E	skuffet	fjes|skuffelse	
+1F61F	bekymret	engstelig|fjes|nerver|nervøs|overrasket|sommerfugler|stress|stresset|trist	
+1F620	sint	fjes|raseri|sinna|sur	
+1F621	rasende	fjes|raseri|rødt|sinna|sint|sur	
+1F622	gråter	fjes|tårer|trist	
+1F623	bommert	fjes|skuffet|utholdende	
+1F624	triumferende	fjes|jeg vant|triumf	
+1F625	puh!	fjes|lettet|skuffet	
+1F626	oppgitt	fjes|overrasket|sjokkert med åpen munn	
+1F627	pine	fjes|lider|smerte	
+1F628	redd	fjes|frykt|skremt	
+1F629	sliten	fjes|trøtt	
+1F62A	søvnig	fjes	
+1F62B	trøtt fjes	fjes|overtrøtt|sliten|søvnig	
+1F62C	grimase	fjes	
+1F62D	strigråter	fjes|gråt|tårer	
+1F62E	forbauset	åpen|fjes|forbløffet|jøss|munn|oi|overrasket|sjokkert|utrolig|uvirkelig	
+1F62F	overrasket	fjes|lamslått|målløs|sjokkert|stum	
+1F630	engstelig og svetter	åpen|engstelig|fjes|frykt|kaldsvette|munn|nervøs|redd|svetter|syk	
+1F631	livredd	fjes|frykt|munch|redd|skremt|skrik	
+1F632	sjokkert	fjes|overrasket|stum	
+1F633	rødmer	fjes|rød	
+1F634	sover	fjes|gjesp|god natt|godnatt|natt|snork|sove|søvn|trett|trøtt	
+1F635	ør	fjes|svimmel	
+1F636	uten munn	fjes|ingen munn	
+1F637	fjes med munnbind	bakterier|doktor|forkjølet|lege|medisin|munnbind|syk|sykdom|sykehus|tannlege|virus	
+1F638	flirende katt med smilende øyne	fjes|katt|smil	
+1F639	katt med gledestårer	fjes|glede|gledestårer|katt|kattefjes med gledestårer|tårer	
+1F63A	smilende katt med åpen munn	åpen munn|fjes|katt|smil	
+1F63B	smilende katt med hjerteøyne	fjes|forelsket|hjerter|katt|kjærlighet|øyne	
+1F63C	katt med ironisk smil	fjes|ironisk|katt|smil	
+1F63D	kyssende katt	fjes|katt|kyss|kyssende|lukkede øyne	
+1F63E	surmulende katt	fjes|katt|sint|sur	
+1F63F	gråtende katt	fjes|gråt|tåre|trist katt	
+1F640	sliten katt	fjes|jøsses|katt|overrasket|slitent kattefjes	
+1F641	litt surt fjes	fjes|litt|surt|trist	
+1F642	smiler litt	fjes|smil	
+1F643	fjes som er opp-ned	fjes|opp-ned	
+1F644	himler med øynene	å nei|fjes|hva i all verden?|oppgitt|øyne|ruller|utrolig	
+1F645	gestikulerer NEI	forbudt|hånd|ikke|ikke lov|mimikk|nei|person|uaktuelt	
+1F646	gestikulerer OK	gestikulerer|greit|hånd|ok|person	
+1F647	bukker	angrer|beklager|bukke|meditasjon|meditere|person|sorry|synd|tilgi|unnskyld	
+1F648	ser ingenting ondt	ape|fjes|forbudt|ikke|ser ikke	
+1F649	hører ingenting ondt	ape|fjes|forbudt|hører ikke|ikke	
+1F64A	sier ingenting ondt	ape|fjes|forbudt|holder munn|ikke|sier ikke	
+1F64B	rekker opp hånden	hand|hånd|her|jeg|meg|opp|person|rekke opp|spørsmål|svaret|vet	
+1F64C	hevede hender	begge hender|feirer|feiring|hånd|rekker begge armene i været	
+1F64D	rynker brynene	frustrert|ikke fornøyd|irritert|mimikk|misfornøyd|person|rynker pannen|skuffet|sur	
+1F64E	furter	furting|grimase|mimikk|opprørt|person|skuffet|surmuling	
+1F64F	foldede hender	be|ber|bevegelse|bønn|hånd	
+1F680	rakett	fremkomstmiddel|verdensrommet	
+1F681	helikopter	fremkomstmiddel	
+1F682	lokomotiv	fremkomstmiddel|lokmotiv|tog	
+1F683	togvogn	elektrisk|fremkomstmiddel|tog|trikk	
+1F684	høyhastighetstog	fremkomstmiddel|lyntog|tog	
+1F685	høyhastighetstog med kulenese	fremkomstmiddel|lyntog|shinkansen|tog	
+1F686	tog	fremkomstmiddel|jernbane	
+1F687	tunnelbane	fremkomstmiddel|metro|t-bane|undergrunnsbane	
+1F688	lokaltog	fremkomstmiddel|jernbane|tog	
+1F689	togstasjon	jernbane|stasjon|tog	
+1F68A	trikk	fremkomstmiddel	
+1F68B	trikkevogn	fremkomstmiddel|lokaltog|trikk|trolleybuss|vogn	
+1F68C	buss	fremkomstmiddel	
+1F68D	motgående buss	buss|fremkomstmiddel|motgående	
+1F68E	trolleybuss	buss|fremkomstmiddel	
+1F68F	busstopp	buss|holdeplass	
+1F690	minibuss	buss|kjøretøy|van	
+1F691	ambulanse	bil|kjøretøy	
+1F692	brannbil	bil|kjøretøy	
+1F693	politibil	bil|kjøretøy	
+1F694	motgående politibil	bil|kjøretøy	
+1F695	taxi	bil|kjøretøy	
+1F696	motgående taxi	bil|drosje|kjøretøy|motgående|taxi	
+1F697	bil	kjøretøy	
+1F698	motgående bil	bil|kjøretøy|motgående	
+1F699	SUV	bil|kjøretøy	
+1F69A	varebil	bil|kjøretøy	
+1F69B	lastebil	bil|kjøretøy|trailer|trekkvogn	
+1F69C	traktor	kjøretøy	
+1F69D	monorail	fremkomstmiddel	
+1F69E	fjellbane	bane|fjell|fremkomstmiddel	
+1F69F	svevebane	fremkomstmiddel	
+1F6A0	kabelbane	fremkomstmiddel	
+1F6A1	taubane	fremkomstmiddel|gondolbane	
+1F6A2	skip	båt|fartøy|fremkomstmiddel	
+1F6A3	person i robåt	åre|båt|elv|fartøy|fiske|innsjø|kano|padle|rafting|ro|robåt|transport|vann	
+1F6A4	speedbåt	båt|fartøy	
+1F6A5	horisontale trafikklys	horisontale lys|trafikk	
+1F6A6	vertikale trafiklys	trafikk|vertikale lys	
+1F6A7	anleggsarbeid	byggeplass|byggeskilt|skilt	
+1F6A8	politilys	bil|kjøretøy|lys|politi|roterende|signal	
+1F6A9	vimpel	golf|posisjon|trekantet	
+1F6AA	dør	bakdør|inngangsdør|skapdør|ytterdør	
+1F6AB	forbudt	adgang forbudt|ikke|nei|skilt	
+1F6AC	sigarett	røyking|røyking tillatt|skilt	
+1F6AD	røyking forbudt	forbudt|ikke|ikke tillatt|nei|røyk|røyking	
+1F6AE	avfallsskilt	avfall|skilt|søppel	
+1F6AF	forsøpling ikke tillatt	ikke avfall|ingen kasting|skilt	
+1F6B0	drikkevann	drikke|kran|spring|tappe|vann|vatn	
+1F6B1	ikke drikkevann	ikke drikkbart|vann	
+1F6B2	sykkel	kjøretøy	
+1F6B3	sykler forbudt	ikke|ingen sykler|nei|sykkel|sykkel ikke tillatt	
+1F6B4	syklist	sport|sykkel|sykkelløp|sykle	
+1F6B5	terrengsyklist	atletisk|mountainbike|sport|sykkel|sykle|syklist|terrengsykkel	
+1F6B6	fotgjenger	fottur|gå|gående|går|gåtur|person|spasere|steg|tur	
+1F6B7	fotgjengere forbudt	fotgjenger|fotgjengere|gående|ikke|ikke tillatt|nei|skilt	
+1F6B8	barn krysser veien	barn|krysser|skilt	
+1F6B9	herretoalett	do|herrer|mannesymbol|toalett|wc	
+1F6BA	dametoalett	damer|do|kvinnesymbol|toalett|wc	
+1F6BB	toalettskilt	do|toalett|WC	
+1F6BC	babysymbol	babyskilt|stellerom|stellestasjon	
+1F6BD	toalett	dass|do|vannklosett|wc	
+1F6BE	do	toalett|WC	
+1F6BF	dusj	vann	
+1F6C0	person i badekar	bad|badekar	
+1F6C1	badekar	bad|badestamp	
+1F6C2	passkontroll	kontroll|pass	
+1F6C3	toll	grense	
+1F6C4	bagasjebånd	bagasje|rullebånd	
+1F6C5	bagasjeoppbevaring	bagasje|oppbevaring|oppbevaringsboks	
+1F6CB	sofa og lampe	hotell|lampe|sofa	
+1F6CC	person i seng	god natt|hotell|overnatting|seng|sengetid|sove	
+1F6CD	handleposer	hotell|pose|shopping	
+1F6CE	resepsjonsklokke	hotell|klokke|pikkolo	
+1F6CF	seng	hotell|sove	
+1F6D0	religiøst samlingssted	religion|tilbedelse	
+1F6D1	stoppskilt	åttekantet|skilt|stopp	
+1F6D2	handlevogn	handle|innkjøp|tralle|vogn	
+1F6D5	hindutempel	hindu|religion|tempel	
+1F6D6	hytte	heim|hjem|hus|jurt|jurte|overnatting|rundhus	
+1F6D7	heis	etasje|ned|opp|tilgjengelighet	
+1F6D8	jordskred	fare|fjell|jordskjelv|katastrofe|lavine|skred|steiner|steinsprang	
+1F6D9	fyrtårn	fyr|håp|lys|maritim|navigasjon|opplysning|signal|sjø|sjøfart|veiledning	
+1F6DC	trådløst	bredbånd|datamaskin|hotspot|internett|nettverk|ruter|smarttelefon|tilkobling|wi-fi|wifi	
+1F6DD	sklie	fornøyelsespark|leke|lekeplass|rutsjebane|skli	
+1F6DE	hjul	bil|bildekk|dekk|dreie|felg|kjøretøy|rulle|sirkel	
+1F6DF	livbøye	badering|flyte|livredder|livredning|redde|redde liv|redningsbøye|svømme	
+1F6E0	hammer og fastnøkkel	hammer|skiftenøkkel|verktøy	
+1F6E1	skjold	våpen	
+1F6E2	oljefat	fat|olje|tønne	
+1F6E3	motorvei	vei	
+1F6E4	jernbanespor	jernbane|tog	
+1F6E5	motorbåt	båt|fremkomstmiddel	
+1F6E9	lite fly	fly|fremkomstmiddel	
+1F6EB	fly som tar av	avgang|avganger|fly|flyavgang|fremkomstmiddel|innsjekk	
+1F6EC	fly som lander	ankomme|ankomst|ankomster|fly|fremkomstmiddel|lande|landing	
+1F6F0	satellitt	verdensrommet	
+1F6F3	passasjerskip	båt|fremkomstmiddel|passasjer|skip	
+1F6F4	sparkesykkel	spark|sykkel	
+1F6F5	scooter	motor|motorsykkel	
+1F6F6	kano	båt	
+1F6F7	kjelke	slede	
+1F6F8	flygende tallerken	alien|flyende|flygende|marsboer|tallerken|UFO	
+1F6F9	skateboard	brett|rullebrett	
+1F6FA	autorickshaw	mototaxi|trehjuling|tuk-tuk	
+1F6FB	pickup	bil|frakt|lastebil|liten|transport|vare|varetransport	
+1F6FC	rulleskøyter	gøy|hjul|rulle|skøyter|sport	
+1F7E0	oransje sirkel	geometrisk|oransje|sirkel	
+1F7E1	gul sirkel	geometrisk|gul|sirkel	
+1F7E2	grønn sirkel	geometrisk|grønn|sirkel	
+1F7E3	lilla sirkel	geometrisk|lilla|sirkel	
+1F7E4	brun sirkel	brun|geometrisk|sirkel	
+1F7E5	rødt kvadrat	kort|kvadrat|rød|rødt|utvisning	
+1F7E6	blått kvadrat	blå|blått|kvadrat	
+1F7E7	oransje kvadrat	kvadrat|oransje	
+1F7E8	gult kvadrat	advarsel|gul|gult|kort|kvadrat	
+1F7E9	grønt kvadrat	grønn|grønt|kvadrat	
+1F7EA	lilla kvadrat	kvadrat|lilla	
+1F7EB	brunt kvadrat	brun|brunt|kvadrat	
+1F7F0	likhetstegn i fet skrift	er lik|fet skrift|lik|likhet|likhetstegn|matematikk|svar	
+1F90C	hånd med fingertuppene sammen	betal|fingertupper|fingre|hand|hånd|penger|sarkastisk|spørsmål	
+1F90D	hvitt hjerte	hjerte|hvit	
+1F90E	brunt hjerte	brun|hjerte	
+1F90F	hånd som klyper	hand|hånd|klype|knipe|lite|smått	
+1F910	fjes med glidelåsmunn	fjes|glidelås|munn	
+1F911	pengegal	fjes|munn|penger	
+1F912	fjes med termometer	fjes|syk|termometer	
+1F913	nerdefjes	begavet|briller|ekspert|fjes|fornøyd|intelligent|lur|nerd|smart	
+1F914	tenkefjes	fjes|tankefull|tenker	
+1F915	bandasjert hode	au|bandasje|bandasjert|hode|såret|skade|skadet|vondt	
+1F916	robot	fjes|monster	
+1F917	fjes som gir klem	fjes|klem	
+1F918	rock’n’roll	bra|finger|hånd|horn|kult|metal|rock|rocke|rocker|to fingre	
+1F919	ring meg-hånd	hånd|ringe	
+1F91A	løftet håndbak	hånd|håndbak|løftet	
+1F91B	knyttneve mot venstre	hånd|neve|venstre|venstrevendt	
+1F91C	knyttneve mot høyre	hånd|høyre|høyrevendt|neve	
+1F91D	håndhilse	avtale|hånd|håndtrykk|møte	
+1F91E	kryssede fingre	finger|flaks|hand|hånd|hell|kryss|lykke|tvi	
+1F91F	glad i deg-tegn	glad i deg|hånd|ILY|tegnspråk	
+1F920	fjes med cowboyhatt	cowboy|cowgirl|fjes|hatt	
+1F921	klovnefjes	fjes|klovn	
+1F922	kvalm	fjes|oppkast|spy	
+1F923	ruller rundt på gulvet i latter	artig|fjes|flire|flirer|gøy|gøyalt|gulv|hæhæ|haha|hoho|latter|le|ler|ler så jeg griner|lol|lykkelig|morsomt|roflmao|ruller	
+1F924	sikler	fjes|sikle	
+1F925	lyver	fjes|løgn|pinocchio	
+1F926	slår hånden mot pannen	å nei|ansikt|facepalm|fjes|hånd|ikke igjen|irritasjon|omg|oppgitt|person|sjokk|vantro	
+1F927	nyser	feber|fjes|forkjølelse|influensa|nys|nyse|prosit|syk	
+1F928	hevet øyenbryn	hevet øyebryn|hm|hva|overrasket|skeptisk|tvil|uenig	
+1F929	stjerner i øynene	fjes|gliser|smil|stjerner	
+1F92A	gal	fjes|lite øye|sinnssyk|stort øye	
+1F92B	hysj	stillhet|vær stille	
+1F92C	fjes med symboler over munnen	banner|fjes|med|munnen|over|rasende|sensur|symboler	
+1F92D	hånden over munnen	flire|hand over munnen|hånd over munnen|handa over munnen|oi|oops|ops|ups	
+1F92E	kaster opp	fjes|kvalm|oppkast|spy	
+1F92F	eksploderende hode	forbløffet|overrasket|sjokkert	
+1F930	gravid kvinne	gravid|kvinne	
+1F931	ammer	amming|baby|bryst|morsmelk	
+1F932	håndflatene sammen	ber|bønn|hånd	
+1F933	selfie	kamera|telefon	
+1F934	prins		
+1F935	person i smoking	bryllup|formelt|person|smoking	
+1F936	julenissemor	jul|mor|nisse	
+1F937	trekker på skuldrene	hand|hånd|idk|kanskje|likegyldighet|person|skuldertrekning|tvil|vet ikke	
+1F938	slå hjul	aktiv|flikkflakk|glad|gym|gymnastikk|hjul|person|slå|sport|turn	
+1F939	sjonglering	balanse|ferdighet|kunst|multitasking|sirkus|sjonglere|sjonglør|underholdning	
+1F93A	fekter	fekte|fekting|person|sport|sverd	
+1F93C	brytere	bryter|bryting|duell|personer|ring|sport|turnering|wrestling	
+1F93D	vannpolo	person|polo|sport|svømming|vann	
+1F93E	håndball	ball|idrett|kaste|person|skudd|sport	
+1F93F	dykkermaske	dykker|dykking|froskemann|snorkling	
+1F940	vissen blomst	blomst|tørket|vissen	
+1F941	tromme	musikk|trommestikker	
+1F942	glass som skåler	drink|feiring|glass|skål	
+1F943	whiskyglass	brennevin|glass|shot|sprit|whisky	
+1F944	skje	bestikk	
+1F945	målnett	mål|nett|sport	
+1F947	gullmedalje	førsteplass|gull|medalje	
+1F948	sølvmedalje	andreplass|medalje|sølv	
+1F949	bronsemedalje	bronse|medalje|tredjeplass	
+1F94A	boksehanske	bokse|boksing|hanske|sport	
+1F94B	kampsportdrakt	drakt|judo|kampkunst|kampsport|karate|selvforsvar|taekwondo	
+1F94C	curlingstein	sport|stein	
+1F94D	lacrosse	ball|kølle|mål	
+1F94E	softball	ball|hanske|kasteball|sport|underarm	
+1F94F	frisbee	ultimate	
+1F950	croissant	brød|fransk|mat	
+1F951	avokado	frukt|mat	
+1F952	agurk	grønnsak|mat|sylteagurk	
+1F953	bacon	kjøtt|mat	
+1F954	potet	grønnsak|mat	
+1F955	gulrot	grønnsak|mat|rot	
+1F956	bagett	baguette|brød|fransk|mat	
+1F957	grønn salat	grønn|mat|salat	
+1F958	lav gryte med mat	mat|paella|stekepanne	
+1F959	fylt pitabrød	falafel|gyro|kebab|mat|pita	
+1F95A	egg	mat	
+1F95B	melkeglass	drikke|glass|melk	
+1F95C	peanøtter	grønnsak|mat|nøtt|peanøtt	
+1F95D	kiwi	frukt|mat	
+1F95E	pannekaker	crêpe|mat|pannekake	
+1F95F	dumpling	empanada|gyoza|jiaozi|melbolle|pirog	
+1F960	lykkekake	fortune cookie|spådom	
+1F961	takeaway-eske	bestille|boks|eske|hentemat|kinesisk|mat|spisepinner|takeaway	
+1F962	spisepinner	hashi	
+1F963	bolle med skje	congee|frokost|frokostblanding|grøt	
+1F964	kopp med sugerør	brus|juice|jus	
+1F965	kokosnøtt	kokos|palme|piña colada	
+1F966	brokkoli	grønnsak	
+1F967	pai	butterdeig|fyll	
+1F968	saltkringle	saltstenger|snacks	
+1F969	kjøttstykke	biff|lammekotelett|lammeskank|svinekotelett	
+1F96A	sandwich	brød|brødskive|smørbrød	
+1F96B	hermetikk	boks|hermetisk mat	
+1F96C	bladgrønnsaker	bladsalat|grønnkål|kål|kinakål|pak choy|salat	
+1F96D	mango	frukt|tropisk	
+1F96E	månekake	festival|høst|yuebing	
+1F96F	bagel	bakst|frokost|påsmurt	
+1F970	smilefjes med hjerter	elsker|forelsket|kjærlighet|romantikk	
+1F971	gjespende fjes	gjesp|kjedelig|sliten|sove|søvn|søvnig|trøtt	
+1F972	smilefjes med tåre	gledestårer|lettet|rørt|smiler|stolt|takknemlig|tåre	
+1F973	partyfjes	bursdag|feiring|fest|fløyte|fødselsdag|glad|gratulerer|hatt|hurra|jippi|party	
+1F974	svimmelt fjes	bølgete munn|brisen|full|svimmel|ujevne øyne	
+1F975	varmt fjes	feber|fjes|heteslag|rød|svetter|varm|varmt	
+1F976	kaldt fjes	blå|fjes|frost|fryser|istapper|kald|kaldt	
+1F977	ninja	hemmelig|kampkunst|kampsport|kriger|skjult|slåss|snikende	
+1F978	fjes med forkledning	bart|briller|fjes|forkledning|inkognito|maske|nese|øyenbryn	
+1F979	fjes som holder tilbake tårene	ååå|beundring|følelser|glede|gråte|rørt|stolt|takknemlig|tårer|trist	
+1F97A	bedende fjes	nåde|trygler|valpeøyne	
+1F97B	sari	kjole|klær	
+1F97C	labfrakk	doktor|eksperiment|forsker|lege	
+1F97D	beskyttelsesbriller	øyevern|sveising|svømming	
+1F97E	turstøvel	fjelltur|gåtur|støvel|telttur|tur	
+1F97F	pumps	flate sko|uten hæl	
+1F980	krabbe	dyr|krepsen|stjernebilde|stjernetegn	
+1F981	løve	fjes|løven|stjernebilde|stjernetegn	
+1F982	skorpion	dyr|skorpionen|stjernebilde|stjernetegn	
+1F983	kalkun	fugl	
+1F984	enhjørning	fjes	
+1F985	ørn	dyr|fugl	
+1F986	and	dyr|fugl	
+1F987	flaggermus	dyr|vampyr	
+1F988	hai	dyr|fisk	
+1F989	ugle	dyr|fugl|vis	
+1F98A	rev	dyr|fjes	
+1F98B	sommerfugl	dyr|insekt|pen|sommer	
+1F98C	hjort	dyr	
+1F98D	gorilla	ape|dyr	
+1F98E	firfisle	dyr|øgle|reptil	
+1F98F	neshorn	dyr|horn|nese	
+1F990	reke	dyr|liten|mat	
+1F991	akkar	blekk|blekksprut|bløtdyr|dyr|sprut	
+1F992	sjiraff	dyr|flekker	
+1F993	sebra	dyr|striper|zebra	
+1F994	pinnsvin	dyr|pigger|piggsvin	
+1F995	sauropod	brachiosaurus|brontosaurus|dinosaur|diplodocus	
+1F996	T-Rex	dinosaur|Tyrannosaurus Rex	
+1F997	gresshoppe	dyr|insekt	
+1F998	kenguru	Australia|dyr|hoppe|pungdyr	
+1F999	lama	alpakka|dyr|guanaco|ull	
+1F99A	påfugl	dyr|fugl|prangende|stolt	
+1F99B	flodhest	dyr	
+1F99C	papegøye	dyr|fugl|pirat|snakkende|snakker	
+1F99D	vaskebjørn	nysgjerrig|sky	
+1F99E	hummer	bisque|klør|kreps|sjømat|skalldyr	
+1F99F	mygg	dyr|feber|insekt|malaria|sykdom|virus	
+1F9A0	mikrobe	amøbe|bakterie|virus	
+1F9A1	grevling	skadedyr	
+1F9A2	svane	den stygge andungen|dyr|fugl|ornitologi|vakker	
+1F9A3	mammut	dyr|forhistorisk|istid|stor|støttenner|tundra|ull|utdødd	
+1F9A4	dronte	dodo|fugl|Mauritius|stor|utdødd	
+1F9A5	dovendyr	dyr|henge|lat|treg	
+1F9A6	oter	dyr|fisker|lekende	
+1F9A7	orangutang	ape	
+1F9A8	stinkdyr	dyr|stank|stinke	
+1F9A9	flamingo	dyr|fugl|prangende|tropisk	
+1F9AA	østers	dykking|perle	
+1F9AB	bever	dam|dyr|tenner	
+1F9AC	bison	bøffel|dyr|horn|okse|stor|visent	
+1F9AD	sel	dyr|hav|sjøløve	
+1F9AE	førerhund	blind|hund|tilgjengelighet	
+1F9AF	blindestokk	blind|tilgjengelighet	
+1F9B0	rødt hår	rødhåring	
+1F9B1	kruset hår	afrikansk|afro|krøllet	
+1F9B2	skallet	barbert|cellegiftbehandling|hårløs|kjemoterapi|uten hår	
+1F9B3	grått hår	gammel|grå|hår|hvit	
+1F9B4	knokkel	bein|hund|hundebein|skjelett	
+1F9B5	bein	lem|sparke	
+1F9B6	fot	sparke|tråkke	
+1F9B7	tann	tannlege	
+1F9B8	superhelt	helt|person|super|superkraft|superkrefter	
+1F9B9	superskurk	kriminell|ond|person|skurk|superkrefter	
+1F9BA	refleksvest	nødssituasjon|refleks|sikkerhet|vest	
+1F9BB	øre med høreapparat	hørsel|hørselshemmet|svak hørsel|tilgjengelighet	
+1F9BC	motorisert rullestol	motorisert|rullestol|tilgjengelighet	
+1F9BD	manuell rullestol	manuell|rullestol|tilgjengelighet	
+1F9BE	mekanisk arm	protese|tilgjengelighet	
+1F9BF	mekanisk bein	protese|tilgjengelighet	
+1F9C0	ostestykke	ost	
+1F9C1	cupcake	bakst|søt	
+1F9C2	salt	bøsse|krydder	
+1F9C3	drikkekartong	juicekartong|juskartong	
+1F9C4	hvitløk	smakstilsetning	
+1F9C5	løk	smakstilsetning|tårer	
+1F9C6	falafel	kebab|kikerter|kjøttboller	
+1F9C7	belgisk vaffel	jern|vaffel	
+1F9C8	smør	margarin|meieriprodukt	
+1F9C9	mate	drikke|krukke	
+1F9CA	isterning	chill|isbit|kald	
+1F9CB	boble-te	bobler|kuler|melk|perler|taiwan|te	
+1F9CC	troll	eventyr|fantasi|fantasy|monster|nettroll	
+1F9CD	person som står	person|stå	
+1F9CE	person som kneler	knele|kneler	
+1F9CF	døv person	døv|høre|øre|tilgjengelighet	
+1F9D0	fjes med monokkel	fancy|fjes|formell|monokkel|rik|stiv	
+1F9D1	voksen	kjønnsnøytral|menneske|person	
+1F9D2	barn	kjønnsnøytral|menneske|ung	
+1F9D3	eldre voksen	eldre|gammel|menneske|senior|voksen	
+1F9D4	person: skjegg	mann|mann med skjegg|mann: skjegg|person|skjegg	
+1F9D5	kvinne med hodeslør	hijab|hodeskjerf|hodeslør|muslim	
+1F9D6	person i badstu	avslapping|badstue|dampbad|luksus|person|sauna|spa	
+1F9D7	klatrer	bestige|bestigning|fjell|klatre|klatring|person|sikring|sport	
+1F9D8	lotusstilling	avslapning|bena i kryss|fredfull|meditasjon|meditering|slappe av|yoga|zen	
+1F9D9	trollperson	fantasy|heks|magi|magiker|person|rollespill|stav|trolldom|trollkvinne|trollmann	
+1F9DA	fe	eventyr|fantasi|fantasy|myte|person|vinger	
+1F9DB	vampyr	blod|Dracula|halloween|huggtenner|kostyme|person|skummel|vandød	
+1F9DC	havperson	ariel|eventyr|havfolk|havfrue|havkvinne|havmann|havvesen|person|sirene|trident	
+1F9DD	alv	eventyr|fantasy|folklore|magi|magisk|mystisk|myte|mytologi	
+1F9DE	ånd	aladdin|ånd i lampe|ånden i flasken|djinn|fantasy|flaskeånd|genie|gni på lampen|ønsker	
+1F9DF	zombie	apokalypse|død|halloween|skrekk|skummel|udød|vandød	
+1F9E0	hjerne	intelligent|smart	
+1F9E1	oransje hjerte	følelser|hjerte|oransje	
+1F9E2	caps	kaps|skyggelue	
+1F9E3	skjerf	hals|klær	
+1F9E4	hansker	hånd|klær	
+1F9E5	jakke	frakk|kåpe|klær	
+1F9E6	sokker	klær|labber|strømper	
+1F9E7	rød konvolutt	flaks|gave|hell og lykke|hong bao|lai see|penger	
+1F9E8	kinaputt	dynamitt|eksplosiver|fyrverkeri	
+1F9E9	puslespillbrikke	bit|brikke|del|pekepinn|puslespill	
+1F9EA	prøverør	eksperiment|forskning|kjemi|kjemiker|lab|reagensrør	
+1F9EB	petriskål	bakterie|biolog|biologi|kultur|lab	
+1F9EC	dna	biolog|biologi|evolusjon|gen|gener|genetikk|liv	
+1F9ED	kompass	magnetisk|navigasjon|orientering	
+1F9EE	kuleramme	abakus|regning	
+1F9EF	brannslukningsapparat	brann|brannslokkingsapparat|slokke|slukke	
+1F9F0	verktøykasse	kasse|rød boks|skrin|verktøy	
+1F9F1	murstein	mørtel|mur|mursteiner|sement|vegg	
+1F9F2	magnet	hestesko|magnetisk|tiltrekning	
+1F9F3	bagasje	pakking|reise	
+1F9F4	lotionflaske	fuktighetskrem|lotion|shampoo|sjampo|solkrem	
+1F9F5	tråd	nål|snelle|sy|trådsnelle	
+1F9F6	garn	ball|nøste	
+1F9F7	sikkerhetsnål	bleie|punk	
+1F9F8	teddybjørn	bamse|leke	
+1F9F9	feiekost	feie|heks|rengjøre	
+1F9FA	kurv	jordbruk|klesvask|piknik	
+1F9FB	rull med papir	toalettpapir|tørkepapir|tørkerull	
+1F9FC	såpe	bad|såpeskål|såpestykke|skum|vaske	
+1F9FD	svamp	absorberende|porøs|rengjøre|vaske	
+1F9FE	kvittering	arkiv|bilag|dokumentasjon|regnskap	
+1F9FF	nazar	amulett|charm|ondt øye|talisman	
+1FA70	ballettsko	ballett|dans	
+1FA71	badedrakt	badetøy	
+1FA72	truse	badebukse|badetøy|bikinitruse|undertøy	
+1FA73	shorts	badeshorts|badetøy|bukse|underbukse|undertøy	
+1FA74	flippflopp	ferie|flipflops|flippflopper|sandaler|sommer|strand|strandsandaler|syden	
+1FA75	lyseblått hjerte	blågrønt|cyan|følelse|himmelblå|hjerte|kjærlighet|liker|lyseblå|lyseblått|søtt|spesiell	
+1FA76	grått hjerte	følelse|grått|hjerte|kjærlighet|skifer|sølv|spesiell	
+1FA77	rosa hjerte	elsker|følelse|hjerte|kjærlighet|liker|rosa|søtt|spesiell	
+1FA78	bloddråpe	blodgiver|dråpe|medisin|mens|menstruasjon|skadet	
+1FA79	plaster	behandling|sår	
+1FA7A	stetoskop	hjerte|lege|medisin	
+1FA7B	røntgen	bein|doktor|lege|ribbein|ribben|skjelett	
+1FA7C	krykke	hjelp|hjelpemiddel|kjepp|skadet|stokk|ufør	
+1FA80	jojo	leke|opp og ned|yo-yo|yoyo	
+1FA81	papirdrage	drage|fly|sveve	
+1FA82	fallskjerm	fallskjermhopp|hangglider|hengeglider|paragliding	
+1FA83	bumerang	aboriginer|australia|boomerang|retur|tilbake|våpen	
+1FA84	tryllestav	heks|magi|magiker|trollmann|trylle|tryllekunster|tryllekunstner	
+1FA85	piñata	cinco|de|feiring|fest|godteri|mayo|meksikansk|pinada|sukkertøy	
+1FA86	matrjosjka	babusjka|dukke|hul|matroshka|matrosjka|matruska|russisk|russland|suvenir	
+1FA87	marakas	cha|dans|fest|instrument|maracas|musikk|perkusjon|riste|rytme	
+1FA88	fløyte	band|blokkfløyte|instrument|korps|musikk|orkester|treblåseinstrument|treblåser	
+1FA89	harpe	amor|instrument|kjærlighet|musikk|orkester	
+1FA8A	trombone	brass|instrument|jazz|messing|musikk|trekkbasun|trist	
+1FA8B	meteor	apokalypse|faller|ildkule|stein|stjerne|tyngdekraft|verdensrommet	
+1FA8C	viskelær	angre|feil|fjerne|gni|rettelse|skrift|skrivefeil|slette|tegning|viske	
+1FA8D	håv	fange|felle|håve|nett|samle	
+1FA8E	skattkiste	edelstener|gull|juveler|penger|premie|rikdom|skatt|sølv|velstand|verdisaker	
+1FA8F	spade	grave|hull|skuffe|spa	
+1FA90	planet med ringer	planet|saturn|verdensrommet	
+1FA91	stol	sete|sitte|sitteplass	
+1FA92	barberkniv	barbere|barbering|skarp	
+1FA93	øks	dele|hogge|hugge|kløyve|ved	
+1FA94	åpen oljelampe	diya|lampe|olje	
+1FA95	banjo	musikk|strengeinstrument	
+1FA96	militærhjelm	forsvaret|hær|hjelm|krig|kriger|militær|soldat	
+1FA97	trekkspill	accordeon|concertina|danseband|gammaldans|gammeldans|musikk|spell|spill	
+1FA98	langtromme	beat|conga|musikk|perkusjon|rytme|tromme	
+1FA99	mynt	dollar|euro|gull|kroner|metall|penger|rik|rikdom|skatt|sølv	
+1FA9A	håndsag	bygge|jobb|sag|snekker|snekkersag|tømrer|tre|verktøy	
+1FA9B	skrutrekker	håndverk|montering|reparasjon|reparere|skrue|skrujern|verktøy	
+1FA9C	stige	klatre|steg|trinn	
+1FA9D	krok	buet|fange|laste|lasting|løfte|løftekrok|lossing|salgspunkt	
+1FA9E	speil	badespeil|refleksjon|sminke|speilbilde|stell	
+1FA9F	vindu	åpning|frisk luft|friskluft|gjennomsiktig|glass|ramme|utsikt|vinduskarm	
+1FAA0	avløpsåpner	avløp|mekanisk|sugekopp|toalett|vask	
+1FAA1	synål	broderi|nål|skredder|sting|sutur|sy|tråd	
+1FAA2	knute	bånd|knop|knyte|rep|sammenflettet|stikk|tau|tvinne	
+1FAA3	bøtte	beholder|kar|spann|tømme	
+1FAA4	musefelle	åte|fange|felle|mus|ost|snare	
+1FAA5	tannbørste	bad|baderom|børste|dental|hygiene|kost|puss|pusse|tann|tenner	
+1FAA6	gravstein	død|grav|gravlund|gravplass|gravsted|kirkegård|rip	
+1FAA7	plakat	demonstrasjon|informasjon|protest|skilt|tekst	
+1FAA8	stein	berg|blokk|hard|kampestein|steinblokk|steinrøys|tung|ur	
+1FAA9	speilkule	dans|disco|diskokule|diskotek|fest|glitter|kule|speil	
+1FAAA	ID-kort	adgangskort|dokument|førerkort|ID|identifikasjon|kort|legitimasjon|lisens|sikkerhet	
+1FAAB	lite batteri	batteri|batterinivå|elektronikk|ladenivå|lavt|lite energi|lite strøm|utladet	
+1FAAC	hamsa	amulett|beskytte|beskyttelse|Fatima|guide|hånd|håndflate|Maria|Miriam|rikdom	
+1FAAD	håndvifte	avkjøle|avkjøling|blafre|blyg|dans|rød|varmt|vifte	
+1FAAE	afrokam	afro|hår|kam|stelle	
+1FAAF	khanda	Deg Tegh Fateh|khalsa|religion|sikh|sikhisme|tro	
+1FAB0	flue	dyr|ekkel|ekkelt|forråtnelse|insekt|larver|råtne|sykdom	
+1FAB1	mark	agn|dyr|leddorm|makk|meitemakk|meitemark|parasitt	
+1FAB2	bille	bug|dyr|insekt	
+1FAB3	kakerlakk	dyr|ekkel|insekt|skadedyr|utøy	
+1FAB4	potteplante	dyrke|grønn|hus|kjedelig|plante|pynt|ubrukelig|vanne	
+1FAB5	tre	hoggestabbe|hogst|huggestabbe|kubbe|stokk|tømmer|trelast	
+1FAB6	fjær	fjærdrakt|fjærpenn|fugl|lett	
+1FAB7	lotusblomst	blomst|buddhisme|fred|hinduisme|lotus|renhet|ro|sinnsro|skjønnhet	
+1FAB8	korall	dyr|hav|klimaendringer|korallrev|rev	
+1FAB9	tomt rede	bygge|grein|gren|heim|hjem|rede|reir|tomt	
+1FABA	rede med egg	egg|fugl|grein|gren|heim|hjem|rede|reir|tomt	
+1FABB	hyasint	blomst|klokkeblåstjerne|lavendel|lilla|lupin|plante|svibel|vår	
+1FABC	manet	au|brennmanet|dyr|glassmanet|hav|havdyr|plankton|sjø|tentakler	
+1FABD	vinge	engel|engleaktig|englevinge|fly|flyr|fugl|himmelsk|mytologi	
+1FABE	bladløst tre	dødt|stamme|tørke|tørt|tre|ufruktbart|vinter	
+1FABF	gås	and|dum|dyr|fjærkre|fugl|gasse|gjess|klukk|tute	
+1FAC0	hjertemuskel	anatomi|blodpumpe|hjerte-kar|hjerteslag|kardiologi|muskel|organ|puls	
+1FAC1	lunger	åndedrett|innpust|organ|pust|puste|respirasjon|utpust	
+1FAC2	klem	farvel|ha det|hadet|hei|kjærlighet|omfavnelse|takk|trøst|venner|vennskap	
+1FAC3	gravid mann	gravid|mann|mett|oppblåst|overspise|person|stappmett	
+1FAC4	gravid person	gravid|mett|oppblåst|overspise|person|stappmett	
+1FAC5	person med krone	adelig|høyhet|kongelig|krone|majestetisk|monark|person|royal	
+1FAC6	fingeravtrykk	avtrykk|etterforskning|identitet|innbrudd|krim|sikkerhet|spor|teknisk|tyveri	
+1FAC8	hårete vesen	bigfoot|gigant|hårete|kjempe|kryptid|skog|uhyre|vesen|villmann|yeti	
+1FACC	monarksommerfugl	endring|forandring|håp|insekt|metamorfose|migrasjon|omforming|skjør|sommerfugllarve|transformasjon	
+1FACD	spekkhogger	hav|hval|sjø	
+1FACE	elg	dyr|gevir|pattedyr	
+1FACF	esel	dyr|muldyr|mulesel|pakkesel|pattedyr|sta	
+1FAD0	blåbær	bær|blå|frukt|mat	
+1FAD1	paprika	capsicum|chili|grønn|grønnsak	
+1FAD2	oliven	mat	
+1FAD3	pitabrød	arepa|brød|lavash|mat|nan|pita	
+1FAD4	tamal	latinamerikansk|mat|meksikansk|wrap	
+1FAD5	fondy	fondue|gryte|kos|mat|nam|ost|sjokolade|smeltet|sveitsisk	
+1FAD6	tekanne	drikke|kanne|te|teselskap	
+1FAD7	helle væske	drikke|glass|helle ut|helle ut væske|oops|søl|søle|tømme ut|tømme ut væske|tomt|uhell|vann	
+1FAD8	bønner	belgfrukt|kidneybønner|mat|små	
+1FAD9	krukke	beholder|ingenting|mos|oppbevare|pålegg|syltetøy|tom	
+1FADA	ingefærrot	helse|ingefær|krydder|naturlig|øl|rot|sunn|urt	
+1FADB	ertebelg	belg|bønne|bønner|erter|grønnsak|soyabønne|sukkerert	
+1FADC	rotgrønnsak	bete|grønnsak|hage|kålrot|nepe|turnips	
+1FADD	sylteagurk	agurk|fermentere|saltlake|smakstilsetning|sylte|tilbehør	
+1FADF	sprut	farge|flekk|holi|maling|søl	
+1FAE0	fjes som smelter	flau|forsvinner|går i oppløsning|haha|lol|sarkasme|sarkastisk|smelte|smelter	
+1FAE1	fjes som viser honnør	honnør|ja|lykke til|militærhilsen|respekt|salutt|skal bli|yes ma’am|yes sir	
+1FAE2	fjes med åpne øyne og hånd over munnen	åpne|fjes|flau|forskrekkelse|gispe|hånd|munnen|OMG|over|overraskelse|øyne|redd|sjokk|stille	
+1FAE3	fjes som titter frem bak hendene	fascinert|fjes|flau|gjemme|kikke|øyne|redd|sjenert|skjule|smugkikke|stirre|titte	
+1FAE4	fjes med diagonal munn	fjes|forvirret|frustrert|meh|næsj|skeptisk|skrått|skuffet|tja|tvil|uansett|usikker	
+1FAE5	fjes med stiplet omriss	deprimert|forsvinner|gjemme seg|introvert|meh|samme det|skjult|smilefjes|stiplet|usynlig	
+1FAE6	bite seg i leppen	bekymret|bite|engstelig|flørte|kyss|lepper|leppestift|munn|nervøs|redd|sexy|utilpass	
+1FAE7	bobler	boble|perle|rengjøre|rense|såpe|skum|sveve|vaske	
+1FAE8	skjelvende fjes	ansikt|jordskjelv|omg|ør|overraskelse|panikk|riste|sjokk|skjelvende|sprøtt|vibrere|wow	
+1FAE9	fjes med poser under øynene	fjes|kjedelig|øyne|poser|sliten|søvnig|trøtt|utslitt	
+1FAEA	fordreid fjes	angst|oppblåst|overrasket|panikk|sårbar|sjokkert	
+1FAEB	krakelert fjes	anspent|avsløre|forvandling|knuse|maskere|robust|smuldre	
+1FAEF	slåsskampsky	bråk|bryting|diskusjon|krangel|slagsmål|slåssing|slåsskamp|uenighet	
+1FAF0	hånd med pekefinger og tommel krysset	dyrt|hand|hånd|knips|kostbar|kroner|pekefinger|penger|tommel	
+1FAF1	hånd mot høyre	hånd|håndhilse|håndtrykk|høyre|høyrevendt|rekke ut	
+1FAF2	hånd mot venstre	hånd|håndhilse|håndtrykk|rekke ut|venstre|venstrevendt	
+1FAF3	håndflaten ned	avfeie|hand|hånd|husj|ned|opp|plukke|slapp|slippe	
+1FAF4	håndflaten opp	fortell|hånd|håndflate|holde|invitere|kalle|kom|løfte|på|tilbud|tilby|vinke	
+1FAF5	pekefinger peker på leseren	deg|der|du|finger|hand|hånd|peke|pekefinger|stikk	
+1FAF6	hjertehender	elsker deg|hender|hender som lager hjerte|hjerte|kjærlighet|<3	
+1FAF7	håndflate hevet mot venstre	hånd|high five|high-five|holdt|mot venstre|nekte|skyv|stopp|venstre|vent	
+1FAF8	håndflate hevet mot høyre	hånd|high five|high-five|holdt|høyre|mot høyre|nekte|skyv|stopp|vent	
+1FAF9	tommelfinger til venstre	den|denne|det|dette|grep|nøytral|peke|venstre	
+1FAFA	tommelfinger til høyre	den|denne|det|dette|grep|høyre|nøytral|peke	

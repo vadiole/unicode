@@ -14,12 +14,14 @@
     <string name="search_no_results">未找到结果</string>
     <string name="search_recents">最近使用</string>
     <string name="search_title">搜索</string>
+    <string name="table_choose_block">选择 Unicode 区块</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">点按字符即可收集</string>
     <string name="dock_tip_copy">点按底栏即可复制合集</string>
     <string name="dock_backspace">删除最后一个字符</string>
     <string name="dock_copy_all">全部复制</string>
+    <string name="dock_clear_all">清空合集</string>
 
     <!-- Settings -->
     <string name="settings_title">设置</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">点按收集</string>
     <string name="settings_search_at_top">搜索栏置顶</string>
     <string name="settings_show_unsupported">显示不支持的字符</string>
+    <string name="settings_character_size_in_table">表中字符大小</string>
+    <string name="settings_enlarge_small_chars">放大较小的字符</string>
     <string name="settings_crash_reports">崩溃报告</string>
     <string name="settings_save_recents">保存最近使用的字符</string>
     <string name="settings_clear_recents">清除最近使用的字符</string>

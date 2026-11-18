@@ -44,12 +44,13 @@ class DebugConfig : ContentProvider() {
             preset.values.forEach { (key, value) -> editor.putBoolean(checkKey(key), value) }
         }
         for (key in keys) {
-            if (key == PRESET) continue
+            if (key == PRESET || key == LOADER) continue
             val name = checkKey(key.removePrefix(PREFIX))
             @Suppress("DEPRECATION")
             when (val value = extras.get(key)) {
                 is Boolean -> editor.putBoolean(name, value)
                 is Int -> editor.putInt(name, value)
+                is Float -> editor.putFloat(name, value)
                 is String -> editor.putString(name, value)
             }
         }
@@ -63,6 +64,7 @@ class DebugConfig : ContentProvider() {
             appendLine("  ${preset.name}: ${preset.description}")
             appendLine("    ${preset.values.entries.joinToString { "${it.key}=${it.value}" }}")
         }
+        appendLine("Launch only: --ez $LOADER true shows the table loader instead of the table")
         appendLine("Settings: debug.<name>, single settings override the preset")
         val current = prefs(context).all
         for ((name, flag) in settings) {
@@ -88,6 +90,7 @@ class DebugConfig : ContentProvider() {
     private companion object {
         const val PREFIX = "debug."
         const val PRESET = "debug.preset"
+        const val LOADER = "debug.loader"
 
         val settings: Map<String, String> = UserConfig::class.java.declaredFields
             .filter { Modifier.isStatic(it.modifiers) && it.name.startsWith("key_") && it.type == String::class.java }
@@ -98,6 +101,7 @@ class DebugConfig : ContentProvider() {
                 val flag = when (getter?.returnType) {
                     Boolean::class.javaPrimitiveType -> "--ez"
                     Int::class.javaPrimitiveType -> "--ei"
+                    Float::class.javaPrimitiveType -> "--ef"
                     else -> "--es"
                 }
                 name to flag

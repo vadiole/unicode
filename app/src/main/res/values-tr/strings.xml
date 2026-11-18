@@ -14,12 +14,14 @@
     <string name="search_no_results">Sonuç bulunamadı</string>
     <string name="search_recents">Son kullanılanlar</string>
     <string name="search_title">Ara</string>
+    <string name="table_choose_block">Unicode bloğu seç</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">Toplamak için karakterlere dokunun</string>
     <string name="dock_tip_copy">Koleksiyonu kopyalamak için alt çubuğa dokunun</string>
     <string name="dock_backspace">Son karakteri sil</string>
     <string name="dock_copy_all">Tümünü kopyala</string>
+    <string name="dock_clear_all">Koleksiyonu temizle</string>
 
     <!-- Settings -->
     <string name="settings_title">Ayarlar</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">Toplamak için dokunun</string>
     <string name="settings_search_at_top">Arama çubuğu üstte</string>
     <string name="settings_show_unsupported">Desteklenmeyen karakterleri göster</string>
+    <string name="settings_character_size_in_table">Tablodaki karakter boyutu</string>
+    <string name="settings_enlarge_small_chars">Küçük karakterleri büyüt</string>
     <string name="settings_crash_reports">Çökme raporları</string>
     <string name="settings_save_recents">Son karakterleri kaydet</string>
     <string name="settings_clear_recents">Son karakterleri temizle</string>

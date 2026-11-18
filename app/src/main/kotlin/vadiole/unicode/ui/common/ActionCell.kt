@@ -11,6 +11,7 @@ import android.text.TextPaint
 import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import kotlin.math.ceil
 import vadiole.unicode.R
 
 open class ActionCell(
@@ -33,9 +34,24 @@ open class ActionCell(
     var value: String? = null
         set(value) {
             field = value
-            valueWidth = value?.let { valuePaint.measureText(it).toInt() } ?: 0
-            requestLayout()
+            val width = value?.let { valuePaint.measureText(it).toInt() } ?: 0
+            if (width != valueWidth) {
+                valueWidth = width
+                requestLayout()
+            }
             invalidate()
+        }
+
+    var valueScale = 1f
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    var valueMaxScale = 1f
+        set(value) {
+            field = value
+            requestLayout()
         }
 
     init {
@@ -45,7 +61,7 @@ open class ActionCell(
         gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
         minHeight = 48.dp(context)
         includeFontPadding = false
-        typeface = font_regular
+        typeface = fontRegular
         textSize = TEXT_BODY
         isClickable = true
         isFocusable = true
@@ -74,6 +90,11 @@ open class ActionCell(
         updateShapePath()
     }
 
+    fun setValueColor(color: Int) {
+        valuePaint.color = color
+        invalidate()
+    }
+
     fun setIcon(@DrawableRes iconId: Int) {
         setCompoundDrawablesWithIntrinsicBounds(0, 0, iconId, 0)
         iconWidth = context.getDrawable(iconId)?.intrinsicWidth ?: 0
@@ -85,7 +106,7 @@ open class ActionCell(
     }
 
     override fun getCompoundPaddingRight(): Int {
-        val extra = if (valueWidth > 0) valueWidth + valueGap + if (iconWidth > 0) iconGap else 0 else 0
+        val extra = if (valueWidth > 0) ceil(valueWidth * valueMaxScale).toInt() + valueGap + if (iconWidth > 0) iconGap else 0 else 0
         return super.getCompoundPaddingRight() + extra
     }
 
@@ -98,8 +119,16 @@ open class ActionCell(
         super.onDraw(canvas)
         val value = value ?: return
         val right = width - paddingRight - if (iconWidth > 0) iconWidth + iconGap else 0
-        val y = (height - valuePaint.descent() - valuePaint.ascent()) / 2f
+        val centerY = (paddingTop + height - paddingBottom) / 2f
+        val y = centerY - (valuePaint.descent() + valuePaint.ascent()) / 2f
+        if (valueScale == 1f) {
+            canvas.drawText(value, (right - valueWidth).toFloat(), y, valuePaint)
+            return
+        }
+        val save = canvas.save()
+        canvas.scale(valueScale, valueScale, right.toFloat(), centerY)
         canvas.drawText(value, (right - valueWidth).toFloat(), y, valuePaint)
+        canvas.restoreToCount(save)
     }
 
     private fun updateShapePath() {

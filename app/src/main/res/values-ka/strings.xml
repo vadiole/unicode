@@ -14,12 +14,14 @@
     <string name="search_no_results">არაფერი მოიძებნა</string>
     <string name="search_recents">ბოლო</string>
     <string name="search_title">ძიება</string>
+    <string name="table_choose_block">Unicode-ის ბლოკის არჩევა</string>
 
     <!-- Dock -->
     <string name="dock_tip_collect">შეეხეთ სიმბოლოებს შესაგროვებლად</string>
     <string name="dock_tip_copy">შეეხეთ ზოლს კრებულის დასაკოპირებლად</string>
     <string name="dock_backspace">ბოლო სიმბოლოს წაშლა</string>
     <string name="dock_copy_all">ყველაფრის კოპირება</string>
+    <string name="dock_clear_all">კრებულის გასუფთავება</string>
 
     <!-- Settings -->
     <string name="settings_title">პარამეტრები</string>
@@ -27,6 +29,8 @@
     <string name="settings_dock">შეხებით შეგროვება</string>
     <string name="settings_search_at_top">ძიება ზემოთ</string>
     <string name="settings_show_unsupported">მხარდაუჭერელი სიმბოლოების ჩვენება</string>
+    <string name="settings_character_size_in_table">სიმბოლოების ზომა ცხრილში</string>
+    <string name="settings_enlarge_small_chars">პატარა სიმბოლოების გადიდება</string>
     <string name="settings_crash_reports">შეცდომის ანგარიშები</string>
     <string name="settings_save_recents">ბოლო სიმბოლოების შენახვა</string>
     <string name="settings_clear_recents">ბოლო სიმბოლოების გასუფთავება</string>

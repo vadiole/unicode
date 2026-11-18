@@ -6,16 +6,15 @@
     <color name="navigationBarScrim">#00000000</color>
 
     <color name="colorPrimary">#FF4498F2</color>
+    <color name="primaryControl">#FFEDEDEF</color>
     <color name="dialogDim">#FF000000</color>
     <color name="windowSurface">#00000000</color>
-    <color name="windowTextPrimary">#FFFFFFFF</color>
+    <color name="windowTextPrimary">#FFEDEDEF</color>
     <color name="windowTextSecondary">#FF989899</color>
+    <color name="characterAbbreviation">@color/windowTextSecondary</color>
     <color name="windowTextSelection">#40007BFF</color>
     <color name="windowDivider">#53545558</color>
-    <color name="scrollIndicator">#4D989899</color>
-    <color name="scrollIndicatorActive">#80989899</color>
-    <color name="scrollIndicatorGrip">#FF989899</color>
-    <color name="floatingBorder">#0DFFFFFF</color>
+    <color name="floatingBorder">#26FFFFFF</color>
     <color name="searchFieldCursor">#FF4498F2</color>
     <color name="searchMatchHighlight">#3DFFFFFF</color>
 </resources>

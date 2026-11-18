@@ -4,9 +4,6 @@ import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.View
 import android.view.ViewConfiguration
-import androidx.dynamicanimation.animation.DynamicAnimation
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import kotlin.math.abs
 import kotlin.math.sign
 
@@ -21,10 +18,9 @@ class TouchEffect(
     private var touchSlop = 0
     private var velocityTracker: VelocityTracker? = null
 
-    private var springTx: SpringAnimation? = null
-    private var springTy: SpringAnimation? = null
-    private var springScaleX: SpringAnimation? = null
-    private var springScaleY: SpringAnimation? = null
+    private var springTx: SpringAnimator? = null
+    private var springTy: SpringAnimator? = null
+    private var springScale: SpringAnimator? = null
 
     override fun onTouch(view: View, event: MotionEvent): Boolean {
         if (touchSlop == 0) {
@@ -32,47 +28,31 @@ class TouchEffect(
         }
         ensureSprings(view)
         when (event.actionMasked) {
-            MotionEvent.ACTION_DOWN -> onDown(event)
+            MotionEvent.ACTION_DOWN -> onDown(view, event)
             MotionEvent.ACTION_MOVE -> onMove(view, event)
-            MotionEvent.ACTION_UP -> onUp(event)
-            MotionEvent.ACTION_CANCEL -> onCancel()
+            MotionEvent.ACTION_UP -> onUp(view, event)
+            MotionEvent.ACTION_CANCEL -> onCancel(view)
         }
         return false
     }
 
     private fun ensureSprings(view: View) {
         if (springTx != null) return
-        springTx = SpringAnimation(view, DynamicAnimation.TRANSLATION_X).apply {
-            setMinValue(-maxDragPx)
-            setMaxValue(maxDragPx)
-            spring = SpringForce().apply {
-                stiffness = POSITION_STIFFNESS
-                dampingRatio = POSITION_DAMPING_RATIO
-            }
+        springTx = SpringAnimator(POSITION_STIFFNESS, POSITION_DAMPING_RATIO, onUpdate = { view.translationX = it }).apply {
+            min = -maxDragPx
+            max = maxDragPx
         }
-        springTy = SpringAnimation(view, DynamicAnimation.TRANSLATION_Y).apply {
-            setMinValue(-maxDragPx)
-            setMaxValue(maxDragPx)
-            spring = SpringForce().apply {
-                stiffness = POSITION_STIFFNESS
-                dampingRatio = POSITION_DAMPING_RATIO
-            }
+        springTy = SpringAnimator(POSITION_STIFFNESS, POSITION_DAMPING_RATIO, onUpdate = { view.translationY = it }).apply {
+            min = -maxDragPx
+            max = maxDragPx
         }
-        springScaleX = SpringAnimation(view, DynamicAnimation.SCALE_X).apply {
-            spring = SpringForce().apply {
-                stiffness = SCALE_STIFFNESS
-                dampingRatio = SCALE_DAMPING_RATIO
-            }
-        }
-        springScaleY = SpringAnimation(view, DynamicAnimation.SCALE_Y).apply {
-            spring = SpringForce().apply {
-                stiffness = SCALE_STIFFNESS
-                dampingRatio = SCALE_DAMPING_RATIO
-            }
-        }
+        springScale = SpringAnimator(SCALE_STIFFNESS, SCALE_DAMPING_RATIO, minVisibleChange = 0.002f, onUpdate = {
+            view.scaleX = it
+            view.scaleY = it
+        })
     }
 
-    private fun onDown(event: MotionEvent) {
+    private fun onDown(view: View, event: MotionEvent) {
         springTx?.cancel()
         springTy?.cancel()
 
@@ -84,8 +64,7 @@ class TouchEffect(
         velocityTracker = VelocityTracker.obtain()
         addRawMovement(event)
 
-        springScaleX?.animateToFinalPosition(pressedScale)
-        springScaleY?.animateToFinalPosition(pressedScale)
+        springScale?.animate(view.scaleX, pressedScale)
     }
 
     private fun onMove(view: View, event: MotionEvent) {
@@ -104,7 +83,7 @@ class TouchEffect(
         }
     }
 
-    private fun onUp(event: MotionEvent) {
+    private fun onUp(view: View, event: MotionEvent) {
         addRawMovement(event)
         velocityTracker?.computeCurrentVelocity(1000)
 
@@ -124,20 +103,28 @@ class TouchEffect(
             0f
         }
 
-        springTx?.setStartVelocity(velocityX)?.animateToFinalPosition(0f)
-        springTy?.setStartVelocity(velocityY)?.animateToFinalPosition(0f)
-        springScaleX?.animateToFinalPosition(1f)
-        springScaleY?.animateToFinalPosition(1f)
+        springTx?.release(view.translationX, velocityX)
+        springTy?.release(view.translationY, velocityY)
+        springScale?.animate(view.scaleX, 1f)
 
         releaseVelocityTracker()
     }
 
-    private fun onCancel() {
-        springTx?.setStartVelocity(0f)?.animateToFinalPosition(0f)
-        springTy?.setStartVelocity(0f)?.animateToFinalPosition(0f)
-        springScaleX?.animateToFinalPosition(1f)
-        springScaleY?.animateToFinalPosition(1f)
+    private fun onCancel(view: View) {
+        springTx?.release(view.translationX, 0f)
+        springTy?.release(view.translationY, 0f)
+        springScale?.animate(view.scaleX, 1f)
         releaseVelocityTracker()
+    }
+
+    private fun SpringAnimator.release(from: Float, velocity: Float) {
+        this.velocity = velocity
+        animate(from, 0f)
+    }
+
+    private fun SpringAnimator.animate(from: Float, target: Float) {
+        if (!isRunning) value = from
+        animateTo(target)
     }
 
     private fun addRawMovement(event: MotionEvent) {

@@ -16,6 +16,7 @@ import vadiole.unicode.R
 class FloatingSurfaceDrawable(
     context: Context,
     private val pathProvider: PathProvider,
+    private val shadow: Drawable? = null,
 ) : Drawable() {
     fun interface PathProvider {
         fun update(bounds: Rect, borderInset: Float, surfacePath: Path, borderPath: Path)
@@ -39,6 +40,7 @@ class FloatingSurfaceDrawable(
     }
 
     override fun onBoundsChange(bounds: Rect) {
+        shadow?.bounds = bounds
         surfacePath.rewind()
         borderPath.rewind()
         pathProvider.update(bounds, borderWidth / 2f, surfacePath, borderPath)
@@ -64,6 +66,7 @@ class FloatingSurfaceDrawable(
 
     override fun draw(canvas: Canvas) {
         if (surfacePath.isEmpty) return
+        shadow?.draw(canvas)
         canvas.drawPath(surfacePath, surfacePaint)
         canvas.drawPath(borderPath, borderPaint)
     }

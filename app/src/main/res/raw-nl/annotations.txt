@@ -1,0 +1,1778 @@
+annotations 1 nl 939bac7f
+21	uitroepteken	uitroep|uitroeppunt	
+23	hekje	aantal|hashtag|lb|pound	
+24	dollar	geld|peso|USD	
+25	procent		
+26	en-teken	en|et	
+27	rechte apostrof	aanhalingsteken|apostrof|enkel aanhalingsteken|recht aanhalingsteken	
+29	haakje sluiten	ronde haak|sluithaakje	
+2A	asterisk	jokerteken|sterretje	
+2B	plusteken	optellen|plus	
+2C	komma		
+2D	liggend streepje	gedachtestreepje|verbindingsstreepje	
+2E	punt	decimaal teken	
+2F	schuine streep	breukstreep|schrap|schuine lijn|streep	
+3A	dubbele punt		
+3B	puntkomma		
+3C	kleiner-danteken	kleiner dan|punthaakje|punthaakje openen	
+3D	gelijkteken	is gelijk aan	
+3E	groter-danteken	groter dan|punthaakje|punthaakje sluiten	
+3F	vraagteken	vraag	
+40	apenstaartje	a-krol|amfoor|amfora|at|slinger-a|slingeraap	
+5B	rechte haak openen	haak|rechte haak|rechte haak links	
+5C	backslash	omgekeerde schuine streep|terugschrap	
+5D	rechte haak sluiten	haak|rechte haak|rechte haak rechts	
+5E	accent circonflexe	aan/uit|aanwijzer|accent|caret|chevron|circonflexe|dakje	
+5F	underscore	lijn|onderstreping	
+60	accent grave	accent|grave|toon	
+7B	accolade openen	accolade|accolade links|krulhaakje|krulhaakje link|krulhaakje openen	
+7C	verticale lijn	baar|spaak|spijl|staaf|stang|stok	
+7D	accolade sluiten	accolade|accolade rechts|krulhaakje|krulhaakje rechts|krulhaakje sluiten	
+7E	tilde		
+A1	omgekeerd uitroepteken	omgekeerd|uitroep|uitroeppunt|uitroepteken	
+A2	cent		
+A3	Brits pond	EGP|GBP|valuta	
+A5	yen	CNY|JPY|valuta|yuan	
+A7	paragraaf	deel|paragraafsymbool	
+A8	trema	umlaut	
+A9	copyright	C	
+AB	guillemet naar links	aanhalingsteken|haakjes|hoek|inlastekens|links|onderscheidingsteken	
+AC	negatie	niet	
+AE	gedeponeerd	R	
+B0	graden	bewijs|uur	
+B1	plusminus		
+B2	superscript twee	in het kwadraat|superscript|twee	
+B3	superscript drie	drie|kubieke|superscript	
+B4	accent aigu	accent|aigu|toon	
+B5	mu	maat	
+B6	paragraafteken	alinea|alineateken|paraaf|paragraaf	
+B7	hoge punt	hoge|interpunct|punt	
+B9	superscript één	één|superscript	
+BB	guillemet naar rechts	aanhalingsteken|haakjes|hoek|inlastektekens|onderscheidingsteken|rechts	
+BF	omgekeerd vraagteken	omgekeerd|vraag|vraagteken	
+D7	vermenigvuldigingsteken	keer|vermenigvuldigen|vermenigvuldiging	
+F7	deelteken	delen|deling|obelus	
+60C	Arabische komma	Arabisch|komma	
+61B	Arabische puntkomma	Arabisch|puntkomma	
+61F	Arabisch vraagteken	Arabisch|vraag|vraagteken	
+2010	koppelteken	gedachtestreep|verbindingsstreepje	
+2013	gedachtestreepje	gedachte|streepje	
+2014	aandachtsstreepje	aandacht|streepje	
+2015	horizontale balk	balk|gedachtestreep|lijn	
+2018	linker apostrof	aanhalingsteken|apostrof|linker aanhalingsteken|slim aanhalingsteken	
+2019	rechter apostrof	aanhalingsteken|apostrof|rechter aanhalingsteken|slim aanhalingsteken	
+201A	lage rechter apostrof	aanhalingsteken|apostrof|laag aanhalingsteken	
+201C	linker dubbel aanhalingsteken	aanhalingsteken|dubbel aanhalingsteken|slim aanhalingsteken	
+201D	rechter dubbel aanhalingsteken	aanhalingsteken|dubbel aanhalingsteken|slim aanhalingsteken	
+201E	laag rechter dubbel aanhalingsteken	aanhalingsteken|dubbel aanhalingsteken|laag aanhalingsteken|slim aanhalingsteken	
+2020	obelisk	obelus	
+2021	dubbele obelisk	dubbel|obelisk|obelus	
+2022	bullet	rondje	
+2026	beletselteken	puntjes|weglating	
+2027	koppeling	gedachtestreepje|koppelteken|punt	
+2030	promille		
+2032	prime	accent	
+2033	dubbele prime	accent	
+2034	drievoudige prime	accent	
+2038	inlasteken		
+203B	referentieteken		
+203C	dubbel uitroepteken	dubbel|interpunctie|teken|uitroep|!|!!	
+203D	interrobang	vraagteken-uitroepteken	
+203E	bovenlijn		
+2042	asterisme	dinkus|sterren	
+2044	breukstreep	schuine streep|streep	
+2049	uitroepteken en vraagteken	interpunctie|teken|uitroep|vraag|vraagteken-uitroepteken|!|!?|?	
+207B	superscript min	min|superscript	
+20A2	cruzeiro	BRB|valuta	
+20A3	Franse franc	franc|valuta	
+20A4	lira	valuta	
+20A5	mill	mil	
+20A8	roepie	valuta	
+20A9	won	KPW|KRW	
+20AC	euro	EUR|valuta	
+20B0	Duitse pfennig	pfennig|valuta	
+20B1	peso		
+20B3	austral	ARA|valuta	
+20B6	livre tournois	valuta	
+20B7	spesmilo	valuta	
+20B9	Indiase roepie	roepie|valuta	
+20BD	roebel	valuta	
+20BF	bitcoin	BTC	
+2117	copyright geluidsopname	copyright|geluid|opname	
+2122	handelsmerksymbool	handel|handelsmerk|merk|tm	
+2139	informatie	I	
+2190	naar links wijzende pijl	links|pijl	
+2191	omhoog wijzende pijl	omhoog|pijl	
+2192	naar rechts wijzende pijl	pijl|rechts	
+2193	omlaag wijzende pijl	omlaag|pijl	
+2194	pijl naar links en rechts	pijl	
+2195	pijl omhoog en omlaag	omhoog en omlaag|pijl	
+2196	pijl linksomhoog	linksboven|noordwest|pijl|richting|windrichting	
+2197	pijl rechtsomhoog	noordoost|pijl|rechtsboven|richting|windrichting	
+2198	pijl rechtsomlaag	pijl|rechtsonder|richting|windrichting|zuidoost	
+2199	pijl linksomlaag	linksonder|pijl|richting|windrichting|zuidwest	
+219A	streep met pijl naar links		
+219B	streep met pijl naar rechts		
+219C	golvende pijl naar links		
+219D	golvende pijl naar rechts		
+219E	pijl met twee koppen naar links		
+219F	pijl met twee koppen omhoog		
+21A0	pijl met twee koppen naar rechts		
+21A1	pijl met twee koppen omlaag		
+21A2	pijl met staart naar links		
+21A3	pijl met staart naar rechts		
+21A4	pijl naar links vanaf balk		
+21A5	pijl omhoog vanaf balk		
+21A6	pijl naar rechts vanaf balk		
+21A7	pijl omlaag vanaf balk		
+21A8	pijl omhoog/omlaag met basis		
+21A9	pijl naar rechts die naar links draait	gebogen|links|pijl|rechts	
+21AA	pijl naar links die naar rechts draait	gebogen|links|pijl|rechts	
+21AB	pijl met lus naar links		
+21AC	pijl met lus naar rechts		
+21AD	golvende pijl naar links/rechts		
+21AE	streep met pijl naar links/rechts		
+21AF	zigzagpijl omlaag		
+21B0	pijlpunt omhoog en naar links wijzend		
+21B1	pijlpunt omhoog en naar rechts wijzend		
+21B2	pijlpunt omlaag en naar links wijzend		
+21B3	pijlpunt omlaag en naar rechts wijzend		
+21B4	hoekpijl omlaag en naar rechts wijzend		
+21B5	hoekpijl omlaag en naar links wijzend		
+21B6	pijl omhoog tegen de klok in met halve cirkel		
+21B7	pijl omhoog met de klok mee met halve cirkel		
+21B8	pijl noordwest lange balk		
+21B9	pijl naar links naar balk boven pijl naar rechts naar balk		
+21BA	pijl met open cirkel tegen de klok in		
+21BB	pijl met open cirkel met de klok mee		
+21BC	harpoen naar links met weerhaak naar boven		
+21BD	harpoen naar links met weerhaak naar beneden		
+21BE	harpoen naar boven met weerhaak naar rechts		
+21BF	harpoen naar boven met weerhaak naar links		
+21C0	harpoen naar rechts met weerhaak naar boven		
+21C1	harpoen naar rechts met weerhaak naar beneden		
+21C2	harpoen naar beneden met weerhaak naar rechts		
+21C3	harpoen naar beneden met weerhaak naar links		
+21C4	pijl naar rechts boven pijl naar links		
+21C5	omhoog en omlaag wijzende pijlen	omhoog|omlaag|pijl	
+21C6	naar links boven naar rechts wijzende pijlen	links|pijl|rechts	
+21C7	twee pijlen naar links		
+21C8	twee pijlen naar boven		
+21C9	twee pijlen naar rechts		
+21CA	twee pijlen naar beneden		
+21CB	harpoen naar links boven harpoen naar rechts		
+21CC	harpoen naar rechts boven harpoen naar links		
+21CD	dubbele doorgestreepte pijl naar links		
+21CE	dubbele doorgestreepte pijl links/rechts		
+21CF	dubbele doorgestreepte pijl naar rechts		
+21D0	dubbele pijl naar links		
+21D1	dubbele pijl omhoog		
+21D2	dubbele pijl naar rechts		
+21D3	dubbele pijl omlaag		
+21D4	dubbele pijl links/rechts		
+21D6	dubbele pijl noordwest		
+21D7	dubbele pijl noordoost		
+21D8	dubbele pijl zuidoost		
+21D9	dubbele pijl zuidwest		
+21DA	driedubbele pijl naar links		
+21DB	driedubbele pijl naar rechts		
+21DC	kronkelpijl naar links		
+21DD	kronkelpijl naar rechts		
+21DE	pijl naar boven met twee strepen		
+21DF	pijl naar beneden met twee strepen		
+21E0	gestippelde pijl naar links		
+21E1	gestippelde pijl naar boven		
+21E2	gestippelde pijl naar rechts		
+21E3	gestippelde pijl naar beneden		
+21E4	pijl naar links naar balk		
+21E5	pijl naar rechts naar balk		
+21E6	doorzichtige pijl naar linkss		
+21E7	doorzichtige pijl naar boven		
+21E8	doorzichtige pijl naar rechts		
+21E9	doorzichtige pijl naar beneden		
+21EA	doorzichtige pijl naar boven vanaf balk		
+21F5	pijl omlaag links van pijl omhoog		
+2200	voor alles	alles|gegeven|ieder|universeel	
+2202	partiële afgeleide	afgeleide	
+2203	bestaat		
+2205	lege verzameling	verzameling-teken|wiskunde	
+2206	toename	driehoek	
+2207	nabla	driehoek	
+2208	element van	bevat|element|lidmaatschap|verzameling	
+2209	geen element van	element	
+220B	bevat als lid	element	
+220E	qed		
+220F	cartesisch product	logica|product	
+2211	productverzameling	verzameling|wiskunde	
+2212	minteken	aftrekken|min	
+2213	min-of-plusteken	plusminus	
+2215	deelstreep	lijn|schuine streep|streep	
+2217	asterisk-teken	sterretje	
+2218	operator samenstelling	operator|samenstelling	
+2219	puntteken	operator	
+221A	vierkantswortel	onmeetbaar getal|radix|vierkant|wortelvorm	
+221D	evenredig	evenredigheid	
+221E	oneindig teken	oneindig	
+221F	rechte hoek	wiskunde	
+2220	hoek	scherp	
+2223	deler		
+2225	parallel		
+2227	logisch en	ac|atque|wig	
+2229	doorsnede	verzameling	
+222A	vereniging	reeks|verzameling	
+222B	integraal	calculus	
+222C	dubbele integraal	calculus	
+222E	kringintegraal		
+2234	daarom	logica	
+2235	omdat	logica	
+2236	ratio		
+2237	verhouding	proportionaliteit	
+223C	tilde-teken	operator	
+223D	omgekeerde tilde	tilde	
+223E	oneindigheid		
+2243	asymptotisch gelijkwaardige	asymptoot|asymptotisch gelijkwaardig|wiskunde	
+2245	ongeveer gelijk	gelijkheid|isomorfie|overeenstemming|wiskunde	
+2248	ongeveerteken	benadering|bijna gelijk aan	
+224C	alles gelijk	gelijkwaardigheid|wiskunde	
+2252	ongeveer gelijk aan de afbeelding		
+2256	ring in gelijk	gelijkheid|wiskunde	
+2260	niet-gelijkteken	is niet gelijk aan|ongelijkheid	
+2261	is gelijk aan	drievoud|gelijk|gelijk aan|precies	
+2263	strict gelijk	gelijkheid|wiskunde	
+2264	kleiner dan of gelijk aan	gelijk aan|is gelijk aan|kleiner dan|ongelijk aan	
+2265	groter dan of gelijk aan	gelijk aan|groter dan|is gelijk aan|ongelijk aan	
+2266	minder dan boven gelijk aan	ongelijkheid|wiskunde	
+2267	groter dan boven gelijk aan	ongelijkheid|wiskunde	
+226A	veel minder dan	ongelijkheid|wiskunde	
+226B	veel groter dan	ongelijkheid|wiskunde	
+226C	tussen		
+226E	niet minder dan	ongelijkheid|wiskunde	
+226F	niet groter dan	ongelijkheid|wiskunde	
+2273	groter of gelijk dan	ongelijkheid|wiskunde	
+227A	komt voor	set operator|wiskunde	
+227B	komt na	set operator|wiskunde	
+2281	komt niet na	set operator|wiskunde	
+2282	deelverzameling van	deelverzameling|verzameling	
+2283	verzameling	set operator|superset|wiskunde	
+2286	deelverzameling gelijk aan		
+2287	verzameling gelijk aan	gelijkheid|wiskunde	
+2295	plusteken in cirkel	plus	
+2296	minteken in cirkel	erosie|symmetrisch verschil	
+2297	vermenigvuldigingsteken in cirkel	product|tensor	
+2298	schuine streep voorwaarts in cirkel	wiskunde|zoals deling	
+2299	operator met punt in cirkel	operator|XNOR	
+229A	operator met ring in cirkel		
+229B	operator met asterisk in cirkel	asterisk|operator	
+229E	plusteken in vierkant	wiskunde|zoals een optelteken	
+229F	minteken in vierkant	wiskunde|zoals een aftrekteken	
+22A5	falsum		
+22AE	forceert niet		
+22B0	komt voor onder relatie	set operator|wiskunde	
+22B1	komt na onder relatie	set operator|wiskunde	
+22B6	origineel		
+22B9	geconjugeerde hermitische matrix	vierkante matrix|wiskunde|zelf-geadjungeerde matrix	
+22BF	driehoek rechts	driehoek met hoek rechts|wiskunde	
+22C1	n-ary logisch of	disjunctie|logisch	
+22C2	n-ary doorsnede	doorsnede|n-ary doosnede|set operator|wiskunde	
+22C3	n-ary vereniging	set operator|vereniging|wiskunde	
+22C5	puntoperator	operator	
+22C6	steroperator	operator	
+22C8	natuurlijk samenvoegen	binaire operator|strikje	
+22D2	dubbele doorsnede	doorsnede|set operator|wiskunde	
+22D8	heel veel minder dan	ongelijkheid|wiskunde	
+22D9	heel veel groter dan	ongelijkheid|wiskunde	
+22ED	is gelijk aan bevat geen normale deelverzameling	groepstheorie|wiskunde	
+22EE	verticale ellips	ellips|wiskunde	
+22EF	horizontale ellips op middellijn	ellips	
+22F0	ellips diagonaal rechts omhoog	ellips|wiskunde	
+22F1	ellips diagonaal rechts omlaag	ellips|wiskunde	
+231A	horloge	klok|polshorloge|tijd	
+231B	zandloper	tijd|timer|zand	
+2328	toetsenbord	computer	
+23CF	knop voor uitwerpen	uitwerpen	
+23E9	knop voor snel vooruitspoelen	dubbel|knop|pijl|snel|vooruit	
+23EA	knop voor versneld terugspoelen	dubbele pijl links|links|pijl|terugspoelen	
+23EB	knop voor versneld omhoog	dubbel|knop|omhoog|pijl|snel	
+23EC	knop voor versneld omlaag	dubbel|knop|omlaag|pijl|snel	
+23ED	knop voor volgende nummer	driehoek|knop|nummer|pijl|scène|volgende	
+23EE	knop voor vorige nummer	driehoek|knop|laatste|nummer|pijl|scène|vorige	
+23EF	knop voor afspelen of pauzeren	driehoek|knop|pauzeren|pijl|rechts|spelen	
+23F0	wekker	alarm|klok|tijd	
+23F1	stopwatch	klok|timer	
+23F2	keukenwekker	klok|kookwekker|timer	
+23F3	zandloper met stromend zand	tijd|timer|zand|zandloper	
+23F8	pauzeknop	dubbel|knop|pauze|streep|verticaal	
+23F9	knop voor stoppen	stoppen|vierkant	
+23FA	knop voor opnemen	knop|opnemen|rondje	
+24C2	M in cirkel	cirkel|in cirkel|M	
+25A0	ingevuld vakje		
+25A1	leeg vakje		
+25A2	leeg vakje met afgeronde hoeken		
+25A3	leeg vakje met ingevuld vakje		
+25A4	vakje met horizontale invulling		
+25A5	vakje met verticale invulling		
+25A6	vakje met invulling met orthogonale dubbele arcering		
+25A7	vakje met invulling linksboven/rechtsonder		
+25A8	vakje met invulling linksonder/rechtsboven		
+25A9	vakje met invulling met diagonale dubbele arcering		
+25AA	klein zwart vierkant	geometrisch|klein|vierkant|zwart	
+25AB	klein wit vierkant	geometrisch|klein|vierkant|wit	
+25AC	rechthoek met invulling		
+25AD	holle rechthoek		
+25AE	ingevulde verticale rechthoek		
+25B0	ingevuld parallellogram		
+25B2	gevulde, omhoog wijzende driehoek	driehoek|gevuld|gevulde|omhoog|omhoog wijzende driehoek|pijl	
+25B3	holle driehoek die naar boven wijst		
+25B4	ingevulde kleine driehoek die naar boven wijst		
+25B5	holle kleine driehoek die naar boven wijst		
+25B6	knop voor afspelen	afspelen|driehoek|knop|pijl|rechts	
+25B7	holle driehoek die naar rechts wijst		
+25B8	ingevulde kleine driehoek die naar rechts wijst		
+25B9	holle kleine driehoek die naar rechts wijst		
+25BA	ingevulde pijl die naar rechts wijst		
+25BB	holle pijl die naar rechts wijst		
+25BC	gevulde, omlaag wijzende driehoek	driehoek|gevuld|gevulde|omlaag|omlaag wijzende driehoek|pijl	
+25BD	holle pijl die omlaag wijst		
+25BE	ingevulde kleine driehoek die omlaag wijst		
+25BF	holle kleine driehoek die omlaag wijst		
+25C0	knop voor terugspoelen	achteruit|driehoek|knop|links|pijl	
+25C1	holle driehoek die naar links wijst		
+25C2	ingevulde kleine driehoek die naar links wijst		
+25C3	holle kleine driehoek die naar links wijst		
+25C4	ingevulde pijl die naar links wijst		
+25C5	holle pijl die naar links wijst		
+25C6	ingevulde ruit		
+25C7	holle ruit		
+25C8	holle ruit met ingevulde ruit		
+25C9	holle cirkel met ingevulde cirkel	concentrische cirkels ingevuld|punt in cirkel|pupil|vissenoog	
+25CA	ruit	ruitvorm|ruitvormig	
+25CB	holle cirkel	cirkel|ring	
+25CC	gestippelde cirkel		
+25CD	cirkel met verticale invulling		
+25CE	concentrische cirkels	doel|dubbele cirkel	
+25CF	gevulde cirkel	cirkel	
+25D0	cirkel met ingevulde linker helft		
+25D1	cirkel met ingevulde rechter helft		
+25D2	cirkel met ingevulde onderste helft		
+25D3	cirkel met ingevulde bovenste helft		
+25D4	cirkel met bovenste kwadrant rechts ingevuld		
+25D5	cirkel met alles ingevuld behalve linker kwadrant		
+25D6	cirkel met linker helft ingevuld		
+25D7	cirkel met rechter helft ingevuld		
+25D8	omgekeerd opsommingsteken		
+25D9	ingevuld vakje met holle cirkel	omgekeerde holle cirkel	
+25DC	ronde boog kwadrant linksboven		
+25DD	ronde boog kwadrant rechtsboven		
+25DE	ronde boog kwadrant rechtsonder		
+25DF	ronde boog kwadrant linksonder		
+25E0	bovenste halve cirkel		
+25E1	onderste halve cirkel		
+25E2	ingevulde driehoek rechtsonder		
+25E3	ingevulde driehoek linksonder		
+25E4	ingevulde driehoek linksboven		
+25E5	ingevulde driehoek rechtsboven		
+25E6	hol opsommingsteken		
+25EF	grote holle cirkel	cirkel|ring	
+25F3	hol vakje kwadrant rechtsboven		
+25F7	holle cirkel met kwadrant rechtsboven		
+25FB	middelgroot wit vierkant	middelgroot|vierkant|wit	
+25FC	middelgroot zwart vierkant	geometrisch|middelgroot|vierkant|zwart	
+25FD	klein tot middelgroot wit vierkant	geometrisch|klein tot middelgroot|vierkant|wit	
+25FE	klein tot middelgroot zwart vierkant	geometrisch|klein tot middelgroot|vierkant|zwart	
+25FF	driehoek rechtsonder		
+2600	zon	felle zon|helder|stralen|weer|zonnig	
+2601	wolk	weer	
+2602	paraplu	geopende paraplu|kleding|open paraplu|regen|weer	
+2603	sneeuwpop	koud|sneeuw|weer	
+2604	komeet	ruimte|vuurbal	
+260E	telefoon	rode telefoon met hoorn|vaste telefoon	
+2611	vinkje in vak	check|klaar|stem|uit|vak|vink|vinkje|✓	
+2614	paraplu met regendruppels	druppels|kleding|paraplu|regen|weer	
+2615	warme drank	café|cafeïne|chai|drank|drinken|koffie|ochtend|stomen|thee|warm	
+2618	klavertjedrie	Iers|plant	
+261D	omhoog wijzende wijsvinger	dit|hand|omhoog|vinger|wijs|wijsvinger|wijzen	
+2620	doodshoofd met gekruiste beenderen	bot|dood|doodshoofd|gekruiste botten|gezicht|monster|schedel	
+2622	radioactief	teken	
+2623	biologisch gevaar	teken	
+2626	russisch kruis	Christelijk|kruis|orthodox|religie	
+262A	wassende maan en ster	islam|moslim|ramadan|religie|ster|wassende maan	
+262E	vredessymbool	helend|symbool|vrede|vredig	
+262F	yin en yang	leven|moeilijk|religie|tao|taoist|totaal|yang|yin	
+2638	wiel van dharma	Boeddhistisch|dharma|religie|wiel	
+2639	fronsend gezicht	fronsen|fronsend|gezicht|verdrietig	
+263A	lachend gezicht	blij|gezicht|lach|lachen|omtrek|ontspannen	
+2640	vrouwelijkheidssymbool	vrouw	
+2642	mannelijkheidssymbool	man	
+2648	ram (sterrenbeeld)	Aries|dierenriem|horoscoop|ram	
+2649	stier (sterrenbeeld)	dierenriem|horoscoop|os|stier|Taurus	
+264A	tweelingen (sterrenbeeld)	dierenriem|Gemini|horoscoop|tweelingen	
+264B	kreeft (sterrenbeeld)	Cancer|dierenriem|horoscoop|kreeft	
+264C	leeuw (sterrenbeeld)	dierenriem|horoscoop|leeuw|Leo	
+264D	maagd (sterrenbeeld)	dierenriem|horoscoop|maagd|Virgo	
+264E	weegschaal (sterrenbeeld)	balans|dierenriem|gerechtigheid|horoscoop|Libra|weegschaal	
+264F	schorpioen (sterrenbeeld)	dierenriem|horoscoop|schorpioen|Scorpio|scorpius	
+2650	boogschutter (sterrenbeeld)	boogschutter|dierenriem|horoscoop|Sagittarius	
+2651	steenbok (sterrenbeeld)	Capricorn|dierenriem|horoscoop|steenbok	
+2652	waterman (sterrenbeeld)	Aquarius|dierenriem|drager|horoscoop|water|waterman	
+2653	vissen (sterrenbeeld)	dierenriem|horoscoop|Pisces|vissen	
+265F	pion	schaken|slachtoffer|waardeloos	
+2660	schoppen	kaart|kaarten|spel	
+2663	klaveren	kaart|kaarten|klaver|spel	
+2665	harten	hart|kaart|kaarten|spel	
+2666	ruiten	kaart|kaarten|ruit|spel|vorm	
+2668	warmwaterbronnen	bronnen|stomend|warm	
+266A	achtste noot	achtste|muziek|noot	
+266D	mol	molteken|muziek|noot	
+266F	kruis	dièse|diesis|muziek|noot	
+267B	recycling-symbool	recycle|recycling|symbool	
+267E	oneindig	eeuwig|grenzeloos|universeel	
+267F	rolstoelsymbool	handicap|rolstoel|symbool|toegang	
+2692	twee hamers	gereedschap|hamer|hamer en pikhouweel|hamers|pikhouweel	
+2693	anker	hulpmiddel|schip	
+2694	gekruiste zwaarden	degens gekruist|gekruist|wapen|zwaarden	
+2695	esculaap	medicijnen|medisch|staf|symbool	
+2696	weegschaal	balans|dierenriem|gerechtigheid|gewichten|horoscoop|Libra|recht|sterrenbeeld|weegschaal in balans	
+2697	distilleerkolf	gereedschap|scheikunde	
+2699	tandwiel	gereedschap|instellingen|radertje|tandrad	
+269B	atoomsymbool	atheïst|atoom|symbool	
+269C	fleur de lis	ridders	
+26A0	waarschuwing	voorzichtig	
+26A1	hoog voltage	bliksem|donderslag|elektriciteit|elektrisch|gevaar|schok|spanning|voltage	
+26A7	transgendersymbool	transgender	
+26AA	witte cirkel	cirkel|geometrisch|wit	
+26AB	zwarte cirkel	cirkel|geometrisch|zwart	
+26B0	doodskist	dood|kist|vampier	
+26B1	urn	as|begrafenis|dood	
+26BD	voetbal	bal|futsal|messi|ronaldo|sport	
+26BE	honkbal	bal|sport	
+26C4	sneeuwpop zonder sneeuwvlokken	koud|sneeuw|sneeuwpop	
+26C5	zon achter wolk	weer|wolk|zon|zon achter wolken	
+26C8	wolk met bliksem en regen	onweer|regen|weer|wolk	
+26CE	slangendrager (sterrenbeeld)	dierenriem|drager|horoscoop|Ophiuchus|serpent|slang|slangendrager	
+26CF	pikhouweel	gereedschap|mijnbouw	
+26D1	helm van reddingswerker	gezicht|helm|hoed|hulp|kruis|redding|werknemer	
+26D3	kettingen	ketting	
+26D4	geen toegang	belemmerd|doorgang|geen|ingang|mislukt|niet|toegang|verboden|verkeer	
+26E9	shinto-tempel	geloof|japans|poort|religie|shinto|tempel|torii	
+26EA	kerk	christelijk|geloof|kapel|kruis|religie	
+26F0	berg		
+26F1	strandparasol	parasol|parasol op de grond|regen|zon	
+26F2	fontein		
+26F3	vlag in hole	golf|hole|sport	
+26F4	veerboot	boot|passagier|veerpont	
+26F5	zeilboot	boot|jacht|jachthaven|vaartuig|vervoermiddel|zee	
+26F7	skiër	ski|sneeuw	
+26F8	schaats	ijs|kunstschaatsen|schaatsen|sport|witte schaats	
+26F9	basketbalspeler	bal|basketbal|basketballer|dribbelen|NBA|persoon met bal|sport|vrije worp	
+26FA	tent	kamperen	
+26FD	benzinestation	benzine|benzinepomp|brandstof|pomp|station	
+2702	schaar	gereedschap|knippen	
+2705	knop voor vinkje	afgevinkt|check|gedaan|klaar|knop|markeren|vink|vinkje|voltooid|✓	
+2708	vliegtuig	luchtvaartuig|reizen|vervoermiddel|vliegen|vliegmachine	
+2709	envelop	brief|e-mail|mail	
+270A	opgeheven vuist	gebald|hand|opgeheven|solidariteit|stoot|vuist	
+270B	opgeheven hand	hand|hoog|opgeheven|stop|vijf|5	
+270C	winnende hand	hand|peace|twee vingers|v|vredesteken	
+270D	schrijvende hand	hand|schrijf|schrijven	
+270F	potlood		
+2712	kroontjespen met zwarte punt	pen|punt|vulpen	
+2714	vinkje	afgevinkt|check|dikgedrukt|klaar|teken|✓	
+2716	vermenigvuldigen	annuleren|teken|x|×	
+271D	christelijk kruis	christelijk|christus|kruis|Latijns|religie	
+2721	davidster	David|Jodendom|Jood|Joods|religie|ster	
+2728	sterretjes	glinsteren|glinsterende sterren|ster|*	
+2733	achtpuntige asterisk	achtpuntig|asterisk|*	
+2734	achtpuntige ster	achtpuntige|ster|*	
+2744	sneeuwvlok	koud|sneeuw|weer	
+2747	sprankeling	*	
+274C	kruisteken	annuleren|kruis|teken|vermenigvuldigen|vermenigvuldiging|x|×	
+274E	knop voor kruis	knop|kruis|teken|vermenigvuldigen|vermenigvuldiging|vierkant|x|×	
+2753	rood vraagteken	interpunctie|rood|teken|vraag|?	
+2754	wit vraagteken	contour|interpunctie|teken|vraag|wit|?	
+2755	wit uitroepteken	contour|interpunctie|teken|uitroep|wit|!	
+2757	rood uitroepteken	interpunctie|rood|teken|uitroep|!	
+2763	hart als uitroepteken	hart met druppel eronder|interpunctie|leesteken|punctuatie|teken|uitroep|uitroepteken|uitroepteken met hart	
+2764	rood hart	emotie|hart|liefde	
+2795	plus	+	
+2796	min	dikgedrukt|teken|wiskunde|-|−	
+2797	delen	deling|dikgedrukt|teken|wiskunde|÷	
+27A1	pijl naar rechts	oost|pijl|rechts|richting|windrichting	
+27B0	gekrulde lus	gedraaid|lus	
+27BF	dubbele gekrulde lus	dubbel|krul|krullend|lus	
+2934	pijl naar rechts die omhoog draait	omhoog|pijl|rechts	
+2935	pijl naar rechts die omlaag draait	gebogen|omlaag|pijl|rechts	
+2A27	plus subscript twee		
+2A2F	vectorkruisproduct		
+2A3C	inwendig product		
+2A63	logische of dubbele onderbalk		
+2A7D	minder dan of gelijk aan		
+2A8D	minder dan boven soortgelijk aan		
+2A9A	dubbele lijn soortgelijk aan groter dan	ongelijkheid|wiskunde	
+2ABA	komt na boven niet bijna gelijk aan		
+2B05	pijl naar links	links|pijl|richting|west|windrichting	
+2B06	pijl omhoog	noord|omhoog|pijl|richting|windrichting	
+2B07	pijl omlaag	omlaag|pijl|richting|windrichting|zuid	
+2B1B	groot zwart vierkant	geometrisch|groot|vierkant|zwart	
+2B1C	groot wit vierkant	geometrisch|groot|vierkant|wit	
+2B50	witte middelgrote ster	ster	
+2B55	lege rode cirkel	cirkel|groot|hol|o|rood|vet	
+3001	ideografische komma	ideografisch|komma	
+3002	ideografische punt	ideografisch|punt	
+3008	punthaakje openen	chevron|haakje|hoekanker|punthaakje|ruithaakjes|tupel	
+3009	punthaakje sluiten	chevron|haakje|hoekanker|punthaakje|ruithaakjes|tupel	
+300A	dubbel punthaakje openen	dubbel punthaakje|haakje	
+300B	dubbel punthaakje sluiten	dubbel punthaakje|haakje	
+300C	Oost-Aziatisch aanhalingsteken openen	haakje|Oost-Aziatisch aanhalingsteken	
+300D	Oost-Aziatisch aanhalingsteken sluiten	haakje|Oost-Aziatisch aanhalingsteken	
+300E	Aziatisch aanhalingsteken openen	haakje	
+300F	Aziatisch aanhalingsteken sluiten	haakje	
+3010	zwart lensvormig haakje openen	haakje|lenshaakje|lensvormig haakje	
+3011	lensvormig contourhaakje sluiten	haakje|lenshaakje|lensvormig haakje	
+3014	schildhaakje openen	haakje|schildhaakje|schildpadhaakje	
+3015	schildhaakje sluiten	haakje|schildhaakje|schildpadhaakje	
+3016	lensvormig haakje openen	haakje|lenshaakje|lensvormig haakje	
+3017	lensvormig haakje sluiten	haakje|lenshaakje|lensvormig haakje	
+3030	golvend streepje	golvend|interpunctie|streepje	
+303D	rolwisselingsmarkering	markering|rolwisseling|teken	
+30FB	katakana middelste punt	hoge punt|katakana|middenpunt|puntjes	
+3297	Japans teken voor ‘gefeliciteerd’	gefeliciteerd|ideogram|Japans|knop	
+3299	Japans teken voor ‘geheim’	geheim|ideogram|Japans|knop	
+FDFC	rial	valuta	
+1F004	mahjong rode draak	mahjong|rode draak|rood|spel|stenen	
+1F0CF	Jokerkaart	joker|kaart|kaarten|spel|spelen	
+1F170	bloedgroep A	bloed|groep|knop	
+1F171	bloedgroep B	B|bloed|groep|knop	
+1F17E	bloedgroep O	bloed|groep|knop|O	
+1F17F	P-knop	knop|P|parkeren	
+1F18E	bloedgroep AB	AB|bloed|groep|knop	
+1F191	CL-knop	CL|knop	
+1F192	COOL-knop	COOL|knop	
+1F193	FREE-knop	FREE|knop	
+1F194	ID-knop	ID|identiteit|knop	
+1F195	NEW-knop	knop|NEW	
+1F196	NG-knop	knop|NG	
+1F197	OK-knop	knop|OK|oké	
+1F198	SOS-knop	help|knop|SOS	
+1F199	UP!-knop	knop|teken|UP|UP!	
+1F19A	VS-knop	knop|versus|VS	
+1F201	Japans teken voor ‘hier’	hier|Japans|katakana|knop	
+1F202	Japans teken voor ‘dienstenheffing’	dienstenheffing|Japans|katakana|knop|service	
+1F21A	Japans teken voor ‘gratis’	gratis|ideogram|Japans|knop|kosten	
+1F22F	Japans teken voor ‘gereserveerd’	gereserveerd|ideogram|Japans|knop	
+1F232	Japans teken voor ‘verboden’	ideogram|Japans|knop|verboden	
+1F233	Japans teken voor ‘plaats vrij’	ideogram|Japans|knop|plaats vrij	
+1F234	Japans teken voor ‘voldoende (cijfer)‘	cijfer|ideogram|Japans|knop|voldoende	
+1F235	Japans teken voor ‘vol, geen plaats’	geen|ideogram|Japans|knop|plaats	
+1F236	Japans teken voor ‘niet gratis’	gratis|ideogram|Japans|knop|kosten|niet	
+1F237	Japans teken voor ‘maandelijks bedrag’	bedrag|ideogram|Japans|knop|maandelijks	
+1F238	Japans teken voor ‘toepassing’	ideogram|Japans|knop|toepassing	
+1F239	Japans teken voor ‘korting’	ideogram|Japans|knop|korting	
+1F23A	Japans teken voor ‘geopend’	bedrijf|ideogram|Japans|knop|open	
+1F250	Japans teken voor ‘koopje’	ideogram|Japans|knop|koopje	
+1F251	Japans teken voor ‘acceptabel’	acceptabel|ideogram|Japans|knop	
+1F300	cycloon	duizelig|spiraal|twister|tyfoon|weer	
+1F301	mistig	mist	
+1F302	ingevouwen paraplu	dichte paraplu|kleding|paraplu|regen|weer	
+1F303	sterrenhemel	metropool|miljoenenstad|nacht|stad bij nacht|sterren	
+1F304	zonsopgang in de bergen	berg|bergen|ochtend|zon|zonsopgang	
+1F305	zonsopgang	ochtend|zon	
+1F306	stad bij schemering	avond|gebouw|landschap|metropool|miljoenenstad|schemer|stad|zonsondergang	
+1F307	zonsondergang	flatgebouwen|gebouw|metropool|miljoenenstad|schemer|zon	
+1F308	regenboog	genderqueer|glbt|homoseksueel|lesbisch|lgbt|lgbtq|lgtbqia|lhbt|natuur|pride|queer|regen|transgender|weer	
+1F309	brug bij nacht	avond|brug|nacht|nachtelijke brug	
+1F30A	golf	golfsurfen|golven|Japan|Kanagawa|oceaan|surfen|water|weer|zee	
+1F30B	vulkaan	berg|lava|magma|natuur|vulkaanuitbarsting	
+1F30C	melkweg	ruimte	
+1F30D	wereldbol met Europa-Afrika	aarde|afrika|Afrika|europa|Europa|wereld|wereldbol	
+1F30E	wereldbol met Noord- en Zuid-Amerika	aarde|amerika|Noord- en Zuid-Amerika|wereld|wereldbol	
+1F30F	wereldbol met Azië-Australië	aarde|australië|Australië|azië|Azië|wereld|wereldbol	
+1F310	wereldbol met meridianen	aarde|internet|meridianen|wereld|wereldbol|www	
+1F311	nieuwe maan	avond|donker|maan|maansverduistering|ruimte	
+1F312	jonge maansikkel	avond|maan|ruimte|sikkel|wassend|wassende halvemaan	
+1F313	maan in eerste kwartier	avond|kwartier|maan|ruimte	
+1F314	wassende maan	avond|bolvormig|maan|ruimte|tussen halve maan en volle maan|wassend	
+1F315	volle maan	avond|maan|ruimte|vol	
+1F316	afnemende maan	afnemend|avond|bolvormig|maan|ruimte|tussen halve maan en volle maan|wassend	
+1F317	maan in laatste kwartier	avond|kwartier|maan|ruimte	
+1F318	asgrauwe maan	afnemend|afnemende halvemaan|avond|maan|maansikkel|nacht|ruimte|sikkel	
+1F319	maansikkel	avond|halvemaan|maan|ramadan|ruimte|sikkel|slapen	
+1F31A	nieuwe maan met gezicht	avond|gezicht|maan|nieuwe maan-gezicht|ruimte	
+1F31B	maan met gezicht in eerste kwartier	avond|eerste kwartier|gezicht|kwartier|maan|maan in eerste kwartier met gezicht|ruimte|slapen	
+1F31C	maan met gezicht in laatste kwartier	avond|gezicht|kwartier|laatste kwartier|maan|maan in laatste kwartier met gezicht|ruimte|slapen	
+1F31D	volle maan met gezicht	avond|gezicht|helder|heldere maan|maan|ruimte|vol|volle maan	
+1F31E	zon met gezicht	gezicht|helder|warm|weer|zon|zonneschijn	
+1F31F	stralende ster	fonkelen|fonkelend|schitteren|schitterend|schittering|ster|stralen	
+1F320	vallende ster	hemel|ruimte|ster|vallen|vallend	
+1F321	thermometer	koorts|weer	
+1F324	zon achter kleine wolk	weer|wolk|zon	
+1F325	zon achter grote wolk	weer|wolk|zon	
+1F326	zon achter regenwolk	regen|weer|wolk|zon|zon achter wolk met regen	
+1F327	wolk met regen	regen|weer|wolk	
+1F328	wolk met sneeuw	koud|sneeuw|weer|winter|wolk	
+1F329	wolk met bliksem	bliksem|weer|wolk	
+1F32A	tornado	storm|weer|wervelwind|wolk	
+1F32B	mist	bewolkt|weer|wolk	
+1F32C	gezicht dat wind blaast	blazen|gezicht|weer|wind|wind met gezicht|wolk	
+1F32D	hotdog	braadworst|frankfurter|knakworst|worst	
+1F32E	taco	mexicaans	
+1F32F	burrito	mexicaans|wrap	
+1F330	kastanje	amandel|plant	
+1F331	zaailing	jong|plant|spruit|stekje	
+1F332	naaldboom	boom|bos|dennenboom|kerst	
+1F333	loofboom	boom|bos|groen|habitat|verliezen	
+1F334	palmboom	boom|palm|plant|strand|tropisch	
+1F335	cactus	droogte|natuur|plant|woestijn	
+1F336	hete peper	heet|peper	
+1F337	tulp	bloem|bloesem|groei|plant	
+1F338	kersenbloesem	bloem|bloesem|kers|lente|plant|voorjaar	
+1F339	roos	bloem|elegant|liefde|plant|rood|schoonheid|valentijn	
+1F33A	hibiscus	bloem|plant	
+1F33B	zonnebloem	bloem|buiten|plant|zon	
+1F33C	bloesem	bloem|boterbloem|paardenbloem|plant	
+1F33D	maïskolf	boerderij|doolhof|gewassen|kolf|maïs	
+1F33E	rijstplant	aar|graan|granen|plant|rijst|rijstaar	
+1F33F	kruid	blad|plant	
+1F340	klavertjevier	blad|geluk|Iers|klaver|plant|vier|4	
+1F341	esdoornblad	blad|esdoorn|vallend	
+1F342	vallende bladeren	blad|gevallen|herfst|vallend	
+1F343	blad in de wind	blad|blazen|fladderen|wind	
+1F344	paddenstoel	schimmel|zwam	
+1F345	tomaat	fruit|groente|voedsel	
+1F346	aubergine	groente	
+1F347	druiven	Dionysus|druif|fruit	
+1F348	meloen	fruit|kanteloep	
+1F349	watermeloen	fruit	
+1F34A	mandarijn	c|citrus|fruit|nectarine|sinaasappel|vitamine	
+1F34B	citroen	citrus|fruit|zuur	
+1F34C	banaan	fruit|kalium	
+1F34D	ananas	eten|fruit|tropisch|voedsel	
+1F34E	rode appel	appel|dieet|fruit|gezondheid|rijp|rood|voedsel	
+1F34F	groene appel	appel|fruit|groen	
+1F350	peer	fruit	
+1F351	perzik	fruit	
+1F352	kersen	bessen|fruit|kers|rood	
+1F353	aardbei	bes|fruit	
+1F354	hamburger	burger|eten|fastfood|honger	
+1F355	pizzapunt	eten|honger|kaas|pepperoni|pizza|punt	
+1F356	vlees met bot	bot|vlees	
+1F357	kippenpoot	bot|gevogelte|honger|kalkoen|kip|poot	
+1F358	rijstwafel	cracker|eten|rijst	
+1F359	rijstballetje	balletje|eten|Japans|rijst	
+1F35A	gekookte rijst	gekookt|rijst|voedsel	
+1F35B	curry en rijst	curry|rijst|voedsel	
+1F35C	dampende kom	chopsticks|dampend|eten|kom|noedels|pho|ramen|soep	
+1F35D	spaghetti	eten|gehaktballen|pasta|restaurant	
+1F35E	brood	eten|koolhydraten|tarwe|voedsel	
+1F35F	patat	eten|fastfood|frans|frietjes	
+1F360	gepofte zoete aardappel	aardappel|eten|gepoft|zoet	
+1F361	dango	dessert|Japans|spies|stokje|zoet	
+1F362	oden	eten|kebab|restaurant|spies|stokje|zeevruchten	
+1F363	sushi	eten	
+1F364	gefrituurde garnaal	garnaal|garnalen|gefrituurd|tempura	
+1F365	viskoekje met krul	koekje|krul|vis|viskoekje	
+1F366	softijs	dessert|eten|ijs|restaurant|room|zoet	
+1F367	geschaafd ijs	dessert|geschaafd|ijs|restaurant|zoet	
+1F368	ijs	dessert|eten|restaurant|room|zoet	
+1F369	donut	dessert|eten|voedsel|zoet	
+1F36A	koekje	chip|chocolade|dessert|zoet	
+1F36B	chocoladereep	chocolade|dessert|halloween|reep|snoep|zoetekauw	
+1F36C	snoep	dessert|eten|gaatjes|voedsel|wikkel|zoet	
+1F36D	lolly	dessert|eten|snoep|voedsel|zoet	
+1F36E	vla	dessert|pudding|zoet	
+1F36F	honingpot	beer|eten|honing|pot|vat|zoet	
+1F370	cake	dessert|gebak|plak|zandgebak|zoet	
+1F371	bentobox	bento|box|voedsel	
+1F372	stoofschotel	pan|soep|voedsel	
+1F373	koken	bakken|ei|gemakkelijk|ontbijt|pan|restaurant|spiegelei	
+1F374	mes en vork	bestek|eten|honger|koken|lekker|lunch|mes|ontbijt|restaurant|uit eten|vork|vork en mes	
+1F375	theekopje zonder oor	drankje|drinken|kop|thee|theekopje	
+1F376	sake	bar|café|drankje|drinken|fles|kopje	
+1F377	wijnglas	alcohol|bar|café|drankje|drinken|glas|restaurant|wijn	
+1F378	cocktailglas	alcohol|bar|café|cocktail|drinken|glas|mad men|martini	
+1F379	tropisch drankje	alcohol|bar|club|drankjes|drinken|dronken|mai tai|mix|tropisch	
+1F37A	bierglas	alcohol|bar|bier|café|drinken|duitsland|glas|oktoberfest|pils|pint	
+1F37B	klinkende bierglazen	alcohol|bar|bier|café|drinken|glas|proosten|proostende bierglazen	
+1F37C	babyflesje	baby|babyfles|drinken|fles|flesje|flesvoeding|geboorte|melk	
+1F37D	mes en vork met bord	bord|diner|eten|koken|mes|vork	
+1F37E	fles met knallende kurk	bar|drinken|fles|knallen|kurk	
+1F37F	popcorn	film|maïs|pop	
+1F380	strik	feest|roze lint|viering	
+1F381	ingepakt cadeau	cadeau|cadeautje|cadeauverpakking met strik|feest|ingepakt|verpakking	
+1F382	verjaardagstaart	dessert|gebak|gelukkig|taart|verjaardag|viering|zoet	
+1F383	halloweenlantaarn	feest|halloween|lampion|lantaarn|pompoen|pompoenlantaarn|sint maarten	
+1F384	kerstboom	boom|feest|kerstmis|Kerstmis|viering	
+1F385	kerstman	fantasie|feestdag|kerst|Kerstmis|viering|vrolijk	
+1F386	vuurwerk	feest|jaarwisseling|knal|oud en nieuw|oudejaarsavond|vermaak|viering	
+1F387	sterretje	afsteken|feest|jaarwisseling|knal|oud en nieuw|oudejaarsavond|viering|vuurwerk|vuurwerksterretje	
+1F388	ballon	feest|jarig|verjaardag|vieren|viering	
+1F389	feestknaller	confetti|feest|hoera|jarig|knaller|partypopper|verjaardag|viering	
+1F38A	confettibal	bal|confetti|feest|hoera|jarig|verjaardag|viering	
+1F38B	tanabataboom	boom|boom met papierlinten|feest|japans|papierlinten|tanabata	
+1F38C	gekruiste vlaggen	feest|gekruist|japans|kruis	
+1F38D	dennenboomversiering	bamboe|den|dennentakdecoratie|feest|japans|plant	
+1F38E	Japanse poppen	feest|festival|japans|pop|poppen|viering	
+1F38F	karperslinger	feest|karper|karpers|karperwimpel|slinger|wimpel	
+1F390	windorgel	bel|feest|wind|windklokkenspel	
+1F391	maanobservatieceremonie	ceremonie|feest|maan|maanceremonie|viering	
+1F392	schooltas	boekentas|rugzak|school|tas	
+1F393	academische baret	afstuderen|baret|feest|hoed|kleding|opleiding|student	
+1F396	militaire medaille	medaille|militair|onderscheiding|viering	
+1F397	bewustzijnslintje	herinnering|herinneringslintje|lintje|viering	
+1F399	studiomicrofoon	microfoon|muziek|studio	
+1F39A	schuifregelaar	muziek|niveau|schuifje|volumeregelaar	
+1F39B	controleknoppen	bediening|knoppen|muziek	
+1F39E	filmframes	bioscoop|film|filmrol|films|frames	
+1F39F	entreekaartjes	entree|kaartje|toegang|toegangskaartje	
+1F3A0	draaimolenpaard	carrousel|draaimolen|kermis|paard|pretpark	
+1F3A1	reuzenrad	kermis|pretpark|rad	
+1F3A2	achtbaan	baan|pretpark	
+1F3A3	vishengel	hengel|sport|vis	
+1F3A4	microfoon	geluid|karaoke|muziek|zingen	
+1F3A5	filmcamera	bioscoop|bollywood|camera|film|hollywood|opnemen	
+1F3A6	knop voor filmen	bioscoop|camera|film|filmen	
+1F3A7	hoofdtelefoon	geluid|koptelefoon|oordopje	
+1F3A8	schilderspalet	creatief|kleurrijk|kunst|kunstzinnig|museum|palet|schilderen|schilderij	
+1F3A9	hoge hoed	fancy|formeel|goochelen|goochelhoed|hoed|hoog|kleding	
+1F3AA	circustent	circus|tent	
+1F3AB	ticket	entree|entreekaartje|kaartje|toegang|toegangskaartje	
+1F3AC	klapbord	actie|entertainment|film|filmklapper|filmset|klapper|opnames	
+1F3AD	toneelkunsten	kunst|masker|maskers|optreden|theater|toneel|toneelkunst|treurspel	
+1F3AE	videogame	controller|game|gamecontroller|playstation|spel|videospel|xbox	
+1F3AF	directe treffer	bull’s eye|bullseye|darts|doelwit|in de roos|spel|sport|treffer|voltreffer	
+1F3B0	fruitautomaat	casino|eenarmige bandiet|gokkast|gokken|spel	
+1F3B1	biljart	8 ball|8-ball|acht|bal|pool|spel|8	
+1F3B2	dobbelsteen	dobbelen|dobbelstenen|spel|yahtzee	
+1F3B3	bowlen	bal|spel|sport|strike	
+1F3B4	speelkaarten	bloem|bloemenkaart|bloemspeelkaarten|hanafuda|japans|kaart|kaartspel|spel|spelen	
+1F3B5	muzieknoot	achtste noten|muziek|noot	
+1F3B6	muzieknoten	achtste noten|geluid|muziek|noot|noten	
+1F3B7	saxofoon	instrument|muziek|muziekinstrument|sax	
+1F3B8	gitaar	instrument|muziek|muziekinstrument|strat|stratocaster	
+1F3B9	piano	instrument|keyboard|muziek|muziekinstrument	
+1F3BA	trompet	instrument|muziek|muziekinstrument	
+1F3BB	viool	instrument|muziek|muziekinstrument|stradivarius	
+1F3BC	notenschift	g-sleutel|muziek|partituur	
+1F3BD	hardloopshirt	atletiek|hardlopen|shirt|sjerp|sport	
+1F3BE	tennis	bal|sport|tennisbal|tennisracket	
+1F3BF	ski’s	laars en skis|ski|skiën|skis|skischoen|sneeuw|sport|wintersport	
+1F3C0	basketbal	bal|basket|sport	
+1F3C1	geblokte vlag	finish|Formule 1|geblokt|racen|sport|vlag	
+1F3C2	snowboarder	ski|sneeuw|snowboard|sport	
+1F3C3	hardloper	hardlopen|hollen|joggen|man|marathon|persoon|rennen|snel|sport	
+1F3C4	surfer	golf|golven|oceaan|sport|strand|surfen|surfende persoon|zee	
+1F3C5	sportmedaille	eerste|eerste plaats|gewonnen|medaille|medaille 1e plaats|medaille met ster|winnaar	
+1F3C6	trofee	beker|gewonnen|kampioen|overwinning|prijs|winnaar	
+1F3C7	jockey op renpaard	jockey|paard|paardrijden|racen|renpaard|sport	
+1F3C8	american football	amerikaans|bal|football|sport|super bowl	
+1F3C9	rugby	bal|football|sport|voetbal	
+1F3CA	zwemmende persoon	freestyle|persoon|sport|triatlon|zwemmen|zwemmer	
+1F3CB	gewichtheffer	bodybuilder|gewicht|heffer|krachtsport|krachttraining|sport|sportschool|sterk|trainen|work-out	
+1F3CC	golfer	bal|birdie|golf|golfbaan|golfbal|green|persoon die golf speelt|pga|sport	
+1F3CD	motor	racen|vervoermiddel|voertuig	
+1F3CE	raceauto	auto|formule 1|racen|racewagen|vervoermiddel|voertuig|vroem	
+1F3CF	cricket	bal|bat|cricketbat|cricketbat en bal|slaghout|sport|wedstrijd	
+1F3D0	volleybal	bal|wedstrijd	
+1F3D1	hockey	bal|hockeystick|hockeystick en bal|sport|stick|veld|wedstrijd	
+1F3D2	ijshockeystick en puck	ijs|ijshockey|puck|sport|stick|wedstrijd	
+1F3D3	pingpong	bal|bat|batje|sport|tafeltennis|wedstrijd	
+1F3D4	berg met besneeuwde toppen	berg|koud|sneeuw	
+1F3D5	kamperen	camping|tent	
+1F3D6	strand met parasol	parasol|strand	
+1F3D7	woningbouw	bouw|bouwen|haven|hijskraan	
+1F3D8	huizen	buurt|huis	
+1F3D9	stadsgezicht	flatgebouwen|gebouw|metropool|miljoenenstad|stad	
+1F3DA	vervallen huis	bouwval|gebouw|huis|vervallen	
+1F3DB	klassiek gebouw	gebouw|historisch gebouw|klassiek|klassieke oudheid|renaissance|rome|zuilen	
+1F3DC	woestijn		
+1F3DD	onbewoond eiland	eiland|onbewoond	
+1F3DE	nationaal park	natuurgebied|park	
+1F3DF	stadion	amfitheater	
+1F3E0	huis	gebouw|settelen|thuis|villa|voorstad|vrijstaande woning	
+1F3E1	huis met tuin	gebouw|huis|huisje boompje beestje|settelen|thuis|tuin|voorstad|vrijstaande woning	
+1F3E2	kantoorgebouw	gebouw|kantoorbaan|werk	
+1F3E3	Japans postkantoor	gebouw|japans|Japans|post	
+1F3E4	postkantoor	europees|Europees|gebouw|post	
+1F3E5	ziekenhuis	dokter|gebouw|medicijnen	
+1F3E6	bank	gebouw	
+1F3E7	pinautomaat	ATM|bank|contant|geautomatiseerd|geld|pinnen|teken	
+1F3E8	hotel	gebouw	
+1F3E9	love-hotel	gebouw|hotel|liefde|liefdeshotel|lovehotel	
+1F3EA	supermarkt	boodschappen|gebouw|winkel	
+1F3EB	school	gebouw	
+1F3EC	warenhuis	gebouw|winkel|winkelen	
+1F3ED	fabriek	gebouw	
+1F3EE	rode papieren lantaarn	bar|lantaarn|licht|rood	
+1F3EF	Japans kasteel	gebouw|Japans|kasteel	
+1F3F0	kasteel	europees|gebouw|middeleeuwen	
+1F3F3	witte vlag	vlag|wapperend|wit	
+1F3F4	zwarte vlag	vlag|wapperend|zwart	
+1F3F5	rozet	plant	
+1F3F7	label		
+1F3F8	badminton	badmintonracket en shuttle|pluimbal|racket|shuttle|sport|wedstrijd	
+1F3F9	pijl en boog	boog|boogschieten|boogschutter|horoscoop|pijl|sport|sterrenbeeld|wapen	
+1F3FA	amfora	amfoor|drinken|horoscoop|koken|kruik|sterrenbeeld|waterman	
+1F3FB	lichte huidskleur	huidskleur|type 1–2	
+1F3FC	lichtgetinte huidskleur	huidskleur|type 3	
+1F3FD	getinte huidskleur	huidskleur|type 4	
+1F3FE	donkergetinte huidskleur	huidskleur|type 5	
+1F3FF	donkere huidskleur	huidskleur|type 6	
+1F400	rat	dier	
+1F401	muis	dier|dieren	
+1F402	os	boerderij|dier|dieren|sterrenbeeld|stier|Taurus	
+1F403	waterbuffel	buffel|dier|dierentuin|water	
+1F404	koe	boe|boerderij|dier|dieren|melk	
+1F405	tijger	dier|dierentuin|groot|kat|roofdier	
+1F406	luipaard	dier|dierentuin|groot|kat|roofdier	
+1F407	konijn	dier|huisdier|konijntje	
+1F408	kat	dier|dieren|huisdier|katten|kitten	
+1F409	draak	dier|ridders|sprookje	
+1F40A	krokodil	dier|dierentuin	
+1F40B	walvis	dier|oceaan|strand	
+1F40C	slak	dier|escargot|naaktslak|natuur|tuin	
+1F40D	slang	dier|dierenriem|drager|Ophiuchus|serpent	
+1F40E	paard	boerderij|dier|racen|renpaard|ruitersport	
+1F40F	ram	Aries|dier|dierentuin|horens|mannelijk|schaap|sterrenbeeld	
+1F410	geit	boerderij|Capricorn|dier|melk|sterrenbeeld	
+1F411	ooi	blaten|boerderij|dier|lam|schaap|vrouwelijk|wol|wollig	
+1F412	aap	banaan|dier	
+1F413	haan	dier|ornithologie|vogel	
+1F414	kip	dier|gevogelte	
+1F415	hond	dier|dieren|honden|huisdier	
+1F416	varken	boerderij|dier|spek|zeug	
+1F417	zwijn	dier|varken	
+1F418	olifant	dier	
+1F419	octopus	dier|oceaan|wezen	
+1F41A	schelp	dier|spiraal|strand|zee	
+1F41B	insect	beestje|dier|tuin	
+1F41C	mier	dier|insect|tuin	
+1F41D	honingbij	bij|dier|hommel|honing|insect|lente|natuur	
+1F41E	lieveheersbeestje	dier|insect|kever|lieveheersbeest|natuur|tuin	
+1F41F	vis	dier|eten|Pisces|sterrenbeeld|vissen	
+1F420	tropische vis	dier|tropisch|vis|vissen	
+1F421	kogelvis	dier|vis	
+1F422	schildpad	dier|waterschildpad	
+1F423	kuiken uit ei	baby|dier|ei|kuiken|uitkomen|vogel	
+1F424	kuikentje	baby|dier|gevogelte|kuiken|vogel	
+1F425	naar voren kijkend kuikentje	baby|dier|gevogelte|kuiken|vogel	
+1F426	vogel	dier|duif	
+1F427	pinguïn	antarctica|dier|vogel	
+1F428	koala	australië|beer|buideldier|dier|down|gezicht|under	
+1F429	poedel	dier|hond|pluizig	
+1F42A	dromedaris	bult|dier|één|kameel|woestijn	
+1F42B	kameel	bult|dier|dromedaris|twee|twee bulten|woestijn	
+1F42C	dolfijn	dier|flipper|oceaan|strand	
+1F42D	muizengezicht	dier|gezicht|muis	
+1F42E	koeiengezicht	boe|boerderij|dier|gezicht|koe|melk	
+1F42F	tijgergezicht	dier|gezicht|groot|kat|roofdier|tijger	
+1F430	konijnengezicht	dier|gezicht|huisdier|konijn	
+1F431	kattengezicht	dier|gezicht|huisdier|kat|kitten	
+1F432	drakengezicht	dier|draak|gezicht|sprookje	
+1F433	spuitende walvis	dier|gezicht|oceaan|spuitend|strand|walvis	
+1F434	paardengezicht	boerderij|dier|dressuur|gezicht|paard|paarden	
+1F435	apengezicht	aap|banaan|dier|gezicht	
+1F436	hondengezicht	dier|gezicht|hond|huisdier|puppy|puppy’s|schattig	
+1F437	varkensgezicht	boerderij|dier|gezicht|spek|varken	
+1F438	kikker	dier|gezicht	
+1F439	hamster	dier|gezicht|huisdier	
+1F43A	wolf	dier|gezicht	
+1F43B	beer	dier|gezicht|grizzly|grommen|honing	
+1F43C	panda	bamboe|dier|gezicht	
+1F43D	varkensneus	gezicht|neus|varken	
+1F43E	pootafdrukken	afdruk|poot|poten	
+1F43F	eekhoorn	dier	
+1F440	ogen	gezicht|kijken|omg|ondeugend|oog|staren	
+1F441	oog	één oog|lichaam|pupil	
+1F442	oor	geluid|horen|lichaam|luisteren	
+1F443	neus	geur|lichaam|ruiken|stinkt	
+1F444	mond	kus|lippen|open mond|roze lippen|zoen	
+1F445	tong	lichaam|lik|slurp	
+1F446	achterkant van hand met omhoog wijzende wijsvinger	achterkant|hand|omhoog|vinger|wijs|wijsvinger|wijzen	
+1F447	achterkant van hand met omlaag wijzende wijsvinger	achterkant|hand|omlaag|vinger|wijs|wijsvinger|wijzen	
+1F448	achterkant van hand met naar links wijzende wijsvinger	achterkant|hand|links|vinger|wijs|wijsvinger|wijzen	
+1F449	achterkant van hand met naar rechts wijzende wijsvinger	achterkant|hand|rechts|vinger|wijs|wijsvinger|wijzen	
+1F44A	stotende vuist	boks|gebald|gebalde vuist|groet|hand|mee eens|stoot|vuist	
+1F44B	zwaaiende hand	ben je er|doei|groet|groeten|hallo|hand|is daar iemand|moet gaan|spreek je later|tot later|tot ziens|ttyl|zwaai|zwaaien	
+1F44C	OK-handgebaar	fantastisch|geweldig|goed|hand|oké|prima|top|vingers	
+1F44D	duim omhoog	duim|goed|hand|ja|leuk|omhoog|+1	
+1F44E	duim omlaag	duim|fout|hand|lichaam|niet goed|niet leuk|omlaag|slecht|stom|-1	
+1F44F	klappende handen	applaudiseren|applaus|bidden|dankjewel|gefeliciteerd|goed gedaan|goedkeuring|hand|hoera|klappen	
+1F450	open handen	hand|handen|jazz hands|open	
+1F451	kroon	adel|game of thrones|kleding|koning|koningin|koninklijk|middeleeuwen|vorst|vorstin	
+1F452	dameshoed	hoed|hoed met strik|kleding|vrouw	
+1F453	bril	bijziend|brillen|kleding|oog|verziend|zien|zonnebril	
+1F454	stropdas	formeel|kleding|overhemd|pak	
+1F455	T-shirt	blauw shirt|kleding|kraag|poloshirt|shirt|vrijetijdskleding	
+1F456	spijkerbroek	broek|jeans|kleding	
+1F457	jurk	blauwe jurk|dansen|kleding|kledingstuk|sjiek|winkelen	
+1F458	kimono	japans|japon|kleding	
+1F459	bikini	kleding|zwembad|zwemkleding|zwemmen	
+1F45A	dameskleding	blouse|dames|kleding|shirt	
+1F45B	portemonnee	accessoire|beurs|geld uitgeven|kleding|knip|munt|portefeuille|roze portemonnee|winkelen	
+1F45C	handtas	accessoire|kleding|modieuze tas|tas|winkelen	
+1F45D	tasje	accessoire|clutch|enveloptas|handtas|kleding|tas	
+1F45E	herenschoen	formeel|kleding|leren schoen|man|nette schoen|schoen	
+1F45F	sportschoen	atletiek|hardlopen|kleding|rennen|schoen|sneaker|sporten	
+1F460	schoen met hoge hak	hak|hoge hak|kleding|naaldhak|pump|schoen|stiletto|vrouw	
+1F461	damessandaal	hak|hoge hak|kleding|muiltje|sandaal|schoen|schoen met open teen|vrouw	
+1F462	dameslaars	kleding|laars|schoen|vrouw	
+1F463	voetafdrukken	afdruk|blote voeten|kleding|lopen|onderweg|voetafdruk	
+1F464	silhouet van persoon	buste|mysterieus|schaduw|silhouet	
+1F465	silhouet van twee personen	bff|buste|bustes in silhouet|schaduw|silhouet|vrienden	
+1F466	jongen	jong|kind|persoon	
+1F467	meisje	dochter|enthousiast|jong|maagd|persoon|staartjes|sterrenbeeld	
+1F468	man	volwassen|vriend	
+1F469	vrouw	dame|volwassene	
+1F46A	gezin	kind	
+1F46B	man en vrouw hand in hand	afspraakje|bae|date|flirten|hand|hand in hand|koppel|man|stel|vasthouden|verliefd|vrienden|vrouw	
+1F46C	mannen hand in hand	beste vrienden|bff|broers|daten|flirten|hand|jongens|paar|schatje|tweeling|vasthouden|vrienden	
+1F46D	vrouwen hand in hand	beste vrienden|bff|daten|flirten|hand|meisjes|paar|schatje|tweeling|vasthouden|vrienden|vrouwen|zussen	
+1F46E	politieagent	agent|arresteren|beroep|boete|misdaad|persoon|politie|politieman|werk	
+1F46F	mensen met konijnenoren	bestie|bff|dansen|danser|danseressen|feesten|konijnenoor|konijnenoren|meisje|personen|tweeling|vriendinnen|vrouw	
+1F470	persoon met sluier	bruiloft|persoon|sluier	
+1F471	persoon met blond haar	blond|blond haar|mens|persoon	
+1F472	man met Chinees petje	gua pi mao|hoed|man|man met chinese hoed|persoon|petje	
+1F473	persoon met tulband	dragen|persoon|tulband	
+1F474	oude man	grootvader|kaal|man|opa|oud|ouder|volwassen|wijs	
+1F475	oude vrouw	dame|grootmoeder|oma|oud|ouder|volwassene|vrouw|wijs	
+1F476	baby	jong|kindje|pasgeboren|persoon	
+1F477	bouwvakker	bouw|helm|klusser|man|persoon|renovatie|renoveren|werk	
+1F478	prinses	fantasie|koningin|kroon|persoon|sprookje|vrouw met kroon	
+1F479	boeman	duivel|eng|fantasie|gezicht|masker|monster|oger|sprookje|verhaal|wezen	
+1F47A	kobold	fabel|fantasie|gezicht|japans|masker|monster|mythologie|smiley|sprookje|tengu|wezen	
+1F47B	spook	boe|fantasie|geest|gezicht|halloween|monster|spook met tong uit mond|sprookje|uitgestoken tong|wezen	
+1F47C	baby-engel	baby|engel|fantasie|gezicht|kerk|sprookje	
+1F47D	buitenaards wezen	alien|buitenaards|fantasie|gezicht|monster|ruimte|sprookje|ufo|wezen	
+1F47E	buitenaards monster	alien|buitenaards|game|gezicht|monster|pixels|ruimte|space invader|spel|ufo|videogame|wezen	
+1F47F	boos gezicht met hoorns	boos duiveltje|demon|duivel|duivels|fantasie|gezicht|hoorns|kleine duivel|paars duivelsgezicht|smiley|sprookje	
+1F480	schedel	dood|doodshoofd|gezicht|monster|skelet|sprookje	
+1F481	persoon achter informatiebalie	brutaal|hand|hand ophouden|hulp|informatie|knikken|persoon|roddelen|sarcasme|sarcastisch|uitleg geven|vrouw met hand omhoog	
+1F482	wachter	bewaker|buckingham palace|londen	
+1F483	dansende vrouw	dansen|dansende vrouw met rode jurk|danseres|elegant|feest|flamenco|persoon|salsa|tango|vrouw	
+1F484	lippenstift	afspraakje|cosmetica|date|make-up|opmaken	
+1F485	nagellak	beauty|cosmetica|hand|lak|manicure|nagel|nagels lakken|verzorging	
+1F486	persoon die hoofdmassage krijgt	gespannen|gezicht|gezichtsmassage|hoofdpijn|massage|ontspannen|persoon|relaxen|salon|spa|spanning	
+1F487	persoon die wordt geknipt	beauty|beroep|haar knippen|kapper|kapsalon|kapsel|kapster|salon|schaar|schoonheid	
+1F488	kapperspaal	kapper|kapsel|paal	
+1F489	injectiespuit	dokter|gereedschap|griep|injectie|medicijn|naald|spuit|vaccinatie|ziek	
+1F48A	pil	dokter|geneeskunde|medicatie|medicijn|vitamine|ziek	
+1F48B	lipafdruk	afdruk|daten|emotie|kus|kusafdruk|liefde|lippen|romantiek|sexy|zoen	
+1F48C	liefdesbrief	brief|brief met hart|hart|liefde|post|romantiek|valentijn	
+1F48D	ring	bruiloft|diamant|glinsteren|romantiek|schitteren|trouwen|verloving	
+1F48E	edelsteen	bruiloft|diamant|juweel|romantiek|trouwen|verloving	
+1F48F	kus	afspraakje|date|kussen|liefde|personen|romantiek|stel|stelletje|verliefd	
+1F490	boeket	afspraakje|bedankt|beterschap|bloem|date|jubileum|romantiek|verjaardag	
+1F491	stel met hart	hart|jubileum|liefde|personen|relatie|romantiek|stel|stelletje|stelletje met hart|verliefd	
+1F492	bruiloft	huwelijk|kapel|romantiek|trouwkapel	
+1F493	kloppend hart	cardio|hart|hartslag|hou van jou|hvj|kloppen|slaan	
+1F494	gebroken hart	alleen|breken|droevig|eenzaam|emotie|gebroken|liefdesverdriet|verdrietig	
+1F495	twee harten	hart|hou van jou|hvj|jubileum|liefde|xoxo	
+1F496	fonkelend hart	fonkelend|glinsterend|hart|hou van jou|hvj|spannend|sprankelend|xoxo	
+1F497	groeiend hart	emotie|groeiend|hart|hartslag|hou van jou|hvj|kloppend hart|nerveus|spannend|xoxo	
+1F498	hart met pijl	afspraakje|cupido|date|hart|hou van jou|hvj|liefde|pijl|pijl door hart|romantiek|valentijn	
+1F499	blauw hart	blauw|emotie|hart|hou van jou|hvj|liefde|romantiek	
+1F49A	groen hart	groen|hart|hou van jou|hvj|romantisch|xoxo	
+1F49B	geel hart	emotie|geel|hart|hou van jou|hvj|liefde	
+1F49C	paars hart	emotie|hart|hou van jou|hvj|paars	
+1F49D	hart met strik	emotie|hart|hou van jou|hvj|liefde|strik|valentijn|Valentijn|xoxo	
+1F49E	ronddraaiende harten	draaien|draaiende harten|emotie|hart|harten|jubileum	
+1F49F	decoratief hart	emotie|hart|hartdecoratie|paars hart|wit hart	
+1F4A0	ruitvorm met stip erin	diamant|geometrisch|stip|strip	
+1F4A1	gloeilamp	elektrisch|idee|lamp|licht|peertje|strip	
+1F4A2	woedesymbool	boos|cartoonesk|kwaad|ontdaan|strip|symbool|teken|woede	
+1F4A3	bom	cartoonbom|explosie|gevaarlijk|ontploffing|strip	
+1F4A4	slaapsymbool	cartoonesk|goedenacht|moe|rust|saai|slaap|slaapwel|slapen|slaperig|strip|vermoeid|zzz	
+1F4A5	botsing	boem|bom|botsen|ontploffen|strip	
+1F4A6	zweetdruppels	druppels|spetteren|sporten|strip|water|work-out|zweet	
+1F4A7	druppel	bedroefd|koud|strip|water|weer|zweet	
+1F4A8	wegrennen	cartoonesk|moet gaan|rennen|rook|scheet|strip|vertrokken|weg|wind	
+1F4A9	drol	grappig|monster|poep|poep met gezichtje|smiley|stinkt	
+1F4AA	spierballen	aanspannen|arm|biceps|bodybuilder|flex|gewichtheffen|spannen|spier|spierbal|sportschool|sterk|strip	
+1F4AB	duizelig	cartoonesk|ster|strip|vallende ster	
+1F4AC	spraakballon	aan het typen|ballon|cartoonesk|dialoog|spraak|strip|tekstballon|tekstballon met puntjes	
+1F4AD	gedachteballon	ballon|besef|cartoonesk|dagdromen|denkballon|denkwolkje|gedachten|gedachtenballon|strip|uitvinden|uitvinding	
+1F4AE	witte bloem	bloem|wit	
+1F4AF	maximumscore	100 punten|beste|cijfer|fantastisch|foutloos|getal|geweldig|score|top|zeker|100	
+1F4B0	zak met geld	dollar|geld|geldzak|rijk|zak	
+1F4B1	geld wisselen	bank|geld|valuta|wisselen	
+1F4B2	vetgedrukt dollarteken	betalen|dikgedrukt dollarteken|dollar|dollarteken|geld|munteenheid|valuta	
+1F4B3	creditcard	bank|betaalkaart|geld|kaart|krediet|pinpas	
+1F4B4	yenbiljet	bankbiljet|biljet|briefgeld|briefje|geld|valuta|yen	
+1F4B5	dollarbiljet	bankbiljet|biljet|briefgeld|briefje|dollar|geld|valuta	
+1F4B6	eurobiljet	bankbiljet|biljet|briefgeld|briefje|euro|geld|valuta	
+1F4B7	pondbiljet	bankbiljet|biljet|briefgeld|briefje|geld|pond|valuta	
+1F4B8	vliegend geld	bankbiljet|biljet|briefgeld|dollar|geld|geld met vleugels|vleugels|vliegen|vliegend bankbiljet	
+1F4B9	stijgende grafiek met yenteken	bank|geld|grafiek|groei|markt|stijging|toenemend|trend|valuta|yen	
+1F4BA	stoel	treinstoel|vliegtuigstoel	
+1F4BB	laptop	computer|notebook|pc|personal computer	
+1F4BC	aktentas	aktetas|boekentas|handtas|kantoor	
+1F4BD	harddisk	computer|disk|minidisc|optisch	
+1F4BE	floppydisk	computer|disk|diskette|floppy|opslaan	
+1F4BF	optische schijf	blu-ray|cd|cd-rom|computer|dvd|optisch|schijf	
+1F4C0	dvd	blu-ray|cd|computer|optisch|schijf	
+1F4C1	bestandsmap	bestand|map	
+1F4C2	geopende map	bestand|geopende bestandsmap|map|open	
+1F4C3	omkrullende pagina	bladzijde|document|half opgerold papier|krul|pagina|pagina met krul|papier	
+1F4C4	pagina met bovenzijde omhoog	bladzijde|document|pagina	
+1F4C5	kalender	datum	
+1F4C6	scheurkalender	kalender	
+1F4C7	kaartindex	index|kaart|rolodex|systeemkaarten	
+1F4C8	stijgende trend	diagram|grafiek|grafiek met stijgende trend|groei|positief|stijgend	
+1F4C9	dalende trend	dalend|daling|diagram|grafiek|grafiek met dalende trend|negatief	
+1F4CA	staafdiagram	diagram|grafiek|staaf|staafgrafiek	
+1F4CB	klembord	notities|to-dolijst	
+1F4CC	punaise	speld	
+1F4CD	ronde speld	kaart|kopspeld|locatie|speld	
+1F4CE	paperclip	clip	
+1F4CF	liniaal	meetinstrument|meten|rechte lijn|wiskunde	
+1F4D0	geodriehoek	driehoek|geo|liniaal|meetinstrument|meten|wiskunde	
+1F4D1	bladwijzertabs	bladwijzer|bladwijzers|markering|tabbladen|tabs	
+1F4D2	grootboek	map|notitieboek|ringband|schrift	
+1F4D3	schrift	notitieboek	
+1F4D4	versierd schrift	boek|decoratief|notitieboekje|omslag|opleiding|school|schrijven|versierd	
+1F4D5	gesloten boek	bibliotheek|boek|educatie|gesloten|lezen|onderwijs	
+1F4D6	geopend boek	boek|geopend|open	
+1F4D7	groen boek	bibliotheek|boek|educatie|groen|lezen|onderwijs	
+1F4D8	blauw boek	bibliotheek|blauw|boek|educatie|lezen|onderwijs	
+1F4D9	oranje boek	bibliotheek|boek|educatie|lezen|onderwijs|oranje	
+1F4DA	boeken	boek|educatie|kennis|lezen|onderwijs|opleiding|school	
+1F4DB	naamkaartje	badge|kaartje|naam	
+1F4DC	rol	papier|papierrol|perkament|perkamentpapier	
+1F4DD	memo	aantekeningen|opmerkingen|papier|potlood	
+1F4DE	telefoonhoorn	bellen|hoorn|telefoon	
+1F4DF	pager	pieper	
+1F4E0	fax	communicatie|faxapparaat	
+1F4E1	satellietschotel	antenne|communicatie|satelliet|schotel	
+1F4E2	luidspreker	luid|megafoon|toespraak|toespreken	
+1F4E3	megafoon	communicatie|geluid|gouden megafoon|juichen|versterken	
+1F4E4	postvak uit	brief|mail|post|postvak|uitgaand|verzonden	
+1F4E5	postvak in	brief|inkomend|mail|ontvangen|post|postvak	
+1F4E6	pakket	bezorging|dichtgeplakte doos|doos|pakketje	
+1F4E7	e-mail	brief|mail|post	
+1F4E8	inkomende post	binnengekomen|brief|e-mail|elektronische post|envelop|inkomend|mail|ontvangen|post	
+1F4E9	envelop met pijl	brief|communicatie|e-mail|envelop|omlaag|pijl|post|uitgaand|verzenden|verzonden	
+1F4EA	gesloten brievenbus met vlaggetje omlaag	brievenbus|gesloten|omlaag|post|postbus	
+1F4EB	gesloten brievenbus met vlaggetje omhoog	brievenbus|gesloten|post|postbus	
+1F4EC	open brievenbus met vlaggetje omhoog	brievenbus|open|post|postbus	
+1F4ED	open brievenbus met vlaggetje omlaag	brievenbus|omlaag|open|post|postbus	
+1F4EE	brievenbus	brief posten|brievenbus met brief|post|postbus	
+1F4EF	posthoorn	blaasinstrument|hoorn|jachthoorn|post	
+1F4F0	krant	dagblad|nieuws|nieuwsblad|voorpagina|weekblad	
+1F4F1	mobiele telefoon	bellen|communicatie|mobiel|smartphone|telefoon	
+1F4F2	mobiel met pijl	bellen|mobiel|mobiele telefoon|ontvangen|pijl|smartphone|telefoon	
+1F4F3	trilstand	communicatie|mobiel|modus|telefoon|trillen	
+1F4F4	telefoon uit	mobiel|telefoon|uit	
+1F4F5	geen mobiele telefoon	mobiel|nee|niet|telefoon|telefoons|verboden	
+1F4F6	mobiel signaal	antenne|communicatie|mobiel|signaal|streep|streepjes|telefoon	
+1F4F7	camera	fotocamera|fotograferen|selfie|snap|video	
+1F4F8	camera met flitser	camera|flitser|fotograferen|video	
+1F4F9	videocamera	camcorder|camera|video	
+1F4FA	tv	beeld|beeldbuis|televisie	
+1F4FB	radio	entertainment|muziek	
+1F4FC	videoband	band|film|vhs|video	
+1F4FD	filmprojector	bioscoop|film|projector|video	
+1F4FF	gebedssnoer	gebed|gebedsketting|gebedskralen|geloof|ketting|kleding|kralen	
+1F500	knop voor shuffle	gekruist|knop|nummers|pijl|shuffle	
+1F501	knop voor herhalen	herhalen|knop|met de klok mee|pijl	
+1F502	knop voor één herhalen	één keer|enkel|herhalen|knop|met de klok mee|pijl	
+1F503	verticale pijlen met de klok mee	met de klok mee|opnieuw laden|pijl|pijlen|verticaal|verversen	
+1F504	pijlen tegen de klok in	déjà|knop|linksom|pijl|pijlen|tegen de klok in|vernieuwen|vu|weer	
+1F505	knop voor lagere helderheid	dimmen|helderheid|laag	
+1F506	knop voor hogere helderheid	helder|helderheid|knop|licht	
+1F507	speaker uit	dempen|geen geluid|geluid uit|luidspreker|mute|speaker|stil|volume	
+1F508	speaker	laag volume|luidspreker|volume|zacht	
+1F509	speaker aan	gemiddeld volume|luidspreker|speaker|volume	
+1F50A	speaker luid	hard|hoog volume|luid|luidspreker|speaker|volume	
+1F50B	batterij		
+1F50C	stekker	elektriciteit|elektrisch	
+1F50D	vergrootglas naar links gericht	gereedschap|glas|vergrootglas|vergroten|zoeken	
+1F50E	vergrootglas naar rechts gericht	gereedschap|glas|vergrootglas|vergroten|zoeken	
+1F50F	slot met pen	inkt|pen|privacy|slot|slot met vulpen|vulpen	
+1F510	gesloten slot met sleutel	beveiligd|gesloten|sleutel|slok|slot met sleutel	
+1F511	sleutel	beveiligd|op slot|openen|wachtwoord	
+1F512	slot	gesloten slot|privé	
+1F513	geopend hangslot	gekraakt slot|geopend|hangslot|open|open slot|openen	
+1F514	bel	kerkklok|klok|luiden|pauze|rinkelen	
+1F515	doorgestreepte bel	bel|dempen|geen|geen geluid|geluid uit|niet toegestaan|stil|stilte	
+1F516	bladwijzer	markering	
+1F517	schakels	twee ringen	
+1F518	keuzerondje	geometrisch|knop|radio	
+1F519	BACK-pijl	BACK|pijl	
+1F51A	END-pijl	END|pijl	
+1F51B	ON!-pijl	ON!|pijl|teken	
+1F51C	SOON-pijl	onderweg|pijl|SOON|zo terug	
+1F51D	TOP-pijl	omhoog|pijl|TOP	
+1F51E	niemand onder de 18	achttien|beperking|één|leeftijd|minderjarig|nee|niet|verboden|18	
+1F520	hoofdletters	ABCD|invoeren|Latijns|letters	
+1F521	kleine letters	abcd|invoeren|Latijns|letters	
+1F522	cijfers	invoeren|1234	
+1F523	symbolen	invoeren|&|%|♪|〒	
+1F524	Latijns alfabet	abc|alfabet|invoeren|Latijns|letters	
+1F525	vuur	brand|heet|hulpmiddel|vlam	
+1F526	zaklamp	elektrisch|lamp|licht|zaklantaarn	
+1F527	moersleutel	engelse sleutel|gereedschap|schroefsleutel	
+1F528	hamer	gereedschap|timmeren	
+1F529	bout en moer	bout|gereedschap|moer	
+1F52A	keukenmes	koken|koksmes|mes|wapen	
+1F52B	waterpistool	gereedschap|pistool|revolver|vuurwapen|wapen|water	
+1F52C	microscoop	experiment|gereedschap|instrument|laboratorium|onderzoek|wetenschap	
+1F52D	telescoop	buitenaards leven|gereedschap|heelal|instrument|sterrenkijker|wetenschap	
+1F52E	kristallen bol	bol|glazen bol|kristal|magie|sprookje|toekomst voorspellen|waarzeggen|waarzeggerij	
+1F52F	zespuntige ster	geluk|jodendom|joods|met stip|ster|zespuntig	
+1F530	Japans symbool voor beginner	beginner|blad|chevron|geel|gereedschap|groen|Japans|symbool	
+1F531	drietand-symbool	anker|drietand|embleem|gereedschap|poseidon|schip	
+1F532	zwarte vierkante knop	geometrisch|knop|vierkant|zwart	
+1F533	witte vierkante knop	geometrisch|knop|omlijnd|vierkant|wit	
+1F534	rode cirkel	cirkel|geometrisch|rood	
+1F535	blauwe cirkel	blauw|cirkel|geometrisch	
+1F536	grote oranje ruit	diamant|geometrisch|groot|oranje	
+1F537	grote blauwe ruit	blauw|diamant|geometrisch|groot	
+1F538	kleine oranje ruit	diamant|geometrisch|klein|oranje	
+1F539	kleine blauwe ruit	blauw|diamant|geometrisch|klein	
+1F53A	rode omhoogwijzende driehoek	driehoek|geometrisch|omhoog|rood|wijzend	
+1F53B	rode omlaagwijzende driehoek	driehoek|geometrisch|omlaag|rood|wijzend	
+1F53C	knop voor omhoog	knop|omhoog|pijl|rood	
+1F53D	knop voor omlaag	beneden|knop|omlaag|pijl|rood	
+1F549	om-symbool	hindoeïsme|om|religie	
+1F54A	duif	ornithologie|vliegen|vogel|vrede	
+1F54B	kaäba	bedevaart|geloof|islam|mekka|moslim|religie	
+1F54C	moskee	geloof|islam|moslim|religie	
+1F54D	synagoge	geloof|jodendom|jood|joods|religie|tempel	
+1F54E	menora	hannuka|jodendom|joods|kandelaar|religie	
+1F550	één uur	één|klok|tijd|uur|00|01:00|1|1:00|13:00	
+1F551	twee uur	klok|tijd|twee|uur|00|02:00|14:00|2|2:00	
+1F552	drie uur	drie|klok|tijd|uur|00|03:00|15:00|3|3:00	
+1F553	vier uur	klok|tijd|uur|vier|00|04:00|16:00|4|4:00	
+1F554	vijf uur	klok|uur|vijf|00|05:00|17:00|5|5:00	
+1F555	zes uur	klok|tijd|uur|zes|00|06:00|18:00|6|6:00	
+1F556	zeven uur	klok|tijd|uur|zeven|00|07:00|19:00|7|7:00	
+1F557	acht uur	acht|klok|tijd|uur|00|08:00|20:00|8|8:00	
+1F558	negen uur	klok|negen|tijd|uur|00|09:00|21:00|9|9:00	
+1F559	tien uur	klok|tien|tijd|uur|00|10|10:00|22:00	
+1F55A	elf uur	elf|klok|tijd|uur|00|11|11:00|23:00	
+1F55B	twaalf uur	klok|tijd|twaalf|uur|00|12|12:00	
+1F55C	half twee	dertig|een|één|klok|tijd|1|1:30|13:30|30	
+1F55D	half drie	dertig|klok|tijd|twee|14:30|2|2:30|30	
+1F55E	half vier	dertig|drie|klok|tijd|15:30|3|3:30|30	
+1F55F	half vijf	dertig|klok|tijd|vier|16:30|30|4|4:30	
+1F560	half zes	dertig|klok|tijd|vijf|05:30|17:30|30|5|5:30	
+1F561	half zeven	dertig|klok|tijd|zes|06:30|18:30|30|6|6:30	
+1F562	half acht	dertig|klok|tijd|zeven|07:30|19:30|30|7|7:30	
+1F563	half negen	acht|dertig|klok|tijd|08:30|20:30|30|8|8:30	
+1F564	half tien	dertig|klok|negen|tijd|09:30|21:30|30|9|9:30	
+1F565	half elf	dertig|klok|tien|tijd|10|10:30|22:30|30	
+1F566	half twaalf	dertig|elf|klok|tijd|11|11:30|23:30|30	
+1F567	half één	dertig|klok|tijd|twaalf|uur|00:30|12|12:30|30	
+1F56F	kaars	kaarslicht|licht	
+1F570	klok	pendule|staande klok|tijd	
+1F573	gat	hole	
+1F574	zwevende man in pak	pak|persoon|zaken|zwevend	
+1F575	detective	speurder|spion	
+1F576	zonnebril	bril|brillen|donker|oog	
+1F577	spin	dier|insect	
+1F578	spinnenweb	spin|web	
+1F579	joystick	game|videogame|videospel	
+1F57A	dansende man	dansen|disco|feest|festival|flamenco|man|persoon|salsa|tango	
+1F587	twee paperclips aan elkaar	aan elkaar|paperclip|paperclips|vastgemaakt	
+1F58A	pen	ballpoint|balpen	
+1F58B	vulpen	pen	
+1F58C	kwast	penseel|schilderen|schilderkwast|verven	
+1F58D	krijtje	krijt|rood krijtje	
+1F590	opgeheven hand met uitgestoken vingers	hand|opgeheven|stop|uitgestoken|vinger|vingers	
+1F595	middelvinger	hand|midden|vinger	
+1F596	Vulcaanse groet	hand|leef lang en voorspoedig|spock|star trek|vinger|vulcan|vulcangroet	
+1F5A4	zwart hart	hart|kwaad|slecht|verdorven|zwart	
+1F5A5	desktop	beeldscherm|computer|monitor	
+1F5A8	printer	afdrukken|computer	
+1F5B1	computermuis	computer|muis	
+1F5B2	trackball	computer	
+1F5BC	lijst met afbeelding	afbeelding|kunst|lijst|museum|schilderij	
+1F5C2	tabbladen	index|kaart|kaarten	
+1F5C3	kaartenbak	archief|bak|kaart	
+1F5C4	archiefkast	archief|archiveren|kast	
+1F5D1	prullenmand	prullenbak|recyclen	
+1F5D2	schrijfblok met spiraal	notitie|notitieblok|schrijfblok|spiraal	
+1F5D3	kalender met spiraal	blok|jaarkalender|kalender|omlegkalender|spiraal	
+1F5DC	lijmklem	bankschroef|gereedschap|samendrukken	
+1F5DD	oude sleutel	aanwijzing|oud|ouderwetse sleutel|sleutel|slot	
+1F5DE	opgerolde krant	dagblad|krant|nieuws|nieuwsblad|opgerold|weekblad	
+1F5E1	dolk	mes|wapen	
+1F5E3	silhouet van sprekend hoofd	gezicht|hoofd|silhouet|spreek|spreken	
+1F5E8	spraakballon naar links	dialoog|spraak|zwarte spraakballon	
+1F5EF	boze spraakballon naar rechts	ballon|kwaad|tekstballon boos|woede|woedeballon|woedeballon naar rechts	
+1F5F3	stembus met stembiljet	doos|stem uitbrengen|stembus	
+1F5FA	wereldkaart	kaart|wereld	
+1F5FB	berg Fuji	berg|fuji|Fuji|natuur|vulkaan	
+1F5FC	Tokio-toren	tokio|Tokio|tokiotoren|toren	
+1F5FD	vrijheidsbeeld	beeld|new york|nyc|vrijheid	
+1F5FE	kaart van Japan	japan|Japan|kaart	
+1F5FF	moai-beeld	beelden|gezicht|moai|paaseiland|reizen|standbeeld	
+1F600	grijnzend gezicht	blij|fijn|gezicht|glimlachen|grijns|grijnzend|lach|lachen|leuk|tanden|vrolijk	
+1F601	stralend gezicht met lachende ogen	blij|fijn|gezicht|glimlachen|grijns|grijnzend|lach|ogen|oog|stralend|tanden	
+1F602	gezicht met tranen van vreugde	blij|gevoelens|gezicht|grappig|haha|hehe|hilarisch|huilen|lachen|lmao|lol|rofl|roflmao|traan|vreugde	
+1F603	grijnzend gezicht met grote ogen	blij|gaaf|gezicht|glimlachen|grijns|grijnzend|groot|joepie|lach|mond|ogen|open|tanden	
+1F604	grijnzend gezicht met lachende ogen	blij|gezicht|glimlachen|grijns|grijnzend|lach|lachen|lol|mond|ogen|oog|open	
+1F605	grijnzend gezicht met zweetdruppels	gestrest|gezicht|glimlachen|grijnzend|koud|lach|mond|neerslachtig|nerveus|open|opgewonden|stress|zweet	
+1F606	grijnzend gezicht met dichtgeknepen ogen	blij|gesloten|gezicht|glimlachen|grijnzend|haha|hahaha|lach|lachen|lol|mond|ogen|open|rofl|scheelzien	
+1F607	lachend gezicht met halo	blij|elfje|engel|engelachtig|engelen|fantasie|geest|gezegend|gezicht|glimlach|glimlachen|onschuldig|sprookje|stralenkrans|verhaal|vredig	
+1F608	lachend gezicht met hoorns	duivels|fantasie|gezicht|glimlach|hoorns|lach|lachend paars gezicht met hoorns|ondeugend|smiley|sprookje	
+1F609	knipogend gezicht	flirten|gezicht|hartenbreker|knipogen|knipoog|knipoogt|plagerij|sexy|zwoel	
+1F60A	lachend gezicht met lachende ogen	blozen|gelukkig|gezicht|glimlach|glimlachen|ogen|oog|tevreden	
+1F60B	lachend gezicht dat lippen likt	genieten|gezicht|glimlach|jammie|lachend gezicht|lekker|mmm|smiley|smullen	
+1F60C	opgelucht gezicht	gezicht|kalmte|opgelucht|opluchting|vrede|zen	
+1F60D	lachend gezicht met hartvormige ogen	gevoelens|gezicht|hartjes|hartjesogen|kussen|lach|liefde|oog|romantiek|schatje	
+1F60E	lachend gezicht met zonnebril	bril|chillen|cool|gaaf|geweldig|gezicht|glimlach|ontspannen|stijl|stoer|strand|zonnebril	
+1F60F	gniffelend gezicht	arrogant|flirten|gezicht|gezicht met grote grijns|gladjes|gniffelen|grijnzen|schuin|smiley|swag|vol van zichzelf|wenkbrauwen	
+1F610	neutraal gezicht	geen commentaar|gezicht|jaloers|neutraal|niet leuk|ongemakkelijk|pokerface|pokergezicht|uitdrukkingsloos|uitgestreken	
+1F611	uitdrukkingsloos gezicht	dichtgeknepen|geen commentaar|geen uitdrukking|gezicht|jaloers|lame|omg|ontevreden|smiley|tegenzin|ugh|uitdrukkingsloos|vooruit|wtf	
+1F612	chagrijnig gezicht	boos|ehm|gezicht|jaloers|niet blij|niet leuk|ongelukkig|smiley|ugh|uhh|verveeld|whatever	
+1F613	neerslachtig gezicht met zweetdruppel	angstzweet|bang|dichtgeknepen ogen|gezicht|gezicht met angstzweet|koud|nerveus|smiley|zweet	
+1F614	peinzend gezicht	afgewezen|balen|gezicht|moedeloos|peinzend|smiley|teleurgesteld|terneergeslagen|triest|verdrietig|verloren	
+1F615	verward gezicht	gezicht|hmm|ik weet het niet|in de war|ontevreden|peinzend|smiley|teleurgesteld|uhm|verward	
+1F616	onthutst gezicht	bah|boos|gefrustreerd|geïrriteerd|gezicht|onthutst|smiley|verdrietig|verwarring	
+1F617	kussend gezicht	afspraakje|date|gezicht|hou van jou|hvj|kus|kussen|smiley|xoxo|zoen	
+1F618	gezicht dat kus toeblaast	flirten|gezicht|hartje|kus|kusje blazen|kussen|romantiek|smiley|xoxo|zoen	
+1F619	kussend gezicht met lachende ogen	afspraakje|daten|flirten|gesloten|gezicht|ik hou van je|kus|kussen|lach|lachen|liefde|nacht|ogen|oog|143	
+1F61A	kussend gezicht met gesloten ogen	blosjes|blozen|gesloten|gesloten ogen|gezicht|kus|kussend gezicht met ogen dicht|oog|rode wangen|smiley|zoen	
+1F61B	gezicht met uitgestoken tong	gezicht|gezicht met uitgestoken tong en open ogen|grapje|grappig|ontdeugend|smiley|tong|tong uitsteken|uitgesteken tong	
+1F61C	knipoog met uitgestoken tong	gezicht|gezicht met uitgestoken tong en knipoog|grap|grapjas|knipoog|oog|plagen|smiley|tong	
+1F61D	gezicht met uitgestoken tong en dichtgeknepen ogen	bah|dichte ogen|gezicht|oog|smaak|smerig|smiley|tong|uitgestoken tong|vies|vreselijk	
+1F61E	teleurgesteld gezicht	afgewezen|afwijzing|bedroefd|gezicht|niet blij|schuldig|smiley|teleurstelling|terneergeslagen|triest|verloren	
+1F61F	bezorgd gezicht	bedroefd|bezorgd|gestresst|gezicht|nerveus|smiley|stress|triest|zenuwen|zorgen	
+1F620	boos gezicht	boos|fronsen|gefrustreerd|gezicht|kwaad|smiley|woedend	
+1F621	pruilend gezicht	boos|gezicht|kwaad|pruilend|rood|smiley|woede|woedend	
+1F622	huilend gezicht	bedroefd|gevoelens|gezicht|huilen|smiley|traan|triest	
+1F623	volhardend gezicht	concentratie|concentreren|focus|gezicht|hoofdpijn|volharden|volharding	
+1F624	gezicht blazend van woede	boos|gewonnen|gezicht|gezicht met stoom uit neus|kokend van woede|ontevreden|triomf|witheet|woedend|ziedend	
+1F625	teleurgesteld maar opgelucht gezicht	bijna|gezicht|ingewikkeld|oef|opgelucht|smiley|teleurgesteld|zweetdruppel|zweten	
+1F626	fronsend gezicht met open mond	bang|betrapt|eng|frons|fronsen|gezicht|hoede|mond|open|verrassing|wat|wauw	
+1F627	gekweld gezicht	bang|gezicht|lijden|lijdend|ontevreden|smiley|stress|verrast	
+1F628	bang gezicht	angst|angstig|bang|bezorgd|gezicht|schuld	
+1F629	moe gezicht	aanstellen|gezicht|honger|moe|nee|ontevreden|smiley|tegenzin|vermoeid|zeuren	
+1F62A	slaperig gezicht	gezicht|huilen|slaap|smiley|traan	
+1F62B	vermoeid gezicht	bah|gezicht|jakkes|moe|niesen|niezen|smiley|vermoeid|vies	
+1F62C	gezicht met grimas	gezicht|grimas|grimasgezicht|grinniken|niks|oeps|ongemakkelijk|smiley|tanden op elkaar	
+1F62D	hard huilend gezicht	bedroefd|gezicht|hard huilen|huilen|ontroostbaar|smiley|snikken|traan|tranen|tranen met tuiten	
+1F62E	gezicht met open mond	geschokt|geschrokken|mond|oeps|omg|ongelofelijk|ongelooflijk|open|sympathie|vergeten|wauw	
+1F62F	verstomd gezicht	geschokt|gezicht|omg|smiley|verbaasd|verrast|verstomd|wauw|wow	
+1F630	angstig gezicht met zweetdruppel	angstzweet|blauw|blauw gezicht met angstzweet|gehaast|gezicht|gezicht met open mond en zweetdruppel|koud|nerveus|zweet|zweetdruppel	
+1F631	angstig schreeuwend gezicht	angst|angstig|bang|doodsbang|geschrokken|gezicht|gezicht dat schreeuwt van angst|munch|schreeuw|schreeuwend van angst|smiley	
+1F632	verbaasd gezicht	geschokt|gezicht|kosten|nee|omg|totaal|verbaasd	
+1F633	blozend gezicht	beschaamd|gek|gezicht|heet|hitte|jeetje|onder de indruk|ongeloof|ongemakkelijk|sjonge|verbaasd|verbijsterd|wat|wauw	
+1F634	slapend gezicht	bedtijd|dutje|gapen|gezicht|moe|slaap|slaap lekker|slapen|smiley|vermoeid|welterusten|zzz	
+1F635	duizelig gezicht	dood|duizelig|gezicht|gezicht met mond open en kruisjes als ogen|smiley|ziek	
+1F636	gezicht zonder mond	geen mond|geheim|gezicht|mond|niets zeggen|persoon|rustig|smiley|sprakeloos|stil|zwijgen	
+1F637	gezicht met doktersmasker	besmet|dokter|doktersmasker|gezicht|gezicht met masker|koud|masker|medicijn|medisch masker|smiley|virus|ziek	
+1F638	grijnzende kat met lachende ogen	dier|gezicht|grijns|grijnzend kattengezicht met lachende ogen|kat|lach|oog|vrolijk	
+1F639	kat met tranen van vreugde	dier|gezicht|kat|lach|lachen|lol|traan|tranen|vreugde	
+1F63A	grijnzende kat	dier|gezicht|grijnzen|kat|lach|lachen|mond|open	
+1F63B	lachende kat met hartvormige ogen	dier|gezicht|hart|hartjesogen|kat|lach|lachen|liefde|oog	
+1F63C	gniffelende kat	gezicht|grimas|ironisch|ironische lach|kat|kattenkwaad|lach|ondeugend kattengezicht|smiley|spottend	
+1F63D	kussende kat	dier|gezicht|kat|kus|kussend kattengezicht met gesloten ogen|oog|smiley	
+1F63E	pruilende kat	boos|boos kattengezicht|dier|gezicht|kat|mokken|pruilen|smiley	
+1F63F	huilende kat	dier|gezicht|huilen|huilend|kat|traan|verdrietig	
+1F640	vermoeide kat	dier|geschokt|geschrokken kat|gezicht|kat|oh nee|smiley|verbazing|vermoeid|verrast	
+1F641	licht fronsend gezicht	fronsen|fronsend|gezicht|licht|verdrietig	
+1F642	enigszins lachend gezicht	blij|enigszins|gezicht|glimlachen|lach	
+1F643	omgekeerd gezicht	gezicht|glimlach|hehe|omgekeerd	
+1F644	gezicht met rollende ogen	gezicht|ogen|rollen|rollen met de ogen|schaduw|ugh|wat dan ook	
+1F645	persoon die nee-gebaar maakt	gebaar|hand|illegaal|NEE|niet|persoon|verboden	
+1F646	persoon die OK-gebaar maakt	gebaar|gebaren|hand|oefening|OK|omg|persoon	
+1F647	buigende persoon	buigende man|buiging|diepe buiging|excuses|gebaar|persoon|persoon die buiging maakt|sorry|spijt|verontschuldiging	
+1F648	geen kwaad zien	aap|beschaamd|dier|gebaar|geen|gezicht|kwaad|niet|niet kijken|schaamte|uit den boze|verboden|verlegen|wil niet zien|zie|zien	
+1F649	geen kwaad horen	aap|dier|gebaar|geen|geheim|gezicht|horen|kwaad|luisteren|niet|uit den boze|verboden|wil niet horen	
+1F64A	geen kwaad spreken	aap|gebaar|geen|geheim|gezicht|kwaad|niet|oeps|spreken|stiekem|uit den boze|verboden	
+1F64B	persoon met opgeheven hand	antwoord|blij|gebaar|hand|ik weet het|omhoog|persoon|vraag|vrouw die hand opsteekt	
+1F64C	juichend omhooggestoken handen	feest|gebaar|hand|handen|hoera|lof|omhoog|omhooggestoken	
+1F64D	fronsend persoon	bedroefd|frons|fronzen|persoon|teleurgesteld|uitdrukking|verdrietig|verontrust|vrouw	
+1F64E	pruilend persoon	humeurig|persoon|pruilen|pruilende vrouw|pruillip|skeptisch|teleurgesteld|uitdrukking|vrouw	
+1F64F	gevouwen handen	alsjeblieft|bedankt|bidden|buigen|dank|gebaar|gebed|geef me de vijf|gevouwen|gezegend|hand|handen tegen elkaar|high five|smeken|vragen	
+1F680	raket	lancering|ruimte|ruimtereis|vervoermiddel|voertuig	
+1F681	helikopter	roflcopter|roflkopter|vervoermiddel|voertuig	
+1F682	locomotief	reizen|spoor|spoorweg|stoom|stoomtrein|trein|vervoermiddel|voertuig	
+1F683	treinwagon	elektrisch|spoor|tram|trein|trolleybus|vervoermiddel|voertuig|wagon	
+1F684	hogesnelheidstrein	hsl|shinkansen|snelheid|spoor|trein|ultrasnel|vervoermiddel|voertuig	
+1F685	hogesnelheidstrein met kogelneus	hoge snelheid|kogeltrein|neus|reizen|shinkansen|snelheid|spoorweg|trein	
+1F686	trein	aankomst|spoor|vertrek|vervoermiddel|voertuig	
+1F687	metro	ondergrondse|vervoermiddel|voertuig	
+1F688	lightrail	monorail|spoor|vervoermiddel|voertuig	
+1F689	treinstation	spoor|station|trein|vervoermiddel|voertuig	
+1F68A	tram	trolleybus|vervoermiddel|voertuig	
+1F68B	tramwagon	tram|trolleybus|vervoermiddel|voertuig|wagon	
+1F68C	bus	schoolbus|vervoermiddel|voertuig	
+1F68D	naderende bus	bus|naderend|tegemoetkomende bus|vervoermiddel|voertuig	
+1F68E	trolleybus	bus|tram|trolley|vervoermiddel|voertuig	
+1F68F	bushalte	bus|halte	
+1F690	minibus	bus|vervoermiddel|voertuig	
+1F691	ambulance	hulpdienst|spoed|vervoermiddel|voertuig	
+1F692	brandweerauto	auto|brand|hulpdienst|spoed|vervoermiddel|voertuig	
+1F693	politieauto	auto|hulpdienst|politie|politiewagen|vervoermiddel|voertuig	
+1F694	naderende politieauto	auto|hulpdienst|naderend|politie|tegemoetkomende politiewagen|vervoermiddel|voertuig	
+1F695	taxi	taxichauffeur|uber|vervoermiddel|voertuig	
+1F696	naderende taxi	auto’s|geel|naderend|rijden|roepen|taxi	
+1F697	auto	automobiel|rijden|vervoermiddel|voertuig	
+1F698	naderende auto	auto|automobiel|naderend|tegemoetkomende auto|vervoermiddel|voertuig	
+1F699	SUV	auto|kampeerauto|recreatie|rijden|vervoermiddel|voertuig	
+1F69A	bestelbus	bestelwagen|bezorging|bus|levering|pakketdienst|truck|vervoermiddel|voertuig	
+1F69B	vrachtwagen	truck|vervoermiddel|voertuig|vrachtauto|vrachtwagen met oplegger	
+1F69C	tractor	trekker|vervoermiddel|voertuig	
+1F69D	monorail	vervoermiddel|voertuig	
+1F69E	bergspoor	berg|spoor|vervoermiddel|voertuig|wagon	
+1F69F	zweeftrein	hangend spoor|spoor|vervoermiddel|voertuig|zwevend	
+1F6A0	bergkabelbaan	berg|gondel|kabel|skilift|vervoermiddel|voertuig	
+1F6A1	kabelbaan	baan|gondel|kabel|transportbaan|vervoermiddel|voertuig	
+1F6A2	schip	boot|passagier|passagiersschip|titanic|vaartuig	
+1F6A3	persoon in roeiboot	boot|meer|persoon in boot|roeiboot|roeien|roeiende persoon|roeispaan|sport	
+1F6A4	speedboot	boot|jacht|luxe|miljonair|reizen|vaartuig|zomer	
+1F6A5	horizontaal verkeerslicht	licht|stoplicht|verkeer|verkeerslichten	
+1F6A6	verticaal verkeerslicht	kruising|licht|stoplicht|verkeer|verkeerslicht|verkeerslichten	
+1F6A7	bouwwerkzaamheden	barricade|werkzaamheden	
+1F6A8	zwaailicht van politieauto	alarm|auto|baken|draaiend|licht|noodgeval|politie|sirene|waarschuwing	
+1F6A9	driehoekige vlag	golf|locatie|puntvlag|vlag	
+1F6AA	deur	achterdeur|gesloten deur|voordeur	
+1F6AB	verboden	nee|niet|roken|toegang	
+1F6AC	sigaret	roken	
+1F6AD	niet roken	nee|niet|roken|verboden	
+1F6AE	prullenbaksymbool	afval|prullenbak|teken|vuilnisbak	
+1F6AF	geen afval weggooien	geen|niet|verboden|zwerfvuil	
+1F6B0	drinkwater	drink|drinkbaar|water	
+1F6B1	geen drinkwater	droog|niet drinkbaar|verboden|water	
+1F6B2	fiets	fietsen|rijwiel|spinning|vervoermiddel|voertuig	
+1F6B3	geen fietsen	fiets|fietsen|nee|niet|verboden	
+1F6B4	fietsende persoon	fiets|fietsen|fietser|persoon|sport|wielrennen	
+1F6B5	persoon op mountainbike	berg|fiets|fietsen|fietser|mountainbiken|persoon|sport	
+1F6B6	voetganger	lopen|persoon|slenteren|stappen|struien|wandelaar|wandelen	
+1F6B7	geen voetgangers	nee|niet|verboden|voetganger|voetgangers	
+1F6B8	overstekende kinderen	kind|kinderen|oversteekplaats|verkeer|voetganger	
+1F6B9	herentoilet	heren|man|plee|toilet|urinoir|wc	
+1F6BA	damestoilet	dames|plee|toilet|vrouw|wc	
+1F6BB	toiletten	plee|toilet|wc	
+1F6BC	babysymbool	baby|symbool|verschonen	
+1F6BD	toilet	wc	
+1F6BE	wc	toilet|wasgelegenheid|water	
+1F6BF	douche	douchekop|water	
+1F6C0	persoon in badkuip	bad|badkuip|badkuip met douche|persoon in bad	
+1F6C1	badkuip	bad|badkuip met douche	
+1F6C2	paspoortcontrole	controle|paspoort	
+1F6C3	douane	inpakken	
+1F6C4	bagage afhalen	aangekomen|bagage|ingecheckt|inpakken|klaar|koffer|ophalen|reis|reisje|reizen|tassen|vliegtuig	
+1F6C5	bagagekluis	achtergelaten|bagage|kluisje|koffer	
+1F6CB	bank en lamp	bank|hotel|lamp|sofa	
+1F6CC	persoon in bed	bed|deken|dutje|goedenacht|hotel|moe|slaap|slaapwel|slapen|vermoeid|welterusten|zzz	
+1F6CD	boodschappentassen	hotel|tas|winkelen	
+1F6CE	piccolobel	balie|baliebel|bel|hotel	
+1F6CF	bed	hotel|slapen	
+1F6D0	gebedsruimte	bidden|godsdienst|plaats|religie	
+1F6D1	stopteken	achthoekig|bord|stop|verkeersteken	
+1F6D2	winkelwagen	boodschappen|shoppen|wagen|wagentje|winkelen	
+1F6D5	hindoetempel	gebouw|geloof|goden|hindoe|India|religie|tempel	
+1F6D6	hut	huis|joert|onderdak|ronde hut|strand|woning	
+1F6D7	lift	hijstoestel|machine|omhoog|omlaag|personenlift|toegankelijkheid|voorwerp	
+1F6D8	aardverschuiving	aardbeving|berg|gevaar|lawine|modderlawine|ramp|stenen	
+1F6D9	vuurtoren	baken|gids|hoop|licht|maritiem|navigatie|signaal|verlichting|zee	
+1F6DC	draadloos	computer|internet|netwerk	
+1F6DD	glijbaan	glijden|kind|kinderen|speeltuin|spelen	
+1F6DE	wiel	auto|band|cirkel|draaien|velg|velgen|vervoer|voertuig	
+1F6DF	reddingsboei	boei|drijven|redden|reddingsgordel|reddingsvest|veiligheid|verdrinken|zwemmen	
+1F6E0	hamer en moersleutel	gereedschap|hamer|klussen|moersleutel	
+1F6E1	schild	bescherming|middeleeuwen|wapen	
+1F6E2	olievat	olie|vat	
+1F6E3	snelweg	autosnelweg|weg	
+1F6E4	treinspoor	spoor|trein	
+1F6E5	motorboot	boot|vaartuig|vervoermiddel	
+1F6E9	vliegtuigje	jet|klein vliegtuig|luchtvaartuig|vervoermiddel|vliegmachine|vliegtuig	
+1F6EB	vertrek van vliegtuig	inchecken|opstijgen|vertrek|vertrekken|vervoermiddel|vliegmachine|vliegtuig|voertuig	
+1F6EC	aankomst van vliegtuig	aankomen|aankomst|landen|landing|vervoermiddel|vliegmachine|vliegtuig|voertuig	
+1F6F0	satelliet	ruimte|ruimtevaart	
+1F6F3	passagiersschip	passagier|schip|veerboot|vervoermiddel|voertuig	
+1F6F4	step	autoped|steppen|vervoermiddel|voertuig	
+1F6F5	scooter	brommer|motor|vervoermiddel|voertuig	
+1F6F6	kano	boot|kajak|vaartuig|vervoermiddel	
+1F6F7	slee	rodelen|roetsjen|slede|sleeën|sleetje|sneeuw	
+1F6F8	vliegende schotel	aliens|buitenaards|buitenaardse wezens|science fiction|ufo|UFO|vervoermiddel|voertuig	
+1F6F9	skateboard	board|deck|skate|skaten|skater|wielen	
+1F6FA	riksja	auto|Azië|Thailand|tuktuk|vervoer|wagen	
+1F6FB	pick-up	auto|bestelbak|laadbak|laadbakwagen|transport|truck|vervoer|vracht|wagen	
+1F6FC	rolschaats	hobby|rollerskate|rollerskates|rolschaatsen|schaats|skaten|sport|sporten	
+1F7E0	oranje cirkel	cirkel|oranje	
+1F7E1	gele cirkel	cirkel|geel	
+1F7E2	groene cirkel	cirkel|groen	
+1F7E3	paarse cirkel	cirkel|paars	
+1F7E4	bruine cirkel	bruin|cirkel	
+1F7E5	rood vierkant	kaart|penalty|rood|vierkant	
+1F7E6	blauw vierkant	blauw|vierkant	
+1F7E7	oranje vierkant	oranje|vierkant	
+1F7E8	geel vierkant	geel|kaart|penalty|vierkant	
+1F7E9	groen vierkant	groen|vierkant	
+1F7EA	paars vierkant	paars|vierkant	
+1F7EB	bruin vierkant	bruin|vierkant	
+1F7F0	vetgedrukt gelijkteken	dikgedrukt|gelijk|gelijkheid|is gelijk aan|teken|uitkomst|wiskunde	
+1F90C	samengeknepen vingers	gebaar|hand|handgebaar|Italiaans|maffia|ondervraging|samengeknepen|sarcastisch|vingers	
+1F90D	wit hart	hart|liefde|symbool|wit	
+1F90E	bruin hart	bruin|hart|liefde|symbool	
+1F90F	hand met samengeknepen vingers	beetje|gebaar voor kleine hoeveelheid|hand|klein|kleine hoeveelheid|vingers|weinig	
+1F910	gezicht met een rits als mond	dicht|geheim|gezicht|houden|mond|rits|rits als mond|stil|zwijg	
+1F911	gezicht met geld in de mond	betaald|geld|geldmond|gezicht|mond	
+1F912	gezicht met thermometer	gezicht|niet lekker|thermometer|ziek	
+1F913	nerdgezicht	geek|gezicht|gezicht met bril en tanden|nerd|nerderig|smiley	
+1F914	nadenkend gezicht	afvragen|denken|gezicht|hmm|kin|nadenken|nadenkend|overwegen	
+1F915	gezicht met een verband om het hoofd	gewond|gezicht|gezicht met hoofdverband|pijn|verband|verwonding	
+1F916	robot	gezicht|monster	
+1F917	blij gezicht met uitgestoken handen	blij|gezicht|handen|knuffel|knuffelen|uitgestoken	
+1F918	duivelshorens	hand|hoorns|rock on|teken|vinger	
+1F919	bel me-gebaar	bel mij-gebaar|bellen|hand|handgebaar voor bellen	
+1F91A	achterkant van opgeheven hand	achterzijde opgestoken hand|hand|hand omhoog|handrug|opgestoken|rug van hand|vijf vingers	
+1F91B	naar links gerichte vuist	linksom|naar links|vuist	
+1F91C	naar rechts gerichte vuist	naar rechts|rechtsom|vuist	
+1F91D	handdruk	deal|hand|overeenkomst|schudden|vergadering	
+1F91E	gekruiste vingers	gekruist|geluk|hand|kruisen|vinger|vingers	
+1F91F	ik-hou-van-je-gebaar	gebarentaal|hand|HVJ|Ik hou van jou-gebaar|ILY	
+1F920	gezicht met cowboyhoed	cowboy|cowgirl|gezicht|hoed	
+1F921	clownsgezicht	clown|gezicht	
+1F922	misselijk gezicht	gadver|gezicht|misselijk|overgeven|vies|ziek	
+1F923	gezicht dat op de grond rolt van het lachen	blij|gezicht|grappig|haha|hehe|hilarisch|huilen|lachen|lmao|lol|rofl|roflmao|rollen|traan|vloer|vreugde	
+1F924	kwijlend gezicht	gezicht|kwijlend	
+1F925	liegend gezicht	gezicht|leugen|leugenaar|liegen|pinokkio	
+1F926	persoon die het gezicht met de hand bedekt	ergernis|gebaar|gezicht|hand voor gezicht|niet opnieuw|ongeloof|ongelooflijk|palm|persoon|schaamte|zucht	
+1F927	niezend gezicht	gezicht|gezondheid|griep|koorts|niezen|niezend|ziek	
+1F928	gezicht met opgeheven wenkbrauw	afkeurend|frons|gezicht met opgetrokken wenkbrauw|hmm|ongeloof|sceptisch|skeptisch|smiley|verrassing|wantrouwen|wantrouwend|wat	
+1F929	sterren in de ogen	gezicht|grijnzend|lach|ogen|opgewonden|ster|sterren als ogen|wauw	
+1F92A	gek gezicht	gekke blik|gestoord|groot|klein|oog|smiley	
+1F92B	gezicht dat tot stilte maant	gezicht|manen|sst|stil|stilte	
+1F92C	gezicht met symbolen op mond	boos|censuur|gezicht met tekens over mond|kwaad|schelden|smiley|vloeken	
+1F92D	gezicht met hand over de mond	geheim|geschrokken|gezicht met hand over mond|giechelen|oeps|smiley|verrast	
+1F92E	brakend gezicht	braaksel|braken|misselijk|overgeven|spuwen|walgelijk|ziek	
+1F92F	ontploffend hoofd	exploderen|geschokt|ondersteboven|onmogelijk|smiley|verbaasd|verbijsterd|verrast|wow	
+1F930	zwangere vrouw	vrouw|zwanger	
+1F931	borstvoeding	baby|borst|de borst geven|persoon	
+1F932	beide handpalmen omhoog	bidden|gebed|hand|kommetje maken met handen|palmen bij elkaar	
+1F933	selfie	camera|telefoon	
+1F934	prins	fantasie|koning|koninklijk|kroon|royalty|sprookje	
+1F935	persoon in smoking	bruiloft|formeel|persoon|smoking	
+1F936	kerstvrouw	feest|kerst|kerstmis|moedertje kerst|persoon|viering	
+1F937	persoon die schouders ophaalt	gebaar|idk|ik weet het niet|misschien|onverschilligheid|onwetend|onwetendheid|schouderophalen|twijfel	
+1F938	persoon die een radslag doet	blij|buiten|gymnastiek|olympische spelen|persoon|radslag|sport|turnen	
+1F939	persoon die jongleert	balanceren|balans|beheren|hanteren|jongleren|multitasken|nummer|persoon|vaardigheid	
+1F93A	schermer	degen|persoon|schermen	
+1F93C	personen die worstelen	duel|olympische spelen|sport|toernooi|worstelaar|worstelen	
+1F93D	persoon die waterpolo speelt	persoon|polo|spelen|sport|water|waterpolo|zwemmen	
+1F93E	persoon die handbal speelt	bal|gooien|handbal|sport|springen|worp	
+1F93F	duikbril	duiken|duikmasker|onder water|scuba|scubaduiken|snorkelen|vis|zee	
+1F940	verwelkte bloem	bloem|sterven|verwelkt	
+1F941	trommel	drummen|drums|drumsticks|muziek|muziekinstrument|trommelen|trommelstokken	
+1F942	klinkende glazen	drinken|glas|glazen|klinken|toosten|vieren	
+1F943	tumblerglas	glas|likeur|shot|tumbler|whiskey|whisky	
+1F944	lepel	bestek|tafelgerei	
+1F945	doelnet	doel|goal|net|sport	
+1F947	medaille 1e plaats	eerste|gewonnen|goud|gouden|medaille|winnaar	
+1F948	medaille 2e plaats	medaille|tweede|tweede plaats|zilver	
+1F949	medaille 3e plaats	brons|bronzen|derde|derde plaats|medaille	
+1F94A	bokshandschoen	boksen|handschoen|sport	
+1F94B	pak voor vechtsporten	judo|karate|kunst|taekwondo|uniform|vecht	
+1F94C	curlingsteen	curling|kei|spel|sport|steen	
+1F94D	lacrosse	bal|doel|sport|stick	
+1F94E	softbal	bal|handschoen|onderarm|onderhands|sport|werpen	
+1F94F	frisbee	schijf|ultiem|ultimate|vliegende schotel|werpschotel	
+1F950	croissant	brood|eten|frans|ontbijt|voedsel	
+1F951	avocado	fruit|voedsel	
+1F952	komkommer	augurk|eten|groente	
+1F953	bacon	eten|ontbijt|spek|vlees	
+1F954	aardappel	groente|voedsel	
+1F955	wortel	groente|voedsel	
+1F956	stokbrood	brood|eten|Frans	
+1F957	groene salade	eten|groen|salade	
+1F958	paellapan	braadpan|eten|ondiep|paella|pan	
+1F959	gevuld pitabroodje	eten|falafel|gevuld|gyros|kebab|pitabrood	
+1F95A	ei	ontbijt|voedsel	
+1F95B	glas melk	drinken|glas|melk	
+1F95C	pinda’s	eten|groente|noot|pinda	
+1F95D	kiwi	fruit|voedsel	
+1F95E	pannenkoeken	crêpe|eten|flensje|ontbijt|pannenkoek	
+1F95F	knoedel	dumpling|empanada|gyōza|jiaozi|pierogi|potsticker	
+1F960	gelukskoekje	geluk|koekje|profetie	
+1F961	afhaalmaaltijd	bezorgen|doggybag|eten|oesteremmer|stokjes|voedsel	
+1F962	chopsticks	eetstokjes|eten|stokjes	
+1F963	kom met lepel	cornflakes|eten|muesli|ontbijt|ontbijtgranen|pap|soep|voedsel	
+1F964	beker met rietje	drinken|frisdrank|sap|water	
+1F965	kokosnoot	eten|palm|palmboom|pina colada|voedsel	
+1F966	broccoli	kool|wild	
+1F967	taart	fruit|gebak|gebakje|hartige taart|pastei|vlees|vulling	
+1F968	pretzel	gedraaid|krakeling	
+1F969	vlees	biefstuk|bout|karbonade|kotelet|lamskotelet|rood	
+1F96A	boterham	brood|sandwich	
+1F96B	blikvoedsel	blik|ingeblikt|voedsel	
+1F96C	bladgroente	bladgroen|boerenkool|bok choy|burgers|kool|paksoi|salade|sla	
+1F96D	mango	eten|fruit|tropisch	
+1F96E	maancake	cake|festival|herfst|maan|yuèbǐng	
+1F96F	bagel	bakkerij|brood|ontbijt|spread	
+1F970	lachend gezicht met hartjes	crush|dol|gezicht|glimlach|glimlachen|hart|hartjes|hou van jou|jou|liefde|romantiek|3	
+1F971	gapend gezicht	bed|dutje|gaap|gapen|geeuwen|gezicht|moe|rusten|saai|slaap lekker|slaperig|vermoeid|verveeld	
+1F972	lachend gezicht met traan	aangedaan|blij|dankbaar|enigszins lachend|gelukkig|opgelucht|smiley|traan|trots	
+1F973	feestend gezicht	feest|feesten|fuif|gelukkig|gezicht|hoed|hoera|opgewonden|roltong|verjaardag|vieren|viering	
+1F974	wazig gezicht	aangeschoten|beneveld|beschonken|dronken|duizelig|gezicht|mond|ogen|scheel|wazig	
+1F975	heet gezicht	beroerte|gezicht|heet|hijgen|hitte|koortsig|rood gezicht|sterven|tong|zweten	
+1F976	koud gezicht	bevriezen|bevriezing|blauw|gezicht|ijspegels|koud|onder nul|tanden	
+1F977	ninja	geheim|japan|krijger|persoon|samurai|sluipmoordenaar|vechten|verborgen|zwaard	
+1F978	vermomd gezicht	bril|gezicht|incognito|neus|smiley|snor|vermomming|wenkbrauwen	
+1F979	gezicht dat tranen tegenhoudt	alsjeblieft|aww|beschaamd|bewondering|dankbaar|dankbaarheid|gevoelens|houden|huilen|tegen|tranen|trots|verdrietig|vreugde|weerstaan	
+1F97A	smekend gezicht	alsjeblieft|genade|gezicht|grote ogen|smeken|smekende blik|smiley|verdrietig|waarom niet|zielig gezicht	
+1F97B	sari	jurk|kledij|kleding	
+1F97C	labjas	dokter|dr.|experiment|jas|kleding|lab|wetenschapper|wit	
+1F97D	oogscherm	bescherming|bril|duik|duiken|lassen|oog|zwemmen	
+1F97E	wandelschoen	backpacken|bruin|buiten|kamperen|laars|schoen|wandelen	
+1F97F	platte schoen	ballerina|ballerina’s|comfortabel|flatjes|instapper|slip-on	
+1F980	krab	dierenriem|kreeft	
+1F981	leeuw	alfa|brul|dier|gezicht|Leo|manen|orde|safari|sterk|sterrenbeeld	
+1F982	schorpioen	Scorpio|Scorpius|sterrenbeeld	
+1F983	kalkoen	dier|gevogelte	
+1F984	eenhoorn	gezicht	
+1F985	adelaar	dier|ornithologie|vogel	
+1F986	eend	dier|vogel|woerd	
+1F987	vleermuis	dier|vampier	
+1F988	haai	dier|vis	
+1F989	uil	dier|vogel|wijs|wijsheid	
+1F98A	vos	dier|gezicht	
+1F98B	vlinder	insect|mooi	
+1F98C	hert	dier	
+1F98D	gorilla	dier	
+1F98E	hagedis	dier|reptiel	
+1F98F	neushoorn	dier	
+1F990	garnaal	klein|schaaldier|voedsel	
+1F991	inktvis	dier|voedsel|weekdier	
+1F992	giraffe	dier|vlekken	
+1F993	zebra	dier|streep	
+1F994	egel	dier|stekelig	
+1F995	sauropode	brachiosaurus|brontosaurus|dinosaurus|diplodocus	
+1F996	T-Rex	dinosaurus|Rex|T|Tyrannosaurus	
+1F997	krekel	dier|insect|Orthoptera|sprinkhaan	
+1F998	kangoeroe	buideldier|dier|joey|springen	
+1F999	lama	alpaca|dier|guanaco|vicuña|wol	
+1F99A	pauw	dier|kleurrijk|mooie vogel|opzichtig|pauwhen|pronkerig|trots|trots als een pauw|vogel	
+1F99B	nijlpaard	dier|hippopotamus	
+1F99C	papegaai	dier|lorre|napraten|piraat|praten|vogel	
+1F99D	wasbeer	dier|nieuwsgierig|sluw	
+1F99E	kreeft	bisque|dier|scharen|zeevruchten	
+1F99F	mug	beet|insect|koorts|malaria|ongedierte|virus|ziekte	
+1F9A0	microbe	amoebe|bacteriën|virus|wetenschap	
+1F9A1	das	dier|honing|kwellen	
+1F9A2	zwaan	dier|jonge zwaan|lelijk eendje|vogel|zwanenjong	
+1F9A3	mammoet	dier|groot|slagtand|uitsterven|wollig	
+1F9A4	dodo	dier|groot|ornithologie|uitsterven|vogel	
+1F9A5	luiaard	lui|traag	
+1F9A6	otter	dier|speels|vissen	
+1F9A7	orang-oetang	aap|dier	
+1F9A8	stinkdier	dier|stank	
+1F9A9	flamingo	dier|flamboyant|ornithologie|tropisch|vogel	
+1F9AA	oester	duiken|parel	
+1F9AB	bever	dam|dier|tanden	
+1F9AC	bizon	buffel|dier|kudde|wisent	
+1F9AD	zeehond	dier|leeuw|oceaan|zee	
+1F9AE	blindengeleidehond	blind|dier|geleide|hond|toegankelijkheid	
+1F9AF	taststok	blind|blindenstok|lopen|toegankelijkheid	
+1F9B0	rood haar	rooie|rossig	
+1F9B1	krullend haar	afro|krulhaar|krullen	
+1F9B2	kaal	chemotherapie|geen haar|geschoren|haarloos	
+1F9B3	wit haar	grijs|haar|oud|wit	
+1F9B4	bot	botten|hond|skelet|vorkbeen	
+1F9B5	been	gebogen|knie|ledemaat|schop|voet	
+1F9B6	voet	enkel|schop|schoppen|stampen|trap	
+1F9B7	tand	parelmoer|tandarts|tanden|wit	
+1F9B8	superheld	goed|held|superkracht	
+1F9B9	superschurk	crimineel|kwaad|schurk|slecht|superkracht	
+1F9BA	veiligheidsvest	gevaarlijk|noodgeval|veilig|veiligheid|vest	
+1F9BB	oor met gehoorapparaat	doof|gehoorapparaat|oor met oorapparaat|oorapparaat|slechthorend|toegankelijkheid	
+1F9BC	elektrische rolstoel	rijden|toegankelijkheid|wiel	
+1F9BD	rolstoel	duwen|toegankelijkheid|zitten	
+1F9BE	armprothese	bionische arm|kunstarm|mechanische arm|prothese|toegankelijkheid	
+1F9BF	beenprothese	bionisch been|kunstbeen|mechanisch been|prothese|toegankelijkheid	
+1F9C0	stuk kaas	kaas|plak	
+1F9C1	cupcake	bakkerij|dessert|hagelslag|suiker|traktatie|zoet	
+1F9C2	zout	gezouten|overstuur|smaak|specerij|zoutvaatje	
+1F9C3	pakje drinken	drankje|pakje|rietje|sap|zoet	
+1F9C4	knoflook	smaakmaker	
+1F9C5	ui	smaakmaker	
+1F9C6	falafel	gehaktbal|kikkererwt	
+1F9C7	wafel	besluiteloos|ijzer|ontbijt	
+1F9C8	boter	zuivel	
+1F9C9	maté	drank	
+1F9CA	ijsklontje	ijs|ijsberg|klontje|koud	
+1F9CB	bubbelthee	boba|bubbel|melk|parel|thee|voedsel	
+1F9CC	trol	fantasie|monster|trollen	
+1F9CD	staande persoon	persoon|staan|staand	
+1F9CE	knielende persoon	knieën|knielen|knielend|persoon	
+1F9CF	doof persoon	doof|horen|oor|slechthorend|toegankelijkheid	
+1F9D0	gezicht met monocle	chic|gezicht|klasse|monocle|rijk|saai	
+1F9D1	volwassene	persoon	
+1F9D2	kind	heldere ogen|jong|jonger|kleinkind	
+1F9D3	oudere persoon	bejaard|genderneutraal|niet nader omschreven geslacht|oud|ouder persoon|oudere volwassene|persoon|volwassene	
+1F9D4	persoon: baard	baard|bebaard|persoon|persoon met baard	
+1F9D5	vrouw met hoofddoek	hidjab|hijab|hoofddoek|mantilla|persoon|sluier	
+1F9D6	persoon in ruimte vol stoom	hamam|ontspannen|persoon in stomende ruimte|relaxen|sauna|stoombad|stoomcabine|stoomruimte	
+1F9D7	klimmende persoon	alpinisme|berg|bergbeklimmen|bergbeklimmer|klimmen|klimmer|sport	
+1F9D8	persoon in lotushouding	benen gekruist|kleermakerszit|meditatie|ontspannen|relax|yoga|zen	
+1F9D9	magiër	fantasie|heks|magie|spreuk|sprookje|tovenaar|tovenares	
+1F9DA	elfje	fantasie|mythe|persoon|pixie|sprookje|vleugels	
+1F9DB	vampier	bloed|Dracula|eng|halloween|ondode|snijtanden|tanden|verkleden	
+1F9DC	zeemeermin	drietand|folklore|meermin|oceaan|schepsel|sirene|sprookje|zee	
+1F9DD	elf	fantasie|folklore|In de ban van de ring-stijl|legolas|LOTR-stijl|magisch|mythe	
+1F9DE	geest in de fles	aladin|djinn|fantasie|geest|lamp|mythe|sprookje|wens	
+1F9DF	zombie	eng|halloween|horror|levende doden|lopende dode|monster|ondode	
+1F9E0	brein	hersenen|intelligent|slim	
+1F9E1	oranje hart	oranje	
+1F9E2	pet	baseballcap|hoofddeksel	
+1F9E3	sjaal	koud|nek	
+1F9E4	handschoenen	hand	
+1F9E5	jas	blazer|brr|jack|koud|warm aankleden	
+1F9E6	sokken	kousen	
+1F9E7	rode envelop	cadeau|geld|geluk|geschenk|hóngbāo|lai see|rode enveloppe|voorspoed	
+1F9E8	rotje	boem|dynamiet|explosief|licht|ontploffing|vonk|vuur|vuurwerk	
+1F9E9	puzzelstukje	aanwijzing|gekoppeld|legpuzzel|passen|passend|puzzel|schakel|stukje	
+1F9EA	reageerbuis	chemicus|experiment|lab|laboratorium|scheikunde|scheikundige|wetenschap	
+1F9EB	petrischaal	bacterie|bacteriën|biologe|biologie|bioloog|cultuur|kweek|lab|laboratorium	
+1F9EC	DNA	biologe|bioloog|evolutie|gen|genetica|genetisch|leven	
+1F9ED	kompas	magnetisch|navigatie|oriëntatielopen|oriënteringslopen|richting	
+1F9EE	abacus	berekenen|optellen|rekenen|rekenmachine|tellen|telraam	
+1F9EF	brandblusapparaat	blusapparaat|blussen|blusser|brandblusser|doven|vuur	
+1F9F0	gereedschapskist	doos|gereedschap|kist|monteur|rode kist	
+1F9F1	baksteen	bakstenen|cement|gemetseld|klei|metselen|mortel|muur|steen	
+1F9F2	magneet	aantrekking|aantrekkingskracht|hoefijzer|magnetisch|positief negatief|uvormig	
+1F9F3	bagage	inpakken|koffer|reis|reizen|rolkoffer|trolley	
+1F9F4	lotionfles	crème|huidcrème|hydraterende lotion|lotion|lotion flacon|moisturizer|shampoo|zonnebrandcrème|zonnebrandolie	
+1F9F5	garen	draad|klos|naaien|naald	
+1F9F6	wol	bal|bol|breien|draad|haken	
+1F9F7	veiligheidsspeld	luier|luierspeld|punk|speld	
+1F9F8	teddybeer	beer|beertje|knuffel|knuffelbeer|knuffelbeest|pluche|speelgoed|speeltje|teddy beer	
+1F9F9	bezem	bezemsteel|heks|schoonmaken|vegen	
+1F9FA	mand	boeren|landbouw|oogsten|picknick|wasgoed|wasmand	
+1F9FB	rol papier	closetrol|keukenrol|papieren handdoek|toiletpapier|toiletrol|wc-papier|wc-rol	
+1F9FC	zeep	baden|inzepen|schoon|schoonmaken|schuim|stuk zeep|wassen|zeepbakje|zeephouder	
+1F9FD	spons	absorberen|absorberend|baden|poreus|schoonmaken|schrobben	
+1F9FE	kassabon	administratie|bewijs|boekhouden|boekhouding|bonnetje|factuur|kwitantie|rekening	
+1F9FF	Nazar-amulet	amulet|bedel|blauw|boze oog|kraal|nazar|Nazar|talisman	
+1FA70	balletschoenen	ballerina|ballet|dans|dansen|pirouette|schoenen|spitzen	
+1FA71	badpak	badpak uit één stuk|strand|zomer|zwembad|zwemgerief|zwemmen|zwempak	
+1FA72	slip	onderbroek|ondergoed|sporten|strand|zwembroek|zwemgerief|zwemkleding|zwemmen	
+1FA73	korte broek	badpak|broek|ondergoed|pak|zwem	
+1FA74	teenslipper	sandaal|sandalen|schoen|slipper|strand|strandslipper|zōri	
+1FA75	lichtblauw hart	blauwgroen|groenblauw|hart|lichtblauw	
+1FA76	grijs hart	grijs|hart|leigrijs|zilver	
+1FA77	roze hart	hart|leuk|liefde|roze|schattig	
+1FA78	bloeddruppel	bloed|bloeden|donatie|druppel|medicijnen|menstruatie|verwonding	
+1FA79	pleister	bloed|pijn|snee|verband|wond|ziekenhuis	
+1FA7A	stethoscoop	arts|dokter|geneeskunde|hart|medicijnen|ziekenhuis	
+1FA7B	röntgenfoto	borstkas|botten|dokter|medisch|ribben|skelet|ziek|ziekenhuis	
+1FA7C	kruk	gewond|handicap|lopen|mobiliteitshulp|stok|wandelstok	
+1FA80	jojo	fluctueren|kinderen|op en neer|speelgoed|spelen	
+1FA81	vlieger	buiten|opstijgen|spelen|vliegen|zweven	
+1FA82	parachute	activiteit|deltavliegen|hanggliden|parachutespringen|parasailen|skydiven	
+1FA83	boemerang	Australië|buiten|reactie|spel|terugslag	
+1FA84	toverstok	goochelaar|goochelen|heks|magie|magiër|tovenaar|toveren|tovertruc	
+1FA85	piñata	cinco de mayo|feest|Mexicaans|Mexico|snoep|snoepgoed|vieren|viering	
+1FA86	matroesjka	baboesjka|baboesjka’s|genest|pop|poppetjes|rusland|Rusland|Russisch	
+1FA87	sambaballen	instrument|muziek|percussie|ratelen|schudden	
+1FA88	fluit	blokfluit|dwarsfluit|houtblazer|muziek|pijperfluit	
+1FA89	harp	cupido|instrument|liefde|muziek|orkestra	
+1FA8A	trombone	droevig|instrument|jazz|koper|muziek|schuiven	
+1FA8B	meteoor	apocalyps|ruimte|steen|vallende ster|vuurbal|zwaartekracht	
+1FA8C	gum	correctie|fout|ongedaan maken|schrappen|schrijven|tekenen|vergissing|verwijderen|wissen|wrijven	
+1FA8D	net met steel	gaas|schepnet|vangen|verzamelen	
+1FA8E	schatkist	buit|edelsteen|geld|goud|juwelen|kostbaarheden|prijs|rijkdom|zilver	
+1FA8F	schop	gat|graven|schep|spade	
+1FA90	planeet met ringen	heelal|planeet|ringen|ruimte|Saturnus|zonnestelsel|zwaarmoedig	
+1FA91	hoge stoel	meubels|meubelstuk|stoel|zetel|zitten	
+1FA92	scheermes	baard|badkamer|mesjes|scheren|scherp|voorwerp	
+1FA93	bijl	gereedschap|hakken|hout|houthakker|splijten	
+1FA94	diya-lamp	diya|lamp|licht|olie|vlam	
+1FA95	banjo	besnaard|instrument|muziek|snaarinstrument|spelen	
+1FA96	legerhelm	helm|krijger|leger|militair|oorlog|soldaat|vechter|voorwerp	
+1FA97	accordeon	bandoneon|concertina|instrument|muziek|trek|trekzak	
+1FA98	hoge trom	beat|conga|hoog|instrument|ritme|trom	
+1FA99	munt	dollar|euro|geld|goud|metaal|rijk|schat|zilver	
+1FA9A	houtzaag	afzagen|gereedschap|hout|timmeren|timmerman|voorwerp|zaag|zagen	
+1FA9B	schroevendraaier	gereedschap|klussen|repareren|schroef	
+1FA9C	ladder	klimmen|omhoog|omlaag|sport|trede|voorwerp	
+1FA9D	haak	aanbeveling|bocht|hengel|kronkel|vangen|verstrikken|vissen	
+1FA9E	spiegel	make-up|opmaken|reflectie|reflector|speculum|spiegelbeeld|spiegels|voorwerp|weerspiegeling	
+1FA9F	raam	doorzichtig|frisse lucht|kijken|kozijn|opening|raamkozijn|uitzicht|venster|voorwerp	
+1FAA0	ontstopper	kracht|loodgieter|poep|wc|zuiger|zuigkracht	
+1FAA1	naald	borduren|draad|hechten|hechtingen|hobby|kleding|kleermaken|naaien|speld	
+1FAA2	knoop	boot|geknoopt|hobby|knopen|kronkel|padvinder|streng|touw|zeilen	
+1FAA3	emmer	aker|dweil|dweilen|poetsen|putemmer|schoonmaken|vat|voorwerp|water	
+1FAA4	muizenval	aas|kaas|lokken|strik|valstrik|vangen	
+1FAA5	tandenborstel	badkamer|borstel|hygiëne|poetsen|tanden|tandheelkunde|toiletartikelen	
+1FAA6	grafsteen	begraafplaats|begrafenis|dood|graf|grafzerk|kerkhof|overleden|voorwerp	
+1FAA7	plakkaat	bord|demonstratie|mars|poster|protest|protesteren|slogan|voorwerp	
+1FAA8	rots	betrouwbaar|graniet|rotsblok|steen|sterk|zwaar	
+1FAA9	spiegelbal	dans|dansen|disco|discobal|feest|glitter	
+1FAAA	legitimatiebewijs	beveiliging|ID|ID-kaart|identificatie|identiteitskaart|overheid|vergunning	
+1FAAB	batterij bijna leeg	accu|batterij|electronisch|lege batterij|weinig batterijlading	
+1FAAC	hamsa	amulet|bescherming|Fatima|geluk|hand|handpalm|Maria|Mirjam|oog	
+1FAAD	opvouwbare waaier	afkoelen|dansen|fladderen|heet|verlegen|waaier	
+1FAAE	haarkam	afro|haar|kam|kroes	
+1FAAF	khanda	religie|sikh	
+1FAB0	vlieg	dier|insect|made|ongedierte|rottend|ziekte	
+1FAB1	worm	dier|parasiet|regenworm|ringworm	
+1FAB2	kever	beestje|dier|insect	
+1FAB3	kakkerlak	bakkerstor|dier|insect|plaag	
+1FAB4	potplant	decor|groeien|huis|plant|pot|verzorgen	
+1FAB5	hout	balk|bijl|boomstam|hakken|open haard|stam|timmerhout|vuur|zagen	
+1FAB6	veer	licht|verenkleed|vlucht|vogel	
+1FAB7	lotus	bloem|Boeddhisme|Hindoeïsme|puurheid|rust|schoonheid|sereen|vrede	
+1FAB8	koraal	klimaat|oceaan|rif|verandering|zee	
+1FAB9	leeg nest	leeg|nest|nestelen|tak|thuis	
+1FABA	nest met eieren	ei|eieren|nest|nestelen|tak|vogel	
+1FABB	hyacint	bloem|lavendel|leeuwenbek|lupine|vlinderbloemige	
+1FABC	kwal	aquarium|au|beet|branden|dier|gelei|leven|oceaan|ongewerveld|plankton|steek|tentakels|zee	
+1FABD	vleugel	engelachtig|luchtvaart|mythologie|vliegen|vogel	
+1FABE	boom zonder bladeren	boom|boomstam|dood|droogte|hout|kaal|leeg|takken|winter|zonder bladeren	
+1FABF	gans	gevogelte|onnozel|snateren|vogel	
+1FAC0	hart	anatomisch|cardiologie|echt|hartslag|orgaan|polsslag|rood	
+1FAC1	longen	adem|ademhaling|inademen|lichaam|lucht|orgaan|uitademen|zuurstof	
+1FAC2	personen in een omhelzing	bedankt|dag|hallo|knuffel|knuffelen|liefde|omhelzing|persoon|vriendschap	
+1FAC3	zwangere man	buik|man|opgeblazen|te veel eten|vol|zwanger	
+1FAC4	zwanger persoon	baby|buik|opgeblazen|persoon|vol|zwanger	
+1FAC5	persoon met kroon	edele|heerser|iemand van koninklijken bloede|keizer|koning|koninklijk|persoon|regaal	
+1FAC6	vingerafdruk	forensisch|identiteit|veiligheid	
+1FAC8	harig wezen	bigfoot|cryptide|harig|reus|sasquatch|wildeman|woud|yeti	
+1FACC	monarchvlinder	fragiel|hoop|insect|metamorfose|migratie|rups|transformatie|verandering	
+1FACD	orka	oceaan|walvis|zee	
+1FACE	eland	dier|gewei|zoogdier	
+1FACF	ezel	dier|grauwtje|koppig|muildier|pakezel|zoogdier	
+1FAD0	bosbessen	bes|bessen|blauw|blauwbessen|bosbes|fruit|voedsel	
+1FAD1	paprika	capsicum|groente|peper|voedsel	
+1FAD2	olijf	voedsel	
+1FAD3	platbrood	arepa|brood|eten|gordita|lavash|naan|pita	
+1FAD4	tamale	eten|Mexicaans|pamonha|verpakt	
+1FAD5	fondue	chocolade|eten|gesmolten|kaas|pot|ski	
+1FAD6	theepot	drinken|eten|pot|thee|zettten	
+1FAD7	vloeistof uitgieten	drinken|gieten|glas|leeg|morsen|oeps|ongelukje	
+1FAD8	bonen	kidneyboon|klein|peulvrucht|voedsel	
+1FAD9	pot	container|leeg|niets|saus|specerij|winkel	
+1FADA	gemberwortel	bier|gember|specerij|wortel	
+1FADB	erwtendop	bonen|dop|edamame|erwt|groente|peul|peulvrucht	
+1FADC	knol	biet|groente|raap|tuin|wortel	
+1FADD	augurk	condiment|fermenteren|ingemaakt|komkommer|kruiderij|zuur	
+1FADF	Gespat	druppel|geknoei|gemors|holi|inkt|verf|vlek|vloeistof	
+1FAE0	smeltend gezicht	beschaamd|gezicht|haha|heet|lol|oplossen|sarcasme|sarcastisch|smelt|smelten|verdwijnen|vloeibaar|warm	
+1FAE1	saluerend gezicht	bevel|ja|oké|saluut|smiley|troepen|zonnig	
+1FAE2	gezicht met open ogen en hand voor mond	bang|geschokt|gezicht met open ogen en hand over de mond|ongeloof|ontzag|schaamte|smiley|verbazing|verrassing	
+1FAE3	gezicht met glurend oog	geboeid|gluren|smiley|spieken|staren|stiekem|stiekem kijken	
+1FAE4	gezicht met schuine mond	gefrustreerd|het zal wel|meh|onzeker|sceptisch|smiley|teleurgesteld	
+1FAE5	gezicht in stippellijn	depressief|depri|gedeprimeerd|introvert|onzichtbaar|smiley|verbergen|verdwijnen	
+1FAE6	mond die op lip bijt	angst|bezorgd|flirten|lippen|nerveus|ongemakkelijk|ongerust|sexy	
+1FAE7	zeepbellen	bad|bubbel|bubbels|onderwater|schoon|wassen|zeep	
+1FAE8	schuddend gezicht	aardbeving|gek|gezicht|omg|paniek|schok|schudden|trillen|verbijstering|verrassing|wauw|wow	
+1FAE9	gezicht met wallen onder de ogen	moe|slaperig|uitgeput	
+1FAEA	verwrongen gezicht	geschokt|kwetsbaar|onrust|opgeblazen|paniek|verrast	
+1FAEB	barstend gezicht	afbrokkelend|brekend|maskeren|onthullen|spanning|transformatie|weerbarstig	
+1FAEF	vechtwolk	debat|onenigheid|ruzie|tumult|vechtpartij|woordenwisseling|worsteling	
+1FAF0	hand met wijsvinger en duim gekruist	duur|geld|hand|hart|liefde|vingerknip|vingers	
+1FAF1	hand naar rechts	hand|handdruk|naar rechts|rechts|reiken|schudden|vasthouden	
+1FAF2	hand naar links	eens|hand|handdruk|links|naar links|uitgestoken hand	
+1FAF3	handpalm omlaag	hand|laten vallen|oprapen|wegjagen|wegsturen	
+1FAF4	handpalm omhoog	aanbieden|hand|kom|vangen|wenken	
+1FAF5	wijsvinger die naar de kijker wijst	aanwijzen|hand|jij|vinger|wijzen	
+1FAF6	handen in de vorm van een hart	handen|hart|hou|jou|<3	
+1FAF7	hand die naar links duwt	duwen|high five|naar links|stoppen|wachten|weigeren	
+1FAF8	hand die naar rechts duwt	duwen|high five|naar rechts|stoppen|wachten|weigeren	
+1FAF9	duim naar links	dat|dit|grip|links|neutraal|wijzen	
+1FAFA	duim naar rechts	dat|dit|grip|neutraal|rechts|wijzen	
