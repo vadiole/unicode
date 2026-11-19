@@ -22,6 +22,7 @@
 - Tests are the search regression suite (`docs/search.md`) and the spring contract (`SpringTest`): JVM tests in `app/src/testDebug` run with `./gradlew testDebugUnitTest`, JUnit is the only test dependency. Do not add other tests without asking.
 - After changing search or its data run `tools/search-golden.sh verify <serial>`.
 - After completing a task or fix, build and launch the app: `./gradlew installDebug && adb shell am start -n vadiole.unicode.debug/vadiole.unicode.ui.UnicodeActivity` 
+- Lint (`./gradlew lintDebug`, also in CI) loads our shared rules from the sibling repo `../android-lint` as a composite build; change a rule there, following its `AGENTS.md`.
 - Device testing (debug config presets, per-app language, screenshots, search goldens): `docs/testing.md`.
 - Release: `./gradlew assembleRelease bundleRelease`, signed from `unicode.signing.*` in `~/.gradle/gradle.properties`; the R8 mapping is copied to `app/mapping/`.
 - Alpha (`./gradlew assembleAlpha`, `vadiole.unicode.alpha`): release with R8, debug-signed and profileable, without `src/debug`. CI sends the alpha APK to Telegram on every push outside `master`.

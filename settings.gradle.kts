@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Unicode"
 include(":app")
+includeBuild(providers.gradleProperty("androidLint").getOrElse("../android-lint"))
