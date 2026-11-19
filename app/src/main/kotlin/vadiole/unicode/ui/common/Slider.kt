@@ -103,15 +103,14 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
     private var lastClickTime = 0L
     private var lastHumTime = 0L
     private var lastHumStep = 0
-    private val vibrator: Vibrator? by lazy {
-        if (Build.VERSION.SDK_INT >= 33) context.getSystemService(VibratorManager::class.java)?.defaultVibrator else null
-    }
-    private val humPrimitiveSupported by lazy {
-        Build.VERSION.SDK_INT >= 33 && vibrator?.areAllPrimitivesSupported(VibrationEffect.Composition.PRIMITIVE_LOW_TICK) == true
-    }
-    private val touchAttributes by lazy {
-        if (Build.VERSION.SDK_INT >= 33) VibrationAttributes.createForUsage(VibrationAttributes.USAGE_TOUCH) else null
-    }
+    private val vibrator: Vibrator? = if (Build.VERSION.SDK_INT >= 33) {
+        context.getSystemService(VibratorManager::class.java)?.defaultVibrator
+    } else null
+    private val humPrimitiveSupported = Build.VERSION.SDK_INT >= 33 &&
+        vibrator?.areAllPrimitivesSupported(VibrationEffect.Composition.PRIMITIVE_LOW_TICK) == true
+    private val touchAttributes = if (Build.VERSION.SDK_INT >= 33) {
+        VibrationAttributes.createForUsage(VibrationAttributes.USAGE_TOUCH)
+    } else null
     private val humEffects = arrayOfNulls<Any>(HUM_BUCKETS)
     private val accessibility = context.getSystemService(AccessibilityManager::class.java)
     private var announced: String? = null
@@ -255,7 +254,7 @@ class Slider(context: Context, val range: ClosedFloatingPointRange<Float>) : Vie
         if (showsLayoutBounds) drawDebug(canvas)
     }
 
-    private val debugPaint by lazy { Paint() }
+    private val debugPaint = Paint()
 
     private fun drawDebug(canvas: Canvas) {
         val paint = debugPaint
