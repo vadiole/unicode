@@ -12,8 +12,8 @@ android {
         applicationId = "vadiole.unicode"
         minSdk = 23
         targetSdk = 37
-        versionCode = 176
-        versionName = "1.10.0"
+        versionCode = 177
+        versionName = "1.10.1"
         buildConfigField("String", "UNICODE_VERSION", "\"18.0.0\"")
         base.archivesName.set("unicode-v$versionName")
     }
